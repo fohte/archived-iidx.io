@@ -1,0 +1,47 @@
+version: '3'
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3306:3306'
+  rails: &app_base
+    build:
+      context: .
+      dockerfile: ./docker/rails/Dockerfile
+    working_dir: /app
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle:nocopy
+      - node_modules:/node_modules:nocopy
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PASSWORD: password
+      MYSQL_PORT: 3306
+    depends_on:
+      - mysql
+    ports:
+      - '3000:3000'
+  webpacker:
+    <<: *app_base
+    command: ./bin/webpack-dev-server
+    ports:
+      - '3035:3035'
+  spring:
+    <<: *app_base
+    command: bin/spring server
+    ports: []
+    tty: false
+    stdin_open: false
+volumes:
+  db_data:
+  bundle:
+    external: true
+  node_modules:
+    external: true
