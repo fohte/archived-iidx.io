@@ -4,7 +4,7 @@ create_table :users, force: :cascade, id: :bigint, unsigned: true, options: 'ENG
   t.string :screen_name, null: false
   t.string :name, null: false
 
-  t.timestamp
+  t.timestamps
 
   t.index %w[screen_name], unique: true
 end
