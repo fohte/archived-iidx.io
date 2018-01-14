@@ -1,0 +1,4 @@
+# frozen_string_literal: true
+
+require 'user_auth_twitter'
+require 'users'
