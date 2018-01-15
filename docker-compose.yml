@@ -21,10 +21,12 @@ services:
       - .:/app
       - bundle:/usr/local/bundle:nocopy
       - node_modules:/node_modules:nocopy
+      - spring:/tmp/spring
     environment:
       MYSQL_HOST: mysql
       MYSQL_PASSWORD: password
       MYSQL_PORT: 3306
+      SPRING_SOCKET: /tmp/spring/spring.sock
     depends_on:
       - mysql
     ports:
@@ -40,9 +42,11 @@ services:
     ports: []
     tty: false
     stdin_open: false
+    restart: on-failure:3
 volumes:
   db_data:
   bundle:
     external: true
   node_modules:
     external: true
+  spring:
