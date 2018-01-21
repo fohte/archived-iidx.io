@@ -33,3 +33,36 @@ Layout/IndentArray:
 
 Layout/IndentHash:
   EnforcedStyle: consistent
+
+Layout/ClassStructure:
+  Enabled: true
+  Categories:
+    association:
+      - belongs_to
+      - has_many
+      - has_one
+    validation:
+      - validates
+      - validate
+    attribute:
+      - attr_accessor
+      - attr_reader
+      - attr_writer
+    delegation:
+      - delegate
+  ExpectedOrder:
+    - module_inclusion
+    - constants
+    - association
+    - attribute
+    - validation
+    - delegation
+    - public_class_methods
+    - initializer
+    - public_methods
+    - protected_methods
+    - private_methods
+
+RSpec/FilePath:
+  CustomTransform:
+    IIDXIO: iidx_io
