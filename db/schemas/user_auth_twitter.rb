@@ -8,5 +8,5 @@ create_table :user_auth_twitter, force: :cascade, id: :bigint, unsigned: true, o
 
   t.timestamps
 
-  t.index %w[user_id]
+  t.index %i[user_id]
 end
