@@ -19,8 +19,8 @@ services:
     command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app
-      - bundle:/usr/local/bundle:nocopy
-      - node_modules:/node_modules:nocopy
+      - bundle:/usr/local/bundle
+      - node_modules:/node_modules
       - spring:/tmp/spring
     environment:
       MYSQL_HOST: mysql
@@ -46,7 +46,5 @@ services:
 volumes:
   db_data:
   bundle:
-    external: true
   node_modules:
-    external: true
   spring:

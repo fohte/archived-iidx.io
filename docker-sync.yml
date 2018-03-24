@@ -1,8 +1,0 @@
-version: '2'
-options:
-  compose-file-path: ./docker-compose.yml
-syncs:
-  bundle:
-    src: ./vendor/bundle
-  node_modules:
-    src: ./node_modules
