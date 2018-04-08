@@ -16,8 +16,7 @@ Metrics/MethodLength:
   Enabled: false
 
 Metrics/BlockLength:
-  Exclude:
-    - 'lib/tasks/**/*.rake'
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
