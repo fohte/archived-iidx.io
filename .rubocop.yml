@@ -68,3 +68,9 @@ Layout/ClassStructure:
 RSpec/FilePath:
   CustomTransform:
     IIDXIO: iidx_io
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
