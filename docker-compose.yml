@@ -26,6 +26,7 @@ services:
       MYSQL_HOST: mysql
       MYSQL_PASSWORD: password
       MYSQL_PORT: 3306
+      IIDX_IO_TEXTAGE_CACHE_PATH: /app/.cache
       SPRING_SOCKET: /tmp/spring/spring.sock
     depends_on:
       - mysql

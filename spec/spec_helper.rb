@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
+require 'webmock/rspec'
+
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+
+VCR.configure do |config|
+  config.cassette_library_dir = Rails.root.join('spec', 'fixtures', 'vcr_cassettes')
+  config.hook_into :webmock
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
