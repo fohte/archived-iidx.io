@@ -7,15 +7,7 @@ AllCops:
 Rails:
   Enabled: true
 
-Metrics/LineLength:
-  Max: 120
-  Exclude:
-    - 'db/schemas/**/*.rb'
-
-Metrics/MethodLength:
-  Enabled: false
-
-Metrics/BlockLength:
+Metrics:
   Enabled: false
 
 Style/Documentation:
