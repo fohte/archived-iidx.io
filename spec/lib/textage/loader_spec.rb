@@ -6,7 +6,7 @@ RSpec.describe Textage::Loader do
   let(:described_instance) { described_class.new }
 
   describe '#fetch' do
-    subject { described_class.new.fetch(path) }
+    subject { described_instance.fetch(path) }
 
     let(:path) { '/score/?a011B00' }
 
