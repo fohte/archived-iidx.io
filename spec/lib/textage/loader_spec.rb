@@ -19,15 +19,12 @@ RSpec.describe Textage::Loader do
     end
 
     context 'with a cache' do
-      let(:described_instance) { described_class.new(cache_path: cache_path) }
-      let(:cache_path) { Dir.mktmpdir }
+      let(:described_instance) do
+        described_class.new(cache: ActiveSupport::Cache::MemoryStore.new)
+      end
 
       before do
         described_instance.cache.write(path, 'test response')
-      end
-
-      after do
-        FileUtils.remove_entry(cache_path)
       end
 
       it 'returns the response body from cache' do

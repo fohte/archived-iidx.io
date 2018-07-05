@@ -6,12 +6,10 @@ require 'faraday/response/utf8_encoder'
 
 module Textage
   class Loader
-    attr_accessor :cache_expires_in
-    attr_accessor :cache_path
+    attr_accessor :cache
 
-    def initialize(cache_expires_in: 1.day, cache_path: default_cache_path)
-      @cache_expires_in = cache_expires_in
-      @cache_path = cache_path
+    def initialize(cache: ActiveSupport::Cache.lookup_store(:null_store))
+      @cache = cache
     end
 
     def fetch(path)
@@ -22,10 +20,6 @@ module Textage
       response.body.tap do |body|
         cache.write(path, body)
       end
-    end
-
-    def cache
-      @cache ||= ActiveSupport::Cache.lookup_store(:file_store, cache_path, expires_in: cache_expires_in)
     end
 
     private
