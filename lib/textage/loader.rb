@@ -8,7 +8,8 @@ module Textage
   class Loader
     attr_accessor :cache
 
-    def initialize(cache: ActiveSupport::Cache.lookup_store(:null_store))
+    # @param cache [ActiveSupport::Cache::Store]
+    def initialize(cache: default_cache)
       @cache = cache
     end
 
@@ -32,11 +33,15 @@ module Textage
       end
     end
 
-    def default_cache_path
+    def cache_path
       ENV.fetch(
         'IIDX_IO_TEXTAGE_CACHE_PATH',
         File.expand_path('~/.cache/textage_scraper'),
       )
+    end
+
+    def default_cache
+      ActiveSupport::Cache::FileStore.new(cache_path, expires_in: 1.day)
     end
   end
 end

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Textage::Loader do
-  let(:described_instance) { described_class.new }
+  let(:described_instance) { described_class.new(cache: ActiveSupport::Cache::MemoryStore.new) }
 
   describe '#fetch' do
     subject { described_instance.fetch(path) }
@@ -19,10 +19,6 @@ RSpec.describe Textage::Loader do
     end
 
     context 'with a cache' do
-      let(:described_instance) do
-        described_class.new(cache: ActiveSupport::Cache::MemoryStore.new)
-      end
-
       before do
         described_instance.cache.write(path, 'test response')
       end
