@@ -10,13 +10,9 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require 'webmock/rspec'
+WebMock.enable!
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
-
-VCR.configure do |config|
-  config.cassette_library_dir = Rails.root.join('spec', 'fixtures', 'vcr_cassettes')
-  config.hook_into :webmock
-end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -47,5 +43,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  config.include WebMock::API
   config.include ::EnvHelper
 end

@@ -10,11 +10,13 @@ RSpec.describe Textage::Loader do
 
     let(:path) { '/score/?a011B00' }
 
+    before do
+      stub_request(:get, "textage.cc#{path}").to_return(body: 'test response')
+    end
+
     context 'with no caches' do
       it 'returns the response body' do
-        VCR.use_cassette('score_list') do
-          is_expected.not_to be_nil
-        end
+        is_expected.to eq 'test response'
       end
     end
 

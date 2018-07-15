@@ -23,7 +23,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'tapp'
-  gem 'vcr'
   gem 'webmock'
 end
 
