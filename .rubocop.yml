@@ -64,5 +64,8 @@ RSpec/FilePath:
 RSpec/ExampleLength:
   Enabled: false
 
+RSpec/NestedGroups:
+  Enabled: false
+
 Style/NumericPredicate:
   Enabled: false
