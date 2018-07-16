@@ -5,8 +5,8 @@ create_table :maps, force: :cascade, id: :bigint, unsigned: true, options: 'ENGI
 
   t.integer :num_notes, null: false
   t.integer :level, null: false
-  t.integer :play_style, null: false # enum
-  t.integer :difficulty, null: false # enum
+  t.string :play_style, null: false # enum
+  t.string :difficulty, null: false # enum
   t.integer :min_bpm, default: 0, null: false
   t.integer :max_bpm, default: 0, null: false
 
