@@ -4,12 +4,12 @@ module Textage
   module Routes
     module Score
       class << self
-        def index(param: 'a011B00')
-          Routes.path("/score/?#{param}")
+        def index
+          Routes.path('/score')
         end
 
-        def show(version_id, uid, param: '2AC00')
-          Routes.path("/score/#{version_id}/#{uid}.html?#{param}")
+        def show(version_id, uid)
+          Routes.path("/score/#{version_id}/#{uid}.html")
         end
 
         def title_table_js
