@@ -18,7 +18,7 @@ module Textage
           genre: music.genre,
           artist: music.artist,
           textage_uid: uid,
-          seriese: to_sereise(music.version),
+          series: to_sereise(music.version),
           leggendaria: ac_table.leggendaria?(uid),
           maps: crawl_maps_each(uid).to_a,
         )

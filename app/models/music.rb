@@ -3,7 +3,7 @@
 class Music < ApplicationRecord
   has_many :maps, dependent: :destroy
 
-  enumerize :seriese, in: {
+  enumerize :series, in: {
     '1st_substream': 1,
     '2nd_style': 2,
     '3rd_style': 3,

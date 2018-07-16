@@ -6,7 +6,7 @@ create_table :musics, force: :cascade, id: :bigint, unsigned: true, options: 'EN
   t.string :genre, null: false
   t.string :artist, null: false
   t.string :textage_uid, null: false
-  t.integer :seriese, null: false # enum
+  t.integer :series, null: false # enum
   t.boolean :leggendaria, null: false, default: false
 
   t.timestamps

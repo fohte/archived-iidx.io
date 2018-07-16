@@ -32,7 +32,7 @@ RSpec.describe Textage::Crawler do
         genre: 'RENAISSANCE',
         artist: 'D.J.Amuro',
         textage_uid: 'a_amuro',
-        seriese: '7th_style',
+        series: '7th_style',
         leggendaria: false,
       )
     end
