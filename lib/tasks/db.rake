@@ -18,6 +18,7 @@ namespace :db do
         --apply
         -f #{schema_file_path}
         -c #{database_config_path}
+        -E #{Rails.env}
         --mysql-use-alter
         --mysql-change-table-options
       ].tap do |arr|
