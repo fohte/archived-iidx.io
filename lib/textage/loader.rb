@@ -10,7 +10,7 @@ module Textage
 
     # @param cache [ActiveSupport::Cache::Store]
     # @param interval [Integer, Float]
-    def initialize(cache: default_cache, interval: 1)
+    def initialize(cache: default_cache, interval: 5)
       @cache = cache
       @last_crawled_at = nil
       @interval = interval
