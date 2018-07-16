@@ -18,7 +18,7 @@ module Textage
           genre: music.genre,
           artist: music.artist,
           textage_uid: uid,
-          series: to_sereise(music.version),
+          series: to_series(music.version),
           leggendaria: ac_table.leggendaria?(uid),
           maps: crawl_maps_each(uid).to_a,
         )
@@ -66,7 +66,7 @@ module Textage
       Pages::Score.new(loader.fetch(Routes::Score.show(textage_version, uid)))
     end
 
-    def to_sereise(textage_version)
+    def to_series(textage_version)
       return 1 if textage_version == 28
 
       textage_version
