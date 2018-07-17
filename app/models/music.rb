@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Music < ApplicationRecord
-  has_many :maps, dependent: :destroy
+  has_many :maps, dependent: :destroy, autosave: true
 
   enumerize :series, in: {
     '1st_substream': 1,
