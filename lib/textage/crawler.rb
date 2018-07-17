@@ -12,16 +12,22 @@ module Textage
     # @return [Enumerator<::Music>]
     def crawl_musics_each
       title_table.musics.lazy.map do |uid, music|
-        ::Music.new(
-          name: music.title,
-          sub_name: music.sub_title,
-          genre: music.genre,
-          artist: music.artist,
+        ::Music.find_or_initialize_by(
           textage_uid: uid,
-          series: to_series(music.version),
-          leggendaria: ac_table.leggendaria?(uid),
-          maps: crawl_maps_each(uid).to_a,
-        )
+        ).tap do |model|
+          model.assign_attributes(
+            name: music.title,
+            sub_name: music.sub_title,
+            genre: music.genre,
+            artist: music.artist,
+            series: to_series(music.version),
+            leggendaria: ac_table.leggendaria?(uid),
+          )
+
+          crawl_maps_each(uid).each do |map|
+            model.maps.build(map.attributes)
+          end
+        end
       end
     end
 
@@ -37,6 +43,11 @@ module Textage
           %i[normal hyper another].each do |difficulty|
             map = map_table.send("#{play_style}_#{difficulty}")
             next unless map.exist_bms?
+            next if ::Map.joins(:music).where(
+              musics: { textage_uid: uid },
+              play_style: play_style,
+              difficulty: difficulty,
+            ).exists?
 
             bms = score_page.bms(play_style: play_style, difficulty: difficulty)
             yielder.yield ::Map.new(
