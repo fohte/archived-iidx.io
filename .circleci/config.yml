@@ -4,6 +4,9 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/ruby:2.5.0
+        environment:
+          RAILS_ENV: test
+          MYSQL_HOST: 127.0.0.1
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
