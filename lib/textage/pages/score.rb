@@ -27,9 +27,9 @@ module Textage
       end
 
       def bpm
-        bpm_str = @js.fetch_variable(:bpm)
+        bpm_str = @js.fetch_variable(:bpm).to_s
 
-        return (0..0) if bpm_str.nil?
+        return (0..0) if bpm_str.empty?
 
         if bpm_str.include?(BPM_SEPARATOR)
           start_bpm, end_bpm = bpm_str.split(BPM_SEPARATOR).map(&:to_i)

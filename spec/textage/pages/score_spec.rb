@@ -29,6 +29,18 @@ RSpec.describe Textage::Pages::Score do
     subject { described_instance.bpm }
 
     it { is_expected.to eq 93..191 }
+
+    context 'when the bpm is an integer' do
+      let(:html) do
+        <<~HTML
+          <script>
+            bpm = 110;
+          </script>
+        HTML
+      end
+
+      it { is_expected.to eq 110..110 }
+    end
   end
 
   describe '#bms' do
