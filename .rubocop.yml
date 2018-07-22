@@ -22,6 +22,9 @@ Style/TrailingCommaInHashLiteral:
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: consistent_comma
 
+Style/MultilineBlockChain:
+  Enabled: false
+
 Layout/IndentArray:
   EnforcedStyle: consistent
 
