@@ -55,7 +55,7 @@ module Textage
       def prepared_definition_source
         <<~JS
           b64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-          LNDEF=384,cob=["s","w","b","w","b","w","b","w"];
+          s='',LNDEF=384,cob=["s","w","b","w","b","w","b","w"];
           obr=[[0,1,2,3,4,5,6,7],[0,1,2,3,4,5,6,7]];kc=[[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
           dpalls=[[0,1,2,3,4,5,6,7],[0,7,6,5,4,3,2,1]];imgdir="../";diftype="";twstr="";
           ln=[],sp=[],dp=[],tc=[],c1=[],c2=[],cn=[],sides=["",2,2],csd=["","left","right"];
