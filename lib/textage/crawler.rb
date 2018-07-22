@@ -74,11 +74,13 @@ module Textage
     end
 
     def fetch_score_page(textage_version, uid)
+      textage_version = 's' if Textage.substream_number?(textage_version)
+
       Pages::Score.new(loader.fetch(Routes::Score.show(textage_version, uid)))
     end
 
     def to_series(textage_version)
-      return 1 if textage_version == 28
+      return 1 if Textage.substream_number?(textage_version)
 
       textage_version
     end
