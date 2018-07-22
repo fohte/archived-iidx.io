@@ -67,6 +67,7 @@ module Textage
           w = () => {};
           b = () => {};
           ft = () => {};
+          im = () => {};
         JS
       end
 
