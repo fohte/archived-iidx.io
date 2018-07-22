@@ -31,7 +31,7 @@ RSpec.describe Textage::Crawler do
   end
 
   describe '#crawl_musics_each' do
-    subject { described_instance.crawl_musics_each }
+    subject(:musics) { described_instance.crawl_musics_each }
 
     it { is_expected.to be_a Enumerator }
 
@@ -182,6 +182,23 @@ RSpec.describe Textage::Crawler do
           ),
         )
       end
+    end
+
+    context 'when the music is not released on AC but the map is released' do
+      let(:actbl_js) do
+        <<~JS
+          A = 10; B = 11; C = 12; D = 13; E = 14; F = 15;
+          actbl = { '511': [2, 0, 0, 0, 0, 1, 1, 1, 7, A, 7, 0, 0, 0, 0, 1, 1, 1, 1, A, 7, 0, 0, '(CS3rd〜8th)'] }
+        JS
+      end
+
+      let(:titletbl_js) do
+        <<~JS
+          titletbl = { '511': [1, 2, 1, 'PIANO AMBIENT', 'dj nagureo', '5.1.1.'] }
+        JS
+      end
+
+      it { expect(musics.to_a).to be_empty }
     end
   end
 end

@@ -11,7 +11,9 @@ module Textage
 
     # @return [Enumerator<::Music>]
     def crawl_musics_each
-      title_table.musics.lazy.map do |uid, music|
+      title_table.musics.lazy.select do |uid, _|
+        ac_table.map_tables.key?(uid)
+      end.map do |uid, music|
         ::Music.find_or_initialize_by(
           textage_uid: uid,
         ).tap do |model|
@@ -36,9 +38,10 @@ module Textage
     def crawl_maps_each(uid)
       map_table = ac_table.map_tables[uid]
 
-      score_page = fetch_score_page(title_table.musics[uid].version, uid)
-
       Enumerator.new do |yielder|
+        next if map_table.nil?
+
+        score_page = fetch_score_page(title_table.musics[uid].version, uid)
         %i[sp dp].each do |play_style|
           %i[normal hyper another].each do |difficulty|
             map = map_table.send("#{play_style}_#{difficulty}")
