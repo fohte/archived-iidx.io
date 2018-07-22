@@ -42,7 +42,7 @@ module Textage
         # @return [self]
         def self.from_raw_array(raw_array)
           maps = raw_array[1, 22].each_slice(2).map do |level, meta_bit|
-            Map.new(level: level, meta_bit: meta_bit, sub_data: raw_array[23])
+            ACTable::Map.new(level: level, meta_bit: meta_bit, sub_data: raw_array[23])
           end
 
           new(

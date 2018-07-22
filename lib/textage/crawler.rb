@@ -26,42 +26,39 @@ module Textage
             leggendaria: ac_table.leggendaria?(uid),
           )
 
-          crawl_maps_each(uid).each do |map|
+          crawl_maps_each(model).each do |map|
             model.maps.build(map.attributes)
           end
         end
       end
     end
 
-    # @param uid [Symbol]
+    # @param music [::Music]
     # @return [Enumerator<::Map>]
-    def crawl_maps_each(uid)
+    def crawl_maps_each(music)
+      uid = music.textage_uid.to_sym
       map_table = ac_table.map_tables[uid]
 
       Enumerator.new do |yielder|
         next if map_table.nil?
 
         score_page = fetch_score_page(title_table.musics[uid].version, uid)
-        %i[sp dp].each do |play_style|
-          %i[normal hyper another].each do |difficulty|
-            map = map_table.send("#{play_style}_#{difficulty}")
-            next unless map.exist_bms?
-            next if ::Map.joins(:music).where(
-              musics: { textage_uid: uid },
-              play_style: play_style,
-              difficulty: difficulty,
-            ).exists?
+        music.missing_map_types.each do |play_style, difficulty|
+          play_style = play_style.to_s.to_sym
+          difficulty = difficulty.to_s.to_sym
 
-            bms = score_page.bms(play_style: play_style, difficulty: difficulty)
-            yielder.yield ::Map.new(
-              num_notes: bms.notes,
-              level: map.level,
-              play_style: play_style,
-              difficulty: difficulty,
-              min_bpm: score_page.bpm.min,
-              max_bpm: score_page.bpm.max,
-            )
-          end
+          map = map_table.send("#{play_style}_#{difficulty}")
+          next unless map.exist_bms?
+
+          bms = score_page.bms(play_style: play_style, difficulty: difficulty)
+          yielder.yield ::Map.new(
+            num_notes: bms.notes,
+            level: map.level,
+            play_style: play_style,
+            difficulty: difficulty,
+            min_bpm: score_page.bpm.min,
+            max_bpm: score_page.bpm.max,
+          )
         end
       end
     end

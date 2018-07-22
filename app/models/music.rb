@@ -30,4 +30,8 @@ class Music < ApplicationRecord
     sinobuz: 24,
     cannon_ballers: 25,
   }
+
+  def missing_map_types
+    ::Map.types - maps.pluck(:play_style, :difficulty)
+  end
 end
