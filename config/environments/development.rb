@@ -50,9 +50,6 @@ Rails.application.configure do
   config.assets.quiet = true
 
   config.log_formatter = ::Logger::Formatter.new
-  logger = ActiveSupport::Logger.new(STDOUT)
-  logger.formatter = config.log_formatter
-  config.logger = ActiveSupport::TaggedLogging.new(logger)
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
