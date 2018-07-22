@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Textage::Crawler do
-  let(:described_instance) { described_class.new }
+  let(:described_instance) { described_class.new(cache: ActiveSupport::Cache::NullStore.new, interval: 0) }
 
   let(:actbl_js) do
     <<~JS
