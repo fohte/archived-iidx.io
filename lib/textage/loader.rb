@@ -8,22 +8,32 @@ module Textage
   class Loader
     attr_accessor :cache
 
+    # @param logger [Logger]
     # @param cache [ActiveSupport::Cache::Store]
     # @param interval [Integer, Float]
-    def initialize(cache: default_cache, interval: 5)
+    def initialize(logger: Rails.logger, cache: default_cache, interval: 5)
+      @logger = logger
       @cache = cache
       @last_crawled_at = nil
       @interval = interval
     end
 
     def fetch(path)
-      return cache.fetch(path) if cache.exist?(path)
+      Rails.logger.tagged(path) do
+        @logger.info('fetching')
 
-      wait!
-      response = connection.get(path)
+        if cache.exist?(path)
+          @logger.info('use cache')
+          return cache.fetch(path)
+        end
 
-      response.body.tap do |body|
-        cache.write(path, body)
+        wait!
+        response = connection.get(path)
+        @logger.info('downloaded')
+
+        response.body.tap do |body|
+          cache.write(path, body)
+        end
       end
     end
 
