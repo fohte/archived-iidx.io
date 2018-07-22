@@ -78,6 +78,13 @@ GEM
     equalizer (0.0.11)
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_bot (4.10.0)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.10.0)
+      factory_bot (~> 4.10.0)
+      railties (>= 3.0.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
     faraday (0.14.0)
       multipart-post (>= 1.2, < 3)
     faraday-http-cache (2.0.0)
@@ -312,6 +319,8 @@ DEPENDENCIES
   byebug
   coveralls
   enumerize
+  factory_bot_rails
+  faker
   faraday
   faraday-http-cache
   guard

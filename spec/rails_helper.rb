@@ -46,4 +46,5 @@ RSpec.configure do |config|
   config.include WebMock::API
   config.include ::EnvHelper
   config.include ActiveSupport::Testing::TimeHelpers
+  config.include FactoryBot::Syntax::Methods
 end
