@@ -63,11 +63,7 @@ module Textage
           genre=title=artist=bpm=opt=lnse=lnhs="",key=ky=back=7,hs=gap=ty=k=1;cncnt=bsscnt=legacy=prt=pty=0;
           soflan=level=notes=measure=a=l=m=g=db=p1o=hps=flp=off=lnln=lnst=lned=alls=sran=kuro=sftkey=os=hcn=ttl=0;
           sc32=[],sc32base=[],sc32loop=[];
-          hd = () => {};
-          w = () => {};
-          b = () => {};
-          ft = () => {};
-          im = () => {};
+          hd = w = b = ft = im = bars_ = () => {};
         JS
       end
 
