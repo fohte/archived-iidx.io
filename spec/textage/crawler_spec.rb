@@ -102,49 +102,50 @@ RSpec.describe Textage::Crawler do
       )
     end
 
-    context 'when the music already exists' do
+    context 'when the music and the maps are already exist' do
       let(:music) do
-        Music.new(
-          name: 'A',
-          sub_name: '',
-          genre: 'RENAISSANCE',
-          artist: 'D.J.Amuro',
-          textage_uid: 'a_amuro',
-          series: '7th_style',
-          leggendaria: false,
+        build(
+          :music,
+          textage_uid: :a_amuro,
+          maps: Map.types.map do |ps, d|
+            build(:map, play_style: ps, difficulty: d)
+          end,
         )
       end
 
       before { music.save! }
 
-      it 'returns the existing music' do
-        is_expected.to contain_exactly music
+      it 'dose not return musics' do
+        expect(musics.to_a).to be_empty
       end
     end
 
-    context 'when the music already exists but it is updated' do
+    context 'when the music already exists and maps are missing on textage' do
+      let(:actbl_js) do
+        <<~JS
+          A = 10; B = 11; C = 12; D = 13; E = 14; F = 15;
+          actbl = { a_amuro: [1, 0, 0, 3, 1, 6, 7, A, 7, C, 7, 0, 0, 0, 0, 8, 7, B, 7, 0, 0, 0, 0] }
+        JS
+      end
+
       let(:music) do
-        Music.new(
-          name: 'B',
-          sub_name: '',
-          genre: 'RENAISSANCE',
-          artist: 'D.J.Amuro',
-          textage_uid: 'a_amuro',
-          series: '7th_style',
-          leggendaria: false,
+        build(
+          :music,
+          textage_uid: :a_amuro,
+          maps: Map.types.reject { |ps, d| ps == :dp && d == :another }.map do |ps, d|
+            build(:map, play_style: ps, difficulty: d)
+          end,
         )
       end
 
       before { music.save! }
 
-      it 'returns the musics where the attributes were updated' do
-        is_expected.to contain_exactly have_attributes(
-          music.attributes.symbolize_keys.merge(name: 'A'),
-        )
+      it 'dose not return musics' do
+        expect(musics.to_a).to be_empty
       end
     end
 
-    context 'when the music already exists and the maps is partially missing' do
+    context 'when the music already exists and the maps is missing' do
       before do
         Music.create(
           name: 'A',
@@ -154,20 +155,49 @@ RSpec.describe Textage::Crawler do
           textage_uid: 'a_amuro',
           series: '7th_style',
           leggendaria: false,
-          maps: %i[sp dp].product(%i[normal hyper]).map do |play_style, difficulty|
-            Map.new(play_style: play_style, difficulty: difficulty)
-          end,
         )
       end
 
-      it 'returns the musics with the missing maps' do
+      it 'returns the musics with missing maps' do
         is_expected.to contain_exactly have_attributes(
-          maps: include(
+          maps: contain_exactly(
+            have_attributes(
+              num_notes: 666,
+              level: 6,
+              play_style: 'sp',
+              difficulty: 'normal',
+              min_bpm: 93,
+              max_bpm: 191,
+            ),
+            have_attributes(
+              num_notes: 1111,
+              level: 10,
+              play_style: 'sp',
+              difficulty: 'hyper',
+              min_bpm: 93,
+              max_bpm: 191,
+            ),
             have_attributes(
               num_notes: 1260,
               level: 12,
               play_style: 'sp',
               difficulty: 'another',
+              min_bpm: 93,
+              max_bpm: 191,
+            ),
+            have_attributes(
+              num_notes: 613,
+              level: 8,
+              play_style: 'dp',
+              difficulty: 'normal',
+              min_bpm: 93,
+              max_bpm: 191,
+            ),
+            have_attributes(
+              num_notes: 1119,
+              level: 11,
+              play_style: 'dp',
+              difficulty: 'hyper',
               min_bpm: 93,
               max_bpm: 191,
             ),

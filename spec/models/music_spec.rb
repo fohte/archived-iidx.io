@@ -44,4 +44,36 @@ RSpec.describe Music do
       end
     end
   end
+
+  describe '#miss_maps?' do
+    subject { music.miss_maps? }
+
+    let(:music) { create(:music, maps: maps) }
+
+    context 'with no maps' do
+      let(:maps) { [] }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context 'with missing maps' do
+      let(:maps) do
+        Map.difficulty.values.map do |difficulty|
+          build(:map, play_style: :sp, difficulty: difficulty)
+        end
+      end
+
+      it { is_expected.to be_truthy }
+    end
+
+    context 'with all maps' do
+      let(:maps) do
+        Map.types.map do |play_style, difficulty|
+          build(:map, play_style: play_style, difficulty: difficulty)
+        end
+      end
+
+      it { is_expected.to be_falsy }
+    end
+  end
 end

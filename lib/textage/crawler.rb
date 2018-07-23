@@ -14,10 +14,8 @@ module Textage
       title_table.musics.lazy.select do |uid, _|
         ac_table.map_tables.key?(uid)
       end.map do |uid, music|
-        ::Music.find_or_initialize_by(
-          textage_uid: uid,
-        ).tap do |model|
-          model.assign_attributes(
+        ::Music.find_or_initialize_by(textage_uid: uid).tap do |m|
+          m.assign_attributes(
             name: music.title,
             sub_name: music.sub_title,
             genre: music.genre,
@@ -26,28 +24,31 @@ module Textage
             leggendaria: ac_table.leggendaria?(uid),
           )
 
-          crawl_maps_each(model).each do |map|
-            model.maps.build(map.attributes)
+          crawl_maps_each(m).each do |map|
+            m.maps.build(map.attributes)
           end
         end
-      end
+      end.select { |m| m.new_record? || m.maps.any?(&:new_record?) }
     end
 
     # @param music [::Music]
     # @return [Enumerator<::Map>]
     def crawl_maps_each(music)
       uid = music.textage_uid.to_sym
-      map_table = ac_table.map_tables[uid]
+      map_table = fetch_map_table(uid)
 
       Enumerator.new do |yielder|
         next if map_table.nil?
 
+        missing_map_types = fetch_map_types(uid) - music.map_types
+        next if missing_map_types.empty?
+
         score_page = fetch_score_page(title_table.musics[uid].version, uid)
-        music.missing_map_types.each do |play_style, difficulty|
+        missing_map_types.each do |play_style, difficulty|
           play_style = play_style.to_s.to_sym
           difficulty = difficulty.to_s.to_sym
 
-          map = map_table.send("#{play_style}_#{difficulty}")
+          map = map_table.fetch_map(play_style, difficulty)
           next unless map.exist_bms?
 
           bms = score_page.bms(play_style: play_style, difficulty: difficulty)
@@ -83,6 +84,15 @@ module Textage
       return 1 if Textage.substream_number?(textage_version)
 
       textage_version
+    end
+
+    def fetch_map_table(uid)
+      ac_table.map_tables[uid]
+    end
+
+    def fetch_map_types(uid)
+      map_table = fetch_map_table(uid)
+      ::Map.types.select { |ps, d| map_table.fetch_map(ps, d).exist_bms? }
     end
   end
 end

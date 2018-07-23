@@ -31,7 +31,15 @@ class Music < ApplicationRecord
     cannon_ballers: 25,
   }
 
+  def map_types
+    maps.pluck(:play_style, :difficulty)
+  end
+
   def missing_map_types
-    ::Map.types - maps.pluck(:play_style, :difficulty)
+    ::Map.types - map_types
+  end
+
+  def miss_maps?
+    !missing_map_types.empty?
   end
 end

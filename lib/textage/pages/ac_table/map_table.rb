@@ -60,6 +60,10 @@ module Textage
             dp_black_another: maps[10],
           )
         end
+
+        def fetch_map(play_style, difficulty)
+          send("#{play_style}_#{difficulty}")
+        end
       end
     end
   end
