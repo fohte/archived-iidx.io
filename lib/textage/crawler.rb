@@ -11,55 +11,31 @@ module Textage
 
     # @return [Enumerator<::Music>]
     def crawl_musics_each
-      title_table.musics.lazy.select do |uid, _|
-        ac_table.map_tables.key?(uid)
-      end.map do |uid, music|
-        ::Music.find_or_initialize_by(textage_uid: uid).tap do |m|
-          m.assign_attributes(
-            name: music.title,
-            sub_name: music.sub_title,
-            genre: music.genre,
-            artist: music.artist,
-            series: to_series(music.version),
-            leggendaria: ac_table.leggendaria?(uid),
-          )
+      delta_map_types.each.lazy.reject { |_, types_list| types_list.empty? }.map do |uid, types_list|
+        music_table = title_table.musics[uid]
 
-          crawl_maps_each(m).each do |map|
-            m.maps.build(map.attributes)
+        (::Music.find_by(textage_uid: uid) || build_music(music_table, uid)).tap do |m|
+          map_table = ac_table.map_tables[uid]
+          score_page = fetch_score_page(music_table.version, uid)
+
+          types_list.each do |ps, d|
+            ps = ps.to_s.to_sym
+            d = d.to_s.to_sym
+
+            map = map_table.fetch_map(ps, d)
+            next unless map.exist_bms?
+
+            bms = score_page.bms(play_style: ps, difficulty: d)
+
+            m.maps.build(
+              num_notes: bms.notes,
+              level: map.level,
+              play_style: ps,
+              difficulty: d,
+              min_bpm: score_page.bpm.min,
+              max_bpm: score_page.bpm.max,
+            )
           end
-        end
-      end.select { |m| m.new_record? || m.maps.any?(&:new_record?) }
-    end
-
-    # @param music [::Music]
-    # @return [Enumerator<::Map>]
-    def crawl_maps_each(music)
-      uid = music.textage_uid.to_sym
-      map_table = fetch_map_table(uid)
-
-      Enumerator.new do |yielder|
-        next if map_table.nil?
-
-        missing_map_types = fetch_map_types(uid) - music.map_types
-        next if missing_map_types.empty?
-
-        score_page = fetch_score_page(title_table.musics[uid].version, uid)
-        missing_map_types.each do |play_style, difficulty|
-          play_style = play_style.to_s.to_sym
-          difficulty = difficulty.to_s.to_sym
-
-          map = map_table.fetch_map(play_style, difficulty)
-          next unless map.exist_bms?
-
-          bms = score_page.bms(play_style: play_style, difficulty: difficulty)
-          yielder.yield ::Map.new(
-            num_notes: bms.notes,
-            level: map.level,
-            play_style: play_style,
-            difficulty: difficulty,
-            min_bpm: score_page.bpm.min,
-            max_bpm: score_page.bpm.max,
-          )
         end
       end
     end
@@ -86,13 +62,33 @@ module Textage
       textage_version
     end
 
-    def fetch_map_table(uid)
-      ac_table.map_tables[uid]
+    def build_music(music_table, uid)
+      ::Music.new(
+        name: music_table.title,
+        sub_name: music_table.sub_title,
+        genre: music_table.genre,
+        artist: music_table.artist,
+        textage_uid: uid,
+        series: to_series(music_table.version),
+        leggendaria: ac_table.leggendaria?(uid),
+      )
     end
 
-    def fetch_map_types(uid)
-      map_table = fetch_map_table(uid)
-      ::Map.types.select { |ps, d| map_table.fetch_map(ps, d).exist_bms? }
+    def delta_map_types
+      {}.tap do |h|
+        current_map_types = Music.fetch_map_types
+        all_map_types.each do |uid, types_list|
+          h[uid] = types_list - current_map_types.fetch(uid) { [] }
+        end
+      end
+    end
+
+    def all_map_types
+      {}.tap do |h|
+        ac_table.map_tables.each do |uid, map_table|
+          h[uid] = ::Map.types.select { |ps, d| map_table.fetch_map(ps, d).exist_bms? }
+        end
+      end
     end
   end
 end

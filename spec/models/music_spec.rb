@@ -3,6 +3,43 @@
 require 'rails_helper'
 
 RSpec.describe Music do
+  describe '.fetch_map_types' do
+    subject { described_class.fetch_map_types }
+
+    before do
+      create(:music, textage_uid: :test_uid, maps: maps)
+    end
+
+    context 'with no maps' do
+      let(:maps) { [] }
+
+      it 'dose not return the music' do
+        is_expected.to eq({})
+      end
+    end
+
+    context 'with all maps' do
+      let(:maps) do
+        Map.types.map do |ps, d|
+          build(:map, play_style: ps, difficulty: d)
+        end
+      end
+
+      it 'returns the map types with textage_uid' do
+        is_expected.to eq(
+          test_uid: [
+            [Map.play_style.sp, Map.difficulty.normal],
+            [Map.play_style.sp, Map.difficulty.hyper],
+            [Map.play_style.sp, Map.difficulty.another],
+            [Map.play_style.dp, Map.difficulty.normal],
+            [Map.play_style.dp, Map.difficulty.hyper],
+            [Map.play_style.dp, Map.difficulty.another],
+          ],
+        )
+      end
+    end
+  end
+
   describe '#missing_map_types' do
     subject { music.missing_map_types }
 

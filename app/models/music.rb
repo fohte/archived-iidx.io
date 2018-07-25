@@ -31,6 +31,19 @@ class Music < ApplicationRecord
     cannon_ballers: 25,
   }
 
+  def self.fetch_map_types
+    {}.tap do |h|
+      joins(:maps)
+        .pluck(:textage_uid, 'maps.play_style', 'maps.difficulty')
+        .each do |uid, ps, d|
+        (h[uid.to_sym] ||= []) << [
+          Map.play_style.find_value(ps),
+          Map.difficulty.find_value(d),
+        ]
+      end
+    end
+  end
+
   def map_types
     maps.pluck(:play_style, :difficulty)
   end
