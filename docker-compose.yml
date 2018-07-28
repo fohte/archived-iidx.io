@@ -18,7 +18,7 @@ services:
     working_dir: /app
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/app
+      - ./backend:/app
       - bundle:/usr/local/bundle
       - node_modules:/node_modules
       - spring:/tmp/spring

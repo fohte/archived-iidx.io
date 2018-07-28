@@ -13,10 +13,11 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/mysql:5.7.20
 
-    working_directory: ~/repo
+    working_directory: ~/repo/backend
 
     steps:
-      - checkout
+      - checkout:
+          path: ~/repo
 
       # Download and cache dependencies
       - restore_cache:
@@ -32,7 +33,7 @@ jobs:
 
       - save_cache:
           paths:
-            - ./vendor/bundle
+            - ~/repo/backend/vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
