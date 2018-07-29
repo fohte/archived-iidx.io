@@ -20,7 +20,6 @@ services:
     volumes:
       - ./backend:/app
       - bundle:/usr/local/bundle
-      - node_modules:/node_modules
       - spring:/tmp/spring
     environment:
       MYSQL_HOST: mysql
@@ -39,6 +38,17 @@ services:
     tty: false
     stdin_open: false
     restart: on-failure:3
+  next:
+    build:
+      context: .
+      dockerfile: ./docker/next/Dockerfile
+    working_dir: /app
+    command: yarn run dev
+    volumes:
+      - ./frontend:/app
+      - node_modules:/node_modules
+    ports:
+      - '3001:3000'
 volumes:
   db_data:
   bundle:
