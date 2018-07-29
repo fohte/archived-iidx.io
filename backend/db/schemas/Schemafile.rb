@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'maps'
-require 'musics'
-require 'results'
-require 'user_auth_twitter'
-require 'users'
+Dir[File.expand_path('./**', __dir__)].reject { |f| f == __FILE__ }.each do |f|
+  require f
+end
