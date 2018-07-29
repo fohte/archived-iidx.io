@@ -10,7 +10,7 @@ namespace :db do
 
   namespace :schema do
     def execute_ridgepole(dry_run: false)
-      schema_file_path = Rails.root.join('db', 'schemas', 'Schemafile')
+      schema_file_path = Rails.root.join('db', 'schemas', 'Schemafile.rb')
       database_config_path = Rails.root.join('config', 'database.yml')
 
       args = %W[
