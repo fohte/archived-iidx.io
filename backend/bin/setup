@@ -4,5 +4,4 @@ set -ex
 
 docker-compose build
 docker-compose run --rm rails bundle install
-docker-compose run --rm webpacker yarn install
 docker-compose up -d

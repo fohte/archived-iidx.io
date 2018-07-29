@@ -32,11 +32,6 @@ services:
       - mysql
     ports:
       - '3000:3000'
-  webpacker:
-    <<: *app_base
-    command: ./bin/webpack-dev-server
-    ports:
-      - '3035:3035'
   spring:
     <<: *app_base
     command: bin/spring server

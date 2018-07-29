@@ -5,7 +5,6 @@
     "lint": "eslint --ext .js --ext .jsx ."
   },
   "dependencies": {
-    "@rails/webpacker": "^3.2.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "coffeescript": "1.12.7",
