@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.2.0'
 
+gem 'bcrypt', '~> 3.1.7'
 gem 'enumerize'
 gem 'faraday'
 gem 'faraday-http-cache'

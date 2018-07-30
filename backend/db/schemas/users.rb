@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 create_table :users, force: :cascade, id: :bigint, unsigned: true, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
-  t.string :screen_name, null: false
-  t.string :name, null: false
+  t.string :uid, null: false
 
   t.timestamps
 
-  t.index %w[screen_name], unique: true
+  t.index %i[uid], unique: true
 end
