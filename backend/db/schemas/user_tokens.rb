@@ -7,6 +7,6 @@ create_table :user_tokens, force: :cascade, id: :bigint, unsigned: true, options
   t.timestamps
 
   t.index %i[token], unique: true
-  t.index %i[user_id], unique: true
+  t.index %i[user_id]
   add_foreign_key :user_tokens, :users
 end

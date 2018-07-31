@@ -23,13 +23,7 @@ module Mutations
 
       if user.save
         {
-          user: {
-            id: user.id,
-            uid: user.uid,
-            profile: {
-              name: user.profile.name,
-            },
-          },
+          user: user,
           token: token,
           errors: [],
         }
