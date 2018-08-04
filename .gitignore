@@ -4,4 +4,4 @@ yarn-error.log
 coverage
 .next
 
-*.env
+.env

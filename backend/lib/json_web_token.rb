@@ -7,9 +7,9 @@ class JsonWebToken
         token, nil,
         true, # Verify the signature of this token
         algorithm: 'RS256',
-        iss: auth0_domain,
+        iss: "https://#{auth0_domain}/",
         verify_iss: true,
-        aud: auth0_api_audience,
+        aud: auth0_client_id,
         verify_aud: true,
       ) do |header|
         jwks_hash[header['kid']]
@@ -17,7 +17,7 @@ class JsonWebToken
     end
 
     def jwks_hash
-      Array(jwks_raw).map do |k|
+      Array(jwks_raw['keys']).map do |k|
         [
           k['kid'],
           OpenSSL::X509::Certificate.new(
@@ -32,8 +32,8 @@ class JsonWebToken
     def jwks_raw
       @jwks_raw ||=
         begin
-          url = File.join(auth0_domain.to_s, '.well-known', 'jwks.json')
-          JSON.parse(Faraday.get(url))
+          response = Faraday.get("https://#{File.join(auth0_domain.to_s, '.well-known', 'jwks.json')}")
+          JSON.parse(response.body)
         end
     end
 
@@ -41,8 +41,8 @@ class JsonWebToken
       Rails.application.secrets.auth0_domain
     end
 
-    def auth0_api_audience
-      Rails.application.secrets.auth0_api_audience
+    def auth0_client_id
+      Rails.application.secrets.auth0_client_id
     end
   end
 end

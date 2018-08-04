@@ -28,7 +28,7 @@ services:
       IIDX_IO_TEXTAGE_CACHE_PATH: /app/.cache
       SPRING_SOCKET: /tmp/spring/spring.sock
     env_file:
-      - backend.env
+      - .env
     depends_on:
       - mysql
     ports:
