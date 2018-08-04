@@ -11,11 +11,13 @@
     "@types/next": "^6.1.2",
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",
+    "@types/recompose": "^0.26.3",
     "@zeit/next-typescript": "^1.1.0",
     "auth0-js": "^9.7.3",
     "next": "^6.1.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "recompose": "^0.28.1",
     "styled-components": "^3.3.3",
     "typescript": "^2.9.2"
   },
