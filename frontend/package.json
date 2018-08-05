@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.5.1",
+    "dotenv-webpack": "^1.5.7",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.14.0"
   }

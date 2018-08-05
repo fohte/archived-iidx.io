@@ -53,11 +53,10 @@ services:
     command: yarn run dev
     volumes:
       - ./frontend:/app
+      - ./.env:/app/.env
       - node_modules:/node_modules
     ports:
       - '3000:3000'
-    env_file:
-      - .env
 volumes:
   db_data:
   bundle:
