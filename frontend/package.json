@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint:ts": "tslint -p . -c tslint.json --format stylish"
   },
   "dependencies": {
     "@types/next": "^6.1.2",
