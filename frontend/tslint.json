@@ -2,10 +2,14 @@
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "rules": {
     "no-console": {
-      "severity": "warning"
+      "severity": "warning",
+      "options": ["log"]
     },
     "no-unused-variable": {
       "severity": "warning"
+    },
+    "interface-name": {
+      "options": "never-prefix"
     }
   }
 }
