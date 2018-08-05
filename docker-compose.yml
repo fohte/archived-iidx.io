@@ -32,7 +32,7 @@ services:
     depends_on:
       - mysql
     ports:
-      - '3000:3000'
+      - '5000:3000'
   spring:
     <<: *app_base
     command: bin/spring server
@@ -50,7 +50,9 @@ services:
       - ./frontend:/app
       - node_modules:/node_modules
     ports:
-      - '3001:3000'
+      - '3000:3000'
+    env_file:
+      - .env
 volumes:
   db_data:
   bundle:
