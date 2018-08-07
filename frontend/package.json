@@ -17,7 +17,7 @@
     "next": "^6.1.1",
     "next-redux-wrapper": "^2.0.0",
     "react": "^16.4.2",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
     "recompose": "^0.28.1",
     "redux": "^4.0.0",
