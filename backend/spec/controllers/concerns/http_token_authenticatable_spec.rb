@@ -45,6 +45,10 @@ RSpec.describe HttpTokenAuthenticatable, type: :controller do
         end
 
         context 'when the token is invalid' do
+          before do
+            allow(User).to receive(:verify_firebase_id_token).and_return(nil)
+          end
+
           it do
             expect { current_viewer }.to raise_error IIDXIO::InvalidFirebaseIdTokenError
           end

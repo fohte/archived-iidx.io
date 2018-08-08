@@ -14,15 +14,20 @@ class User < ApplicationRecord
     end
 
     def find_firebase_uid_from_token!(token)
-      FirebaseIdToken::Certificates.request
-
-      verified_token = FirebaseIdToken::Signature.verify(token)
+      verified_token = verify_firebase_id_token(token)
       raise IIDXIO::InvalidFirebaseIdTokenError, 'invalid firebase id token' if verified_token.nil?
 
       firebase_uid = verified_token['user_id']
       raise IIDXIO::InvalidFirebaseIdTokenError, 'user_id should not be nil' if firebase_uid.nil?
 
       firebase_uid
+    end
+
+    private
+
+    def verify_firebase_id_token(token)
+      FirebaseIdToken::Certificates.request
+      FirebaseIdToken::Signature.verify(token)
     end
   end
 end
