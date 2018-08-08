@@ -2,6 +2,6 @@
   "name": "iidx.io",
   "private": true,
   "devDependencies": {
-    "prettier": "^1.14.0"
+    "prettier": "^1.14.1"
   }
 }
