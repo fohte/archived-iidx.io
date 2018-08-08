@@ -15,6 +15,8 @@ require 'action_mailer/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require_relative '../lib/iidx_io/exceptions'
+
 module IIDXIO
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
