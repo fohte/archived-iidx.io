@@ -2,6 +2,7 @@
 
 require 'simplecov'
 SimpleCov.start('rails')
+SimpleCov.root(File.expand_path('../..', __dir__))
 
 require 'codecov'
 SimpleCov.formatter = SimpleCov::Formatter::Codecov
