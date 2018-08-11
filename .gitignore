@@ -5,4 +5,17 @@ coverage
 
 .env
 
+**/log/*
 *.log
+!**/log/.keep
+
+**/tmp/*
+!**/tmp/.keep
+
+.bundle
+.cache
+
+.byebug_history
+/backend/public/packs
+/backend/public/packs-test
+vendor/bundle
