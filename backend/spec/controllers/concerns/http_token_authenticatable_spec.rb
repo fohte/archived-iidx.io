@@ -34,7 +34,6 @@ RSpec.describe HttpTokenAuthenticatable, type: :controller do
               user = create(:user, firebase_uid: firebase_uid)
               is_expected.to eq user
             end
-
           end
 
           context 'when the user dose not exist' do
