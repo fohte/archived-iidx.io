@@ -1,6 +1,10 @@
 {
   "name": "iidx.io",
   "private": true,
+  "scripts": {
+    "format": "prettier -l '**/*.{js{,x},ts{,x},json}' --ignore-path .gitignore",
+    "format:fix": "yarn run format --write"
+  },
   "devDependencies": {
     "prettier": "^1.14.2"
   }
