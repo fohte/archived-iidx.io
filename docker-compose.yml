@@ -55,7 +55,7 @@ services:
     command: yarn run dev
     volumes:
       - .:/app
-      - node_modules:/node_modules
+      - node_modules:/app/frontend/node_modules
     ports:
       - '3000:3000'
 volumes:
