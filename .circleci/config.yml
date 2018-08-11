@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build_backend:
     docker:
       - image: circleci/ruby:2.5.0
         environment:
@@ -13,17 +13,20 @@ jobs:
           path: ~/repo
       - restore_cache:
           keys:
-          - '{{ .Environment.CACHE_VERSION }}-dependencies-{{ checksum "Gemfile.lock" }}'
-          - '{{ .Environment.CACHE_VERSION }}-dependencies-'
+            - '{{ .Environment.CACHE_VERSION }}-backend-bundler-{{ checksum "Gemfile.lock" }}'
+            - '{{ .Environment.CACHE_VERSION }}-backend-bundler-'
       - run:
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           paths:
-            - ./vendor/bundle
-          key: '{{ .Environment.CACHE_VERSION }}-dependencies-{{ checksum "Gemfile.lock" }}'
+            - vendor/bundle
+          key: '{{ .Environment.CACHE_VERSION }}-backend-bundler-{{ checksum "Gemfile.lock" }}'
       - run: bundle exec rake db:setup
+      - run:
+          name: run linters
+          command: bundle exec rubocop
       - run:
           name: run tests
           command: |
@@ -40,3 +43,57 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+  build_frontend:
+    docker:
+      - image: circleci/node:8.11.3
+    working_directory: ~/repo/frontend
+    steps:
+      - checkout:
+          path: ~/repo
+      - restore_cache:
+          keys:
+            - '{{ .Environment.CACHE_VERSION }}-frontend-yarn-{{ checksum "yarn.lock" }}'
+            - '{{ .Environment.CACHE_VERSION }}-frontend-yarn-'
+      - run:
+          name: install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: '{{ .Environment.CACHE_VERSION }}-frontend-yarn-{{ checksum "yarn.lock" }}'
+      - run:
+          name: setup .env
+          command: cp ~/repo/.env{.sample,}
+      - run:
+          name: run linters
+          command: yarn run lint:ts
+      - run:
+          name: run tests
+          command: yarn run test:ts
+
+  prettier:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - '{{ .Environment.CACHE_VERSION }}-yarn-{{ checksum "yarn.lock" }}'
+            - '{{ .Environment.CACHE_VERSION }}-yarn-'
+      - run:
+          name: install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: '{{ .Environment.CACHE_VERSION }}-yarn-{{ checksum "yarn.lock" }}'
+      - run: yarn run format
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_frontend
+      - build_backend
+      - prettier
