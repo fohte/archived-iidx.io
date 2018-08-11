@@ -1,60 +1,97 @@
 version: 2
 jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/ruby:2.5.0
-        environment:
-          RAILS_ENV: test
-          MYSQL_HOST: 127.0.0.1
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: circleci/mysql:5.7.20
-
-    working_directory: ~/repo/backend
-
+  build_backend:
+    machine:
+      image: circleci/classic:edge
     steps:
-      - checkout:
-          path: ~/repo
-
-      # Download and cache dependencies
+      - checkout
       - restore_cache:
           keys:
-          - '{{ .Environment.CACHE_VERSION }}-dependencies-{{ checksum "Gemfile.lock" }}'
-          # fallback to using the latest cache if no exact match is found
-          - '{{ .Environment.CACHE_VERSION }}-dependencies-'
-
+            - '{{ .Environment.CACHE_VERSION }}-{{ arch }}-backend-bundler-{{ checksum "backend/Gemfile.lock" }}'
+            - '{{ .Environment.CACHE_VERSION }}-{{ arch }}-backend-bundler-'
+      - run: docker-compose up -d rails
+      - run:
+          name: restore gems
+          command: |
+            docker cp backend/vendor/bundle "$(docker-compose ps -q rails)":/usr/local/bundle
       - run:
           name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-
+          command: docker-compose exec rails bundle install --jobs=4 --retry=3
       - save_cache:
           paths:
-            - ./vendor/bundle
-          key: '{{ .Environment.CACHE_VERSION }}-dependencies-{{ checksum "Gemfile.lock" }}'
-
-      # Database setup
-      - run: bundle exec rake db:setup
-
-      # run tests!
+            - backend/vendor/bundle
+          key: '{{ .Environment.CACHE_VERSION }}-{{ arch }}-backend-bundler-{{ checksum "backend/Gemfile.lock" }}'
+      - run:
+          name: run rubocop
+          command: docker-compose exec rails bundle exec rubocop --parallel
+      - run:
+          name: sleep for wating launch mysql
+          command: |
+            while [ "$(docker inspect "$(dc ps -q mysql)" -f '{{.State.Health.Status}}')" != 'healthy' ]; do
+              sleep 1
+            # done
+      - run:
+          name: setup db
+          command: docker-compose exec -e RAILS_ENV=test rails bundle exec rake db:setup
       - run:
           name: run tests
           command: |
             mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-
-            bundle exec rspec --format progress \
+            docker-compose run rails bundle exec rspec --format progress \
                             --format RspecJunitFormatter \
                             --out /tmp/test-results/rspec.xml \
-                            --format progress \
-                            $TEST_FILES
+                            --format progress
 
-      # collect reports
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+  build_frontend:
+    machine:
+      image: circleci/classic:edge
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - '{{ .Environment.CACHE_VERSION }}-{{ arch }}-frontend-yarn-{{ checksum "frontend/yarn.lock" }}'
+            - '{{ .Environment.CACHE_VERSION }}-{{ arch }}-frontend-yarn-'
+      - run: docker-compose up -d next
+      - run:
+          name: restore node_modules
+          command: |
+            docker cp frontend/yarn.lock "$(docker-compose ps -q next)":/usr/local/bundle
+      - run:
+          name: install dependencies
+          command: docker-compose exec next yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - frontend/node_modules
+          key: '{{ .Environment.CACHE_VERSION }}-{{ arch }}-frontend-yarn-{{ checksum "frontend/yarn.lock" }}'
+      - run:
+          name: yarn run lint:ts
+          command: docker-compose exec next yarn run lint:ts
+      - run:
+          name: yarn run test:ts
+          command: docker-compose exec next yarn run test:ts
+
+  prettier:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - '{{ .Environment.CACHE_VERSION }}-{{ arch }}-yarn-{{ checksum "yarn.lock" }}'
+            - '{{ .Environment.CACHE_VERSION }}-{{ arch }}-yarn-'
+      - run:
+          name: install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: '{{ .Environment.CACHE_VERSION }}-{{ arch }}-yarn-{{ checksum "yarn.lock" }}'
+      - run: yarn run format
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_frontend
+      - build_backend
+      - prettier
