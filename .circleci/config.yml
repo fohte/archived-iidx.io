@@ -1,45 +1,32 @@
 version: 2
 jobs:
-  build:
+  build_backend:
     docker:
-      # specify the version you desire here
       - image: circleci/ruby:2.5.0
         environment:
           RAILS_ENV: test
           MYSQL_HOST: 127.0.0.1
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/mysql:5.7.20
-
     working_directory: ~/repo/backend
-
     steps:
       - checkout:
           path: ~/repo
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
-          - '{{ .Environment.CACHE_VERSION }}-dependencies-{{ checksum "Gemfile.lock" }}'
-          # fallback to using the latest cache if no exact match is found
-          - '{{ .Environment.CACHE_VERSION }}-dependencies-'
-
+            - '{{ .Environment.CACHE_VERSION }}-backend-bundler-{{ checksum "Gemfile.lock" }}'
+            - '{{ .Environment.CACHE_VERSION }}-backend-bundler-'
       - run:
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-
       - save_cache:
           paths:
-            - ./vendor/bundle
-          key: '{{ .Environment.CACHE_VERSION }}-dependencies-{{ checksum "Gemfile.lock" }}'
-
-      # Database setup
+            - vendor/bundle
+          key: '{{ .Environment.CACHE_VERSION }}-backend-bundler-{{ checksum "Gemfile.lock" }}'
       - run: bundle exec rake db:setup
-
-      # run tests!
+      - run:
+          name: run linters
+          command: bundle exec rubocop
       - run:
           name: run tests
           command: |
@@ -51,10 +38,62 @@ jobs:
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             $TEST_FILES
-
-      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+  build_frontend:
+    docker:
+      - image: circleci/node:8.11.3
+    working_directory: ~/repo/frontend
+    steps:
+      - checkout:
+          path: ~/repo
+      - restore_cache:
+          keys:
+            - '{{ .Environment.CACHE_VERSION }}-frontend-yarn-{{ checksum "yarn.lock" }}'
+            - '{{ .Environment.CACHE_VERSION }}-frontend-yarn-'
+      - run:
+          name: install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: '{{ .Environment.CACHE_VERSION }}-frontend-yarn-{{ checksum "yarn.lock" }}'
+      - run:
+          name: setup .env
+          command: cp ~/repo/.env{.sample,}
+      - run:
+          name: run linters
+          command: yarn run lint:ts
+      - run:
+          name: run tests
+          command: yarn run test:ts
+
+  prettier:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - '{{ .Environment.CACHE_VERSION }}-yarn-{{ checksum "yarn.lock" }}'
+            - '{{ .Environment.CACHE_VERSION }}-yarn-'
+      - run:
+          name: install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: '{{ .Environment.CACHE_VERSION }}-yarn-{{ checksum "yarn.lock" }}'
+      - run: yarn run format
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_frontend
+      - build_backend
+      - prettier
