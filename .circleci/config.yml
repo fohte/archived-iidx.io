@@ -9,6 +9,7 @@ jobs:
           keys:
             - '{{ .Environment.CACHE_VERSION }}-{{ arch }}-backend-bundler-{{ checksum "backend/Gemfile.lock" }}'
             - '{{ .Environment.CACHE_VERSION }}-{{ arch }}-backend-bundler-'
+      - run: cp .env.sample .env
       - run: docker-compose up -d rails
       - run:
           name: restore gems
@@ -51,6 +52,7 @@ jobs:
           keys:
             - '{{ .Environment.CACHE_VERSION }}-{{ arch }}-frontend-yarn-{{ checksum "frontend/yarn.lock" }}'
             - '{{ .Environment.CACHE_VERSION }}-{{ arch }}-frontend-yarn-'
+      - run: cp .env.sample .env
       - run: docker-compose up -d next
       - run:
           name: restore node_modules
