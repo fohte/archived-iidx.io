@@ -5,7 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint:ts": "tslint -p . -c tslint.json --format stylish"
+    "lint:ts": "tslint -p . -c tslint.json --format stylish",
+    "test:ts": "tsc -p . --noEmit"
   },
   "dependencies": {
     "@types/next": "^6.1.2",
