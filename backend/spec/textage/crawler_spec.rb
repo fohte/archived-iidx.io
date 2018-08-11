@@ -37,8 +37,8 @@ RSpec.describe Textage::Crawler do
 
     it 'returns musics' do
       is_expected.to contain_exactly have_attributes(
-        name: 'A',
-        sub_name: '',
+        title: 'A',
+        sub_title: '',
         genre: 'RENAISSANCE',
         artist: 'D.J.Amuro',
         textage_uid: 'a_amuro',
@@ -148,8 +148,8 @@ RSpec.describe Textage::Crawler do
     context 'when the music already exists and the maps is missing' do
       before do
         Music.create(
-          name: 'A',
-          sub_name: '',
+          title: 'A',
+          sub_title: '',
           genre: 'RENAISSANCE',
           artist: 'D.J.Amuro',
           textage_uid: 'a_amuro',

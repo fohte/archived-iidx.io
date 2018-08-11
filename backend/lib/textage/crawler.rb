@@ -64,8 +64,8 @@ module Textage
 
     def build_music(music_table, uid)
       ::Music.new(
-        name: music_table.title,
-        sub_name: music_table.sub_title,
+        title: music_table.title,
+        sub_title: music_table.sub_title,
         genre: music_table.genre,
         artist: music_table.artist,
         textage_uid: uid,
