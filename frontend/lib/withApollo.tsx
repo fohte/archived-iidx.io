@@ -1,24 +1,29 @@
 import { NormalizedCacheObject } from 'apollo-cache-inmemory'
 import { ApolloClient } from 'apollo-client'
+import App, { AppComponentContext, AppComponentProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
-import { ApolloProvider, getDataFromTree } from 'react-apollo'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import { getDataFromTree } from 'react-apollo'
 
 import initApollo from './initApollo'
 import isBrowser from './isBrowser'
 
-interface Props {
+export interface Props extends AppComponentProps {
   serverState: {
     apollo: {
       data: NormalizedCacheObject
     }
   }
+  apolloClient: ApolloClient<NormalizedCacheObject>
 }
 
-export default ComposedComponent => {
-  class WithData extends React.Component<Props> {
-    public static async getInitialProps(ctx) {
+export class TComposedApp extends App<Props> {}
+
+export default (ComposedApp: typeof TComposedApp) =>
+  class extends React.Component<Props> {
+    public static async getInitialProps(ctx: AppComponentContext) {
+      const { Component, router } = ctx
+
       // Initial serverState with apollo (empty)
       let serverState: Props['serverState'] = {
         apollo: {
@@ -27,9 +32,9 @@ export default ComposedComponent => {
       }
 
       // Evaluate the composed component's getInitialProps()
-      let composedInitialProps = {}
-      if (ComposedComponent.getInitialProps) {
-        composedInitialProps = await ComposedComponent.getInitialProps(ctx)
+      let appProps = {}
+      if ((ComposedApp as any).getInitialProps) {
+        appProps = await (ComposedApp as any).getInitialProps(ctx)
       }
 
       // Run all GraphQL queries in the component tree
@@ -40,16 +45,13 @@ export default ComposedComponent => {
         try {
           // Run all GraphQL queries
           await getDataFromTree(
-            <ApolloProvider client={apollo}>
-              <ComposedComponent {...composedInitialProps} />
-            </ApolloProvider>,
-            {
-              router: {
-                asPath: ctx.asPath,
-                pathname: ctx.pathname,
-                query: ctx.query,
-              },
-            },
+            <ComposedApp
+              {...appProps as AppComponentProps}
+              Component={Component}
+              router={router}
+              apolloClient={apollo}
+              serverState={serverState}
+            />,
           )
         } catch (error) {
           // Prevent Apollo Client GraphQL errors from crashing SSR.
@@ -69,8 +71,8 @@ export default ComposedComponent => {
       }
 
       return {
+        ...appProps,
         serverState,
-        ...composedInitialProps,
       }
     }
 
@@ -78,17 +80,10 @@ export default ComposedComponent => {
 
     constructor(props) {
       super(props)
-      this.apollo = initApollo(this.props.serverState.apollo.data)
+      this.apollo = initApollo(props.serverState.apollo.data)
     }
 
     public render() {
-      return (
-        <ApolloProvider client={this.apollo}>
-          <ComposedComponent {...this.props} />
-        </ApolloProvider>
-      )
+      return <ComposedApp {...this.props} apolloClient={this.apollo} />
     }
   }
-
-  return setDisplayName(wrapDisplayName(WithData, 'WithData'))(WithData)
-}

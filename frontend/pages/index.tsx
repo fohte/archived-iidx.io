@@ -1,24 +1,37 @@
-import { connect } from 'react-redux'
+import gql from 'graphql-tag'
+import { Query } from 'react-apollo'
 
 import Login from '../components/Login'
 import Logout from '../components/Logout'
-import withApollo from '../lib/withApollo'
-import { State } from '../store'
 
-const Root = ({ currentUser }: StateProps) =>
-  currentUser ? (
-    <div>
-      {JSON.stringify(currentUser)}
-      <Logout />
-    </div>
-  ) : (
-    <Login />
-  )
+const Root = () => (
+  <Query
+    query={gql`
+      {
+        viewer {
+          uid
+        }
+      }
+    `}
+  >
+    {({ loading, error, data }) => {
+      if (loading) {
+        return <p>Loading...</p>
+      }
+      if (error) {
+        return <p>{error}</p>
+      }
 
-interface StateProps {
-  currentUser: State['currentUser']
-}
-
-export default withApollo(
-  connect((state: State): StateProps => ({ currentUser: state.currentUser }))(Root),
+      return data.viewer ? (
+        <div>
+          {data.viewer.uid}
+          <Logout />
+        </div>
+      ) : (
+        <Login />
+      )
+    }}
+  </Query>
 )
+
+export default Root
