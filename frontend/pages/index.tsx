@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 
 import Login from '../components/Login'
 import Logout from '../components/Logout'
+import withApollo from '../lib/withApollo'
 import { State } from '../store'
 
 const Root = ({ currentUser }: StateProps) =>
@@ -18,6 +19,6 @@ interface StateProps {
   currentUser: State['currentUser']
 }
 
-export default connect(
-  (state: State): StateProps => ({ currentUser: state.currentUser }),
-)(Root)
+export default withApollo(
+  connect((state: State): StateProps => ({ currentUser: state.currentUser }))(Root),
+)
