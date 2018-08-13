@@ -3,6 +3,9 @@
 module Types
   module Object
     class MutationType < Base
+      def self.accessible?(context)
+        context.viewer
+      end
     end
   end
 end
