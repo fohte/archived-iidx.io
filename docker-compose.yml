@@ -61,6 +61,8 @@ services:
     volumes:
       - .:/app
       - node_modules:/app/frontend/node_modules
+    environment:
+      API_URL: localhost:5000/graphql
     ports:
       - '3000:3000'
 volumes:
