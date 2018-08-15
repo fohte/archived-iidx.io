@@ -1,7 +1,8 @@
+import 'isomorphic-fetch'
+
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory'
 import { ApolloClient } from 'apollo-client'
 import { HttpLink } from 'apollo-link-http'
-import 'whatwg-fetch'
 
 import isBrowser from './isBrowser'
 
