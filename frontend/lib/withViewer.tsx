@@ -2,7 +2,8 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import { setDisplayName, wrapDisplayName } from 'recompose'
 
-import withAuthState, { WithAuthStateProps } from './withAuthState'
+import { AuthContextShape } from '../contexts/AuthContext'
+import withAuthState from './withAuthState'
 
 export interface WithViewerProps {
   loading: boolean
@@ -10,11 +11,9 @@ export interface WithViewerProps {
 }
 
 const withViewer = (Component: React.ComponentType<WithViewerProps>) => {
-  const WithViewer: React.SFC<WithAuthStateProps> = ({
-    loading: authStateLoading,
-  }) => {
-    if (authStateLoading) {
-      return <Component loading={true} />
+  const WithViewer: React.SFC<AuthContextShape> = props => {
+    if (props.loading) {
+      return <Component {...props} loading={true} />
     } else {
       return (
         <Query
@@ -27,13 +26,15 @@ const withViewer = (Component: React.ComponentType<WithViewerProps>) => {
             }
           `}
         >
-          {({ loading, data }) => {
-            const { viewer } = data
-
+          {({ error, loading, data }) => {
+            if (error) {
+              return <div />
+            }
             if (loading) {
-              return <Component loading={true} />
+              return <Component {...props} loading={true} />
             } else {
-              return <Component loading={false} viewer={viewer} />
+              const { viewer } = data
+              return <Component {...props} loading={false} viewer={viewer} />
             }
           }}
         </Query>
@@ -42,7 +43,7 @@ const withViewer = (Component: React.ComponentType<WithViewerProps>) => {
   }
 
   const newDisplayName = wrapDisplayName(Component, 'withViewer')
-  const WrappedComponent = setDisplayName<WithAuthStateProps>(newDisplayName)(
+  const WrappedComponent = setDisplayName<AuthContextShape>(newDisplayName)(
     WithViewer,
   )
 

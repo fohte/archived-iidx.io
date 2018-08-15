@@ -1,32 +1,14 @@
-import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
 import { setDisplayName, wrapDisplayName } from 'recompose'
 
-export interface WithAuthStateProps {
-  loading: boolean
-  signedIn: boolean
-}
+import AuthContext, { AuthContextShape } from '../contexts/AuthContext'
 
-const withAuthState = (Component: React.ComponentType<WithAuthStateProps>) => {
-  const WithAuthState = () => (
-    <Query
-      query={gql`
-        {
-          loadedAuth @client
-          signedIn @client
-        }
-      `}
-    >
-      {({ loading, data }) => {
-        const { loadedAuth, signedIn } = data
-
-        if (loading || !loadedAuth) {
-          return <Component loading={true} signedIn={false} />
-        } else {
-          return <Component loading={false} signedIn={signedIn} />
-        }
-      }}
-    </Query>
+const withAuthState = (Component: React.ComponentType<AuthContextShape>) => {
+  const WithAuthState: React.SFC = props => (
+    <AuthContext.Consumer>
+      {({ loading, signedIn }) => (
+        <Component {...props} loading={loading} signedIn={signedIn} />
+      )}
+    </AuthContext.Consumer>
   )
 
   const newDisplayName = wrapDisplayName(Component, 'withAuthState')

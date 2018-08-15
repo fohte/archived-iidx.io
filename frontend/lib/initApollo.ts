@@ -4,13 +4,27 @@ import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory'
 import { ApolloClient } from 'apollo-client'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
+import { onError } from 'apollo-link-error'
 import { HttpLink } from 'apollo-link-http'
-import { withClientState } from 'apollo-link-state'
 
 import { auth } from '../lib/firebaseApp'
 import isBrowser from './isBrowser'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | null = null
+
+const handleError = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    graphQLErrors.map(({ message, locations, path }) =>
+      console.error(
+        `[GraphQL error]: Message: ${message}, Location: ${JSON.stringify(locations)}, Path: ${path}`,
+      ),
+    )
+  }
+
+  if (networkError) {
+    console.error(`[Network error]: ${networkError}`)
+  }
+})
 
 const withAuthorization = setContext(async (_, { headers }) => {
   if (auth.currentUser) {
@@ -29,15 +43,6 @@ const withAuthorization = setContext(async (_, { headers }) => {
 const create = (initialState?: NormalizedCacheObject) => {
   const cache = new InMemoryCache().restore(initialState || {})
 
-  const stateLink = withClientState({
-    cache,
-    resolvers: {},
-    defaults: {
-      signedIn: false,
-      loadedAuth: false,
-    },
-  })
-
   const httpLink = new HttpLink({
     uri: process.env.API_URL,
     credentials: 'same-origin',
@@ -46,7 +51,7 @@ const create = (initialState?: NormalizedCacheObject) => {
   return new ApolloClient({
     connectToDevTools: isBrowser,
     ssrMode: !isBrowser,
-    link: ApolloLink.from([stateLink, withAuthorization, httpLink]),
+    link: ApolloLink.from([handleError, withAuthorization, httpLink]),
     cache,
   })
 }
@@ -61,18 +66,6 @@ const initApollo = (initialState?: NormalizedCacheObject) => {
   // Reuse client on the client-side
   if (!apolloClient) {
     apolloClient = create(initialState)
-
-    auth.onAuthStateChanged(user => {
-      if (apolloClient != null) {
-        if (user) {
-          apolloClient.writeData({ data: { loadedAuth: true, signedIn: true } })
-        } else {
-          apolloClient.writeData({
-            data: { loadedAuth: true, signedIn: false },
-          })
-        }
-      }
-    })
   }
 
   return apolloClient

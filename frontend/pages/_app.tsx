@@ -1,6 +1,7 @@
 import App, { AppComponentContext, Container } from 'next/app'
 import { ApolloProvider } from 'react-apollo'
 
+import AuthStateProvider from '../contexts/AuthStateProvider'
 import withApollo, { Props } from '../lib/withApollo'
 
 export default withApollo(
@@ -22,7 +23,9 @@ export default withApollo(
       return (
         <Container>
           <ApolloProvider client={apolloClient}>
-            <Component {...pageProps} />
+            <AuthStateProvider>
+              <Component {...pageProps} />
+            </AuthStateProvider>
           </ApolloProvider>
         </Container>
       )
