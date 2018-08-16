@@ -16,7 +16,9 @@ const handleError = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.map(({ message, locations, path }) =>
       console.error(
-        `[GraphQL error]: Message: ${message}, Location: ${JSON.stringify(locations)}, Path: ${path}`,
+        `[GraphQL error]: Message: ${message}, Location: ${JSON.stringify(
+          locations,
+        )}, Path: ${path}`,
       ),
     )
   }
