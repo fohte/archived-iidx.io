@@ -2,7 +2,7 @@
   "name": "iidx.io",
   "private": true,
   "scripts": {
-    "format": "prettier -l '**/*.{js{,x},ts{,x},json}' --ignore-path .gitignore",
+    "format": "prettier -l '**/*.{js{,x},ts{,x},json}' '**/.babelrc' --ignore-path .gitignore",
     "format:fix": "yarn run format --write"
   },
   "devDependencies": {
