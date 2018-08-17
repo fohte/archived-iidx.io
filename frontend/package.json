@@ -13,6 +13,7 @@
     "@types/react": "^16.4.11",
     "@types/react-dom": "^16.0.7",
     "@types/recompose": "^0.26.4",
+    "@zeit/next-css": "^0.2.0",
     "@zeit/next-typescript": "^1.1.0",
     "antd": "^3.8.1",
     "apollo-boost": "^0.1.13",
@@ -32,6 +33,7 @@
     "typescript-fsa-reducers": "^0.4.5"
   },
   "devDependencies": {
+    "babel-plugin-import": "^1.8.0",
     "babel-plugin-styled-components": "^1.5.1",
     "dotenv-webpack": "^1.5.7",
     "tslint": "^5.11.0",
