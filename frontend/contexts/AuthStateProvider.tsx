@@ -1,7 +1,10 @@
 import * as React from 'react'
 
-import { auth } from '../lib/firebaseApp'
-import AuthContext, { AuthContextShape, defaultValues } from './AuthContext'
+import AuthContext, {
+  AuthContextShape,
+  defaultValues,
+} from 'contexts/AuthContext'
+import { auth } from 'lib/firebaseApp'
 
 class AuthStateProvider extends React.Component<{}, AuthContextShape> {
   public state: Readonly<AuthContextShape> = defaultValues

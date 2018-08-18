@@ -1,4 +1,4 @@
-import { auth } from '../lib/firebaseApp'
+import { auth } from 'lib/firebaseApp'
 
 const handleLogin = async () => {
   try {

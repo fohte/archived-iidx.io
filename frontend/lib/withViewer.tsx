@@ -2,8 +2,8 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import { setDisplayName, wrapDisplayName } from 'recompose'
 
-import { AuthContextShape } from '../contexts/AuthContext'
-import withAuthState from './withAuthState'
+import { AuthContextShape } from 'contexts/AuthContext'
+import withAuthState from 'lib/withAuthState'
 
 export interface WithViewerProps {
   loading: boolean

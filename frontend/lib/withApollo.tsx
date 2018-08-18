@@ -5,8 +5,8 @@ import Head from 'next/head'
 import React from 'react'
 import { getDataFromTree } from 'react-apollo'
 
-import initApollo from './initApollo'
-import isBrowser from './isBrowser'
+import initApollo from 'lib/initApollo'
+import isBrowser from 'lib/isBrowser'
 
 export interface Props extends AppComponentProps {
   serverState: {

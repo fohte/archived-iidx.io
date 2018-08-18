@@ -1,4 +1,6 @@
 const Dotenv = require('dotenv-webpack')
+const merge = require('webpack-merge')
+const path = require('path')
 const withCSS = require('@zeit/next-css')
 const withTypescript = require('@zeit/next-typescript')
 
@@ -9,8 +11,16 @@ if (typeof require !== 'undefined') {
 module.exports = withCSS(
   withTypescript({
     webpack(config, options) {
-      config.plugins.push(new Dotenv({ path: '../.env', systemvars: true }))
-      return config
+      return merge(config, {
+        plugins: [new Dotenv({ path: '../.env', systemvars: true })],
+        resolve: {
+          alias: {
+            components: path.join(__dirname, 'components'),
+            contexts: path.join(__dirname, 'contexts'),
+            lib: path.join(__dirname, 'lib'),
+          },
+        },
+      })
     },
   }),
 )
