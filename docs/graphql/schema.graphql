@@ -1,0 +1,20 @@
+type Mutation {
+}
+
+type Query {
+  # Find a user by ID.
+  user(id: ID!): User
+
+  # The currently authenticated user.
+  viewer: User
+}
+
+type User {
+  id: ID!
+  profile: UserProfile!
+  uid: String!
+}
+
+type UserProfile {
+  name: String!
+}
