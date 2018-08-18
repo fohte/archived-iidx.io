@@ -1,17 +1,24 @@
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import { setDisplayName, wrapDisplayName } from 'recompose'
+import { Diff } from 'utility-types'
 
 import { AuthContextShape } from 'contexts/AuthContext'
 import withAuthState from 'lib/withAuthState'
 
-export interface WithViewerProps {
+export type ExternalProps = AuthContextShape
+
+export interface InjectedProps {
   loading: boolean
   viewer?: {}
 }
 
-const withViewer = (Component: React.ComponentType<WithViewerProps>) => {
-  const WithViewer: React.SFC<AuthContextShape> = props => {
+const withViewer = () => <OriginalProps extends {}>(
+  Component: React.ComponentType<OriginalProps & InjectedProps>,
+) => {
+  type EnhancedProps = Diff<OriginalProps, InjectedProps> & ExternalProps
+
+  const WithViewer: React.SFC<EnhancedProps> = props => {
     if (props.loading) {
       return <Component {...props} loading={true} />
     } else {
@@ -43,11 +50,11 @@ const withViewer = (Component: React.ComponentType<WithViewerProps>) => {
   }
 
   const newDisplayName = wrapDisplayName(Component, 'withViewer')
-  const WrappedComponent = setDisplayName<AuthContextShape>(newDisplayName)(
+  const WrappedComponent = setDisplayName<EnhancedProps>(newDisplayName)(
     WithViewer,
   )
 
-  return withAuthState(WrappedComponent)
+  return withAuthState()(WrappedComponent)
 }
 
 export default withViewer

@@ -1,19 +1,27 @@
 import { setDisplayName, wrapDisplayName } from 'recompose'
+import { Diff } from 'utility-types'
 
 import AuthContext, { AuthContextShape } from 'contexts/AuthContext'
 
-const withAuthState = (Component: React.ComponentType<AuthContextShape>) => {
-  const WithAuthState: React.SFC = props => (
+export interface ExternalProps {}
+export type InjectedProps = AuthContextShape
+
+const withAuthState = () => <OriginalProps extends {}>(
+  WrappedComponent: React.ComponentType<OriginalProps & InjectedProps>,
+) => {
+  type EnhancedProps = Diff<OriginalProps, InjectedProps> & ExternalProps
+
+  const WithAuthState: React.SFC<EnhancedProps> = props => (
     <AuthContext.Consumer>
       {({ loading, signedIn }) => (
-        <Component {...props} loading={loading} signedIn={signedIn} />
+        <WrappedComponent {...props} loading={loading} signedIn={signedIn} />
       )}
     </AuthContext.Consumer>
   )
 
-  const newDisplayName = wrapDisplayName(Component, 'withAuthState')
+  const newDisplayName = wrapDisplayName(WrappedComponent, 'withAuthState')
 
-  return setDisplayName(newDisplayName)(WithAuthState)
+  return setDisplayName<EnhancedProps>(newDisplayName)(WithAuthState)
 }
 
 export default withAuthState

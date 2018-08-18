@@ -15,6 +15,7 @@
     "max-classes-per-file": false,
     "ordered-imports": {
       "severity": "warning"
-    }
+    },
+    "no-empty-interface": false
   }
 }
