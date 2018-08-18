@@ -28,13 +28,13 @@ services:
     command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app
+      - bundle:/usr/local/bundle
       - spring:/tmp/spring
     environment:
       MYSQL_HOST: mysql
       MYSQL_PASSWORD: password
       MYSQL_PORT: 3306
       IIDX_IO_TEXTAGE_CACHE_PATH: /app/.cache
-      BUNDLE_PATH: /app/backend/vendor/bundle
       SPRING_SOCKET: /tmp/spring/spring.sock
       REDIS_HOST: redis
       REDIS_PORT: 6379
@@ -60,10 +60,13 @@ services:
     command: yarn run dev
     volumes:
       - .:/app
+      - node_modules:/app/frontend/node_modules
     environment:
       API_URL: http://localhost:5000/graphql
     ports:
       - '3000:3000'
 volumes:
   db_data:
+  bundle:
+  node_modules:
   spring:
