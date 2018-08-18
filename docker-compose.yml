@@ -45,13 +45,16 @@ services:
       - redis
     ports:
       - '5000:3000'
-  spring:
+  spring: &spring
     <<: *app_base
     command: bin/spring server
     ports: []
     tty: false
     stdin_open: false
     restart: on-failure:3
+  backend_watcher:
+    <<: *spring
+    command: bundle exec guard -i
   next:
     build:
       context: .
