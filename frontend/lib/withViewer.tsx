@@ -1,16 +1,16 @@
-import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
 import { setDisplayName, wrapDisplayName } from 'recompose'
 import { Diff } from 'utility-types'
 
 import { AuthContextShape } from 'contexts/AuthContext'
 import withAuthState from 'lib/withAuthState'
+import { GetViewerComponent, GetViewerQuery } from 'queries'
+import getViewer from 'queries/getViewer.graphql'
 
 export type ExternalProps = AuthContextShape
 
 export interface InjectedProps {
   loading: boolean
-  viewer?: {}
+  viewer?: GetViewerQuery['viewer']
 }
 
 const withViewer = () => <OriginalProps extends {}>(
@@ -23,28 +23,20 @@ const withViewer = () => <OriginalProps extends {}>(
       return <Component {...props} loading={true} />
     } else {
       return (
-        <Query
-          query={gql`
-            {
-              viewer {
-                id
-                uid
-              }
-            }
-          `}
-        >
+        <GetViewerComponent query={getViewer}>
           {({ error, loading, data }) => {
-            if (error) {
+            if (error || !data) {
               return <div />
             }
+
             if (loading) {
               return <Component {...props} loading={true} />
-            } else {
-              const { viewer } = data
-              return <Component {...props} loading={false} viewer={viewer} />
             }
+
+            const { viewer } = data
+            return <Component {...props} loading={false} viewer={viewer} />
           }}
-        </Query>
+        </GetViewerComponent>
       )
     }
   }

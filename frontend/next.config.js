@@ -12,12 +12,22 @@ module.exports = withCSS(
   withTypescript({
     webpack(config, options) {
       return merge(config, {
+        module: {
+          rules: [
+            {
+              test: /\.(graphql|gql)$/,
+              exclude: /node_modules/,
+              loader: 'graphql-tag/loader',
+            },
+          ],
+        },
         plugins: [new Dotenv({ path: '../.env', systemvars: true })],
         resolve: {
           alias: {
             components: path.join(__dirname, 'components'),
             contexts: path.join(__dirname, 'contexts'),
             lib: path.join(__dirname, 'lib'),
+            queries: path.join(__dirname, 'queries'),
           },
         },
       })
