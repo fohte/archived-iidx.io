@@ -6,7 +6,9 @@
     "build": "next build",
     "start": "next start",
     "lint:ts": "tslint -p . -c tslint.json --format stylish",
-    "test:ts": "tsc -p . --noEmit"
+    "test:ts": "tsc -p . --noEmit",
+    "gql:gen": "gql-gen --schema ../docs/graphql/schema.json --template graphql-codegen-typescript-react-apollo-template --out ./queries/index.ts --config ./.gqlgen.json 'queries/**/*.graphql'",
+    "gql:gen:watch": "yarn run gql:gen --watch"
   },
   "dependencies": {
     "@types/next": "^6.1.2",
@@ -37,6 +39,8 @@
     "babel-plugin-import": "^1.8.0",
     "babel-plugin-styled-components": "^1.5.1",
     "dotenv-webpack": "^1.5.7",
+    "graphql-code-generator": "^0.10.7",
+    "graphql-codegen-typescript-react-apollo-template": "^0.10.7",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.14.0",
     "webpack-merge": "^4.1.4"

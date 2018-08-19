@@ -45,14 +45,17 @@ services:
       - redis
     ports:
       - '5000:3000'
-  spring:
+  spring: &spring
     <<: *app_base
     command: bin/spring server
     ports: []
     tty: false
     stdin_open: false
     restart: on-failure:3
-  next:
+  backend_watcher:
+    <<: *spring
+    command: bundle exec guard -i
+  next: &next
     build:
       context: .
       dockerfile: ./docker/next/Dockerfile
@@ -65,6 +68,12 @@ services:
       API_URL: http://localhost:5000/graphql
     ports:
       - '3000:3000'
+  gql_gen:
+    <<: *next
+    command: yarn run gql:gen --watch
+    tty: false
+    stdin_open: false
+    ports: []
 volumes:
   db_data:
   bundle:
