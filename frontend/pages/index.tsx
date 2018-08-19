@@ -1,7 +1,7 @@
-import withViewer, { WithViewerProps } from 'lib/withViewer'
+import withViewer, { ExternalProps } from 'lib/withViewer'
 
-const Root: React.SFC<WithViewerProps> = props => (
+const Root: React.SFC<ExternalProps> = props => (
   <div>{JSON.stringify(props)}</div>
 )
 
-export default withViewer(Root)
+export default withViewer()(Root)
