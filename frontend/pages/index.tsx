@@ -1,7 +1,5 @@
-import withViewer, { ExternalProps } from 'lib/withViewer'
+import MainLayout from 'components/templates/MainLayout'
 
-const Root: React.SFC<ExternalProps> = props => (
-  <div>{JSON.stringify(props)}</div>
-)
+const Root: React.SFC = () => <MainLayout>root</MainLayout>
 
-export default withViewer()(Root)
+export default Root
