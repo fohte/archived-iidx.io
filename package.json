@@ -13,17 +13,26 @@
     }
   },
   "lint-staged": {
-    "backend/**/*": [
-      "cd backend && bundle exec rubocop --force-exclusion -a",
-      "git add"
-    ],
-    "**/*.{js{,x},ts{,x},json,graphql}": [
-      "prettier --write",
-      "git add"
-    ],
-    "frontend/**/*.{js{,x},ts{,x}}": [
-      "cd frontend && yarn run lint:ts --fix",
-      "git add"
+    "linters": {
+      "backend/**/*": [
+        "cd backend && bundle exec rubocop --force-exclusion -a",
+        "git add"
+      ],
+      "**/*.{js{,x},ts{,x},json,graphql}": [
+        "prettier --write",
+        "git add"
+      ],
+      "**/.babelrc": [
+        "prettier --write",
+        "git add"
+      ],
+      "frontend/**/*.{js{,x},ts{,x}}": [
+        "cd frontend && yarn run lint:ts --fix",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "docs/graphql/*"
     ]
   },
   "devDependencies": {
