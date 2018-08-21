@@ -2,7 +2,6 @@
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "rules": {
     "no-console": {
-      "severity": "warning",
       "options": ["log"]
     },
     "interface-name": {
@@ -10,9 +9,6 @@
     },
     "object-literal-sort-keys": false,
     "max-classes-per-file": false,
-    "ordered-imports": {
-      "severity": "warning"
-    },
     "no-empty-interface": false
   }
 }
