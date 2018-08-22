@@ -11,3 +11,5 @@ const app = () =>
   firebase.apps.length ? firebase.app() : firebase.initializeApp(config)
 
 export const auth = app().auth()
+
+export type ErrorType = firebase.auth.Error
