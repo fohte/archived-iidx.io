@@ -1,4 +1,5 @@
 import { Menu } from 'antd'
+import Link from 'next/link'
 import styled from 'styled-components'
 
 import Brand from 'components/atoms/Brand'
@@ -7,9 +8,11 @@ import withViewer from 'lib/withViewer'
 
 const Header: React.SFC = () => (
   <Menu theme="dark" style={{ lineHeight: '64px' }}>
-    <BrandWrapper>
-      <Brand />
-    </BrandWrapper>
+    <Link href="/" prefetch>
+      <BrandWrapper>
+        <Brand />
+      </BrandWrapper>
+    </Link>
     <UserNavWrapper>
       <EnhancedUserNav displayName="fohte" />
     </UserNavWrapper>
