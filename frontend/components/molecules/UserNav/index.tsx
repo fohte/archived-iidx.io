@@ -4,9 +4,7 @@ import { InjectedProps } from 'lib/withViewer'
 import LoginOrSignUp from './LoginOrSignUp'
 import UserMenu from './UserMenu'
 
-export interface Props extends InjectedProps {
-  displayName: string
-}
+export interface Props extends InjectedProps {}
 
 const UserNav: React.SFC<Props> = ({ loading, viewer }) => {
   if (loading) {

@@ -14,7 +14,7 @@ const Header: React.SFC = () => (
       </BrandWrapper>
     </Link>
     <UserNavWrapper>
-      <EnhancedUserNav displayName="fohte" />
+      <EnhancedUserNav />
     </UserNavWrapper>
   </Menu>
 )
