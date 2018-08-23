@@ -20,7 +20,7 @@
     "antd": "^3.8.2",
     "apollo-boost": "^0.1.14",
     "apollo-link-context": "^1.0.8",
-    "firebase": "^5.4.0",
+    "firebase": "^5.4.1",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "isomorphic-fetch": "^2.2.1",
