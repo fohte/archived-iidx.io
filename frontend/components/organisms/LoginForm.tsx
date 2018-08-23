@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 export interface ExternalProps {
   submitRequest?: (values: FormValues) => void
+  onSubmitSuccess?: () => void
 }
 
 export interface Props extends ExternalProps, FormComponentProps {}
@@ -26,7 +27,7 @@ class LoginForm extends React.Component<Props, State> {
   }
 
   public handleSubmit = (e: React.FormEvent): void => {
-    const { form, submitRequest } = this.props
+    const { form, submitRequest, onSubmitSuccess } = this.props
 
     e.preventDefault()
     form.validateFields(async (err, values: FormValues) => {
@@ -36,6 +37,11 @@ class LoginForm extends React.Component<Props, State> {
 
           try {
             await submitRequest(values)
+
+            if (onSubmitSuccess) {
+              onSubmitSuccess()
+            }
+
             this.setState({ submitting: false })
           } catch (e) {
             this.setState({ errorMessage: e.message, submitting: false })
