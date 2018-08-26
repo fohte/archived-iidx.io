@@ -1,4 +1,5 @@
 import { Icon } from 'antd'
+import * as React from 'react'
 
 import { InjectedProps } from '@app/lib/withAuthState'
 import LoginOrSignUp from './LoginOrSignUp'
