@@ -1,5 +1,5 @@
-import MainLayout from '@app/components/templates/MainLayout'
+import MusicsPage from '@app/components/pages/MusicsPage'
 
-const Root: React.SFC = () => <MainLayout>root</MainLayout>
+const Root: React.SFC = () => <MusicsPage />
 
 export default Root
