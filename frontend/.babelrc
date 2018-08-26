@@ -10,5 +10,30 @@
       }
     ],
     ["import", { "libraryName": "antd", "style": "css" }]
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        "next/babel",
+        [
+          "@babel/env",
+          {
+            "modules": "commonjs"
+          }
+        ],
+        "@zeit/next-typescript/babel"
+      ],
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "ssr": true,
+            "displayName": true,
+            "preprocess": false
+          }
+        ],
+        ["import", { "libraryName": "antd", "style": "css" }]
+      ]
+    }
+  }
 }
