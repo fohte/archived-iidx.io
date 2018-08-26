@@ -13,9 +13,7 @@ const withAuthState = () => <OriginalProps extends {}>(
 
   const WithAuthState: React.SFC<EnhancedProps> = props => (
     <AuthContext.Consumer>
-      {({ loading, signedIn }) => (
-        <WrappedComponent {...props} loading={loading} signedIn={signedIn} />
-      )}
+      {authContexts => <WrappedComponent {...props} {...authContexts} />}
     </AuthContext.Consumer>
   )
 

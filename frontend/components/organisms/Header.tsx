@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import Brand from 'components/atoms/Brand'
 import UserNav from 'components/molecules/UserNav'
-import withViewer from 'lib/withViewer'
+import withAuthState from 'lib/withAuthState'
 
 const Header: React.SFC = () => (
   <Menu theme="dark" style={{ lineHeight: '64px' }}>
@@ -27,6 +27,6 @@ const UserNavWrapper = styled.div`
   float: right;
 `
 
-const EnhancedUserNav = withViewer()(UserNav)
+const EnhancedUserNav = withAuthState()(UserNav)
 
 export default Header

@@ -8,13 +8,15 @@ import { getDataFromTree } from 'react-apollo'
 import initApollo from 'lib/initApollo'
 import isBrowser from 'lib/isBrowser'
 
+export type AppApolloClient = ApolloClient<NormalizedCacheObject>
+
 export interface Props extends AppComponentProps {
   serverState: {
     apollo: {
       data: NormalizedCacheObject
     }
   }
-  apolloClient: ApolloClient<NormalizedCacheObject>
+  apolloClient: AppApolloClient
 }
 
 export class TComposedApp extends App<Props> {}
@@ -76,7 +78,7 @@ export default (ComposedApp: typeof TComposedApp) =>
       }
     }
 
-    public apollo: ApolloClient<NormalizedCacheObject>
+    public apollo: AppApolloClient
 
     constructor(props) {
       super(props)

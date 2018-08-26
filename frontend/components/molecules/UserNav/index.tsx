@@ -1,6 +1,6 @@
 import { Icon } from 'antd'
 
-import { InjectedProps } from 'lib/withViewer'
+import { InjectedProps } from 'lib/withAuthState'
 import LoginOrSignUp from './LoginOrSignUp'
 import UserMenu from './UserMenu'
 
