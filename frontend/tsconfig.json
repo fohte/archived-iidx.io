@@ -15,7 +15,10 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "lib": ["dom", "es2015", "es2016"]
+    "lib": ["dom", "es2015", "es2016"],
+    "paths": {
+      "@app/*": ["./*"]
+    }
   },
   "exclude": ["node_modules", "coverage"]
 }

@@ -1,3 +1,3 @@
-import LoginPage from 'components/pages/LoginPage'
+import LoginPage from '@app/components/pages/LoginPage'
 
 export default () => <LoginPage />

@@ -7,8 +7,8 @@ import { setContext } from 'apollo-link-context'
 import { onError } from 'apollo-link-error'
 import { HttpLink } from 'apollo-link-http'
 
-import { auth } from 'lib/firebaseApp'
-import isBrowser from 'lib/isBrowser'
+import { auth } from '@app/lib/firebaseApp'
+import isBrowser from '@app/lib/isBrowser'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | null = null
 

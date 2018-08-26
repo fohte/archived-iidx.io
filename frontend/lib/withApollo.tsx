@@ -5,8 +5,8 @@ import Head from 'next/head'
 import React from 'react'
 import { getDataFromTree } from 'react-apollo'
 
-import initApollo from 'lib/initApollo'
-import isBrowser from 'lib/isBrowser'
+import initApollo from '@app/lib/initApollo'
+import isBrowser from '@app/lib/isBrowser'
 
 export type AppApolloClient = ApolloClient<NormalizedCacheObject>
 
