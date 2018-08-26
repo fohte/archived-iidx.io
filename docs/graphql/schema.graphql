@@ -1,7 +1,51 @@
+enum Difficulty {
+  # Another
+  ANOTHER
+
+  # Hyper
+  HYPER
+
+  # Normal
+  NORMAL
+}
+
+type Map {
+  difficulty: Difficulty!
+  id: ID!
+  level: Int!
+  maxBpm: Int!
+  minBpm: Int!
+  numNotes: Int!
+  playStyle: PlayStyle!
+}
+
+type Music {
+  artist: String!
+  genre: String!
+  id: ID!
+  leggendaria: Boolean!
+  maps: [Map!]!
+  series: Int!
+  subTitle: String!
+  textageUid: String!
+  title: String!
+}
+
 type Mutation {
 }
 
+enum PlayStyle {
+  # DP
+  DP
+
+  # SP
+  SP
+}
+
 type Query {
+  # Find musics.
+  musics: [Music!]
+
   # Find a user by ID.
   user(id: ID!): User
 

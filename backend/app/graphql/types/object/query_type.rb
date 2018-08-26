@@ -20,6 +20,14 @@ module Types
       def user(id:)
         User.find(id)
       end
+
+      field :musics, [MusicType], null: true do
+        description 'Find musics.'
+      end
+
+      def musics
+        ::Music.includes('maps').where(maps: { level: 12, play_style: :sp })
+      end
     end
   end
 end
