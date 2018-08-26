@@ -79,7 +79,9 @@ jobs:
           command: yarn run lint:ts
       - run:
           name: run tests
-          command: yarn run test:ts
+          command: |
+            yarn run test
+            yarn run codecov --root=~/repo
 
   prettier:
     docker:

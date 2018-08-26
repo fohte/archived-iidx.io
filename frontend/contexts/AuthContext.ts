@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { GetViewerViewer } from 'queries'
+import { GetViewerViewer } from '@app/queries'
 
 export interface AuthContextShape {
   signedIn: boolean

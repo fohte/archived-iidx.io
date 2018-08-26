@@ -1,8 +1,8 @@
 import App, { AppComponentContext, Container } from 'next/app'
 import { ApolloProvider } from 'react-apollo'
 
-import AuthStateProvider from 'contexts/AuthStateProvider'
-import withApollo, { Props } from 'lib/withApollo'
+import AuthStateProvider from '@app/contexts/AuthStateProvider'
+import withApollo, { Props } from '@app/lib/withApollo'
 
 export default withApollo(
   class MyApp extends App<Props> {

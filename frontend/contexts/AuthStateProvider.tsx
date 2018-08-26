@@ -6,11 +6,11 @@ import { withApollo } from 'react-apollo'
 import AuthContext, {
   AuthContextShape,
   makeDefaultValues,
-} from 'contexts/AuthContext'
-import { auth } from 'lib/firebaseApp'
-import { AppApolloClient } from 'lib/withApollo'
-import { GetViewerQuery } from 'queries'
-import getViewer from 'queries/getViewer.graphql'
+} from '@app/contexts/AuthContext'
+import { auth } from '@app/lib/firebaseApp'
+import { AppApolloClient } from '@app/lib/withApollo'
+import { GetViewerQuery } from '@app/queries'
+import getViewer from '@app/queries/getViewer.graphql'
 
 interface ExternalProps {}
 

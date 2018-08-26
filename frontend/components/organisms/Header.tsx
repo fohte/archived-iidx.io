@@ -2,9 +2,9 @@ import { Menu } from 'antd'
 import Link from 'next/link'
 import styled from 'styled-components'
 
-import Brand from 'components/atoms/Brand'
-import UserNav from 'components/molecules/UserNav'
-import withAuthState from 'lib/withAuthState'
+import Brand from '@app/components/atoms/Brand'
+import UserNav from '@app/components/molecules/UserNav'
+import withAuthState from '@app/lib/withAuthState'
 
 const Header: React.SFC = () => (
   <Menu theme="dark" style={{ lineHeight: '64px' }}>

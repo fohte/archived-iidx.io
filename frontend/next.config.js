@@ -22,14 +22,7 @@ module.exports = withCSS(
           ],
         },
         plugins: [new Dotenv({ path: '../.env', systemvars: true })],
-        resolve: {
-          alias: {
-            components: path.join(__dirname, 'components'),
-            contexts: path.join(__dirname, 'contexts'),
-            lib: path.join(__dirname, 'lib'),
-            queries: path.join(__dirname, 'queries'),
-          },
-        },
+        resolve: { alias: { '@app': path.join(__dirname) } },
       })
     },
   }),

@@ -1,7 +1,7 @@
 import { setDisplayName, wrapDisplayName } from 'recompose'
 import { Diff } from 'utility-types'
 
-import AuthContext, { AuthContextShape } from 'contexts/AuthContext'
+import AuthContext, { AuthContextShape } from '@app/contexts/AuthContext'
 
 export interface ExternalProps {}
 export type InjectedProps = AuthContextShape

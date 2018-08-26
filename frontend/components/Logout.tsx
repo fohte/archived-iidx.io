@@ -1,4 +1,4 @@
-import { auth } from 'lib/firebaseApp'
+import { auth } from '@app/lib/firebaseApp'
 
 const handleLogout = async () => {
   try {

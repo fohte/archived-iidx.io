@@ -1,8 +1,8 @@
 import Router from 'next/router'
 
-import LoginForm, { Props } from 'components/organisms/LoginForm'
-import MainLayout from 'components/templates/MainLayout'
-import { auth, ErrorType } from 'lib/firebaseApp'
+import LoginForm, { Props } from '@app/components/organisms/LoginForm'
+import MainLayout from '@app/components/templates/MainLayout'
+import { auth, ErrorType } from '@app/lib/firebaseApp'
 
 const submitRequest: NonNullable<Props['submitRequest']> = async values => {
   await auth

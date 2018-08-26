@@ -1,7 +1,7 @@
 import { Layout } from 'antd'
 
-import Footer from 'components/organisms/Footer'
-import Header from 'components/organisms/Header'
+import Footer from '@app/components/organisms/Footer'
+import Header from '@app/components/organisms/Header'
 
 const MainLayout: React.SFC = ({ children }) => (
   <Layout className="layout">
