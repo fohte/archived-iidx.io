@@ -6,7 +6,9 @@
     "build": "next build",
     "start": "next start",
     "lint:ts": "tslint -p . -c tslint.json --format stylish",
+    "test": "npm-run-all -s --continue-on-error test:**",
     "test:ts": "tsc -p . --noEmit",
+    "test:jest": "jest",
     "gql:gen": "gql-gen --schema ../docs/graphql/schema.json --template graphql-codegen-typescript-react-apollo-template --out ./queries/index.ts --config ./.gqlgen.json 'queries/**/*.graphql'",
     "gql:gen:watch": "yarn run gql:gen --watch"
   },
