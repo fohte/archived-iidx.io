@@ -5,6 +5,7 @@ module.exports = {
   collectCoverageFrom: [
     '{components,contexts,lib,pages,queries}/**/*.{{j,t}s{,x}}',
   ],
+  coverageDirectory: './coverage/',
   globals: {
     'ts-jest': {
       tsConfigFile: '<rootDir>/tsconfig.jest.json',
