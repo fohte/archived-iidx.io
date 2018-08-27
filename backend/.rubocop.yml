@@ -71,5 +71,8 @@ RSpec/ExampleLength:
 RSpec/NestedGroups:
   Enabled: false
 
+RSpec/NamedSubject:
+  Enabled: false
+
 Style/NumericPredicate:
   Enabled: false
