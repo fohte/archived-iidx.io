@@ -3772,9 +3772,9 @@ firebase-auto-ids@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/firebase-auto-ids/-/firebase-auto-ids-1.1.0.tgz#378ffb8590888c37eb2dd8b704659ad0f49f9061"
 
-firebase-mock@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/firebase-mock/-/firebase-mock-2.2.5.tgz#4457ecf0c225115236082e7fd4de26a3a7916d94"
+firebase-mock@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/firebase-mock/-/firebase-mock-2.2.6.tgz#1722700b7b779f8528160733e518116ae8352846"
   dependencies:
     firebase-auto-ids "~1.1.0"
     lodash.assign "^4.2.0"
