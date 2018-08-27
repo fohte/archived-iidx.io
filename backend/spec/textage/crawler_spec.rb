@@ -19,7 +19,7 @@ RSpec.describe Textage::Crawler do
   end
 
   let(:score_html) do
-    Rails.root.join('spec', 'fixtures', 'textage_responses', 'a_amuro.html').read
+    textage_fixture('responses', 'a_amuro.html').read
   end
 
   before do

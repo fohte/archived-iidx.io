@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Textage::Pages::Score do
   let(:described_instance) { described_class.new(html) }
 
-  let(:html) { Rails.root.join('spec', 'fixtures', 'textage_responses', 'a_amuro.html').read }
+  let(:html) { textage_fixture('responses', 'a_amuro.html').read }
 
   describe '#genre' do
     subject { described_instance.genre }

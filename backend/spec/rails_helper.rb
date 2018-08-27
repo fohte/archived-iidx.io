@@ -47,4 +47,5 @@ RSpec.configure do |config|
   config.include ::EnvHelper
   config.include ActiveSupport::Testing::TimeHelpers
   config.include FactoryBot::Syntax::Methods
+  config.include ::FixtureHelper
 end
