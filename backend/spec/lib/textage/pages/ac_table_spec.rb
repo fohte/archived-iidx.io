@@ -17,7 +17,7 @@ RSpec.describe Textage::Pages::ACTable do
       end
 
       it 'returns musics' do
-        is_expected.to match(
+        expect(subject).to match(
           a_amuro: have_attributes(
             release_status: 'ac',
             sp_old_beginner: have_attributes(level: 0, meta_bit: 0),

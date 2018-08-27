@@ -53,7 +53,7 @@ RSpec.describe Textage::Pages::Score do
         let(:difficulty) { :normal }
 
         it do
-          is_expected.to have_attributes(
+          expect(subject).to have_attributes(
             notes: 666,
           )
         end
@@ -63,7 +63,7 @@ RSpec.describe Textage::Pages::Score do
         let(:difficulty) { :hyper }
 
         it do
-          is_expected.to have_attributes(
+          expect(subject).to have_attributes(
             notes: 1111,
           )
         end
@@ -73,7 +73,7 @@ RSpec.describe Textage::Pages::Score do
         let(:difficulty) { :another }
 
         it do
-          is_expected.to have_attributes(
+          expect(subject).to have_attributes(
             notes: 1260,
           )
         end
@@ -87,7 +87,7 @@ RSpec.describe Textage::Pages::Score do
         let(:difficulty) { :normal }
 
         it do
-          is_expected.to have_attributes(
+          expect(subject).to have_attributes(
             notes: 613,
           )
         end
@@ -97,7 +97,7 @@ RSpec.describe Textage::Pages::Score do
         let(:difficulty) { :hyper }
 
         it do
-          is_expected.to have_attributes(
+          expect(subject).to have_attributes(
             notes: 1119,
           )
         end
@@ -107,7 +107,7 @@ RSpec.describe Textage::Pages::Score do
         let(:difficulty) { :another }
 
         it do
-          is_expected.to have_attributes(
+          expect(subject).to have_attributes(
             notes: 1343,
           )
         end
