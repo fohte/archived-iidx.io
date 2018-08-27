@@ -36,7 +36,7 @@ RSpec.describe Textage::Crawler do
     it { is_expected.to be_a Enumerator }
 
     it 'returns musics' do
-      is_expected.to contain_exactly have_attributes(
+      expect(subject).to contain_exactly have_attributes(
         title: 'A',
         sub_title: '',
         genre: 'RENAISSANCE',
@@ -48,7 +48,7 @@ RSpec.describe Textage::Crawler do
     end
 
     it 'includes maps' do
-      is_expected.to contain_exactly have_attributes(
+      expect(subject).to contain_exactly have_attributes(
         maps: contain_exactly(
           have_attributes(
             num_notes: 666,
@@ -159,7 +159,7 @@ RSpec.describe Textage::Crawler do
       end
 
       it 'returns the musics with missing maps' do
-        is_expected.to contain_exactly have_attributes(
+        expect(subject).to contain_exactly have_attributes(
           maps: contain_exactly(
             have_attributes(
               num_notes: 666,

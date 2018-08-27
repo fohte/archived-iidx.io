@@ -7,7 +7,7 @@ RSpec.describe Map do
     subject { described_class.types }
 
     it 'return all types' do
-      is_expected.to contain_exactly(
+      expect(subject).to contain_exactly(
         [described_class.play_style.sp, described_class.difficulty.normal],
         [described_class.play_style.sp, described_class.difficulty.hyper],
         [described_class.play_style.sp, described_class.difficulty.another],

@@ -14,7 +14,7 @@ RSpec.describe Music do
       let(:maps) { [] }
 
       it 'dose not return the music' do
-        is_expected.to eq({})
+        expect(subject).to eq({})
       end
     end
 
@@ -26,7 +26,7 @@ RSpec.describe Music do
       end
 
       it 'returns the map types with textage_uid' do
-        is_expected.to eq(
+        expect(subject).to eq(
           test_uid: [
             [Map.play_style.sp, Map.difficulty.normal],
             [Map.play_style.sp, Map.difficulty.hyper],
@@ -49,7 +49,7 @@ RSpec.describe Music do
       let(:maps) { [] }
 
       it 'returns all types' do
-        is_expected.to contain_exactly(*Map.types)
+        expect(subject).to contain_exactly(*Map.types)
       end
     end
 
@@ -61,7 +61,7 @@ RSpec.describe Music do
       end
 
       it 'returns no types' do
-        is_expected.to contain_exactly(
+        expect(subject).to contain_exactly(
           [Map.play_style.dp, Map.difficulty.normal],
           [Map.play_style.dp, Map.difficulty.hyper],
           [Map.play_style.dp, Map.difficulty.another],
@@ -77,7 +77,7 @@ RSpec.describe Music do
       end
 
       it 'returns no types' do
-        is_expected.to be_empty
+        expect(subject).to be_empty
       end
     end
   end

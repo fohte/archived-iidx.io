@@ -32,7 +32,7 @@ RSpec.describe HttpTokenAuthenticatable, type: :controller do
           context 'when the user is already exists' do
             it 'returns user' do
               user = create(:user, firebase_uid: firebase_uid)
-              is_expected.to eq user
+              expect(subject).to eq user
             end
           end
 

@@ -19,7 +19,7 @@ RSpec.describe Textage::Loader do
 
     context 'with no caches' do
       it 'returns the response body' do
-        is_expected.to eq 'test response'
+        expect(subject).to eq 'test response'
       end
 
       it 'sleeps 5 seconds' do
@@ -38,7 +38,7 @@ RSpec.describe Textage::Loader do
       end
 
       it 'returns the response body from cache' do
-        is_expected.to eq 'test response'
+        expect(subject).to eq 'test response'
       end
 
       it 'dose not sleep' do

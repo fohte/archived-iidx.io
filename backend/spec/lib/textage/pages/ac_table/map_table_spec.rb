@@ -43,7 +43,7 @@ RSpec.describe Textage::Pages::ACTable::MapTable do
     end
 
     it do
-      is_expected.to have_attributes(
+      expect(subject).to have_attributes(
         release_status: described_class.release_status.ac,
         sp_old_beginner: have_attributes(level: 0, meta_bit: 0, sub_data: ''),
         sp_beginner: have_attributes(level: 3, meta_bit: 1, sub_data: ''),

@@ -16,7 +16,7 @@ RSpec.describe Textage::Pages::TitleTable do
       end
 
       it 'returns musics' do
-        is_expected.to match(
+        expect(subject).to match(
           _mei: have_attributes(
             version: 12,
             genre: 'HUMAN SEQUENCER',
@@ -36,7 +36,7 @@ RSpec.describe Textage::Pages::TitleTable do
       end
 
       it 'dose not return musics' do
-        is_expected.to be_empty
+        expect(subject).to be_empty
       end
     end
 
@@ -48,7 +48,7 @@ RSpec.describe Textage::Pages::TitleTable do
       end
 
       it 'dose not return musics' do
-        is_expected.to be_empty
+        expect(subject).to be_empty
       end
     end
 
@@ -60,7 +60,7 @@ RSpec.describe Textage::Pages::TitleTable do
       end
 
       it 'returns musics' do
-        is_expected.to match(
+        expect(subject).to match(
           usualday: have_attributes(
             version: 25,
             genre: 'DANCE POP',
@@ -80,7 +80,7 @@ RSpec.describe Textage::Pages::TitleTable do
       end
 
       it 'returns musics' do
-        is_expected.to match(
+        expect(subject).to match(
           usualday: have_attributes(
             version: 25,
             genre: 'DANCE POP',
@@ -100,7 +100,7 @@ RSpec.describe Textage::Pages::TitleTable do
       end
 
       it 'returns musics' do
-        is_expected.to match(
+        expect(subject).to match(
           usualday: have_attributes(
             version: 25,
             genre: 'DANCE POP',
