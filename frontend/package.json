@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0-rc.3",
+    "@babel/preset-env": "^7.0.0",
     "@types/enzyme": "^3.1.13",
     "@types/jest": "^23.3.1",
     "@types/react-test-renderer": "^16.0.2",
