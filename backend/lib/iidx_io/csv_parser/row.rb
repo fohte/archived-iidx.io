@@ -99,8 +99,14 @@ module IIDXIO
             great: raw_hash[:"#{difficulty}_great"].to_i,
             miss_count: raw_hash[:"#{difficulty}_miss_count"].to_i,
             clear_lamp: raw_hash[:"#{difficulty}_clear_lamp"],
-            dj_level: raw_hash[:"#{difficulty}_dj_level"],
+            dj_level: convert_nil_value(raw_hash[:"#{difficulty}_dj_level"]),
           )
+        end
+
+        # @param v [String]
+        # @return [String, nil]
+        def convert_nil_value(value)
+          value == '---' ? nil : value
         end
       end
     end
