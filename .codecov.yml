@@ -3,3 +3,9 @@ coverage:
     project:
       default:
         target: 50% # TODO
+      backend:
+        target: 0% # TODO
+        paths: 'backend/'
+      frontend:
+        target: 0% # TODO
+        paths: 'frontend/'
