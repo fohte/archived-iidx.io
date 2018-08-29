@@ -78,6 +78,41 @@ RSpec.describe IIDXIOSchema do
           include_examples 'non errors'
         end
       end
+
+      describe 'user field' do
+        let(:query) do
+          <<~GRAPHQL
+            query($id: ID!) {
+              user(id: $id) {
+                id
+                uid
+                profile {
+                  id
+                  name
+                }
+              }
+            }
+          GRAPHQL
+        end
+
+        let(:user) { create(:user, :with_profile) }
+        let(:variables) { { id: user.id } }
+
+        it 'returns a user' do
+          expect(result['data']).to eq(
+            'user' => {
+              'id' => user.id.to_s,
+              'uid' => user.uid,
+              'profile' => {
+                'id' => user.profile.id.to_s,
+                'name' => user.profile.name,
+              },
+            },
+          )
+        end
+
+        include_examples 'non errors'
+      end
     end
   end
 end
