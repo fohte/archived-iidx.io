@@ -156,7 +156,7 @@ RSpec.describe IIDXIOSchema do
                 'genre' => music.genre,
                 'artist' => music.artist,
                 'textageUid' => music.textage_uid,
-                'series' => music.series,
+                'series' => music.series.value,
                 'leggendaria' => music.leggendaria,
                 'maps' => [
                   {
