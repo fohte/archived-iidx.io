@@ -12,6 +12,10 @@ module Types
       field :series, Integer, null: false
       field :leggendaria, Boolean, null: false
       field :maps, [MapType], null: false
+
+      def series
+        object.series.value
+      end
     end
   end
 end
