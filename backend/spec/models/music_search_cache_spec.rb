@@ -2,16 +2,16 @@
 
 require 'rails_helper'
 
-RSpec.describe IIDXMusic do
+RSpec.describe MusicSearchCache do
   describe '.search' do
     subject { described_class.search(**attributes) }
 
     context 'when there is a record and it belongs to music' do
-      before { iidx_music }
+      before { music_search_cache }
 
       let(:music) { create(:music) }
-      let(:iidx_music) { create(:iidx_music, **attributes, music: music) }
-      let(:attributes) { attributes_for(:iidx_music) }
+      let(:music_search_cache) { create(:music_search_cache, **attributes, music: music) }
+      let(:attributes) { attributes_for(:music_search_cache) }
 
       it 'returns the hit music model' do
         expect(subject).to eq music
@@ -19,10 +19,10 @@ RSpec.describe IIDXMusic do
     end
 
     context 'when there is a record but it dose not belong to music' do
-      before { iidx_music }
+      before { music_search_cache }
 
-      let(:iidx_music) do
-        create(:iidx_music, **attributes)
+      let(:music_search_cache) do
+        create(:music_search_cache, **attributes)
       end
 
       shared_examples 'search a music' do
@@ -32,7 +32,7 @@ RSpec.describe IIDXMusic do
 
         it 'saves a music id to the record' do
           subject
-          expect(iidx_music.reload.music).to eq music
+          expect(music_search_cache.reload.music).to eq music
         end
       end
 

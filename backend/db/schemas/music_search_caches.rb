@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-create_table :iidx_musics, force: :cascade, id: :bigint, unsigned: true, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
+create_table :music_search_caches, force: :cascade, id: :bigint, unsigned: true, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
   t.references :music, null: true, unsigned: true
 
   t.string :version, null: false

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class IIDXMusic < ApplicationRecord
+class MusicSearchCache < ApplicationRecord
   VERSION_MAP = {
     '1st&substream' => 1,
     '2nd style' => 2,
