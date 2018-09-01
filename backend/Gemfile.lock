@@ -84,7 +84,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday-http-cache (2.0.0)
       faraday (~> 0.8)
-    ffi (1.9.18)
+    ffi (1.9.25)
     firebase_id_token (2.3.0)
       httparty (~> 0.16, >= 0.16.2)
       jwt (~> 2.1, >= 2.1.0)
