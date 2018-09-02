@@ -24,11 +24,19 @@ module IIDXIO
         # @return [String]
         attr_accessor :clear_lamp
 
-        # @return [String]
+        # @return [String, nil]
         attr_accessor :dj_level
 
         def no_play?
           clear_lamp == 'NO PLAY'
+        end
+
+        def blank_score?
+          no_play? || dj_level.nil?
+        end
+
+        def present_score?
+          !blank_score?
         end
       end
     end
