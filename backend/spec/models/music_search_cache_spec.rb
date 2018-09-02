@@ -145,4 +145,22 @@ RSpec.describe MusicSearchCache do
       it { expect { subject }.to raise_error IIDXIO::UnknownVersionError }
     end
   end
+
+  describe '.find_version!' do
+    subject { described_class.find_version!(value) }
+
+    context 'when the value is an known version' do
+      let(:value) { described_class::VERSION_MAP.values.sample }
+
+      it 'returns a version' do
+        expect(subject).to eq described_class::VERSION_MAP.key(value)
+      end
+    end
+
+    context 'when the value is an unknown version' do
+      let(:value) { -1 }
+
+      it { expect { subject }.to raise_error IIDXIO::UnknownVersionError }
+    end
+  end
 end

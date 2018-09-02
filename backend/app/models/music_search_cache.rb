@@ -56,6 +56,12 @@ class MusicSearchCache < ApplicationRecord
       end
     end
 
+    def find_version!(value)
+      VERSION_MAP.key(value).tap do |k|
+        raise IIDXIO::UnknownVersionError, "#{value} is unknown version" if k.nil?
+      end
+    end
+
     private
 
     def search_music(version:, title:, genre:, artist:)
