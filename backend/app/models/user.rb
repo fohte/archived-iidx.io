@@ -46,4 +46,38 @@ class User < ApplicationRecord
       FirebaseIdToken::Signature.verify(token)
     end
   end
+
+  # @param csv [String]
+  # @param play_style [:sp, :dp]
+  def import_results_from_csv(csv, play_style)
+    table = IIDXIO::CSVParser.parse(csv)
+
+    ApplicationRecord.transaction do
+      table.rows.each do |row|
+        music = Music.identify_from_csv(row)
+
+        %i[normal hyper another].each do |difficulty|
+          map = row.public_send(difficulty)
+          next if map.no_play? || map.blank_score?
+
+          new_result = Result.new(
+            map: music.public_send(:"#{play_style}_#{difficulty}"),
+            score: map.ex_score,
+            miss_count: map.miss_count,
+            clear_lamp: Result.find_clear_lamp(map.clear_lamp),
+            grade: Result.find_grade(map.dj_level),
+            last_played_at: row.last_played_at,
+          )
+
+          old_result = Result.find_by(map: new_result.map)
+
+          next if old_result && !old_result.updated?(new_result)
+
+          results << new_result
+        end
+      end
+    end
+
+    results
+  end
 end
