@@ -77,5 +77,8 @@ RSpec/NamedSubject:
 RSpec/MultipleExpectations:
   Enabled: false
 
+RSpec/LetSetup:
+  Enabled: false
+
 Style/NumericPredicate:
   Enabled: false

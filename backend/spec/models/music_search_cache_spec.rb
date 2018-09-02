@@ -7,10 +7,8 @@ RSpec.describe MusicSearchCache do
     subject { described_class.search(**attributes) }
 
     context 'when there is a record and it belongs to music' do
-      before { music_search_cache }
-
       let(:music) { create(:music) }
-      let(:music_search_cache) { create(:music_search_cache, **attributes, music: music) }
+      let!(:music_search_cache) { create(:music_search_cache, **attributes, music: music) }
       let(:attributes) { attributes_for(:music_search_cache) }
 
       it 'returns the hit music model' do
@@ -64,9 +62,7 @@ RSpec.describe MusicSearchCache do
     end
 
     context 'when there is a record but it dose not belong to music' do
-      before { music_search_cache }
-
-      let(:music_search_cache) do
+      let!(:music_search_cache) do
         create(:music_search_cache, **attributes)
       end
 
