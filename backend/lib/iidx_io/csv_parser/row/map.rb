@@ -26,6 +26,10 @@ module IIDXIO
 
         # @return [String]
         attr_accessor :dj_level
+
+        def no_play?
+          clear_lamp == 'NO PLAY'
+        end
       end
     end
   end
