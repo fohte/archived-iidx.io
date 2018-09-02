@@ -129,4 +129,22 @@ RSpec.describe Music do
       it { is_expected.to be_falsy }
     end
   end
+
+  Map.types.each do |play_style, difficulty|
+    describe "##{play_style}_#{difficulty}" do
+      subject { music.public_send(:"#{play_style}_#{difficulty}") }
+
+      let(:music) { create(:music) }
+
+      context 'when there is a map' do
+        let!(:map) { create(:map, music: music, play_style: play_style, difficulty: difficulty) }
+
+        it { is_expected.to eq map }
+      end
+
+      context 'when there are no maps' do
+        it { is_expected.to be nil }
+      end
+    end
+  end
 end

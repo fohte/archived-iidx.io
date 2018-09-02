@@ -66,4 +66,10 @@ class Music < ApplicationRecord
   def miss_maps?
     !missing_map_types.empty?
   end
+
+  Map.types.each do |play_style, difficulty|
+    define_method(:"#{play_style}_#{difficulty}") do
+      maps.detect { |m| m.play_style == play_style && m.difficulty == difficulty }
+    end
+  end
 end
