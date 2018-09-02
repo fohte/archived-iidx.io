@@ -120,5 +120,11 @@ RSpec.describe MusicSearchCache do
         include_examples 'search a music'
       end
     end
+
+    context 'when the version is an unknown value' do
+      let(:attributes) { attributes_for(:music_search_cache, version: '__unknown__') }
+
+      it { expect { subject }.to raise_error IIDXIO::UnknownVersionError }
+    end
   end
 end
