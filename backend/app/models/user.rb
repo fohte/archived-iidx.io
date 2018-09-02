@@ -47,6 +47,19 @@ class User < ApplicationRecord
     end
   end
 
+  def latest_results
+    @latest_results ||= results.find_by_sql(<<~SQL)
+      SELECT
+        x.*
+      FROM
+        results x
+        LEFT JOIN results y ON x.map_id = y.map_id
+        AND x.last_played_at < y.last_played_at
+      WHERE
+        y.id IS NULL;
+    SQL
+  end
+
   # @param csv [String]
   # @param play_style [:sp, :dp]
   def import_results_from_csv(csv, play_style)
