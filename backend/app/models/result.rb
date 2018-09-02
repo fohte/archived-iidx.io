@@ -24,4 +24,24 @@ class Result < ApplicationRecord
     aa: 7,
     aaa: 8,
   }
+
+  CLEAR_LAMP_MAP = {
+    'FAILED' => clear_lamp.find_value(:failed),
+    'ASSIST CLEAR' => clear_lamp.find_value(:assist),
+    'EASY CLEAR' => clear_lamp.find_value(:easy),
+    'CLEAR' => clear_lamp.find_value(:normal),
+    'HARD CLEAR' => clear_lamp.find_value(:hard),
+    'EX HARD CLEAR' => clear_lamp.find_value(:ex_hard),
+    'FULLCOMBO CLEAR' => clear_lamp.find_value(:full_combo),
+  }.freeze
+
+  class << self
+    # @param str [String]
+    # @return [Enumerize::Value]
+    def find_clear_lamp(str)
+      CLEAR_LAMP_MAP.fetch(str) do
+        raise IIDXIO::UnknownClearLampError, "#{str} is unknown clear lamp"
+      end
+    end
+  end
 end

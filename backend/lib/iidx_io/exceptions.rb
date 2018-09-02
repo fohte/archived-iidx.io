@@ -5,5 +5,6 @@ module IIDXIO
   class InvalidFirebaseIdTokenError < Error; end
   class InvalidViewerError < Error; end
 
+  class UnknownClearLampError < Error; end
   class UnknownVersionError < Error; end
 end
