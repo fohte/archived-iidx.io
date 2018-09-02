@@ -19,27 +19,48 @@ RSpec.describe MusicSearchCache do
     end
 
     shared_context 'without sub titles' do
-      let(:music) { create(:music, title: 'title', sub_title: '', series: 1) }
-
-      let(:attributes) do
-        { version: '1st&substream', title: 'title', genre: music.genre, artist: music.artist }
+      let!(:music) do
+        create(
+          :music,
+          title: 'title',
+          sub_title: '',
+          genre: attributes[:genre],
+          artist: attributes[:artist],
+          series: described_class.find_version_value!(attributes[:version]),
+        )
       end
+
+      let(:attributes) { attributes_for(:music_search_cache, title: 'title') }
     end
 
     shared_context 'with a whitespace and a sub title' do
-      let(:music) { create(:music, title: 'title', sub_title: '(sub title)', series: 1) }
-
-      let(:attributes) do
-        { version: '1st&substream', title: 'title (sub title)', genre: music.genre, artist: music.artist }
+      let!(:music) do
+        create(
+          :music,
+          title: 'title',
+          sub_title: '(sub title)',
+          genre: attributes[:genre],
+          artist: attributes[:artist],
+          series: described_class.find_version_value!(attributes[:version]),
+        )
       end
+
+      let(:attributes) { attributes_for(:music_search_cache, title: 'title (sub title)') }
     end
 
     shared_context 'with no whitespaces and a sub title' do
-      let(:music) { create(:music, title: 'title', sub_title: '(sub title)', series: 1) }
-
-      let(:attributes) do
-        { version: '1st&substream', title: 'title(sub title)', genre: music.genre, artist: music.artist }
+      let!(:music) do
+        create(
+          :music,
+          title: 'title',
+          sub_title: '(sub title)',
+          genre: attributes[:genre],
+          artist: attributes[:artist],
+          series: described_class.find_version_value!(attributes[:version]),
+        )
       end
+
+      let(:attributes) { attributes_for(:music_search_cache, title: 'title(sub title)') }
     end
 
     context 'when there is a record but it dose not belong to music' do
