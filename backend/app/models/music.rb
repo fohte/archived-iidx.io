@@ -31,6 +31,17 @@ class Music < ApplicationRecord
     cannon_ballers: 25,
   }
 
+  # @param row [IIDXIO::CSVParser::Row]
+  # @return [::Music]
+  def self.identify_from_csv(row)
+    MusicSearchCache.search(
+      version: row.version,
+      title: row.title,
+      genre: row.genre,
+      artist: row.artist,
+    )
+  end
+
   def self.fetch_map_types
     {}.tap do |h|
       joins(:maps)

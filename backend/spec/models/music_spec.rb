@@ -3,6 +3,22 @@
 require 'rails_helper'
 
 RSpec.describe Music do
+  describe '.identify_from_csv' do
+    subject { described_class.identify_from_csv(row) }
+
+    let(:music) { create(:music) }
+    let(:row) do
+      IIDXIO::CSVParser::Row.new(
+        version: MusicSearchCache.find_version!(music.series.value),
+        title: "#{music.title} #{music.sub_title}",
+        genre: music.genre,
+        artist: music.artist,
+      )
+    end
+
+    it { is_expected.to eq music }
+  end
+
   describe '.fetch_map_types' do
     subject { described_class.fetch_map_types }
 
