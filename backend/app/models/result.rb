@@ -63,4 +63,11 @@ class Result < ApplicationRecord
       end
     end
   end
+
+  def updated?(result)
+    clear_lamp.value < result.clear_lamp.value ||
+      grade.value < result.grade.value ||
+      score < result.score ||
+      miss_count > result.miss_count
+  end
 end
