@@ -31,6 +31,9 @@ class MusicSearchCache < ApplicationRecord
 
   belongs_to :music, required: false
 
+  scope :known, -> { where.not(music_id: nil) }
+  scope :unknown, -> { where(music_id: nil) }
+
   class << self
     # @param attributes [] the attributes of this model
     # @return [::Music]

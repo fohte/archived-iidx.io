@@ -3,6 +3,38 @@
 require 'rails_helper'
 
 RSpec.describe MusicSearchCache do
+  describe 'scopes' do
+    describe 'known' do
+      subject { described_class.known }
+
+      let(:known_music) { create(:music_search_cache, music: build(:music)) }
+      let(:unknown_music) { create(:music_search_cache) }
+
+      it 'returns known musics' do
+        expect(subject).to include known_music
+      end
+
+      it 'dose not return unknown musics' do
+        expect(subject).not_to include unknown_music
+      end
+    end
+
+    describe 'unknown' do
+      subject { described_class.unknown }
+
+      let(:known_music) { create(:music_search_cache, music: build(:music)) }
+      let(:unknown_music) { create(:music_search_cache) }
+
+      it 'returns unknown musics' do
+        expect(subject).to include unknown_music
+      end
+
+      it 'dose not return known musics' do
+        expect(subject).not_to include known_music
+      end
+    end
+  end
+
   describe '.search' do
     subject { described_class.search(**attributes) }
 
