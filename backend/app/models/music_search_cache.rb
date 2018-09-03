@@ -36,7 +36,7 @@ class MusicSearchCache < ApplicationRecord
 
   class << self
     # @param attributes [] the attributes of this model
-    # @return [::Music]
+    # @return [::Music, nil]
     def search(version:, title:, genre:, artist:)
       attributes = { version: version, title: title, genre: genre, artist: artist }
 
@@ -46,7 +46,7 @@ class MusicSearchCache < ApplicationRecord
       model = new(**attributes) if model.nil?
 
       search_music(**attributes).tap do |music|
-        model.music = music
+        model.music = music if music.present?
         model.save!
       end
     end
@@ -71,7 +71,7 @@ class MusicSearchCache < ApplicationRecord
       ::Music
         .where('concat(title, sub_title) = ?', title)
         .or(::Music.where(%{concat(title, ' ', sub_title) = ?}, title))
-        .find_by!(
+        .find_by(
           series: find_version_value!(version),
           genre: genre,
           artist: artist,

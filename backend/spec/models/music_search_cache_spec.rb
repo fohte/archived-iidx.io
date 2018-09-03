@@ -158,6 +158,15 @@ RSpec.describe MusicSearchCache do
 
       it { expect { subject }.to raise_error IIDXIO::UnknownVersionError }
     end
+
+    context 'when there are no hit musics' do
+      let(:attributes) { attributes_for(:music_search_cache) }
+
+      it 'inserts a new record without any musics' do
+        subject
+        expect(described_class.last).to have_attributes(**attributes, music: nil)
+      end
+    end
   end
 
   describe '.find_version_value!' do
