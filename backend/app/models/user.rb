@@ -82,7 +82,7 @@ class User < ApplicationRecord
             last_played_at: row.last_played_at,
           )
 
-          old_result = Result.find_by(map: new_result.map)
+          old_result = results.find_by(map: new_result.map)
 
           next if old_result && !old_result.updated?(new_result)
 
