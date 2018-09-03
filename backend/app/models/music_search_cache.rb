@@ -78,4 +78,12 @@ class MusicSearchCache < ApplicationRecord
         )
     end
   end
+
+  def known?
+    music_id.present? || music.present?
+  end
+
+  def unknown?
+    !known?
+  end
 end

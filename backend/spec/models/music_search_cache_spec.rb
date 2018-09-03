@@ -195,4 +195,36 @@ RSpec.describe MusicSearchCache do
       it { expect { subject }.to raise_error IIDXIO::UnknownVersionError }
     end
   end
+
+  describe '#known?' do
+    subject { music.known? }
+
+    context 'when the music is associated' do
+      let(:music) { build(:music_search_cache, music: build(:music)) }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context 'when the music is not associated' do
+      let(:music) { create(:music_search_cache) }
+
+      it { is_expected.to be_falsy }
+    end
+  end
+
+  describe '#unknown?' do
+    subject { music.unknown? }
+
+    context 'when the music is associated' do
+      let(:music) { build(:music_search_cache, music: build(:music)) }
+
+      it { is_expected.to be_falsy }
+    end
+
+    context 'when the music is not associated' do
+      let(:music) { create(:music_search_cache) }
+
+      it { is_expected.to be_truthy }
+    end
+  end
 end
