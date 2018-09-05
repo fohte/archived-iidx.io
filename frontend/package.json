@@ -46,7 +46,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2",
     "babel-plugin-import": "^1.8.0",
-    "babel-plugin-styled-components": "^1.6.1",
+    "babel-plugin-styled-components": "^1.6.2",
     "codecov": "^3.0.4",
     "dotenv-webpack": "^1.5.7",
     "enzyme": "^3.5.1",
