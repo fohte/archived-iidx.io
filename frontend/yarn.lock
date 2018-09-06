@@ -1981,12 +1981,11 @@ babel-plugin-react-require@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-react-require/-/babel-plugin-react-require-3.0.0.tgz#2e4e7b4496b93a654a1c80042276de4e4eeb20e3"
 
-babel-plugin-styled-components@^1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.6.1.tgz#ab8d486813cbef956cfc71e5819a1a2c3282e144"
+babel-plugin-styled-components@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.6.3.tgz#061712eeaf7b0a908015838e9791e3788f4ed2a7"
   dependencies:
     lodash "^4.17.10"
-    semver "^5.5.1"
 
 babel-plugin-syntax-jsx@6.18.0:
   version "6.18.0"
@@ -7894,7 +7893,7 @@ schema-utils@^0.4.2:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
-semver@^5.5.0, semver@^5.5.1:
+semver@^5.5.0:
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.1.tgz#7dfdd8814bdb7cabc7be0fb1d734cfb66c940477"
 
