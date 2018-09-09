@@ -4,6 +4,6 @@ about: Let us know about a bug.
 
 ---
 
-### Current Behaviour
+### Current Behavior
 
-### Expected Behaviour
+### Expected Behavior
