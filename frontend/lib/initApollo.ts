@@ -46,7 +46,7 @@ const create = (initialState?: NormalizedCacheObject) => {
   const cache = new InMemoryCache().restore(initialState || {})
 
   const httpLink = new HttpLink({
-    uri: process.env.API_URL,
+    uri: isBrowser ? process.env.PUBLIC_API_URL : process.env.PRIVATE_API_URL,
     credentials: 'same-origin',
   })
 
