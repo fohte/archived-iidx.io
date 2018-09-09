@@ -51,7 +51,7 @@
     "dotenv-webpack": "^1.5.7",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
-    "firebase-mock": "^2.2.6",
+    "firebase-mock": "^2.2.7",
     "graphql-code-generator": "^0.10.7",
     "graphql-codegen-typescript-react-apollo-template": "^0.10.7",
     "jest": "^23.5.0",
