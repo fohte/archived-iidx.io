@@ -65,7 +65,10 @@ services:
       - .:/app
       - node_modules:/app/frontend/node_modules
     environment:
-      API_URL: http://localhost:5000/graphql
+      PRIVATE_API_URL: http://rails:3000/graphql
+      PUBLIC_API_URL: http://localhost:5000/graphql
+    depends_on:
+      - rails
     ports:
       - '3000:3000'
   gql_gen:
