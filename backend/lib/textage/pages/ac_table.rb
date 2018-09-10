@@ -14,8 +14,10 @@ module Textage
           @js.fetch_variable!(:actbl).each do |key, value|
             key = key.to_sym
             next if Textage.ignore_key?(key)
+
             map_table = MapTable.from_raw_array(value)
             next unless map_table.release_status&.ac?
+
             hash[key] = map_table
           end
         end

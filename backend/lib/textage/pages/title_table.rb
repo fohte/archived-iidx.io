@@ -13,8 +13,10 @@ module Textage
         @musics ||= {}.tap do |hash|
           @js.fetch_variable!(:titletbl).each do |key, arr|
             next if Textage.ignore_key?(key)
+
             music = TitleTable::Music.from_raw_array(arr)
             next unless music.in_ac?
+
             hash[key.to_sym] = music
           end
         end
