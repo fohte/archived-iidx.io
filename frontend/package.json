@@ -17,7 +17,7 @@
     "@types/next": "^6.1.4",
     "@types/react": "^16.4.13",
     "@types/react-dom": "^16.0.7",
-    "@types/recompose": "^0.26.4",
+    "@types/recompose": "^0.26.5",
     "@zeit/next-css": "^0.2.0",
     "@zeit/next-typescript": "^1.1.0",
     "antd": "^3.9.2",
