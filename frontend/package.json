@@ -27,7 +27,7 @@
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
     "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.11",
     "next": "^6.1.2",
     "react": "^16.5.0",
     "react-apollo": "^2.1.11",
