@@ -6,9 +6,7 @@ module HttpTokenAuthenticatable
 
   def current_viewer
     authenticate_with_http_token do |token, _|
-      User.find_by!(firebase_uid: User.find_firebase_uid_from_token!(token))
-    rescue ActiveRecord::RecordNotFound => e
-      raise IIDXIO::InvalidViewerError, e.message
+      User.find_by(firebase_uid: User.find_firebase_uid_from_token!(token))
     end
   end
 end
