@@ -1,7 +1,8 @@
 import { Button, Form, Icon, Input } from 'antd'
 import { FormComponentProps } from 'antd/lib/form'
 import * as React from 'react'
-import styled from 'styled-components'
+
+import InputIcon from '@app/components/atoms/InputIcon'
 
 export interface ExternalProps {
   submitRequest?: (values: FormValues) => void
@@ -86,10 +87,6 @@ class LoginForm extends React.Component<Props, State> {
     )
   }
 }
-
-const InputIcon = styled(Icon)`
-  color: rgba(0, 0, 0, 0.25);
-`
 
 const WrappedNormalLoginForm = Form.create<ExternalProps>()(LoginForm)
 
