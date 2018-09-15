@@ -37,9 +37,7 @@ RSpec.describe HttpTokenAuthenticatable, type: :controller do
           end
 
           context 'when the user dose not exist' do
-            it do
-              expect { current_viewer }.to raise_error IIDXIO::InvalidViewerError
-            end
+            it { is_expected.to be nil }
           end
         end
 
