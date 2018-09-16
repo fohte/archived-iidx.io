@@ -8,6 +8,16 @@ class User < ApplicationRecord
   validates :firebase_uid, presence: true, uniqueness: true
 
   class << self
+    def signup(firebase_uid:, uid:, username:)
+      transaction do
+        create!(
+          firebase_uid: firebase_uid,
+          uid: uid,
+          profile: UserProfile.new(name: username),
+        )
+      end
+    end
+
     def find_or_create_by_token!(token, &block)
       firebase_uid = find_firebase_uid_from_token!(token)
       find_or_create_by!(firebase_uid: firebase_uid, &block)
