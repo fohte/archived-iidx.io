@@ -177,5 +177,56 @@ RSpec.describe IIDXIOSchema do
         include_examples 'non errors'
       end
     end
+
+    describe 'mutations' do
+      describe 'createUser' do
+        let(:query) do
+          <<~GRAPHQL
+            mutation($firebaseUid: String!, $uid: String!, $username: String!) {
+              createUser(firebaseUid: $firebaseUid, uid: $uid, username: $username) {
+                user {
+                  uid
+                  profile {
+                    name
+                  }
+                }
+              }
+            }
+          GRAPHQL
+        end
+
+        let(:variables) { { firebaseUid: firebase_uid, uid: uid, username: username } }
+
+        let(:user_attributes) { attributes_for(:user) }
+        let(:user_profile_attributes) { attributes_for(:user_profile) }
+
+        let(:firebase_uid) { user_attributes[:firebase_uid] }
+        let(:uid) { user_attributes[:uid] }
+        let(:username) { user_profile_attributes[:name] }
+
+        it 'creates a user' do
+          result
+          expect(User).to be_exists(firebase_uid: firebase_uid, uid: uid)
+        end
+
+        it 'creates a user profile' do
+          result
+          expect(UserProfile).to be_exists(name: username)
+        end
+
+        it 'returns a user' do
+          expect(result['data']['createUser']).to eq(
+            'user' => {
+              'uid' => uid,
+              'profile' => {
+                'name' => username,
+              },
+            },
+          )
+        end
+
+        include_examples 'non errors'
+      end
+    end
   end
 end

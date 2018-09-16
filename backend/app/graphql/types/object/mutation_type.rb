@@ -6,6 +6,8 @@ module Types
       def self.accessible?(context)
         context.viewer
       end
+
+      field :create_user, mutation: Mutations::CreateUser
     end
   end
 end
