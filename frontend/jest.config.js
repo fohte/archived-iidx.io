@@ -15,10 +15,10 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   moduleNameMapper: { '@app/(.*)': '<rootDir>/$1' },
   setupFiles: ['<rootDir>/jest.setup.ts'],
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/../node_modules/'],
   testRegex: TEST_REGEX,
   transform: {
-    '^.+\\.jsx?$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.jsx?$': '<rootDir>/../node_modules/babel-jest',
     '^.+\\.tsx?$': 'ts-jest',
   },
 }
