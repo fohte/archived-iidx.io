@@ -50,7 +50,6 @@ export interface UserQueryArgs {
   id: string
 }
 export interface CreateUserMutationArgs {
-  firebaseUid: string
   username: string
   displayName?: string | null
 }

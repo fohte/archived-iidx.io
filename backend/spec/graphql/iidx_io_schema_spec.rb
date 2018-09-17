@@ -182,8 +182,8 @@ RSpec.describe IIDXIOSchema do
       describe 'createUser' do
         let(:query) do
           <<~GRAPHQL
-            mutation($firebaseUid: String!, $username: String!, $displayName: String) {
-              createUser(firebaseUid: $firebaseUid, username: $username, displayName: $displayName) {
+            mutation($username: String!, $displayName: String) {
+              createUser(username: $username, displayName: $displayName) {
                 user {
                   name
                   profile {
@@ -195,31 +195,27 @@ RSpec.describe IIDXIOSchema do
           GRAPHQL
         end
 
-        let(:variables) { { firebaseUid: firebase_uid, username: username, displayName: display_name } }
+        let(:variables) { { username: viewer.name, displayName: viewer.profile.display_name } }
 
-        let(:user_attributes) { attributes_for(:user) }
-        let(:user_profile_attributes) { attributes_for(:user_profile) }
-
-        let(:firebase_uid) { user_attributes[:firebase_uid] }
-        let(:username) { user_attributes[:name] }
-        let(:display_name) { user_profile_attributes[:display_name] }
+        let(:viewer) { build(:user, :with_profile) }
+        let(:contexts) { { viewer: viewer, firebase_uid: viewer.firebase_uid } }
 
         it 'creates a user' do
           result
-          expect(User).to be_exists(firebase_uid: firebase_uid, name: username)
+          expect(User).to be_exists(firebase_uid: viewer.firebase_uid, name: viewer.name)
         end
 
         it 'creates a user profile' do
           result
-          expect(UserProfile).to be_exists(display_name: display_name)
+          expect(UserProfile).to be_exists(display_name: viewer.profile.display_name)
         end
 
         it 'returns a user' do
           expect(result['data']['createUser']).to eq(
             'user' => {
-              'name' => username,
+              'name' => viewer.name,
               'profile' => {
-                'displayName' => display_name,
+                'displayName' => viewer.profile.display_name,
               },
             },
           )
@@ -228,11 +224,11 @@ RSpec.describe IIDXIOSchema do
         include_examples 'non errors'
 
         context 'without the displayName variable' do
-          let(:variables) { { firebaseUid: firebase_uid, username: username } }
+          let(:variables) { { username: viewer.name } }
 
           it 'creates a user profile' do
             result
-            expect(UserProfile).to be_exists(display_name: username)
+            expect(UserProfile).to be_exists(display_name: viewer.name)
           end
         end
       end

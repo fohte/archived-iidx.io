@@ -2,16 +2,17 @@
 
 module Mutations
   class CreateUser < BaseMutation
-    argument :firebase_uid, String, required: true
+    include Authenticatable
+
     argument :username, String, required: true
     argument :display_name, String, required: false
 
     field :user, Types::Object::UserType, null: false
 
-    def resolve(firebase_uid:, username:, display_name: nil)
+    def resolve(username:, display_name: nil)
       {
         user: ::User.signup(
-          firebase_uid: firebase_uid,
+          firebase_uid: context.firebase_uid,
           username: username,
           display_name: display_name || username,
         ),
