@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { setDisplayName, wrapDisplayName } from 'recompose'
 import { Diff } from 'utility-types'
 

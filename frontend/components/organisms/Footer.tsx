@@ -1,4 +1,5 @@
 import { Icon } from 'antd'
+import * as React from 'react'
 
 const originalCopyrightYear = 2018
 

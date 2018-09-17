@@ -1,4 +1,5 @@
 import { auth } from '@app/lib/firebaseApp'
+import * as React from 'react'
 
 export interface Props {
   displayName: string
