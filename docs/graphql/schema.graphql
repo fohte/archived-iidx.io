@@ -37,7 +37,7 @@ type Music {
 }
 
 type Mutation {
-  createUser(firebaseUid: String!, uid: String!, username: String!): CreateUserPayload
+  createUser(displayName: String!, firebaseUid: String!, username: String!): CreateUserPayload
 }
 
 enum PlayStyle {
@@ -61,11 +61,11 @@ type Query {
 
 type User {
   id: ID!
+  name: String!
   profile: UserProfile!
-  uid: String!
 }
 
 type UserProfile {
+  displayName: String!
   id: ID!
-  name: String!
 }

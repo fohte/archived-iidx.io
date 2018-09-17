@@ -40,10 +40,10 @@ RSpec.describe IIDXIOSchema do
             query {
               viewer {
                 id
-                uid
+                name
                 profile {
                   id
-                  name
+                  displayName
                 }
               }
             }
@@ -66,10 +66,10 @@ RSpec.describe IIDXIOSchema do
             expect(result['data']).to eq(
               'viewer' => {
                 'id' => viewer.id.to_s,
-                'uid' => viewer.uid,
+                'name' => viewer.name,
                 'profile' => {
                   'id' => viewer.profile.id.to_s,
-                  'name' => viewer.profile.name,
+                  'displayName' => viewer.profile.display_name,
                 },
               },
             )
@@ -85,10 +85,10 @@ RSpec.describe IIDXIOSchema do
             query($id: ID!) {
               user(id: $id) {
                 id
-                uid
+                name
                 profile {
                   id
-                  name
+                  displayName
                 }
               }
             }
@@ -102,10 +102,10 @@ RSpec.describe IIDXIOSchema do
           expect(result['data']).to eq(
             'user' => {
               'id' => user.id.to_s,
-              'uid' => user.uid,
+              'name' => user.name,
               'profile' => {
                 'id' => user.profile.id.to_s,
-                'name' => user.profile.name,
+                'displayName' => user.profile.display_name,
               },
             },
           )
@@ -182,12 +182,12 @@ RSpec.describe IIDXIOSchema do
       describe 'createUser' do
         let(:query) do
           <<~GRAPHQL
-            mutation($firebaseUid: String!, $uid: String!, $username: String!) {
-              createUser(firebaseUid: $firebaseUid, uid: $uid, username: $username) {
+            mutation($firebaseUid: String!, $username: String!, $displayName: String!) {
+              createUser(firebaseUid: $firebaseUid, username: $username, displayName: $displayName) {
                 user {
-                  uid
+                  name
                   profile {
-                    name
+                    displayName
                   }
                 }
               }
@@ -195,31 +195,31 @@ RSpec.describe IIDXIOSchema do
           GRAPHQL
         end
 
-        let(:variables) { { firebaseUid: firebase_uid, uid: uid, username: username } }
+        let(:variables) { { firebaseUid: firebase_uid, username: username, displayName: display_name } }
 
         let(:user_attributes) { attributes_for(:user) }
         let(:user_profile_attributes) { attributes_for(:user_profile) }
 
         let(:firebase_uid) { user_attributes[:firebase_uid] }
-        let(:uid) { user_attributes[:uid] }
-        let(:username) { user_profile_attributes[:name] }
+        let(:username) { user_attributes[:name] }
+        let(:display_name) { user_profile_attributes[:display_name] }
 
         it 'creates a user' do
           result
-          expect(User).to be_exists(firebase_uid: firebase_uid, uid: uid)
+          expect(User).to be_exists(firebase_uid: firebase_uid, name: username)
         end
 
         it 'creates a user profile' do
           result
-          expect(UserProfile).to be_exists(name: username)
+          expect(UserProfile).to be_exists(display_name: display_name)
         end
 
         it 'returns a user' do
           expect(result['data']['createUser']).to eq(
             'user' => {
-              'uid' => uid,
+              'name' => username,
               'profile' => {
-                'name' => username,
+                'displayName' => display_name,
               },
             },
           )

@@ -3,5 +3,5 @@
 class UserProfile < ApplicationRecord
   belongs_to :user
 
-  validates :name, presence: true
+  validates :display_name, presence: true
 end

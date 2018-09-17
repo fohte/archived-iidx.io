@@ -4,16 +4,16 @@ class User < ApplicationRecord
   has_one :profile, class_name: 'UserProfile', dependent: :destroy
   has_many :results, dependent: :destroy
 
-  validates :uid, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
   validates :firebase_uid, presence: true, uniqueness: true
 
   class << self
-    def signup(firebase_uid:, uid:, username:)
+    def signup(firebase_uid:, username:, display_name:)
       transaction do
         create!(
           firebase_uid: firebase_uid,
-          uid: uid,
-          profile: UserProfile.new(name: username),
+          name: username,
+          profile: UserProfile.new(display_name: display_name),
         )
       end
     end

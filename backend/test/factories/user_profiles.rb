@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :user_profile do
-    name { Faker::Name.name }
+    display_name { Faker::Name.name }
   end
 end

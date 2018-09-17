@@ -4,23 +4,23 @@ require 'rails_helper'
 
 RSpec.describe User do
   describe '.signup' do
-    subject { described_class.signup(firebase_uid: firebase_uid, uid: uid, username: username) }
+    subject { described_class.signup(firebase_uid: firebase_uid, username: username, display_name: display_name) }
 
     let(:user_attributes) { attributes_for(:user) }
     let(:user_profile_attributes) { attributes_for(:user_profile) }
 
     let(:firebase_uid) { user_attributes[:firebase_uid] }
-    let(:uid) { user_attributes[:uid] }
-    let(:username) { user_profile_attributes[:name] }
+    let(:username) { user_attributes[:name] }
+    let(:display_name) { user_profile_attributes[:display_name] }
 
     it 'creates a user' do
       expect { subject }.to change(described_class, :count).by(1)
-      expect(described_class).to be_exists(firebase_uid: firebase_uid, uid: uid)
+      expect(described_class).to be_exists(firebase_uid: firebase_uid, name: username)
     end
 
     it 'creates a user profile' do
       expect { subject }.to change(described_class, :count).by(1)
-      expect(UserProfile).to be_exists(name: username)
+      expect(UserProfile).to be_exists(display_name: display_name)
     end
 
     it 'returns a user' do

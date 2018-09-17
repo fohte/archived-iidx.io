@@ -15,7 +15,7 @@ describe('UserNav', () => {
 
   it('renders a UserMenu component', () => {
     const wrapper = shallow(
-      <UserNav loading={false} viewer={{ id: 'id', uid: 'foo' }} signedIn />,
+      <UserNav loading={false} viewer={{ id: 'id', name: 'foo' }} signedIn />,
     )
     expect(wrapper.contains(<UserMenu displayName="foo" />)).toBeTruthy()
   })

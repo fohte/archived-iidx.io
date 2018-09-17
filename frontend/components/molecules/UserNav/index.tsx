@@ -14,7 +14,7 @@ const UserNav: React.SFC<Props> = ({ loading, viewer }) => {
   }
 
   if (viewer) {
-    return <UserMenu displayName={viewer.uid} />
+    return <UserMenu displayName={viewer.name} />
   } else {
     return (
       <>

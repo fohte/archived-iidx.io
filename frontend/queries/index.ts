@@ -30,13 +30,13 @@ export interface Map {
 
 export interface User {
   id: string
+  name: string
   profile: UserProfile
-  uid: string
 }
 
 export interface UserProfile {
+  displayName: string
   id: string
-  name: string
 }
 
 export interface Mutation {}
@@ -88,7 +88,7 @@ export type GetViewerQuery = {
 export type GetViewerViewer = {
   __typename?: 'User'
   id: string
-  uid: string
+  name: string
 }
 
 import * as ReactApollo from 'react-apollo'

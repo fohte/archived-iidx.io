@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user do
-    uid { SecureRandom.base64 }
+    name { SecureRandom.base64 }
     firebase_uid { SecureRandom.base64 }
 
     trait :with_profile do
