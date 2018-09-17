@@ -4098,15 +4098,15 @@ graphql-codegen-core@0.10.7:
     graphql-tools "3.1.1"
     winston "3.0.0"
 
-graphql-codegen-typescript-react-apollo-template@^0.10.7:
-  version "0.10.7"
-  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-react-apollo-template/-/graphql-codegen-typescript-react-apollo-template-0.10.7.tgz#1582f4cc25af95142b3f125f62c5b62daf699b8b"
+graphql-codegen-typescript-react-apollo-template@^0.12.3:
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-react-apollo-template/-/graphql-codegen-typescript-react-apollo-template-0.12.3.tgz#4204ec06e9e61cd6dbef88e48aef90acc1f3b27a"
   dependencies:
-    graphql-codegen-typescript-template "0.10.7"
+    graphql-codegen-typescript-template "0.12.3"
 
-graphql-codegen-typescript-template@0.10.7:
-  version "0.10.7"
-  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-template/-/graphql-codegen-typescript-template-0.10.7.tgz#85cd56347ae04eb94af0044f3b5fdd932d849f9c"
+graphql-codegen-typescript-template@0.12.3:
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-template/-/graphql-codegen-typescript-template-0.12.3.tgz#118358b3fe4f5c1550681ac6814df33453f4e5d1"
 
 graphql-tag@2.9.2, graphql-tag@^2.4.2, graphql-tag@^2.9.2:
   version "2.9.2"
