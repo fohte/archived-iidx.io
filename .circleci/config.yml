@@ -50,21 +50,19 @@ jobs:
   build_frontend:
     docker:
       - image: circleci/node:8.11.3
-    working_directory: ~/repo/frontend
     steps:
-      - checkout:
-          path: ~/repo
+      - checkout
       - restore_cache:
           keys:
-            - '{{ .Environment.CACHE_VERSION }}-frontend-yarn-{{ checksum "yarn.lock" }}'
-            - '{{ .Environment.CACHE_VERSION }}-frontend-yarn-'
+            - '{{ .Environment.CACHE_VERSION }}-yarn-{{ checksum "yarn.lock" }}'
+            - '{{ .Environment.CACHE_VERSION }}-yarn-'
       - run:
           name: install dependencies
           command: yarn install --frozen-lockfile
       - save_cache:
           paths:
             - node_modules
-          key: '{{ .Environment.CACHE_VERSION }}-frontend-yarn-{{ checksum "yarn.lock" }}'
+          key: '{{ .Environment.CACHE_VERSION }}-yarn-{{ checksum "yarn.lock" }}'
       - run:
           name: setup .env
           command: cp ~/repo/.env{.sample,}
@@ -72,16 +70,16 @@ jobs:
           name: check diff of generated files
           command: |
             dir="$(mktemp -d)"
-            yarn run gql:gen --out "$dir/index.ts"
-            diff -uN queries/index.ts "$dir/index.ts"
+            yarn workspace frontend run gql:gen --out "$dir/index.ts"
+            diff -uN frontend/queries/index.ts "$dir/index.ts"
       - run:
           name: run linters
-          command: yarn run lint:ts
+          command: yarn workspace frontend run lint:ts
       - run:
           name: run tests
           command: |
-            yarn run test
-            yarn run codecov --root=~/repo
+            yarn workspace frontend run test
+            yarn workspace frontend run codecov --root=~/repo
 
   prettier:
     docker:
