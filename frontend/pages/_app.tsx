@@ -1,4 +1,5 @@
 import App, { AppComponentContext, Container } from 'next/app'
+import * as React from 'react'
 import { ApolloProvider } from 'react-apollo'
 
 import AuthStateProvider from '@app/contexts/AuthStateProvider'
