@@ -1,6 +1,9 @@
 {
   "name": "iidx.io",
   "private": true,
+  "workspaces": [
+    "frontend"
+  ],
   "scripts": {
     "lint:all": "yarn run format",
     "lint:backend": "cd backend && bundle exec rubocop",

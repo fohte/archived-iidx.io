@@ -1,6 +1,7 @@
 {
   "name": "iidx.io",
   "private": true,
+  "version": "0.0.0",
   "scripts": {
     "dev": "next",
     "build": "next build",
