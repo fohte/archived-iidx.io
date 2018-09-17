@@ -65,7 +65,7 @@ jobs:
           key: '{{ .Environment.CACHE_VERSION }}-yarn-{{ checksum "yarn.lock" }}'
       - run:
           name: setup .env
-          command: cp ~/repo/.env{.sample,}
+          command: cp .env{.sample,}
       - run:
           name: check diff of generated files
           command: |
@@ -79,7 +79,7 @@ jobs:
           name: run tests
           command: |
             yarn workspace frontend run test
-            yarn workspace frontend run codecov --root=~/repo
+            yarn workspace frontend run codecov --root="$(pwd)"
 
   prettier:
     docker:
