@@ -182,7 +182,7 @@ RSpec.describe IIDXIOSchema do
       describe 'createUser' do
         let(:query) do
           <<~GRAPHQL
-            mutation($firebaseUid: String!, $username: String!, $displayName: String!) {
+            mutation($firebaseUid: String!, $username: String!, $displayName: String) {
               createUser(firebaseUid: $firebaseUid, username: $username, displayName: $displayName) {
                 user {
                   name
@@ -226,6 +226,15 @@ RSpec.describe IIDXIOSchema do
         end
 
         include_examples 'non errors'
+
+        context 'without the displayName variable' do
+          let(:variables) { { firebaseUid: firebase_uid, username: username } }
+
+          it 'creates a user profile' do
+            result
+            expect(UserProfile).to be_exists(display_name: username)
+          end
+        end
       end
     end
   end
