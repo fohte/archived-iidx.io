@@ -4,7 +4,7 @@
   "scripts": {
     "lint:all": "yarn run format",
     "lint:backend": "cd backend && bundle exec rubocop",
-    "format": "prettier -l '**/*.{js{,x},ts{,x},json,graphql}' '**/.babelrc' '!docs/graphql/*' --ignore-path .gitignore",
+    "format": "prettier -l '**/*.{js{,x},ts{,x},json,graphql,y{,a}ml}' '**/.babelrc' '!docs/graphql/*' --ignore-path .gitignore",
     "format:fix": "yarn run format --write"
   },
   "husky": {
@@ -18,7 +18,7 @@
         "cd backend && bundle exec rubocop --force-exclusion -a",
         "git add"
       ],
-      "**/*.{js{,x},ts{,x},json,graphql}": [
+      "**/*.{js{,x},ts{,x},json,graphql,y{,a}ml}": [
         "prettier --write",
         "git add"
       ],
