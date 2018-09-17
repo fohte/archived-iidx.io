@@ -78,7 +78,7 @@ services:
     stdin_open: false
     ports: []
 volumes:
-  db_data:
-  bundle:
-  node_modules:
-  spring:
+  ? db_data
+  ? bundle
+  ? node_modules
+  ? spring
