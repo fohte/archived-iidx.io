@@ -3077,6 +3077,10 @@ depd@~1.1.1, depd@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
 
+dependency-graph@0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/dependency-graph/-/dependency-graph-0.7.2.tgz#91db9de6eb72699209d88aea4c1fd5221cac1c49"
+
 deprecated-decorator@^0.1.6:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/deprecated-decorator/-/deprecated-decorator-0.1.6.tgz#00966317b7a12fe92f3cc831f7583af329b86c37"
@@ -4098,15 +4102,16 @@ graphql-codegen-core@0.10.7:
     graphql-tools "3.1.1"
     winston "3.0.0"
 
-graphql-codegen-typescript-react-apollo-template@^0.10.7:
-  version "0.10.7"
-  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-react-apollo-template/-/graphql-codegen-typescript-react-apollo-template-0.10.7.tgz#1582f4cc25af95142b3f125f62c5b62daf699b8b"
+graphql-codegen-typescript-react-apollo-template@^0.12.5:
+  version "0.12.5"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-react-apollo-template/-/graphql-codegen-typescript-react-apollo-template-0.12.5.tgz#873e7dd7c8cbbf957cd3e93416e286b32dd48f2f"
   dependencies:
-    graphql-codegen-typescript-template "0.10.7"
+    dependency-graph "0.7.2"
+    graphql-codegen-typescript-template "0.12.5"
 
-graphql-codegen-typescript-template@0.10.7:
-  version "0.10.7"
-  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-template/-/graphql-codegen-typescript-template-0.10.7.tgz#85cd56347ae04eb94af0044f3b5fdd932d849f9c"
+graphql-codegen-typescript-template@0.12.5:
+  version "0.12.5"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-template/-/graphql-codegen-typescript-template-0.12.5.tgz#c6d635f858bfffb9650a6961a29343d8510fa339"
 
 graphql-tag@2.9.2, graphql-tag@^2.4.2, graphql-tag@^2.9.2:
   version "2.9.2"
@@ -7862,12 +7867,6 @@ sane@^2.0.0:
 sax@^1.2.4, sax@~1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
-
-schedule@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/schedule/-/schedule-0.4.0.tgz#fa20cfd0bfbf91c47d02272fd7096780d3170bbb"
-  dependencies:
-    object-assign "^4.1.1"
 
 schedule@^0.5.0:
   version "0.5.0"
