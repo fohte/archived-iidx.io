@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :user_profile do
-    display_name { Faker::Name.name }
+    display_name { Faker::String.random(40) }
   end
 end
