@@ -21,7 +21,6 @@ export interface State {
 }
 
 export interface FormValues {
-  username: string
   email: string
   password: string
 }
@@ -37,11 +36,6 @@ const SignUpForm: React.SFC<Props> = ({
       {getFieldDecorator('email', {
         rules: [{ required: true, message: 'Please input your email.' }],
       })(<Input prefix={<InputIcon type="mail" />} placeholder="Email" />)}
-    </Form.Item>
-    <Form.Item>
-      {getFieldDecorator('username', {
-        rules: [{ required: true, message: 'Please input your username.' }],
-      })(<Input prefix={<InputIcon type="user" />} placeholder="Username" />)}
     </Form.Item>
     <Form.Item>
       {getFieldDecorator('password', {
