@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  NAME_FORMAT = /\A[a-zA-Z_][a-zA-Z0-9_]+\z/
+
   has_one :profile, class_name: 'UserProfile', dependent: :destroy
   has_many :results, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true
+  validates :name,
+            presence: true,
+            length: { maximum: 20 },
+            uniqueness: { case_sensitive: false },
+            format: { with: NAME_FORMAT }
   validates :firebase_uid, presence: true, uniqueness: true
 
   class << self

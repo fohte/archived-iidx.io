@@ -3,6 +3,82 @@
 require 'rails_helper'
 
 RSpec.describe User do
+  describe 'validations' do
+    describe 'name' do
+      subject { build(:user, name: name) }
+
+      context 'with an empty string' do
+        let(:name) { '' }
+
+        it { is_expected.not_to be_valid }
+      end
+
+      context 'when name contains 20 characters' do
+        let(:name) { 'a' * 20 }
+
+        it { is_expected.to be_valid }
+      end
+
+      context 'when name contains more than 20 characters' do
+        let(:name) { 'a' * 21 }
+
+        it { is_expected.not_to be_valid }
+      end
+
+      context 'with valid characters' do
+        let(:name) { 'a_z_A_Z_0_9' }
+
+        it { is_expected.to be_valid }
+      end
+
+      context 'with invalid characters' do
+        let(:name) { '!?' }
+
+        it { is_expected.not_to be_valid }
+      end
+
+      context 'when name starts with a number' do
+        let(:name) { '0foo' }
+
+        it { is_expected.not_to be_valid }
+      end
+
+      context 'when name ends with a number' do
+        let(:name) { 'foo0' }
+
+        it { is_expected.to be_valid }
+      end
+
+      context 'when name starts with an underscore' do
+        let(:name) { '_foo' }
+
+        it { is_expected.to be_valid }
+      end
+
+      context 'when name ends with an underscore' do
+        let(:name) { 'foo_' }
+
+        it { is_expected.to be_valid }
+      end
+
+      context 'when name is not unique' do
+        let(:name) { 'foo' }
+
+        before { create(:user, name: name) }
+
+        it { is_expected.not_to be_valid }
+      end
+
+      context 'when name is not unique if case-insensitive' do
+        let(:name) { 'foo' }
+
+        before { create(:user, name: 'Foo') }
+
+        it { is_expected.not_to be_valid }
+      end
+    end
+  end
+
   describe '.signup' do
     subject { described_class.signup(firebase_uid: firebase_uid, username: username, display_name: display_name) }
 
