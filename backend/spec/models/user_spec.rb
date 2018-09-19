@@ -13,6 +13,12 @@ RSpec.describe User do
         it { is_expected.not_to be_valid }
       end
 
+      context 'with a character' do
+        let(:name) { 'a' }
+
+        it { is_expected.to be_valid }
+      end
+
       context 'when name contains 20 characters' do
         let(:name) { 'a' * 20 }
 
