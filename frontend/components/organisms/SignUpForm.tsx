@@ -56,7 +56,7 @@ const SignUpForm: React.SFC<Props> = ({
     </Form.Item>
     <Form.Item>
       <Button type="primary" htmlType="submit">
-        {submitting ? <Icon type="loading" /> : 'Log in'}
+        {submitting ? <Icon type="loading" /> : 'Sign up'}
       </Button>
       {errorMessage}
     </Form.Item>
