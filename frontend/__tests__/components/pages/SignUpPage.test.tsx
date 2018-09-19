@@ -24,11 +24,7 @@ describe('SignUpPage', () => {
   it('create a user on firebase auth', () => {
     const wrapper = mount(<SignUpPage />)
 
-    inputFields(wrapper, {
-      username: 'user',
-      email: 'email',
-      password: 'password',
-    })
+    inputFields(wrapper, { email: 'email', password: 'password' })
     submit(wrapper)
 
     expect(auth.createUserWithEmailAndPassword).toHaveBeenCalledWith(
