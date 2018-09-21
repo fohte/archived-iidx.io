@@ -6,8 +6,8 @@ module.exports = {
   coverageDirectory: './coverage/',
   globals: {
     'ts-jest': {
-      tsConfig: '<rootDir>/tsconfig.jest.json',
       babelConfig: true,
+      tsConfig: '<rootDir>/tsconfig.jest.json',
     },
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
