@@ -38,7 +38,7 @@
     "utility-types": "^2.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.0",
+    "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@types/enzyme": "^3.1.14",
     "@types/jest": "^23.3.2",
