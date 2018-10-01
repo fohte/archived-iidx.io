@@ -20,7 +20,7 @@
     "@types/recompose": "^0.26.5",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
-    "antd": "^3.9.3",
+    "antd": "^3.10.0",
     "apollo-boost": "^0.1.16",
     "apollo-link-context": "^1.0.9",
     "firebase": "^5.5.2",
