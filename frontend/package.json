@@ -49,7 +49,7 @@
     "babel-plugin-styled-components": "^1.8.0",
     "codecov": "^3.1.0",
     "dotenv-webpack": "^1.5.7",
-    "enzyme": "^3.6.0",
+    "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "firebase-mock": "^2.2.10",
     "graphql-code-generator": "^0.10.7",
