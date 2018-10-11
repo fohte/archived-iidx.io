@@ -1,6 +1,10 @@
 import { NormalizedCacheObject } from 'apollo-cache-inmemory'
 import { ApolloClient } from 'apollo-client'
-import App, { AppComponentContext, AppComponentProps } from 'next/app'
+import App, {
+  AppComponentContext,
+  AppComponentProps,
+  DefaultAppIProps,
+} from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 import { getDataFromTree } from 'react-apollo'
@@ -10,7 +14,9 @@ import isBrowser from '@app/lib/isBrowser'
 
 export type AppApolloClient = ApolloClient<NormalizedCacheObject>
 
-export interface Props extends AppComponentProps {
+type AppProps = DefaultAppIProps & AppComponentProps
+
+export interface Props extends AppProps {
   serverState: {
     apollo: {
       data: NormalizedCacheObject
@@ -48,7 +54,7 @@ export default (ComposedApp: typeof TComposedApp) =>
           // Run all GraphQL queries
           await getDataFromTree(
             <ComposedApp
-              {...appProps as AppComponentProps}
+              {...appProps as AppProps}
               Component={Component}
               router={router}
               apolloClient={apollo}
