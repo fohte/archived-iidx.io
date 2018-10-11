@@ -85,8 +85,8 @@ RSpec.describe User do
     end
   end
 
-  describe '.signup' do
-    subject { described_class.signup(firebase_uid: firebase_uid, username: username, display_name: display_name) }
+  describe '.register' do
+    subject { described_class.register(firebase_uid: firebase_uid, username: username, display_name: display_name) }
 
     let(:user_attributes) { attributes_for(:user) }
     let(:user_profile_attributes) { attributes_for(:user_profile) }

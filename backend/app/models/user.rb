@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :firebase_uid, presence: true, uniqueness: true
 
   class << self
-    def signup(firebase_uid:, username:, display_name:)
+    def register(firebase_uid:, username:, display_name:)
       transaction do
         create!(
           firebase_uid: firebase_uid,

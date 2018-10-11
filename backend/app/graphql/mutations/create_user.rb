@@ -11,7 +11,7 @@ module Mutations
 
     def resolve(username:, display_name: nil)
       {
-        user: ::User.signup(
+        user: ::User.register(
           firebase_uid: context.firebase_uid,
           username: username,
           display_name: display_name || username,
