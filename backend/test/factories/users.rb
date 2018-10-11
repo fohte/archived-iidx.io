@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user do
-    name { [[*'a'..'z', *'A'..'Z', '_'].sample, *['a'..'z', *'A'..'Z', *'0'..'9', '_'].sample(9)].join }
+    name { [[*'a'..'z', *'A'..'Z', '_'].sample, *[*'a'..'z', *'A'..'Z', *'0'..'9', '_'].sample(9)].join }
     firebase_uid { SecureRandom.base64 }
 
     trait :with_profile do
