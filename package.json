@@ -14,20 +14,12 @@
   },
   "lint-staged": {
     "linters": {
-      "backend/**/*": [
-        "cd backend && bundle exec rubocop --force-exclusion -a",
-        "git add"
-      ],
       "**/*.{js{,x},ts{,x},json,graphql,y{,a}ml}": [
         "prettier --write",
         "git add"
       ],
       "**/.babelrc": [
         "prettier --write",
-        "git add"
-      ],
-      "frontend/**/*.{js{,x},ts{,x}}": [
-        "cd frontend && yarn run lint:ts --fix",
         "git add"
       ]
     },
