@@ -101,6 +101,32 @@ export type GetViewerViewer = {
   name: string
 }
 
+export type RegisterVariables = {
+  username: string
+  displayName?: string | null
+}
+
+export type RegisterMutation = {
+  __typename?: 'Mutation'
+  createUser?: RegisterCreateUser | null
+}
+
+export type RegisterCreateUser = {
+  __typename?: 'CreateUserPayload'
+  user: RegisterUser
+}
+
+export type RegisterUser = {
+  __typename?: 'User'
+  name: string
+  profile: RegisterProfile
+}
+
+export type RegisterProfile = {
+  __typename?: 'UserProfile'
+  displayName: string
+}
+
 import * as ReactApollo from 'react-apollo'
 
 export class GetMusicsWithMapsComponent extends ReactApollo.Query<
@@ -110,4 +136,8 @@ export class GetMusicsWithMapsComponent extends ReactApollo.Query<
 export class GetViewerComponent extends ReactApollo.Query<
   Query,
   GetViewerVariables
+> {}
+export class RegisterComponent extends ReactApollo.Mutation<
+  Mutation,
+  RegisterVariables
 > {}
