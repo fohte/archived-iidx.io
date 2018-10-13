@@ -40,10 +40,10 @@ RSpec.describe IIDXIOSchema do
             query {
               viewer {
                 id
-                uid
+                name
                 profile {
                   id
-                  name
+                  displayName
                 }
               }
             }
@@ -66,10 +66,10 @@ RSpec.describe IIDXIOSchema do
             expect(result['data']).to eq(
               'viewer' => {
                 'id' => viewer.id.to_s,
-                'uid' => viewer.uid,
+                'name' => viewer.name,
                 'profile' => {
                   'id' => viewer.profile.id.to_s,
-                  'name' => viewer.profile.name,
+                  'displayName' => viewer.profile.display_name,
                 },
               },
             )
@@ -85,10 +85,10 @@ RSpec.describe IIDXIOSchema do
             query($id: ID!) {
               user(id: $id) {
                 id
-                uid
+                name
                 profile {
                   id
-                  name
+                  displayName
                 }
               }
             }
@@ -102,10 +102,10 @@ RSpec.describe IIDXIOSchema do
           expect(result['data']).to eq(
             'user' => {
               'id' => user.id.to_s,
-              'uid' => user.uid,
+              'name' => user.name,
               'profile' => {
                 'id' => user.profile.id.to_s,
-                'name' => user.profile.name,
+                'displayName' => user.profile.display_name,
               },
             },
           )
@@ -175,6 +175,62 @@ RSpec.describe IIDXIOSchema do
         end
 
         include_examples 'non errors'
+      end
+    end
+
+    describe 'mutations' do
+      describe 'createUser' do
+        let(:query) do
+          <<~GRAPHQL
+            mutation($username: String!, $displayName: String) {
+              createUser(username: $username, displayName: $displayName) {
+                user {
+                  name
+                  profile {
+                    displayName
+                  }
+                }
+              }
+            }
+          GRAPHQL
+        end
+
+        let(:variables) { { username: viewer.name, displayName: viewer.profile.display_name } }
+
+        let(:viewer) { build(:user, :with_profile) }
+        let(:contexts) { { viewer: viewer, firebase_uid: viewer.firebase_uid } }
+
+        it 'creates a user' do
+          result
+          expect(User).to be_exists(firebase_uid: viewer.firebase_uid, name: viewer.name)
+        end
+
+        it 'creates a user profile' do
+          result
+          expect(UserProfile).to be_exists(display_name: viewer.profile.display_name)
+        end
+
+        it 'returns a user' do
+          expect(result['data']['createUser']).to eq(
+            'user' => {
+              'name' => viewer.name,
+              'profile' => {
+                'displayName' => viewer.profile.display_name,
+              },
+            },
+          )
+        end
+
+        include_examples 'non errors'
+
+        context 'without the displayName variable' do
+          let(:variables) { { username: viewer.name } }
+
+          it 'creates a user profile' do
+            result
+            expect(UserProfile).to be_exists(display_name: viewer.name)
+          end
+        end
       end
     end
   end

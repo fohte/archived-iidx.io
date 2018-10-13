@@ -2,7 +2,7 @@
 
 create_table :user_profiles, force: :cascade, id: :bigint, unsigned: true, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
   t.bigint :user_id, unsigned: true, null: false
-  t.string :name, null: false
+  t.string :display_name, null: false
 
   t.timestamps
 

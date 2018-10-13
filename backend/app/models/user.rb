@@ -1,13 +1,29 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  NAME_FORMAT = /\A[a-zA-Z_][a-zA-Z0-9_]*\z/
+
   has_one :profile, class_name: 'UserProfile', dependent: :destroy
   has_many :results, dependent: :destroy
 
-  validates :uid, presence: true, uniqueness: true
+  validates :name,
+            presence: true,
+            length: { maximum: 20 },
+            uniqueness: { case_sensitive: false },
+            format: { with: NAME_FORMAT }
   validates :firebase_uid, presence: true, uniqueness: true
 
   class << self
+    def register(firebase_uid:, username:, display_name:)
+      transaction do
+        create!(
+          firebase_uid: firebase_uid,
+          name: username,
+          profile: UserProfile.new(display_name: display_name),
+        )
+      end
+    end
+
     def find_or_create_by_token!(token, &block)
       firebase_uid = find_firebase_uid_from_token!(token)
       find_or_create_by!(firebase_uid: firebase_uid, &block)

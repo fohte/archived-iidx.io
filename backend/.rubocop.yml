@@ -74,5 +74,8 @@ RSpec/NestedGroups:
 RSpec/NamedSubject:
   Enabled: false
 
+RSpec/MultipleExpectations:
+  Enabled: false
+
 Style/NumericPredicate:
   Enabled: false

@@ -2,6 +2,6 @@ query getViewer {
   viewer {
     __typename
     id
-    uid
+    name
   }
 }

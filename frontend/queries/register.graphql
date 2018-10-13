@@ -1,0 +1,10 @@
+mutation register($username: String!, $displayName: String) {
+  createUser(username: $username, displayName: $displayName) {
+    user {
+      name
+      profile {
+        displayName
+      }
+    }
+  }
+}

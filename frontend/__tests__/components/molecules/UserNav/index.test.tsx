@@ -3,7 +3,8 @@ import { shallow } from 'enzyme'
 import * as React from 'react'
 
 import UserNav from '@app/components/molecules/UserNav'
-import LoginOrSignUp from '@app/components/molecules/UserNav/LoginOrSignUp'
+import Login from '@app/components/molecules/UserNav/Login'
+import SignUp from '@app/components/molecules/UserNav/SignUp'
 import UserMenu from '@app/components/molecules/UserNav/UserMenu'
 
 describe('UserNav', () => {
@@ -14,15 +15,22 @@ describe('UserNav', () => {
 
   it('renders a UserMenu component', () => {
     const wrapper = shallow(
-      <UserNav loading={false} viewer={{ id: 'id', uid: 'foo' }} signedIn />,
+      <UserNav loading={false} viewer={{ id: 'id', name: 'foo' }} signedIn />,
     )
     expect(wrapper.contains(<UserMenu displayName="foo" />)).toBeTruthy()
   })
 
-  it('renders a LoginOrSignUp component', () => {
+  it('renders a Login component', () => {
     const wrapper = shallow(
       <UserNav loading={false} viewer={null} signedIn={false} />,
     )
-    expect(wrapper.contains(<LoginOrSignUp />)).toBeTruthy()
+    expect(wrapper.contains(<Login />)).toBeTruthy()
+  })
+
+  it('renders a SignUp component', () => {
+    const wrapper = shallow(
+      <UserNav loading={false} viewer={null} signedIn={false} />,
+    )
+    expect(wrapper.contains(<SignUp />)).toBeTruthy()
   })
 })

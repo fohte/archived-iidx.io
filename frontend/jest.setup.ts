@@ -23,3 +23,9 @@ import * as app from '@app/lib/firebaseApp/app'
 
 jest.mock('@app/lib/firebaseApp/app')
 ;(app as any).default = jest.fn(() => mockSDK)
+
+import Router from 'next/router'
+;(Router.router as any) = {
+  push: () => {}, // tslint:disable-line:no-empty
+  prefetch: () => {}, // tslint:disable-line:no-empty
+}

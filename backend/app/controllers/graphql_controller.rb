@@ -9,6 +9,7 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {
       viewer: current_viewer,
+      firebase_uid: current_viewer_firebase_uid,
     }
     result = IIDXIOSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result

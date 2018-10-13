@@ -25,7 +25,7 @@ export interface FormValues {
   password: string
 }
 
-const LoginForm: React.SFC<Props> = ({
+const SignUpForm: React.SFC<Props> = ({
   form: { getFieldDecorator },
   errorMessage,
   handleSubmit,
@@ -50,15 +50,15 @@ const LoginForm: React.SFC<Props> = ({
     </Form.Item>
     <Form.Item>
       <Button type="primary" htmlType="submit">
-        {submitting ? <Icon type="loading" /> : 'Log in'}
+        {submitting ? <Icon type="loading" /> : 'Sign up'}
       </Button>
       {errorMessage}
     </Form.Item>
   </Form>
 )
 
-const WrappedNormalLoginForm = Form.create<ExternalProps>()(
-  withSubmitHandling<FormValues>()(LoginForm),
+const WrappedNormalSignUpForm = Form.create<ExternalProps>()(
+  withSubmitHandling<FormValues>()(SignUpForm),
 )
 
-export default WrappedNormalLoginForm
+export default WrappedNormalSignUpForm
