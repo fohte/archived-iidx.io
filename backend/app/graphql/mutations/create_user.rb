@@ -2,7 +2,7 @@
 
 module Mutations
   class CreateUser < BaseMutation
-    include Authenticatable
+    include FirebaseAuthenticatable
 
     argument :username, String, required: true
     argument :display_name, String, required: false
