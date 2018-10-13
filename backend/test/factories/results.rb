@@ -7,5 +7,13 @@ FactoryBot.define do
     clear_lamp { Result.clear_lamp.values.sample }
     grade { Result.grade.values.sample }
     last_played_at { Faker::Date.backward }
+
+    trait :with_map do
+      association :map
+    end
+
+    trait :with_music do
+      association :map, :with_music
+    end
   end
 end

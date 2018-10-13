@@ -9,4 +9,8 @@ FactoryBot.define do
     min_bpm { Random.rand(1..100) }
     max_bpm { Random.rand(101..400) }
   end
+
+  trait :with_music do
+    association :music
+  end
 end
