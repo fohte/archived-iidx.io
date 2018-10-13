@@ -232,6 +232,47 @@ RSpec.describe IIDXIOSchema do
           end
         end
       end
+
+      describe 'registerResultsWithCSV' do
+        let(:query) do
+          <<~GRAPHQL
+            mutation($csv: String!, $playStyle: PlayStyle!) {
+              registerResultsWithCSV(csv: $csv, playStyle: $playStyle) {
+                updatedResultsCount
+              }
+            }
+          GRAPHQL
+        end
+
+        let(:variables) { { csv: csv, playStyle: play_style } }
+
+        let(:viewer) { build(:user, :with_profile) }
+        let(:contexts) { { viewer: viewer, firebase_uid: viewer.firebase_uid } }
+
+        context 'with valid variables' do
+          let(:csv) { 'csv' }
+          let(:play_style) { 'SP' }
+
+          let(:results) { [build(:result, :with_music)] }
+
+          before do
+            allow(viewer).to receive(:import_results_from_csv).and_return(results)
+          end
+
+          it 'calls User#import_results_from_csv' do
+            result
+            expect(viewer).to have_received(:import_results_from_csv).with('csv', 'sp')
+          end
+
+          it 'returns the number of updated results' do
+            expect(result['data']['registerResultsWithCSV']).to eq(
+              'updatedResultsCount' => 1,
+            )
+          end
+
+          include_examples 'non errors'
+        end
+      end
     end
   end
 end
