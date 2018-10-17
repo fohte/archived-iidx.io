@@ -3,6 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Result do
+  include_examples 'ClearLampEnum'
+  include_examples 'GradeEnum'
+
   describe '#updated?' do
     subject { old_result.updated?(new_result) }
 
