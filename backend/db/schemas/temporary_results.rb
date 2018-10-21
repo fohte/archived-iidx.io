@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 create_table :temporary_results, force: :cascade, id: :bigint, unsigned: true, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
-  t.references :user, :music_search_cache, null: false, unsigned: true
+  t.references :user, null: false, unsigned: true
+
+  t.string :version, null: false
+  t.string :title, null: false
+  t.string :genre, null: false
+  t.string :artist, null: false
 
   # same as the maps table
   t.integer :level, default: 0, null: false
