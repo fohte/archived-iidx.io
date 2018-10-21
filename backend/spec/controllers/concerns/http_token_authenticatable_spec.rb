@@ -36,7 +36,7 @@ RSpec.describe HttpTokenAuthenticatable, type: :controller do
             end
           end
 
-          context 'when the user dose not exist' do
+          context 'when the user does not exist' do
             it { is_expected.to be nil }
           end
         end

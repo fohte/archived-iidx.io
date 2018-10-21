@@ -17,7 +17,7 @@ RSpec.describe IIDXIOSchema do
 
   describe 'schemas' do
     shared_examples 'non errors' do
-      it 'dose not return any errors' do
+      it 'does not return any errors' do
         expect(result['errors']).to be nil
       end
     end

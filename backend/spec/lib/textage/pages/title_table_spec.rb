@@ -35,7 +35,7 @@ RSpec.describe Textage::Pages::TitleTable do
         JS
       end
 
-      it 'dose not return musics' do
+      it 'does not return musics' do
         expect(subject).to be_empty
       end
     end
@@ -47,7 +47,7 @@ RSpec.describe Textage::Pages::TitleTable do
         JS
       end
 
-      it 'dose not return musics' do
+      it 'does not return musics' do
         expect(subject).to be_empty
       end
     end

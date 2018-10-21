@@ -41,7 +41,7 @@ RSpec.describe Textage::Loader do
         expect(subject).to eq 'test response'
       end
 
-      it 'dose not sleep' do
+      it 'does not sleep' do
         described_instance.fetch(path)
         expect(described_instance).not_to have_received(:sleep)
       end

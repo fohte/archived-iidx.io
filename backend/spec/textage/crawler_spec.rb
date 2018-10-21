@@ -115,7 +115,7 @@ RSpec.describe Textage::Crawler do
 
       before { music.save! }
 
-      it 'dose not return musics' do
+      it 'does not return musics' do
         expect(musics.to_a).to be_empty
       end
     end
@@ -140,7 +140,7 @@ RSpec.describe Textage::Crawler do
 
       before { music.save! }
 
-      it 'dose not return musics' do
+      it 'does not return musics' do
         expect(musics.to_a).to be_empty
       end
     end

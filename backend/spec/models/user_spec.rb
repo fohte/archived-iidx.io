@@ -189,7 +189,7 @@ RSpec.describe User do
           )
         end
 
-        it 'dose not insert results' do
+        it 'does not insert results' do
           expect { subject }.to change(Result, :count).by(0)
         end
       end

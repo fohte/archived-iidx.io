@@ -91,7 +91,7 @@ RSpec.describe Music do
     context 'with no maps' do
       let(:maps) { [] }
 
-      it 'dose not return the music' do
+      it 'does not return the music' do
         expect(subject).to eq({})
       end
     end
