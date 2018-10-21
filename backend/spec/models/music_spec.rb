@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Music do
+  include_examples 'SeriesEnum'
+
   describe '.search' do
     subject do
       described_class.search(
@@ -11,6 +13,12 @@ RSpec.describe Music do
         genre: attributes[:genre],
         artist: attributes[:artist],
       )
+    end
+
+    shared_examples 'search a music' do
+      it 'returns a search result' do
+        expect(subject).to eq music
+      end
     end
 
     context 'without sub titles' do
@@ -27,9 +35,7 @@ RSpec.describe Music do
 
       let(:attributes) { attributes_for(:music, title: 'title') }
 
-      it 'returns a search result' do
-        expect(subject).to eq music
-      end
+      include_examples 'search a music'
     end
 
     context 'with a whitespace and a sub title' do
@@ -46,9 +52,7 @@ RSpec.describe Music do
 
       let(:attributes) { attributes_for(:music, title: 'title (sub title)') }
 
-      it 'returns a search result' do
-        expect(subject).to eq music
-      end
+      include_examples 'search a music'
     end
 
     context 'with no whitespaces and a sub title' do
@@ -65,9 +69,7 @@ RSpec.describe Music do
 
       let(:attributes) { attributes_for(:music, title: 'title(sub title)') }
 
-      it 'returns a search result' do
-        expect(subject).to eq music
-      end
+      include_examples 'search a music'
     end
 
     context 'when there are no hit musics' do
@@ -77,22 +79,6 @@ RSpec.describe Music do
         expect(subject).to be_nil
       end
     end
-  end
-
-  describe '.identify_from_csv' do
-    subject { described_class.identify_from_csv(row) }
-
-    let(:music) { create(:music) }
-    let(:row) do
-      IIDXIO::CSVParser::Row.new(
-        version: MusicSearchCache.find_version!(music.series.value),
-        title: "#{music.title} #{music.sub_title}",
-        genre: music.genre,
-        artist: music.artist,
-      )
-    end
-
-    it { is_expected.to eq music }
   end
 
   describe '.fetch_map_types' do
