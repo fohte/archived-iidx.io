@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_one :profile, class_name: 'UserProfile', dependent: :destroy
   has_many :results, dependent: :destroy
+  has_many :temporary_results, dependent: :destroy
 
   validates :name,
             presence: true,
@@ -45,5 +46,69 @@ class User < ApplicationRecord
       FirebaseIdToken::Certificates.request
       FirebaseIdToken::Signature.verify(token)
     end
+  end
+
+  def latest_results
+    @latest_results ||= results.find_by_sql(<<~SQL)
+      SELECT
+        x.*
+      FROM
+        results x
+        LEFT JOIN results y ON x.map_id = y.map_id
+        AND x.last_played_at < y.last_played_at
+      WHERE
+        y.id IS NULL;
+    SQL
+  end
+
+  # @param csv [String]
+  # @param play_style [:sp, :dp]
+  def import_results_from_csv(csv, play_style)
+    table = IIDXIO::CSVParser.parse(csv)
+
+    ApplicationRecord.transaction do
+      table.rows.each do |row|
+        music = Music.identify_from_csv(row)
+
+        %i[normal hyper another].each do |difficulty|
+          map = row.public_send(difficulty)
+          next if map.no_play? || map.blank_score?
+
+          result_attributes = {
+            score: map.ex_score,
+            miss_count: map.miss_count,
+            clear_lamp: Result.find_clear_lamp(map.clear_lamp),
+            grade: Result.find_grade(map.dj_level),
+            last_played_at: row.last_played_at,
+          }
+
+          if music
+            new_result = Result.new(
+              map: music.public_send(:"#{play_style}_#{difficulty}"),
+              **result_attributes,
+            )
+
+            old_result = results.find_by(map: new_result.map)
+
+            next if old_result && !old_result.updated?(new_result)
+
+            results << new_result
+          else
+            temporary_results << TemporaryResult.new(
+              version: row.version,
+              title: row.title,
+              genre: row.genre,
+              artist: row.artist,
+              level: map.level,
+              play_style: play_style,
+              difficulty: difficulty,
+              **result_attributes,
+            )
+          end
+        end
+      end
+    end
+
+    results
   end
 end

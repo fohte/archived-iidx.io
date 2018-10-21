@@ -4,6 +4,13 @@ class Result < ApplicationRecord
   belongs_to :user
   belongs_to :map
 
-  enumerize :clear_lamp, in: %i[assist easy normal hard ex_hard full_combo]
-  enumerize :grade, in: %i[f e d c b a a_plus aa aa_plus aaa aaa_plus]
+  include ClearLampEnum
+  include GradeEnum
+
+  def updated?(result)
+    clear_lamp.value < result.clear_lamp.value ||
+      grade.value < result.grade.value ||
+      score < result.score ||
+      miss_count > result.miss_count
+  end
 end

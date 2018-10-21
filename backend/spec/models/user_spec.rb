@@ -113,4 +113,121 @@ RSpec.describe User do
       expect(subject.profile).to have_attributes user_profile_attributes
     end
   end
+
+  describe '#import_results_from_csv' do
+    subject { user.import_results_from_csv(csv, play_style) }
+
+    let(:user) { create(:user) }
+
+    context 'with known musics' do
+      let!(:music) do
+        create(
+          :music,
+          :with_maps,
+          series: :iidx_red,
+          title: 'gigadelic',
+          sub_title: '',
+          genre: 'NUSTYLE GABBA',
+          artist: 'teranoid feat.MC Natsack',
+        )
+      end
+
+      let(:play_style) { :sp }
+
+      let(:csv) do
+        <<~CSV
+          # this line is a dummy header
+          IIDX RED,gigadelic,NUSTYLE GABBA,teranoid feat.MC Natsack,3,9,0,0,0,---,NO PLAY,---,12,1954,862,230,7,EX HARD CLEAR,AA,12,2174,934,306,7,EX HARD CLEAR,AA,2018-02-23 22:33
+        CSV
+      end
+
+      it { expect { subject }.to change(Result, :count).by(2) }
+
+      it 'inserts results' do
+        subject
+        expect(user.results).to contain_exactly(
+          have_attributes(
+            map: music.sp_hyper,
+            clear_lamp: 'ex_hard',
+            grade: 'aa',
+            score: 1954,
+            miss_count: 7,
+            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+          ),
+          have_attributes(
+            map: music.sp_another,
+            clear_lamp: 'ex_hard',
+            grade: 'aa',
+            score: 2174,
+            miss_count: 7,
+            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+          ),
+        )
+      end
+
+      context 'when results are already exist' do
+        before do
+          create(
+            :result,
+            user: user,
+            map: music.sp_hyper,
+            clear_lamp: 'ex_hard',
+            grade: 'aa',
+            score: 1954,
+            miss_count: 7,
+            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+          )
+          create(
+            :result,
+            user: user,
+            map: music.sp_another,
+            clear_lamp: 'ex_hard',
+            grade: 'aa',
+            score: 2174,
+            miss_count: 7,
+            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+          )
+        end
+
+        it 'dose not insert results' do
+          expect { subject }.to change(Result, :count).by(0)
+        end
+      end
+    end
+
+    context 'with unknown musics' do
+      let(:play_style) { :sp }
+
+      let(:csv) do
+        <<~CSV
+          # this line is a dummy header
+          IIDX RED,__UNKNOWN_MUSIC__,__UNKNOWN_GENRE__,__UNKNOWN_ARTIST__,0,1,0,0,0,---,NO PLAY,---,1,0,0,0,---,NO PLAY,---,12,2174,934,306,7,EX HARD CLEAR,AA,2018-02-23 22:33
+        CSV
+      end
+
+      it 'inserts temporary results' do
+        subject
+        expect(user.temporary_results).to contain_exactly(
+          have_attributes(
+            version: 'IIDX RED',
+            title: '__UNKNOWN_MUSIC__',
+            genre: '__UNKNOWN_GENRE__',
+            artist: '__UNKNOWN_ARTIST__',
+            level: 12,
+            play_style: 'sp',
+            difficulty: 'another',
+            score: 2174,
+            miss_count: 7,
+            clear_lamp: 'ex_hard',
+            grade: 'aa',
+            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+          ),
+        )
+      end
+
+      it 'does not insert results' do
+        expect { subject }.to change(Result, :count).by(0)
+      end
+    end
+  end
 end

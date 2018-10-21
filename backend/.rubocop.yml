@@ -25,6 +25,9 @@ Style/TrailingCommaInArguments:
 Style/MultilineBlockChain:
   Enabled: false
 
+Style/Lambda:
+  EnforcedStyle: literal
+
 Layout/IndentArray:
   EnforcedStyle: consistent
 
@@ -32,33 +35,7 @@ Layout/IndentHash:
   EnforcedStyle: consistent
 
 Layout/ClassStructure:
-  Enabled: true
-  Categories:
-    association:
-      - belongs_to
-      - has_many
-      - has_one
-    validation:
-      - validates
-      - validate
-    attribute:
-      - attr_accessor
-      - attr_reader
-      - attr_writer
-    delegation:
-      - delegate
-  ExpectedOrder:
-    - module_inclusion
-    - constants
-    - association
-    - attribute
-    - validation
-    - delegation
-    - public_class_methods
-    - initializer
-    - public_methods
-    - protected_methods
-    - private_methods
+  Enabled: false
 
 RSpec/FilePath:
   CustomTransform:
@@ -75,6 +52,9 @@ RSpec/NamedSubject:
   Enabled: false
 
 RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/LetSetup:
   Enabled: false
 
 Style/NumericPredicate:
