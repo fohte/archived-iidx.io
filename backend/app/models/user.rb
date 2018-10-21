@@ -74,20 +74,37 @@ class User < ApplicationRecord
           map = row.public_send(difficulty)
           next if map.no_play? || map.blank_score?
 
-          new_result = Result.new(
-            map: music.public_send(:"#{play_style}_#{difficulty}"),
+          result_attributes = {
             score: map.ex_score,
             miss_count: map.miss_count,
             clear_lamp: Result.find_clear_lamp(map.clear_lamp),
             grade: Result.find_grade(map.dj_level),
             last_played_at: row.last_played_at,
-          )
+          }
 
-          old_result = results.find_by(map: new_result.map)
+          if music
+            new_result = Result.new(
+              map: music.public_send(:"#{play_style}_#{difficulty}"),
+              **result_attributes,
+            )
 
-          next if old_result && !old_result.updated?(new_result)
+            old_result = results.find_by(map: new_result.map)
 
-          results << new_result
+            next if old_result && !old_result.updated?(new_result)
+
+            results << new_result
+          else
+            temporary_results << TemporaryResult.new(
+              version: row.version,
+              title: row.title,
+              genre: row.genre,
+              artist: row.artist,
+              level: map.level,
+              play_style: play_style,
+              difficulty: difficulty,
+              **result_attributes,
+            )
+          end
         end
       end
     end
