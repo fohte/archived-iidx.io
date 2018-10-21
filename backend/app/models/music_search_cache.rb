@@ -45,7 +45,12 @@ class MusicSearchCache < ApplicationRecord
 
       model = new(**attributes) if model.nil?
 
-      search_music(**attributes).tap do |music|
+      Music.search(
+        series: find_version_value!(version),
+        title: title,
+        genre: genre,
+        artist: artist,
+      ).tap do |music|
         model.music = music if music.present?
         model.save!
       end
@@ -63,19 +68,6 @@ class MusicSearchCache < ApplicationRecord
       VERSION_MAP.key(value).tap do |k|
         raise IIDXIO::UnknownVersionError, "#{value} is unknown version" if k.nil?
       end
-    end
-
-    private
-
-    def search_music(version:, title:, genre:, artist:)
-      ::Music
-        .where('concat(title, sub_title) = ?', title)
-        .or(::Music.where(%{concat(title, ' ', sub_title) = ?}, title))
-        .find_by(
-          series: find_version_value!(version),
-          genre: genre,
-          artist: artist,
-        )
     end
   end
 

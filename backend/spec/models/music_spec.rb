@@ -3,6 +3,82 @@
 require 'rails_helper'
 
 RSpec.describe Music do
+  describe '.search' do
+    subject do
+      described_class.search(
+        series: attributes[:series],
+        title: attributes[:title],
+        genre: attributes[:genre],
+        artist: attributes[:artist],
+      )
+    end
+
+    context 'without sub titles' do
+      let!(:music) do
+        create(
+          :music,
+          title: 'title',
+          sub_title: '',
+          genre: attributes[:genre],
+          artist: attributes[:artist],
+          series: attributes[:series],
+        )
+      end
+
+      let(:attributes) { attributes_for(:music, title: 'title') }
+
+      it 'returns a search result' do
+        expect(subject).to eq music
+      end
+    end
+
+    context 'with a whitespace and a sub title' do
+      let!(:music) do
+        create(
+          :music,
+          title: 'title',
+          sub_title: '(sub title)',
+          genre: attributes[:genre],
+          artist: attributes[:artist],
+          series: attributes[:series],
+        )
+      end
+
+      let(:attributes) { attributes_for(:music, title: 'title (sub title)') }
+
+      it 'returns a search result' do
+        expect(subject).to eq music
+      end
+    end
+
+    context 'with no whitespaces and a sub title' do
+      let!(:music) do
+        create(
+          :music,
+          title: 'title',
+          sub_title: '(sub title)',
+          genre: attributes[:genre],
+          artist: attributes[:artist],
+          series: attributes[:series],
+        )
+      end
+
+      let(:attributes) { attributes_for(:music, title: 'title(sub title)') }
+
+      it 'returns a search result' do
+        expect(subject).to eq music
+      end
+    end
+
+    context 'when there are no hit musics' do
+      let(:attributes) { attributes_for(:music) }
+
+      it 'does not returns musics' do
+        expect(subject).to be_nil
+      end
+    end
+  end
+
   describe '.identify_from_csv' do
     subject { described_class.identify_from_csv(row) }
 

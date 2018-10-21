@@ -31,6 +31,16 @@ class Music < ApplicationRecord
     cannon_ballers: 25,
   }
 
+  def self.search(series:, title:, genre:, artist:)
+    where('concat(title, sub_title) = ?', title)
+      .or(where(%{concat(title, ' ', sub_title) = ?}, title))
+      .find_by(
+        series: series,
+        genre: genre,
+        artist: artist,
+      )
+  end
+
   # @param row [IIDXIO::CSVParser::Row]
   # @return [::Music]
   def self.identify_from_csv(row)
