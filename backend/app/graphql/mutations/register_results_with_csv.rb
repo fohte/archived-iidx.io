@@ -7,13 +7,13 @@ module Mutations
     argument :csv, String, required: true
     argument :play_style, Types::Enum::PlayStyle, required: true
 
-    field :updated_results_count, Integer, null: false
+    field :success, Boolean, null: false
 
     def resolve(csv:, play_style:)
-      results = context.viewer.import_results_from_csv(csv, play_style.downcase)
+      context.viewer.import_results_from_csv(csv, play_style.downcase)
 
       {
-        updated_results_count: results.length,
+        success: true,
       }
     end
   end

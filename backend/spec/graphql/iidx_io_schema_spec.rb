@@ -238,7 +238,7 @@ RSpec.describe IIDXIOSchema do
           <<~GRAPHQL
             mutation($csv: String!, $playStyle: PlayStyle!) {
               registerResultsWithCSV(csv: $csv, playStyle: $playStyle) {
-                updatedResultsCount
+                success
               }
             }
           GRAPHQL
@@ -266,7 +266,7 @@ RSpec.describe IIDXIOSchema do
 
           it 'returns the number of updated results' do
             expect(result['data']['registerResultsWithCSV']).to eq(
-              'updatedResultsCount' => 1,
+              'success' => true,
             )
           end
 
