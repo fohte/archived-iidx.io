@@ -9,7 +9,7 @@
     "test": "npm-run-all -s --continue-on-error test:**",
     "test:ts": "tsc -p . --noEmit",
     "test:jest": "NODE_ENV=test jest",
-    "gql:gen": "gql-gen --schema ../docs/graphql/schema.json --template graphql-codegen-typescript-react-apollo-template --out ./queries/index.ts --config ./.gqlgen.json 'queries/**/*.graphql'",
+    "gql:gen": "gql-gen --schema ../docs/graphql/schema.json --template graphql-codegen-typescript-react-apollo-template --out ./queries/index.tsx --config ./.gqlgen.json 'queries/**/*.graphql'",
     "gql:gen:watch": "yarn run gql:gen --watch"
   },
   "dependencies": {
