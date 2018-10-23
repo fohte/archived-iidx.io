@@ -72,8 +72,8 @@ jobs:
           name: check diff of generated files
           command: |
             dir="$(mktemp -d)"
-            yarn run gql:gen --out "$dir/index.ts"
-            diff -uN queries/index.ts "$dir/index.ts"
+            yarn run gql:gen --out "$dir/index.tsx"
+            diff -uN queries/index.tsx "$dir/index.tsx"
       - run:
           name: run linters
           command: yarn run lint:ts
