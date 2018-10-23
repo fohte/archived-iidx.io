@@ -137,16 +137,120 @@ export type RegisterProfile = {
 }
 
 import * as ReactApollo from 'react-apollo'
+import * as React from 'react'
 
-export class GetMusicsWithMapsComponent extends ReactApollo.Query<
-  Query,
-  GetMusicsWithMapsVariables
-> {}
-export class GetViewerComponent extends ReactApollo.Query<
-  Query,
-  GetViewerVariables
-> {}
-export class RegisterComponent extends ReactApollo.Mutation<
-  Mutation,
-  RegisterVariables
-> {}
+import gql from 'graphql-tag'
+
+export const GetMusicsWithMapsDocument = gql`
+  query getMusicsWithMaps {
+    musics {
+      __typename
+      id
+      title
+      subTitle
+      maps {
+        __typename
+        id
+        difficulty
+        level
+        playStyle
+      }
+    }
+  }
+`
+export class GetMusicsWithMapsComponent extends React.Component<
+  Partial<
+    ReactApollo.QueryProps<GetMusicsWithMapsQuery, GetMusicsWithMapsVariables>
+  >
+> {
+  render() {
+    return (
+      <ReactApollo.Query<GetMusicsWithMapsQuery, GetMusicsWithMapsVariables>
+        query={GetMusicsWithMapsDocument}
+        {...this.props as any}
+      />
+    )
+  }
+}
+export function GetMusicsWithMapsHOC<TProps = {}>(
+  operationOptions?: ReactApollo.OperationOption<
+    TProps,
+    GetMusicsWithMapsQuery,
+    GetMusicsWithMapsVariables
+  >,
+) {
+  return ReactApollo.graphql<
+    TProps,
+    GetMusicsWithMapsQuery,
+    GetMusicsWithMapsVariables
+  >(GetMusicsWithMapsDocument, operationOptions)
+}
+export const GetViewerDocument = gql`
+  query getViewer {
+    viewer {
+      __typename
+      id
+      name
+    }
+  }
+`
+export class GetViewerComponent extends React.Component<
+  Partial<ReactApollo.QueryProps<GetViewerQuery, GetViewerVariables>>
+> {
+  render() {
+    return (
+      <ReactApollo.Query<GetViewerQuery, GetViewerVariables>
+        query={GetViewerDocument}
+        {...this.props as any}
+      />
+    )
+  }
+}
+export function GetViewerHOC<TProps = {}>(
+  operationOptions?: ReactApollo.OperationOption<
+    TProps,
+    GetViewerQuery,
+    GetViewerVariables
+  >,
+) {
+  return ReactApollo.graphql<TProps, GetViewerQuery, GetViewerVariables>(
+    GetViewerDocument,
+    operationOptions,
+  )
+}
+export const RegisterDocument = gql`
+  mutation register($username: String!, $displayName: String) {
+    createUser(username: $username, displayName: $displayName) {
+      user {
+        name
+        profile {
+          displayName
+        }
+      }
+    }
+  }
+`
+export class RegisterComponent extends React.Component<
+  Partial<ReactApollo.MutationProps<RegisterMutation, RegisterVariables>>
+> {
+  render() {
+    return (
+      <ReactApollo.Mutation<RegisterMutation, RegisterVariables>
+        mutation={RegisterDocument}
+        {...this.props as any}
+      />
+    )
+  }
+}
+export function RegisterHOC<TProps = {}>(
+  operationOptions?: ReactApollo.OperationOption<
+    TProps,
+    RegisterMutation,
+    RegisterVariables
+  >,
+) {
+  return ReactApollo.graphql<TProps, RegisterMutation, RegisterVariables>(
+    RegisterDocument,
+    operationOptions,
+  )
+}
