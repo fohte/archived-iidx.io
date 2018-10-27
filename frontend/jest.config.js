@@ -16,7 +16,7 @@ module.exports = {
   },
   setupFiles: ['<rootDir>/jest.setup.ts'],
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
+  testMatch: ['**/__tests__/**/*.test.{j,t}s{,x}'],
   transform: {
     '^.+\\.jsx?$': '<rootDir>/node_modules/babel-jest',
     '^.+\\.tsx?$': 'ts-jest',
