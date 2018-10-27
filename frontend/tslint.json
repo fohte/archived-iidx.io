@@ -10,5 +10,8 @@
     "object-literal-sort-keys": false,
     "max-classes-per-file": false,
     "no-empty-interface": false
+  },
+  "jsRules": {
+    "object-literal-sort-keys": false
   }
 }
