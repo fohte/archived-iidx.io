@@ -9,6 +9,7 @@
     "test": "npm-run-all -s --continue-on-error test:**",
     "test:ts": "tsc -p . --noEmit",
     "test:jest": "NODE_ENV=test jest",
+    "test:ci": "NODE_ENV=test jest --maxWorkers=2",
     "gql:gen": "gql-gen --schema ../docs/graphql/schema.json --template graphql-codegen-typescript-react-apollo-template --out ./queries/index.tsx --config ./.gqlgen.json 'queries/**/*.graphql'",
     "gql:gen:watch": "yarn run gql:gen --watch"
   },
@@ -46,6 +47,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
     "babel-plugin-import": "1.10.0",
+    "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-styled-components": "1.8.0",
     "codecov": "3.1.0",
     "dotenv-webpack": "1.5.7",

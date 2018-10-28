@@ -1,6 +1,26 @@
-import MusicsPage from '@app/components/pages/MusicsPage'
+import MusicTable from '@app/components/organisms/MusicTable'
+import MainLayout from '@app/components/templates/MainLayout'
+import {
+  GetMusicsWithMapsComponent,
+  GetMusicsWithMapsDocument,
+} from '@app/queries'
 import * as React from 'react'
 
-const Root: React.SFC = () => <MusicsPage />
+export default () => (
+  <MainLayout>
+    <GetMusicsWithMapsComponent query={GetMusicsWithMapsDocument}>
+      {({ loading, error, data }) => {
+        if (loading) {
+          return 'loading'
+        }
+        if (error || !data) {
+          return 'error'
+        }
 
-export default Root
+        if (data.musics) {
+          return <MusicTable musics={data.musics} />
+        }
+      }}
+    </GetMusicsWithMapsComponent>
+  </MainLayout>
+)

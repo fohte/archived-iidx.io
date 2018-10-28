@@ -9,8 +9,7 @@ import AuthContext, {
 } from '@app/contexts/AuthContext'
 import { auth } from '@app/lib/firebaseApp'
 import { AppApolloClient } from '@app/lib/withApollo'
-import { GetViewerQuery } from '@app/queries'
-import getViewer from '@app/queries/getViewer.graphql'
+import { GetViewerDocument, GetViewerQuery } from '@app/queries'
 
 interface ExternalProps {}
 
@@ -59,7 +58,7 @@ class AuthStateProvider extends React.Component<Props, State> {
 
   private async fetchViewer(options: { force: boolean } = { force: false }) {
     const queryOptions: QueryOptions<GetViewerQuery> = {
-      query: getViewer,
+      query: GetViewerDocument,
     }
 
     if (options.force) {
