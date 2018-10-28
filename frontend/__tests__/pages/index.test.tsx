@@ -2,7 +2,7 @@ import * as React from 'react'
 import { MockedProvider } from 'react-apollo/test-utils'
 import * as renderer from 'react-test-renderer'
 
-import MusicsPage from '@app/components/pages/MusicsPage'
+import Index from '@app/pages/index'
 import {
   Difficulty,
   GetMusicsWithMapsDocument,
@@ -10,7 +10,7 @@ import {
   PlayStyle,
 } from '@app/queries'
 
-describe('MusicsPage', () => {
+describe('/', () => {
   const data: GetMusicsWithMapsQuery = {
     musics: [
       {
@@ -36,7 +36,7 @@ describe('MusicsPage', () => {
   it('renders correctly', () => {
     const component = renderer.create(
       <MockedProvider mocks={mocks}>
-        <MusicsPage />
+        <Index />
       </MockedProvider>,
     )
     const tree = component.toJSON()

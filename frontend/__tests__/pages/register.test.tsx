@@ -2,10 +2,10 @@ import * as React from 'react'
 import { MockedProvider } from 'react-apollo/test-utils'
 import * as renderer from 'react-test-renderer'
 
-import RegisterPage from '@app/components/pages/RegisterPage'
+import Register from '@app/pages/register'
 import { RegisterDocument, RegisterMutation } from '@app/queries'
 
-describe('RegisterPage', () => {
+describe('/register', () => {
   const data: RegisterMutation = {
     createUser: {
       user: {
@@ -22,7 +22,7 @@ describe('RegisterPage', () => {
   it('renders correctly', () => {
     const component = renderer.create(
       <MockedProvider mocks={mocks}>
-        <RegisterPage />
+        <Register />
       </MockedProvider>,
     )
     const tree = component.toJSON()

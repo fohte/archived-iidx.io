@@ -3,8 +3,8 @@ import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
 import { FormValues } from '@app/components/organisms/SignUpForm'
-import SignUpPage from '@app/components/pages/SignUpPage'
 import { auth } from '@app/lib/firebaseApp'
+import Signup from '@app/pages/signup'
 
 const inputFields = (wrapper: ReactWrapper, values: FormValues) => {
   Object.keys(values).forEach(key => {
@@ -17,13 +17,13 @@ const submit = (wrapper: ReactWrapper) => {
   wrapper.find('button[type="submit"]').simulate('submit')
 }
 
-describe('SignUpPage', () => {
+describe('/signup', () => {
   beforeEach(() => {
     auth.createUserWithEmailAndPassword = jest.fn()
   })
 
   it('create a user on firebase auth', () => {
-    const wrapper = mount(<SignUpPage />)
+    const wrapper = mount(<Signup />)
 
     inputFields(wrapper, { email: 'email', password: 'password' })
     submit(wrapper)
@@ -35,7 +35,7 @@ describe('SignUpPage', () => {
   })
 
   it('renders correctly', () => {
-    const component = renderer.create(<SignUpPage />)
+    const component = renderer.create(<Signup />)
     const tree = component.toJSON()
 
     expect(tree).toMatchSnapshot()
