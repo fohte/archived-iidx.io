@@ -1,36 +1,33 @@
-import { Icon } from 'antd'
-import { shallow } from 'enzyme'
 import * as React from 'react'
+import * as renderer from 'react-test-renderer'
 
 import UserNav from '@app/components/molecules/UserNav'
-import Login from '@app/components/molecules/UserNav/Login'
-import SignUp from '@app/components/molecules/UserNav/SignUp'
-import UserMenu from '@app/components/molecules/UserNav/UserMenu'
 
 describe('UserNav', () => {
   it('renders a loading icon when the loading prop is true', () => {
-    const wrapper = shallow(<UserNav loading viewer={null} signedIn={false} />)
-    expect(wrapper.contains(<Icon type="loading" />)).toBeTruthy()
+    const component = renderer.create(
+      <UserNav loading viewer={null} signedIn={false} />,
+    )
+    const tree = component.toJSON()
+
+    expect(tree).toMatchSnapshot()
   })
 
   it('renders a UserMenu component', () => {
-    const wrapper = shallow(
+    const component = renderer.create(
       <UserNav loading={false} viewer={{ id: 'id', name: 'foo' }} signedIn />,
     )
-    expect(wrapper.contains(<UserMenu displayName="foo" />)).toBeTruthy()
+    const tree = component.toJSON()
+
+    expect(tree).toMatchSnapshot()
   })
 
-  it('renders a Login component', () => {
-    const wrapper = shallow(
+  it('renders a Login component and a SignUp component', () => {
+    const component = renderer.create(
       <UserNav loading={false} viewer={null} signedIn={false} />,
     )
-    expect(wrapper.contains(<Login />)).toBeTruthy()
-  })
+    const tree = component.toJSON()
 
-  it('renders a SignUp component', () => {
-    const wrapper = shallow(
-      <UserNav loading={false} viewer={null} signedIn={false} />,
-    )
-    expect(wrapper.contains(<SignUp />)).toBeTruthy()
+    expect(tree).toMatchSnapshot()
   })
 })

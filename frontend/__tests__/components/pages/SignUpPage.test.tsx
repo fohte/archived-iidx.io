@@ -1,5 +1,6 @@
 import { mount, ReactWrapper } from 'enzyme'
 import * as React from 'react'
+import * as renderer from 'react-test-renderer'
 
 import { FormValues } from '@app/components/organisms/SignUpForm'
 import SignUpPage from '@app/components/pages/SignUpPage'
@@ -31,5 +32,12 @@ describe('SignUpPage', () => {
       'email',
       'password',
     )
+  })
+
+  it('renders correctly', () => {
+    const component = renderer.create(<SignUpPage />)
+    const tree = component.toJSON()
+
+    expect(tree).toMatchSnapshot()
   })
 })
