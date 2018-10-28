@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUp renders correctly 1`] = `
+<button
+  className="ant-btn"
+  onClick={[Function]}
+  type="button"
+>
+  <span>
+    SignUp
+  </span>
+</button>
+`;

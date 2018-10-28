@@ -4,7 +4,7 @@ import { ColumnProps } from 'antd/lib/table'
 import { flatMap } from 'lodash'
 import * as React from 'react'
 
-interface Props {
+export interface Props {
   musics: GetMusicsWithMapsMusics[]
 }
 

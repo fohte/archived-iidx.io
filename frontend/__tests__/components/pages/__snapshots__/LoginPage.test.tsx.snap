@@ -1,0 +1,322 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage renders correctly 1`] = `
+<div
+  className="layout ant-layout"
+>
+  <div
+    className="ant-layout-header"
+  >
+    <ul
+      className="ant-menu ant-menu-dark ant-menu-root ant-menu-vertical"
+      role="menu"
+      style={
+        Object {
+          "lineHeight": "64px",
+        }
+      }
+    >
+      <div
+        className="sc-bwzfXH sUFFa"
+        onClick={[Function]}
+      >
+        <span>
+          iidx.io
+        </span>
+      </div>
+      <div
+        className="sc-htpNat gEBfLP"
+        mode="vertical"
+        onClick={[Function]}
+        onSelect={[Function]}
+      >
+        <i
+          className="anticon anticon-loading"
+        >
+          <svg
+            aria-hidden="true"
+            className="anticon-spin"
+            data-icon="loading"
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 1024 1024"
+            width="1em"
+          >
+            <path
+              d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
+            />
+          </svg>
+        </i>
+      </div>
+    </ul>
+  </div>
+  <div
+    className="ant-layout"
+  >
+    <div
+      className="ant-layout-content"
+      style={
+        Object {
+          "padding": "0 50px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "#fff",
+            "minHeight": 280,
+            "padding": 24,
+          }
+        }
+      >
+        <form
+          className="ant-form ant-form-horizontal"
+          onSubmit={[Function]}
+        >
+          <div
+            className="ant-row ant-form-item"
+          >
+            <div
+              className="ant-form-item-control-wrapper"
+            >
+              <div
+                className="ant-form-item-control"
+              >
+                <span
+                  className="ant-form-item-children"
+                >
+                  <span
+                    className="ant-input-affix-wrapper"
+                  >
+                    <span
+                      className="ant-input-prefix"
+                    >
+                      <i
+                        className="anticon anticon-mail sc-bdVaJa eaTnkz"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className=""
+                          data-icon="mail"
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 110.8V792H136V270.8l-27.6-21.5 39.3-50.5 42.8 33.3h643.1l42.8-33.3 39.3 50.5-27.7 21.5zM833.6 232L512 482 190.4 232l-42.8-33.3-39.3 50.5 27.6 21.5 341.6 265.6a55.99 55.99 0 0 0 68.7 0L888 270.8l27.6-21.5-39.3-50.5-42.7 33.2z"
+                          />
+                        </svg>
+                      </i>
+                    </span>
+                    <input
+                      className="ant-input"
+                      data-__field={
+                        Object {
+                          "name": "email",
+                        }
+                      }
+                      data-__meta={
+                        Object {
+                          "name": "email",
+                          "originalProps": Object {
+                            "disabled": false,
+                            "placeholder": "Email",
+                            "prefix": <Styled(Icon)
+                              type="mail"
+                            />,
+                            "prefixCls": "ant-input",
+                            "type": "text",
+                          },
+                          "ref": null,
+                          "rules": Array [
+                            Object {
+                              "message": "Please input your email.",
+                              "required": true,
+                            },
+                          ],
+                          "trigger": "onChange",
+                          "validate": Array [
+                            Object {
+                              "rules": Array [
+                                Object {
+                                  "message": "Please input your email.",
+                                  "required": true,
+                                },
+                              ],
+                              "trigger": Array [
+                                "onChange",
+                              ],
+                            },
+                          ],
+                          "valuePropName": "value",
+                        }
+                      }
+                      disabled={false}
+                      id="email"
+                      onChange={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Email"
+                      style={null}
+                      type="text"
+                      value=""
+                    />
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="ant-row ant-form-item"
+          >
+            <div
+              className="ant-form-item-control-wrapper"
+            >
+              <div
+                className="ant-form-item-control"
+              >
+                <span
+                  className="ant-form-item-children"
+                >
+                  <span
+                    className="ant-input-affix-wrapper"
+                  >
+                    <span
+                      className="ant-input-prefix"
+                    >
+                      <i
+                        className="anticon anticon-lock sc-bdVaJa eaTnkz"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className=""
+                          data-icon="lock"
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M832 464h-68V240c0-70.7-57.3-128-128-128H388c-70.7 0-128 57.3-128 128v224h-68c-17.7 0-32 14.3-32 32v384c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V496c0-17.7-14.3-32-32-32zM332 240c0-30.9 25.1-56 56-56h248c30.9 0 56 25.1 56 56v224H332V240zm460 600H232V536h560v304zM484 701v53c0 4.4 3.6 8 8 8h40c4.4 0 8-3.6 8-8v-53a48.01 48.01 0 1 0-56 0z"
+                          />
+                        </svg>
+                      </i>
+                    </span>
+                    <input
+                      className="ant-input"
+                      data-__field={
+                        Object {
+                          "name": "password",
+                        }
+                      }
+                      data-__meta={
+                        Object {
+                          "name": "password",
+                          "originalProps": Object {
+                            "disabled": false,
+                            "placeholder": "Password",
+                            "prefix": <Styled(Icon)
+                              type="lock"
+                            />,
+                            "prefixCls": "ant-input",
+                            "type": "password",
+                          },
+                          "ref": null,
+                          "rules": Array [
+                            Object {
+                              "message": "Please input your password.",
+                              "required": true,
+                            },
+                          ],
+                          "trigger": "onChange",
+                          "validate": Array [
+                            Object {
+                              "rules": Array [
+                                Object {
+                                  "message": "Please input your password.",
+                                  "required": true,
+                                },
+                              ],
+                              "trigger": Array [
+                                "onChange",
+                              ],
+                            },
+                          ],
+                          "valuePropName": "value",
+                        }
+                      }
+                      disabled={false}
+                      id="password"
+                      onChange={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Password"
+                      style={null}
+                      type="password"
+                      value=""
+                    />
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="ant-row ant-form-item"
+          >
+            <div
+              className="ant-form-item-control-wrapper"
+            >
+              <div
+                className="ant-form-item-control"
+              >
+                <span
+                  className="ant-form-item-children"
+                >
+                  <button
+                    className="ant-btn ant-btn-primary"
+                    onClick={[Function]}
+                    type="submit"
+                  >
+                    <span>
+                      Log in
+                    </span>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div
+      className="ant-layout-footer"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <i
+        className="anticon anticon-copyright"
+      >
+        <svg
+          aria-hidden="true"
+          className=""
+          data-icon="copyright"
+          fill="currentColor"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm5.6-532.7c53 0 89 33.8 93 83.4.3 4.2 3.8 7.4 8 7.4h56.7c2.6 0 4.7-2.1 4.7-4.7 0-86.7-68.4-147.4-162.7-147.4C407.4 290 344 364.2 344 486.8v52.3C344 660.8 407.4 734 517.3 734c94 0 162.7-58.8 162.7-141.4 0-2.6-2.1-4.7-4.7-4.7h-56.8c-4.2 0-7.6 3.2-8 7.3-4.2 46.1-40.1 77.8-93 77.8-65.3 0-102.1-47.9-102.1-133.6v-52.6c.1-87 37-135.5 102.2-135.5z"
+          />
+        </svg>
+      </i>
+       
+      2018
+       iidx.io
+    </div>
+  </div>
+</div>
+`;

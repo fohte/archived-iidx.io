@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserMenu renders correctly 1`] = `
+<div>
+  foobar
+   
+  <button
+    onClick={[Function]}
+  >
+    signout
+  </button>
+</div>
+`;
