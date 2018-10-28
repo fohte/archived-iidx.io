@@ -1,12 +1,14 @@
 import MusicTable from '@app/components/organisms/MusicTable'
 import MainLayout from '@app/components/templates/MainLayout'
-import { GetMusicsWithMapsComponent } from '@app/queries'
-import getMusicsWithMaps from '@app/queries/getMusicsWithMaps.graphql'
+import {
+  GetMusicsWithMapsComponent,
+  GetMusicsWithMapsDocument,
+} from '@app/queries'
 import * as React from 'react'
 
 const MusicsPage: React.SFC = () => (
   <MainLayout>
-    <GetMusicsWithMapsComponent query={getMusicsWithMaps}>
+    <GetMusicsWithMapsComponent query={GetMusicsWithMapsDocument}>
       {({ loading, error, data }) => {
         if (loading) {
           return 'loading'

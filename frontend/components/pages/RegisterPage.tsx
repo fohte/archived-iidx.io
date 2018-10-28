@@ -3,8 +3,7 @@ import * as React from 'react'
 
 import RegisterForm, { Props } from '@app/components/organisms/RegisterForm'
 import MainLayout from '@app/components/templates/MainLayout'
-import { RegisterComponent } from '@app/queries'
-import registerMutation from '@app/queries/register.graphql'
+import { RegisterComponent, RegisterDocument } from '@app/queries'
 
 const handleSubmitSuccess: NonNullable<Props['onSubmitSuccess']> = () => {
   Router.push('/')
@@ -12,7 +11,7 @@ const handleSubmitSuccess: NonNullable<Props['onSubmitSuccess']> = () => {
 
 const RegisterPage: React.SFC = () => (
   <MainLayout>
-    <RegisterComponent mutation={registerMutation}>
+    <RegisterComponent mutation={RegisterDocument}>
       {register => (
         <RegisterForm
           submitRequest={async ({ username, displayName }) => {
