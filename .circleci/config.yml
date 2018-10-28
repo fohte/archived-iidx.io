@@ -80,7 +80,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            yarn run test
+            yarn run test:ci
             yarn run codecov --root=~/repo
 
   prettier:
