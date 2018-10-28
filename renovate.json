@@ -1,3 +1,10 @@
 {
-  "extends": ["config:base", ":label(renovate)", ":reviewer(fohte)"]
+  "extends": ["config:base", ":label(renovate)", ":reviewer(fohte)"],
+  "packageRules": [
+    {
+      "packageNames": "^@types/",
+      "excludePackageNames": ["@types/node"],
+      "extends": [":automergePatch", ":automergePr"]
+    }
+  ]
 }
