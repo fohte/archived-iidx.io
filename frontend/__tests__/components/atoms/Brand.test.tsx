@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme'
 import * as React from 'react'
 
-import Brand from '../../../components/atoms/Brand'
+import Brand from '@app/components/atoms/Brand'
 
 describe('Brand', () => {
   it('renders the brand', () => {
