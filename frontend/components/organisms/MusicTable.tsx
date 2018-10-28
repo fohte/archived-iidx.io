@@ -1,7 +1,7 @@
 import { GetMusicsWithMapsMusics } from '@app/queries'
 import { Table } from 'antd'
 import { ColumnProps } from 'antd/lib/table'
-import flatMap from 'lodash/flatMap'
+import { flatMap } from 'lodash'
 import * as React from 'react'
 
 interface Props {
