@@ -2,7 +2,7 @@
   "extends": ["config:base", ":label(renovate)", ":reviewer(fohte)"],
   "packageRules": [
     {
-      "packageNames": "^@types/",
+      "packagePatterns": ["^@types/"],
       "excludePackageNames": ["@types/node"],
       "extends": [":automergePatch", ":automergePr"]
     }
