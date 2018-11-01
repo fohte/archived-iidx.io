@@ -5,6 +5,13 @@
       "packagePatterns": ["^@types/"],
       "excludePackageNames": ["@types/node"],
       "extends": [":automergePatch", ":automergePr"]
+    },
+    {
+      "groupName": "graphql-code-generator",
+      "packageNames": [
+        "graphql-code-generator",
+        "graphql-codegen-typescript-react-apollo-template"
+      ]
     }
   ]
 }
