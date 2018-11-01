@@ -14,6 +14,22 @@ module.exports = withCSS(
       return merge(config, {
         plugins: [new Dotenv({ path: '../.env', systemvars: true })],
         resolve: { alias: { '@app': path.join(__dirname) } },
+        module: {
+          rules: [
+            {
+              test: /\.(png|svg|eot|otf|ttf|woff|woff2)$/,
+              use: {
+                loader: 'url-loader',
+                options: {
+                  limit: 100000,
+                  publicPath: './',
+                  outputPath: 'static/',
+                  name: '[name].[ext]',
+                },
+              },
+            },
+          ],
+        },
       })
     },
   }),
