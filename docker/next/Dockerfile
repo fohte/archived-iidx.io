@@ -1,4 +1,4 @@
-FROM node:10.12.0-alpine
+FROM node:10.13.0-alpine
 
 RUN apk add --no-cache git build-base automake autoconf linux-headers && \
   git clone https://github.com/facebook/watchman.git /tmp/watchman-src && \
