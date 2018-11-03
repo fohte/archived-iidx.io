@@ -47,7 +47,7 @@ class MusicTable extends React.PureComponent<Props, State> {
           <Table.Body>
             {flatMap(musics, music =>
               music.maps.map(map => (
-                <Table.Row>
+                <Table.Row key={`${music.id}.${map.id}`}>
                   <Table.Cell>
                     {music.title} {music.subTitle}
                   </Table.Cell>
