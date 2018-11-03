@@ -3,22 +3,23 @@
 exports[`UserNav renders a Login component and a SignUp component 1`] = `
 Array [
   <button
-    className="ant-btn"
+    className="ui inverted button"
     onClick={[Function]}
-    type="button"
+    role="button"
   >
-    <span>
-      SignUp
-    </span>
+    SignUp
   </button>,
   <button
-    className="ant-btn"
+    className="ui inverted button"
     onClick={[Function]}
-    type="button"
+    role="button"
+    style={
+      Object {
+        "marginLeft": "0.5em",
+      }
+    }
   >
-    <span>
-      Login
-    </span>
+    Login
   </button>,
 ]
 `;
