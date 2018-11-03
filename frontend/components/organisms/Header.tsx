@@ -1,32 +1,27 @@
-import { Menu } from 'antd'
 import Link from 'next/link'
 import * as React from 'react'
-import styled from 'styled-components'
+import { Container, Menu, Segment } from 'semantic-ui-react'
 
 import Brand from '@app/components/atoms/Brand'
 import UserNav from '@app/components/molecules/UserNav'
 import withAuthState from '@app/lib/withAuthState'
 
 const Header: React.SFC = () => (
-  <Menu theme="dark" style={{ lineHeight: '64px' }}>
-    <Link href="/" prefetch>
-      <BrandWrapper>
-        <Brand />
-      </BrandWrapper>
-    </Link>
-    <UserNavWrapper>
-      <EnhancedUserNav />
-    </UserNavWrapper>
-  </Menu>
+  <Segment vertical inverted>
+    <Menu secondary inverted>
+      <Container>
+        <Link href="/" prefetch>
+          <Menu.Item>
+            <Brand />
+          </Menu.Item>
+        </Link>
+        <Menu.Item position="right">
+          <EnhancedUserNav />
+        </Menu.Item>
+      </Container>
+    </Menu>
+  </Segment>
 )
-
-const BrandWrapper = styled.div`
-  float: left;
-`
-
-const UserNavWrapper = styled.div`
-  float: right;
-`
 
 const EnhancedUserNav = withAuthState()(UserNav)
 
