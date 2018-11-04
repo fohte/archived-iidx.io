@@ -15,9 +15,9 @@ const Header: React.SFC = () => (
             <Brand />
           </Menu.Item>
         </Link>
-        <Menu.Item position="right">
+        <Menu.Menu position="right">
           <EnhancedUserNav />
-        </Menu.Item>
+        </Menu.Menu>
       </Container>
     </Menu>
   </Segment>
