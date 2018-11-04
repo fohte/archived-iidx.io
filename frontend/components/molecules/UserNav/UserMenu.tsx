@@ -1,21 +1,24 @@
-import { auth } from '@app/lib/firebaseApp'
 import * as React from 'react'
+import { Dropdown } from 'semantic-ui-react'
+
+import { auth } from '@app/lib/firebaseApp'
 
 export interface Props {
   displayName: string
 }
 
 const UserMenu: React.SFC<Props> = ({ displayName }) => (
-  <div>
-    {displayName}{' '}
-    <button
-      onClick={async () => {
-        await auth.signOut()
-      }}
-    >
-      signout
-    </button>
-  </div>
+  <Dropdown item text={displayName} pointing>
+    <Dropdown.Menu>
+      <Dropdown.Item
+        onClick={async () => {
+          await auth.signOut()
+        }}
+      >
+        Sign out
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
 )
 
 export default UserMenu

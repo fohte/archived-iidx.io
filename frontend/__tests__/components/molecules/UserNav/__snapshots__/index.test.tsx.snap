@@ -25,14 +25,40 @@ Array [
 `;
 
 exports[`UserNav renders a UserMenu component 1`] = `
-<div>
-  foo
-   
-  <button
-    onClick={[Function]}
+<div
+  aria-expanded={false}
+  className="ui item pointing dropdown"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onMouseDown={[Function]}
+  role="listbox"
+  tabIndex={0}
+>
+  <div
+    aria-live="polite"
+    className="text"
+    role="alert"
   >
-    signout
-  </button>
+    foo
+  </div>
+  <i
+    aria-hidden="true"
+    className="dropdown icon"
+    onClick={[Function]}
+  />
+  <div
+    className="menu transition"
+  >
+    <div
+      className="item"
+      onClick={[Function]}
+      role="option"
+    >
+      Sign out
+    </div>
+  </div>
 </div>
 `;
 

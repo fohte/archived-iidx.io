@@ -20,8 +20,7 @@ Array [
           </span>
         </a>
         <div
-          className="right item"
-          onClick={[Function]}
+          className="right menu"
         >
           <div
             className="ui tiny active inline loader"

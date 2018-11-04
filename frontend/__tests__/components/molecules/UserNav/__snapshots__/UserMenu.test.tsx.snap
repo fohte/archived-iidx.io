@@ -1,13 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UserMenu renders correctly 1`] = `
-<div>
-  foobar
-   
-  <button
-    onClick={[Function]}
+<div
+  aria-expanded={false}
+  className="ui item pointing dropdown"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onMouseDown={[Function]}
+  role="listbox"
+  tabIndex={0}
+>
+  <div
+    aria-live="polite"
+    className="text"
+    role="alert"
   >
-    signout
-  </button>
+    foobar
+  </div>
+  <i
+    aria-hidden="true"
+    className="dropdown icon"
+    onClick={[Function]}
+  />
+  <div
+    className="menu transition"
+  >
+    <div
+      className="item"
+      onClick={[Function]}
+      role="option"
+    >
+      Sign out
+    </div>
+  </div>
 </div>
 `;
