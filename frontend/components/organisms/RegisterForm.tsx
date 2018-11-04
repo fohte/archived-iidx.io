@@ -1,78 +1,91 @@
-import { Button, Form, Icon, Input } from 'antd'
-import { FormComponentProps, ValidationRule } from 'antd/lib/form'
 import * as React from 'react'
+import { Field, Form } from 'react-final-form'
+import { isEmpty, isLength, matches } from 'validator'
 
-import InputIcon from '@app/components/atoms/InputIcon'
 import withSubmitHandling, {
   ComponentExternalProps,
   InjectedProps,
 } from '@app/lib/withSubmitHandling'
 
-export type ExternalProps = ComponentExternalProps<FormValues>
+export interface ExternalProps extends ComponentExternalProps<FormValues> {}
 
-export interface Props
-  extends ExternalProps,
-    FormComponentProps,
-    InjectedProps {}
-
-export interface State {
-  submitting: boolean
-  errorMessage: string | null
-}
+export interface Props extends ExternalProps, InjectedProps {}
 
 export interface FormValues {
   username: string
   displayName: string
 }
 
-const Atmark = () => <span style={{ color: 'rgba(0, 0, 0, 0.25)' }}>@</span>
+const validators: {
+  [key in keyof FormValues]: (
+    value: FormValues[key] | null,
+    allValues: FormValues,
+  ) => string | undefined
+} = {
+  username: (value, _) => {
+    if (!value || isEmpty(value)) {
+      return 'Please input your username.'
+    }
 
-const fieldRules: { [key in keyof FormValues]: ValidationRule[] } = {
-  username: [
-    { required: true, message: 'Please input your username.' },
-    {
-      pattern: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
-      message:
-        'Username may only contain alphanumeric characters or underscores, and cannot begin with a number.',
-    },
-    { max: 20, message: 'Username is too long (maximum is 20 characters).' },
-  ],
-  displayName: [
-    {
-      max: 40,
-      message: 'Display Name is too long (maximum is 40 characters).',
-    },
-  ],
+    if (!matches(value, /^[a-zA-Z_][a-zA-Z0-9_]*$/)) {
+      return 'Username may only contain alphanumeric characters or underscores, and cannot begin with a number.'
+    }
+
+    if (!isLength(value, { max: 20 })) {
+      return 'Username is too long (maximum is 20 characters).'
+    }
+  },
+  displayName: (value, _) => {
+    if (!value || isEmpty(value)) {
+      return 'Please input your display name.'
+    }
+
+    if (!isLength(value, { max: 40 })) {
+      return 'Display Name is too long (maximum is 40 characters).'
+    }
+  },
 }
 
-const RegisterForm: React.SFC<Props> = ({
-  form: { getFieldDecorator },
-  errorMessage,
-  handleSubmit,
-  submitting,
-}) => (
-  <Form onSubmit={handleSubmit}>
-    <Form.Item>
-      {getFieldDecorator('username', { rules: fieldRules.username })(
-        <Input prefix={<Atmark />} placeholder="Username" />,
-      )}
-    </Form.Item>
-    <Form.Item>
-      {getFieldDecorator('displayName', { rules: fieldRules.displayName })(
-        <Input prefix={<InputIcon type="user" />} placeholder="Display Name" />,
-      )}
-    </Form.Item>
-    <Form.Item>
-      <Button type="primary" htmlType="submit">
-        {submitting ? <Icon type="loading" /> : 'Sign up'}
-      </Button>
-      {errorMessage}
-    </Form.Item>
+const RegisterForm: React.SFC<Props> = ({ handleSubmit }) => (
+  <Form
+    onSubmit={handleSubmit}
+    initialValues={{ username: '', displayName: '' }}
+  >
+    {({
+      handleSubmit: innerHandleSubmit,
+      pristine,
+      invalid,
+      submitting,
+      submitError,
+    }) => (
+      <form onSubmit={innerHandleSubmit}>
+        <Field name="username" validate={validators.username}>
+          {({ input, meta }) => (
+            <div>
+              <label>Username</label>
+              <input type="text" {...input} placeholder="Username" />
+              {meta.touched && meta.error && <span>{meta.error}</span>}
+            </div>
+          )}
+        </Field>
+        <Field name="displayName" validate={validators.displayName}>
+          {({ input, meta }) => (
+            <div>
+              <label>Display Name</label>
+              <input type="text" {...input} placeholder="Display Name" />
+              {meta.touched && meta.error && <span>{meta.error}</span>}
+            </div>
+          )}
+        </Field>
+        <button type="submit" disabled={submitting || pristine || invalid}>
+          {submitting ? 'submitting...' : 'Sign up'}
+        </button>
+        {submitError && submitError}
+      </form>
+    )}
   </Form>
 )
 
-const WrappedNormalRegisterForm = Form.create<ExternalProps>()(
-  withSubmitHandling<FormValues>()(RegisterForm),
-)
+const WrappedNormalRegisterForm = withSubmitHandling<FormValues>()(RegisterForm)
 
 export default WrappedNormalRegisterForm

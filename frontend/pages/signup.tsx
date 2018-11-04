@@ -1,16 +1,21 @@
 import Router from 'next/router'
 import * as React from 'react'
 
-import SignUpForm, { Props } from '@app/components/organisms/SignUpForm'
+import LoginOrSignUpForm, {
+  Props,
+} from '@app/components/organisms/LoginOrSignUpForm'
 import MainLayout from '@app/components/templates/MainLayout'
 import { auth, ErrorType } from '@app/lib/firebaseApp'
 
-const submitRequest: NonNullable<Props['submitRequest']> = async values => {
-  await auth
-    .createUserWithEmailAndPassword(values.email, values.password)
-    .catch((err: ErrorType) => {
-      throw new Error(err.message)
-    })
+const submitRequest: NonNullable<Props['submitRequest']> = values => {
+  return new Promise((resolve, reject) => {
+    auth
+      .createUserWithEmailAndPassword(values.email, values.password)
+      .then(() => resolve())
+      .catch((e: ErrorType) => {
+        reject(new Error(e.message))
+      })
+  })
 }
 
 const handleSubmitSuccess: NonNullable<Props['onSubmitSuccess']> = () => {
@@ -19,7 +24,8 @@ const handleSubmitSuccess: NonNullable<Props['onSubmitSuccess']> = () => {
 
 export default () => (
   <MainLayout>
-    <SignUpForm
+    <LoginOrSignUpForm
+      submitText="Sign up"
       submitRequest={submitRequest}
       onSubmitSuccess={handleSubmitSuccess}
     />
