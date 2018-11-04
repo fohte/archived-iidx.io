@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Field, Form } from 'react-final-form'
+import { Icon } from 'semantic-ui-react'
 import { isEmail, isEmpty } from 'validator'
 
 import withSubmitHandling, {
@@ -69,7 +70,7 @@ const LoginOrSignUpForm: React.SFC<Props> = ({ handleSubmit, submitText }) => (
           )}
         </Field>
         <button type="submit" disabled={submitting || pristine || invalid}>
-          {submitting ? 'submitting...' : submitText}
+          {submitting ? <Icon loading name="spinner" /> : submitText}
         </button>
         {submitError && submitError}
       </form>
