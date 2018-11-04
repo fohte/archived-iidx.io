@@ -1,328 +1,120 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`/register renders correctly 1`] = `
-<div
-  className="layout ant-layout"
->
+Array [
   <div
-    className="ant-layout-header"
-  >
-    <ul
-      className="ant-menu ant-menu-dark ant-menu-root ant-menu-vertical"
-      role="menu"
-      style={
-        Object {
-          "lineHeight": "64px",
-        }
-      }
-    >
-      <div
-        className="sc-bwzfXH sUFFa"
-        onClick={[Function]}
-      >
-        <span>
-          iidx.io
-        </span>
-      </div>
-      <div
-        className="sc-htpNat gEBfLP"
-        mode="vertical"
-        onClick={[Function]}
-        onSelect={[Function]}
-      >
-        <i
-          className="anticon anticon-loading"
-        >
-          <svg
-            aria-hidden="true"
-            className="anticon-spin"
-            data-icon="loading"
-            fill="currentColor"
-            height="1em"
-            viewBox="0 0 1024 1024"
-            width="1em"
-          >
-            <path
-              d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
-            />
-          </svg>
-        </i>
-      </div>
-    </ul>
-  </div>
-  <div
-    className="ant-layout"
+    className="ui inverted vertical segment"
   >
     <div
-      className="ant-layout-content"
-      style={
-        Object {
-          "padding": "0 50px",
-        }
-      }
+      className="ui inverted secondary menu"
     >
       <div
-        style={
-          Object {
-            "background": "#fff",
-            "minHeight": 280,
-            "padding": 24,
-          }
-        }
+        className="ui container"
       >
-        <form
-          className="ant-form ant-form-horizontal"
-          onSubmit={[Function]}
+        <a
+          className="item"
+          onClick={[Function]}
+        >
+          <span>
+            iidx.io
+          </span>
+        </a>
+        <div
+          className="right item"
+          onClick={[Function]}
         >
           <div
-            className="ant-row ant-form-item"
-          >
-            <div
-              className="ant-form-item-control-wrapper"
-            >
-              <div
-                className="ant-form-item-control"
-              >
-                <span
-                  className="ant-form-item-children"
-                >
-                  <span
-                    className="ant-input-affix-wrapper"
-                  >
-                    <span
-                      className="ant-input-prefix"
-                    >
-                      <span
-                        style={
-                          Object {
-                            "color": "rgba(0, 0, 0, 0.25)",
-                          }
-                        }
-                      >
-                        @
-                      </span>
-                    </span>
-                    <input
-                      className="ant-input"
-                      data-__field={
-                        Object {
-                          "name": "username",
-                        }
-                      }
-                      data-__meta={
-                        Object {
-                          "name": "username",
-                          "originalProps": Object {
-                            "disabled": false,
-                            "placeholder": "Username",
-                            "prefix": <Atmark />,
-                            "prefixCls": "ant-input",
-                            "type": "text",
-                          },
-                          "ref": null,
-                          "rules": Array [
-                            Object {
-                              "message": "Please input your username.",
-                              "required": true,
-                            },
-                            Object {
-                              "message": "Username may only contain alphanumeric characters or underscores, and cannot begin with a number.",
-                              "pattern": /\\^\\[a-zA-Z_\\]\\[a-zA-Z0-9_\\]\\*\\$/,
-                            },
-                            Object {
-                              "max": 20,
-                              "message": "Username is too long (maximum is 20 characters).",
-                            },
-                          ],
-                          "trigger": "onChange",
-                          "validate": Array [
-                            Object {
-                              "rules": Array [
-                                Object {
-                                  "message": "Please input your username.",
-                                  "required": true,
-                                },
-                                Object {
-                                  "message": "Username may only contain alphanumeric characters or underscores, and cannot begin with a number.",
-                                  "pattern": /\\^\\[a-zA-Z_\\]\\[a-zA-Z0-9_\\]\\*\\$/,
-                                },
-                                Object {
-                                  "max": 20,
-                                  "message": "Username is too long (maximum is 20 characters).",
-                                },
-                              ],
-                              "trigger": Array [
-                                "onChange",
-                              ],
-                            },
-                          ],
-                          "valuePropName": "value",
-                        }
-                      }
-                      disabled={false}
-                      id="username"
-                      onChange={[Function]}
-                      onKeyDown={[Function]}
-                      placeholder="Username"
-                      style={null}
-                      type="text"
-                      value=""
-                    />
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            className="ant-row ant-form-item"
-          >
-            <div
-              className="ant-form-item-control-wrapper"
-            >
-              <div
-                className="ant-form-item-control"
-              >
-                <span
-                  className="ant-form-item-children"
-                >
-                  <span
-                    className="ant-input-affix-wrapper"
-                  >
-                    <span
-                      className="ant-input-prefix"
-                    >
-                      <i
-                        className="anticon anticon-user sc-bdVaJa eaTnkz"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          className=""
-                          data-icon="user"
-                          fill="currentColor"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
-                        >
-                          <path
-                            d="M858.5 763.6a374 374 0 0 0-80.6-119.5 375.63 375.63 0 0 0-119.5-80.6c-.4-.2-.8-.3-1.2-.5C719.5 518 760 444.7 760 362c0-137-111-248-248-248S264 225 264 362c0 82.7 40.5 156 102.8 201.1-.4.2-.8.3-1.2.5-44.8 18.9-85 46-119.5 80.6a375.63 375.63 0 0 0-80.6 119.5A371.7 371.7 0 0 0 136 901.8a8 8 0 0 0 8 8.2h60c4.4 0 7.9-3.5 8-7.8 2-77.2 33-149.5 87.8-204.3 56.7-56.7 132-87.9 212.2-87.9s155.5 31.2 212.2 87.9C779 752.7 810 825 812 902.2c.1 4.4 3.6 7.8 8 7.8h60a8 8 0 0 0 8-8.2c-1-47.8-10.9-94.3-29.5-138.2zM512 534c-45.9 0-89.1-17.9-121.6-50.4S340 407.9 340 362c0-45.9 17.9-89.1 50.4-121.6S466.1 190 512 190s89.1 17.9 121.6 50.4S684 316.1 684 362c0 45.9-17.9 89.1-50.4 121.6S557.9 534 512 534z"
-                          />
-                        </svg>
-                      </i>
-                    </span>
-                    <input
-                      className="ant-input"
-                      data-__field={
-                        Object {
-                          "name": "displayName",
-                        }
-                      }
-                      data-__meta={
-                        Object {
-                          "name": "displayName",
-                          "originalProps": Object {
-                            "disabled": false,
-                            "placeholder": "Display Name",
-                            "prefix": <Styled(Icon)
-                              type="user"
-                            />,
-                            "prefixCls": "ant-input",
-                            "type": "text",
-                          },
-                          "ref": null,
-                          "rules": Array [
-                            Object {
-                              "max": 40,
-                              "message": "Display Name is too long (maximum is 40 characters).",
-                            },
-                          ],
-                          "trigger": "onChange",
-                          "validate": Array [
-                            Object {
-                              "rules": Array [
-                                Object {
-                                  "max": 40,
-                                  "message": "Display Name is too long (maximum is 40 characters).",
-                                },
-                              ],
-                              "trigger": Array [
-                                "onChange",
-                              ],
-                            },
-                          ],
-                          "valuePropName": "value",
-                        }
-                      }
-                      disabled={false}
-                      id="displayName"
-                      onChange={[Function]}
-                      onKeyDown={[Function]}
-                      placeholder="Display Name"
-                      style={null}
-                      type="text"
-                      value=""
-                    />
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            className="ant-row ant-form-item"
-          >
-            <div
-              className="ant-form-item-control-wrapper"
-            >
-              <div
-                className="ant-form-item-control"
-              >
-                <span
-                  className="ant-form-item-children"
-                >
-                  <button
-                    className="ant-btn ant-btn-primary"
-                    onClick={[Function]}
-                    type="submit"
-                  >
-                    <span>
-                      Sign up
-                    </span>
-                  </button>
-                </span>
-              </div>
-            </div>
-          </div>
-        </form>
+            className="ui tiny active inline loader"
+          />
+        </div>
       </div>
     </div>
+  </div>,
+  <div
+    className="ui vertical segment"
+  >
     <div
-      className="ant-layout-footer"
-      style={
-        Object {
-          "textAlign": "center",
-        }
-      }
+      className="ui container"
+    >
+      <form
+        className="ui form"
+        onSubmit={[Function]}
+      >
+        <div
+          className="field"
+        >
+          <label>
+            Username
+          </label>
+          <div
+            className="ui left icon input"
+          >
+            <input
+              name="username"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Username"
+              type="text"
+              value=""
+            />
+            <i
+              aria-hidden="true"
+              className="at icon"
+            />
+          </div>
+        </div>
+        <div
+          className="field"
+        >
+          <label>
+            Display Name
+          </label>
+          <div
+            className="ui left icon input"
+          >
+            <input
+              name="displayName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Display Name"
+              type="text"
+              value=""
+            />
+            <i
+              aria-hidden="true"
+              className="user icon"
+            />
+          </div>
+        </div>
+        <button
+          className="ui teal large disabled button"
+          disabled={true}
+          onClick={[Function]}
+          role="button"
+          tabIndex={-1}
+          type="submit"
+        >
+          Sign up
+        </button>
+      </form>
+    </div>
+  </div>,
+  <div
+    className="ui vertical segment"
+  >
+    <div
+      className="ui center aligned container"
     >
       <i
-        className="anticon anticon-copyright"
-      >
-        <svg
-          aria-hidden="true"
-          className=""
-          data-icon="copyright"
-          fill="currentColor"
-          height="1em"
-          viewBox="64 64 896 896"
-          width="1em"
-        >
-          <path
-            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm5.6-532.7c53 0 89 33.8 93 83.4.3 4.2 3.8 7.4 8 7.4h56.7c2.6 0 4.7-2.1 4.7-4.7 0-86.7-68.4-147.4-162.7-147.4C407.4 290 344 364.2 344 486.8v52.3C344 660.8 407.4 734 517.3 734c94 0 162.7-58.8 162.7-141.4 0-2.6-2.1-4.7-4.7-4.7h-56.8c-4.2 0-7.6 3.2-8 7.3-4.2 46.1-40.1 77.8-93 77.8-65.3 0-102.1-47.9-102.1-133.6v-52.6c.1-87 37-135.5 102.2-135.5z"
-          />
-        </svg>
-      </i>
+        aria-hidden="true"
+        className="copyright outline icon"
+      />
        
       2018
        iidx.io
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;

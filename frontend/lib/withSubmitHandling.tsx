@@ -1,30 +1,19 @@
-import { FormComponentProps } from 'antd/lib/form'
+import { FORM_ERROR } from 'final-form'
 import * as React from 'react'
+import { FormProps } from 'react-final-form'
 import { setDisplayName, wrapDisplayName } from 'recompose'
 import { Diff } from 'utility-types'
 
-export interface FormInjectedProps {
-  form: FormComponentProps['form']
-}
-
 export interface ComponentExternalProps<FormValues extends {}> {
-  submitRequest?: (values: FormValues) => void
+  submitRequest?: (values: FormValues) => Promise<void>
   onSubmitSuccess?: () => void
 }
 
 export interface ExternalProps<FormValues extends {}>
-  extends ComponentExternalProps<FormValues>,
-    FormInjectedProps {}
-
-interface State {
-  submitting: boolean
-  errorMessage: string | null
-}
+  extends ComponentExternalProps<FormValues> {}
 
 export interface InjectedProps {
-  submitting: boolean
-  errorMessage: string | null
-  handleSubmit: (e: React.FormEvent) => void
+  handleSubmit: FormProps['onSubmit']
 }
 
 export default <FormValues extends {}>() => <OriginalProps extends {}>(
@@ -33,49 +22,28 @@ export default <FormValues extends {}>() => <OriginalProps extends {}>(
   type EnhancedProps = Diff<OriginalProps, InjectedProps> &
     ExternalProps<FormValues>
 
-  class WithSubmitHandling extends React.Component<EnhancedProps, State> {
-    public state: Readonly<State> = {
-      submitting: false,
-      errorMessage: null,
-    }
+  class WithSubmitHandling extends React.Component<EnhancedProps> {
+    public handleSubmit: InjectedProps['handleSubmit'] = async (
+      values: FormValues,
+    ) => {
+      const { submitRequest, onSubmitSuccess } = this.props
 
-    public handleSubmit: InjectedProps['handleSubmit'] = e => {
-      const { form, submitRequest, onSubmitSuccess } = this.props
+      if (submitRequest) {
+        try {
+          await submitRequest(values)
 
-      e.preventDefault()
-      form.validateFields(async (err, values: FormValues) => {
-        if (err) {
-          return
-        }
-
-        if (submitRequest) {
-          this.setState({ submitting: true })
-
-          try {
-            await submitRequest(values)
-
-            if (onSubmitSuccess) {
-              onSubmitSuccess()
-            }
-
-            this.setState({ submitting: false })
-          } catch (e) {
-            this.setState({ errorMessage: e.message, submitting: false })
+          if (onSubmitSuccess) {
+            onSubmitSuccess()
           }
+        } catch (e) {
+          return { [FORM_ERROR]: e.message }
         }
-      })
+      }
     }
 
     public render() {
-      const { submitting, errorMessage } = this.state
-
       return (
-        <WrappedComponent
-          submitting={submitting}
-          errorMessage={errorMessage}
-          handleSubmit={this.handleSubmit}
-          {...this.props}
-        />
+        <WrappedComponent handleSubmit={this.handleSubmit} {...this.props} />
       )
     }
   }

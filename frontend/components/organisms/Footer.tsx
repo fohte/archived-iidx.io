@@ -1,5 +1,5 @@
-import { Icon } from 'antd'
 import * as React from 'react'
+import { Container, Icon, Segment } from 'semantic-ui-react'
 
 const originalCopyrightYear = 2018
 
@@ -14,9 +14,11 @@ const getCopyrightYears = (): string => {
 }
 
 const Footer: React.SFC = () => (
-  <>
-    <Icon type="copyright" /> {getCopyrightYears()} iidx.io
-  </>
+  <Segment vertical>
+    <Container textAlign="center">
+      <Icon name="copyright outline" /> {getCopyrightYears()} iidx.io
+    </Container>
+  </Segment>
 )
 
 export default Footer

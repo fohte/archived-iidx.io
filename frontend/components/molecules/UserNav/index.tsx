@@ -1,16 +1,15 @@
-import { Icon } from 'antd'
+import Link from 'next/link'
 import * as React from 'react'
+import { Button, Loader } from 'semantic-ui-react'
 
 import { InjectedProps } from '@app/lib/withAuthState'
-import Login from './Login'
-import SignUp from './SignUp'
 import UserMenu from './UserMenu'
 
 export interface Props extends InjectedProps {}
 
 const UserNav: React.SFC<Props> = ({ loading, viewer }) => {
   if (loading) {
-    return <Icon type="loading" />
+    return <Loader active inline size="tiny" />
   }
 
   if (viewer) {
@@ -18,8 +17,14 @@ const UserNav: React.SFC<Props> = ({ loading, viewer }) => {
   } else {
     return (
       <>
-        <SignUp />
-        <Login />
+        <Link href="/signup" prefetch>
+          <Button inverted>SignUp</Button>
+        </Link>
+        <Link href="/login" prefetch>
+          <Button inverted style={{ marginLeft: '0.5em' }}>
+            Login
+          </Button>
+        </Link>
       </>
     )
   }

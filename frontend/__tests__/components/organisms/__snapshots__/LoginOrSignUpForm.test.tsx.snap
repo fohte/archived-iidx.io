@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginOrSignUpForm renders correctly 1`] = `
+<form
+  className="ui large form"
+  onSubmit={[Function]}
+>
+  <div
+    className="ui stacked left aligned segment"
+  >
+    <div
+      className="field"
+    >
+      <div
+        className="ui fluid left icon input"
+      >
+        <input
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="E-mail address"
+          type="email"
+          value=""
+        />
+        <i
+          aria-hidden="true"
+          className="user icon"
+        />
+      </div>
+    </div>
+    <div
+      className="field"
+    >
+      <div
+        className="ui fluid left icon input"
+      >
+        <input
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+        <i
+          aria-hidden="true"
+          className="lock icon"
+        />
+      </div>
+    </div>
+    <button
+      className="ui teal large fluid disabled button"
+      disabled={true}
+      onClick={[Function]}
+      role="button"
+      tabIndex={-1}
+      type="submit"
+    >
+      Log in
+    </button>
+  </div>
+</form>
+`;

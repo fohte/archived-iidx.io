@@ -1,16 +1,23 @@
+import Link from 'next/link'
 import Router from 'next/router'
 import * as React from 'react'
+import { Grid, Header, Message } from 'semantic-ui-react'
 
-import LoginForm, { Props } from '@app/components/organisms/LoginForm'
+import LoginOrSignUpForm, {
+  Props,
+} from '@app/components/organisms/LoginOrSignUpForm'
 import MainLayout from '@app/components/templates/MainLayout'
 import { auth, ErrorType } from '@app/lib/firebaseApp'
 
-const submitRequest: NonNullable<Props['submitRequest']> = async values => {
-  await auth
-    .signInWithEmailAndPassword(values.email, values.password)
-    .catch((err: ErrorType) => {
-      throw new Error(err.message)
-    })
+const submitRequest: NonNullable<Props['submitRequest']> = values => {
+  return new Promise((resolve, reject) => {
+    auth
+      .signInWithEmailAndPassword(values.email, values.password)
+      .then(() => resolve())
+      .catch((e: ErrorType) => {
+        reject(new Error(e.message))
+      })
+  })
 }
 
 const handleSubmitSuccess: NonNullable<Props['onSubmitSuccess']> = () => {
@@ -19,9 +26,23 @@ const handleSubmitSuccess: NonNullable<Props['onSubmitSuccess']> = () => {
 
 export default () => (
   <MainLayout>
-    <LoginForm
-      submitRequest={submitRequest}
-      onSubmitSuccess={handleSubmitSuccess}
-    />
+    <Grid textAlign="center" style={{ height: '100%' }} verticalAlign="middle">
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as="h2" color="teal" textAlign="center">
+          Log-in to your account
+        </Header>
+        <LoginOrSignUpForm
+          submitText="Log in"
+          submitRequest={submitRequest}
+          onSubmitSuccess={handleSubmitSuccess}
+        />
+        <Message>
+          New to us?{' '}
+          <Link href="/signup" prefetch>
+            <a>Sign up.</a>
+          </Link>
+        </Message>
+      </Grid.Column>
+    </Grid>
   </MainLayout>
 )

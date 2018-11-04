@@ -1,11 +1,11 @@
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
-import LoginForm from '@app/components/organisms/LoginForm'
+import LoginOrSignUpForm from '@app/components/organisms/LoginOrSignUpForm'
 
-describe('LoginForm', () => {
+describe('LoginOrSignUpForm', () => {
   it('renders correctly', () => {
-    const component = renderer.create(<LoginForm />)
+    const component = renderer.create(<LoginOrSignUpForm submitText="Log in" />)
     const tree = component.toJSON()
 
     expect(tree).toMatchSnapshot()
