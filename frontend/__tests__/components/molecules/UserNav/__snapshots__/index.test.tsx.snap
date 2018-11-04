@@ -37,8 +37,7 @@ exports[`UserNav renders a UserMenu component 1`] = `
 `;
 
 exports[`UserNav renders a loading icon when the loading prop is true 1`] = `
-<i
-  aria-hidden="true"
-  className="spinner loading icon"
+<div
+  className="ui tiny active inline loader"
 />
 `;

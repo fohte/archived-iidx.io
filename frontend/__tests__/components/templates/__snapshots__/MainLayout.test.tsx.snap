@@ -23,9 +23,8 @@ Array [
           className="right item"
           onClick={[Function]}
         >
-          <i
-            aria-hidden="true"
-            className="spinner loading icon"
+          <div
+            className="ui tiny active inline loader"
           />
         </div>
       </div>

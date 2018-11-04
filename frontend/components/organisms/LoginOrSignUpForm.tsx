@@ -1,14 +1,6 @@
 import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
-import {
-  Button,
-  Form,
-  Icon,
-  Input,
-  Label,
-  Message,
-  Segment,
-} from 'semantic-ui-react'
+import { Button, Form, Input, Label, Message, Segment } from 'semantic-ui-react'
 import { isEmail, isEmpty } from 'validator'
 
 import withSubmitHandling, {
@@ -111,8 +103,9 @@ const LoginOrSignUpForm: React.SFC<Props> = ({ handleSubmit, submitText }) => (
             color="teal"
             fluid
             size="large"
+            loading={submitting}
           >
-            {submitting ? <Icon loading name="spinner" /> : submitText}
+            {submitText}
           </Button>
         </Segment>
       </Form>

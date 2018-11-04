@@ -107,8 +107,9 @@ const RegisterForm: React.SFC<Props> = ({ handleSubmit }) => (
           disabled={submitting || pristine || hasValidationErrors}
           color="teal"
           size="large"
+          loading={submitting}
         >
-          {submitting ? 'submitting...' : 'Sign up'}
+          Sign up
         </Button>
       </Form>
     )}

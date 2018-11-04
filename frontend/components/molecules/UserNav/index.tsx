@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import * as React from 'react'
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Loader } from 'semantic-ui-react'
 
 import { InjectedProps } from '@app/lib/withAuthState'
 import UserMenu from './UserMenu'
@@ -9,7 +9,7 @@ export interface Props extends InjectedProps {}
 
 const UserNav: React.SFC<Props> = ({ loading, viewer }) => {
   if (loading) {
-    return <Icon loading name="spinner" />
+    return <Loader active inline size="tiny" />
   }
 
   if (viewer) {
