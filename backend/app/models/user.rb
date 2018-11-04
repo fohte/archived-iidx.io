@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  NAME_FORMAT = /\A[a-zA-Z_][a-zA-Z0-9_]*\z/
+  NAME_FORMAT = /\A[a-zA-Z_][a-zA-Z0-9_]*\z/.freeze
 
   has_one :profile, class_name: 'UserProfile', dependent: :destroy
   has_many :results, dependent: :destroy
