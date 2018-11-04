@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Field, Form } from 'react-final-form'
+import { Field as FinalField, Form as FinalForm } from 'react-final-form'
+import { Button, Form, Input, Label, Message } from 'semantic-ui-react'
 import { isEmpty, isLength, matches } from 'validator'
 
 import withSubmitHandling, {
@@ -47,43 +48,71 @@ const validators: {
 }
 
 const RegisterForm: React.SFC<Props> = ({ handleSubmit }) => (
-  <Form
+  <FinalForm
     onSubmit={handleSubmit}
     initialValues={{ username: '', displayName: '' }}
   >
     {({
       handleSubmit: innerHandleSubmit,
       pristine,
-      invalid,
       submitting,
       submitError,
+      hasSubmitErrors,
+      hasValidationErrors,
     }) => (
-      <form onSubmit={innerHandleSubmit}>
-        <Field name="username" validate={validators.username}>
+      <Form onSubmit={innerHandleSubmit} error={hasSubmitErrors}>
+        <FinalField name="username" validate={validators.username}>
           {({ input, meta }) => (
-            <div>
+            <Form.Field error={!!(meta.touched && meta.error)}>
               <label>Username</label>
-              <input type="text" {...input} placeholder="Username" />
-              {meta.touched && meta.error && <span>{meta.error}</span>}
-            </div>
+              <Input
+                type="text"
+                icon="at"
+                iconPosition="left"
+                {...input}
+                placeholder="Username"
+              />
+              {meta.touched &&
+                meta.error && (
+                  <Label basic color="red" pointing>
+                    {meta.error}
+                  </Label>
+                )}
+            </Form.Field>
           )}
-        </Field>
-        <Field name="displayName" validate={validators.displayName}>
+        </FinalField>
+        <FinalField name="displayName" validate={validators.displayName}>
           {({ input, meta }) => (
-            <div>
+            <Form.Field error={!!(meta.touched && meta.error)}>
               <label>Display Name</label>
-              <input type="text" {...input} placeholder="Display Name" />
-              {meta.touched && meta.error && <span>{meta.error}</span>}
-            </div>
+              <Input
+                type="text"
+                icon="user"
+                iconPosition="left"
+                {...input}
+                placeholder="Display Name"
+              />
+              {meta.touched &&
+                meta.error && (
+                  <Label basic color="red" pointing>
+                    {meta.error}
+                  </Label>
+                )}
+            </Form.Field>
           )}
-        </Field>
-        <button type="submit" disabled={submitting || pristine || invalid}>
+        </FinalField>
+        {hasSubmitErrors && <Message error content={submitError} />}
+        <Button
+          type="submit"
+          disabled={submitting || pristine || hasValidationErrors}
+          color="teal"
+          size="large"
+        >
           {submitting ? 'submitting...' : 'Sign up'}
-        </button>
-        {submitError && submitError}
-      </form>
+        </Button>
+      </Form>
     )}
-  </Form>
+  </FinalForm>
 )
 
 const WrappedNormalRegisterForm = withSubmitHandling<FormValues>()(RegisterForm)

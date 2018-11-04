@@ -37,44 +37,102 @@ Array [
     <div
       className="ui container"
     >
-      <form
-        onSubmit={[Function]}
+      <div
+        className="ui center aligned middle aligned grid"
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
       >
-        <div>
-          <label>
-            Email
-          </label>
-          <input
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Email"
-            type="email"
-            value=""
-          />
-        </div>
-        <div>
-          <label>
-            Password
-          </label>
-          <input
-            name="password"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Password"
-            type="password"
-            value=""
-          />
-        </div>
-        <button
-          disabled={true}
-          type="submit"
+        <div
+          className="column"
+          style={
+            Object {
+              "maxWidth": 450,
+            }
+          }
         >
-          Log in
-        </button>
-      </form>
+          <h2
+            className="ui teal center aligned header"
+          >
+            Log-in to your account
+          </h2>
+          <form
+            className="ui large form"
+            onSubmit={[Function]}
+          >
+            <div
+              className="ui stacked left aligned segment"
+            >
+              <div
+                className="field"
+              >
+                <div
+                  className="ui fluid left icon input"
+                >
+                  <input
+                    name="email"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="E-mail address"
+                    type="email"
+                    value=""
+                  />
+                  <i
+                    aria-hidden="true"
+                    className="user icon"
+                  />
+                </div>
+              </div>
+              <div
+                className="field"
+              >
+                <div
+                  className="ui fluid left icon input"
+                >
+                  <input
+                    name="password"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="Password"
+                    type="password"
+                    value=""
+                  />
+                  <i
+                    aria-hidden="true"
+                    className="lock icon"
+                  />
+                </div>
+              </div>
+              <button
+                className="ui teal large fluid disabled button"
+                disabled={true}
+                onClick={[Function]}
+                role="button"
+                tabIndex={-1}
+                type="submit"
+              >
+                Log in
+              </button>
+            </div>
+          </form>
+          <div
+            className="ui message"
+          >
+            New to us?
+             
+            <a
+              href="/signup"
+              onClick={[Function]}
+            >
+              Sign up.
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>,
   <div

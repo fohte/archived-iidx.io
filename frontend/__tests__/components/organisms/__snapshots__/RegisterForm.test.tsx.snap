@@ -2,38 +2,63 @@
 
 exports[`RegisterForm renders correctly 1`] = `
 <form
+  className="ui form"
   onSubmit={[Function]}
 >
-  <div>
+  <div
+    className="field"
+  >
     <label>
       Username
     </label>
-    <input
-      name="username"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Username"
-      type="text"
-      value=""
-    />
+    <div
+      className="ui left icon input"
+    >
+      <input
+        name="username"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Username"
+        type="text"
+        value=""
+      />
+      <i
+        aria-hidden="true"
+        className="at icon"
+      />
+    </div>
   </div>
-  <div>
+  <div
+    className="field"
+  >
     <label>
       Display Name
     </label>
-    <input
-      name="displayName"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="Display Name"
-      type="text"
-      value=""
-    />
+    <div
+      className="ui left icon input"
+    >
+      <input
+        name="displayName"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Display Name"
+        type="text"
+        value=""
+      />
+      <i
+        aria-hidden="true"
+        className="user icon"
+      />
+    </div>
   </div>
   <button
+    className="ui teal large disabled button"
     disabled={true}
+    onClick={[Function]}
+    role="button"
+    tabIndex={-1}
     type="submit"
   >
     Sign up

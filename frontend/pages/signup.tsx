@@ -1,5 +1,6 @@
 import Router from 'next/router'
 import * as React from 'react'
+import { Grid, Header } from 'semantic-ui-react'
 
 import LoginOrSignUpForm, {
   Props,
@@ -24,10 +25,17 @@ const handleSubmitSuccess: NonNullable<Props['onSubmitSuccess']> = () => {
 
 export default () => (
   <MainLayout>
-    <LoginOrSignUpForm
-      submitText="Sign up"
-      submitRequest={submitRequest}
-      onSubmitSuccess={handleSubmitSuccess}
-    />
+    <Grid textAlign="center" style={{ height: '100%' }} verticalAlign="middle">
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as="h2" color="teal" textAlign="center">
+          Create your personal account.
+        </Header>
+        <LoginOrSignUpForm
+          submitText="Sign up"
+          submitRequest={submitRequest}
+          onSubmitSuccess={handleSubmitSuccess}
+        />
+      </Grid.Column>
+    </Grid>
   </MainLayout>
 )
