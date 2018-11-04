@@ -9,7 +9,6 @@
         "preprocess": false
       }
     ],
-    ["import", { "libraryName": "antd", "style": "css" }],
     ["lodash"]
   ],
   "env": {
@@ -33,7 +32,6 @@
             "preprocess": false
           }
         ],
-        ["import", { "libraryName": "antd", "style": "css" }],
         ["lodash"]
       ]
     }
