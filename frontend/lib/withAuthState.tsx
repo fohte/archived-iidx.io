@@ -20,7 +20,7 @@ const withAuthState = () => <OriginalProps extends {}>(
 
   const newDisplayName = wrapDisplayName(WrappedComponent, 'withAuthState')
 
-  return setDisplayName<EnhancedProps>(newDisplayName)(WithAuthState)
+  return setDisplayName(newDisplayName)(WithAuthState)
 }
 
 export default withAuthState

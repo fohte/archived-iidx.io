@@ -49,5 +49,5 @@ export default <FormValues extends {}>() => <OriginalProps extends {}>(
   }
 
   const newDisplayName = wrapDisplayName(WrappedComponent, 'withSubmitHandling')
-  return setDisplayName<EnhancedProps>(newDisplayName)(WithSubmitHandling)
+  return setDisplayName(newDisplayName)(WithSubmitHandling)
 }
