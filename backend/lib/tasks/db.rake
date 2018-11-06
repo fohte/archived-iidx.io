@@ -9,31 +9,12 @@ namespace :db do
   end
 
   namespace :schema do
-    def execute_ridgepole(dry_run: false)
-      schema_file_path = Rails.root.join('db', 'schemas', 'schemafile.rb')
-      database_config_path = Rails.root.join('config', 'database.yml')
-
-      args = %W[
-        bundle exec ridgepole
-        --apply
-        -f #{schema_file_path}
-        -c #{database_config_path}
-        -E #{Rails.env}
-        --mysql-use-alter
-        --mysql-change-table-options
-      ].tap do |arr|
-        arr << '--dry-run' if dry_run
-      end
-
-      system(*args)
-    end
-
     task :apply do
-      execute_ridgepole
+      IIDXIO::Tasks::Database.apply_ridgepole!
     end
 
     task :dry_apply do
-      execute_ridgepole(dry_run: true)
+      IIDXIO::Tasks::Database.dry_run_ridgepole!
     end
   end
 end
