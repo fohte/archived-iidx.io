@@ -9,8 +9,6 @@ services:
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     environment:
       MYSQL_ROOT_PASSWORD: password
-    ports:
-      - '3306:3306'
     healthcheck:
       test: ['CMD-SHELL', 'mysqladmin ping -u root -ppassword']
       interval: 5s
@@ -18,8 +16,6 @@ services:
       retries: 3
   redis:
     image: redis:4.0.11-stretch
-    ports:
-      - '6379:6379'
   rails: &app_base
     build:
       context: .
