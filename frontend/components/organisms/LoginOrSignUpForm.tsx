@@ -67,12 +67,11 @@ const LoginOrSignUpForm: React.SFC<Props> = ({ handleSubmit, submitText }) => (
                   {...input}
                   placeholder="E-mail address"
                 />
-                {meta.touched &&
-                  meta.error && (
-                    <Label basic color="red" pointing>
-                      {meta.error}
-                    </Label>
-                  )}
+                {meta.touched && meta.error && (
+                  <Label basic color="red" pointing>
+                    {meta.error}
+                  </Label>
+                )}
               </Form.Field>
             )}
           </FinalField>
@@ -87,12 +86,11 @@ const LoginOrSignUpForm: React.SFC<Props> = ({ handleSubmit, submitText }) => (
                   {...input}
                   placeholder="Password"
                 />
-                {meta.touched &&
-                  meta.error && (
-                    <Label basic color="red" pointing>
-                      {meta.error}
-                    </Label>
-                  )}
+                {meta.touched && meta.error && (
+                  <Label basic color="red" pointing>
+                    {meta.error}
+                  </Label>
+                )}
               </Form.Field>
             )}
           </FinalField>

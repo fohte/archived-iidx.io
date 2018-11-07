@@ -72,12 +72,11 @@ const RegisterForm: React.SFC<Props> = ({ handleSubmit }) => (
                 {...input}
                 placeholder="Username"
               />
-              {meta.touched &&
-                meta.error && (
-                  <Label basic color="red" pointing>
-                    {meta.error}
-                  </Label>
-                )}
+              {meta.touched && meta.error && (
+                <Label basic color="red" pointing>
+                  {meta.error}
+                </Label>
+              )}
             </Form.Field>
           )}
         </FinalField>
@@ -92,12 +91,11 @@ const RegisterForm: React.SFC<Props> = ({ handleSubmit }) => (
                 {...input}
                 placeholder="Display Name"
               />
-              {meta.touched &&
-                meta.error && (
-                  <Label basic color="red" pointing>
-                    {meta.error}
-                  </Label>
-                )}
+              {meta.touched && meta.error && (
+                <Label basic color="red" pointing>
+                  {meta.error}
+                </Label>
+              )}
             </Form.Field>
           )}
         </FinalField>
