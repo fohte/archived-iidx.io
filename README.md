@@ -6,5 +6,5 @@
 ## Setup
 
 ```
-bin/setup
+scripts/setup
 ```
