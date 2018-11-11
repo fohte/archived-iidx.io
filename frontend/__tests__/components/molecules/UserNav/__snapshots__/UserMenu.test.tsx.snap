@@ -32,6 +32,16 @@ exports[`UserMenu renders correctly 1`] = `
       onClick={[Function]}
       role="option"
     >
+      Register results
+    </div>
+    <div
+      className="divider"
+    />
+    <div
+      className="item"
+      onClick={[Function]}
+      role="option"
+    >
       Sign out
     </div>
   </div>

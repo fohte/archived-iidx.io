@@ -1,0 +1,5 @@
+mutation registerResultsWithCSV($csv: String!, $playStyle: PlayStyle!) {
+  registerResultsWithCSV(csv: $csv, playStyle: $playStyle) {
+    success
+  }
+}
