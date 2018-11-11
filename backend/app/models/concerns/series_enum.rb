@@ -29,6 +29,7 @@ module SeriesEnum
     'copula' => 23,
     'SINOBUZ' => 24,
     'CANNON BALLERS' => 25,
+    'Rootage' => 26,
   }.freeze
 
   included do
@@ -58,6 +59,7 @@ module SeriesEnum
       copula: 23,
       sinobuz: 24,
       cannon_ballers: 25,
+      rootage: 26,
     }
   end
 
