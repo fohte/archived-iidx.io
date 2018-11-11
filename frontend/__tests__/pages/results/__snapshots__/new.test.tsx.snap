@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/ renders correctly 1`] = `
+Array [
+  <div
+    className="ui inverted vertical segment"
+  >
+    <div
+      className="ui inverted secondary menu"
+    >
+      <div
+        className="ui container"
+      >
+        <a
+          className="item"
+          onClick={[Function]}
+        >
+          <span>
+            iidx.io
+          </span>
+        </a>
+        <div
+          className="right menu"
+        >
+          <div
+            className="ui tiny active inline loader"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="ui vertical segment"
+  >
+    <div
+      className="ui container"
+    >
+      <form
+        className="ui form"
+        onSubmit={[Function]}
+      >
+        <div
+          className="inline fields"
+        >
+          <label>
+            Play Style
+          </label>
+          <div
+            className="field"
+          >
+            <div
+              className="ui radio checkbox"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                name="playStyle"
+                onClick={[Function]}
+                readOnly={true}
+                tabIndex={0}
+                type="radio"
+                value="SP"
+              />
+              <label>
+                SP
+              </label>
+            </div>
+          </div>
+          <div
+            className="field"
+          >
+            <div
+              className="ui radio checkbox"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                name="playStyle"
+                onClick={[Function]}
+                readOnly={true}
+                tabIndex={0}
+                type="radio"
+                value="DP"
+              />
+              <label>
+                DP
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          className="field"
+        >
+          <label>
+            CSV
+          </label>
+          <textarea
+            name="csv"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onInput={[Function]}
+            rows={3}
+            style={
+              Object {
+                "resize": "",
+              }
+            }
+            value=""
+          />
+        </div>
+        <button
+          className="ui disabled button"
+          disabled={true}
+          onClick={[Function]}
+          role="button"
+          tabIndex={-1}
+          type="submit"
+        >
+          submit
+        </button>
+      </form>
+    </div>
+  </div>,
+  <div
+    className="ui vertical segment"
+  >
+    <div
+      className="ui center aligned container"
+    >
+      <i
+        aria-hidden="true"
+        className="copyright outline icon"
+      />
+       
+      2018
+       iidx.io
+    </div>
+  </div>,
+]
+`;
