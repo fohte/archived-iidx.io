@@ -201,6 +201,23 @@ export type RegisterProfile = {
   displayName: string
 }
 
+export type RegisterResultsWithCsvVariables = {
+  csv: string
+  playStyle: PlayStyle
+}
+
+export type RegisterResultsWithCsvMutation = {
+  __typename?: 'Mutation'
+
+  registerResultsWithCSV?: RegisterResultsWithCsvRegisterResultsWithCsv | null
+}
+
+export type RegisterResultsWithCsvRegisterResultsWithCsv = {
+  __typename?: 'RegisterResultsWithCSVPayload'
+
+  success: boolean
+}
+
 import * as ReactApollo from 'react-apollo'
 import * as React from 'react'
 
@@ -325,4 +342,45 @@ export function RegisterHOC<
     RegisterDocument,
     operationOptions,
   )
+}
+export const RegisterResultsWithCsvDocument = gql`
+  mutation registerResultsWithCSV($csv: String!, $playStyle: PlayStyle!) {
+    registerResultsWithCSV(csv: $csv, playStyle: $playStyle) {
+      success
+    }
+  }
+`
+export class RegisterResultsWithCsvComponent extends React.Component<
+  Partial<
+    ReactApollo.MutationProps<
+      RegisterResultsWithCsvMutation,
+      RegisterResultsWithCsvVariables
+    >
+  >
+> {
+  render() {
+    return (
+      <ReactApollo.Mutation<
+        RegisterResultsWithCsvMutation,
+        RegisterResultsWithCsvVariables
+      >
+        mutation={RegisterResultsWithCsvDocument}
+        {...this['props'] as any}
+      />
+    )
+  }
+}
+export function RegisterResultsWithCsvHOC<
+  TProps = any,
+  OperationOptions = ReactApollo.OperationOption<
+    TProps,
+    RegisterResultsWithCsvMutation,
+    RegisterResultsWithCsvVariables
+  >
+>(operationOptions: OperationOptions) {
+  return ReactApollo.graphql<
+    TProps,
+    RegisterResultsWithCsvMutation,
+    RegisterResultsWithCsvVariables
+  >(RegisterResultsWithCsvDocument, operationOptions)
 }
