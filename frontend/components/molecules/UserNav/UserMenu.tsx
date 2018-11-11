@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import * as React from 'react'
 import { Dropdown } from 'semantic-ui-react'
 
@@ -10,6 +11,10 @@ export interface Props {
 const UserMenu: React.SFC<Props> = ({ displayName }) => (
   <Dropdown item text={displayName} pointing>
     <Dropdown.Menu>
+      <Link href="/results/new">
+        <Dropdown.Item>Register results</Dropdown.Item>
+      </Link>
+      <Dropdown.Divider />
       <Dropdown.Item
         onClick={async () => {
           await auth.signOut()
