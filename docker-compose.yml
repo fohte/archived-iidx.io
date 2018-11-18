@@ -16,10 +16,10 @@ services:
       retries: 3
   redis:
     image: redis:4.0.11-stretch
-  rails: &app_base
+  backend: &app_base
     build:
       context: .
-      dockerfile: ./docker/rails/Dockerfile
+      dockerfile: ./docker/backend/Dockerfile
     working_dir: /app/backend
     command: bundle exec puma -C config/puma.rb
     volumes:
@@ -48,20 +48,20 @@ services:
     tty: false
     stdin_open: false
     restart: on-failure:3
-  next: &next
+  frontend: &frontend
     build:
       context: .
-      dockerfile: ./docker/next/Dockerfile
+      dockerfile: ./docker/frontend/Dockerfile
     working_dir: /app/frontend
     command: yarn run dev
     volumes:
       - .:/app
       - node_modules:/app/frontend/node_modules
     environment:
-      PRIVATE_API_URL: http://rails:3000/graphql
+      PRIVATE_API_URL: http://backend:3000/graphql
       PUBLIC_API_URL: http://localhost:5000/graphql
     depends_on:
-      - rails
+      - backend
     ports:
       - '3000:3000'
 volumes:

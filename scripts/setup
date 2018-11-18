@@ -4,9 +4,9 @@ set -eux
 
 docker-compose up -d mysql
 
-docker-compose run --rm rails bundle install
-docker-compose run --rm next yarn install
+docker-compose run --rm backend bundle install
+docker-compose run --rm frontend yarn install
 
-docker-compose run --rm rails rails db:setup
+docker-compose run --rm backend rails db:setup
 
 docker-compose up -d
