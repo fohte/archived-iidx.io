@@ -30,6 +30,7 @@ module.exports = withCSS(
         },
       })
     },
+    generateBuildId: () => process.env.IIDXIO_VERSION,
     serverRuntimeConfig: {
       privateApiUrl: process.env.PRIVATE_API_URL,
     },

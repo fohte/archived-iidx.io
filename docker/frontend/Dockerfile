@@ -8,6 +8,9 @@ RUN yarn install --frozen-lockfile
 
 COPY frontend /app/frontend/
 
+ARG IIDXIO_VERSION
+ENV IIDXIO_VERSION $IIDXIO_VERSION
+
 RUN yarn run build:prod
 
 CMD ["yarn", "run", "start:prod"]
