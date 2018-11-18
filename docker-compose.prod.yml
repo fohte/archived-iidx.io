@@ -1,0 +1,47 @@
+version: '3'
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+  redis:
+    image: redis:4.0.11-stretch
+  backend: &app_base
+    image: iidxio/backend
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PASSWORD: password
+      MYSQL_PORT: 3306
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+      - redis
+    ports:
+      - '5000:3000'
+  frontend: &frontend
+    image: iidxio/frontend
+    build:
+      context: .
+      dockerfile: ./docker/frontend/Dockerfile
+    environment:
+      PRIVATE_API_URL: http://backend:3000/graphql
+      PUBLIC_API_URL: http://localhost:5000/graphql
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    ports:
+      - '3000:3000'
+volumes:
+  db_data:
