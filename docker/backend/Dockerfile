@@ -9,3 +9,5 @@ COPY backend/Gemfile backend/Gemfile.lock /app/backend/
 RUN bundle install --jobs=4 --path=/bundle --deployment
 
 COPY backend /app/backend/
+
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
