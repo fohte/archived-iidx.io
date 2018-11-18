@@ -3,7 +3,7 @@ services:
   mysql:
     build:
       context: .
-      dockerfile: ./docker/mysql/Dockerfile
+      dockerfile: ./docker/mysql/Dockerfile.dev
     volumes:
       - db_data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
@@ -19,7 +19,7 @@ services:
   backend: &app_base
     build:
       context: .
-      dockerfile: ./docker/backend/Dockerfile
+      dockerfile: ./docker/backend/Dockerfile.dev
     working_dir: /app/backend
     command: bundle exec puma -C config/puma.rb
     volumes:
@@ -51,7 +51,7 @@ services:
   frontend: &frontend
     build:
       context: .
-      dockerfile: ./docker/frontend/Dockerfile
+      dockerfile: ./docker/frontend/Dockerfile.dev
     working_dir: /app/frontend
     command: yarn run dev
     volumes:

@@ -3,7 +3,7 @@ services:
   mysql:
     build:
       context: .
-      dockerfile: ./docker/mysql/Dockerfile
+      dockerfile: ./docker/mysql/Dockerfile.dev
     volumes:
       - db_data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
@@ -15,7 +15,7 @@ services:
     image: iidxio/backend
     build:
       context: .
-      dockerfile: ./docker/backend/Dockerfile
+      dockerfile: ./docker/backend/Dockerfile.prod
     environment:
       MYSQL_HOST: mysql
       MYSQL_PASSWORD: password
@@ -33,7 +33,7 @@ services:
     image: iidxio/frontend
     build:
       context: .
-      dockerfile: ./docker/frontend/Dockerfile
+      dockerfile: ./docker/frontend/Dockerfile.prod
     environment:
       PRIVATE_API_URL: http://backend:3000/graphql
       PUBLIC_API_URL: http://localhost:5000/graphql
