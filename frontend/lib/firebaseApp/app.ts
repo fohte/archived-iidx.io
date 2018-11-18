@@ -1,10 +1,13 @@
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
 
 const config = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
+  apiKey: publicRuntimeConfig.firebaseApiKey,
+  authDomain: publicRuntimeConfig.firebaseAuthDomain,
+  projectId: publicRuntimeConfig.firebaseProjectId,
 }
 
 export default () =>

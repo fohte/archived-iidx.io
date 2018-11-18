@@ -60,6 +60,8 @@ services:
     environment:
       PRIVATE_API_URL: http://backend:3000/graphql
       PUBLIC_API_URL: http://localhost:5000/graphql
+    env_file:
+      - .env
     depends_on:
       - backend
     ports:
