@@ -10,4 +10,7 @@ RUN bundle install --jobs=4 --path=/bundle --deployment
 
 COPY backend /app/backend/
 
+ARG IIDXIO_VERSION
+ENV IIDXIO_VERSION $IIDXIO_VERSION
+
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
