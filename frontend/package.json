@@ -5,6 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "build:prod": "NODE_ENV=production next build",
+    "start:prod": "NODE_ENV=production next start",
     "lint:ts": "tslint -p . -c tslint.json --format stylish",
     "test": "npm-run-all -s --continue-on-error test:**",
     "test:ts": "tsc -p . --noEmit",
