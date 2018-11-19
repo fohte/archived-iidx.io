@@ -3,6 +3,20 @@ import * as Adapter from 'enzyme-adapter-react-16'
 
 configure({ adapter: new Adapter() })
 
+import getConfig from 'next/config'
+jest.mock('next/config')
+;(getConfig as jest.Mock).mockImplementation(() => ({
+  serverRuntimeConfig: {
+    privateApiUrl: 'privateApiUrl',
+  },
+  publicRuntimeConfig: {
+    firebaseApiKey: 'firebaseApiKey',
+    firebaseAuthDomain: 'firebaseAuthDomain',
+    firebaseProjectId: 'firebaseProjectId',
+    publicApiUrl: 'publicApiUrl',
+  },
+}))
+
 import * as firebaseMock from 'firebase-mock'
 
 const mockAuth = new firebaseMock.MockAuthentication()
