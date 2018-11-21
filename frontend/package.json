@@ -21,7 +21,7 @@
     "@types/recompose": "0.30.0",
     "@zeit/next-css": "1.0.1",
     "@zeit/next-typescript": "1.1.1",
-    "apollo-boost": "0.1.21",
+    "apollo-boost": "0.1.22",
     "apollo-link-context": "1.0.10",
     "final-form": "4.11.0",
     "firebase": "5.5.9",
