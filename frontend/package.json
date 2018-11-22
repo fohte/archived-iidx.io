@@ -17,7 +17,7 @@
     "@types/lodash": "4.14.118",
     "@types/next": "7.0.5",
     "@types/react": "16.7.6",
-    "@types/react-dom": "16.0.9",
+    "@types/react-dom": "16.0.10",
     "@types/recompose": "0.30.0",
     "@zeit/next-css": "1.0.1",
     "@zeit/next-typescript": "1.1.1",
