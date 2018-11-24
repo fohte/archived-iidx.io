@@ -1,4 +1,3 @@
-const Dotenv = require('dotenv-webpack')
 const merge = require('webpack-merge')
 const path = require('path')
 const withCSS = require('@zeit/next-css')
@@ -12,7 +11,6 @@ module.exports = withCSS(
   withTypescript({
     webpack(config, options) {
       return merge(config, {
-        plugins: [new Dotenv({ path: '../.env', systemvars: true })],
         resolve: { alias: { '@app': path.join(__dirname) } },
         module: {
           rules: [
@@ -31,6 +29,16 @@ module.exports = withCSS(
           ],
         },
       })
+    },
+    generateBuildId: () => process.env.IIDXIO_VERSION,
+    serverRuntimeConfig: {
+      privateApiUrl: process.env.PRIVATE_API_URL,
+    },
+    publicRuntimeConfig: {
+      firebaseApiKey: process.env.FIREBASE_API_KEY,
+      firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,
+      firebaseProjectId: process.env.FIREBASE_PROJECT_ID,
+      publicApiUrl: process.env.PUBLIC_API_URL,
     },
   }),
 )

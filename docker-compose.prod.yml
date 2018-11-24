@@ -9,29 +9,17 @@ services:
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     environment:
       MYSQL_ROOT_PASSWORD: password
-    healthcheck:
-      test: ['CMD-SHELL', 'mysqladmin ping -u root -ppassword']
-      interval: 5s
-      timeout: 10s
-      retries: 3
   redis:
     image: redis:4.0.11-stretch
   backend: &app_base
+    image: iidxio/backend
     build:
       context: .
-      dockerfile: ./docker/backend/Dockerfile.dev
-    working_dir: /app/backend
-    command: bundle exec puma -C config/puma.rb
-    volumes:
-      - .:/app
-      - bundle:/usr/local/bundle
-      - spring:/tmp/spring
+      dockerfile: ./docker/backend/Dockerfile.prod
     environment:
       MYSQL_HOST: mysql
       MYSQL_PASSWORD: password
       MYSQL_PORT: 3306
-      IIDX_IO_TEXTAGE_CACHE_PATH: /app/.cache
-      SPRING_SOCKET: /tmp/spring/spring.sock
       REDIS_HOST: redis
       REDIS_PORT: 6379
     env_file:
@@ -41,22 +29,11 @@ services:
       - redis
     ports:
       - '5000:3000'
-  spring: &spring
-    <<: *app_base
-    command: bin/spring server
-    ports: []
-    tty: false
-    stdin_open: false
-    restart: on-failure:3
   frontend: &frontend
+    image: iidxio/frontend
     build:
       context: .
-      dockerfile: ./docker/frontend/Dockerfile.dev
-    working_dir: /app/frontend
-    command: yarn run dev
-    volumes:
-      - .:/app
-      - node_modules:/app/frontend/node_modules
+      dockerfile: ./docker/frontend/Dockerfile.prod
     environment:
       PRIVATE_API_URL: http://backend:3000/graphql
       PUBLIC_API_URL: http://localhost:5000/graphql
@@ -68,6 +45,3 @@ services:
       - '3000:3000'
 volumes:
   db_data:
-  bundle:
-  node_modules:
-  spring:

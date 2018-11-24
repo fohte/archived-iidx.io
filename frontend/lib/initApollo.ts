@@ -6,9 +6,12 @@ import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 import { onError } from 'apollo-link-error'
 import { HttpLink } from 'apollo-link-http'
+import getConfig from 'next/config'
 
 import { auth } from '@app/lib/firebaseApp'
 import isBrowser from '@app/lib/isBrowser'
+
+const { publicRuntimeConfig, serverRuntimeConfig } = getConfig()
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | null = null
 
@@ -46,7 +49,9 @@ const create = (initialState?: NormalizedCacheObject) => {
   const cache = new InMemoryCache().restore(initialState || {})
 
   const httpLink = new HttpLink({
-    uri: isBrowser ? process.env.PUBLIC_API_URL : process.env.PRIVATE_API_URL,
+    uri: isBrowser
+      ? publicRuntimeConfig.publicApiUrl
+      : serverRuntimeConfig.privateApiUrl,
     credentials: 'same-origin',
   })
 
