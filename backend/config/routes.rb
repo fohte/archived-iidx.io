@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get '/health', to: ->(_env) { [200, { 'Content-Type' => 'application/json' }, []] }
+
   post '/graphql', to: 'graphql#execute'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
