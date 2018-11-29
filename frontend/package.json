@@ -18,7 +18,7 @@
   "dependencies": {
     "@types/lodash": "4.14.118",
     "@types/next": "7.0.5",
-    "@types/react": "16.7.8",
+    "@types/react": "16.7.9",
     "@types/react-dom": "16.0.11",
     "@types/recompose": "0.30.0",
     "@zeit/next-css": "1.0.1",
