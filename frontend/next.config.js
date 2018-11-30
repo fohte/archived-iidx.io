@@ -39,6 +39,7 @@ module.exports = withCSS(
       firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,
       firebaseProjectId: process.env.FIREBASE_PROJECT_ID,
       publicApiUrl: process.env.PUBLIC_API_URL,
+      version: process.env.IIDXIO_VERSION,
     },
   }),
 )
