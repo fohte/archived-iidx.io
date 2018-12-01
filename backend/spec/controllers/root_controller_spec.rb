@@ -7,5 +7,11 @@ RSpec.describe RootController, type: :controller do
     subject(:response) { get :show }
 
     it { is_expected.to have_http_status(:success) }
+
+    it 'returns version with json' do
+      switch_env 'IIDXIO_VERSION', 'X.Y.Z' do
+        expect(JSON.parse(response.body)).to eq('version' => 'X.Y.Z')
+      end
+    end
   end
 end
