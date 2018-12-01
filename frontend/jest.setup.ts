@@ -14,6 +14,7 @@ jest.mock('next/config')
     firebaseAuthDomain: 'firebaseAuthDomain',
     firebaseProjectId: 'firebaseProjectId',
     publicApiUrl: 'publicApiUrl',
+    version: 'test',
   },
 }))
 
