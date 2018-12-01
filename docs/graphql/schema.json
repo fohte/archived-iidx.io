@@ -58,17 +58,17 @@
             },
             {
               "name": "user",
-              "description": "Find a user by ID.",
+              "description": "Find a user by name.",
               "args": [
                 {
-                  "name": "id",
+                  "name": "name",
                   "description": null,
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
                     "ofType": {
                       "kind": "SCALAR",
-                      "name": "ID",
+                      "name": "String",
                       "ofType": null
                     }
                   },

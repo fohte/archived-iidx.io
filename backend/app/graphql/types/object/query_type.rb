@@ -13,12 +13,12 @@ module Types
       delegate :viewer, to: :context
 
       field :user, UserType, null: true do
-        description 'Find a user by ID.'
-        argument :id, ID, required: true
+        description 'Find a user by name.'
+        argument :name, String, required: true
       end
 
-      def user(id:)
-        User.find(id)
+      def user(name:)
+        User.find_by!(name: name)
       end
 
       field :musics, [MusicType], null: true do
