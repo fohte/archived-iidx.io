@@ -82,8 +82,8 @@ RSpec.describe IIDXIOSchema do
       describe 'user field' do
         let(:query) do
           <<~GRAPHQL
-            query($id: ID!) {
-              user(id: $id) {
+            query($name: String!) {
+              user(name: $name) {
                 id
                 name
                 profile {
@@ -96,7 +96,7 @@ RSpec.describe IIDXIOSchema do
         end
 
         let(:user) { create(:user, :with_profile) }
-        let(:variables) { { id: user.id } }
+        let(:variables) { { name: user.name } }
 
         it 'returns a user' do
           expect(result['data']).to eq(
