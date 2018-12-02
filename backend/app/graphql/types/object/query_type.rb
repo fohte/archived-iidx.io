@@ -19,6 +19,8 @@ module Types
 
       def user(name:)
         User.find_by!(name: name)
+      rescue ActiveRecord::RecordNotFound => e
+        raise IIDXIO::GraphQL::NotFoundError, e.message
       end
 
       field :musics, [MusicType], null: true do
