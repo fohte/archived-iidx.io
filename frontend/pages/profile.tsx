@@ -1,6 +1,7 @@
 import ErrorPage from 'next/error'
 import * as React from 'react'
 
+import Profile from '@app/components/organisms/Profile'
 import MainLayout from '@app/components/templates/MainLayout'
 import initApollo from '@app/lib/initApollo'
 import { PageComponentType } from '@app/pages/_app'
@@ -29,7 +30,7 @@ const renderProfile = ({ loading, errors, user }: Props) => {
     return <ErrorPage statusCode={404} />
   }
 
-  return JSON.stringify(user)
+  return <Profile user={user} />
 }
 
 const ProfilePage: PageComponentType<Props, Props, Query> = props => (
