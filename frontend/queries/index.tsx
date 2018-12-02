@@ -11,7 +11,7 @@
 export interface Query {
   /** Find musics. */
   musics?: Music[] | null
-  /** Find a user by ID. */
+  /** Find a user by name. */
   user?: User | null
   /** The currently authenticated user. */
   viewer?: User | null
@@ -86,7 +86,7 @@ export interface RegisterResultsWithCsvPayload {
 // ====================================================
 
 export interface UserQueryArgs {
-  id: string
+  name: string
 }
 export interface CreateUserMutationArgs {
   username: string
@@ -121,6 +121,22 @@ export enum PlayStyle {
 // ====================================================
 // Documents
 // ====================================================
+
+export type FindUserVariables = {
+  screenName: string
+}
+
+export type FindUserQuery = {
+  __typename?: 'Query'
+
+  user?: FindUserUser | null
+}
+
+export type FindUserUser = {
+  __typename?: 'User'
+
+  name: string
+}
 
 export type GetMusicsWithMapsVariables = {}
 
@@ -227,6 +243,39 @@ import gql from 'graphql-tag'
 // Components
 // ====================================================
 
+export const FindUserDocument = gql`
+  query findUser($screenName: String!) {
+    user(name: $screenName) {
+      __typename
+      name
+    }
+  }
+`
+export class FindUserComponent extends React.Component<
+  Partial<ReactApollo.QueryProps<FindUserQuery, FindUserVariables>>
+> {
+  render() {
+    return (
+      <ReactApollo.Query<FindUserQuery, FindUserVariables>
+        query={FindUserDocument}
+        {...this['props'] as any}
+      />
+    )
+  }
+}
+export function FindUserHOC<
+  TProps = any,
+  OperationOptions = ReactApollo.OperationOption<
+    TProps,
+    FindUserQuery,
+    FindUserVariables
+  >
+>(operationOptions: OperationOptions) {
+  return ReactApollo.graphql<TProps, FindUserQuery, FindUserVariables>(
+    FindUserDocument,
+    operationOptions,
+  )
+}
 export const GetMusicsWithMapsDocument = gql`
   query getMusicsWithMaps {
     musics {

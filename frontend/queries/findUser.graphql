@@ -1,0 +1,6 @@
+query findUser($screenName: String!) {
+  user(name: $screenName) {
+    __typename
+    name
+  }
+}

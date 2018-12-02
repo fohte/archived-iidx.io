@@ -53,8 +53,8 @@ type Query {
   # Find musics.
   musics: [Music!]
 
-  # Find a user by ID.
-  user(id: ID!): User
+  # Find a user by name.
+  user(name: String!): User
 
   # The currently authenticated user.
   viewer: User

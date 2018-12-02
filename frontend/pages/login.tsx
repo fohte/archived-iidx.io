@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Router from 'next/router'
 import * as React from 'react'
 import { Grid, Header, Message } from 'semantic-ui-react'
@@ -8,6 +7,7 @@ import LoginOrSignUpForm, {
 } from '@app/components/organisms/LoginOrSignUpForm'
 import MainLayout from '@app/components/templates/MainLayout'
 import { auth, ErrorType } from '@app/lib/firebaseApp'
+import { Link } from '@app/routes'
 
 const submitRequest: NonNullable<Props['submitRequest']> = values => {
   return new Promise((resolve, reject) => {
@@ -38,7 +38,7 @@ export default () => (
         />
         <Message>
           New to us?{' '}
-          <Link href="/signup" prefetch>
+          <Link route="/signup" prefetch>
             <a>Sign up.</a>
           </Link>
         </Message>

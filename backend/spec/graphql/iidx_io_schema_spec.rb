@@ -82,8 +82,8 @@ RSpec.describe IIDXIOSchema do
       describe 'user field' do
         let(:query) do
           <<~GRAPHQL
-            query($id: ID!) {
-              user(id: $id) {
+            query($name: String!) {
+              user(name: $name) {
                 id
                 name
                 profile {
@@ -96,7 +96,7 @@ RSpec.describe IIDXIOSchema do
         end
 
         let(:user) { create(:user, :with_profile) }
-        let(:variables) { { id: user.id } }
+        let(:variables) { { name: user.name } }
 
         it 'returns a user' do
           expect(result['data']).to eq(
@@ -112,6 +112,18 @@ RSpec.describe IIDXIOSchema do
         end
 
         include_examples 'non errors'
+
+        context 'when the user does not exist' do
+          let(:variables) { { name: "xxx#{user.name}" } }
+
+          it 'does not return user' do
+            expect(result['data']).to eq('user' => nil)
+          end
+
+          it 'returns the not found error' do
+            expect(result['errors'].first).to include('code' => 'NOT_FOUND')
+          end
+        end
       end
 
       describe 'musics field' do
