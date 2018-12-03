@@ -1540,10 +1540,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
   integrity sha512-FZdkNBDqBRHKQ2MEbSC17xnPFOhZxeJ2YGSfr2BKf3sujG49Qe3bB+rGCwQfIaA7WHnGeGkSijX4FuBCdrzW/g==
 
-"@yolkai/next-routes@1.4.5":
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/@yolkai/next-routes/-/next-routes-1.4.5.tgz#c888d6a4fd431c20c6757eba4486d6514d10276c"
-  integrity sha512-ADn57p6v/yzqQe4dKUlNcaYpxFpnJXreFZeK26Krirz0Eg148SDkOOoXxJ1ZPDNlSwFHfkARwlczobeBDlq7UQ==
+"@yolkai/next-routes@1.4.6":
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/@yolkai/next-routes/-/next-routes-1.4.6.tgz#fd355613d4ea1dfc0259e93b6c50ed9bc0c144f6"
+  integrity sha512-IzgI3jZ60l9sDSMJJmJzKI8lLLOUKkLyC5sIoUlpkioX8UBHKduluzDyYHXA/9zfZQTcmoLbn6hsNUcmi+uydQ==
   dependencies:
     path-to-regexp "^2.1.0"
 
