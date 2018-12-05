@@ -114,7 +114,8 @@ jobs:
       - setup_remote_docker
       - restore_cache:
           keys:
-            - '{{ .Environment.CACHE_VERSION }}-docker-frontend-{{ .Branch }}'
+            - '{{ .Environment.CACHE_VERSION }}-docker-frontend-{{ epoch }}'
+            - '{{ .Environment.CACHE_VERSION }}-docker-frontend-'
           paths:
             - /caches/frontend.tar
       - run:
@@ -133,7 +134,7 @@ jobs:
             mkdir -p /caches
             docker save -o /caches/frontend.tar iidxio/frontend
       - save_cache:
-          key: '{{ .Environment.CACHE_VERSION }}-docker-frontend-{{ .Branch }}'
+          key: '{{ .Environment.CACHE_VERSION }}-docker-frontend-{{ epoch }}'
           paths:
             - /caches/frontend.tar
       - deploy:
@@ -152,7 +153,8 @@ jobs:
       - setup_remote_docker
       - restore_cache:
           keys:
-            - '{{ .Environment.CACHE_VERSION }}-docker-backend-{{ .Branch }}'
+            - '{{ .Environment.CACHE_VERSION }}-docker-backend-{{ epoch }}'
+            - '{{ .Environment.CACHE_VERSION }}-docker-backend-'
           paths:
             - /caches/backend.tar
       - run:
@@ -171,7 +173,7 @@ jobs:
             mkdir -p /caches
             docker save -o /caches/backend.tar iidxio/backend
       - save_cache:
-          key: '{{ .Environment.CACHE_VERSION }}-docker-backend-{{ .Branch }}'
+          key: '{{ .Environment.CACHE_VERSION }}-docker-backend-{{ epoch }}'
           paths:
             - /caches/backend.tar
       - deploy:
