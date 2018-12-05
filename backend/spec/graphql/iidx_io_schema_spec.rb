@@ -188,6 +188,55 @@ RSpec.describe IIDXIOSchema do
 
         include_examples 'non errors'
       end
+
+      describe 'music field' do
+        let(:query) do
+          <<~GRAPHQL
+            query($id: ID!) {
+              music(id: $id) {
+                id
+                title
+                subTitle
+                artist
+                textageUid
+                series
+                leggendaria
+              }
+            }
+          GRAPHQL
+        end
+
+        let(:music) { create(:music, series: 1) }
+        let(:variables) { { id: music.id } }
+
+        it 'returns a music' do
+          expect(result['data']).to eq(
+            'music' => {
+              'id' => music.id.to_s,
+              'title' => music.title,
+              'subTitle' => music.sub_title,
+              'artist' => music.artist,
+              'textageUid' => music.textage_uid,
+              'series' => 1,
+              'leggendaria' => music.leggendaria,
+            },
+          )
+        end
+
+        include_examples 'non errors'
+
+        context 'when the music does not exist' do
+          let(:variables) { { id: "xxx#{music.id}" } }
+
+          it 'does not return user' do
+            expect(result['data']).to eq('music' => nil)
+          end
+
+          it 'returns the not found error' do
+            expect(result['errors'].first).to include('code' => 'NOT_FOUND')
+          end
+        end
+      end
     end
 
     describe 'mutations' do

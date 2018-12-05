@@ -50,6 +50,9 @@ enum PlayStyle {
 }
 
 type Query {
+  # Find a music.
+  music(id: ID!): Music
+
   # Find musics.
   musics: [Music!]
 
