@@ -1,0 +1,17 @@
+schema:
+  - '../docs/graphql/schema.json'
+documents:
+  - 'queries/**/*.graphql'
+config:
+  noNamespaces: true
+  resolvers: false
+generates:
+  ./queries/index.tsx:
+    config:
+      noNamespaces: true
+      resolvers: false
+    plugins:
+      - 'typescript-common'
+      - 'typescript-client'
+      - 'typescript-react-apollo'
+require: []
