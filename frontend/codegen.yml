@@ -1,5 +1,6 @@
 schema:
   - '../docs/graphql/schema.json'
+overwrite: true
 documents:
   - 'queries/**/*.graphql'
 config:
