@@ -1,5 +1,8 @@
 {
   "extends": ["config:base", ":label(renovate)", ":reviewer(fohte)"],
+  "dockerfile": {
+    "fileMatch": ["(^|/)Dockerfile[^/]*$"]
+  },
   "packageRules": [
     {
       "packagePatterns": ["^@types/"],
