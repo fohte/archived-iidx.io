@@ -23,7 +23,7 @@ describe('/', () => {
   it('renders correctly', () => {
     const component = renderer.create(
       <MockedProvider
-        mocks={createMocks({ csv: 'csv', playStyle: PlayStyle.SP })}
+        mocks={createMocks({ csv: 'csv', playStyle: PlayStyle.Sp })}
       >
         <ResultsNew />
       </MockedProvider>,

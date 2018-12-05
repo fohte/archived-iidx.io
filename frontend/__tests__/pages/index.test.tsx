@@ -20,9 +20,9 @@ describe('/', () => {
         maps: [
           {
             id: '1',
-            difficulty: Difficulty.ANOTHER,
+            difficulty: Difficulty.Another,
             level: 1,
-            playStyle: PlayStyle.SP,
+            playStyle: PlayStyle.Sp,
           },
         ],
       },
