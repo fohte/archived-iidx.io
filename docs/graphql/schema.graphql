@@ -29,6 +29,7 @@ type Music {
   genre: String!
   id: ID!
   leggendaria: Boolean!
+  map(difficulty: Difficulty!, playStyle: PlayStyle!): Map
   maps: [Map!]!
   series: Int!
   subTitle: String!

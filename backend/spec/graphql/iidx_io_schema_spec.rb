@@ -236,6 +236,61 @@ RSpec.describe IIDXIOSchema do
             expect(result['errors'].first).to include('code' => 'NOT_FOUND')
           end
         end
+
+        context 'with a map' do
+          let(:query) do
+            <<~GRAPHQL
+              query($id: ID!, $playStyle: PlayStyle!, $difficulty: Difficulty!) {
+                music(id: $id) {
+                  map(playStyle: $playStyle, difficulty: $difficulty) {
+                    id
+                    numNotes
+                    level
+                    playStyle
+                    difficulty
+                    minBpm
+                    maxBpm
+                  }
+                }
+              }
+            GRAPHQL
+          end
+
+          let(:music) { create(:music, maps: [map]) }
+          let(:map) { build(:map, play_style: :sp, difficulty: :another) }
+
+          let(:variables) { { id: music.id, playStyle: 'SP', difficulty: 'ANOTHER' } }
+
+          it 'returns a map' do
+            expect(result['data']).to eq(
+              'music' => {
+                'map' => {
+                  'id' => map.id.to_s,
+                  'numNotes' => map.num_notes,
+                  'level' => map.level,
+                  'playStyle' => 'SP',
+                  'difficulty' => 'ANOTHER',
+                  'minBpm' => map.min_bpm,
+                  'maxBpm' => map.max_bpm,
+                },
+              },
+            )
+          end
+
+          include_examples 'non errors'
+
+          context 'when the map does not exist' do
+            let(:variables) { { id: music.id, playStyle: 'DP', difficulty: 'ANOTHER' } }
+
+            it 'does not return user' do
+              expect(result['data']).to eq('music' => { 'map' => nil })
+            end
+
+            it 'returns the not found error' do
+              expect(result['errors'].first).to include('code' => 'NOT_FOUND')
+            end
+          end
+        end
       end
     end
 
