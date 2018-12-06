@@ -1,6 +1,7 @@
 import ErrorPage from 'next/error'
 import * as React from 'react'
 
+import Map from '@app/components/organisms/Map'
 import MainLayout from '@app/components/templates/MainLayout'
 import initApollo from '@app/lib/initApollo'
 import { PageComponentType } from '@app/pages/_app'
@@ -42,7 +43,7 @@ const renderMap = ({ loading, errors, music }: Props) => {
     return <ErrorPage statusCode={404} />
   }
 
-  return JSON.stringify(music)
+  return <Map music={music} />
 }
 
 const MapPage: PageComponentType<Props, Props, Query> = props => (
