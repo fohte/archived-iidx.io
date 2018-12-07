@@ -121,13 +121,12 @@ jobs:
       - run:
           name: Load Docker image layer caches
           command: |
-            set +o pipefail
-            docker load -i /caches/frontend.tar | true
+            [ -f /caches/frontend.tar ] && docker load -i /caches/frontend.tar
       - run:
           name: Build application Docker image
           command: |
-            docker build --cache-from=iidxio/frontend --build-arg IIDXIO_VERSION="$CIRCLE_SHA1" -t iidxio/frontend:latest -f docker/frontend/Dockerfile.prod .
-            docker tag iidxio/frontend:latest "iidxio/frontend:$CIRCLE_SHA1"
+            docker build --cache-from=iidxio/frontend --build-arg IIDXIO_VERSION="$CIRCLE_SHA1" -t iidxio/frontend -f docker/frontend/Dockerfile.prod .
+            docker tag iidxio/frontend "iidxio/frontend:$CIRCLE_SHA1"
       - run:
           name: Save Docker image layer cache
           command: |
@@ -160,13 +159,12 @@ jobs:
       - run:
           name: Load Docker image layer caches
           command: |
-            set +o pipefail
-            docker load -i /caches/backend.tar | true
+            [ -f /caches/backend.tar ] && docker load -i /caches/backend.tar
       - run:
           name: Build application Docker image
           command: |
-            docker build --cache-from=iidxio/backend --build-arg IIDXIO_VERSION="$CIRCLE_SHA1" -t iidxio/backend:latest -f docker/backend/Dockerfile.prod .
-            docker tag iidxio/backend:latest "iidxio/backend:$CIRCLE_SHA1"
+            docker build --cache-from=iidxio/backend --build-arg IIDXIO_VERSION="$CIRCLE_SHA1" -t iidxio/backend -f docker/backend/Dockerfile.prod .
+            docker tag iidxio/backend "iidxio/backend:$CIRCLE_SHA1"
       - run:
           name: Save Docker image layer cache
           command: |
