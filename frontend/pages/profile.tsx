@@ -4,6 +4,7 @@ import * as React from 'react'
 import Profile from '@app/components/organisms/Profile'
 import MainLayout from '@app/components/templates/MainLayout'
 import initApollo from '@app/lib/initApollo'
+import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
 import {
   FindUserDocument,
@@ -47,9 +48,7 @@ ProfilePage.getInitialProps = async ({ res, query: { screenName } }) => {
   })
 
   if (!result.data.user) {
-    if (res) {
-      res.statusCode = 404
-    }
+    throwSSRError(res, 404)
   }
 
   return {
