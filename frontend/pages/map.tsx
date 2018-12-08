@@ -4,6 +4,7 @@ import * as React from 'react'
 import Map from '@app/components/organisms/Map'
 import MainLayout from '@app/components/templates/MainLayout'
 import initApollo from '@app/lib/initApollo'
+import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
 import {
   Difficulty,
@@ -29,10 +30,10 @@ export type Props = {
 const pascalize = (str: string): string =>
   `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`
 
-const parsePlayStyleString = (playStyle: string): PlayStyle =>
+const parsePlayStyleString = (playStyle: string): PlayStyle | undefined =>
   PlayStyle[pascalize(playStyle)]
 
-const parseDifficultyString = (difficulty: string): Difficulty =>
+const parseDifficultyString = (difficulty: string): Difficulty | undefined =>
   Difficulty[pascalize(difficulty)]
 
 const renderMap = ({ loading, errors, music }: Props) => {
@@ -50,26 +51,27 @@ const MapPage: PageComponentType<Props, Props, Query> = props => (
   <MainLayout>{renderMap(props)}</MainLayout>
 )
 
-MapPage.getInitialProps = async ({
-  res,
-  query: { musicId, playStyle, difficulty },
-}) => {
+const makeDefaultProps = (): Props => ({ loading: false })
+
+MapPage.getInitialProps = async ({ res, query }) => {
   const client = initApollo()
+
+  const playStyle = parsePlayStyleString(query.playStyle)
+  const difficulty = parseDifficultyString(query.difficulty)
+
+  if (playStyle == null || difficulty == null) {
+    throwSSRError(res, 404)
+    return makeDefaultProps()
+  }
 
   const result = await client.query<FindMapQuery, FindMapVariables>({
     query: FindMapDocument,
-    variables: {
-      id: musicId,
-      playStyle: parsePlayStyleString(playStyle),
-      difficulty: parseDifficultyString(difficulty),
-    },
+    variables: { id: query.musicId, playStyle, difficulty },
     errorPolicy: 'all',
   })
 
   if (!result.data.music || !result.data.music.map) {
-    if (res) {
-      res.statusCode = 404
-    }
+    throwSSRError(res, 404)
   }
 
   return {
