@@ -1,4 +1,9 @@
-query findMap($id: ID!, $playStyle: PlayStyle!, $difficulty: Difficulty!) {
+query findMap(
+  $id: ID!
+  $playStyle: PlayStyle!
+  $difficulty: Difficulty!
+  $username: String!
+) {
   music(id: $id) {
     id
     title
@@ -16,6 +21,13 @@ query findMap($id: ID!, $playStyle: PlayStyle!, $difficulty: Difficulty!) {
       difficulty
       minBpm
       maxBpm
+      bestResult(username: $username) {
+        id
+        score
+        missCount
+        clearLamp
+        grade
+      }
     }
   }
 }

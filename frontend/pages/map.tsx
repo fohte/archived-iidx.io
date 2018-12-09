@@ -67,7 +67,12 @@ MapPage.getInitialProps = async ({ res, query }) => {
 
   const result = await client.query<FindMapQuery, FindMapVariables>({
     query: FindMapDocument,
-    variables: { id: query.musicId, playStyle, difficulty },
+    variables: {
+      id: query.musicId,
+      playStyle,
+      difficulty,
+      username: query.screenName,
+    },
     errorPolicy: 'all',
   })
 

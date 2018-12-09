@@ -38,6 +38,7 @@ export type FindMapVariables = {
   id: string
   playStyle: PlayStyle
   difficulty: Difficulty
+  username: string
 }
 
 export type FindMapQuery = {
@@ -84,6 +85,22 @@ export type FindMapMap = {
   minBpm: number
 
   maxBpm: number
+
+  bestResult: FindMapBestResult | null
+}
+
+export type FindMapBestResult = {
+  __typename?: 'Result'
+
+  id: string
+
+  score: number
+
+  missCount: number
+
+  clearLamp: ClearLamp
+
+  grade: Grade
 }
 
 export type FindUserVariables = {
@@ -208,7 +225,12 @@ import gql from 'graphql-tag'
 // ====================================================
 
 export const FindMapDocument = gql`
-  query findMap($id: ID!, $playStyle: PlayStyle!, $difficulty: Difficulty!) {
+  query findMap(
+    $id: ID!
+    $playStyle: PlayStyle!
+    $difficulty: Difficulty!
+    $username: String!
+  ) {
     music(id: $id) {
       id
       title
@@ -226,6 +248,13 @@ export const FindMapDocument = gql`
         difficulty
         minBpm
         maxBpm
+        bestResult(username: $username) {
+          id
+          score
+          missCount
+          clearLamp
+          grade
+        }
       }
     }
   }

@@ -2,7 +2,13 @@ import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
 import Map from '@app/pages/map'
-import { Difficulty, FindMapMusic, PlayStyle } from '@app/queries'
+import {
+  ClearLamp,
+  Difficulty,
+  FindMapMusic,
+  Grade,
+  PlayStyle,
+} from '@app/queries'
 
 describe('/map', () => {
   it('renders correctly', () => {
@@ -23,6 +29,13 @@ describe('/map', () => {
         difficulty: Difficulty.Another,
         minBpm: 100,
         maxBpm: 400,
+        bestResult: {
+          id: '1',
+          score: 2000,
+          missCount: 1,
+          clearLamp: ClearLamp.FullCombo,
+          grade: Grade.Aaa,
+        },
       },
     }
 
