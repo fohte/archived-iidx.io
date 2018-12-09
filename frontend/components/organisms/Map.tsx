@@ -1,17 +1,67 @@
 import * as React from 'react'
-import { Header } from 'semantic-ui-react'
+import { Header, List, Segment } from 'semantic-ui-react'
 
-import { FindMapMusic } from '@app/queries'
+import { generateTextageURL } from '@app/lib/textage'
+import { FindMapMap, FindMapMusic, PlayStyle } from '@app/queries'
 
 export type Props = {
   music: FindMapMusic
+  map: FindMapMap
 }
 
-const Map: React.SFC<Props> = ({ music }) => (
+const printBPM = ({ minBpm, maxBpm }: FindMapMap) =>
+  minBpm === maxBpm ? `${maxBpm}` : `${minBpm}-${maxBpm}`
+
+const Map: React.SFC<Props> = ({ music, map }) => (
   <>
-    <Header as="h2">
-      {music.title} {music.subTitle}
-    </Header>
+    <Segment basic textAlign="center">
+      <div style={{ textAlign: 'center' }}>
+        {music.genre}
+        <Header as="h2">
+          {music.title} {music.subTitle}
+        </Header>
+        {music.artist}
+      </div>
+
+      <div>
+        <List divided horizontal>
+          <List.Item>
+            {map.playStyle} {map.difficulty}
+          </List.Item>
+          <List.Item>☆{map.level}</List.Item>
+          <List.Item>BPM {printBPM(map)}</List.Item>
+          <List.Item>{map.numNotes} notes</List.Item>
+        </List>
+      </div>
+
+      <div>
+        <span style={{ marginRight: '0.5em' }}>TexTage:</span>
+        <List divided horizontal>
+          {map.playStyle === PlayStyle.Sp ? (
+            [1, 2].map((playSide: 1 | 2) => (
+              <List.Item key={playSide}>
+                <a
+                  href={generateTextageURL(music, map, {
+                    playStyle: PlayStyle.Sp,
+                    playSide,
+                  })}
+                >{`${playSide}P`}</a>
+              </List.Item>
+            ))
+          ) : (
+            <List.Item>
+              <a
+                href={generateTextageURL(music, map, {
+                  playStyle: PlayStyle.Dp,
+                })}
+              >
+                DP
+              </a>
+            </List.Item>
+          )}
+        </List>
+      </div>
+    </Segment>
   </>
 )
 export default Map

@@ -16,6 +16,7 @@ import {
 } from '@app/queries'
 
 export type Query = {
+  screenName: string
   musicId: string
   playStyle: string
   difficulty: string
@@ -44,7 +45,7 @@ const renderMap = ({ loading, errors, music }: Props) => {
     return <ErrorPage statusCode={404} />
   }
 
-  return <Map music={music} />
+  return <Map music={music} map={music.map} />
 }
 
 const MapPage: PageComponentType<Props, Props, Query> = props => (
