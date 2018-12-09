@@ -11,4 +11,10 @@ class Map < ApplicationRecord
   def self.types
     play_style.values.product(difficulty.values)
   end
+
+  # @param user [User]
+  # @return [Result, nil]
+  def best_result(user:)
+    results.where(user: user).last
+  end
 end

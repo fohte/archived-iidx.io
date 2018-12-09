@@ -9,6 +9,27 @@ export enum Difficulty {
   Another = 'ANOTHER',
 }
 
+export enum ClearLamp {
+  Failed = 'FAILED',
+  Assist = 'ASSIST',
+  Easy = 'EASY',
+  Normal = 'NORMAL',
+  Hard = 'HARD',
+  ExHard = 'EX_HARD',
+  FullCombo = 'FULL_COMBO',
+}
+
+export enum Grade {
+  A = 'A',
+  Aa = 'AA',
+  Aaa = 'AAA',
+  B = 'B',
+  C = 'C',
+  D = 'D',
+  E = 'E',
+  F = 'F',
+}
+
 // ====================================================
 // Documents
 // ====================================================
