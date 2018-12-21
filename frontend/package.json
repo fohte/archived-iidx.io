@@ -27,7 +27,7 @@
     "apollo-boost": "0.1.23",
     "apollo-link-context": "1.0.12",
     "final-form": "4.11.0",
-    "firebase": "5.7.0",
+    "firebase": "5.7.1",
     "graphql": "14.0.2",
     "graphql-tag": "2.10.0",
     "isomorphic-fetch": "2.2.1",
