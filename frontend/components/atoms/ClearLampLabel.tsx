@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { Label, SemanticCOLORS } from 'semantic-ui-react'
+import { Label } from 'semantic-ui-react'
 
 import { ClearLamp } from '@app/queries'
+import { colors } from '@app/styles'
 
 export const formatNumber = (num: number): string =>
   num > 0 ? `+${num}` : `${num}`
@@ -20,18 +21,8 @@ const clearLampTexts: { [key in ClearLamp]: string } = {
   [ClearLamp.FullCombo]: 'FULL COMBO',
 }
 
-const clearLampColors: { [key in ClearLamp]: SemanticCOLORS } = {
-  [ClearLamp.Failed]: 'black',
-  [ClearLamp.Assist]: 'purple',
-  [ClearLamp.Easy]: 'green',
-  [ClearLamp.Normal]: 'blue',
-  [ClearLamp.Hard]: 'red',
-  [ClearLamp.ExHard]: 'yellow',
-  [ClearLamp.FullCombo]: 'teal',
-}
-
 const GradeLabel: React.SFC<Props> = ({ clearLamp }) => (
-  <Label horizontal color={clearLamp ? clearLampColors[clearLamp] : 'grey'}>
+  <Label horizontal color={colors.clearLampAliases[clearLamp || 'default']}>
     {clearLamp ? clearLampTexts[clearLamp] : 'NO PLAY'}
   </Label>
 )
