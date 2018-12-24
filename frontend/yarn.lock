@@ -9890,10 +9890,10 @@ util@^0.10.3:
   dependencies:
     inherits "2.0.3"
 
-utility-types@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.0.0.tgz#4d0dd8cd460da3dddecbe42568053bd1f6c1a740"
-  integrity sha512-eAv4GYXof9UbugNjhfybnpjtIq7xLgs1XgDgjE1UTFmojqhd5qK5m7RPSynWxQtuMt3JvVnsXzGR+2Jh1ey3xg==
+utility-types@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.1.0.tgz#3335d2922fb879a24792a858473a9a873c78aa3a"
+  integrity sha512-00DFue9hXp6pxOLAiB52v9ZmNxrqhM47kNnMdWVs5fo6Lo6lk93OCr39f/ikswVHNjbcWR7beIbktz3njRw20g==
 
 uuid@^3.1.0, uuid@^3.3.2:
   version "3.3.2"
