@@ -35,6 +35,33 @@
           "description": null,
           "fields": [
             {
+              "name": "music",
+              "description": "Find a music.",
+              "args": [
+                {
+                  "name": "id",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Music",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "musics",
               "description": "Find musics.",
               "args": [
@@ -309,6 +336,47 @@
               "deprecationReason": null
             },
             {
+              "name": "map",
+              "description": null,
+              "args": [
+                {
+                  "name": "playStyle",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "ENUM",
+                      "name": "PlayStyle",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "difficulty",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "ENUM",
+                      "name": "Difficulty",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Map",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "maps",
               "description": null,
               "args": [
@@ -429,6 +497,33 @@
           "name": "Map",
           "description": null,
           "fields": [
+            {
+              "name": "bestResult",
+              "description": null,
+              "args": [
+                {
+                  "name": "username",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Result",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
             {
               "name": "difficulty",
               "description": null,
@@ -609,6 +704,221 @@
             {
               "name": "ANOTHER",
               "description": "Another",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Result",
+          "description": null,
+          "fields": [
+            {
+              "name": "clearLamp",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "ClearLamp",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "grade",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "Grade",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "id",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "missCount",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "score",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "ClearLamp",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "FAILED",
+              "description": "Failed",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ASSIST",
+              "description": "Assist Clear",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "EASY",
+              "description": "Easy Clear",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "NORMAL",
+              "description": "Clear",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "HARD",
+              "description": "Hard Clear",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "EX_HARD",
+              "description": "EX Hard Clear",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "FULL_COMBO",
+              "description": "FullCombo Clear",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "Grade",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "A",
+              "description": "A",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "AA",
+              "description": "AA",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "AAA",
+              "description": "AAA",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "B",
+              "description": "B",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "C",
+              "description": "C",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "D",
+              "description": "D",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "E",
+              "description": "E",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "F",
+              "description": "F",
               "isDeprecated": false,
               "deprecationReason": null
             }

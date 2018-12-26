@@ -1,0 +1,33 @@
+query findMap(
+  $id: ID!
+  $playStyle: PlayStyle!
+  $difficulty: Difficulty!
+  $username: String!
+) {
+  music(id: $id) {
+    id
+    title
+    subTitle
+    genre
+    artist
+    textageUid
+    series
+    leggendaria
+    map(playStyle: $playStyle, difficulty: $difficulty) {
+      id
+      numNotes
+      level
+      playStyle
+      difficulty
+      minBpm
+      maxBpm
+      bestResult(username: $username) {
+        id
+        score
+        missCount
+        clearLamp
+        grade
+      }
+    }
+  }
+}

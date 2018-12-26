@@ -30,6 +30,17 @@ module Types
       def musics
         ::Music.includes('maps').where(maps: { level: 12, play_style: :sp })
       end
+
+      field :music, MusicType, null: true do
+        description 'Find a music.'
+        argument :id, ID, required: true
+      end
+
+      def music(id:)
+        Music.find(id)
+      rescue ActiveRecord::RecordNotFound => e
+        raise IIDXIO::GraphQL::NotFoundError, e.message
+      end
     end
   end
 end

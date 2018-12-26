@@ -1,17 +1,107 @@
+export enum PlayStyle {
+  Sp = 'SP',
+  Dp = 'DP',
+}
+
 export enum Difficulty {
   Normal = 'NORMAL',
   Hyper = 'HYPER',
   Another = 'ANOTHER',
 }
 
-export enum PlayStyle {
-  Sp = 'SP',
-  Dp = 'DP',
+export enum ClearLamp {
+  Failed = 'FAILED',
+  Assist = 'ASSIST',
+  Easy = 'EASY',
+  Normal = 'NORMAL',
+  Hard = 'HARD',
+  ExHard = 'EX_HARD',
+  FullCombo = 'FULL_COMBO',
+}
+
+export enum Grade {
+  A = 'A',
+  Aa = 'AA',
+  Aaa = 'AAA',
+  B = 'B',
+  C = 'C',
+  D = 'D',
+  E = 'E',
+  F = 'F',
 }
 
 // ====================================================
 // Documents
 // ====================================================
+
+export type FindMapVariables = {
+  id: string
+  playStyle: PlayStyle
+  difficulty: Difficulty
+  username: string
+}
+
+export type FindMapQuery = {
+  __typename?: 'Query'
+
+  music: FindMapMusic | null
+}
+
+export type FindMapMusic = {
+  __typename?: 'Music'
+
+  id: string
+
+  title: string
+
+  subTitle: string
+
+  genre: string
+
+  artist: string
+
+  textageUid: string
+
+  series: number
+
+  leggendaria: boolean
+
+  map: FindMapMap | null
+}
+
+export type FindMapMap = {
+  __typename?: 'Map'
+
+  id: string
+
+  numNotes: number
+
+  level: number
+
+  playStyle: PlayStyle
+
+  difficulty: Difficulty
+
+  minBpm: number
+
+  maxBpm: number
+
+  bestResult: FindMapBestResult | null
+}
+
+export type FindMapBestResult = {
+  __typename?: 'Result'
+
+  id: string
+
+  score: number
+
+  missCount: number
+
+  clearLamp: ClearLamp
+
+  grade: Grade
+}
 
 export type FindUserVariables = {
   screenName: string
@@ -134,6 +224,74 @@ import gql from 'graphql-tag'
 // Components
 // ====================================================
 
+export const FindMapDocument = gql`
+  query findMap(
+    $id: ID!
+    $playStyle: PlayStyle!
+    $difficulty: Difficulty!
+    $username: String!
+  ) {
+    music(id: $id) {
+      id
+      title
+      subTitle
+      genre
+      artist
+      textageUid
+      series
+      leggendaria
+      map(playStyle: $playStyle, difficulty: $difficulty) {
+        id
+        numNotes
+        level
+        playStyle
+        difficulty
+        minBpm
+        maxBpm
+        bestResult(username: $username) {
+          id
+          score
+          missCount
+          clearLamp
+          grade
+        }
+      }
+    }
+  }
+`
+export class FindMapComponent extends React.Component<
+  Partial<ReactApollo.QueryProps<FindMapQuery, FindMapVariables>>
+> {
+  render() {
+    return (
+      <ReactApollo.Query<FindMapQuery, FindMapVariables>
+        query={FindMapDocument}
+        {...(this as any)['props'] as any}
+      />
+    )
+  }
+}
+export type FindMapProps<TChildProps = any> = Partial<
+  ReactApollo.DataProps<FindMapQuery, FindMapVariables>
+> &
+  TChildProps
+export function FindMapHOC<TProps, TChildProps = any>(
+  operationOptions:
+    | ReactApollo.OperationOption<
+        TProps,
+        FindMapQuery,
+        FindMapVariables,
+        FindMapProps<TChildProps>
+      >
+    | undefined,
+) {
+  return ReactApollo.graphql<
+    TProps,
+    FindMapQuery,
+    FindMapVariables,
+    FindMapProps<TChildProps>
+  >(FindMapDocument, operationOptions)
+}
 export const FindUserDocument = gql`
   query findUser($screenName: String!) {
     user(name: $screenName) {

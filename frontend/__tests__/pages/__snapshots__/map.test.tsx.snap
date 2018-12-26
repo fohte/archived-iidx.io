@@ -1,0 +1,469 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/map renders correctly 1`] = `
+Array [
+  <div
+    className="ui inverted vertical segment"
+  >
+    <div
+      className="ui inverted secondary menu"
+    >
+      <div
+        className="ui container"
+      >
+        <a
+          className="item"
+          onClick={[Function]}
+        >
+          <span>
+            iidx.io
+          </span>
+        </a>
+        <div
+          className="right menu"
+        >
+          <div
+            className="ui tiny active inline loader"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="ui vertical segment"
+  >
+    <div
+      className="ui container"
+    >
+      <div
+        className="ui basic center aligned segment"
+      >
+        <div>
+          genre
+          <h2
+            className="ui header"
+          >
+            title
+             
+            subTitle
+          </h2>
+          artist
+        </div>
+        <div>
+          <div
+            className="ui divided horizontal list"
+            role="list"
+          >
+            <div
+              className="item"
+              onClick={[Function]}
+              role="listitem"
+            >
+              SP
+               
+              ANOTHER
+            </div>
+            <div
+              className="item"
+              onClick={[Function]}
+              role="listitem"
+            >
+              ☆
+              12
+            </div>
+            <div
+              className="item"
+              onClick={[Function]}
+              role="listitem"
+            >
+              BPM 
+              100-400
+            </div>
+            <div
+              className="item"
+              onClick={[Function]}
+              role="listitem"
+            >
+              1000
+               notes
+            </div>
+          </div>
+        </div>
+        <div>
+          <span
+            style={
+              Object {
+                "marginRight": "0.5em",
+              }
+            }
+          >
+            TexTage:
+          </span>
+          <div
+            className="ui divided horizontal list"
+            role="list"
+          >
+            <div
+              className="item"
+              onClick={[Function]}
+              role="listitem"
+            >
+              <a
+                href="//textage.cc/score/1/textageUid.html?1AC00"
+              >
+                1P
+              </a>
+            </div>
+            <div
+              className="item"
+              onClick={[Function]}
+              role="listitem"
+            >
+              <a
+                href="//textage.cc/score/1/textageUid.html?2AC00"
+              >
+                2P
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui basic segment"
+      >
+        <table
+          className="ui celled selectable unstackable table"
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <thead
+            className=""
+          >
+            <tr
+              className=""
+            >
+              <th
+                className=""
+                style={
+                  Object {
+                    "padding": "0px",
+                  }
+                }
+              />
+              <th
+                className="center aligned three wide"
+              >
+                Clear
+              </th>
+              <th
+                className="center aligned three wide"
+              >
+                DJ Level
+              </th>
+              <th
+                className="center aligned one wide"
+              >
+                Score
+              </th>
+              <th
+                className="six wide"
+              >
+                Rate
+              </th>
+              <th
+                className="center aligned one wide"
+              >
+                BP
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            className=""
+          >
+            <tr
+              className=""
+            >
+              <td
+                className="sc-EHOje kUaBib"
+              />
+              <td
+                className="center aligned"
+              >
+                <div
+                  className="ui teal horizontal label"
+                  onClick={[Function]}
+                >
+                  FULL COMBO
+                </div>
+              </td>
+              <td
+                className="center aligned"
+              >
+                <div
+                  style={
+                    Object {
+                      "marginBottom": "0.3em",
+                    }
+                  }
+                >
+                  <div
+                    className="ui red horizontal label"
+                    onClick={[Function]}
+                  >
+                    MAX
+                    <div
+                      className="detail"
+                    >
+                      0
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                className="center aligned"
+              >
+                2000
+              </td>
+              <td
+                className=""
+              >
+                <div>
+                  100.00
+                   %
+                </div>
+                <div
+                  className="sc-bdVaJa fZlIJT"
+                >
+                  <div
+                    className="sc-bwzfXH kYgbJw"
+                    color="#DB2828"
+                  />
+                  <div
+                    className="sc-htpNat sc-ifAKCX crkwIx"
+                  />
+                  <div
+                    className="sc-htpNat sc-bxivhb kvVqDZ"
+                  />
+                  <div
+                    className="sc-htpNat sc-bxivhb fYtVMK"
+                  />
+                  <div
+                    className="sc-htpNat sc-bxivhb jryLCW"
+                  />
+                </div>
+              </td>
+              <td
+                className="center aligned"
+              >
+                1
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="ui vertical segment"
+  >
+    <div
+      className="ui center aligned container"
+    >
+      <i
+        aria-hidden="true"
+        className="copyright outline icon"
+      />
+       
+      2018
+       iidx.io |
+       
+      test
+    </div>
+  </div>,
+]
+`;
+
+exports[`/map renders correctly if there are errors 1`] = `
+Array [
+  <div
+    className="ui inverted vertical segment"
+  >
+    <div
+      className="ui inverted secondary menu"
+    >
+      <div
+        className="ui container"
+      >
+        <a
+          className="item"
+          onClick={[Function]}
+        >
+          <span>
+            iidx.io
+          </span>
+        </a>
+        <div
+          className="right menu"
+        >
+          <div
+            className="ui tiny active inline loader"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="ui vertical segment"
+  >
+    <div
+      className="ui container"
+    >
+      <div
+        style={
+          Object {
+            "alignItems": "center",
+            "background": "#fff",
+            "color": "#000",
+            "display": "flex",
+            "flexDirection": "column",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, Roboto, \\"Segoe UI\\", \\"Fira Sans\\", Avenir, \\"Helvetica Neue\\", \\"Lucida Grande\\", sans-serif",
+            "height": "100vh",
+            "justifyContent": "center",
+            "textAlign": "center",
+          }
+        }
+      >
+        <div>
+          <style
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "body { margin: 0 }",
+              }
+            }
+          />
+          <h1
+            style={
+              Object {
+                "borderRight": "1px solid rgba(0, 0, 0,.3)",
+                "display": "inline-block",
+                "fontSize": "24px",
+                "fontWeight": 500,
+                "margin": 0,
+                "marginRight": "20px",
+                "padding": "10px 23px 10px 0",
+                "verticalAlign": "top",
+              }
+            }
+          >
+            404
+          </h1>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "height": "49px",
+                "lineHeight": "49px",
+                "textAlign": "left",
+                "verticalAlign": "middle",
+              }
+            }
+          >
+            <h2
+              style={
+                Object {
+                  "fontSize": "14px",
+                  "fontWeight": "normal",
+                  "lineHeight": "inherit",
+                  "margin": 0,
+                  "padding": 0,
+                }
+              }
+            >
+              This page could not be found
+              .
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="ui vertical segment"
+  >
+    <div
+      className="ui center aligned container"
+    >
+      <i
+        aria-hidden="true"
+        className="copyright outline icon"
+      />
+       
+      2018
+       iidx.io |
+       
+      test
+    </div>
+  </div>,
+]
+`;
+
+exports[`/map renders correctly when loading 1`] = `
+Array [
+  <div
+    className="ui inverted vertical segment"
+  >
+    <div
+      className="ui inverted secondary menu"
+    >
+      <div
+        className="ui container"
+      >
+        <a
+          className="item"
+          onClick={[Function]}
+        >
+          <span>
+            iidx.io
+          </span>
+        </a>
+        <div
+          className="right menu"
+        >
+          <div
+            className="ui tiny active inline loader"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="ui vertical segment"
+  >
+    <div
+      className="ui container"
+    >
+      loading
+    </div>
+  </div>,
+  <div
+    className="ui vertical segment"
+  >
+    <div
+      className="ui center aligned container"
+    >
+      <i
+        aria-hidden="true"
+        className="copyright outline icon"
+      />
+       
+      2018
+       iidx.io |
+       
+      test
+    </div>
+  </div>,
+]
+`;
