@@ -57,7 +57,6 @@ exports[`RegisterForm renders correctly 1`] = `
     className="ui teal large disabled button"
     disabled={true}
     onClick={[Function]}
-    role="button"
     tabIndex={-1}
     type="submit"
   >

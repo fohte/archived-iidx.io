@@ -91,7 +91,6 @@ Array [
           className="ui teal large disabled button"
           disabled={true}
           onClick={[Function]}
-          role="button"
           tabIndex={-1}
           type="submit"
         >

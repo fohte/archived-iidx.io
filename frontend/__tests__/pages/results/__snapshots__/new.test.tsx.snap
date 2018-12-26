@@ -55,12 +55,12 @@ Array [
               onClick={[Function]}
               onFocus={[Function]}
               onMouseDown={[Function]}
+              onMouseUp={[Function]}
             >
               <input
                 checked={false}
                 className="hidden"
                 name="playStyle"
-                onClick={[Function]}
                 readOnly={true}
                 tabIndex={0}
                 type="radio"
@@ -81,12 +81,12 @@ Array [
               onClick={[Function]}
               onFocus={[Function]}
               onMouseDown={[Function]}
+              onMouseUp={[Function]}
             >
               <input
                 checked={false}
                 className="hidden"
                 name="playStyle"
-                onClick={[Function]}
                 readOnly={true}
                 tabIndex={0}
                 type="radio"
@@ -123,7 +123,6 @@ Array [
           className="ui disabled button"
           disabled={true}
           onClick={[Function]}
-          role="button"
           tabIndex={-1}
           type="submit"
         >
