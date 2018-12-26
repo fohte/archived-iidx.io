@@ -38,13 +38,7 @@ Array [
       <div
         className="ui basic center aligned segment"
       >
-        <div
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
-        >
+        <div>
           genre
           <h2
             className="ui header"
@@ -133,6 +127,142 @@ Array [
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="ui basic segment"
+      >
+        <table
+          className="ui celled selectable unstackable table"
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
+        >
+          <thead
+            className=""
+          >
+            <tr
+              className=""
+            >
+              <th
+                className=""
+                style={
+                  Object {
+                    "padding": "0px",
+                  }
+                }
+              />
+              <th
+                className="center aligned three wide"
+              >
+                Clear
+              </th>
+              <th
+                className="center aligned three wide"
+              >
+                DJ Level
+              </th>
+              <th
+                className="center aligned one wide"
+              >
+                Score
+              </th>
+              <th
+                className="six wide"
+              >
+                Rate
+              </th>
+              <th
+                className="center aligned one wide"
+              >
+                BP
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            className=""
+          >
+            <tr
+              className=""
+            >
+              <td
+                className="sc-EHOje kUaBib"
+              />
+              <td
+                className="center aligned"
+              >
+                <div
+                  className="ui teal horizontal label"
+                  onClick={[Function]}
+                >
+                  FULL COMBO
+                </div>
+              </td>
+              <td
+                className="center aligned"
+              >
+                <div
+                  style={
+                    Object {
+                      "marginBottom": "0.3em",
+                    }
+                  }
+                >
+                  <div
+                    className="ui red horizontal label"
+                    onClick={[Function]}
+                  >
+                    MAX
+                    <div
+                      className="detail"
+                    >
+                      0
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                className="center aligned"
+              >
+                2000
+              </td>
+              <td
+                className=""
+              >
+                <div>
+                  100.00
+                   %
+                </div>
+                <div
+                  className="sc-bdVaJa fZlIJT"
+                >
+                  <div
+                    className="sc-bwzfXH kYgbJw"
+                    color="#DB2828"
+                  />
+                  <div
+                    className="sc-htpNat sc-ifAKCX crkwIx"
+                  />
+                  <div
+                    className="sc-htpNat sc-bxivhb kvVqDZ"
+                  />
+                  <div
+                    className="sc-htpNat sc-bxivhb fYtVMK"
+                  />
+                  <div
+                    className="sc-htpNat sc-bxivhb jryLCW"
+                  />
+                </div>
+              </td>
+              <td
+                className="center aligned"
+              >
+                1
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>,

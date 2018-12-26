@@ -1,2 +1,4 @@
+import * as clearLamp from './clearLamp'
 import * as colors from './colors'
-export { colors }
+
+export { clearLamp, colors }

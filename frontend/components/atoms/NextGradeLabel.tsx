@@ -11,10 +11,8 @@ export interface Props {
 
 const NextGradeLabel: React.SFC<Props> = ({ grade, diff }) => (
   <Label horizontal>
-    Next
-    <Label.Detail>
-      {grade} {formatNumber(diff)}
-    </Label.Detail>
+    {grade}
+    <Label.Detail>{formatNumber(diff)}</Label.Detail>
   </Label>
 )
 

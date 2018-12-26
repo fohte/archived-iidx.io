@@ -45,7 +45,13 @@ const renderMap = ({ loading, errors, music }: Props) => {
     return <ErrorPage statusCode={404} />
   }
 
-  return <Map music={music} map={music.map} />
+  return (
+    <Map
+      music={music}
+      map={music.map}
+      result={music.map.bestResult || undefined}
+    />
+  )
 }
 
 const MapPage: PageComponentType<Props, Props, Query> = props => (

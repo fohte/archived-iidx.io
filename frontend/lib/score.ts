@@ -12,6 +12,11 @@ export enum Grade {
   F = 'F',
 }
 
+export interface GradeDiff {
+  grade: Grade | null
+  diff: number
+}
+
 export const calcScoreRate = (
   score: number,
   numNotes: number,
@@ -36,12 +41,14 @@ const getGradeBorders = (numNotes: number): { [key in Grade]: number } => {
   }
 }
 
-export const searchGrade = (
-  score: number,
-  numNotes: number,
-): [Grade | null, number] => {
+export const defaultGradeDiff: GradeDiff = {
+  grade: null,
+  diff: 0,
+}
+
+export const searchGrade = (score: number, numNotes: number): GradeDiff => {
   if (numNotes * 2 === score) {
-    return [Grade.Max, 0]
+    return { grade: Grade.Max, diff: 0 }
   }
 
   const gradeBorders = getGradeBorders(numNotes)
@@ -54,15 +61,16 @@ export const searchGrade = (
     ([, diff]) => Math.abs(diff),
   )
 
-  return nearest || [null, 0]
+  if (!nearest) {
+    return defaultGradeDiff
+  }
+
+  return { grade: nearest[0], diff: nearest[1] }
 }
 
-export const searchNextGrade = (
-  score: number,
-  numNotes: number,
-): [Grade | null, number] => {
+export const searchNextGrade = (score: number, numNotes: number): GradeDiff => {
   if (numNotes * 2 === score) {
-    return [Grade.Max, 0]
+    return { grade: Grade.Max, diff: 0 }
   }
 
   const gradeBorders = getGradeBorders(numNotes)
@@ -75,5 +83,12 @@ export const searchNextGrade = (
     ([, diff]) => Math.abs(diff),
   )
 
-  return nearest || [null, 0]
+  if (!nearest) {
+    return defaultGradeDiff
+  }
+
+  return { grade: nearest[0], diff: nearest[1] }
 }
+
+export const isMax = ({ grade, diff }: GradeDiff): boolean =>
+  grade === Grade.Max && diff === 0

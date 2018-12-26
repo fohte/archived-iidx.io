@@ -20,7 +20,7 @@ export const base: { [key in SemanticCOLORS]: string } = {
   black: '#1B1C1D',
 }
 
-type GradeKeys = Grade | 'default'
+export type GradeKeys = Grade | 'default'
 
 export const gradeAliases: { [key in GradeKeys]: SemanticCOLORS } = {
   [Grade.F]: 'black',
@@ -39,7 +39,7 @@ export const grade = _.mapValues(gradeAliases, key => base[key]) as {
   [key in GradeKeys]: string
 }
 
-type ClearLampKeys = ClearLamp | 'default'
+export type ClearLampKeys = ClearLamp | 'default'
 
 export const clearLampAliases: { [key in ClearLampKeys]: SemanticCOLORS } = {
   [ClearLamp.Failed]: 'black',
