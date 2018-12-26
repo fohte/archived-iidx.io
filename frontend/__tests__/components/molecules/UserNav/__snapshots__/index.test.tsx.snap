@@ -5,14 +5,12 @@ Array [
   <button
     className="ui inverted button"
     onClick={[Function]}
-    role="button"
   >
     SignUp
   </button>,
   <button
     className="ui inverted button"
     onClick={[Function]}
-    role="button"
     style={
       Object {
         "marginLeft": "0.5em",

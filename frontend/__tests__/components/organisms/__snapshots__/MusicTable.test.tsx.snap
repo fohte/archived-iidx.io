@@ -68,6 +68,7 @@ exports[`MusicTable renders correctly 1`] = `
     >
       <a
         aria-current={false}
+        aria-disabled={false}
         className="icon item"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -82,6 +83,7 @@ exports[`MusicTable renders correctly 1`] = `
       </a>
       <a
         aria-current={false}
+        aria-disabled={false}
         className="icon item"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -96,6 +98,7 @@ exports[`MusicTable renders correctly 1`] = `
       </a>
       <a
         aria-current={true}
+        aria-disabled={false}
         className="active item"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -107,6 +110,7 @@ exports[`MusicTable renders correctly 1`] = `
       </a>
       <a
         aria-current={false}
+        aria-disabled={false}
         className="icon item"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -121,6 +125,7 @@ exports[`MusicTable renders correctly 1`] = `
       </a>
       <a
         aria-current={false}
+        aria-disabled={false}
         className="icon item"
         onClick={[Function]}
         onKeyDown={[Function]}
