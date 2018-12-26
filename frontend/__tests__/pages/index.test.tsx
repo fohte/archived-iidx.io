@@ -14,11 +14,13 @@ describe('/', () => {
   const data: GetMusicsWithMapsQuery = {
     musics: [
       {
+        __typename: 'Music',
         id: '1',
         title: 'title',
         subTitle: 'subTitle',
         maps: [
           {
+            __typename: 'Map',
             id: '1',
             difficulty: Difficulty.Another,
             level: 1,

@@ -15,7 +15,11 @@ describe('UserNav', () => {
 
   it('renders a UserMenu component', () => {
     const component = renderer.create(
-      <UserNav loading={false} viewer={{ id: 'id', name: 'foo' }} signedIn />,
+      <UserNav
+        loading={false}
+        viewer={{ __typename: 'User', id: 'id', name: 'foo' }}
+        signedIn
+      />,
     )
     const tree = component.toJSON()
 
