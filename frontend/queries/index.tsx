@@ -1,3 +1,5 @@
+export type Maybe<T> = T | null
+
 export enum PlayStyle {
   Sp = 'SP',
   Dp = 'DP',
@@ -44,7 +46,7 @@ export type FindMapVariables = {
 export type FindMapQuery = {
   __typename?: 'Query'
 
-  music: FindMapMusic | null
+  music: Maybe<FindMapMusic>
 }
 
 export type FindMapMusic = {
@@ -66,7 +68,7 @@ export type FindMapMusic = {
 
   leggendaria: boolean
 
-  map: FindMapMap | null
+  map: Maybe<FindMapMap>
 }
 
 export type FindMapMap = {
@@ -86,7 +88,7 @@ export type FindMapMap = {
 
   maxBpm: number
 
-  bestResult: FindMapBestResult | null
+  bestResult: Maybe<FindMapBestResult>
 }
 
 export type FindMapBestResult = {
@@ -110,11 +112,11 @@ export type FindUserVariables = {
 export type FindUserQuery = {
   __typename?: 'Query'
 
-  user: FindUserUser | null
+  user: Maybe<FindUserUser>
 }
 
 export type FindUserUser = {
-  __typename?: 'User'
+  __typename: 'User'
 
   name: string
 }
@@ -124,11 +126,11 @@ export type GetMusicsWithMapsVariables = {}
 export type GetMusicsWithMapsQuery = {
   __typename?: 'Query'
 
-  musics: GetMusicsWithMapsMusics[] | null
+  musics: Maybe<GetMusicsWithMapsMusics[]>
 }
 
 export type GetMusicsWithMapsMusics = {
-  __typename?: 'Music'
+  __typename: 'Music'
 
   id: string
 
@@ -140,7 +142,7 @@ export type GetMusicsWithMapsMusics = {
 }
 
 export type GetMusicsWithMapsMaps = {
-  __typename?: 'Map'
+  __typename: 'Map'
 
   id: string
 
@@ -156,11 +158,11 @@ export type GetViewerVariables = {}
 export type GetViewerQuery = {
   __typename?: 'Query'
 
-  viewer: GetViewerViewer | null
+  viewer: Maybe<GetViewerViewer>
 }
 
 export type GetViewerViewer = {
-  __typename?: 'User'
+  __typename: 'User'
 
   id: string
 
@@ -169,13 +171,13 @@ export type GetViewerViewer = {
 
 export type RegisterVariables = {
   username: string
-  displayName?: string | null
+  displayName?: Maybe<string>
 }
 
 export type RegisterMutation = {
   __typename?: 'Mutation'
 
-  createUser: RegisterCreateUser | null
+  createUser: Maybe<RegisterCreateUser>
 }
 
 export type RegisterCreateUser = {
@@ -206,7 +208,7 @@ export type RegisterResultsWithCsvVariables = {
 export type RegisterResultsWithCsvMutation = {
   __typename?: 'Mutation'
 
-  registerResultsWithCSV: RegisterResultsWithCsvRegisterResultsWithCsv | null
+  registerResultsWithCSV: Maybe<RegisterResultsWithCsvRegisterResultsWithCsv>
 }
 
 export type RegisterResultsWithCsvRegisterResultsWithCsv = {
