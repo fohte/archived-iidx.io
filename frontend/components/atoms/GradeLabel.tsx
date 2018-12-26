@@ -8,13 +8,17 @@ export const formatNumber = (num: number): string =>
   num > 0 ? `+${num}` : `${num}`
 
 export interface Props {
-  grade: Grade
+  grade: Grade | null
   diff: number
 }
 
 const GradeLabel: React.SFC<Props> = ({ grade, diff }) => {
+  if (grade == null) {
+    return <span>-</span>
+  }
+
   return (
-    <Label horizontal color={colors.gradeAliases[grade || 'default']}>
+    <Label horizontal color={colors.gradeAliases[grade]}>
       {grade}
       <Label.Detail>{formatNumber(diff)}</Label.Detail>
     </Label>
