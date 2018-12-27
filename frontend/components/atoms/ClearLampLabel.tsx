@@ -4,9 +4,6 @@ import { Label } from 'semantic-ui-react'
 import { ClearLamp } from '@app/queries'
 import { colors } from '@app/styles'
 
-export const formatNumber = (num: number): string =>
-  num > 0 ? `+${num}` : `${num}`
-
 export interface Props {
   clearLamp: ClearLamp | null
 }
