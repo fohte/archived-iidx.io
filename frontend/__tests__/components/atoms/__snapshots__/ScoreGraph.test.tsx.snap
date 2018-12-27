@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreGraph renders correctly when grade is A and score rate is 67 1`] = `
+<div
+  className="sc-bdVaJa fZlIJT"
+>
+  <div
+    className="sc-bwzfXH cvBSnT"
+    color="#2185D0"
+  />
+  <div
+    className="sc-htpNat sc-ifAKCX crkwIx"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb kvVqDZ"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb jNVins"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb dKhKfT"
+  />
+</div>
+`;
+
+exports[`ScoreGraph renders correctly when grade is AA and score rate is 78 1`] = `
+<div
+  className="sc-bdVaJa fZlIJT"
+>
+  <div
+    className="sc-bwzfXH girsJh"
+    color="#B5CC18"
+  />
+  <div
+    className="sc-htpNat sc-ifAKCX crkwIx"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb kvVqDZ"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb fYtVMK"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb dKhKfT"
+  />
+</div>
+`;
+
+exports[`ScoreGraph renders correctly when grade is AAA and score rate is 89 1`] = `
+<div
+  className="sc-bdVaJa fZlIJT"
+>
+  <div
+    className="sc-bwzfXH dDonti"
+    color="#F2711C"
+  />
+  <div
+    className="sc-htpNat sc-ifAKCX crkwIx"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb kvVqDZ"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb fYtVMK"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb jryLCW"
+  />
+</div>
+`;
+
+exports[`ScoreGraph renders correctly when grade is B and score rate is 56 1`] = `
+<div
+  className="sc-bdVaJa fZlIJT"
+>
+  <div
+    className="sc-bwzfXH epweAM"
+    color="#1B1C1D"
+  />
+  <div
+    className="sc-htpNat sc-ifAKCX crkwIx"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb hgkcNv"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb jNVins"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb dKhKfT"
+  />
+</div>
+`;
+
+exports[`ScoreGraph renders correctly when grade is C and score rate is 45 1`] = `
+<div
+  className="sc-bdVaJa fZlIJT"
+>
+  <div
+    className="sc-bwzfXH jhPUVw"
+    color="#1B1C1D"
+  />
+  <div
+    className="sc-htpNat sc-ifAKCX crkwIx"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb hgkcNv"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb jNVins"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb dKhKfT"
+  />
+</div>
+`;
+
+exports[`ScoreGraph renders correctly when grade is D and score rate is 34 1`] = `
+<div
+  className="sc-bdVaJa fZlIJT"
+>
+  <div
+    className="sc-bwzfXH hWdKic"
+    color="#1B1C1D"
+  />
+  <div
+    className="sc-htpNat sc-ifAKCX crkwIx"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb hgkcNv"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb jNVins"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb dKhKfT"
+  />
+</div>
+`;
+
+exports[`ScoreGraph renders correctly when grade is E and score rate is 23 1`] = `
+<div
+  className="sc-bdVaJa fZlIJT"
+>
+  <div
+    className="sc-bwzfXH fHvtdV"
+    color="#1B1C1D"
+  />
+  <div
+    className="sc-htpNat sc-ifAKCX crkwIx"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb hgkcNv"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb jNVins"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb dKhKfT"
+  />
+</div>
+`;
+
+exports[`ScoreGraph renders correctly when grade is F and score rate is 12 1`] = `
+<div
+  className="sc-bdVaJa fZlIJT"
+>
+  <div
+    className="sc-bwzfXH cTlOgz"
+    color="#1B1C1D"
+  />
+  <div
+    className="sc-htpNat sc-ifAKCX crkwIx"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb hgkcNv"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb jNVins"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb dKhKfT"
+  />
+</div>
+`;
+
+exports[`ScoreGraph renders correctly when grade is MAX and score rate is 100 1`] = `
+<div
+  className="sc-bdVaJa fZlIJT"
+>
+  <div
+    className="sc-bwzfXH kYgbJw"
+    color="#DB2828"
+  />
+  <div
+    className="sc-htpNat sc-ifAKCX crkwIx"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb kvVqDZ"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb fYtVMK"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb jryLCW"
+  />
+</div>
+`;
+
+exports[`ScoreGraph renders correctly when grade is null and score rate is 0 1`] = `
+<div
+  className="sc-bdVaJa fZlIJT"
+>
+  <div
+    className="sc-bwzfXH eCGBPk"
+    color="#1B1C1D"
+  />
+  <div
+    className="sc-htpNat sc-ifAKCX crkwIx"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb hgkcNv"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb jNVins"
+  />
+  <div
+    className="sc-htpNat sc-bxivhb dKhKfT"
+  />
+</div>
+`;
