@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClearLampLabel renders correctly when clear lamp is ASSIST 1`] = `
+<div
+  className="ui purple horizontal label"
+  onClick={[Function]}
+>
+  ASSIST
+</div>
+`;
+
+exports[`ClearLampLabel renders correctly when clear lamp is EASY 1`] = `
+<div
+  className="ui green horizontal label"
+  onClick={[Function]}
+>
+  EASY
+</div>
+`;
+
+exports[`ClearLampLabel renders correctly when clear lamp is EX_HARD 1`] = `
+<div
+  className="ui yellow horizontal label"
+  onClick={[Function]}
+>
+  EX HARD
+</div>
+`;
+
+exports[`ClearLampLabel renders correctly when clear lamp is FAILED 1`] = `
+<div
+  className="ui black horizontal label"
+  onClick={[Function]}
+>
+  FAILED
+</div>
+`;
+
+exports[`ClearLampLabel renders correctly when clear lamp is FULL_COMBO 1`] = `
+<div
+  className="ui teal horizontal label"
+  onClick={[Function]}
+>
+  FULL COMBO
+</div>
+`;
+
+exports[`ClearLampLabel renders correctly when clear lamp is HARD 1`] = `
+<div
+  className="ui red horizontal label"
+  onClick={[Function]}
+>
+  HARD
+</div>
+`;
+
+exports[`ClearLampLabel renders correctly when clear lamp is NORMAL 1`] = `
+<div
+  className="ui blue horizontal label"
+  onClick={[Function]}
+>
+  NORMAL
+</div>
+`;
+
+exports[`ClearLampLabel renders correctly when clear lamp is null 1`] = `
+<div
+  className="ui grey horizontal label"
+  onClick={[Function]}
+>
+  NO PLAY
+</div>
+`;
