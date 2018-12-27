@@ -44,3 +44,5 @@ import Router from 'next/router'
   push: () => {}, // tslint:disable-line:no-empty
   prefetch: () => {}, // tslint:disable-line:no-empty
 }
+
+import 'jest-date-mock'
