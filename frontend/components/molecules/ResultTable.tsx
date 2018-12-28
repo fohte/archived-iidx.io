@@ -11,18 +11,21 @@ import {
   searchGrade,
   searchNextGrade,
 } from '@app/lib/score'
-import { ClearLamp, FindMapMap, Grade } from '@app/queries'
+import { ClearLamp } from '@app/queries'
 import { clearLamp } from '@app/styles'
 
 export type Result = {
   score: number
   missCount: number
   clearLamp: ClearLamp
-  grade: Grade
+}
+
+export type Map = {
+  numNotes: number
 }
 
 export type Props = {
-  map: FindMapMap
+  map: Map
   result?: Result
 }
 
