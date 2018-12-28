@@ -2,14 +2,32 @@ import * as React from 'react'
 import { Header, List } from 'semantic-ui-react'
 
 import { generateTextageURL } from '@app/lib/textage'
-import { FindMapMap, FindMapMusic, PlayStyle } from '@app/queries'
+import { Difficulty, PlayStyle } from '@app/queries'
 
-export type Props = {
-  music: FindMapMusic
-  map: FindMapMap
+export interface Music {
+  title: string
+  subTitle: string
+  genre: string
+  artist: string
+  series: number
+  textageUid: string
 }
 
-const printBPM = ({ minBpm, maxBpm }: FindMapMap) =>
+export interface Map {
+  level: number
+  playStyle: PlayStyle
+  difficulty: Difficulty
+  minBpm: number
+  maxBpm: number
+  numNotes: number
+}
+
+export type Props = {
+  music: Music
+  map: Map
+}
+
+const printBPM = ({ minBpm, maxBpm }: Map) =>
   minBpm === maxBpm ? `${maxBpm}` : `${minBpm}-${maxBpm}`
 
 const MapTitleHeader: React.SFC<Props> = ({ music, map }) => (
