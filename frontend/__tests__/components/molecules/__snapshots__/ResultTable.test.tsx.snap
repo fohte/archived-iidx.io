@@ -1,0 +1,3634 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultTable renders correctly when clear lamp is ASSIST 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 0%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  background-color: #A333C8;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui purple horizontal label"
+          onClick={[Function]}
+        >
+          ASSIST
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            F
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            E
+            <div
+              className="detail"
+            >
+              -445
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          0.00
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when clear lamp is EASY 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 0%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  background-color: #21BA45;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui green horizontal label"
+          onClick={[Function]}
+        >
+          EASY
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            F
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            E
+            <div
+              className="detail"
+            >
+              -445
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          0.00
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when clear lamp is EX_HARD 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 0%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: itdtjn 150ms infinite;
+  animation: itdtjn 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui yellow horizontal label"
+          onClick={[Function]}
+        >
+          EX HARD
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            F
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            E
+            <div
+              className="detail"
+            >
+              -445
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          0.00
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when clear lamp is FAILED 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 0%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            F
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            E
+            <div
+              className="detail"
+            >
+              -445
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          0.00
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when clear lamp is FULL_COMBO 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 0%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gGMeAt 150ms infinite;
+  animation: gGMeAt 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui teal horizontal label"
+          onClick={[Function]}
+        >
+          FULL COMBO
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            F
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            E
+            <div
+              className="detail"
+            >
+              -445
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          0.00
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when clear lamp is HARD 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 0%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  background-color: #FFFFFF;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui red horizontal label"
+          onClick={[Function]}
+        >
+          HARD
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            F
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            E
+            <div
+              className="detail"
+            >
+              -445
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          0.00
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when clear lamp is NORMAL 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 0%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  background-color: #2185D0;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui blue horizontal label"
+          onClick={[Function]}
+        >
+          NORMAL
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            F
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            E
+            <div
+              className="detail"
+            >
+              -445
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          0.00
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when score is 0/900 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 0%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            F
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            E
+            <div
+              className="detail"
+            >
+              -200
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          0.00
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when score is 100/900 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 11.11%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            F
+            <div
+              className="detail"
+            >
+              +100
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            E
+            <div
+              className="detail"
+            >
+              -100
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        100
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          11.11
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when score is 200/900 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 22.22%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            E
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            D
+            <div
+              className="detail"
+            >
+              -100
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        200
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          22.22
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when score is 300/900 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 33.33%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            D
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            C
+            <div
+              className="detail"
+            >
+              -100
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        300
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          33.33
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when score is 400/900 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 44.44%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            C
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            B
+            <div
+              className="detail"
+            >
+              -100
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        400
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          44.44
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when score is 500/900 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 55.56%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            B
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            A
+            <div
+              className="detail"
+            >
+              -100
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        500
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          55.56
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when score is 600/900 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 66.67%;
+  height: 50%;
+  background-color: #2185D0;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui blue horizontal label"
+            onClick={[Function]}
+          >
+            A
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            AA
+            <div
+              className="detail"
+            >
+              -100
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        600
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          66.67
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#2185D0"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when score is 700/900 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 77.78%;
+  height: 50%;
+  background-color: #B5CC18;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui olive horizontal label"
+            onClick={[Function]}
+          >
+            AA
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            AAA
+            <div
+              className="detail"
+            >
+              -100
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        700
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          77.78
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#B5CC18"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when score is 800/900 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 88.89%;
+  height: 50%;
+  background-color: #F2711C;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui orange horizontal label"
+            onClick={[Function]}
+          >
+            AAA
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            className="ui horizontal label"
+            onClick={[Function]}
+          >
+            MAX
+            <div
+              className="detail"
+            >
+              -100
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        800
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          88.89
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#F2711C"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly when score is 900/900 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 100%;
+  height: 50%;
+  background-color: #DB2828;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gMJeT 150ms infinite;
+  animation: gMJeT 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui black horizontal label"
+          onClick={[Function]}
+        >
+          FAILED
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <div
+            className="ui red horizontal label"
+            onClick={[Function]}
+          >
+            MAX
+            <div
+              className="detail"
+            >
+              0
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        900
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          100.00
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#DB2828"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        0
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ResultTable renders correctly without result 1`] = `
+.c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 0%;
+  height: 50%;
+  background-color: #1B1C1D;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #767676;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  background-color: #767676;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<table
+  className="ui celled selectable unstackable table"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        style={
+          Object {
+            "padding": "0px",
+          }
+        }
+      />
+      <th
+        className="center aligned three wide"
+      >
+        Clear
+      </th>
+      <th
+        className="center aligned three wide"
+      >
+        DJ Level
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        Score
+      </th>
+      <th
+        className="six wide"
+      >
+        Rate
+      </th>
+      <th
+        className="center aligned one wide"
+      >
+        BP
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="c0"
+      />
+      <td
+        className="center aligned"
+      >
+        <div
+          className="ui grey horizontal label"
+          onClick={[Function]}
+        >
+          NO PLAY
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          <span>
+            -
+          </span>
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        -
+      </td>
+      <td
+        className=""
+      >
+        <div>
+          0.00
+           %
+        </div>
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+            color="#1B1C1D"
+          />
+          <div
+            className="c3"
+          />
+          <div
+            className="c4"
+          />
+          <div
+            className="c5"
+          />
+          <div
+            className="c6"
+          />
+        </div>
+      </td>
+      <td
+        className="center aligned"
+      >
+        -
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
