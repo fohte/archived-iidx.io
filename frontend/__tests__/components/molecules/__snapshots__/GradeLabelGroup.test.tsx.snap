@@ -1,0 +1,333 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GradeLabelGroup renders correctly when the current grade is A+100 and AA-100 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "marginBottom": "0.3em",
+      }
+    }
+  >
+    <div
+      className="ui blue horizontal label"
+      onClick={[Function]}
+    >
+      A
+      <div
+        className="detail"
+      >
+        +100
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      className="ui horizontal label"
+      onClick={[Function]}
+    >
+      AA
+      <div
+        className="detail"
+      >
+        -100
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`GradeLabelGroup renders correctly when the current grade is AA+100 and AAA-100 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "marginBottom": "0.3em",
+      }
+    }
+  >
+    <div
+      className="ui olive horizontal label"
+      onClick={[Function]}
+    >
+      AA
+      <div
+        className="detail"
+      >
+        +100
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      className="ui horizontal label"
+      onClick={[Function]}
+    >
+      AAA
+      <div
+        className="detail"
+      >
+        -100
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`GradeLabelGroup renders correctly when the current grade is AAA+100 and MAX-100 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "marginBottom": "0.3em",
+      }
+    }
+  >
+    <div
+      className="ui orange horizontal label"
+      onClick={[Function]}
+    >
+      AAA
+      <div
+        className="detail"
+      >
+        +100
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      className="ui horizontal label"
+      onClick={[Function]}
+    >
+      MAX
+      <div
+        className="detail"
+      >
+        -100
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`GradeLabelGroup renders correctly when the current grade is B+100 and A-100 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "marginBottom": "0.3em",
+      }
+    }
+  >
+    <div
+      className="ui black horizontal label"
+      onClick={[Function]}
+    >
+      B
+      <div
+        className="detail"
+      >
+        +100
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      className="ui horizontal label"
+      onClick={[Function]}
+    >
+      A
+      <div
+        className="detail"
+      >
+        -100
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`GradeLabelGroup renders correctly when the current grade is C+100 and B-100 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "marginBottom": "0.3em",
+      }
+    }
+  >
+    <div
+      className="ui black horizontal label"
+      onClick={[Function]}
+    >
+      C
+      <div
+        className="detail"
+      >
+        +100
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      className="ui horizontal label"
+      onClick={[Function]}
+    >
+      B
+      <div
+        className="detail"
+      >
+        -100
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`GradeLabelGroup renders correctly when the current grade is D+100 and C-100 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "marginBottom": "0.3em",
+      }
+    }
+  >
+    <div
+      className="ui black horizontal label"
+      onClick={[Function]}
+    >
+      D
+      <div
+        className="detail"
+      >
+        +100
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      className="ui horizontal label"
+      onClick={[Function]}
+    >
+      C
+      <div
+        className="detail"
+      >
+        -100
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`GradeLabelGroup renders correctly when the current grade is E+100 and D-100 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "marginBottom": "0.3em",
+      }
+    }
+  >
+    <div
+      className="ui black horizontal label"
+      onClick={[Function]}
+    >
+      E
+      <div
+        className="detail"
+      >
+        +100
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      className="ui horizontal label"
+      onClick={[Function]}
+    >
+      D
+      <div
+        className="detail"
+      >
+        -100
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`GradeLabelGroup renders correctly when the current grade is F+100 and E-100 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "marginBottom": "0.3em",
+      }
+    }
+  >
+    <div
+      className="ui black horizontal label"
+      onClick={[Function]}
+    >
+      F
+      <div
+        className="detail"
+      >
+        +100
+      </div>
+    </div>
+  </div>,
+  <div>
+    <div
+      className="ui horizontal label"
+      onClick={[Function]}
+    >
+      E
+      <div
+        className="detail"
+      >
+        -100
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`GradeLabelGroup renders correctly when the current grade is MAX-0 1`] = `
+<div
+  style={
+    Object {
+      "marginBottom": "0.3em",
+    }
+  }
+>
+  <div
+    className="ui red horizontal label"
+    onClick={[Function]}
+  >
+    MAX
+    <div
+      className="detail"
+    >
+      0
+    </div>
+  </div>
+</div>
+`;
+
+exports[`GradeLabelGroup renders correctly when the current grade is null 1`] = `
+<div
+  style={
+    Object {
+      "marginBottom": "0.3em",
+    }
+  }
+>
+  <span>
+    -
+  </span>
+</div>
+`;
