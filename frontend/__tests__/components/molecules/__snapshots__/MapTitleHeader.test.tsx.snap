@@ -1,0 +1,355 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapTitleHeader renders correctly when playStyle is DP and BPM is 100-100 1`] = `
+Array [
+  <div>
+    genre
+    <h2
+      className="ui header"
+    >
+      title
+       
+      subTitle
+    </h2>
+    artist
+  </div>,
+  <div>
+    <div
+      className="ui divided horizontal list"
+      role="list"
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        DP
+         
+        ANOTHER
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        ☆
+        12
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        BPM 
+        100
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        1000
+         notes
+      </div>
+    </div>
+  </div>,
+  <div>
+    <span
+      style={
+        Object {
+          "marginRight": "0.5em",
+        }
+      }
+    >
+      TexTage:
+    </span>
+    <div
+      className="ui divided horizontal list"
+      role="list"
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        <a
+          href="//textage.cc/score/1/textageUid.html?DAC00"
+        >
+          DP
+        </a>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`MapTitleHeader renders correctly when playStyle is DP and BPM is 100-400 1`] = `
+Array [
+  <div>
+    genre
+    <h2
+      className="ui header"
+    >
+      title
+       
+      subTitle
+    </h2>
+    artist
+  </div>,
+  <div>
+    <div
+      className="ui divided horizontal list"
+      role="list"
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        DP
+         
+        ANOTHER
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        ☆
+        12
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        BPM 
+        100-400
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        1000
+         notes
+      </div>
+    </div>
+  </div>,
+  <div>
+    <span
+      style={
+        Object {
+          "marginRight": "0.5em",
+        }
+      }
+    >
+      TexTage:
+    </span>
+    <div
+      className="ui divided horizontal list"
+      role="list"
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        <a
+          href="//textage.cc/score/1/textageUid.html?DAC00"
+        >
+          DP
+        </a>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`MapTitleHeader renders correctly when playStyle is SP and BPM is 100-100 1`] = `
+Array [
+  <div>
+    genre
+    <h2
+      className="ui header"
+    >
+      title
+       
+      subTitle
+    </h2>
+    artist
+  </div>,
+  <div>
+    <div
+      className="ui divided horizontal list"
+      role="list"
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        SP
+         
+        ANOTHER
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        ☆
+        12
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        BPM 
+        100
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        1000
+         notes
+      </div>
+    </div>
+  </div>,
+  <div>
+    <span
+      style={
+        Object {
+          "marginRight": "0.5em",
+        }
+      }
+    >
+      TexTage:
+    </span>
+    <div
+      className="ui divided horizontal list"
+      role="list"
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        <a
+          href="//textage.cc/score/1/textageUid.html?1AC00"
+        >
+          1P
+        </a>
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        <a
+          href="//textage.cc/score/1/textageUid.html?2AC00"
+        >
+          2P
+        </a>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`MapTitleHeader renders correctly when playStyle is SP and BPM is 100-400 1`] = `
+Array [
+  <div>
+    genre
+    <h2
+      className="ui header"
+    >
+      title
+       
+      subTitle
+    </h2>
+    artist
+  </div>,
+  <div>
+    <div
+      className="ui divided horizontal list"
+      role="list"
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        SP
+         
+        ANOTHER
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        ☆
+        12
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        BPM 
+        100-400
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        1000
+         notes
+      </div>
+    </div>
+  </div>,
+  <div>
+    <span
+      style={
+        Object {
+          "marginRight": "0.5em",
+        }
+      }
+    >
+      TexTage:
+    </span>
+    <div
+      className="ui divided horizontal list"
+      role="list"
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        <a
+          href="//textage.cc/score/1/textageUid.html?1AC00"
+        >
+          1P
+        </a>
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        <a
+          href="//textage.cc/score/1/textageUid.html?2AC00"
+        >
+          2P
+        </a>
+      </div>
+    </div>
+  </div>,
+]
+`;
