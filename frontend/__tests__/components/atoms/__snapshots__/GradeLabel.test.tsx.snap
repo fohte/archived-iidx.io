@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GradeLabel renders correctly when clear lamp is A 1`] = `
+<div
+  className="ui blue horizontal label"
+  onClick={[Function]}
+>
+  A
+  <div
+    className="detail"
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when clear lamp is AA 1`] = `
+<div
+  className="ui olive horizontal label"
+  onClick={[Function]}
+>
+  AA
+  <div
+    className="detail"
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when clear lamp is AAA 1`] = `
+<div
+  className="ui orange horizontal label"
+  onClick={[Function]}
+>
+  AAA
+  <div
+    className="detail"
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when clear lamp is B 1`] = `
+<div
+  className="ui black horizontal label"
+  onClick={[Function]}
+>
+  B
+  <div
+    className="detail"
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when clear lamp is C 1`] = `
+<div
+  className="ui black horizontal label"
+  onClick={[Function]}
+>
+  C
+  <div
+    className="detail"
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when clear lamp is D 1`] = `
+<div
+  className="ui black horizontal label"
+  onClick={[Function]}
+>
+  D
+  <div
+    className="detail"
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when clear lamp is E 1`] = `
+<div
+  className="ui black horizontal label"
+  onClick={[Function]}
+>
+  E
+  <div
+    className="detail"
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when clear lamp is F 1`] = `
+<div
+  className="ui black horizontal label"
+  onClick={[Function]}
+>
+  F
+  <div
+    className="detail"
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when clear lamp is MAX 1`] = `
+<div
+  className="ui red horizontal label"
+  onClick={[Function]}
+>
+  MAX
+  <div
+    className="detail"
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when clear lamp is null 1`] = `
+<span>
+  -
+</span>
+`;
+
+exports[`GradeLabel renders correctly when diff is 0 1`] = `
+<div
+  className="ui orange horizontal label"
+  onClick={[Function]}
+>
+  AAA
+  <div
+    className="detail"
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when diff is greater than 0 1`] = `
+<div
+  className="ui orange horizontal label"
+  onClick={[Function]}
+>
+  AAA
+  <div
+    className="detail"
+  >
+    +1
+  </div>
+</div>
+`;
+
+exports[`GradeLabel renders correctly when diff is less than 0 1`] = `
+<div
+  className="ui orange horizontal label"
+  onClick={[Function]}
+>
+  AAA
+  <div
+    className="detail"
+  >
+    -1
+  </div>
+</div>
+`;

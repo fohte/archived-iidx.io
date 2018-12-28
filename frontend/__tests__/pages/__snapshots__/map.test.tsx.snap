@@ -29,7 +29,63 @@ Array [
       </div>
     </div>
   </div>,
-  <div
+  .c1 {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+}
+
+.c2 {
+  width: 100%;
+  height: 50%;
+  background-color: #DB2828;
+  position: absolute;
+  vertical-align: middle;
+  top: 25%;
+  z-index: 0;
+}
+
+.c4 {
+  width: 66.66666666666666%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c5 {
+  width: 77.77777777777779%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c6 {
+  width: 88.88888888888889%;
+  height: 100%;
+  border-right: 1px dotted #2185D0;
+  position: absolute;
+  z-index: 10;
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #767676;
+  position: absolute;
+  z-index: 10;
+  border-left: 1px solid #767676;
+}
+
+.c0 {
+  -webkit-animation: gGMeAt 150ms infinite;
+  animation: gGMeAt 150ms infinite;
+  width: 1%;
+  padding: 3px !important;
+}
+
+<div
     className="ui vertical segment"
   >
     <div
@@ -187,7 +243,7 @@ Array [
               className=""
             >
               <td
-                className="sc-EHOje kUaBib"
+                className="c0"
               />
               <td
                 className="center aligned"
@@ -235,23 +291,23 @@ Array [
                    %
                 </div>
                 <div
-                  className="sc-bdVaJa fZlIJT"
+                  className="c1"
                 >
                   <div
-                    className="sc-bwzfXH kYgbJw"
+                    className="c2"
                     color="#DB2828"
                   />
                   <div
-                    className="sc-htpNat sc-ifAKCX crkwIx"
+                    className="c3"
                   />
                   <div
-                    className="sc-htpNat sc-bxivhb kvVqDZ"
+                    className="c4"
                   />
                   <div
-                    className="sc-htpNat sc-bxivhb fYtVMK"
+                    className="c5"
                   />
                   <div
-                    className="sc-htpNat sc-bxivhb jryLCW"
+                    className="c6"
                   />
                 </div>
               </td>

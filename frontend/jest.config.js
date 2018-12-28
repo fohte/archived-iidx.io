@@ -15,6 +15,7 @@ module.exports = {
     '@app/(.*)': '<rootDir>/$1',
   },
   setupFiles: ['<rootDir>/jest.setup.ts'],
+  setupTestFrameworkScriptFile: '<rootDir>/jest.setup-test-framework.ts',
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   testMatch: ['**/__tests__/**/*.test.{j,t}s{,x}'],
   transform: {

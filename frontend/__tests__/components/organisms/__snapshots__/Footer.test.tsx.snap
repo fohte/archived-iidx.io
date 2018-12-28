@@ -1,6 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Footer renders correctly 1`] = `
+exports[`Footer renders correctly when the current year and the copyright year are different 1`] = `
+<div
+  className="ui vertical segment"
+>
+  <div
+    className="ui center aligned container"
+  >
+    <i
+      aria-hidden="true"
+      className="copyright outline icon"
+    />
+     
+    2018-2019
+     iidx.io |
+     
+    test
+  </div>
+</div>
+`;
+
+exports[`Footer renders correctly when the current year and the copyright year are the same 1`] = `
 <div
   className="ui vertical segment"
 >
