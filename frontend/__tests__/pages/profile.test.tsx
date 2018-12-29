@@ -6,7 +6,10 @@ import Profile from '@app/pages/profile'
 describe('/', () => {
   it('renders correctly', () => {
     const component = renderer.create(
-      <Profile user={{ name: 'username' }} loading={false} />,
+      <Profile
+        user={{ __typename: 'User', name: 'username' }}
+        loading={false}
+      />,
     )
     const tree = component.toJSON()
 
