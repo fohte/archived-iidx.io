@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import { Diff } from 'utility-types'
 
 import { Grade } from '@app/lib/score'
 import { colors } from '@app/styles'
@@ -43,24 +44,31 @@ const VerticalBar = styled('div')<VerticalBarProps>`
   position: absolute;
 `
 
-interface TargetBarProps extends VerticalBarProps {
+interface TargetBarProps {
   isReached: boolean
+  length: number
 }
 
-const TargetBar = styled(VerticalBar).attrs(({ isReached }) => ({
+const TargetBar = styled(VerticalBar).attrs<
+  TargetBarProps,
+  Diff<VerticalBarProps, TargetBarProps>
+>(({ isReached }) => ({
   borderColor: isReached ? colors.base.blue : colors.base.grey,
   borderStyle: 'dotted',
 }))<TargetBarProps>`
   z-index: 10;
 `
 
-interface BorderBarProps extends VerticalBarProps {}
+interface BorderBarProps {}
 
-const BorderBar = styled(VerticalBar).attrs(() => ({
+const BorderBar = styled(VerticalBar).attrs<
+  BorderBarProps,
+  Diff<VerticalBarProps, BorderBarProps>
+>(() => ({
   borderColor: colors.base.grey,
   borderStyle: 'solid',
   length: 100,
-}))<BorderBarProps>`
+}))`
   z-index: 10;
   border-left: 1px ${props => props.borderStyle} ${props => props.borderColor};
 `
