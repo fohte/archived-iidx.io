@@ -1,4 +1,5 @@
 import { mount, ReactWrapper } from 'enzyme'
+import * as _ from 'lodash'
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
@@ -7,8 +8,7 @@ import { auth } from '@app/lib/firebaseApp'
 import Signup from '@app/pages/signup'
 
 const inputFields = (wrapper: ReactWrapper, values: FormValues) => {
-  Object.keys(values).forEach(key => {
-    const value = values[key]
+  _.forEach(values, (value, key) => {
     wrapper
       .find(`input[name="${key}"]`)
       .simulate('change', { target: { value } })

@@ -32,10 +32,10 @@ const pascalize = (str: string): string =>
   `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`
 
 const parsePlayStyleString = (playStyle: string): PlayStyle | undefined =>
-  PlayStyle[pascalize(playStyle)]
+  PlayStyle[pascalize(playStyle) as keyof typeof PlayStyle]
 
 const parseDifficultyString = (difficulty: string): Difficulty | undefined =>
-  Difficulty[pascalize(difficulty)]
+  Difficulty[pascalize(difficulty) as keyof typeof Difficulty]
 
 const renderMap = ({ loading, errors, music }: Props) => {
   if (loading) {

@@ -86,7 +86,7 @@ export default (ComposedApp: typeof TComposedApp) =>
 
     public apollo: AppApolloClient
 
-    constructor(props) {
+    constructor(props: Props) {
       super(props)
       this.apollo = initApollo(props.serverState.apollo.data)
     }
