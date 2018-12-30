@@ -38,4 +38,4 @@ export const backgroundCSS = _.mapValues(colorTransitions, transition =>
     : css`
         background-color: ${transition[0]};
       `,
-) as { [key in keyof colors.ClearLampKeys]: ReturnType<typeof css> }
+) as { [key in colors.ClearLampKeys]: ReturnType<typeof css> }

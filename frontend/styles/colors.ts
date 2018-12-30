@@ -53,5 +53,5 @@ export const clearLampAliases: { [key in ClearLampKeys]: SemanticCOLORS } = {
 }
 
 export const clearLamp = _.mapValues(clearLampAliases, key => base[key]) as {
-  [key in keyof ClearLampKeys]: string
+  [key in ClearLampKeys]: string
 }
