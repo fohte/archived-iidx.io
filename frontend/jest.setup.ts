@@ -18,26 +18,10 @@ jest.mock('next/config')
   },
 }))
 
-import * as firebaseMock from 'firebase-mock'
-
-const mockAuth = new firebaseMock.MockAuthentication()
-const mockSDK = new firebaseMock.MockFirebaseSdk(
-  // RTDB
-  null,
-  // AUTHENTICATION
-  () => mockAuth,
-  // FIRESTORE
-  null,
-  // STORAGE
-  null,
-  // MESSAGING
-  null,
-)
+import { Mock } from 'firebase-nightlight'
 
 import * as app from '@app/lib/firebaseApp/app'
-
-jest.mock('@app/lib/firebaseApp/app')
-;(app as any).default = jest.fn(() => mockSDK)
+;(app as any).default = jest.fn(() => new Mock().initializeApp({}))
 
 import Router from 'next/router'
 ;(Router.router as any) = {
