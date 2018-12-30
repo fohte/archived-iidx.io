@@ -5,14 +5,16 @@ import Map from '@app/components/organisms/Map'
 import MainLayout from '@app/components/templates/MainLayout'
 import initApollo from '@app/lib/initApollo'
 import throwSSRError from '@app/lib/throwSSRError'
+import {
+  parseDifficultyString,
+  parsePlayStyleString,
+} from '@app/lib/queryParamParser'
 import { PageComponentType } from '@app/pages/_app'
 import {
-  Difficulty,
   FindMapDocument,
   FindMapMusic,
   FindMapQuery,
   FindMapVariables,
-  PlayStyle,
 } from '@app/queries'
 
 export type Query = {
@@ -27,15 +29,6 @@ export type Props = {
   errors?: any[]
   loading: boolean
 }
-
-const pascalize = (str: string): string =>
-  `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`
-
-const parsePlayStyleString = (playStyle: string): PlayStyle | undefined =>
-  PlayStyle[pascalize(playStyle) as keyof typeof PlayStyle]
-
-const parseDifficultyString = (difficulty: string): Difficulty | undefined =>
-  Difficulty[pascalize(difficulty) as keyof typeof Difficulty]
 
 const renderMap = ({ loading, errors, music }: Props) => {
   if (loading) {
