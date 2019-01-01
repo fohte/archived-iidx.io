@@ -30,3 +30,6 @@ import Router from 'next/router'
 }
 
 import 'jest-date-mock'
+import { advanceTo } from 'jest-date-mock'
+
+advanceTo(new Date(2018, 1, 1, 0, 0, 0))
