@@ -70,6 +70,7 @@ type Map {
   level: Int!
   maxBpm: Int!
   minBpm: Int!
+  music: Music!
   numNotes: Int!
   playStyle: PlayStyle!
 }
@@ -101,6 +102,9 @@ enum PlayStyle {
 }
 
 type Query {
+  # Find maps.
+  maps: [Map!]
+
   # Find a music.
   music(id: ID!): Music
 

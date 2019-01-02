@@ -41,6 +41,14 @@ module Types
       rescue ActiveRecord::RecordNotFound => e
         raise IIDXIO::GraphQL::NotFoundError, e.message
       end
+
+      field :maps, [MapType], null: true do
+        description 'Find maps.'
+      end
+
+      def maps
+        Map.includes(:music).where(level: 12, play_style: :sp)
+      end
     end
   end
 end

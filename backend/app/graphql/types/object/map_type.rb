@@ -4,6 +4,7 @@ module Types
   module Object
     class MapType < Base
       field :id, ID, null: false
+      field :music, MusicType, null: false
       field :num_notes, Integer, null: false
       field :level, Integer, null: false
       field :play_style, Enum::PlayStyle, null: false

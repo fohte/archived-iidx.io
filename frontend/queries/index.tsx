@@ -1,16 +1,5 @@
 export type Maybe<T> = T | null
 
-export enum PlayStyle {
-  Sp = 'SP',
-  Dp = 'DP',
-}
-
-export enum Difficulty {
-  Normal = 'NORMAL',
-  Hyper = 'HYPER',
-  Another = 'ANOTHER',
-}
-
 export enum ClearLamp {
   Failed = 'FAILED',
   Assist = 'ASSIST',
@@ -30,6 +19,17 @@ export enum Grade {
   D = 'D',
   E = 'E',
   F = 'F',
+}
+
+export enum Difficulty {
+  Normal = 'NORMAL',
+  Hyper = 'HYPER',
+  Another = 'ANOTHER',
+}
+
+export enum PlayStyle {
+  Sp = 'SP',
+  Dp = 'DP',
 }
 
 // ====================================================
