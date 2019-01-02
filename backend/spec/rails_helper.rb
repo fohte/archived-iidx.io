@@ -48,4 +48,6 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
   config.include FactoryBot::Syntax::Methods
   config.include ::FixtureHelper
+
+  config.include_context 'graphql schema', type: :graphql
 end
