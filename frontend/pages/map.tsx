@@ -1,14 +1,14 @@
 import ErrorPage from 'next/error'
 import * as React from 'react'
 
-import Map from '@app/components/organisms/Map'
+import MapDetail from '@app/components/organisms/MapDetail'
 import MainLayout from '@app/components/templates/MainLayout'
 import initApollo from '@app/lib/initApollo'
-import throwSSRError from '@app/lib/throwSSRError'
 import {
   parseDifficultyString,
   parsePlayStyleString,
 } from '@app/lib/queryParamParser'
+import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
 import {
   FindMapDocument,
@@ -39,7 +39,7 @@ const renderMap = ({ loading, errors, music }: Props) => {
   }
 
   return (
-    <Map
+    <MapDetail
       music={music}
       map={music.map}
       result={music.map.bestResult || undefined}
