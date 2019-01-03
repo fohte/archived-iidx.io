@@ -2,7 +2,7 @@ version: 2
 jobs:
   build_backend:
     docker:
-      - image: circleci/ruby:2.5.3
+      - image: circleci/ruby:2.6.0
         environment:
           RAILS_ENV: test
           MYSQL_HOST: 127.0.0.1
