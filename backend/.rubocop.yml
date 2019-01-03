@@ -54,6 +54,9 @@ RSpec/NamedSubject:
 RSpec/MultipleExpectations:
   Enabled: false
 
+RSpec/ContextWording:
+  Enabled: false
+
 RSpec/LetSetup:
   Enabled: false
 

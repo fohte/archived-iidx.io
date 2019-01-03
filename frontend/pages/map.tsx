@@ -1,18 +1,20 @@
 import ErrorPage from 'next/error'
 import * as React from 'react'
 
-import Map from '@app/components/organisms/Map'
+import MapDetail from '@app/components/organisms/MapDetail'
 import MainLayout from '@app/components/templates/MainLayout'
 import initApollo from '@app/lib/initApollo'
+import {
+  parseDifficultyString,
+  parsePlayStyleString,
+} from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
 import {
-  Difficulty,
   FindMapDocument,
   FindMapMusic,
   FindMapQuery,
   FindMapVariables,
-  PlayStyle,
 } from '@app/queries'
 
 export type Query = {
@@ -28,15 +30,6 @@ export type Props = {
   loading: boolean
 }
 
-const pascalize = (str: string): string =>
-  `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`
-
-const parsePlayStyleString = (playStyle: string): PlayStyle | undefined =>
-  PlayStyle[pascalize(playStyle) as keyof typeof PlayStyle]
-
-const parseDifficultyString = (difficulty: string): Difficulty | undefined =>
-  Difficulty[pascalize(difficulty) as keyof typeof Difficulty]
-
 const renderMap = ({ loading, errors, music }: Props) => {
   if (loading) {
     return 'loading'
@@ -46,7 +39,7 @@ const renderMap = ({ loading, errors, music }: Props) => {
   }
 
   return (
-    <Map
+    <MapDetail
       music={music}
       map={music.map}
       result={music.map.bestResult || undefined}

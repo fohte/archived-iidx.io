@@ -1,16 +1,5 @@
 export type Maybe<T> = T | null
 
-export enum PlayStyle {
-  Sp = 'SP',
-  Dp = 'DP',
-}
-
-export enum Difficulty {
-  Normal = 'NORMAL',
-  Hyper = 'HYPER',
-  Another = 'ANOTHER',
-}
-
 export enum ClearLamp {
   Failed = 'FAILED',
   Assist = 'ASSIST',
@@ -30,6 +19,17 @@ export enum Grade {
   D = 'D',
   E = 'E',
   F = 'F',
+}
+
+export enum Difficulty {
+  Normal = 'NORMAL',
+  Hyper = 'HYPER',
+  Another = 'ANOTHER',
+}
+
+export enum PlayStyle {
+  Sp = 'SP',
+  Dp = 'DP',
 }
 
 // ====================================================
@@ -151,6 +151,72 @@ export type GetMusicsWithMapsMaps = {
   level: number
 
   playStyle: PlayStyle
+}
+
+export type GetUserResultsVariables = {
+  username: string
+}
+
+export type GetUserResultsQuery = {
+  __typename?: 'Query'
+
+  maps: Maybe<GetUserResultsMaps[]>
+}
+
+export type GetUserResultsMaps = {
+  __typename?: 'Map'
+
+  id: string
+
+  numNotes: number
+
+  level: number
+
+  playStyle: PlayStyle
+
+  difficulty: Difficulty
+
+  minBpm: number
+
+  maxBpm: number
+
+  music: GetUserResultsMusic
+
+  bestResult: Maybe<GetUserResultsBestResult>
+}
+
+export type GetUserResultsMusic = {
+  __typename?: 'Music'
+
+  id: string
+
+  title: string
+
+  subTitle: string
+
+  genre: string
+
+  artist: string
+
+  textageUid: string
+
+  series: number
+
+  leggendaria: boolean
+}
+
+export type GetUserResultsBestResult = {
+  __typename?: 'Result'
+
+  id: string
+
+  score: number
+
+  missCount: number
+
+  clearLamp: ClearLamp
+
+  grade: Grade
 }
 
 export type GetViewerVariables = {}
@@ -386,6 +452,69 @@ export function GetMusicsWithMapsHOC<TProps, TChildProps = any>(
     GetMusicsWithMapsVariables,
     GetMusicsWithMapsProps<TChildProps>
   >(GetMusicsWithMapsDocument, operationOptions)
+}
+export const GetUserResultsDocument = gql`
+  query getUserResults($username: String!) {
+    maps {
+      id
+      numNotes
+      level
+      playStyle
+      difficulty
+      minBpm
+      maxBpm
+      music {
+        id
+        title
+        subTitle
+        genre
+        artist
+        textageUid
+        series
+        leggendaria
+      }
+      bestResult(username: $username) {
+        id
+        score
+        missCount
+        clearLamp
+        grade
+      }
+    }
+  }
+`
+export class GetUserResultsComponent extends React.Component<
+  Partial<ReactApollo.QueryProps<GetUserResultsQuery, GetUserResultsVariables>>
+> {
+  render() {
+    return (
+      <ReactApollo.Query<GetUserResultsQuery, GetUserResultsVariables>
+        query={GetUserResultsDocument}
+        {...(this as any)['props'] as any}
+      />
+    )
+  }
+}
+export type GetUserResultsProps<TChildProps = any> = Partial<
+  ReactApollo.DataProps<GetUserResultsQuery, GetUserResultsVariables>
+> &
+  TChildProps
+export function GetUserResultsHOC<TProps, TChildProps = any>(
+  operationOptions:
+    | ReactApollo.OperationOption<
+        TProps,
+        GetUserResultsQuery,
+        GetUserResultsVariables,
+        GetUserResultsProps<TChildProps>
+      >
+    | undefined,
+) {
+  return ReactApollo.graphql<
+    TProps,
+    GetUserResultsQuery,
+    GetUserResultsVariables,
+    GetUserResultsProps<TChildProps>
+  >(GetUserResultsDocument, operationOptions)
 }
 export const GetViewerDocument = gql`
   query getViewer {

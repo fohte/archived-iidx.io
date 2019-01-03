@@ -188,7 +188,7 @@ Array [
         className="ui basic segment"
       >
         <table
-          className="ui celled selectable unstackable table"
+          className="ui celled unstackable table"
           style={
             Object {
               "overflow": "hidden",
@@ -210,7 +210,7 @@ Array [
                 }
               />
               <th
-                className="center aligned three wide"
+                className="center aligned two wide"
               >
                 Clear
               </th>
@@ -241,6 +241,8 @@ Array [
           >
             <tr
               className=""
+              onClick={[Function]}
+              style={Object {}}
             >
               <td
                 className="c0"

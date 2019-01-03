@@ -11,16 +11,16 @@ export type Props = {
   result?: Result
 }
 
-const Map: React.SFC<Props> = ({ music, map, result }) => (
+const MapDetail: React.SFC<Props> = ({ music, map, result }) => (
   <>
     <Segment basic textAlign="center">
       <MapTitleHeader music={music} map={map} />
     </Segment>
 
     <Segment basic>
-      <ResultTable map={map} result={result} />
+      <ResultTable maps={[{ ...map, result }]} />
     </Segment>
   </>
 )
 
-export default Map
+export default MapDetail
