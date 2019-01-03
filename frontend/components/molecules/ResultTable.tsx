@@ -5,13 +5,14 @@ import styled from 'styled-components'
 import ClearLampLabel from '@app/components/atoms/ClearLampLabel'
 import ScoreGraph from '@app/components/atoms/ScoreGraph'
 import GradeLabelGroup from '@app/components/molecules/GradeLabelGroup'
+import { makeTitle } from '@app/lib/music'
 import {
   calcScoreRate,
   defaultGradeDiff,
   searchGrade,
   searchNextGrade,
 } from '@app/lib/score'
-import { ClearLamp } from '@app/queries'
+import { ClearLamp, Difficulty, PlayStyle } from '@app/queries'
 import { clearLamp } from '@app/styles'
 
 export type Result = {
@@ -20,13 +21,25 @@ export type Result = {
   clearLamp: ClearLamp
 }
 
+export type Music = {
+  id: string
+  title: string
+  subTitle: string
+}
+
 export type Map = {
   numNotes: number
+  level: number
+  difficulty: Difficulty
+  playStyle: PlayStyle
+  result?: Result | null
+  music?: Music | null
 }
 
 export type Props = {
-  map: Map
-  result?: Result
+  maps: Map[]
+  showMapData?: boolean
+  onClickRow?: (map: Map) => void
 }
 
 interface ClearLampCellProps {
@@ -35,12 +48,17 @@ interface ClearLampCellProps {
 
 const ClearLampCell = styled.td<ClearLampCellProps>`
   ${(props: ClearLampCellProps) =>
-    clearLamp.backgroundCSS[props.clearLamp || 'default']}
-  width: 1%;
+    clearLamp.backgroundCSS[props.clearLamp || 'default']} width: 1%;
   padding: 3px !important;
 `
 
-const ResultTable: React.SFC<Props> = ({ map, result }) => {
+const Row: React.SFC<{
+  map: Map
+  showMapData: boolean
+  onClickRow?: Props['onClickRow']
+}> = ({ map, showMapData, onClickRow }) => {
+  const { result, music } = map
+
   const current = result
     ? searchGrade(result.score, map.numNotes)
     : defaultGradeDiff
@@ -51,11 +69,64 @@ const ResultTable: React.SFC<Props> = ({ map, result }) => {
   const scoreRate = result ? calcScoreRate(result.score, map.numNotes) : 0
 
   return (
-    <Table unstackable celled selectable style={{ overflow: 'hidden' }}>
+    <Table.Row
+      style={onClickRow ? { cursor: 'pointer' } : {}}
+      onClick={() => {
+        if (onClickRow) {
+          onClickRow(map)
+        }
+      }}
+    >
+      <Table.Cell
+        as={ClearLampCell}
+        clearLamp={result ? result.clearLamp : null}
+      />
+      {showMapData && music && (
+        <>
+          <Table.Cell textAlign="center">{map.level}</Table.Cell>
+          <Table.Cell textAlign="center">{makeTitle(music)}</Table.Cell>
+        </>
+      )}
+      <Table.Cell textAlign="center">
+        <ClearLampLabel clearLamp={result ? result.clearLamp : null} />
+      </Table.Cell>
+      <Table.Cell textAlign="center">
+        <GradeLabelGroup current={current} next={next} />
+      </Table.Cell>
+      <Table.Cell textAlign="center">{result ? result.score : '-'}</Table.Cell>
+      <Table.Cell>
+        <div>{scoreRate.toFixed(2)} %</div>
+        <ScoreGraph grade={current.grade} scoreRate={scoreRate} />
+      </Table.Cell>
+      <Table.Cell textAlign="center">
+        {result ? result.missCount : '-'}
+      </Table.Cell>
+    </Table.Row>
+  )
+}
+
+const ResultTable: React.SFC<Props> = ({ maps, showMapData, onClickRow }) => {
+  return (
+    <Table
+      unstackable
+      celled
+      selectable={!!onClickRow}
+      style={{ overflow: 'hidden' }}
+    >
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell style={{ padding: '0px' }} />
-          <Table.HeaderCell width={3} textAlign="center">
+          {showMapData && (
+            <>
+              <Table.HeaderCell width={1} textAlign="center">
+                Level
+              </Table.HeaderCell>
+              <Table.HeaderCell width={4} textAlign="center">
+                Title
+              </Table.HeaderCell>
+            </>
+          )}
+          <Table.HeaderCell width={2} textAlign="center">
             Clear
           </Table.HeaderCell>
           <Table.HeaderCell width={3} textAlign="center">
@@ -70,30 +141,15 @@ const ResultTable: React.SFC<Props> = ({ map, result }) => {
           </Table.HeaderCell>
         </Table.Row>
       </Table.Header>
-
       <Table.Body>
-        <Table.Row>
-          <Table.Cell
-            as={ClearLampCell}
-            clearLamp={result ? result.clearLamp : null}
+        {maps.map((map, i) => (
+          <Row
+            key={i}
+            onClickRow={onClickRow}
+            showMapData={!!showMapData}
+            map={map}
           />
-          <Table.Cell textAlign="center">
-            <ClearLampLabel clearLamp={result ? result.clearLamp : null} />
-          </Table.Cell>
-          <Table.Cell textAlign="center">
-            <GradeLabelGroup current={current} next={next} />
-          </Table.Cell>
-          <Table.Cell textAlign="center">
-            {result ? result.score : '-'}
-          </Table.Cell>
-          <Table.Cell>
-            <div>{scoreRate.toFixed(2)} %</div>
-            <ScoreGraph grade={current.grade} scoreRate={scoreRate} />
-          </Table.Cell>
-          <Table.Cell textAlign="center">
-            {result ? result.missCount : '-'}
-          </Table.Cell>
-        </Table.Row>
+        ))}
       </Table.Body>
     </Table>
   )

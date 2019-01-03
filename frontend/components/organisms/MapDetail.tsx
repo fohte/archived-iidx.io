@@ -18,7 +18,7 @@ const MapDetail: React.SFC<Props> = ({ music, map, result }) => (
     </Segment>
 
     <Segment basic>
-      <ResultTable map={map} result={result} />
+      <ResultTable maps={[{ ...map, result }]} />
     </Segment>
   </>
 )
