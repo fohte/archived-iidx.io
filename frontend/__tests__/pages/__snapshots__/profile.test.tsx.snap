@@ -41,6 +41,12 @@ Array [
         @
         username
       </h2>
+      <a
+        href="/@username/musics"
+        onClick={[Function]}
+      >
+        musics
+      </a>
     </div>
   </div>,
   <div
