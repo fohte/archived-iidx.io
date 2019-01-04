@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DifficultyText renders correctly when DP ANOTHER 1`] = `
+<span
+  style={
+    Object {
+      "color": "#DB2828",
+    }
+  }
+>
+  [
+  DP
+  A
+  ]
+</span>
+`;
+
+exports[`DifficultyText renders correctly when DP HYPER 1`] = `
+<span
+  style={
+    Object {
+      "color": "#F2711C",
+    }
+  }
+>
+  [
+  DP
+  H
+  ]
+</span>
+`;
+
+exports[`DifficultyText renders correctly when DP NORMAL 1`] = `
+<span
+  style={
+    Object {
+      "color": "#2185D0",
+    }
+  }
+>
+  [
+  DP
+  N
+  ]
+</span>
+`;
+
+exports[`DifficultyText renders correctly when SP ANOTHER 1`] = `
+<span
+  style={
+    Object {
+      "color": "#DB2828",
+    }
+  }
+>
+  [
+  SP
+  A
+  ]
+</span>
+`;
+
+exports[`DifficultyText renders correctly when SP HYPER 1`] = `
+<span
+  style={
+    Object {
+      "color": "#F2711C",
+    }
+  }
+>
+  [
+  SP
+  H
+  ]
+</span>
+`;
+
+exports[`DifficultyText renders correctly when SP NORMAL 1`] = `
+<span
+  style={
+    Object {
+      "color": "#2185D0",
+    }
+  }
+>
+  [
+  SP
+  N
+  ]
+</span>
+`;

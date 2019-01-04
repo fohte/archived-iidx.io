@@ -342,6 +342,19 @@ exports[`ResultTable renders correctly when \`showMapData\` is true with a music
         className="center aligned"
       >
         title subTitle
+         
+        <span
+          style={
+            Object {
+              "color": "#DB2828",
+            }
+          }
+        >
+          [
+          SP
+          A
+          ]
+        </span>
       </td>
       <td
         className="center aligned"
