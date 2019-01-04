@@ -3,6 +3,7 @@ import { Table } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 import ClearLampLabel from '@app/components/atoms/ClearLampLabel'
+import DifficultyText from '@app/components/atoms/DifficultyText'
 import ScoreGraph from '@app/components/atoms/ScoreGraph'
 import GradeLabelGroup from '@app/components/molecules/GradeLabelGroup'
 import { makeTitle } from '@app/lib/music'
@@ -84,7 +85,13 @@ const Row: React.SFC<{
       {showMapData && music && (
         <>
           <Table.Cell textAlign="center">{map.level}</Table.Cell>
-          <Table.Cell textAlign="center">{makeTitle(music)}</Table.Cell>
+          <Table.Cell textAlign="center">
+            {makeTitle(music)}{' '}
+            <DifficultyText
+              difficulty={map.difficulty}
+              playStyle={map.playStyle}
+            />
+          </Table.Cell>
         </>
       )}
       <Table.Cell textAlign="center">

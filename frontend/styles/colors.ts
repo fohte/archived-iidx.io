@@ -2,7 +2,7 @@ import * as _ from 'lodash'
 import { SemanticCOLORS } from 'semantic-ui-react'
 
 import { Grade } from '@app/lib/score'
-import { ClearLamp } from '@app/queries'
+import { ClearLamp, Difficulty } from '@app/queries'
 
 export const base: { [key in SemanticCOLORS]: string } = {
   red: '#DB2828',
@@ -20,7 +20,16 @@ export const base: { [key in SemanticCOLORS]: string } = {
   black: '#1B1C1D',
 }
 
-export type GradeKeys = Grade | 'default'
+const convertAliasesToCodes = <T extends string>(
+  aliases: { [key in T]: SemanticCOLORS },
+): { [key in T]: string } =>
+  _.mapValues(aliases, (key: keyof typeof base) => base[key]) as {
+    [key in T]: string
+  }
+
+type WithDefault<T> = T | 'default'
+
+export type GradeKeys = WithDefault<Grade>
 
 export const gradeAliases: { [key in GradeKeys]: SemanticCOLORS } = {
   [Grade.F]: 'black',
@@ -35,11 +44,9 @@ export const gradeAliases: { [key in GradeKeys]: SemanticCOLORS } = {
   default: 'black',
 }
 
-export const grade = _.mapValues(gradeAliases, key => base[key]) as {
-  [key in GradeKeys]: string
-}
+export const grade = convertAliasesToCodes(gradeAliases)
 
-export type ClearLampKeys = ClearLamp | 'default'
+export type ClearLampKeys = WithDefault<ClearLamp>
 
 export const clearLampAliases: { [key in ClearLampKeys]: SemanticCOLORS } = {
   [ClearLamp.Failed]: 'black',
@@ -52,6 +59,12 @@ export const clearLampAliases: { [key in ClearLampKeys]: SemanticCOLORS } = {
   default: 'grey',
 }
 
-export const clearLamp = _.mapValues(clearLampAliases, key => base[key]) as {
-  [key in ClearLampKeys]: string
+export const clearLamp = convertAliasesToCodes(clearLampAliases)
+
+export const difficultyAliases: { [key in Difficulty]: SemanticCOLORS } = {
+  [Difficulty.Another]: 'red',
+  [Difficulty.Hyper]: 'orange',
+  [Difficulty.Normal]: 'blue',
 }
+
+export const difficulty = convertAliasesToCodes(difficultyAliases)
