@@ -1,6 +1,7 @@
 version: '3'
 services:
   mysql:
+    image: iidxio/mysql:dev
     build:
       context: .
       dockerfile: ./docker/mysql/Dockerfile.dev
@@ -17,6 +18,7 @@ services:
   redis:
     image: redis:4.0.12-stretch
   backend: &app_base
+    image: iidxio/backend:dev
     build:
       context: .
       dockerfile: ./docker/backend/Dockerfile.dev
@@ -50,6 +52,7 @@ services:
     stdin_open: false
     restart: on-failure:3
   frontend: &frontend
+    image: iidxio/frontend:dev
     build:
       context: .
       dockerfile: ./docker/frontend/Dockerfile.dev
