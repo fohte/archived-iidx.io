@@ -74,10 +74,10 @@ jobs:
             yarn run gql:gen
 
             dir="$(mktemp -d)"
-            cp queries/index.tsx "$dir/index.tsx"
-            git checkout -- queries/index.tsx
+            cp src/queries/index.tsx "$dir/index.tsx"
+            git checkout -- src/queries/index.tsx
 
-            diff -uN queries/index.tsx "$dir/index.tsx"
+            diff -uN src/queries/index.tsx "$dir/index.tsx"
       - run:
           name: run linters
           command: yarn run lint:ts

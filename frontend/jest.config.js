@@ -1,8 +1,6 @@
 module.exports = {
   collectCoverage: true,
-  collectCoverageFrom: [
-    '{components,contexts,lib,pages,queries}/**/*.{{j,t}s{,x}}',
-  ],
+  collectCoverageFrom: ['src/**/*.{{j,t}s{,x}}', '!src/.next/**/*'],
   coverageDirectory: './coverage/',
   globals: {
     'ts-jest': {
@@ -12,11 +10,11 @@ module.exports = {
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   moduleNameMapper: {
-    '@app/(.*)': '<rootDir>/$1',
+    '@app/(.*)': '<rootDir>/src/$1',
   },
   setupFiles: ['<rootDir>/jest.setup.ts'],
   setupTestFrameworkScriptFile: '<rootDir>/jest.setup-test-framework.ts',
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+  testPathIgnorePatterns: ['<rootDir>/src/.next/', '<rootDir>/node_modules/'],
   testMatch: ['**/__tests__/**/*.test.{j,t}s{,x}'],
   transform: {
     '^.+\\.jsx?$': '<rootDir>/node_modules/babel-jest',

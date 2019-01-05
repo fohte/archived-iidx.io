@@ -11,7 +11,7 @@ module.exports = withCSS(
   withTypescript({
     webpack(config, options) {
       return merge(config, {
-        resolve: { alias: { '@app': path.join(__dirname) } },
+        resolve: { alias: { '@app': path.join(__dirname, 'src') } },
         module: {
           rules: [
             {

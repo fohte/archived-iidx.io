@@ -15,11 +15,12 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "lib": ["dom", "es2015", "es2016"],
     "paths": {
-      "@app/*": ["./*"]
+      "@app/*": ["*"]
     }
   },
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "coverage"]
 }

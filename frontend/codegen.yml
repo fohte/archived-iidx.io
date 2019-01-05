@@ -2,12 +2,12 @@ schema:
   - '../docs/graphql/schema.json'
 overwrite: true
 documents:
-  - 'queries/**/*.graphql'
+  - './src/queries/**/*.graphql'
 config:
   noNamespaces: true
   resolvers: false
 generates:
-  ./queries/index.tsx:
+  ./src/queries/index.tsx:
     config:
       noNamespaces: true
       resolvers: false
