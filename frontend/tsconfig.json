@@ -15,12 +15,13 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "skipLibCheck": true,
+    "rootDirs": ["src", "stories"],
     "baseUrl": "src",
     "lib": ["dom", "es2015", "es2016"],
     "paths": {
       "@app/*": ["*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "stories/**/*"],
   "exclude": ["node_modules", "coverage"]
 }
