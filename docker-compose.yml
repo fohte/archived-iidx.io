@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   mysql:
     image: iidxio/mysql:dev
@@ -15,8 +16,10 @@ services:
       interval: 5s
       timeout: 10s
       retries: 3
+
   redis:
     image: redis:4.0.12-stretch
+
   backend: &app_base
     image: iidxio/backend:dev
     build:
@@ -44,6 +47,7 @@ services:
       - redis
     ports:
       - '5000:3000'
+
   spring: &spring
     <<: *app_base
     command: bin/spring server
@@ -51,6 +55,7 @@ services:
     tty: false
     stdin_open: false
     restart: on-failure:3
+
   frontend: &frontend
     image: iidxio/frontend:dev
     build:
@@ -70,6 +75,13 @@ services:
       - backend
     ports:
       - '3000:3000'
+
+  storybook:
+    <<: *frontend
+    command: yarn run storybook --ci
+    ports:
+      - '9001:9001'
+
 volumes:
   db_data:
   bundle:
