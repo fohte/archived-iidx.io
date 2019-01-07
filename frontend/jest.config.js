@@ -1,6 +1,10 @@
 module.exports = {
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.{{j,t}s{,x}}', '!src/.next/**/*'],
+  collectCoverageFrom: [
+    'src/**/*.{{j,t}s{,x}}',
+    '!src/.next/**/*',
+    '!src/queries/index.tsx',
+  ],
   coverageDirectory: './coverage/',
   globals: {
     'ts-jest': {
