@@ -12,6 +12,16 @@ module.exports = (baseConfig, env, config) =>
             presets: [['react-app', { flow: false, typescript: true }]],
           },
         },
+        {
+          test: /\.stories\.tsx?$/,
+          loaders: [
+            {
+              loader: require.resolve('@storybook/addon-storysource/loader'),
+              options: { parser: 'typescript' },
+            },
+          ],
+          enforce: 'pre',
+        },
       ],
     },
     resolve: {
