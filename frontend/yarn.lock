@@ -1377,6 +1377,20 @@
     react-syntax-highlighter "^10.0.0"
     regenerator-runtime "^0.12.1"
 
+"@storybook/addon-viewport@4.1.6":
+  version "4.1.6"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-4.1.6.tgz#c97fc77d030c36aee98c63bddae3021831dfea15"
+  integrity sha512-X4kcd8q5+fRsLOwt60xBWH/Vb/R6/iD5l7pZuzagT/s3bts3pxfaO65Ta+snGbXAXO3oYaYsgvnVRYnAwIZ5LA==
+  dependencies:
+    "@emotion/styled" "^0.10.6"
+    "@storybook/addons" "4.1.6"
+    "@storybook/components" "4.1.6"
+    "@storybook/core-events" "4.1.6"
+    core-js "^2.5.7"
+    global "^4.3.2"
+    prop-types "^15.6.2"
+    util-deprecate "^1.0.2"
+
 "@storybook/addons@4.1.4":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-4.1.4.tgz#652c494aa448441f182a36d83d8f05a54f5b5c31"
@@ -1962,6 +1976,13 @@
   integrity sha512-x3GNz8f0fQv7USvDuVXdZ4p/7nofFHyH6iB/qwR84Yp97xZxOzlQ0SY+6K14tVbdi9P7Qm5DZ2kZr0a+Io8qEQ==
   dependencies:
     "@types/react" "*"
+    "@types/storybook__react" "*"
+
+"@types/storybook__addon-viewport@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-viewport/-/storybook__addon-viewport-4.1.0.tgz#18af09f1ecd983e4c5ec803f46b15289f88cb299"
+  integrity sha512-4BAIplyTmGyRcL7DuRQv0Bc/iJyJjO/tbZR3ZA1plIO4HGurvaXAeGRPNns9bgo+xCkZUzASh8Vpc68lyrYfLA==
+  dependencies:
     "@types/storybook__react" "*"
 
 "@types/storybook__react@*", "@types/storybook__react@4.0.0":
