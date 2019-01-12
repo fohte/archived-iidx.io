@@ -22,6 +22,6 @@
       "@app/*": ["*"]
     }
   },
-  "include": ["src/**/*", "stories/**/*"],
+  "include": ["src/**/*", "stories/**/*", "__tests__/**/*"],
   "exclude": ["node_modules", "coverage"]
 }
