@@ -1,3 +1,5 @@
+import 'semantic-ui-css/semantic.min.css'
+import './style.css'
 import { configure } from '@storybook/react'
 import { setOptions } from '@storybook/addon-options'
 
