@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Brand renders correctly 1`] = `
+exports[`Storyshots components|atoms/Brand default 1`] = `
 <span>
   iidx.io
 </span>

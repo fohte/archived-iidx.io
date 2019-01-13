@@ -32,7 +32,8 @@
             "preprocess": false
           }
         ],
-        ["lodash"]
+        ["lodash"],
+        "require-context-hook"
       ]
     }
   }

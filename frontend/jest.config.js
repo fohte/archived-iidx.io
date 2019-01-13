@@ -12,9 +12,10 @@ module.exports = {
       tsConfig: '<rootDir>/tsconfig.jest.json',
     },
   },
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
   moduleNameMapper: {
     '@app/(.*)': '<rootDir>/src/$1',
+    '^.+\\.css$': 'jest-transform-css',
   },
   setupFiles: ['<rootDir>/jest.setup.ts'],
   setupTestFrameworkScriptFile: '<rootDir>/jest.setup-test-framework.ts',

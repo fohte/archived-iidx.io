@@ -1,0 +1,2180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots components|molecules/ResultTable default 1`] = `
+<div
+  className="ui segment"
+>
+  <table
+    className="ui celled unstackable table"
+    style={
+      Object {
+        "overflow": "hidden",
+      }
+    }
+  >
+    <thead
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <th
+          className=""
+          style={
+            Object {
+              "padding": "0px",
+            }
+          }
+        />
+        <th
+          className="center aligned two wide"
+        >
+          Clear
+        </th>
+        <th
+          className="center aligned three wide"
+        >
+          DJ Level
+        </th>
+        <th
+          className="center aligned one wide"
+        >
+          Score
+        </th>
+        <th
+          className="six wide"
+        >
+          Rate
+        </th>
+        <th
+          className="center aligned one wide"
+        >
+          BP
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className=""
+    >
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje fbKPWv"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui grey horizontal label"
+            onClick={[Function]}
+          >
+            NO PLAY
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <span>
+              -
+            </span>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -445
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje kCvpan"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui purple horizontal label"
+            onClick={[Function]}
+          >
+            ASSIST
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -445
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje jnbwqy"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui green horizontal label"
+            onClick={[Function]}
+          >
+            EASY
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -445
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje kVzeEI"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui blue horizontal label"
+            onClick={[Function]}
+          >
+            NORMAL
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -445
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje errxHh"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui red horizontal label"
+            onClick={[Function]}
+          >
+            HARD
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -445
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje fDbnbK"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui yellow horizontal label"
+            onClick={[Function]}
+          >
+            EX HARD
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -445
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje bXBaFS"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui teal horizontal label"
+            onClick={[Function]}
+          >
+            FULL COMBO
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -445
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -200
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                +100
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -100
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          100
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            11.11
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH fLmGNx"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              D
+              <div
+                className="detail"
+              >
+                -100
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          200
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            22.22
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH hPymWm"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              D
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              C
+              <div
+                className="detail"
+              >
+                -100
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          300
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            33.33
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH bgKzjJ"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              C
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              B
+              <div
+                className="detail"
+              >
+                -100
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          400
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            44.44
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH ghFwEg"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              B
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              A
+              <div
+                className="detail"
+              >
+                -100
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          500
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            55.56
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH jNkBqH"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui blue horizontal label"
+              onClick={[Function]}
+            >
+              A
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              AA
+              <div
+                className="detail"
+              >
+                -100
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          600
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            66.67
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eMBqQr"
+              color="#2185D0"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb kvVqDZ"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui olive horizontal label"
+              onClick={[Function]}
+            >
+              AA
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              AAA
+              <div
+                className="detail"
+              >
+                -100
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          700
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            77.78
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH FvZeA"
+              color="#B5CC18"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb kvVqDZ"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb fYtVMK"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui orange horizontal label"
+              onClick={[Function]}
+            >
+              AAA
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              MAX
+              <div
+                className="detail"
+              >
+                -100
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          800
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            88.89
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH fOCfkk"
+              color="#F2711C"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb kvVqDZ"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb fYtVMK"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jryLCW"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui red horizontal label"
+              onClick={[Function]}
+            >
+              MAX
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          900
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            100.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH kYgbJw"
+              color="#DB2828"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb kvVqDZ"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb fYtVMK"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jryLCW"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Storyshots components|molecules/ResultTable when \`showMapData\` is false with a music 1`] = `
+<div
+  className="ui segment"
+>
+  <table
+    className="ui celled unstackable table"
+    style={
+      Object {
+        "overflow": "hidden",
+      }
+    }
+  >
+    <thead
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <th
+          className=""
+          style={
+            Object {
+              "padding": "0px",
+            }
+          }
+        />
+        <th
+          className="center aligned two wide"
+        >
+          Clear
+        </th>
+        <th
+          className="center aligned three wide"
+        >
+          DJ Level
+        </th>
+        <th
+          className="center aligned one wide"
+        >
+          Score
+        </th>
+        <th
+          className="six wide"
+        >
+          Rate
+        </th>
+        <th
+          className="center aligned one wide"
+        >
+          BP
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className=""
+    >
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -445
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Storyshots components|molecules/ResultTable when \`showMapData\` is true with a music 1`] = `
+<div
+  className="ui segment"
+>
+  <table
+    className="ui celled unstackable table"
+    style={
+      Object {
+        "overflow": "hidden",
+      }
+    }
+  >
+    <thead
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <th
+          className=""
+          style={
+            Object {
+              "padding": "0px",
+            }
+          }
+        />
+        <th
+          className="center aligned one wide"
+        >
+          Level
+        </th>
+        <th
+          className="center aligned four wide"
+        >
+          Title
+        </th>
+        <th
+          className="center aligned two wide"
+        >
+          Clear
+        </th>
+        <th
+          className="center aligned three wide"
+        >
+          DJ Level
+        </th>
+        <th
+          className="center aligned one wide"
+        >
+          Score
+        </th>
+        <th
+          className="six wide"
+        >
+          Rate
+        </th>
+        <th
+          className="center aligned one wide"
+        >
+          BP
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className=""
+    >
+      <tr
+        className=""
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <td
+          className="sc-EHOje ksXgGV"
+        />
+        <td
+          className="center aligned"
+        >
+          12
+        </td>
+        <td
+          className="center aligned"
+        >
+          title subTitle
+           
+          <span
+            style={
+              Object {
+                "color": "#DB2828",
+              }
+            }
+          >
+            [
+            SP
+            A
+            ]
+          </span>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui black horizontal label"
+            onClick={[Function]}
+          >
+            FAILED
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <div
+              className="ui black horizontal label"
+              onClick={[Function]}
+            >
+              F
+              <div
+                className="detail"
+              >
+                0
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="ui horizontal label"
+              onClick={[Function]}
+            >
+              E
+              <div
+                className="detail"
+              >
+                -445
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          0
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Storyshots components|molecules/ResultTable with a onClickRow callback function 1`] = `
+<div
+  className="ui segment"
+>
+  <table
+    className="ui celled selectable unstackable table"
+    style={
+      Object {
+        "overflow": "hidden",
+      }
+    }
+  >
+    <thead
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <th
+          className=""
+          style={
+            Object {
+              "padding": "0px",
+            }
+          }
+        />
+        <th
+          className="center aligned two wide"
+        >
+          Clear
+        </th>
+        <th
+          className="center aligned three wide"
+        >
+          DJ Level
+        </th>
+        <th
+          className="center aligned one wide"
+        >
+          Score
+        </th>
+        <th
+          className="six wide"
+        >
+          Rate
+        </th>
+        <th
+          className="center aligned one wide"
+        >
+          BP
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className=""
+    >
+      <tr
+        className=""
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }
+      >
+        <td
+          className="sc-EHOje fbKPWv"
+        />
+        <td
+          className="center aligned"
+        >
+          <div
+            className="ui grey horizontal label"
+            onClick={[Function]}
+          >
+            NO PLAY
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          <div
+            style={
+              Object {
+                "marginBottom": "0.3em",
+              }
+            }
+          >
+            <span>
+              -
+            </span>
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
+        </td>
+        <td
+          className=""
+        >
+          <div>
+            0.00
+             %
+          </div>
+          <div
+            className="sc-bdVaJa fZlIJT"
+          >
+            <div
+              className="sc-bwzfXH eCGBPk"
+              color="#1B1C1D"
+            />
+            <div
+              className="sc-htpNat sc-ifAKCX crkwIx"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb hgkcNv"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb jNVins"
+            />
+            <div
+              className="sc-htpNat sc-bxivhb dKhKfT"
+            />
+          </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
