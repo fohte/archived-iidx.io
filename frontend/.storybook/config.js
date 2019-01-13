@@ -5,6 +5,13 @@ import { withKnobs } from '@storybook/addon-knobs'
 import { configure, addDecorator } from '@storybook/react'
 import { setOptions } from '@storybook/addon-options'
 
+import Router from 'next/router'
+
+Router.router = {
+  push: () => {},
+  prefetch: () => {},
+}
+
 setOptions({
   hierarchyRootSeparator: /\|/,
 })

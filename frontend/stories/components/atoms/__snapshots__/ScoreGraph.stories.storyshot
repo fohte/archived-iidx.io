@@ -1,0 +1,248 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots components|molecules/ScoreGraph default 1`] = `
+<div
+  className="ui segments"
+>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="sc-bdVaJa fZlIJT"
+    >
+      <div
+        className="sc-bwzfXH kYgbJw"
+        color="#DB2828"
+      />
+      <div
+        className="sc-htpNat sc-ifAKCX crkwIx"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb kvVqDZ"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb fYtVMK"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb jryLCW"
+      />
+    </div>
+  </div>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="sc-bdVaJa fZlIJT"
+    >
+      <div
+        className="sc-bwzfXH ePVZUj"
+        color="#F2711C"
+      />
+      <div
+        className="sc-htpNat sc-ifAKCX crkwIx"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb kvVqDZ"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb fYtVMK"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb jryLCW"
+      />
+    </div>
+  </div>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="sc-bdVaJa fZlIJT"
+    >
+      <div
+        className="sc-bwzfXH cNAcMG"
+        color="#B5CC18"
+      />
+      <div
+        className="sc-htpNat sc-ifAKCX crkwIx"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb kvVqDZ"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb fYtVMK"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb dKhKfT"
+      />
+    </div>
+  </div>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="sc-bdVaJa fZlIJT"
+    >
+      <div
+        className="sc-bwzfXH kJgqsA"
+        color="#2185D0"
+      />
+      <div
+        className="sc-htpNat sc-ifAKCX crkwIx"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb kvVqDZ"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb jNVins"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb dKhKfT"
+      />
+    </div>
+  </div>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="sc-bdVaJa fZlIJT"
+    >
+      <div
+        className="sc-bwzfXH dxiQYG"
+        color="#1B1C1D"
+      />
+      <div
+        className="sc-htpNat sc-ifAKCX crkwIx"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb hgkcNv"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb jNVins"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb dKhKfT"
+      />
+    </div>
+  </div>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="sc-bdVaJa fZlIJT"
+    >
+      <div
+        className="sc-bwzfXH kpXjVP"
+        color="#1B1C1D"
+      />
+      <div
+        className="sc-htpNat sc-ifAKCX crkwIx"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb hgkcNv"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb jNVins"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb dKhKfT"
+      />
+    </div>
+  </div>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="sc-bdVaJa fZlIJT"
+    >
+      <div
+        className="sc-bwzfXH eUzKGb"
+        color="#1B1C1D"
+      />
+      <div
+        className="sc-htpNat sc-ifAKCX crkwIx"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb hgkcNv"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb jNVins"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb dKhKfT"
+      />
+    </div>
+  </div>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="sc-bdVaJa fZlIJT"
+    >
+      <div
+        className="sc-bwzfXH kjmPlc"
+        color="#1B1C1D"
+      />
+      <div
+        className="sc-htpNat sc-ifAKCX crkwIx"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb hgkcNv"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb jNVins"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb dKhKfT"
+      />
+    </div>
+  </div>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="sc-bdVaJa fZlIJT"
+    >
+      <div
+        className="sc-bwzfXH gsnNCz"
+        color="#1B1C1D"
+      />
+      <div
+        className="sc-htpNat sc-ifAKCX crkwIx"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb hgkcNv"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb jNVins"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb dKhKfT"
+      />
+    </div>
+  </div>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="sc-bdVaJa fZlIJT"
+    >
+      <div
+        className="sc-bwzfXH eCGBPk"
+        color="#1B1C1D"
+      />
+      <div
+        className="sc-htpNat sc-ifAKCX crkwIx"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb hgkcNv"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb jNVins"
+      />
+      <div
+        className="sc-htpNat sc-bxivhb dKhKfT"
+      />
+    </div>
+  </div>
+</div>
+`;
