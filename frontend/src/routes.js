@@ -1,4 +1,4 @@
-const routes = require('@yolkai/next-routes')
+const routes = require('@yolkai/next-routes').default
 
 module.exports = routes()
   .add('user', '/@:screenName', 'profile')
