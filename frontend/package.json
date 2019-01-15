@@ -22,7 +22,7 @@
     "@types/react": "16.7.13",
     "@types/react-dom": "16.0.11",
     "@types/recompose": "0.30.2",
-    "@yolkai/next-routes": "1.4.6",
+    "@yolkai/next-routes": "2.0.0",
     "@zeit/next-css": "1.0.1",
     "@zeit/next-typescript": "1.1.1",
     "apollo-boost": "0.1.23",
