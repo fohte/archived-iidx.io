@@ -2369,12 +2369,12 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
   integrity sha512-FZdkNBDqBRHKQ2MEbSC17xnPFOhZxeJ2YGSfr2BKf3sujG49Qe3bB+rGCwQfIaA7WHnGeGkSijX4FuBCdrzW/g==
 
-"@yolkai/next-routes@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@yolkai/next-routes/-/next-routes-2.0.0.tgz#7017bce580863908b2b5b7d92eaf9e94d450d8f4"
-  integrity sha512-/NnHj/B571IOtRJIptS6egmWBrnGNl3cM9hA9O0J+/X4GZfqAHdUhJBj+kqL9y2ALnbWMBbumT0qVhEdoe1XEg==
+"@yolkai/next-routes@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@yolkai/next-routes/-/next-routes-3.0.0.tgz#c0c56e85776d2745f316d9fab4b70d6ec793c977"
+  integrity sha512-QWf+f9nkbysyVVN4ARH9vbZDxr21TAWo11AaGBX3PUqXBo7hnEJZkiOcntLgCvTIBB2LVah9//2ZZ24bXxlCBg==
   dependencies:
-    path-to-regexp "^2.1.0"
+    path-to-regexp "^3.0.0"
 
 "@zeit/next-css@1.0.1":
   version "1.0.1"
@@ -9481,10 +9481,10 @@ path-to-regexp@2.1.0:
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-2.1.0.tgz#7e30f9f5b134bd6a28ffc2e3ef1e47075ac5259b"
   integrity sha512-dZY7QPCPp5r9cnNuQ955mOv4ZFVDXY/yvqeV7Y1W2PJA3PEFcuow9xKFfJxbBj1pIjOAP+M2B4/7xubmykLrXw==
 
-path-to-regexp@^2.1.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-2.4.0.tgz#35ce7f333d5616f1c1e1bfe266c3aba2e5b2e704"
-  integrity sha512-G6zHoVqC6GGTQkZwF4lkuEyMbVOjoBKAEybQUypI1WTkqinCOrq2x6U2+phkJ1XsEMTy4LjtwPI7HW+NVrRR2w==
+path-to-regexp@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-3.0.0.tgz#c981a218f3df543fa28696be2f88e0c58d2e012a"
+  integrity sha512-ZOtfhPttCrqp2M1PBBH4X13XlvnfhIwD7yCLx+GoGoXRPQyxGOTdQMpIzPSPKXAJT/JQrdfFrgdJOyAzvgpQ9A==
 
 path-type@^1.0.0:
   version "1.1.0"
