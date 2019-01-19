@@ -14,7 +14,12 @@ const withAuthState = () => <OriginalProps extends {}>(
 
   const WithAuthState: React.SFC<EnhancedProps> = props => (
     <AuthContext.Consumer>
-      {authContexts => <WrappedComponent {...props} {...authContexts} />}
+      {authContexts => (
+        <WrappedComponent
+          {...props as any} // Workaround for https://github.com/Microsoft/TypeScript/issues/28748
+          {...authContexts}
+        />
+      )}
     </AuthContext.Consumer>
   )
 
