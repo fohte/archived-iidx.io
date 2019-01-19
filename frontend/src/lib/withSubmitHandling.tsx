@@ -43,7 +43,10 @@ export default <FormValues extends {}>() => <OriginalProps extends {}>(
 
     public render() {
       return (
-        <WrappedComponent handleSubmit={this.handleSubmit} {...this.props} />
+        <WrappedComponent
+          handleSubmit={this.handleSubmit}
+          {...this.props as any} // Workaround for https://github.com/Microsoft/TypeScript/issues/28748
+        />
       )
     }
   }
