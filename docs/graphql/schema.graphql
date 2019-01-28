@@ -181,6 +181,7 @@ type Result {
   clearLamp: ClearLamp!
   grade: Grade!
   id: ID!
+  map: Map!
   missCount: Int!
   score: Int!
 }
