@@ -160,6 +160,11 @@ type Query {
   musics: [Music!]
 
   """
+  Search results.
+  """
+  searchResults(difficulty: Difficulty, levels: [Int], playStyle: PlayStyle, title: String): [Result!]
+
+  """
   Find a user by name.
   """
   user(name: String!): User
