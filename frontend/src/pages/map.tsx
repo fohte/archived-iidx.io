@@ -1,3 +1,4 @@
+import { GraphQLError } from 'graphql'
 import ErrorPage from 'next/error'
 import * as React from 'react'
 
@@ -26,7 +27,7 @@ export type Query = {
 
 export type Props = {
   music?: FindMapMusic | null
-  errors?: any[]
+  errors?: ReadonlyArray<GraphQLError>
   loading: boolean
   screenName?: string
 }
