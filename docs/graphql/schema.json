@@ -106,23 +106,9 @@
               "deprecationReason": null
             },
             {
-              "name": "searchResults",
-              "description": "Search results.",
+              "name": "searchMaps",
+              "description": "Search maps.",
               "args": [
-                {
-                  "name": "username",
-                  "description": null,
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "String",
-                      "ofType": null
-                    }
-                  },
-                  "defaultValue": null
-                },
                 {
                   "name": "title",
                   "description": null,
@@ -176,7 +162,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "Result",
+                    "name": "Map",
                     "ofType": null
                   }
                 }

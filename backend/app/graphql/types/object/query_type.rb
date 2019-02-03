@@ -50,25 +50,22 @@ module Types
         Map.includes(:music).where(level: 12, play_style: :sp)
       end
 
-      field :search_results, [ResultType], null: true do
-        description 'Search results.'
-        argument :username, String, required: true
+      field :search_maps, [MapType], null: true do
+        description 'Search maps.'
         argument :title, String, required: false
         argument :levels, [Integer, null: true], required: false
         argument :play_style, Enum::PlayStyle, required: false
         argument :difficulty, Enum::Difficulty, required: false
       end
 
-      def search_results(username:, title: '', levels: [], play_style: nil, difficulty: nil)
-        target_user = user(name: username)
+      def search_maps(title: '', levels: [], play_style: nil, difficulty: nil)
+        maps = Map.includes(:music, :results)
+        maps = maps.where(music: Music.fuzzy_search_by_title(title)) if title.present?
+        maps = maps.where(level: levels) unless levels.empty?
+        maps = maps.where(play_style: play_style) unless play_style.nil?
+        maps = maps.where(difficulty: difficulty) unless difficulty.nil?
 
-        results = Result.includes(map: :music)
-        results = results.where(user: target_user)
-        results = results.where(map: Map.where(music: Music.fuzzy_search_by_title(title))) if title.present?
-        results = results.where(maps: { level: levels }) unless levels.empty?
-        results = results.where(maps: { play_style: play_style }) unless play_style.nil?
-        results = results.where(maps: { difficulty: difficulty }) unless difficulty.nil?
-        results
+        maps
       end
     end
   end
