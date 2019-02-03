@@ -162,7 +162,7 @@ type Query {
   """
   Search results.
   """
-  searchResults(difficulty: Difficulty, levels: [Int], playStyle: PlayStyle, title: String): [Result!]
+  searchResults(difficulty: Difficulty, levels: [Int], playStyle: PlayStyle, title: String, username: String!): [Result!]
 
   """
   Find a user by name.

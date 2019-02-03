@@ -52,14 +52,18 @@ module Types
 
       field :search_results, [ResultType], null: true do
         description 'Search results.'
+        argument :username, String, required: true
         argument :title, String, required: false
         argument :levels, [Integer, null: true], required: false
         argument :play_style, Enum::PlayStyle, required: false
         argument :difficulty, Enum::Difficulty, required: false
       end
 
-      def search_results(title: '', levels: [], play_style: nil, difficulty: nil)
+      def search_results(username:, title: '', levels: [], play_style: nil, difficulty: nil)
+        target_user = user(name: username)
+
         results = Result.includes(map: :music)
+        results = results.where(user: target_user)
         results = results.where(map: Map.where(music: Music.fuzzy_search_by_title(title))) if title.present?
         results = results.where(maps: { level: levels }) unless levels.empty?
         results = results.where(maps: { play_style: play_style }) unless play_style.nil?
