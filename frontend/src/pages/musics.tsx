@@ -9,7 +9,6 @@ import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
 import {
   GetUserResultsDocument,
-  GetUserResultsMaps,
   GetUserResultsQuery,
   GetUserResultsVariables,
 } from '@app/queries'
@@ -22,7 +21,7 @@ export type Query = {
 }
 
 export type Props = {
-  maps?: GetUserResultsMaps[] | null
+  maps?: GetUserResultsQuery['searchMaps']
   errors?: any[]
   loading: boolean
   screenName?: string
@@ -39,14 +38,7 @@ const renderMap = ({ loading, errors, maps, screenName }: Props) => {
   return (
     <ResultTable
       showMapData
-      maps={maps.map(m => ({
-        numNotes: m.numNotes,
-        level: m.level,
-        playStyle: m.playStyle,
-        difficulty: m.difficulty,
-        result: m.bestResult,
-        music: m.music,
-      }))}
+      maps={maps}
       onClickRow={({ music, playStyle, difficulty }) => {
         if (screenName && music) {
           Router.pushRoute('map', {
@@ -84,12 +76,12 @@ MusicsPage.getInitialProps = async ({ res, query }) => {
     errorPolicy: 'all',
   })
 
-  if (!result.data.maps) {
+  if (!result.data.searchMaps) {
     throwSSRError(res, 404)
   }
 
   return {
-    maps: result.data.maps,
+    maps: result.data.searchMaps,
     errors: result.errors,
     loading: result.loading,
     screenName: query.screenName,

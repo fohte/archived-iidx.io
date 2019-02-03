@@ -155,15 +155,19 @@ export type GetMusicsWithMapsMaps = {
 
 export type GetUserResultsVariables = {
   username: string
+  title?: Maybe<string>
+  levels?: Maybe<number[]>
+  playStyle?: Maybe<PlayStyle>
+  difficulty?: Maybe<Difficulty>
 }
 
 export type GetUserResultsQuery = {
   __typename?: 'Query'
 
-  maps: Maybe<GetUserResultsMaps[]>
+  searchMaps: Maybe<GetUserResultsSearchMaps[]>
 }
 
-export type GetUserResultsMaps = {
+export type GetUserResultsSearchMaps = {
   __typename?: 'Map'
 
   id: string
@@ -172,13 +176,9 @@ export type GetUserResultsMaps = {
 
   level: number
 
-  playStyle: PlayStyle
-
   difficulty: Difficulty
 
-  minBpm: number
-
-  maxBpm: number
+  playStyle: PlayStyle
 
   music: GetUserResultsMusic
 
@@ -193,16 +193,6 @@ export type GetUserResultsMusic = {
   title: string
 
   subTitle: string
-
-  genre: string
-
-  artist: string
-
-  textageUid: string
-
-  series: number
-
-  leggendaria: boolean
 }
 
 export type GetUserResultsBestResult = {
@@ -215,8 +205,6 @@ export type GetUserResultsBestResult = {
   missCount: number
 
   clearLamp: ClearLamp
-
-  grade: Grade
 }
 
 export type GetViewerVariables = {}
@@ -454,31 +442,34 @@ export function GetMusicsWithMapsHOC<TProps, TChildProps = any>(
   >(GetMusicsWithMapsDocument, operationOptions)
 }
 export const GetUserResultsDocument = gql`
-  query getUserResults($username: String!) {
-    maps {
+  query getUserResults(
+    $username: String!
+    $title: String
+    $levels: [Int]
+    $playStyle: PlayStyle
+    $difficulty: Difficulty
+  ) {
+    searchMaps(
+      title: $title
+      levels: $levels
+      playStyle: $playStyle
+      difficulty: $difficulty
+    ) {
       id
       numNotes
       level
-      playStyle
       difficulty
-      minBpm
-      maxBpm
+      playStyle
       music {
         id
         title
         subTitle
-        genre
-        artist
-        textageUid
-        series
-        leggendaria
       }
       bestResult(username: $username) {
         id
         score
         missCount
         clearLamp
-        grade
       }
     }
   }

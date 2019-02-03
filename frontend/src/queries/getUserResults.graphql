@@ -1,22 +1,26 @@
-query getUserResults($username: String!) {
-  maps {
+query getUserResults(
+  $username: String!
+  $title: String
+  $levels: [Int]
+  $playStyle: PlayStyle
+  $difficulty: Difficulty
+) {
+  searchMaps(
+    title: $title
+    levels: $levels
+    playStyle: $playStyle
+    difficulty: $difficulty
+  ) {
     id
     numNotes
     level
-    playStyle
     difficulty
-    minBpm
-    maxBpm
+    playStyle
 
     music {
       id
       title
       subTitle
-      genre
-      artist
-      textageUid
-      series
-      leggendaria
     }
 
     bestResult(username: $username) {
@@ -24,7 +28,6 @@ query getUserResults($username: String!) {
       score
       missCount
       clearLamp
-      grade
     }
   }
 }
