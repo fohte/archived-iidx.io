@@ -2,17 +2,10 @@ import * as _ from 'lodash'
 import ErrorPage from 'next/error'
 import * as React from 'react'
 
-import ResultTable from '@app/components/molecules/ResultTable'
+import ResultList from '@app/components/organisms/ResultList'
 import MainLayout from '@app/components/templates/MainLayout'
-import initApollo from '@app/lib/initApollo'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
-import {
-  GetUserResultsDocument,
-  GetUserResultsQuery,
-  GetUserResultsVariables,
-} from '@app/queries'
-import { Router } from '@app/routes'
 
 export type Query = {
   screenName: string
@@ -21,69 +14,28 @@ export type Query = {
 }
 
 export type Props = {
-  maps?: GetUserResultsQuery['searchMaps']
-  errors?: any[]
-  loading: boolean
   screenName?: string
 }
 
-const renderMap = ({ loading, errors, maps, screenName }: Props) => {
-  if (loading) {
-    return 'loading'
-  }
-  if (errors || !maps) {
+const renderMap = ({ screenName }: Props) => {
+  if (!screenName) {
     return <ErrorPage statusCode={404} />
   }
 
-  return (
-    <ResultTable
-      showMapData
-      maps={maps}
-      onClickRow={({ music, playStyle, difficulty }) => {
-        if (screenName && music) {
-          Router.pushRoute('map', {
-            screenName,
-            musicId: music.id,
-            playStyle: playStyle.toLowerCase(),
-            difficulty: difficulty.toLowerCase(),
-          })
-        }
-      }}
-    />
-  )
+  return <ResultList screenName={screenName} />
 }
 
 const MusicsPage: PageComponentType<Props, Props, Query> = props => (
   <MainLayout>{renderMap(props)}</MainLayout>
 )
 
-const makeDefaultProps = (): Props => ({ loading: false })
-
-MusicsPage.getInitialProps = async ({ res, query }) => {
-  const client = initApollo()
-
-  if (query.screenName == null) {
+MusicsPage.getInitialProps = ({ res, query }) => {
+  if (!query.screenName) {
     throwSSRError(res, 404)
-    return makeDefaultProps()
-  }
-
-  const result = await client.query<
-    GetUserResultsQuery,
-    GetUserResultsVariables
-  >({
-    query: GetUserResultsDocument,
-    variables: { username: query.screenName },
-    errorPolicy: 'all',
-  })
-
-  if (!result.data.searchMaps) {
-    throwSSRError(res, 404)
+    return {}
   }
 
   return {
-    maps: result.data.searchMaps,
-    errors: result.errors,
-    loading: result.loading,
     screenName: query.screenName,
   }
 }
