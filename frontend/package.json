@@ -58,7 +58,7 @@
     "@storybook/react": "4.1.11",
     "@types/enzyme": "3.1.16",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "23.3.13",
+    "@types/jest": "23.3.14",
     "@types/react-test-renderer": "16.0.3",
     "@types/storybook__addon-knobs": "4.0.0",
     "@types/storybook__addon-storyshots": "3.4.4",
@@ -94,7 +94,7 @@
   "resolutions": {
     "@types/enzyme": "3.1.16",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "23.3.13",
+    "@types/jest": "23.3.14",
     "@types/lodash": "4.14.120",
     "@types/next": "7.0.8",
     "@types/react": "16.7.22",
