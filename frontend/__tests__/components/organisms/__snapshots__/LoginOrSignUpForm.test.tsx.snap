@@ -26,6 +26,7 @@ exports[`LoginOrSignUpForm renders correctly 1`] = `
         <i
           aria-hidden="true"
           className="user icon"
+          onClick={[Function]}
         />
       </div>
     </div>
@@ -47,6 +48,7 @@ exports[`LoginOrSignUpForm renders correctly 1`] = `
         <i
           aria-hidden="true"
           className="lock icon"
+          onClick={[Function]}
         />
       </div>
     </div>

@@ -79,6 +79,7 @@ exports[`MusicTable renders correctly 1`] = `
         <i
           aria-hidden="true"
           className="angle double left icon"
+          onClick={[Function]}
         />
       </a>
       <a
@@ -94,6 +95,7 @@ exports[`MusicTable renders correctly 1`] = `
         <i
           aria-hidden="true"
           className="angle left icon"
+          onClick={[Function]}
         />
       </a>
       <a
@@ -121,6 +123,7 @@ exports[`MusicTable renders correctly 1`] = `
         <i
           aria-hidden="true"
           className="angle right icon"
+          onClick={[Function]}
         />
       </a>
       <a
@@ -136,6 +139,7 @@ exports[`MusicTable renders correctly 1`] = `
         <i
           aria-hidden="true"
           className="angle double right icon"
+          onClick={[Function]}
         />
       </a>
     </div>
