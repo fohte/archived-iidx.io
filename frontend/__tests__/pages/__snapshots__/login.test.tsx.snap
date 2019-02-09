@@ -81,6 +81,7 @@ Array [
                   <i
                     aria-hidden="true"
                     className="user icon"
+                    onClick={[Function]}
                   />
                 </div>
               </div>
@@ -102,6 +103,7 @@ Array [
                   <i
                     aria-hidden="true"
                     className="lock icon"
+                    onClick={[Function]}
                   />
                 </div>
               </div>
@@ -141,6 +143,7 @@ Array [
       <i
         aria-hidden="true"
         className="copyright outline icon"
+        onClick={[Function]}
       />
        
       2018

@@ -26,6 +26,7 @@ exports[`RegisterForm renders correctly 1`] = `
       <i
         aria-hidden="true"
         className="at icon"
+        onClick={[Function]}
       />
     </div>
   </div>
@@ -50,6 +51,7 @@ exports[`RegisterForm renders correctly 1`] = `
       <i
         aria-hidden="true"
         className="user icon"
+        onClick={[Function]}
       />
     </div>
   </div>

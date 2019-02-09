@@ -47,6 +47,7 @@ Array [
       <i
         aria-hidden="true"
         className="copyright outline icon"
+        onClick={[Function]}
       />
        
       2018
