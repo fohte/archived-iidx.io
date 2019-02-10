@@ -22,6 +22,7 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
       handleSubmit,
       hasValidationErrors,
       hasSubmitErrors,
+      pristine,
       submitting,
       submitError,
     }) => (
@@ -36,7 +37,7 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
                   placeholder="Search..."
                   fluid
                   action={{
-                    disabled: submitting || hasValidationErrors,
+                    disabled: submitting || pristine || hasValidationErrors,
                     loading: submitting,
                     content: 'Search',
                   }}
