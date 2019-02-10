@@ -13,9 +13,14 @@ import { Router } from '@app/routes'
 export type Props = {
   screenName: string
   initialValues: FormValues
+  onSubmit: (values: FormValues) => void
 }
 
-const ResultList: React.SFC<Props> = ({ screenName, initialValues }) => {
+const ResultList: React.SFC<Props> = ({
+  screenName,
+  initialValues,
+  onSubmit,
+}) => {
   const [formValues, setFormValues] = React.useState<FormValues>(initialValues)
 
   return (
@@ -24,6 +29,7 @@ const ResultList: React.SFC<Props> = ({ screenName, initialValues }) => {
         initialValues={initialValues}
         onSubmit={values => {
           setFormValues(values)
+          onSubmit(values)
         }}
       />
       <Divider />

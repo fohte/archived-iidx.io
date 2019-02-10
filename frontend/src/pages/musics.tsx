@@ -5,33 +5,117 @@ import * as React from 'react'
 import ResultList from '@app/components/organisms/ResultList'
 import { FormValues } from '@app/components/organisms/ResultSearchForm'
 import MainLayout from '@app/components/templates/MainLayout'
+import {
+  parseDifficultyString,
+  parsePlayStyleString,
+} from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
-import { PlayStyle } from '@app/queries'
+import { Difficulty, PlayStyle } from '@app/queries'
+import { Router } from '@app/routes'
 
-export type Query = {
+export type RequiredQuery = {
   screenName: string
+}
+
+export type OptionalQuery = {
+  title?: string
   playStyle?: string
-  difficulty?: string
+  difficulties?: string | string[]
+  levels?: string | string[]
 }
 
-export type Props = {
+export type Query = RequiredQuery & OptionalQuery
+
+export interface Props {
   screenName?: string
+  title?: string
+  playStyle?: PlayStyle
+  difficulties?: Difficulty[]
+  levels?: number[]
 }
 
-const initialValues: FormValues = {
-  title: '',
-  playStyle: PlayStyle.Sp,
-  difficulties: [],
-  levels: [12],
+const compactFormValues = ({
+  title,
+  playStyle,
+  difficulties,
+  levels,
+}: FormValues): Partial<FormValues> => {
+  const newValues: Partial<FormValues> = { playStyle }
+
+  if (title) {
+    newValues.title = title
+  }
+
+  if (difficulties.length !== 0) {
+    newValues.difficulties = difficulties
+  }
+
+  if (levels.length !== 0) {
+    newValues.levels = levels
+  }
+
+  return newValues
 }
 
-const renderMap = ({ screenName }: Props) => {
+const ensureArray = <T extends any>(value: T | T[]): T[] =>
+  Array.isArray(value) ? value : [value]
+
+const renderMap = ({
+  screenName,
+  title,
+  playStyle,
+  difficulties,
+  levels,
+}: Props) => {
   if (!screenName) {
     return <ErrorPage statusCode={404} />
   }
 
-  return <ResultList initialValues={initialValues} screenName={screenName} />
+  const initialValues: FormValues =
+    title == null &&
+    playStyle == null &&
+    (difficulties == null || difficulties.length === 0) &&
+    (levels == null || levels.length === 0)
+      ? {
+          title: null,
+          playStyle: PlayStyle.Sp,
+          difficulties: [],
+          levels: [12],
+        }
+      : {
+          title: title || null,
+          playStyle: playStyle || PlayStyle.Sp,
+          difficulties: difficulties || [],
+          levels: levels || [],
+        }
+
+  return (
+    <ResultList
+      initialValues={initialValues}
+      screenName={screenName}
+      onSubmit={values => {
+        const compactedFormValues = compactFormValues(values)
+
+        // currently next-routes doesn't support array for query parameters,
+        // so we use `Router.replace` instead of `Router.replaceRoute`.
+        Router.replace(
+          {
+            pathname: '/musics',
+            query: {
+              ...compactedFormValues,
+              screenName,
+            },
+          },
+          {
+            pathname: location.pathname,
+            query: compactedFormValues,
+          },
+          { shallow: true },
+        )
+      }}
+    />
+  )
 }
 
 const MusicsPage: PageComponentType<Props, Props, Query> = props => (
@@ -46,6 +130,17 @@ MusicsPage.getInitialProps = ({ res, query }) => {
 
   return {
     screenName: query.screenName,
+    title: query.title,
+    playStyle:
+      query.playStyle != null
+        ? parsePlayStyleString(query.playStyle)
+        : query.playStyle,
+    difficulties: ensureArray(query.difficulties || [])
+      .map(d => parseDifficultyString(d))
+      .filter(d => d) as Difficulty[],
+    levels: ensureArray(query.levels || [])
+      .map(level => Number(level))
+      .filter(l => l),
   }
 }
 
