@@ -3,13 +3,13 @@ query getUserResults(
   $title: String
   $levels: [Int]
   $playStyle: PlayStyle
-  $difficulty: Difficulty
+  $difficulties: [Difficulty]
 ) {
   searchMaps(
     title: $title
     levels: $levels
     playStyle: $playStyle
-    difficulty: $difficulty
+    difficulties: $difficulties
   ) {
     id
     numNotes

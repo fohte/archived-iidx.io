@@ -158,7 +158,7 @@ export type GetUserResultsVariables = {
   title?: Maybe<string>
   levels?: Maybe<number[]>
   playStyle?: Maybe<PlayStyle>
-  difficulty?: Maybe<Difficulty>
+  difficulties?: Maybe<Difficulty[]>
 }
 
 export type GetUserResultsQuery = {
@@ -447,13 +447,13 @@ export const GetUserResultsDocument = gql`
     $title: String
     $levels: [Int]
     $playStyle: PlayStyle
-    $difficulty: Difficulty
+    $difficulties: [Difficulty]
   ) {
     searchMaps(
       title: $title
       levels: $levels
       playStyle: $playStyle
-      difficulty: $difficulty
+      difficulties: $difficulties
     ) {
       id
       numNotes

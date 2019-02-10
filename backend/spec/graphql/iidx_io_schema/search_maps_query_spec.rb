@@ -11,13 +11,13 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           $title: String
           $levels: [Int]
           $playStyle: PlayStyle
-          $difficulty: Difficulty
+          $difficulties: [Difficulty]
         ) {
           searchMaps(
             title: $title
             levels: $levels
             playStyle: $playStyle
-            difficulty: $difficulty
+            difficulties: $difficulties
           ) {
             id
 
@@ -146,22 +146,28 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       include_examples 'non errors'
     end
 
-    context 'with difficulty' do
-      let(:variables) { { username: user.name, difficulty: 'ANOTHER' } }
+    context 'with difficulties' do
+      let(:variables) { { username: user.name, difficulties: %w[ANOTHER HYPER] } }
 
       let!(:another_map) { create(:map, :with_music, difficulty: :another, results: [build(:result, user: user)]) }
-
-      # fake map
       let!(:hyper_map) { create(:map, :with_music, difficulty: :hyper, results: [build(:result, user: user)]) }
 
+      # fake map
+      let!(:normal_map) { create(:map, :with_music, difficulty: :normal, results: [build(:result, user: user)]) }
+
       it 'filters by play style' do
-        expect(response['data']).to eq(
-          'searchMaps' => [{
+        expect(response['data']['searchMaps']).to match_array([
+          {
             'id' => another_map.id.to_s,
             'music' => { 'id' => another_map.music.id.to_s },
             'bestResult' => { 'id' => another_map.best_result(user: user).id.to_s },
-          }],
-        )
+          },
+          {
+            'id' => hyper_map.id.to_s,
+            'music' => { 'id' => hyper_map.music.id.to_s },
+            'bestResult' => { 'id' => hyper_map.best_result(user: user).id.to_s },
+          },
+        ])
       end
 
       include_examples 'non errors'

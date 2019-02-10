@@ -55,15 +55,15 @@ module Types
         argument :title, String, required: false
         argument :levels, [Integer, null: true], required: false
         argument :play_style, Enum::PlayStyle, required: false
-        argument :difficulty, Enum::Difficulty, required: false
+        argument :difficulties, [Enum::Difficulty, null: true], required: false
       end
 
-      def search_maps(title: '', levels: [], play_style: nil, difficulty: nil)
+      def search_maps(title: '', levels: [], play_style: nil, difficulties: [])
         maps = Map.includes(:music, :results)
         maps = maps.where(music: Music.fuzzy_search_by_title(title)) if title.present?
         maps = maps.where(level: levels) unless levels.empty?
         maps = maps.where(play_style: play_style) unless play_style.nil?
-        maps = maps.where(difficulty: difficulty) unless difficulty.nil?
+        maps = maps.where(difficulty: difficulties) unless difficulties.empty?
 
         maps
       end

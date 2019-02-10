@@ -38,7 +38,7 @@ const ResultList: React.SFC<Props> = ({
           username: screenName,
           title: formValues.title,
           playStyle: formValues.playStyle,
-          difficulty: formValues.difficulties[0],
+          difficulties: formValues.difficulties,
           levels: formValues.levels,
         }}
       >
