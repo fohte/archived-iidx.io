@@ -12,19 +12,20 @@ export type FormValues = {
 }
 
 export type Props = {
-  handleSubmit: () => void
+  onSubmit: (values: FormValues) => void
+  initialValues: FormValues
 }
 
-const ResultSearchForm: React.SFC<Props> = ({ handleSubmit }) => (
-  <FinalForm onSubmit={handleSubmit}>
+const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
+  <FinalForm onSubmit={onSubmit} initialValues={initialValues}>
     {({
-      handleSubmit: innerHandleSubmit,
+      handleSubmit,
       hasValidationErrors,
       hasSubmitErrors,
       submitting,
       submitError,
     }) => (
-      <Form onSubmit={innerHandleSubmit} error={hasSubmitErrors}>
+      <Form onSubmit={handleSubmit} error={hasSubmitErrors}>
         <Segment.Group>
           <Segment basic>
             <FinalField name="title">
@@ -48,12 +49,19 @@ const ResultSearchForm: React.SFC<Props> = ({ handleSubmit }) => (
             <Form.Group inline>
               <label>Play Style</label>
               {_.map(PlayStyle, playStyle => (
-                <FinalField name="playStyle">
+                <FinalField
+                  key={playStyle}
+                  name="playStyle"
+                  type="radio"
+                  value={playStyle}
+                >
                   {({ input }) => (
                     <Form.Radio
                       {...input}
                       label={playStyle}
-                      value={playStyle}
+                      onChange={(_e, { value }) => {
+                        input.onChange(value)
+                      }}
                     />
                   )}
                 </FinalField>
@@ -63,12 +71,24 @@ const ResultSearchForm: React.SFC<Props> = ({ handleSubmit }) => (
             <Form.Group inline>
               <label>Difficulty</label>
               {_.map(Difficulty, difficulty => (
-                <FinalField name="Difficulties">
-                  {({ input }) => (
+                <FinalField
+                  key={difficulty}
+                  name="difficulties"
+                  type="checkbox"
+                  value={difficulty}
+                >
+                  {({ input: { value: _value, ...inputProps } }) => (
                     <Form.Checkbox
-                      {...input}
+                      {...inputProps}
                       label={difficulty}
-                      value={difficulty}
+                      onChange={(_e, { checked }) => {
+                        inputProps.onChange({
+                          target: {
+                            type: 'checkbox',
+                            checked,
+                          },
+                        })
+                      }}
                     />
                   )}
                 </FinalField>
@@ -78,12 +98,24 @@ const ResultSearchForm: React.SFC<Props> = ({ handleSubmit }) => (
             <Form.Group inline>
               <label>Level</label>
               {_.range(1, 12 + 1).map(level => (
-                <FinalField name="levels">
-                  {({ input }) => (
+                <FinalField
+                  key={level}
+                  name="levels"
+                  type="checkbox"
+                  value={level}
+                >
+                  {({ input: { value: _value, ...inputProps } }) => (
                     <Form.Checkbox
-                      {...input}
+                      {...inputProps}
                       label={`☆${level}`}
-                      value={level}
+                      onChange={(_e, { checked }) => {
+                        inputProps.onChange({
+                          target: {
+                            type: 'checkbox',
+                            checked,
+                          },
+                        })
+                      }}
                     />
                   )}
                 </FinalField>
