@@ -5,7 +5,7 @@ import { Form, Message, Segment } from 'semantic-ui-react'
 import { Difficulty, PlayStyle } from '@app/queries'
 
 export type FormValues = {
-  title: string
+  title?: string | null
   playStyle: PlayStyle
   difficulties: Difficulty[]
   levels: number[]
