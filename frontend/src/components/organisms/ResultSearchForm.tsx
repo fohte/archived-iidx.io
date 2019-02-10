@@ -1,4 +1,5 @@
 import * as _ from 'lodash'
+import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
 import { Form, Message, Segment } from 'semantic-ui-react'
 
