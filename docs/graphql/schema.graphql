@@ -160,6 +160,11 @@ type Query {
   musics: [Music!]
 
   """
+  Search maps.
+  """
+  searchMaps(difficulties: [Difficulty], levels: [Int], playStyle: PlayStyle, title: String): [Map!]
+
+  """
   Find a user by name.
   """
   user(name: String!): User
@@ -181,6 +186,7 @@ type Result {
   clearLamp: ClearLamp!
   grade: Grade!
   id: ID!
+  map: Map!
   missCount: Int!
   score: Int!
 }

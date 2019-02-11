@@ -2,60 +2,117 @@ import * as _ from 'lodash'
 import ErrorPage from 'next/error'
 import * as React from 'react'
 
-import ResultTable from '@app/components/molecules/ResultTable'
+import ResultList from '@app/components/organisms/ResultList'
+import { FormValues } from '@app/components/organisms/ResultSearchForm'
 import MainLayout from '@app/components/templates/MainLayout'
-import initApollo from '@app/lib/initApollo'
+import {
+  parseDifficultyString,
+  parsePlayStyleString,
+} from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
-import {
-  GetUserResultsDocument,
-  GetUserResultsMaps,
-  GetUserResultsQuery,
-  GetUserResultsVariables,
-} from '@app/queries'
+import { Difficulty, PlayStyle } from '@app/queries'
 import { Router } from '@app/routes'
 
-export type Query = {
+export type RequiredQuery = {
   screenName: string
+}
+
+export type OptionalQuery = {
+  title?: string
   playStyle?: string
-  difficulty?: string
+  difficulties?: string | string[]
+  levels?: string | string[]
 }
 
-export type Props = {
-  maps?: GetUserResultsMaps[] | null
-  errors?: any[]
-  loading: boolean
+export type Query = RequiredQuery & OptionalQuery
+
+export interface Props {
   screenName?: string
+  title?: string
+  playStyle?: PlayStyle
+  difficulties?: Difficulty[]
+  levels?: number[]
 }
 
-const renderMap = ({ loading, errors, maps, screenName }: Props) => {
-  if (loading) {
-    return 'loading'
+const compactFormValues = ({
+  title,
+  playStyle,
+  difficulties,
+  levels,
+}: FormValues): Partial<FormValues> => {
+  const newValues: Partial<FormValues> = { playStyle }
+
+  if (title) {
+    newValues.title = title
   }
-  if (errors || !maps) {
+
+  if (difficulties.length !== 0) {
+    newValues.difficulties = difficulties
+  }
+
+  if (levels.length !== 0) {
+    newValues.levels = levels
+  }
+
+  return newValues
+}
+
+const ensureArray = <T extends any>(value: T | T[]): T[] =>
+  Array.isArray(value) ? value : [value]
+
+const renderMap = ({
+  screenName,
+  title,
+  playStyle,
+  difficulties,
+  levels,
+}: Props) => {
+  if (!screenName) {
     return <ErrorPage statusCode={404} />
   }
 
-  return (
-    <ResultTable
-      showMapData
-      maps={maps.map(m => ({
-        numNotes: m.numNotes,
-        level: m.level,
-        playStyle: m.playStyle,
-        difficulty: m.difficulty,
-        result: m.bestResult,
-        music: m.music,
-      }))}
-      onClickRow={({ music, playStyle, difficulty }) => {
-        if (screenName && music) {
-          Router.pushRoute('map', {
-            screenName,
-            musicId: music.id,
-            playStyle: playStyle.toLowerCase(),
-            difficulty: difficulty.toLowerCase(),
-          })
+  const initialValues: FormValues =
+    title == null &&
+    playStyle == null &&
+    (difficulties == null || difficulties.length === 0) &&
+    (levels == null || levels.length === 0)
+      ? {
+          title: null,
+          playStyle: PlayStyle.Sp,
+          difficulties: [],
+          levels: [12],
         }
+      : {
+          title: title || null,
+          playStyle: playStyle || PlayStyle.Sp,
+          difficulties: difficulties || [],
+          levels: levels || [],
+        }
+
+  return (
+    <ResultList
+      initialValues={initialValues}
+      screenName={screenName}
+      onSubmit={values => {
+        const compactedFormValues = compactFormValues(values)
+
+        // currently next-routes doesn't support array for query parameters,
+        // so we use `Router.replace` instead of `Router.replaceRoute`.
+        Router.replace(
+          {
+            pathname: '/musics',
+            query: {
+              ...compactedFormValues,
+              screenName,
+            },
+          },
+          {
+            pathname: location.pathname,
+            query: compactedFormValues,
+          },
+          { shallow: true },
+        )
       }}
     />
   )
@@ -65,34 +122,25 @@ const MusicsPage: PageComponentType<Props, Props, Query> = props => (
   <MainLayout>{renderMap(props)}</MainLayout>
 )
 
-const makeDefaultProps = (): Props => ({ loading: false })
-
-MusicsPage.getInitialProps = async ({ res, query }) => {
-  const client = initApollo()
-
-  if (query.screenName == null) {
+MusicsPage.getInitialProps = ({ res, query }) => {
+  if (!query.screenName) {
     throwSSRError(res, 404)
-    return makeDefaultProps()
-  }
-
-  const result = await client.query<
-    GetUserResultsQuery,
-    GetUserResultsVariables
-  >({
-    query: GetUserResultsDocument,
-    variables: { username: query.screenName },
-    errorPolicy: 'all',
-  })
-
-  if (!result.data.maps) {
-    throwSSRError(res, 404)
+    return {}
   }
 
   return {
-    maps: result.data.maps,
-    errors: result.errors,
-    loading: result.loading,
     screenName: query.screenName,
+    title: query.title,
+    playStyle:
+      query.playStyle != null
+        ? parsePlayStyleString(query.playStyle)
+        : query.playStyle,
+    difficulties: ensureArray(query.difficulties || [])
+      .map(d => parseDifficultyString(d))
+      .filter(d => d) as Difficulty[],
+    levels: ensureArray(query.levels || [])
+      .map(level => Number(level))
+      .filter(l => l),
   }
 }
 

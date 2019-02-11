@@ -27,7 +27,9 @@ module Types
       end
 
       def best_result(username:)
-        object.best_result(user: User.find_by(name: username))
+        object.best_result(user: User.find_by!(name: username))
+      rescue ActiveRecord::RecordNotFound => e
+        raise IIDXIO::GraphQL::NotFoundError, e.message
       end
     end
   end

@@ -4,6 +4,7 @@ module Types
   module Object
     class ResultType < Base
       field :id, ID, null: false
+      field :map, MapType, null: false
       field :score, Integer, null: false
       field :miss_count, Integer, null: false
 
