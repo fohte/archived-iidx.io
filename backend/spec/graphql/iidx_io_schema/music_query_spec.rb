@@ -128,7 +128,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       let(:music) { create(:music, maps: [map]) }
       let(:map) { build(:map, play_style: :sp, difficulty: :another, results: [result]) }
       let(:result) { build(:result, clear_lamp: :full_combo, grade: :aaa, user: user) }
-      let(:user) { build(:user) }
+      let(:user) { create(:user) }
 
       let(:variables) { { id: music.id, playStyle: 'SP', difficulty: 'ANOTHER', username: user.name } }
 
