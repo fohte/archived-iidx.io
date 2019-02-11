@@ -12,11 +12,13 @@ Router.router = {
   prefetch: () => {},
 }
 
-withOptions({
-  hierarchyRootSeparator: /\|/,
-})
-
 addDecorator(withKnobs)
+
+addDecorator(
+  withOptions({
+    hierarchyRootSeparator: /\|/,
+  }),
+)
 
 const req = require.context('../stories', true, /.stories.tsx$/)
 
