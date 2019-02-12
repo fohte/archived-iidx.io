@@ -107,7 +107,7 @@ jobs:
 
   build_frontend_docker_image:
     docker:
-      - image: docker:18.06.1-ce-git
+      - image: docker:18.06.2-ce-git
     working_directory: /app
     steps:
       - checkout
