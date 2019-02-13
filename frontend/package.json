@@ -57,7 +57,7 @@
     "@storybook/addon-viewport": "4.1.11",
     "@storybook/addons": "4.1.11",
     "@storybook/react": "4.1.11",
-    "@types/enzyme": "3.1.17",
+    "@types/enzyme": "3.1.18",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "23.3.14",
     "@types/react-test-renderer": "16.8.0",
@@ -93,7 +93,7 @@
     "webpack-merge": "4.2.1"
   },
   "resolutions": {
-    "@types/enzyme": "3.1.17",
+    "@types/enzyme": "3.1.18",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "23.3.14",
     "@types/lodash": "4.14.120",
