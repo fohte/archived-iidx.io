@@ -75,7 +75,7 @@ exports[`Storyshots components|molecules/MapTitleHeader BPM is 100 1`] = `
         role="listitem"
       >
         <a
-          href="//textage.cc/score/1/textageUid.html?1A100"
+          href="http://textage.cc/score/1/textageUid.html?1A100"
         >
           1P
         </a>
@@ -86,7 +86,7 @@ exports[`Storyshots components|molecules/MapTitleHeader BPM is 100 1`] = `
         role="listitem"
       >
         <a
-          href="//textage.cc/score/1/textageUid.html?2A100"
+          href="http://textage.cc/score/1/textageUid.html?2A100"
         >
           2P
         </a>
@@ -171,7 +171,7 @@ exports[`Storyshots components|molecules/MapTitleHeader BPM is 100-400 1`] = `
         role="listitem"
       >
         <a
-          href="//textage.cc/score/1/textageUid.html?1A100"
+          href="http://textage.cc/score/1/textageUid.html?1A100"
         >
           1P
         </a>
@@ -182,7 +182,7 @@ exports[`Storyshots components|molecules/MapTitleHeader BPM is 100-400 1`] = `
         role="listitem"
       >
         <a
-          href="//textage.cc/score/1/textageUid.html?2A100"
+          href="http://textage.cc/score/1/textageUid.html?2A100"
         >
           2P
         </a>
@@ -267,7 +267,7 @@ exports[`Storyshots components|molecules/MapTitleHeader default 1`] = `
         role="listitem"
       >
         <a
-          href="//textage.cc/score/1/textageUid.html?1A100"
+          href="http://textage.cc/score/1/textageUid.html?1A100"
         >
           1P
         </a>
@@ -278,7 +278,7 @@ exports[`Storyshots components|molecules/MapTitleHeader default 1`] = `
         role="listitem"
       >
         <a
-          href="//textage.cc/score/1/textageUid.html?2A100"
+          href="http://textage.cc/score/1/textageUid.html?2A100"
         >
           2P
         </a>
@@ -363,7 +363,7 @@ exports[`Storyshots components|molecules/MapTitleHeader playStyle is DP 1`] = `
         role="listitem"
       >
         <a
-          href="//textage.cc/score/1/textageUid.html?DA100"
+          href="http://textage.cc/score/1/textageUid.html?DA100"
         >
           DP
         </a>
@@ -448,7 +448,7 @@ exports[`Storyshots components|molecules/MapTitleHeader playStyle is SP 1`] = `
         role="listitem"
       >
         <a
-          href="//textage.cc/score/1/textageUid.html?1A100"
+          href="http://textage.cc/score/1/textageUid.html?1A100"
         >
           1P
         </a>
@@ -459,7 +459,7 @@ exports[`Storyshots components|molecules/MapTitleHeader playStyle is SP 1`] = `
         role="listitem"
       >
         <a
-          href="//textage.cc/score/1/textageUid.html?2A100"
+          href="http://textage.cc/score/1/textageUid.html?2A100"
         >
           2P
         </a>

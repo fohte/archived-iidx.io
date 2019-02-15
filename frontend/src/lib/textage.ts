@@ -19,7 +19,7 @@ export const generateTextageURL = (
   { level, difficulty }: Map,
   playSideOpts: PlaySideOptions,
 ) =>
-  `//textage.cc/score/${series}/${textageUid}.html?${getPlaySideId(
+  `http://textage.cc/score/${series}/${textageUid}.html?${getPlaySideId(
     playSideOpts,
   )}${getDifficultyId(difficulty)}${getLevelId(level)}00`
 
