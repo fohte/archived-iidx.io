@@ -28,13 +28,14 @@ export type Props = {
   music?: FindMapMusic | null
   errors?: any[]
   loading: boolean
+  screenName?: string
 }
 
-const renderMap = ({ loading, errors, music }: Props) => {
+const renderMap = ({ loading, errors, music, screenName }: Props) => {
   if (loading) {
     return 'loading'
   }
-  if (errors || !music || !music.map) {
+  if (errors || !music || !music.map || !screenName) {
     return <ErrorPage statusCode={404} />
   }
 
@@ -43,6 +44,7 @@ const renderMap = ({ loading, errors, music }: Props) => {
       music={music}
       map={music.map}
       result={music.map.bestResult || undefined}
+      screenName={screenName}
     />
   )
 }
@@ -81,6 +83,7 @@ MapPage.getInitialProps = async ({ res, query }) => {
 
   return {
     music: result.data.music,
+    screenName: query.screenName,
     errors: result.errors,
     loading: result.loading,
   }

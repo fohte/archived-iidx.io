@@ -479,7 +479,7 @@ Array [
     className="ui divider"
   />,
   <table
-    className="ui celled selectable unstackable table"
+    className="ui celled unstackable table"
     style={
       Object {
         "overflow": "hidden",
