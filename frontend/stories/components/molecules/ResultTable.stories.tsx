@@ -32,6 +32,8 @@ const makeMap = (map?: Partial<Map>): Map => ({
   ...map,
 })
 
+const screenName = 'dummyScreenName'
+
 storiesOf('components|molecules/ResultTable', module)
   .add('default', () => (
     <Segment>
@@ -45,6 +47,7 @@ storiesOf('components|molecules/ResultTable', module)
             makeMap({ numNotes: 450, result: makeResult({ score }) }),
           ),
         ]}
+        screenName={screenName}
       />
     </Segment>
   ))
@@ -53,6 +56,7 @@ storiesOf('components|molecules/ResultTable', module)
       <ResultTable
         maps={[makeMap({ result: makeResult(), music: makeMusic() })]}
         showMapData
+        screenName={screenName}
       />
     </Segment>
   ))
@@ -61,16 +65,7 @@ storiesOf('components|molecules/ResultTable', module)
       <ResultTable
         maps={[makeMap({ result: makeResult(), music: makeMusic() })]}
         showMapData={false}
-      />
-    </Segment>
-  ))
-  .add('with a onClickRow callback function', () => (
-    <Segment>
-      <ResultTable
-        maps={[makeMap()]}
-        onClickRow={() => {
-          /* NOP */
-        }}
+        screenName={screenName}
       />
     </Segment>
   ))

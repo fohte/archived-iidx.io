@@ -10,8 +10,8 @@ const Header: React.SFC = () => (
   <Segment vertical inverted>
     <Menu secondary inverted>
       <Container>
-        <Link route="/" prefetch>
-          <Menu.Item>
+        <Link route="/" prefetch passHref>
+          <Menu.Item as="a">
             <Brand />
           </Menu.Item>
         </Link>

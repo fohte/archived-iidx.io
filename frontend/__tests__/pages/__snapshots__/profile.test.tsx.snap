@@ -13,6 +13,7 @@ Array [
       >
         <a
           className="item"
+          href="/"
           onClick={[Function]}
         >
           <span>
@@ -83,6 +84,7 @@ Array [
       >
         <a
           className="item"
+          href="/"
           onClick={[Function]}
         >
           <span>
@@ -208,6 +210,7 @@ Array [
       >
         <a
           className="item"
+          href="/"
           onClick={[Function]}
         >
           <span>

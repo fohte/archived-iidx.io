@@ -8,7 +8,6 @@ import ResultSearchForm, {
   FormValues,
 } from '@app/components/organisms/ResultSearchForm'
 import { GetUserResultsComponent } from '@app/queries'
-import { Router } from '@app/routes'
 
 export type Props = {
   screenName: string
@@ -57,16 +56,7 @@ const ResultList: React.SFC<Props> = ({
                 data.searchMaps,
                 ({ bestResult: result, ...maps }) => ({ ...maps, result }),
               )}
-              onClickRow={({ music, playStyle, difficulty }) => {
-                if (screenName && music) {
-                  Router.pushRoute('map', {
-                    screenName,
-                    musicId: music.id,
-                    playStyle: playStyle.toLowerCase(),
-                    difficulty: difficulty.toLowerCase(),
-                  })
-                }
-              }}
+              screenName={screenName}
             />
           )
         }}

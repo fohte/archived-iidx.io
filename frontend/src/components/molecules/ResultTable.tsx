@@ -14,6 +14,7 @@ import {
   searchNextGrade,
 } from '@app/lib/score'
 import { ClearLamp, Difficulty, PlayStyle } from '@app/queries'
+import { Link } from '@app/routes'
 import { clearLamp } from '@app/styles'
 
 export type Result = {
@@ -40,7 +41,7 @@ export type Map = {
 export type Props = {
   maps: Map[]
   showMapData?: boolean
-  onClickRow?: (map: Map) => void
+  screenName: string
 }
 
 interface ClearLampCellProps {
@@ -53,11 +54,13 @@ const ClearLampCell = styled.td<ClearLampCellProps>`
   padding: 3px !important;
 `
 
-const Row: React.SFC<{
+type RowProps = {
   map: Map
   showMapData: boolean
-  onClickRow?: Props['onClickRow']
-}> = ({ map, showMapData, onClickRow }) => {
+  screenName: string
+}
+
+const Row: React.SFC<RowProps> = ({ map, showMapData, screenName }) => {
   const { result, music } = map
 
   const current = result
@@ -70,14 +73,7 @@ const Row: React.SFC<{
   const scoreRate = result ? calcScoreRate(result.score, map.numNotes) : 0
 
   return (
-    <Table.Row
-      style={onClickRow ? { cursor: 'pointer' } : {}}
-      onClick={() => {
-        if (onClickRow) {
-          onClickRow(map)
-        }
-      }}
-    >
+    <Table.Row>
       <Table.Cell
         as={ClearLampCell}
         clearLamp={result ? result.clearLamp : null}
@@ -85,12 +81,24 @@ const Row: React.SFC<{
       {showMapData && music && (
         <>
           <Table.Cell textAlign="center">{map.level}</Table.Cell>
-          <Table.Cell textAlign="center">
-            {makeTitle(music)}{' '}
-            <DifficultyText
-              difficulty={map.difficulty}
-              playStyle={map.playStyle}
-            />
+          <Table.Cell textAlign="center" selectable>
+            <Link
+              route="map"
+              params={{
+                screenName,
+                musicId: music.id,
+                playStyle: map.playStyle.toLowerCase(),
+                difficulty: map.difficulty.toLowerCase(),
+              }}
+            >
+              <a>
+                {makeTitle(music)}{' '}
+                <DifficultyText
+                  difficulty={map.difficulty}
+                  playStyle={map.playStyle}
+                />
+              </a>
+            </Link>
           </Table.Cell>
         </>
       )}
@@ -112,14 +120,9 @@ const Row: React.SFC<{
   )
 }
 
-const ResultTable: React.SFC<Props> = ({ maps, showMapData, onClickRow }) => {
+const ResultTable: React.SFC<Props> = ({ maps, showMapData, screenName }) => {
   return (
-    <Table
-      unstackable
-      celled
-      selectable={!!onClickRow}
-      style={{ overflow: 'hidden' }}
-    >
+    <Table unstackable celled style={{ overflow: 'hidden' }}>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell style={{ padding: '0px' }} />
@@ -152,7 +155,7 @@ const ResultTable: React.SFC<Props> = ({ maps, showMapData, onClickRow }) => {
         {maps.map((map, i) => (
           <Row
             key={i}
-            onClickRow={onClickRow}
+            screenName={screenName}
             showMapData={!!showMapData}
             map={map}
           />
