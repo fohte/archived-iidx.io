@@ -13,6 +13,7 @@ Array [
       >
         <a
           className="item"
+          href="/"
           onClick={[Function]}
         >
           <span>

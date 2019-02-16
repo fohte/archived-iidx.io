@@ -12,6 +12,7 @@ exports[`Header renders correctly 1`] = `
     >
       <a
         className="item"
+        href="/"
         onClick={[Function]}
       >
         <span>
