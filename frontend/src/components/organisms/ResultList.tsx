@@ -25,7 +25,7 @@ const ResultList: React.SFC<Props> = ({
   return (
     <>
       <ResultSearchForm
-        initialValues={initialValues}
+        initialValues={formValues}
         onSubmit={values => {
           setFormValues(values)
           onSubmit(values)
