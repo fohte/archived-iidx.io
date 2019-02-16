@@ -27,23 +27,25 @@ exports[`UserMenu renders correctly 1`] = `
   <div
     className="menu transition"
   >
-    <div
+    <a
       className="item"
+      href="/@foobar"
       onClick={[Function]}
       role="option"
     >
       Profile
-    </div>
+    </a>
     <div
       className="divider"
     />
-    <div
+    <a
       className="item"
+      href="/results/new"
       onClick={[Function]}
       role="option"
     >
       Register results
-    </div>
+    </a>
     <div
       className="divider"
     />
