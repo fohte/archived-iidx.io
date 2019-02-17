@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Table } from 'semantic-ui-react'
+import { Icon, Pagination, Table } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 import ClearLampLabel from '@app/components/atoms/ClearLampLabel'
@@ -42,6 +42,9 @@ export type Props = {
   maps: Map[]
   showMapData?: boolean
   screenName: string
+  totalPages?: number
+  activePage?: number
+  onPageChange?: (newActivePage: number) => void
 }
 
 interface ClearLampCellProps {
@@ -120,48 +123,87 @@ const Row: React.SFC<RowProps> = ({ map, showMapData, screenName }) => {
   )
 }
 
-const ResultTable: React.SFC<Props> = ({ maps, showMapData, screenName }) => {
+const ResultTable: React.SFC<Props> = ({
+  maps,
+  showMapData,
+  screenName,
+  totalPages = 1,
+  activePage = 1,
+  onPageChange,
+}) => {
   return (
-    <Table unstackable celled style={{ overflow: 'hidden' }}>
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell style={{ padding: '0px' }} />
-          {showMapData && (
-            <>
-              <Table.HeaderCell width={1} textAlign="center">
-                Level
-              </Table.HeaderCell>
-              <Table.HeaderCell width={4} textAlign="center">
-                Title
-              </Table.HeaderCell>
-            </>
-          )}
-          <Table.HeaderCell width={2} textAlign="center">
-            Clear
-          </Table.HeaderCell>
-          <Table.HeaderCell width={3} textAlign="center">
-            DJ Level
-          </Table.HeaderCell>
-          <Table.HeaderCell width={1} textAlign="center">
-            Score
-          </Table.HeaderCell>
-          <Table.HeaderCell width={6}>Rate</Table.HeaderCell>
-          <Table.HeaderCell width={1} textAlign="center">
-            BP
-          </Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        {maps.map((map, i) => (
-          <Row
-            key={i}
-            screenName={screenName}
-            showMapData={!!showMapData}
-            map={map}
+    <>
+      <Table unstackable celled style={{ overflow: 'hidden' }}>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell style={{ padding: '0px' }} />
+            {showMapData && (
+              <>
+                <Table.HeaderCell width={1} textAlign="center">
+                  Level
+                </Table.HeaderCell>
+                <Table.HeaderCell width={4} textAlign="center">
+                  Title
+                </Table.HeaderCell>
+              </>
+            )}
+            <Table.HeaderCell width={2} textAlign="center">
+              Clear
+            </Table.HeaderCell>
+            <Table.HeaderCell width={3} textAlign="center">
+              DJ Level
+            </Table.HeaderCell>
+            <Table.HeaderCell width={1} textAlign="center">
+              Score
+            </Table.HeaderCell>
+            <Table.HeaderCell width={6}>Rate</Table.HeaderCell>
+            <Table.HeaderCell width={1} textAlign="center">
+              BP
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {maps.map((map, i) => (
+            <Row
+              key={i}
+              screenName={screenName}
+              showMapData={!!showMapData}
+              map={map}
+            />
+          ))}
+        </Table.Body>
+      </Table>
+
+      {totalPages > 1 && (
+        <div style={{ textAlign: 'center' }}>
+          <Pagination
+            activePage={activePage}
+            ellipsisItem={{
+              content: <Icon name="ellipsis horizontal" />,
+              icon: true,
+            }}
+            firstItem={null}
+            lastItem={null}
+            siblingRange={0}
+            boundaryRange={1}
+            prevItem={{ content: <Icon name="angle left" />, icon: true }}
+            nextItem={{ content: <Icon name="angle right" />, icon: true }}
+            totalPages={totalPages}
+            onPageChange={(_, { activePage: newActivePage }) => {
+              if (newActivePage == null) {
+                return
+              }
+
+              const newActivePageNumber = Number(newActivePage)
+
+              if (onPageChange) {
+                onPageChange(newActivePageNumber)
+              }
+            }}
           />
-        ))}
-      </Table.Body>
-    </Table>
+        </div>
+      )}
+    </>
   )
 }
 
