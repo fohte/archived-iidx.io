@@ -42,7 +42,9 @@ export type Props = {
   maps: Map[]
   showMapData?: boolean
   screenName: string
-  numItemsPerPage?: number
+  totalPages: number
+  activePage: number
+  onPageChange?: (newActivePage: number) => void
 }
 
 interface ClearLampCellProps {
@@ -125,16 +127,10 @@ const ResultTable: React.SFC<Props> = ({
   maps,
   showMapData,
   screenName,
-  numItemsPerPage = 20,
+  totalPages,
+  activePage,
+  onPageChange,
 }) => {
-  const [activePage, setActivePage] = React.useState(1)
-
-  const totalPages = Math.ceil(maps.length / numItemsPerPage)
-  const partialMaps = maps.slice(
-    (activePage - 1) * numItemsPerPage,
-    activePage * numItemsPerPage,
-  )
-
   return (
     <>
       <Table unstackable celled style={{ overflow: 'hidden' }}>
@@ -167,7 +163,7 @@ const ResultTable: React.SFC<Props> = ({
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {partialMaps.map((map, i) => (
+          {maps.map((map, i) => (
             <Row
               key={i}
               screenName={screenName}
@@ -178,7 +174,7 @@ const ResultTable: React.SFC<Props> = ({
         </Table.Body>
       </Table>
 
-      {maps.length > numItemsPerPage && (
+      {totalPages > 1 && (
         <div style={{ textAlign: 'center' }}>
           <Pagination
             activePage={activePage}
@@ -198,7 +194,11 @@ const ResultTable: React.SFC<Props> = ({
                 return
               }
 
-              setActivePage(Number(newActivePage))
+              const newActivePageNumber = Number(newActivePage)
+
+              if (onPageChange) {
+                onPageChange(newActivePageNumber)
+              }
             }}
           />
         </div>

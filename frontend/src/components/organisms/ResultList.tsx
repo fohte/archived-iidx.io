@@ -13,14 +13,23 @@ export type Props = {
   screenName: string
   initialValues: FormValues
   onSubmit: (values: FormValues) => void
+  defaultActivePage?: number
+  numItemsPerPage?: number
 }
 
 const ResultList: React.SFC<Props> = ({
   screenName,
   initialValues,
   onSubmit,
+  numItemsPerPage = 20,
+  defaultActivePage = 1,
 }) => {
   const [formValues, setFormValues] = React.useState<FormValues>(initialValues)
+  const [activePage, setActivePage] = React.useState(defaultActivePage)
+
+  const changePage = (newActivePage: number) => {
+    setActivePage(newActivePage)
+  }
 
   return (
     <>
@@ -29,6 +38,9 @@ const ResultList: React.SFC<Props> = ({
         onSubmit={values => {
           setFormValues(values)
           onSubmit(values)
+
+          // reset the page
+          changePage(1)
         }}
       />
       <Divider />
@@ -49,14 +61,27 @@ const ResultList: React.SFC<Props> = ({
             return <ErrorPage statusCode={404} />
           }
 
+          const maps = _.map(
+            data.searchMaps,
+            ({ bestResult: result, ...map }) => ({ ...map, result }),
+          )
+
+          const totalPages = Math.ceil(maps.length / numItemsPerPage)
+          const partialMaps = maps.slice(
+            (activePage - 1) * numItemsPerPage,
+            activePage * numItemsPerPage,
+          )
+
           return (
             <ResultTable
               showMapData
-              maps={_.map(
-                data.searchMaps,
-                ({ bestResult: result, ...maps }) => ({ ...maps, result }),
-              )}
+              maps={partialMaps}
               screenName={screenName}
+              totalPages={totalPages}
+              activePage={activePage}
+              onPageChange={newActivePage => {
+                changePage(newActivePage)
+              }}
             />
           )
         }}
