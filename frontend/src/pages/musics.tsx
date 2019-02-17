@@ -154,7 +154,7 @@ MusicsPage.getInitialProps = ({ res, query }) => {
     levels: ensureArray(query.levels || [])
       .map(level => Number(level))
       .filter(l => l),
-    page: query.page || 1,
+    page: query.page ? Number(query.page) : 1,
   }
 }
 
