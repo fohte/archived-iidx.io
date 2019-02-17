@@ -42,8 +42,8 @@ export type Props = {
   maps: Map[]
   showMapData?: boolean
   screenName: string
-  totalPages: number
-  activePage: number
+  totalPages?: number
+  activePage?: number
   onPageChange?: (newActivePage: number) => void
 }
 
@@ -127,8 +127,8 @@ const ResultTable: React.SFC<Props> = ({
   maps,
   showMapData,
   screenName,
-  totalPages,
-  activePage,
+  totalPages = 1,
+  activePage = 1,
   onPageChange,
 }) => {
   return (
