@@ -3,7 +3,9 @@ import ErrorPage from 'next/error'
 import * as React from 'react'
 import { Divider } from 'semantic-ui-react'
 
-import ResultTable from '@app/components/molecules/ResultTable'
+import ResultTable, {
+  Props as ResultTableProps,
+} from '@app/components/molecules/ResultTable'
 import ResultSearchForm, {
   FormValues,
 } from '@app/components/organisms/ResultSearchForm'
@@ -15,12 +17,14 @@ export type Props = {
   onSubmit: (values: FormValues) => void
   defaultActivePage?: number
   numItemsPerPage?: number
+  onPageChange?: ResultTableProps['onPageChange']
 }
 
 const ResultList: React.SFC<Props> = ({
   screenName,
   initialValues,
   onSubmit,
+  onPageChange,
   numItemsPerPage = 20,
   defaultActivePage = 1,
 }) => {
@@ -29,6 +33,10 @@ const ResultList: React.SFC<Props> = ({
 
   const changePage = (newActivePage: number) => {
     setActivePage(newActivePage)
+
+    if (onPageChange) {
+      onPageChange(newActivePage)
+    }
   }
 
   return (

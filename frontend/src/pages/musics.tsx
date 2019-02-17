@@ -23,6 +23,7 @@ export type OptionalQuery = {
   playStyle?: string
   difficulties?: string | string[]
   levels?: string | string[]
+  page?: string
 }
 
 export type Query = RequiredQuery & OptionalQuery
@@ -33,6 +34,7 @@ export interface Props {
   playStyle?: PlayStyle
   difficulties?: Difficulty[]
   levels?: number[]
+  page?: number
 }
 
 const compactFormValues = ({
@@ -67,6 +69,7 @@ const renderMap = ({
   playStyle,
   difficulties,
   levels,
+  page,
 }: Props) => {
   if (!screenName) {
     return <ErrorPage statusCode={404} />
@@ -90,30 +93,40 @@ const renderMap = ({
           levels: levels || [],
         }
 
+  const replaceQuery = (newQuery: any) => {
+    const currentQuery = _.omit(Router.query || {}, 'screenName')
+    const query = { ...currentQuery, ...newQuery }
+
+    // currently next-routes doesn't support array for query parameters,
+    // so we use `Router.replace` instead of `Router.replaceRoute`.
+    Router.replace(
+      {
+        pathname: '/musics',
+        query: {
+          ...query,
+          screenName,
+        },
+      },
+      {
+        pathname: location.pathname,
+        query,
+      },
+      { shallow: true },
+    )
+  }
+
   return (
     <ResultList
       initialValues={initialValues}
       screenName={screenName}
       onSubmit={values => {
         const compactedFormValues = compactFormValues(values)
-
-        // currently next-routes doesn't support array for query parameters,
-        // so we use `Router.replace` instead of `Router.replaceRoute`.
-        Router.replace(
-          {
-            pathname: '/musics',
-            query: {
-              ...compactedFormValues,
-              screenName,
-            },
-          },
-          {
-            pathname: location.pathname,
-            query: compactedFormValues,
-          },
-          { shallow: true },
-        )
+        replaceQuery({ ...compactedFormValues })
       }}
+      onPageChange={newActivePage => {
+        replaceQuery({ page: newActivePage })
+      }}
+      defaultActivePage={page}
     />
   )
 }
@@ -141,6 +154,7 @@ MusicsPage.getInitialProps = ({ res, query }) => {
     levels: ensureArray(query.levels || [])
       .map(level => Number(level))
       .filter(l => l),
+    page: query.page || 1,
   }
 }
 
