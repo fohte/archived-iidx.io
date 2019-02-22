@@ -156,9 +156,9 @@ export type GetMusicsWithMapsMaps = {
 export type GetUserResultsVariables = {
   username: string
   title?: Maybe<string>
-  levels?: Maybe<number[]>
+  levels?: Maybe<(Maybe<number>)[]>
   playStyle?: Maybe<PlayStyle>
-  difficulties?: Maybe<Difficulty[]>
+  difficulties?: Maybe<(Maybe<Difficulty>)[]>
 }
 
 export type GetUserResultsQuery = {
@@ -273,7 +273,6 @@ export type RegisterResultsWithCsvRegisterResultsWithCsv = {
 
 import * as ReactApollo from 'react-apollo'
 import * as React from 'react'
-
 import gql from 'graphql-tag'
 
 // ====================================================
