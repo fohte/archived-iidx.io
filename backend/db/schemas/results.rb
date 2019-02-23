@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 create_table :results, force: :cascade, id: :bigint, unsigned: true, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
-  t.references :user, :map, :result_batch, null: false, unsigned: true
+  t.references :user, :map, null: false, unsigned: true
+  t.references :result_batch, null: true, unsigned: true
 
   t.integer :score, null: false
   t.integer :miss_count, null: false
