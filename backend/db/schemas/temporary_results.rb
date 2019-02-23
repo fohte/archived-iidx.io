@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 create_table :temporary_results, force: :cascade, id: :bigint, unsigned: true, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
-  t.references :user, null: false, unsigned: true
+  t.references :user, :result_batch, null: false, unsigned: true
 
   t.string :version, null: false
   t.string :title, null: false

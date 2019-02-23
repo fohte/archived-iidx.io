@@ -141,6 +141,10 @@ RSpec.describe User do
         CSV
       end
 
+      it 'creates a result batch record' do
+        expect { subject }.to change { user.result_batches.count }.by(1)
+      end
+
       it { expect { subject }.to change(Result, :count).by(2) }
 
       it 'inserts results' do
@@ -148,6 +152,7 @@ RSpec.describe User do
         expect(user.results).to contain_exactly(
           have_attributes(
             map: music.sp_hyper,
+            result_batch: user.result_batches.last,
             clear_lamp: 'ex_hard',
             grade: 'aa',
             score: 1954,
@@ -156,6 +161,7 @@ RSpec.describe User do
           ),
           have_attributes(
             map: music.sp_another,
+            result_batch: user.result_batches.last,
             clear_lamp: 'ex_hard',
             grade: 'aa',
             score: 2174,
@@ -167,8 +173,10 @@ RSpec.describe User do
 
       context 'when results are already exist' do
         before do
+          batch = create(:result_batch, user: user)
           create(
             :result,
+            result_batch: batch,
             user: user,
             map: music.sp_hyper,
             clear_lamp: 'ex_hard',
@@ -179,6 +187,7 @@ RSpec.describe User do
           )
           create(
             :result,
+            result_batch: batch,
             user: user,
             map: music.sp_another,
             clear_lamp: 'ex_hard',
@@ -187,6 +196,10 @@ RSpec.describe User do
             miss_count: 7,
             last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
           )
+        end
+
+        it 'creates a result batch record' do
+          expect { subject }.to change { user.result_batches.count }.by(1)
         end
 
         it 'does not insert results' do
@@ -205,10 +218,15 @@ RSpec.describe User do
         CSV
       end
 
+      it 'creates a result batch record' do
+        expect { subject }.to change { user.result_batches.count }.by(1)
+      end
+
       it 'inserts temporary results' do
         subject
         expect(user.temporary_results).to contain_exactly(
           have_attributes(
+            result_batch: user.result_batches.last,
             version: 'IIDX RED',
             title: '__UNKNOWN_MUSIC__',
             genre: '__UNKNOWN_GENRE__',
