@@ -148,6 +148,7 @@ RSpec.describe Textage::Crawler do
       before do
         Music.create(
           title: 'A',
+          csv_title: 'A',
           genre: 'RENAISSANCE',
           artist: 'D.J.Amuro',
           textage_uid: 'a_amuro',
