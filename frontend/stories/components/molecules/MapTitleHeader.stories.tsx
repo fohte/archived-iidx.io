@@ -8,7 +8,6 @@ import { Difficulty, PlayStyle } from '@app/queries'
 
 const makeMusic = (music: Partial<Props['music']> = {}): Props['music'] => ({
   title: music.title || text('Title', 'title'),
-  subTitle: music.subTitle || text('Sub Title', 'subTitle'),
   genre: music.genre || text('Genre', 'genre'),
   artist: music.artist || text('Artist', 'artist'),
   series: music.series || number('Series', 1),

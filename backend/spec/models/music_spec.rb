@@ -15,61 +15,20 @@ RSpec.describe Music do
       )
     end
 
-    shared_examples 'search a music' do
-      it 'returns a search result' do
-        expect(subject).to eq music
-      end
+    let!(:music) do
+      create(
+        :music,
+        title: 'title',
+        genre: attributes[:genre],
+        artist: attributes[:artist],
+        series: attributes[:series],
+      )
     end
 
-    context 'without sub titles' do
-      let!(:music) do
-        create(
-          :music,
-          title: 'title',
-          sub_title: '',
-          genre: attributes[:genre],
-          artist: attributes[:artist],
-          series: attributes[:series],
-        )
-      end
+    let(:attributes) { attributes_for(:music, title: 'title') }
 
-      let(:attributes) { attributes_for(:music, title: 'title') }
-
-      include_examples 'search a music'
-    end
-
-    context 'with a whitespace and a sub title' do
-      let!(:music) do
-        create(
-          :music,
-          title: 'title',
-          sub_title: '(sub title)',
-          genre: attributes[:genre],
-          artist: attributes[:artist],
-          series: attributes[:series],
-        )
-      end
-
-      let(:attributes) { attributes_for(:music, title: 'title (sub title)') }
-
-      include_examples 'search a music'
-    end
-
-    context 'with no whitespaces and a sub title' do
-      let!(:music) do
-        create(
-          :music,
-          title: 'title',
-          sub_title: '(sub title)',
-          genre: attributes[:genre],
-          artist: attributes[:artist],
-          series: attributes[:series],
-        )
-      end
-
-      let(:attributes) { attributes_for(:music, title: 'title(sub title)') }
-
-      include_examples 'search a music'
+    it 'returns a search result' do
+      expect(subject).to eq music
     end
 
     context 'when there are no hit musics' do

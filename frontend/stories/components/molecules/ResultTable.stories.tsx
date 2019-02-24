@@ -20,7 +20,6 @@ const makeResult = (result?: Partial<Result>): Result => ({
 const makeMusic = (music?: Partial<Music>): Music => ({
   id: '0',
   title: 'title',
-  subTitle: 'subTitle',
   ...music,
 })
 

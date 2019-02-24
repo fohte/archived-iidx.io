@@ -7,7 +7,6 @@ query findMap(
   music(id: $id) {
     id
     title
-    subTitle
     genre
     artist
     textageUid

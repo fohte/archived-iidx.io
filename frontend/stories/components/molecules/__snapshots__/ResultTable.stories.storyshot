@@ -1901,7 +1901,7 @@ exports[`Storyshots components|molecules/ResultTable when \`showMapData\` is tru
             href="/@dummyScreenName/musics/0/sp/another"
             onClick={[Function]}
           >
-            title subTitle
+            title
              
             <span
               style={

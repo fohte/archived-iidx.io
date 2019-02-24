@@ -3,7 +3,6 @@
 FactoryBot.define do
   factory :music do
     title { Faker::Job.title }
-    sub_title { Faker::Job.title }
     genre { Faker::Music.genre }
     artist { Faker::Artist.name }
     textage_uid { SecureRandom.base64 }

@@ -17,7 +17,6 @@ describe('/', () => {
         __typename: 'Music',
         id: '1',
         title: 'title',
-        subTitle: 'subTitle',
         maps: [
           {
             __typename: 'Map',

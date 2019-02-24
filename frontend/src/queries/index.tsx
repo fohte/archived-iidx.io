@@ -56,8 +56,6 @@ export type FindMapMusic = {
 
   title: string
 
-  subTitle: string
-
   genre: string
 
   artist: string
@@ -136,8 +134,6 @@ export type GetMusicsWithMapsMusics = {
 
   title: string
 
-  subTitle: string
-
   maps: GetMusicsWithMapsMaps[]
 }
 
@@ -191,8 +187,6 @@ export type GetUserResultsMusic = {
   id: string
 
   title: string
-
-  subTitle: string
 }
 
 export type GetUserResultsBestResult = {
@@ -289,7 +283,6 @@ export const FindMapDocument = gql`
     music(id: $id) {
       id
       title
-      subTitle
       genre
       artist
       textageUid
@@ -394,7 +387,6 @@ export const GetMusicsWithMapsDocument = gql`
       __typename
       id
       title
-      subTitle
       maps {
         __typename
         id
@@ -462,7 +454,6 @@ export const GetUserResultsDocument = gql`
       music {
         id
         title
-        subTitle
       }
       bestResult(username: $username) {
         id

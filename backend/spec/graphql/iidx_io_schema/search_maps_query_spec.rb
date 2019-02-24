@@ -78,11 +78,11 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       let(:variables) { { username: user.name, title: 'B' } }
 
       let(:result) { build(:result, user: user) }
-      let(:music) { create(:music, title: 'ABC', sub_title: '') }
+      let(:music) { create(:music, title: 'ABC') }
       let!(:map) { create(:map, music: music, results: [result]) }
 
       # fake result
-      let(:another_music) { create(:music, title: 'a', sub_title: '') }
+      let(:another_music) { create(:music, title: 'a') }
       let!(:another_map) { create(:map, music: another_music) }
 
       it 'filters by title' do

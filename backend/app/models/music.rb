@@ -5,20 +5,13 @@ class Music < ApplicationRecord
 
   has_many :maps, dependent: :destroy, autosave: true
 
-  scope :by_title, ->(title) do
-    where('concat(title, sub_title) = ?', title)
-      .or(where(%{concat(title, ' ', sub_title) = ?}, title))
-  end
-
   scope :fuzzy_search_by_title, ->(title) do
     sanitized_title = "%#{sanitize_sql_like(title)}%"
-    Music
-      .where(Music.arel_table[:title].matches(sanitized_title))
-      .or(Music.where(Music.arel_table[:sub_title].matches(sanitized_title)))
+    Music.where(Music.arel_table[:title].matches(sanitized_title))
   end
 
   def self.search(series:, title:, genre:, artist:)
-    by_title(title).find_by(
+    where(title: title).find_by(
       series: series,
       genre: genre,
       artist: artist,

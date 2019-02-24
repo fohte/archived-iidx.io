@@ -10,7 +10,6 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           musics {
             id
             title
-            subTitle
             genre
             artist
             textageUid
@@ -41,7 +40,6 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           {
             'id' => music.id.to_s,
             'title' => music.title,
-            'subTitle' => music.sub_title,
             'genre' => music.genre,
             'artist' => music.artist,
             'textageUid' => music.textage_uid,

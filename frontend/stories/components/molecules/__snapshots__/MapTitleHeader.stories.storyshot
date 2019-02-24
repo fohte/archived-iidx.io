@@ -10,8 +10,6 @@ exports[`Storyshots components|molecules/MapTitleHeader BPM is 100 1`] = `
       className="ui header"
     >
       title
-       
-      subTitle
     </h2>
     artist
   </div>
@@ -106,8 +104,6 @@ exports[`Storyshots components|molecules/MapTitleHeader BPM is 100-400 1`] = `
       className="ui header"
     >
       title
-       
-      subTitle
     </h2>
     artist
   </div>
@@ -202,8 +198,6 @@ exports[`Storyshots components|molecules/MapTitleHeader default 1`] = `
       className="ui header"
     >
       title
-       
-      subTitle
     </h2>
     artist
   </div>
@@ -298,8 +292,6 @@ exports[`Storyshots components|molecules/MapTitleHeader playStyle is DP 1`] = `
       className="ui header"
     >
       title
-       
-      subTitle
     </h2>
     artist
   </div>
@@ -383,8 +375,6 @@ exports[`Storyshots components|molecules/MapTitleHeader playStyle is SP 1`] = `
       className="ui header"
     >
       title
-       
-      subTitle
     </h2>
     artist
   </div>

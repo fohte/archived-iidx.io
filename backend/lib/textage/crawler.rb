@@ -63,9 +63,15 @@ module Textage
     end
 
     def build_music(music_table, uid)
+      title =
+        if music_table.sub_title.present?
+          "#{music_table.title} #{music_table.sub_title}"
+        else
+          music_table.title
+        end
+
       ::Music.new(
-        title: music_table.title,
-        sub_title: music_table.sub_title,
+        title: title,
         genre: music_table.genre,
         artist: music_table.artist,
         textage_uid: uid,

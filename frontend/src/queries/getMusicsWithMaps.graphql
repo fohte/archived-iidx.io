@@ -3,7 +3,6 @@ query getMusicsWithMaps {
     __typename
     id
     title
-    subTitle
     maps {
       __typename
       id

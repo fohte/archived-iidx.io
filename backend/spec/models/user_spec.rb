@@ -126,7 +126,6 @@ RSpec.describe User do
           :with_maps,
           series: :iidx_red,
           title: 'gigadelic',
-          sub_title: '',
           genre: 'NUSTYLE GABBA',
           artist: 'teranoid feat.MC Natsack',
         )
