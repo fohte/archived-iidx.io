@@ -71,7 +71,7 @@ class User < ApplicationRecord
       result_batch = result_batches.create
 
       table.rows.each do |row|
-        music = Music.identify_from_csv(row)
+        music = Music.find_by(csv_title: row.title)
 
         %i[normal hyper another].each do |difficulty|
           map = row.public_send(difficulty)

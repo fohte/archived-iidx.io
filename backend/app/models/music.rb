@@ -18,17 +18,6 @@ class Music < ApplicationRecord
     )
   end
 
-  # @param row [IIDXIO::CSVParser::Row]
-  # @return [::Music, nil]
-  def self.identify_from_csv(row)
-    search(
-      series: find_version_value!(row.version),
-      title: row.title,
-      genre: row.genre,
-      artist: row.artist,
-    )
-  end
-
   def self.fetch_map_types
     {}.tap do |h|
       joins(:maps)
