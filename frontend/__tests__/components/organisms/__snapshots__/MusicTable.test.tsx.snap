@@ -38,8 +38,6 @@ exports[`MusicTable renders correctly 1`] = `
           className=""
         >
           title
-           
-          subTitle
         </td>
         <td
           className=""
