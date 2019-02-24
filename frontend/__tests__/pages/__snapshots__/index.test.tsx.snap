@@ -35,9 +35,7 @@ Array [
   >
     <div
       className="ui container"
-    >
-      loading
-    </div>
+    />
   </div>,
   <div
     className="ui vertical segment"

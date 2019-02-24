@@ -119,36 +119,6 @@ export type FindUserUser = {
   name: string
 }
 
-export type GetMusicsWithMapsVariables = {}
-
-export type GetMusicsWithMapsQuery = {
-  __typename?: 'Query'
-
-  musics: Maybe<GetMusicsWithMapsMusics[]>
-}
-
-export type GetMusicsWithMapsMusics = {
-  __typename: 'Music'
-
-  id: string
-
-  title: string
-
-  maps: GetMusicsWithMapsMaps[]
-}
-
-export type GetMusicsWithMapsMaps = {
-  __typename: 'Map'
-
-  id: string
-
-  difficulty: Difficulty
-
-  level: number
-
-  playStyle: PlayStyle
-}
-
 export type GetUserResultsVariables = {
   username: string
   title?: Maybe<string>
@@ -380,57 +350,6 @@ export function FindUserHOC<TProps, TChildProps = any>(
     FindUserVariables,
     FindUserProps<TChildProps>
   >(FindUserDocument, operationOptions)
-}
-export const GetMusicsWithMapsDocument = gql`
-  query getMusicsWithMaps {
-    musics {
-      __typename
-      id
-      title
-      maps {
-        __typename
-        id
-        difficulty
-        level
-        playStyle
-      }
-    }
-  }
-`
-export class GetMusicsWithMapsComponent extends React.Component<
-  Partial<
-    ReactApollo.QueryProps<GetMusicsWithMapsQuery, GetMusicsWithMapsVariables>
-  >
-> {
-  render() {
-    return (
-      <ReactApollo.Query<GetMusicsWithMapsQuery, GetMusicsWithMapsVariables>
-        query={GetMusicsWithMapsDocument}
-        {...(this as any)['props'] as any}
-      />
-    )
-  }
-}
-export type GetMusicsWithMapsProps<TChildProps = any> = Partial<
-  ReactApollo.DataProps<GetMusicsWithMapsQuery, GetMusicsWithMapsVariables>
-> &
-  TChildProps
-export function GetMusicsWithMapsHOC<TProps, TChildProps = any>(
-  operationOptions:
-    | ReactApollo.OperationOption<
-        TProps,
-        GetMusicsWithMapsQuery,
-        GetMusicsWithMapsVariables,
-        GetMusicsWithMapsProps<TChildProps>
-      >
-    | undefined,
-) {
-  return ReactApollo.graphql<
-    TProps,
-    GetMusicsWithMapsQuery,
-    GetMusicsWithMapsVariables,
-    GetMusicsWithMapsProps<TChildProps>
-  >(GetMusicsWithMapsDocument, operationOptions)
 }
 export const GetUserResultsDocument = gql`
   query getUserResults(
