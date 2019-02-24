@@ -5,7 +5,6 @@ module Types
     class MusicType < Base
       field :id, ID, null: false
       field :title, String, null: false
-      field :sub_title, String, null: false
       field :genre, String, null: false
       field :artist, String, null: false
       field :textage_uid, String, null: false

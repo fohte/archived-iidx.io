@@ -6,7 +6,6 @@ import { Difficulty, PlayStyle } from '@app/queries'
 
 export interface Music {
   title: string
-  subTitle: string
   genre: string
   artist: string
   series: number
@@ -34,9 +33,7 @@ const MapTitleHeader: React.SFC<Props> = ({ music, map }) => (
   <>
     <div>
       {music.genre}
-      <Header as="h2">
-        {music.title} {music.subTitle}
-      </Header>
+      <Header as="h2">{music.title}</Header>
       {music.artist}
     </div>
 

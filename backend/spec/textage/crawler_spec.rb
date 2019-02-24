@@ -38,7 +38,6 @@ RSpec.describe Textage::Crawler do
     it 'returns musics' do
       expect(subject).to contain_exactly have_attributes(
         title: 'A',
-        sub_title: '',
         genre: 'RENAISSANCE',
         artist: 'D.J.Amuro',
         textage_uid: 'a_amuro',
@@ -149,7 +148,6 @@ RSpec.describe Textage::Crawler do
       before do
         Music.create(
           title: 'A',
-          sub_title: '',
           genre: 'RENAISSANCE',
           artist: 'D.J.Amuro',
           textage_uid: 'a_amuro',

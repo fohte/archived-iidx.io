@@ -121,7 +121,6 @@ type Music {
   map(difficulty: Difficulty!, playStyle: PlayStyle!): Map
   maps: [Map!]!
   series: Int!
-  subTitle: String!
   textageUid: String!
   title: String!
 }

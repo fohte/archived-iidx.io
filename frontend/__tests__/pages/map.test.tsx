@@ -15,7 +15,6 @@ describe('/map', () => {
     const music: FindMapMusic = {
       id: '1',
       title: 'title',
-      subTitle: 'subTitle',
       genre: 'genre',
       artist: 'artist',
       textageUid: 'textageUid',

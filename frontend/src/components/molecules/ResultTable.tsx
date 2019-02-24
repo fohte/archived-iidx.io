@@ -6,7 +6,6 @@ import ClearLampLabel from '@app/components/atoms/ClearLampLabel'
 import DifficultyText from '@app/components/atoms/DifficultyText'
 import ScoreGraph from '@app/components/atoms/ScoreGraph'
 import GradeLabelGroup from '@app/components/molecules/GradeLabelGroup'
-import { makeTitle } from '@app/lib/music'
 import {
   calcScoreRate,
   defaultGradeDiff,
@@ -26,7 +25,6 @@ export type Result = {
 export type Music = {
   id: string
   title: string
-  subTitle: string
 }
 
 export type Map = {
@@ -95,7 +93,7 @@ const Row: React.SFC<RowProps> = ({ map, showMapData, screenName }) => {
               }}
             >
               <a>
-                {makeTitle(music)}{' '}
+                {music.title}{' '}
                 <DifficultyText
                   difficulty={map.difficulty}
                   playStyle={map.playStyle}

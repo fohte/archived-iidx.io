@@ -20,7 +20,6 @@ query getUserResults(
     music {
       id
       title
-      subTitle
     }
 
     bestResult(username: $username) {
