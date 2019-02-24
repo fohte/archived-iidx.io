@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one :profile, class_name: 'UserProfile', dependent: :destroy
   has_many :results, dependent: :destroy
   has_many :temporary_results, dependent: :destroy
+  has_many :result_batches, dependent: :destroy
 
   validates :name,
             presence: true,
@@ -67,6 +68,8 @@ class User < ApplicationRecord
     table = IIDXIO::CSVParser.parse(csv)
 
     ApplicationRecord.transaction do
+      result_batch = result_batches.create
+
       table.rows.each do |row|
         music = Music.identify_from_csv(row)
 
@@ -80,6 +83,7 @@ class User < ApplicationRecord
             clear_lamp: Result.find_clear_lamp(map.clear_lamp),
             grade: Result.find_grade(map.dj_level),
             last_played_at: row.last_played_at,
+            result_batch: result_batch,
           }
 
           if music

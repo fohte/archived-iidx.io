@@ -2,6 +2,7 @@
 
 create_table :temporary_results, force: :cascade, id: :bigint, unsigned: true, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
   t.references :user, null: false, unsigned: true
+  t.references :result_batch, null: true, unsigned: true
 
   t.string :version, null: false
   t.string :title, null: false

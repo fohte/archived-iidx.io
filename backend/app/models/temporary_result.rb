@@ -2,6 +2,7 @@
 
 class TemporaryResult < ApplicationRecord
   belongs_to :user
+  belongs_to :result_batch, optional: true
 
   include ClearLampEnum
   include GradeEnum
