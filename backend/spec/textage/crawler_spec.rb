@@ -38,6 +38,7 @@ RSpec.describe Textage::Crawler do
     it 'returns musics' do
       expect(subject).to contain_exactly have_attributes(
         title: 'A',
+        csv_title: 'A',
         genre: 'RENAISSANCE',
         artist: 'D.J.Amuro',
         textage_uid: 'a_amuro',
