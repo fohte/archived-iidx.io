@@ -72,6 +72,7 @@ module Textage
 
       ::Music.new(
         title: title,
+        csv_title: title,
         genre: music_table.genre,
         artist: music_table.artist,
         textage_uid: uid,
