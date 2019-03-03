@@ -4,6 +4,9 @@ class Map < ApplicationRecord
   belongs_to :music
   has_many :results, dependent: :nullify
 
+  has_one :kaiden_average_result, dependent: :destroy
+  has_one :world_record_result, dependent: :destroy
+
   include PlayStyleEnum
   include DifficultyEnum
 
