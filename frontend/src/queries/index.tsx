@@ -169,6 +169,8 @@ export type GetUserResultsBestResult = {
   missCount: Maybe<number>
 
   clearLamp: Maybe<ClearLamp>
+
+  bpi: Maybe<number>
 }
 
 export type GetViewerVariables = {}
@@ -379,6 +381,7 @@ export const GetUserResultsDocument = gql`
         score
         missCount
         clearLamp
+        bpi
       }
     }
   }

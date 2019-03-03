@@ -7,6 +7,7 @@ module Types
       field :map, MapType, null: false
       field :score, Integer, null: true
       field :miss_count, Integer, null: true
+      field :bpi, Float, null: true
 
       field :clear_lamp, Enum::ClearLamp, null: true
 
