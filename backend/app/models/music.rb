@@ -45,7 +45,11 @@ class Music < ApplicationRecord
 
   Map.types.each do |play_style, difficulty|
     define_method(:"#{play_style}_#{difficulty}") do
-      maps.detect { |m| m.play_style == play_style && m.difficulty == difficulty }
+      find_map(play_style, difficulty)
     end
+  end
+
+  def find_map(play_style, difficulty)
+    maps.detect { |m| m.play_style == play_style && m.difficulty == difficulty }
   end
 end
