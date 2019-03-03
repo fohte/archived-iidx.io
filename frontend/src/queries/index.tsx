@@ -94,13 +94,13 @@ export type FindMapBestResult = {
 
   id: string
 
-  score: number
+  score: Maybe<number>
 
-  missCount: number
+  missCount: Maybe<number>
 
-  clearLamp: ClearLamp
+  clearLamp: Maybe<ClearLamp>
 
-  grade: Grade
+  grade: Maybe<Grade>
 }
 
 export type FindUserVariables = {
@@ -164,11 +164,11 @@ export type GetUserResultsBestResult = {
 
   id: string
 
-  score: number
+  score: Maybe<number>
 
-  missCount: number
+  missCount: Maybe<number>
 
-  clearLamp: ClearLamp
+  clearLamp: Maybe<ClearLamp>
 }
 
 export type GetViewerVariables = {}
