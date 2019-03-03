@@ -62,3 +62,6 @@ RSpec/LetSetup:
 
 Style/NumericPredicate:
   Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  Enabled: false

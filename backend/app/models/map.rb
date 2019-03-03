@@ -20,4 +20,8 @@ class Map < ApplicationRecord
   def best_result(user:)
     results.where(user: user).last
   end
+
+  def max_score
+    num_notes * 2
+  end
 end
