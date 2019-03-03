@@ -182,12 +182,12 @@ type RegisterResultsWithCSVPayload {
 }
 
 type Result {
-  clearLamp: ClearLamp!
-  grade: Grade!
+  clearLamp: ClearLamp
+  grade: Grade
   id: ID!
   map: Map!
-  missCount: Int!
-  score: Int!
+  missCount: Int
+  score: Int
 }
 
 type User {

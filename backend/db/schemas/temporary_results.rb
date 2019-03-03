@@ -15,10 +15,10 @@ create_table :temporary_results, force: :cascade, id: :bigint, unsigned: true, o
   t.string :difficulty, null: false # enum
 
   # same as the results table
-  t.integer :score, null: false
-  t.integer :miss_count, null: false
-  t.integer :clear_lamp, null: false # enum
-  t.integer :grade, null: false # enum
+  t.integer :score, null: true
+  t.integer :miss_count, null: true
+  t.integer :clear_lamp, null: true # enum
+  t.integer :grade, null: true # enum
   t.datetime :last_played_at, null: false
 
   t.timestamps

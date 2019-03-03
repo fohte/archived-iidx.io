@@ -17,9 +17,9 @@ import { Link } from '@app/routes'
 import { clearLamp } from '@app/styles'
 
 export type Result = {
-  score: number
-  missCount: number
-  clearLamp: ClearLamp
+  score: number | null
+  missCount: number | null
+  clearLamp: ClearLamp | null
 }
 
 export type Music = {
@@ -64,14 +64,19 @@ type RowProps = {
 const Row: React.SFC<RowProps> = ({ map, showMapData, screenName }) => {
   const { result, music } = map
 
-  const current = result
-    ? searchGrade(result.score, map.numNotes)
-    : defaultGradeDiff
-  const next = result
-    ? searchNextGrade(result.score, map.numNotes)
-    : defaultGradeDiff
+  const current =
+    result && result.score != null
+      ? searchGrade(result.score, map.numNotes)
+      : defaultGradeDiff
+  const next =
+    result && result.score != null
+      ? searchNextGrade(result.score, map.numNotes)
+      : defaultGradeDiff
 
-  const scoreRate = result ? calcScoreRate(result.score, map.numNotes) : 0
+  const scoreRate =
+    result && result.score != null
+      ? calcScoreRate(result.score, map.numNotes)
+      : 0
 
   return (
     <Table.Row>
@@ -109,13 +114,15 @@ const Row: React.SFC<RowProps> = ({ map, showMapData, screenName }) => {
       <Table.Cell textAlign="center">
         <GradeLabelGroup current={current} next={next} />
       </Table.Cell>
-      <Table.Cell textAlign="center">{result ? result.score : '-'}</Table.Cell>
+      <Table.Cell textAlign="center">
+        {result && result.score != null ? result.score : '-'}
+      </Table.Cell>
       <Table.Cell>
         <div>{scoreRate.toFixed(2)} %</div>
         <ScoreGraph grade={current.grade} scoreRate={scoreRate} />
       </Table.Cell>
       <Table.Cell textAlign="center">
-        {result ? result.missCount : '-'}
+        {result && result.missCount != null ? result.missCount : '-'}
       </Table.Cell>
     </Table.Row>
   )

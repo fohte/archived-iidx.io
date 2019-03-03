@@ -5,18 +5,22 @@ module Types
     class ResultType < Base
       field :id, ID, null: false
       field :map, MapType, null: false
-      field :score, Integer, null: false
-      field :miss_count, Integer, null: false
+      field :score, Integer, null: true
+      field :miss_count, Integer, null: true
 
-      field :clear_lamp, Enum::ClearLamp, null: false
+      field :clear_lamp, Enum::ClearLamp, null: true
 
       def clear_lamp
+        return nil if object.clear_lamp.nil?
+
         object.clear_lamp.to_s.upcase
       end
 
-      field :grade, Enum::Grade, null: false
+      field :grade, Enum::Grade, null: true
 
       def grade
+        return nil if object.grade.nil?
+
         object.grade.to_s.upcase
       end
     end
