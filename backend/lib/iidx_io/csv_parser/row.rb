@@ -92,21 +92,19 @@ module IIDXIO
         # @param difficulty [#to_s]
         # @return [CSVParser::Row::Map]
         def parse_map(raw_hash, difficulty)
+          dj_level = raw_hash[:"#{difficulty}_dj_level"].yield_self { |v| v == '---' ? nil : v }
+          clear_lamp = raw_hash[:"#{difficulty}_clear_lamp"].yield_self { |v| v == 'NO PLAY' ? nil : v }
+          miss_count = raw_hash[:"#{difficulty}_miss_count"].yield_self { |v| v == '---' ? nil : v.to_i }
+
           CSVParser::Row::Map.new(
             level: raw_hash[:"#{difficulty}_level"].to_i,
-            ex_score: raw_hash[:"#{difficulty}_ex_score"].to_i,
-            pgreat: raw_hash[:"#{difficulty}_pgreat"].to_i,
-            great: raw_hash[:"#{difficulty}_great"].to_i,
-            miss_count: raw_hash[:"#{difficulty}_miss_count"].to_i,
-            clear_lamp: raw_hash[:"#{difficulty}_clear_lamp"],
-            dj_level: convert_nil_value(raw_hash[:"#{difficulty}_dj_level"]),
+            ex_score: !miss_count.nil? ? raw_hash[:"#{difficulty}_ex_score"].to_i : nil,
+            pgreat: !miss_count.nil? ? raw_hash[:"#{difficulty}_pgreat"].to_i : nil,
+            great: !miss_count.nil? ? raw_hash[:"#{difficulty}_great"].to_i : nil,
+            miss_count: miss_count,
+            clear_lamp: clear_lamp,
+            dj_level: dj_level,
           )
-        end
-
-        # @param v [String]
-        # @return [String, nil]
-        def convert_nil_value(value)
-          value == '---' ? nil : value
         end
       end
     end

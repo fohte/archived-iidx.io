@@ -119,6 +119,8 @@ RSpec.describe User do
 
     let(:user) { create(:user) }
 
+    let(:play_style) { :sp }
+
     context 'with known musics' do
       let!(:music) do
         create(
@@ -131,8 +133,6 @@ RSpec.describe User do
           artist: 'teranoid feat.MC Natsack',
         )
       end
-
-      let(:play_style) { :sp }
 
       let(:csv) do
         <<~CSV
@@ -209,8 +209,6 @@ RSpec.describe User do
     end
 
     context 'with unknown musics' do
-      let(:play_style) { :sp }
-
       let(:csv) do
         <<~CSV
           # this line is a dummy header
@@ -245,6 +243,90 @@ RSpec.describe User do
 
       it 'does not insert results' do
         expect { subject }.to change(Result, :count).by(0)
+      end
+    end
+
+    context 'when results are not played in any version but they are played in previous version' do
+      let!(:music) do
+        create(
+          :music,
+          :with_maps,
+          series: :copula,
+          title: 'AO-1',
+          csv_title: 'AO-1',
+          genre: 'DANCE EXPRESS',
+          artist: '電龍',
+        )
+      end
+
+      let(:csv) do
+        <<~CSV
+          # this line is a dummy header
+          copula,AO-1,DANCE EXPRESS,電龍,0,7,0,0,0,---,NO PLAY,---,10,0,0,0,---,NO PLAY,---,12,0,0,0,---,EX HARD CLEAR,---,2018-11-07 19:48
+        CSV
+      end
+
+      it 'creates a result batch record' do
+        expect { subject }.to change { user.result_batches.count }.by(1)
+      end
+
+      it { expect { subject }.to change(Result, :count).by(1) }
+
+      it 'inserts results' do
+        subject
+        expect(user.results).to contain_exactly(
+          have_attributes(
+            map: music.sp_another,
+            result_batch: user.result_batches.last,
+            clear_lamp: 'ex_hard',
+            grade: nil,
+            score: nil,
+            miss_count: nil,
+            last_played_at: Time.zone.local(2018, 11, 7, 19, 48, 0),
+          ),
+        )
+      end
+    end
+
+    context 'when results are played in the 段位認定 mode only' do
+      let!(:music) do
+        create(
+          :music,
+          :with_maps,
+          series: :spada,
+          title: '疾風迅雷',
+          csv_title: '疾風迅雷',
+          genre: 'ORIENTAL CORE',
+          artist: 'KUMOKIRI',
+        )
+      end
+
+      let(:csv) do
+        <<~CSV
+          # this line is a dummy header
+          SPADA,疾風迅雷,ORIENTAL CORE,KUMOKIRI,1,6,0,0,0,---,NO PLAY,---,10,1885,839,207,5,NO PLAY,AA,12,0,0,0,---,NO PLAY,---,2018-11-07 20:10
+        CSV
+      end
+
+      it 'creates a result batch record' do
+        expect { subject }.to change { user.result_batches.count }.by(1)
+      end
+
+      it { expect { subject }.to change(Result, :count).by(1) }
+
+      it 'inserts results' do
+        subject
+        expect(user.results).to contain_exactly(
+          have_attributes(
+            map: music.sp_hyper,
+            result_batch: user.result_batches.last,
+            clear_lamp: nil,
+            grade: 'aa',
+            score: 1885,
+            miss_count: 5,
+            last_played_at: Time.zone.local(2018, 11, 7, 20, 10, 0),
+          ),
+        )
       end
     end
   end

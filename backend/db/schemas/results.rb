@@ -4,10 +4,10 @@ create_table :results, force: :cascade, id: :bigint, unsigned: true, options: 'E
   t.references :user, :map, null: false, unsigned: true
   t.references :result_batch, null: true, unsigned: true
 
-  t.integer :score, null: false
-  t.integer :miss_count, null: false
-  t.integer :clear_lamp, null: false # enum
-  t.integer :grade, null: false # enum
+  t.integer :score, null: true
+  t.integer :miss_count, null: true
+  t.integer :clear_lamp, null: true # enum
+  t.integer :grade, null: true # enum
 
   t.datetime :last_played_at, null: false
   t.timestamps

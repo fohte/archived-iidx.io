@@ -75,13 +75,13 @@ class User < ApplicationRecord
 
         %i[normal hyper another].each do |difficulty|
           map = row.public_send(difficulty)
-          next if map.no_play? || map.blank_score?
+          next if map.no_data?
 
           result_attributes = {
             score: map.ex_score,
             miss_count: map.miss_count,
-            clear_lamp: Result.find_clear_lamp(map.clear_lamp),
-            grade: Result.find_grade(map.dj_level),
+            clear_lamp: !map.clear_lamp.nil? ? Result.find_clear_lamp(map.clear_lamp) : nil,
+            grade: !map.dj_level.nil? ? Result.find_grade(map.dj_level) : nil,
             last_played_at: row.last_played_at,
             result_batch: result_batch,
           }
