@@ -101,6 +101,8 @@ export type FindMapBestResult = {
   clearLamp: Maybe<ClearLamp>
 
   grade: Maybe<Grade>
+
+  bpi: Maybe<number>
 }
 
 export type FindUserVariables = {
@@ -274,6 +276,7 @@ export const FindMapDocument = gql`
           missCount
           clearLamp
           grade
+          bpi
         }
       }
     }
