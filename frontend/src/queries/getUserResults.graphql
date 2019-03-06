@@ -27,6 +27,7 @@ query getUserResults(
       score
       missCount
       clearLamp
+      bpi
     }
   }
 }

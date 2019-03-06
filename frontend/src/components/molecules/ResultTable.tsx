@@ -20,6 +20,7 @@ export type Result = {
   score: number | null
   missCount: number | null
   clearLamp: ClearLamp | null
+  bpi: number | null
 }
 
 export type Music = {
@@ -122,6 +123,9 @@ const Row: React.SFC<RowProps> = ({ map, showMapData, screenName }) => {
         <ScoreGraph grade={current.grade} scoreRate={scoreRate} />
       </Table.Cell>
       <Table.Cell textAlign="center">
+        {result && result.bpi != null ? result.bpi.toFixed(2) : '-'}
+      </Table.Cell>
+      <Table.Cell textAlign="center">
         {result && result.missCount != null ? result.missCount : '-'}
       </Table.Cell>
     </Table.Row>
@@ -162,6 +166,9 @@ const ResultTable: React.SFC<Props> = ({
               Score
             </Table.HeaderCell>
             <Table.HeaderCell width={6}>Rate</Table.HeaderCell>
+            <Table.HeaderCell width={1} textAlign="center">
+              BPI
+            </Table.HeaderCell>
             <Table.HeaderCell width={1} textAlign="center">
               BP
             </Table.HeaderCell>

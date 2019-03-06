@@ -49,6 +49,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
         <th
           className="center aligned one wide"
         >
+          BPI
+        </th>
+        <th
+          className="center aligned one wide"
+        >
           BP
         </th>
       </tr>
@@ -119,6 +124,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
               className="sc-htpNat sc-bxivhb dKhKfT"
             />
           </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
         </td>
         <td
           className="center aligned"
@@ -210,6 +220,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
               className="sc-htpNat sc-bxivhb dKhKfT"
             />
           </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
         </td>
         <td
           className="center aligned"
@@ -305,6 +320,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
         <td
           className="center aligned"
         >
+          -
+        </td>
+        <td
+          className="center aligned"
+        >
           0
         </td>
       </tr>
@@ -392,6 +412,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
               className="sc-htpNat sc-bxivhb dKhKfT"
             />
           </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
         </td>
         <td
           className="center aligned"
@@ -487,6 +512,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
         <td
           className="center aligned"
         >
+          -
+        </td>
+        <td
+          className="center aligned"
+        >
           0
         </td>
       </tr>
@@ -574,6 +604,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
               className="sc-htpNat sc-bxivhb dKhKfT"
             />
           </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
         </td>
         <td
           className="center aligned"
@@ -669,6 +704,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
         <td
           className="center aligned"
         >
+          -
+        </td>
+        <td
+          className="center aligned"
+        >
           0
         </td>
       </tr>
@@ -756,6 +796,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
               className="sc-htpNat sc-bxivhb dKhKfT"
             />
           </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
         </td>
         <td
           className="center aligned"
@@ -851,6 +896,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
         <td
           className="center aligned"
         >
+          -
+        </td>
+        <td
+          className="center aligned"
+        >
           0
         </td>
       </tr>
@@ -938,6 +988,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
               className="sc-htpNat sc-bxivhb dKhKfT"
             />
           </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
         </td>
         <td
           className="center aligned"
@@ -1033,6 +1088,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
         <td
           className="center aligned"
         >
+          -
+        </td>
+        <td
+          className="center aligned"
+        >
           0
         </td>
       </tr>
@@ -1120,6 +1180,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
               className="sc-htpNat sc-bxivhb dKhKfT"
             />
           </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
         </td>
         <td
           className="center aligned"
@@ -1215,6 +1280,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
         <td
           className="center aligned"
         >
+          -
+        </td>
+        <td
+          className="center aligned"
+        >
           0
         </td>
       </tr>
@@ -1302,6 +1372,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
               className="sc-htpNat sc-bxivhb dKhKfT"
             />
           </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
         </td>
         <td
           className="center aligned"
@@ -1397,6 +1472,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
         <td
           className="center aligned"
         >
+          -
+        </td>
+        <td
+          className="center aligned"
+        >
           0
         </td>
       </tr>
@@ -1484,6 +1564,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
               className="sc-htpNat sc-bxivhb dKhKfT"
             />
           </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
         </td>
         <td
           className="center aligned"
@@ -1579,6 +1664,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
         <td
           className="center aligned"
         >
+          -
+        </td>
+        <td
+          className="center aligned"
+        >
           0
         </td>
       </tr>
@@ -1657,6 +1747,11 @@ exports[`Storyshots components|molecules/ResultTable default 1`] = `
         <td
           className="center aligned"
         >
+          -
+        </td>
+        <td
+          className="center aligned"
+        >
           0
         </td>
       </tr>
@@ -1710,6 +1805,11 @@ exports[`Storyshots components|molecules/ResultTable when \`showMapData\` is fal
           className="six wide"
         >
           Rate
+        </th>
+        <th
+          className="center aligned one wide"
+        >
+          BPI
         </th>
         <th
           className="center aligned one wide"
@@ -1809,6 +1909,11 @@ exports[`Storyshots components|molecules/ResultTable when \`showMapData\` is fal
         <td
           className="center aligned"
         >
+          -
+        </td>
+        <td
+          className="center aligned"
+        >
           0
         </td>
       </tr>
@@ -1872,6 +1977,11 @@ exports[`Storyshots components|molecules/ResultTable when \`showMapData\` is tru
           className="six wide"
         >
           Rate
+        </th>
+        <th
+          className="center aligned one wide"
+        >
+          BPI
         </th>
         <th
           className="center aligned one wide"
@@ -1995,6 +2105,11 @@ exports[`Storyshots components|molecules/ResultTable when \`showMapData\` is tru
               className="sc-htpNat sc-bxivhb dKhKfT"
             />
           </div>
+        </td>
+        <td
+          className="center aligned"
+        >
+          -
         </td>
         <td
           className="center aligned"

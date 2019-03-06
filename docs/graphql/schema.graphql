@@ -182,6 +182,7 @@ type RegisterResultsWithCSVPayload {
 }
 
 type Result {
+  bpi: Float
   clearLamp: ClearLamp
   grade: Grade
   id: ID!

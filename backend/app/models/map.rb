@@ -4,6 +4,9 @@ class Map < ApplicationRecord
   belongs_to :music
   has_many :results, dependent: :nullify
 
+  has_one :kaiden_average_result, dependent: :destroy
+  has_one :world_record_result, dependent: :destroy
+
   include PlayStyleEnum
   include DifficultyEnum
 
@@ -16,5 +19,9 @@ class Map < ApplicationRecord
   # @return [Result, nil]
   def best_result(user:)
     results.where(user: user).last
+  end
+
+  def max_score
+    num_notes * 2
   end
 end

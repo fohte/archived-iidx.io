@@ -101,6 +101,8 @@ export type FindMapBestResult = {
   clearLamp: Maybe<ClearLamp>
 
   grade: Maybe<Grade>
+
+  bpi: Maybe<number>
 }
 
 export type FindUserVariables = {
@@ -169,6 +171,8 @@ export type GetUserResultsBestResult = {
   missCount: Maybe<number>
 
   clearLamp: Maybe<ClearLamp>
+
+  bpi: Maybe<number>
 }
 
 export type GetViewerVariables = {}
@@ -272,6 +276,7 @@ export const FindMapDocument = gql`
           missCount
           clearLamp
           grade
+          bpi
         }
       }
     }
@@ -379,6 +384,7 @@ export const GetUserResultsDocument = gql`
         score
         missCount
         clearLamp
+        bpi
       }
     }
   }
