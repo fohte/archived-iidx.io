@@ -533,6 +533,11 @@ Array [
         <th
           className="center aligned one wide"
         >
+          BPI
+        </th>
+        <th
+          className="center aligned one wide"
+        >
           BP
         </th>
       </tr>
