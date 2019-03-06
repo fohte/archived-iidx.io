@@ -14,6 +14,7 @@ const makeResult = (result?: Partial<Result>): Result => ({
   score: 0,
   missCount: 0,
   clearLamp: ClearLamp.Failed,
+  bpi: null,
   ...result,
 })
 

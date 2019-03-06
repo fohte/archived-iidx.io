@@ -34,6 +34,7 @@ describe('/map', () => {
           missCount: 1,
           clearLamp: ClearLamp.FullCombo,
           grade: Grade.Aaa,
+          bpi: 10,
         },
       },
     }
