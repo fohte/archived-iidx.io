@@ -1501,15 +1501,6 @@
     react-select "^2.3.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-options@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-5.0.1.tgz#a4d0541f6151ef3148b0b3837648db367685ba11"
-  integrity sha512-ajTEiDXiD9BVO1EgAG7VRVJQ5IjbE2v/DWQ1wfoOn0GSV1U/843rw/7GyojpgfEDmgh8bge5xVAKMb1tyyUojg==
-  dependencies:
-    "@storybook/addons" "5.0.1"
-    core-js "^2.6.5"
-    util-deprecate "^1.0.2"
-
 "@storybook/addon-storyshots@5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots/-/addon-storyshots-5.0.1.tgz#c8f61eb5ddf9edca5cf90490a7278772f20ed212"

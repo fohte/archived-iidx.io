@@ -3,7 +3,6 @@ import './style.css'
 
 import { withKnobs } from '@storybook/addon-knobs'
 import { configure, addDecorator } from '@storybook/react'
-import { withOptions } from '@storybook/addon-options'
 
 import Router from 'next/router'
 
@@ -13,12 +12,6 @@ Router.router = {
 }
 
 addDecorator(withKnobs)
-
-addDecorator(
-  withOptions({
-    hierarchyRootSeparator: /\|/,
-  }),
-)
 
 const req = require.context('../stories', true, /.stories.tsx$/)
 

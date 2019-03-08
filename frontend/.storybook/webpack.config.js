@@ -1,7 +1,7 @@
 const merge = require('webpack-merge')
 const path = require('path')
 
-module.exports = (baseConfig, env, config) =>
+module.exports = ({ config, mode }) =>
   merge(config, {
     module: {
       rules: [
