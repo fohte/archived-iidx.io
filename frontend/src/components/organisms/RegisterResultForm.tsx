@@ -57,8 +57,11 @@ const RegisterResultForm = ({ onSubmit }: Props) => (
                 <Form.Radio
                   {...input}
                   label={playStyle}
-                  onChange={(_, { value }) => {
-                    input.onChange(value)
+                  onChange={(event, { value }) => {
+                    input.onChange({
+                      ...event,
+                      target: { ...event.target, value },
+                    })
                   }}
                   error={!!(meta.touched && meta.error)}
                 />

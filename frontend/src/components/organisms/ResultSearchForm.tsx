@@ -61,8 +61,11 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
                     <Form.Radio
                       {...input}
                       label={playStyle}
-                      onChange={(_e, { value }) => {
-                        input.onChange(value)
+                      onChange={(event, { value }) => {
+                        input.onChange({
+                          ...event,
+                          target: { ...event.target, value },
+                        })
                       }}
                     />
                   )}
@@ -83,8 +86,9 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
                     <Form.Checkbox
                       {...inputProps}
                       label={difficulty}
-                      onChange={(_e, { checked }) => {
+                      onChange={(event, { checked }) => {
                         inputProps.onChange({
+                          ...event,
                           target: {
                             type: 'checkbox',
                             checked,
@@ -110,8 +114,9 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
                     <Form.Checkbox
                       {...inputProps}
                       label={`☆${level}`}
-                      onChange={(_e, { checked }) => {
+                      onChange={(event, { checked }) => {
                         inputProps.onChange({
+                          ...event,
                           target: {
                             type: 'checkbox',
                             checked,
