@@ -17,7 +17,7 @@ module IIDXIO
       end
 
       def to_h
-        super.merge('code' => @code)
+        super.merge('extensions' => { 'code' => @code })
       end
     end
 

@@ -1,3 +1,4 @@
+import { GraphQLError } from 'graphql'
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
@@ -24,11 +25,20 @@ describe('/', () => {
   })
 
   it('renders correctly if there are errors', () => {
+    const errors: Readonly<[GraphQLError]> = [
+      new GraphQLError(
+        'not found',
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        { code: 'NOT_FOUND' },
+      ),
+    ]
+
     const component = renderer.create(
-      <Profile
-        errors={[{ code: 'NOT_FOUND', message: 'not found' }]}
-        loading={false}
-      />,
+      <Profile errors={errors} loading={false} />,
     )
     const tree = component.toJSON()
 

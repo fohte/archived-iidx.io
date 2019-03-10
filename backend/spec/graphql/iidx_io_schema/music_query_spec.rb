@@ -45,7 +45,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       end
 
       it 'returns the not found error' do
-        expect(response['errors'].first).to include('code' => 'NOT_FOUND')
+        expect(response['errors'].first).to include('extensions' => { 'code' => 'NOT_FOUND' })
       end
     end
 
@@ -99,7 +99,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
         end
 
         it 'returns the not found error' do
-          expect(response['errors'].first).to include('code' => 'NOT_FOUND')
+          expect(response['errors'].first).to include('extensions' => { 'code' => 'NOT_FOUND' })
         end
       end
     end
