@@ -1,3 +1,4 @@
+import { GraphQLError } from 'graphql'
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
@@ -53,12 +54,19 @@ describe('/map', () => {
   })
 
   it('renders correctly if there are errors', () => {
-    const component = renderer.create(
-      <Map
-        errors={[{ code: 'NOT_FOUND', message: 'not found' }]}
-        loading={false}
-      />,
-    )
+    const errors: Readonly<[GraphQLError]> = [
+      new GraphQLError(
+        'not found',
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        { code: 'NOT_FOUND' },
+      ),
+    ]
+
+    const component = renderer.create(<Map errors={errors} loading={false} />)
     const tree = component.toJSON()
 
     expect(tree).toMatchSnapshot()
