@@ -27,7 +27,7 @@
     "@zeit/next-css": "1.0.1",
     "@zeit/next-typescript": "1.1.1",
     "apollo-boost": "0.3.1",
-    "apollo-link-context": "1.0.15",
+    "apollo-link-context": "1.0.17",
     "final-form": "4.12.0",
     "firebase": "5.8.6",
     "graphql": "14.1.1",
