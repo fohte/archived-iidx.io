@@ -1,5 +1,7 @@
 import 'ress/dist/ress.min.css'
 
+import '@app/global.scss'
+
 import { NextComponentClass, NextContext, NextStatelessComponent } from 'next'
 import App, { AppComponentContext, Container } from 'next/app'
 import { DefaultQuery } from 'next/router'
