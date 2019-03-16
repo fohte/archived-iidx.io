@@ -1,0 +1,27 @@
+@import 'styles/breakpoints.scss';
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// mobile
+@media only screen and (max-width: $tablet-breakpoint - 1px) {
+  .container {
+  }
+}
+
+// tablet
+@media only screen and (min-width: $tablet-breakpoint) and (max-width: $computer-breakpoint - 1px) {
+  .container {
+    max-width: $tablet-container-width;
+  }
+}
+
+// computer
+@media only screen and (min-width: $computer-breakpoint) {
+  .container {
+    max-width: $computer-container-width;
+  }
+}
