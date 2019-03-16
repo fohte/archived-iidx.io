@@ -1,4 +1,4 @@
-import 'semantic-ui-css/semantic.min.css'
+import 'ress/dist/ress.min.css'
 
 import { NextComponentClass, NextContext, NextStatelessComponent } from 'next'
 import App, { AppComponentContext, Container } from 'next/app'
