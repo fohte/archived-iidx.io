@@ -1,33 +1,39 @@
 import * as React from 'react'
-import { Dropdown } from 'semantic-ui-react'
 
 import { auth } from '@app/lib/firebaseApp'
 import { Link } from '@app/routes'
+import * as css from './style.scss'
 
 export interface Props {
   displayName: string
 }
 
 const UserMenu: React.SFC<Props> = ({ displayName }) => (
-  <Dropdown item text={displayName} pointing>
-    <Dropdown.Menu>
-      <Link route={`/@${displayName}`} passHref>
-        <Dropdown.Item as="a">Profile</Dropdown.Item>
+  <div className={css.box}>
+    {displayName}
+    <div className={css.dropdown}>
+      <Link route={`/@${displayName}`}>
+        <a>
+          <div className={css.item}>Profile</div>
+        </a>
       </Link>
-      <Dropdown.Divider />
-      <Link route="/results/new" passHref>
-        <Dropdown.Item as="a">Register results</Dropdown.Item>
+      <div className={css.divider} />
+      <Link route="/results/new">
+        <a>
+          <div className={css.item}>Register results</div>
+        </a>
       </Link>
-      <Dropdown.Divider />
-      <Dropdown.Item
+      <div className={css.divider} />
+      <div
+        className={css.item}
         onClick={async () => {
           await auth.signOut()
         }}
       >
         Sign out
-      </Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
+      </div>
+    </div>
+  </div>
 )
 
 export default UserMenu
