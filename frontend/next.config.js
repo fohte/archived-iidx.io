@@ -11,6 +11,9 @@ if (typeof require !== 'undefined') {
 module.exports = withCSS(
   withSass({
     cssModules: true,
+    sassLoaderOptions: {
+      includePaths: [path.join(__dirname, 'src')],
+    },
     ...withTypescript({
       webpack(config, options) {
         return merge(config, {
