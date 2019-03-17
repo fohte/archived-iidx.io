@@ -1,4 +1,5 @@
 const merge = require('webpack-merge')
+const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 const withCSS = require('@zeit/next-css')
 const withSass = require('@zeit/next-sass')
@@ -8,6 +9,46 @@ if (typeof require !== 'undefined') {
   require.extensions['.css'] = file => {} // tslint:disable-line:no-empty
 }
 
+const srcDir = path.join(__dirname, 'src')
+const nodeModulesDir = path.join(__dirname, 'node_modules')
+const staticDistDir = path.join(__dirname, 'static', 'dist')
+
+const webpack = (config, options) =>
+  merge(config, {
+    resolve: { alias: { '@app': srcDir } },
+    module: {
+      rules: [
+        {
+          test: /\.(png|svg|eot|otf|ttf|woff|woff2)$/,
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 100000,
+              publicPath: './',
+              outputPath: 'static/',
+              name: '[name].[ext]',
+            },
+          },
+        },
+      ],
+    },
+    plugins: [
+      new CopyPlugin([
+        {
+          from: path.join(
+            nodeModulesDir,
+            '@fortawesome/fontawesome-svg-core/styles.css',
+          ),
+          to: path.join(staticDistDir, 'fontawesome.css'),
+        },
+        {
+          from: path.join(nodeModulesDir, 'ress/dist/ress.min.css'),
+          to: path.join(staticDistDir, 'ress.min.css'),
+        },
+      ]),
+    ],
+  })
+
 module.exports = withCSS(
   withSass({
     cssModules: true,
@@ -16,30 +57,10 @@ module.exports = withCSS(
       localIdentName: '[local]___[hash:base64:5]',
     },
     sassLoaderOptions: {
-      includePaths: [path.join(__dirname, 'src')],
+      includePaths: [srcDir],
     },
     ...withTypescript({
-      webpack(config, options) {
-        return merge(config, {
-          resolve: { alias: { '@app': path.join(__dirname, 'src') } },
-          module: {
-            rules: [
-              {
-                test: /\.(png|svg|eot|otf|ttf|woff|woff2)$/,
-                use: {
-                  loader: 'url-loader',
-                  options: {
-                    limit: 100000,
-                    publicPath: './',
-                    outputPath: 'static/',
-                    name: '[name].[ext]',
-                  },
-                },
-              },
-            ],
-          },
-        })
-      },
+      webpack,
       generateBuildId: () => process.env.IIDXIO_VERSION,
       serverRuntimeConfig: {
         privateApiUrl: process.env.PRIVATE_API_URL,
