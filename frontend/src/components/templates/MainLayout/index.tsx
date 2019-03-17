@@ -1,25 +1,25 @@
+import * as classnames from 'classnames/bind'
 import * as React from 'react'
-import { Container, Segment } from 'semantic-ui-react'
 
+import Container from '@app/components/atoms/Container'
 import Footer from '@app/components/organisms/Footer'
 import Header from '@app/components/organisms/Header'
+import * as css from './style.scss'
+
+const cx = classnames.bind(css)
 
 export interface Props {
-  children?: any
+  children?: React.ReactNode
 }
 
-const Content = ({ children }: Props) => (
-  <Segment vertical>
-    <Container>{children}</Container>
-  </Segment>
-)
-
 const MainLayout = ({ children }: Props) => (
-  <>
+  <div className={cx('box')}>
     <Header />
-    <Content>{children}</Content>
+    <div className={cx('content')}>
+      <Container>{children}</Container>
+    </div>
     <Footer />
-  </>
+  </div>
 )
 
 export default MainLayout
