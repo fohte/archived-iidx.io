@@ -1,36 +1,39 @@
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import * as classnames from 'classnames/bind'
 import * as React from 'react'
 
 import { auth } from '@app/lib/firebaseApp'
 import { Link } from '@app/routes'
 import * as css from './style.scss'
 
+const cx = classnames.bind(css)
+
 export interface Props {
   displayName: string
 }
 
 const UserMenu: React.SFC<Props> = ({ displayName }) => (
-  <div className={css.box}>
+  <div className={cx('box')}>
     <div>
-      <span className={css.displayName}>{displayName}</span>
+      <span className={cx('displayName')}>{displayName}</span>
       <FontAwesomeIcon icon={faCaretDown} size="xs" />
     </div>
-    <div className={css.dropdown}>
+    <div className={cx('dropdown')}>
       <Link route={`/@${displayName}`}>
         <a>
-          <div className={css.item}>Profile</div>
+          <div className={cx('item')}>Profile</div>
         </a>
       </Link>
-      <div className={css.divider} />
+      <div className={cx('divider')} />
       <Link route="/results/new">
         <a>
-          <div className={css.item}>Register results</div>
+          <div className={cx('item')}>Register results</div>
         </a>
       </Link>
-      <div className={css.divider} />
+      <div className={cx('divider')} />
       <div
-        className={css.item}
+        className={cx('item')}
         onClick={async () => {
           await auth.signOut()
         }}
