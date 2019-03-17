@@ -1,3 +1,4 @@
+const path = require('path')
 const next = require('next')
 const routes = require('./src/routes')
 
@@ -7,7 +8,12 @@ const app = next({
 })
 const handler = routes.getRequestHandler(app)
 
-const { createServer } = require('http')
+const express = require('express')
+
 app.prepare().then(() => {
-  createServer(handler).listen(3000)
+  const server = express()
+
+  server.use('/static', express.static(path.join(__dirname, 'static')))
+
+  server.use(handler).listen(3000)
 })
