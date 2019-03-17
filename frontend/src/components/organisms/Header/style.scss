@@ -2,19 +2,41 @@
 
 .header-nav {
   background-color: $ui-primary-color;
-  color: $white;
 
   padding-bottom: 12px;
   padding-top: 12px;
+
+  a {
+    outline: none;
+    text-decoration: none;
+  }
 }
 
 .flex-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  min-height: 2em;
 }
 
 .item {
   justify-content: center;
   align-items: center;
+  padding: 0.5em;
+
+  color: $white;
+
+  user-select: none;
+
+  &:hover,
+  &:active {
+    color: $lighter-gray;
+  }
+}
+
+.clickable {
+  &:hover {
+    cursor: pointer;
+  }
 }

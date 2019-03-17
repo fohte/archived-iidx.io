@@ -1,6 +1,5 @@
 import * as classnames from 'classnames/bind'
 import * as React from 'react'
-import { Menu } from 'semantic-ui-react'
 
 import Brand from '@app/components/atoms/Brand'
 import Container from '@app/components/atoms/Container'
@@ -15,16 +14,14 @@ const Header: React.SFC = () => (
   <nav className={cx('headerNav')}>
     <Container>
       <div className={cx('flexContainer')}>
-        <div className={cx('item')}>
-          <Link route="/" prefetch passHref>
-            <Menu.Item as="a">
+        <Link route="/" prefetch passHref>
+          <a>
+            <div className={cx('item')}>
               <Brand />
-            </Menu.Item>
-          </Link>
-        </div>
-        <div className={cx('item')}>
-          <EnhancedUserNav />
-        </div>
+            </div>
+          </a>
+        </Link>
+        <EnhancedUserNav className={cx('item', 'clickable')} />
       </div>
     </Container>
   </nav>
