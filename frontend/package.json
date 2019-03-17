@@ -16,6 +16,11 @@
     "gql:gen": "gql-gen",
     "gql:gen:watch": "yarn run gql:gen --watch"
   },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "not dead"
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.15",
     "@fortawesome/free-solid-svg-icons": "5.7.2",
@@ -33,6 +38,7 @@
     "@zeit/next-typescript": "1.1.1",
     "apollo-boost": "0.3.1",
     "apollo-link-context": "1.0.17",
+    "autoprefixer": "9.5.0",
     "classnames": "2.2.6",
     "express": "4.16.4",
     "final-form": "4.12.0",
