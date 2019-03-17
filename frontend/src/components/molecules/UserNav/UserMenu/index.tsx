@@ -1,3 +1,5 @@
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react'
 
 import { auth } from '@app/lib/firebaseApp'
@@ -10,7 +12,10 @@ export interface Props {
 
 const UserMenu: React.SFC<Props> = ({ displayName }) => (
   <div className={css.box}>
-    {displayName}
+    <div>
+      <span className={css.displayName}>{displayName}</span>
+      <FontAwesomeIcon icon={faCaretDown} size="xs" />
+    </div>
     <div className={css.dropdown}>
       <Link route={`/@${displayName}`}>
         <a>

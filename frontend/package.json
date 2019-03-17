@@ -17,6 +17,9 @@
     "gql:gen:watch": "yarn run gql:gen --watch"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.15",
+    "@fortawesome/free-solid-svg-icons": "5.7.2",
+    "@fortawesome/react-fontawesome": "0.1.4",
     "@types/graphql": "14.0.7",
     "@types/lodash": "4.14.123",
     "@types/next": "8.0.5",
