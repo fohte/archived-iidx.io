@@ -1,21 +1,19 @@
 $black: #323643;
 $gray: #606470;
-$lighter-gray: #c8c8c8;
 $white: #f7f7f7;
-$dark-white: #e7e7e7;
 
-$darkest-blue: #063468;
-$darker-blue: #0a4484;
 $blue: #1459a6;
-$lighter-blue: #356eae;
-$lightest-blue: #5889c0;
 
-$ui-base-color: $dark-white;
+$ui-base-color: darken($white, 5%);
 $ui-primary-color: $black;
 $ui-accent-color: $blue;
 
 $primary-bg-color: $white;
+$primary-fg-color: $black;
+
+$header-bg-color: $ui-primary-color;
+$header-fg-color: $white;
 
 $primary-text-color: $black;
 
-$border-color: $lighter-gray;
+$border-color: darken($white, 20%);

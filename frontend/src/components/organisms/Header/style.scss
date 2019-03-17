@@ -1,7 +1,7 @@
 @import 'styles/colors.scss';
 
 .header-nav {
-  background-color: $ui-primary-color;
+  background-color: $header-bg-color;
 
   padding-bottom: 12px;
   padding-top: 12px;
@@ -25,13 +25,13 @@
   align-items: center;
   padding: 0.5em;
 
-  color: $white;
+  color: $header-fg-color;
 
   user-select: none;
 
   &:hover,
   &:active {
-    color: $lighter-gray;
+    color: darkest-color($header-fg-color);
   }
 }
 

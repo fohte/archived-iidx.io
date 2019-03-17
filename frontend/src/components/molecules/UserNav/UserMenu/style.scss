@@ -18,7 +18,7 @@ $arrow-size: 0.6em;
   min-width: 130px;
   z-index: 100;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border: 1px solid $lighter-gray;
+  border: 1px solid $border-color;
 
   a {
     outline: none;
@@ -34,7 +34,7 @@ $arrow-size: 0.6em;
     transform: rotate(45deg);
     width: $arrow-size;
     height: $arrow-size;
-    background-color: $white;
+    background-color: $primary-bg-color;
     box-shadow: -1px -1px 0 0 $border-color;
     z-index: 50;
   }
@@ -47,7 +47,7 @@ $arrow-size: 0.6em;
   cursor: pointer;
 
   &:hover {
-    background-color: $dark-white;
+    background-color: darken($primary-bg-color, 5%);
   }
 }
 
