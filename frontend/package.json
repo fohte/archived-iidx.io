@@ -20,6 +20,7 @@
     "@fortawesome/fontawesome-svg-core": "1.2.15",
     "@fortawesome/free-solid-svg-icons": "5.7.2",
     "@fortawesome/react-fontawesome": "0.1.4",
+    "@types/classnames": "2.2.7",
     "@types/graphql": "14.0.7",
     "@types/lodash": "4.14.123",
     "@types/next": "8.0.5",
@@ -32,6 +33,7 @@
     "@zeit/next-typescript": "1.1.1",
     "apollo-boost": "0.3.1",
     "apollo-link-context": "1.0.17",
+    "classnames": "2.2.6",
     "express": "4.16.4",
     "final-form": "4.12.0",
     "firebase": "5.9.0",
@@ -99,6 +101,8 @@
     "webpack-merge": "4.2.1"
   },
   "resolutions": {
+    "@types/classnames": "2.2.7",
+    "@types/enzyme": "3.9.0",
     "@types/enzyme": "3.9.1",
     "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/graphql": "14.0.7",
