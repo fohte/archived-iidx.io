@@ -10,7 +10,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
   redis:
-    image: redis:4.0.13-stretch
+    image: redis:4.0.14-stretch
   backend: &app_base
     image: iidxio/backend
     build:
