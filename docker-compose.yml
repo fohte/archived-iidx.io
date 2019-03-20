@@ -20,7 +20,7 @@ services:
       - '3306:3306'
 
   redis:
-    image: redis:4.0.12-stretch
+    image: redis:4.0.14-stretch
 
   backend: &app_base
     image: iidxio/backend:dev
