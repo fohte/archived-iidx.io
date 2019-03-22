@@ -6,21 +6,18 @@
   margin-right: auto;
 }
 
-// mobile
-@media only screen and (max-width: $tablet-breakpoint - 1px) {
+@include on-mobile() {
   .container {
   }
 }
 
-// tablet
-@media only screen and (min-width: $tablet-breakpoint) and (max-width: $computer-breakpoint - 1px) {
+@include on-tablet() {
   .container {
     max-width: $tablet-container-width;
   }
 }
 
-// computer
-@media only screen and (min-width: $computer-breakpoint) {
+@include on-computer {
   .container {
     max-width: $computer-container-width;
   }
