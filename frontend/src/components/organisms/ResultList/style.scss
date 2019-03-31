@@ -1,0 +1,44 @@
+@import 'styles/colors';
+@import 'styles/breakpoints.scss';
+
+.result-list {
+  display: flex;
+
+  @include on-mobile() {
+    flex-direction: column;
+  }
+}
+
+.form-wrapper {
+  margin-top: 1rem;
+
+  min-width: 360px;
+  width: 30%;
+  margin-right: 1.5rem;
+
+  @include on-mobile() {
+    margin-right: 0;
+    min-width: auto;
+    width: 100%;
+  }
+
+  @include on-tablet() {
+    min-width: 300px;
+  }
+}
+
+.table-wrapper {
+  margin-top: 1rem;
+
+  flex: 1;
+}
+
+.pagination {
+  &.top {
+    margin-bottom: 1rem;
+  }
+
+  &.bottom {
+    margin-top: 1rem;
+  }
+}

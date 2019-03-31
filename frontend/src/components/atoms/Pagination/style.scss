@@ -1,0 +1,45 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+.pagination {
+  width: 100%;
+  display: table;
+  user-select: none;
+
+  > * {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  a {
+    color: $primary-fg-lighter-color;
+    font-size: 1.2em;
+    cursor: pointer;
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.3;
+    }
+  }
+
+  .jump-to-first,
+  .jump-to-last {
+    padding: 1rem 1rem;
+  }
+
+  .back,
+  .forward {
+    padding: 1rem 2rem;
+  }
+
+  .page-info {
+    color: $primary-fg-lighter-color;
+    font-size: 0.9em;
+
+    .active-page {
+      color: $primary-fg-color;
+      font-size: $base-font-size;
+    }
+  }
+}

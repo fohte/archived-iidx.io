@@ -1,0 +1,70 @@
+@import 'styles/colors';
+
+$bar-height: 0.5rem;
+
+.wrapper {
+  width: 100%;
+  height: $bar-height;
+  position: relative;
+
+  background-color: darken($ui-base-color, 7%);
+
+  .progress {
+    height: $bar-height;
+    position: absolute;
+    background-color: $ui-accent-color;
+    z-index: 0;
+
+    &.grade-aaa {
+      background-color: $grade-aaa-color;
+    }
+
+    &.grade-aa {
+      background-color: $grade-aa-color;
+    }
+
+    &.grade-a {
+      background-color: $grade-a-color;
+    }
+
+    &.grade-b {
+      background-color: $grade-b-color;
+    }
+
+    &.grade-c {
+      background-color: $grade-c-color;
+    }
+
+    &.grade-d {
+      background-color: $grade-d-color;
+    }
+
+    &.grade-e {
+      background-color: $grade-e-color;
+    }
+
+    &.grade-f {
+      background-color: $grade-f-color;
+    }
+  }
+
+  .target {
+    height: $bar-height;
+    border-right: 1px dotted $white;
+
+    position: absolute;
+    z-index: 5;
+
+    &.grade-a {
+      width: 6/9 * 100 * 1%;
+    }
+
+    &.grade-aa {
+      width: 7/9 * 100 * 1%;
+    }
+
+    &.grade-aaa {
+      width: 8/9 * 100 * 1%;
+    }
+  }
+}

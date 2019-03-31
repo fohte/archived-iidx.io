@@ -1,11 +1,9 @@
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import * as classnames from 'classnames/bind'
 import * as React from 'react'
-import { Icon, Pagination, Table } from 'semantic-ui-react'
-import styled from 'styled-components'
 
-import ClearLampLabel from '@app/components/atoms/ClearLampLabel'
-import DifficultyText from '@app/components/atoms/DifficultyText'
 import ScoreGraph from '@app/components/atoms/ScoreGraph'
-import GradeLabelGroup from '@app/components/molecules/GradeLabelGroup'
 import {
   calcScoreRate,
   defaultGradeDiff,
@@ -14,7 +12,9 @@ import {
 } from '@app/lib/score'
 import { ClearLamp, Difficulty, PlayStyle } from '@app/queries'
 import { Link } from '@app/routes'
-import { clearLamp } from '@app/styles'
+import * as css from './style.scss'
+
+const cx = classnames.bind(css)
 
 export type Result = {
   score: number | null
@@ -34,187 +34,161 @@ export type Map = {
   difficulty: Difficulty
   playStyle: PlayStyle
   result?: Result | null
-  music?: Music | null
+  music: Music
 }
 
 export type Props = {
   maps: Map[]
-  showMapData?: boolean
   screenName: string
+  showBPI?: boolean
   totalPages?: number
   activePage?: number
   onPageChange?: (newActivePage: number) => void
 }
 
-interface ClearLampCellProps {
-  clearLamp: ClearLamp | null
-}
-
-const ClearLampCell = styled.td<ClearLampCellProps>`
-  ${(props: ClearLampCellProps) =>
-    clearLamp.backgroundCSS[props.clearLamp || 'default']} width: 1%;
-  padding: 3px !important;
-`
-
-type RowProps = {
-  map: Map
-  showMapData: boolean
-  screenName: string
-}
-
-const Row: React.SFC<RowProps> = ({ map, showMapData, screenName }) => {
-  const { result, music } = map
-
-  const current =
-    result && result.score != null
-      ? searchGrade(result.score, map.numNotes)
-      : defaultGradeDiff
-  const next =
-    result && result.score != null
-      ? searchNextGrade(result.score, map.numNotes)
-      : defaultGradeDiff
-
-  const scoreRate =
-    result && result.score != null
-      ? calcScoreRate(result.score, map.numNotes)
-      : 0
-
+const IntegerFocusedNumberText: React.FunctionComponent<{ num: number }> = ({
+  num,
+}) => {
+  const [integerPart, decimalPart] = num
+    .toFixed(2)
+    .toString()
+    .split('.')
   return (
-    <Table.Row>
-      <Table.Cell
-        as={ClearLampCell}
-        clearLamp={result ? result.clearLamp : null}
-      />
-      {showMapData && music && (
-        <>
-          <Table.Cell textAlign="center">{map.level}</Table.Cell>
-          <Table.Cell textAlign="center" selectable>
-            <Link
-              route="map"
-              params={{
-                screenName,
-                musicId: music.id,
-                playStyle: map.playStyle.toLowerCase(),
-                difficulty: map.difficulty.toLowerCase(),
-              }}
-            >
-              <a>
-                {music.title}{' '}
-                <DifficultyText
-                  difficulty={map.difficulty}
-                  playStyle={map.playStyle}
-                />
-              </a>
-            </Link>
-          </Table.Cell>
-        </>
-      )}
-      <Table.Cell textAlign="center">
-        <ClearLampLabel clearLamp={result ? result.clearLamp : null} />
-      </Table.Cell>
-      <Table.Cell textAlign="center">
-        <GradeLabelGroup current={current} next={next} />
-      </Table.Cell>
-      <Table.Cell textAlign="center">
-        {result && result.score != null ? result.score : '-'}
-      </Table.Cell>
-      <Table.Cell>
-        <div>{scoreRate.toFixed(2)} %</div>
-        <ScoreGraph grade={current.grade} scoreRate={scoreRate} />
-      </Table.Cell>
-      <Table.Cell textAlign="center">
-        {result && result.bpi != null ? result.bpi.toFixed(2) : '-'}
-      </Table.Cell>
-      <Table.Cell textAlign="center">
-        {result && result.missCount != null ? result.missCount : '-'}
-      </Table.Cell>
-    </Table.Row>
+    <>
+      <span className={cx('integer-part')}>{integerPart}</span>.
+      <span className={cx('decimal-part')}>{decimalPart}</span>
+    </>
   )
 }
 
 const ResultTable: React.SFC<Props> = ({
   maps,
-  showMapData,
+  showBPI = false,
   screenName,
-  totalPages = 1,
-  activePage = 1,
-  onPageChange,
 }) => {
   return (
     <>
-      <Table unstackable celled style={{ overflow: 'hidden' }}>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell style={{ padding: '0px' }} />
-            {showMapData && (
-              <>
-                <Table.HeaderCell width={1} textAlign="center">
-                  Level
-                </Table.HeaderCell>
-                <Table.HeaderCell width={4} textAlign="center">
-                  Title
-                </Table.HeaderCell>
-              </>
-            )}
-            <Table.HeaderCell width={2} textAlign="center">
-              Clear
-            </Table.HeaderCell>
-            <Table.HeaderCell width={3} textAlign="center">
-              DJ Level
-            </Table.HeaderCell>
-            <Table.HeaderCell width={1} textAlign="center">
-              Score
-            </Table.HeaderCell>
-            <Table.HeaderCell width={6}>Rate</Table.HeaderCell>
-            <Table.HeaderCell width={1} textAlign="center">
-              BPI
-            </Table.HeaderCell>
-            <Table.HeaderCell width={1} textAlign="center">
-              BP
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {maps.map((map, i) => (
-            <Row
-              key={i}
-              screenName={screenName}
-              showMapData={!!showMapData}
-              map={map}
-            />
-          ))}
-        </Table.Body>
-      </Table>
+      <div className={cx('result-table')}>
+        {maps.map((map, i) => {
+          const { result, music } = map
 
-      {totalPages > 1 && (
-        <div style={{ textAlign: 'center' }}>
-          <Pagination
-            activePage={activePage}
-            ellipsisItem={{
-              content: <Icon name="ellipsis horizontal" />,
-              icon: true,
-            }}
-            firstItem={null}
-            lastItem={null}
-            siblingRange={0}
-            boundaryRange={1}
-            prevItem={{ content: <Icon name="angle left" />, icon: true }}
-            nextItem={{ content: <Icon name="angle right" />, icon: true }}
-            totalPages={totalPages}
-            onPageChange={(_, { activePage: newActivePage }) => {
-              if (newActivePage == null) {
-                return
-              }
+          const current =
+            result && result.score != null
+              ? searchGrade(result.score, map.numNotes)
+              : defaultGradeDiff
+          const next =
+            result && result.score != null
+              ? searchNextGrade(result.score, map.numNotes)
+              : defaultGradeDiff
 
-              const newActivePageNumber = Number(newActivePage)
+          const scoreRate =
+            result && result.score != null
+              ? calcScoreRate(result.score, map.numNotes)
+              : 0
 
-              if (onPageChange) {
-                onPageChange(newActivePageNumber)
-              }
-            }}
-          />
-        </div>
-      )}
+          return (
+            <div className={cx('item')} key={i}>
+              <div className={cx('box')}>
+                <div className={cx('header')}>
+                  <div
+                    className={cx('label', {
+                      'difficulty-another':
+                        map.difficulty === Difficulty.Another,
+                      'difficulty-hyper': map.difficulty === Difficulty.Hyper,
+                      'difficulty-normal': map.difficulty === Difficulty.Normal,
+                    })}
+                  >
+                    ☆{map.level}
+                  </div>
+                  <div className={cx('title')}>{music.title}</div>
+                </div>
+
+                <div className={cx('data-box-wrapper')}>
+                  <div
+                    className={cx('clear-lamp', {
+                      'full-combo':
+                        result && result.clearLamp === ClearLamp.FullCombo,
+                      'ex-hard-clear':
+                        result && result.clearLamp === ClearLamp.ExHard,
+                      'hard-clear':
+                        result && result.clearLamp === ClearLamp.Hard,
+                      clear: result && result.clearLamp === ClearLamp.Normal,
+                      'easy-clear':
+                        result && result.clearLamp === ClearLamp.Easy,
+                      'assist-clear':
+                        result && result.clearLamp === ClearLamp.Assist,
+                      failed: result && result.clearLamp === ClearLamp.Failed,
+                    })}
+                  />
+                  <div className={cx('data-box')}>
+                    <div className={cx('data-box-content')}>
+                      <div className={cx('grade-box')}>
+                        <div className={cx('current-grade')}>
+                          {current.grade}
+                        </div>
+                        <div className={cx('around-grade')}>
+                          {current.diff === 0 && next.diff === 0
+                            ? '-'
+                            : current.diff <= -next.diff
+                            ? `${current.grade} +${current.diff}`
+                            : `${next.grade} ${next.diff}`}
+                        </div>
+                      </div>
+
+                      <dl className={cx('score-box')}>
+                        <dt>EX-SCORE</dt>
+                        <dd>
+                          <span className={cx('score-text')}>
+                            {result && result.score != null
+                              ? result.score
+                              : '-'}
+                          </span>
+                          <span className={cx('score-rate')}>
+                            <IntegerFocusedNumberText num={scoreRate} /> %
+                          </span>
+                        </dd>
+                        <ScoreGraph
+                          grade={current.grade}
+                          scoreRate={scoreRate}
+                        />
+                      </dl>
+
+                      {showBPI && (
+                        <dl className={cx('bpi-box')}>
+                          <dt>BPI</dt>
+                          <dd className={cx('bpi')}>
+                            {result && result.bpi != null ? (
+                              <IntegerFocusedNumberText num={result.bpi} />
+                            ) : (
+                              '-'
+                            )}
+                          </dd>
+                        </dl>
+                      )}
+                    </div>
+
+                    <div className={cx('detail-link')}>
+                      <Link
+                        route="map"
+                        params={{
+                          screenName,
+                          musicId: music.id,
+                          playStyle: map.playStyle.toLowerCase(),
+                          difficulty: map.difficulty.toLowerCase(),
+                        }}
+                      >
+                        <a>
+                          <FontAwesomeIcon icon={faAngleRight} />
+                        </a>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
     </>
   )
 }

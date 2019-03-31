@@ -1,9 +1,15 @@
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import * as classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
 import { Form, Message, Segment } from 'semantic-ui-react'
 
 import { Difficulty, PlayStyle } from '@app/queries'
+import * as css from './style.scss'
+
+const cx = classnames.bind(css)
 
 export type FormValues = {
   title?: string | null
@@ -27,112 +33,117 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
       submitting,
       submitError,
     }) => (
-      <Form onSubmit={handleSubmit} error={hasSubmitErrors}>
-        <Segment.Group>
-          <Segment basic>
-            <FinalField name="title">
-              {({ input }) => (
-                <Form.Input
-                  {...input}
-                  type="text"
-                  placeholder="Search..."
-                  fluid
-                  action={{
-                    disabled: submitting || pristine || hasValidationErrors,
-                    loading: submitting,
-                    content: 'Search',
-                  }}
-                />
-              )}
-            </FinalField>
-          </Segment>
+      <div className={cx('form')}>
+        <Form onSubmit={handleSubmit} error={hasSubmitErrors}>
+          <Segment.Group>
+            <Segment secondary basic>
+              <div className={cx('search-form')}>
+                <div className={cx('play-style-button-group')}>
+                  {_.map(PlayStyle, playStyle => (
+                    <FinalField
+                      key={playStyle}
+                      name="playStyle"
+                      type="radio"
+                      value={playStyle}
+                    >
+                      {({ input }) => (
+                        <div className={cx('play-style-button-box')}>
+                          <label>
+                            <input {...input} type="radio" />
+                            <span className={cx('play-style-button')}>
+                              {playStyle}
+                            </span>
+                          </label>
+                        </div>
+                      )}
+                    </FinalField>
+                  ))}
+                </div>
 
-          <Segment secondary basic>
-            <Form.Group inline>
-              <label>Play Style</label>
-              {_.map(PlayStyle, playStyle => (
-                <FinalField
-                  key={playStyle}
-                  name="playStyle"
-                  type="radio"
-                  value={playStyle}
-                >
-                  {({ input }) => (
-                    <Form.Radio
-                      {...input}
-                      label={playStyle}
-                      onChange={(event, { value }) => {
-                        input.onChange({
-                          ...event,
-                          target: { ...event.target, value },
-                        })
-                      }}
-                    />
-                  )}
-                </FinalField>
-              ))}
-            </Form.Group>
+                <div className={cx('search-input-group')}>
+                  <FinalField name="title">
+                    {({ input }) => (
+                      <input
+                        {...input}
+                        className={cx('search-area')}
+                        type="text"
+                        placeholder="Search..."
+                      />
+                    )}
+                  </FinalField>
+                  <button
+                    type="submit"
+                    className={cx({ loading: submitting })}
+                    disabled={submitting || pristine || hasValidationErrors}
+                  >
+                    <FontAwesomeIcon icon={faSearch} />
+                  </button>
+                </div>
+              </div>
 
-            <Form.Group inline>
-              <label>Difficulty</label>
-              {_.map(Difficulty, difficulty => (
-                <FinalField
-                  key={difficulty}
-                  name="difficulties"
-                  type="checkbox"
-                  value={difficulty}
-                >
-                  {({ input: { value: _value, ...inputProps } }) => (
-                    <Form.Checkbox
-                      {...inputProps}
-                      label={difficulty}
-                      onChange={(event, { checked }) => {
-                        inputProps.onChange({
-                          ...event,
-                          target: {
-                            type: 'checkbox',
-                            checked,
-                          },
-                        })
-                      }}
-                    />
-                  )}
-                </FinalField>
-              ))}
-            </Form.Group>
+              <div className={cx('filter-form')}>
+                <Form.Group inline>
+                  <label>Difficulty</label>
+                  {_.map(Difficulty, difficulty => (
+                    <FinalField
+                      key={difficulty}
+                      name="difficulties"
+                      type="checkbox"
+                      value={difficulty}
+                    >
+                      {({ input: { value: _value, ...inputProps } }) => (
+                        <Form.Checkbox
+                          {...inputProps}
+                          label={difficulty}
+                          onChange={(event, { checked }) => {
+                            inputProps.onChange({
+                              ...event,
+                              target: {
+                                type: 'checkbox',
+                                checked,
+                              },
+                            })
+                          }}
+                        />
+                      )}
+                    </FinalField>
+                  ))}
+                </Form.Group>
 
-            <Form.Group inline>
-              <label>Level</label>
-              {_.range(1, 12 + 1).map(level => (
-                <FinalField
-                  key={level}
-                  name="levels"
-                  type="checkbox"
-                  value={level}
-                >
-                  {({ input: { value: _value, ...inputProps } }) => (
-                    <Form.Checkbox
-                      {...inputProps}
-                      label={`☆${level}`}
-                      onChange={(event, { checked }) => {
-                        inputProps.onChange({
-                          ...event,
-                          target: {
-                            type: 'checkbox',
-                            checked,
-                          },
-                        })
-                      }}
-                    />
-                  )}
-                </FinalField>
-              ))}
-            </Form.Group>
-          </Segment>
+                <Form.Group inline>
+                  <label>Level</label>
+                  {_.range(1, 12 + 1).map(level => (
+                    <FinalField
+                      key={level}
+                      name="levels"
+                      type="checkbox"
+                      value={level}
+                    >
+                      {({ input: { value: _value, ...inputProps } }) => (
+                        <Form.Checkbox
+                          {...inputProps}
+                          label={`☆${level}`}
+                          onChange={(event, { checked }) => {
+                            inputProps.onChange({
+                              ...event,
+                              target: {
+                                type: 'checkbox',
+                                checked,
+                              },
+                            })
+                          }}
+                        />
+                      )}
+                    </FinalField>
+                  ))}
+                </Form.Group>
+              </div>
+            </Segment>
 
-          {hasSubmitErrors && <Message error content={submitError} />}
-        </Segment.Group>
-      </Form>
+            {hasSubmitErrors && <Message error content={submitError} />}
+          </Segment.Group>
+        </Form>
+      </div>
     )}
   </FinalForm>
 )
