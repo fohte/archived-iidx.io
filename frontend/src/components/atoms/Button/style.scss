@@ -20,7 +20,13 @@
   cursor: pointer;
 }
 
-.active {
+.active,
+.button[type='submit'] {
   background-color: $ui-accent-color;
   color: $white;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: default;
 }

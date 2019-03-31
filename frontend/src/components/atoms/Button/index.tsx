@@ -10,6 +10,9 @@ export interface Props {
   children?: React.ReactNode
   className?: string
   active?: boolean
+  disabled?: boolean
+  loading?: boolean
+  [key: string]: any
 }
 
 const Button: React.FunctionComponent<Props> = ({
@@ -17,10 +20,19 @@ const Button: React.FunctionComponent<Props> = ({
   children,
   className,
   active = false,
+  disabled = false,
+  loading = false,
+  ...otherProps
 }) =>
   React.createElement(
     as,
-    { className: [cx('button', { active }), className].join(' ') },
+    {
+      className: [cx('button', { active, disabled, loading }), className].join(
+        ' ',
+      ),
+      disabled,
+      ...otherProps,
+    },
     children,
   )
 
