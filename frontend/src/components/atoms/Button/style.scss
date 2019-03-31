@@ -1,0 +1,26 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+.button {
+  composes: button from '../../molecules/ButtonGroup/style.scss';
+
+  display: inline-block;
+
+  background-color: $ui-base-color;
+  border-radius: $border-radius-size;
+
+  color: $primary-fg-color;
+
+  line-height: 2.5em;
+  padding: 0 2em;
+  width: 100%;
+
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.active {
+  background-color: $ui-accent-color;
+  color: $white;
+}

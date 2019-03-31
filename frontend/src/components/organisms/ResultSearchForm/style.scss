@@ -14,24 +14,8 @@
 }
 
 .search-form {
-  .play-style-button-group {
-    display: flex;
-    justify-content: space-between;
+  .button-group {
     margin-bottom: 1em;
-
-    .play-style-button-box {
-      flex: 1 1 auto;
-
-      &:first-child .play-style-button {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      &:last-child .play-style-button {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-    }
 
     input[type='radio'] {
       display: none;
