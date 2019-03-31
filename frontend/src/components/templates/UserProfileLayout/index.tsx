@@ -11,10 +11,12 @@ import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
-export interface Props extends WithRouterProps {
+interface ComponentProps {
   screenName: string
   children?: React.ReactNode
 }
+
+export interface Props extends ComponentProps, WithRouterProps {}
 
 interface Tab {
   key: string
@@ -82,4 +84,4 @@ const UserProfileLayout = ({ router, screenName, children }: Props) => {
   )
 }
 
-export default withRouter(UserProfileLayout)
+export default withRouter<ComponentProps>(UserProfileLayout)
