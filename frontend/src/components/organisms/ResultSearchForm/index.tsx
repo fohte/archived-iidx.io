@@ -4,9 +4,10 @@ import * as classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
-import { Form, Message, Segment } from 'semantic-ui-react'
+import { Form, Segment } from 'semantic-ui-react'
 
 import Button from '@app/components/atoms/Button'
+import ErrorMessage from '@app/components/atoms/ErrorMessage'
 import ButtonGroup from '@app/components/molecules/ButtonGroup'
 import { Difficulty, PlayStyle } from '@app/queries'
 import * as css from './style.scss'
@@ -157,7 +158,11 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => {
                 </div>
               </Segment>
 
-              {hasSubmitErrors && <Message error content={submitError} />}
+              {hasSubmitErrors && (
+                <div className={cx('error-box')}>
+                  <ErrorMessage>{submitError}</ErrorMessage>
+                </div>
+              )}
             </Segment.Group>
           </Form>
         </div>

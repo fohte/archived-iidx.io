@@ -15,7 +15,7 @@
 
 .search-form {
   .button-group {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 
     input[type='radio'] {
       display: none;
@@ -73,6 +73,6 @@
   }
 }
 
-.filter-form {
-  display: none;
+.error-box {
+  margin-top: 1rem;
 }
