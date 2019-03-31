@@ -5,8 +5,8 @@ import * as _ from 'lodash'
 import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
 
-import Button from '@app/components/atoms/Button'
 import ErrorMessage from '@app/components/atoms/ErrorMessage'
+import RadioButton from '@app/components/atoms/RadioButton'
 import ButtonGroup from '@app/components/molecules/ButtonGroup'
 import { Difficulty, PlayStyle } from '@app/queries'
 import * as css from './style.scss'
@@ -25,84 +25,64 @@ export type Props = {
   initialValues: FormValues
 }
 
-const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => {
-  const [activePlayStyle, setActivePlayStyle] = React.useState<PlayStyle>(
-    PlayStyle.Sp,
-  )
-
-  return (
-    <FinalForm onSubmit={onSubmit} initialValues={initialValues}>
-      {({
-        handleSubmit,
-        hasValidationErrors,
-        hasSubmitErrors,
-        pristine,
-        submitting,
-        submitError,
-      }) => (
-        <div className={cx('form')}>
-          <form onSubmit={handleSubmit}>
-            <div className={cx('search-form')}>
-              <ButtonGroup className={cx('button-group')}>
-                {_.map(PlayStyle, playStyle => (
-                  <FinalField
-                    key={playStyle}
-                    name="playStyle"
-                    type="radio"
-                    value={playStyle}
-                  >
-                    {({ input }) => (
-                      <label>
-                        <input
-                          {...input}
-                          onChange={e => {
-                            input.onChange(e)
-                            if (e.target.checked) {
-                              setActivePlayStyle(playStyle)
-                            }
-                          }}
-                          type="radio"
-                        />
-                        <Button as="div" active={activePlayStyle === playStyle}>
-                          {playStyle}
-                        </Button>
-                      </label>
-                    )}
-                  </FinalField>
-                ))}
-              </ButtonGroup>
-
-              <div className={cx('search-input-group')}>
-                <FinalField name="title">
+const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
+  <FinalForm onSubmit={onSubmit} initialValues={initialValues}>
+    {({
+      handleSubmit,
+      hasValidationErrors,
+      hasSubmitErrors,
+      pristine,
+      submitting,
+      submitError,
+    }) => (
+      <div className={cx('form')}>
+        <form onSubmit={handleSubmit}>
+          <div className={cx('search-form')}>
+            <ButtonGroup className={cx('button-group')}>
+              {_.map(PlayStyle, playStyle => (
+                <FinalField
+                  key={playStyle}
+                  name="playStyle"
+                  type="radio"
+                  value={playStyle}
+                >
                   {({ input }) => (
-                    <input
-                      {...input}
-                      className={cx('search-area')}
-                      type="text"
-                      placeholder="Search..."
-                    />
+                    <RadioButton {...input}>{playStyle}</RadioButton>
                   )}
                 </FinalField>
-                <button
-                  type="submit"
-                  className={cx({ loading: submitting })}
-                  disabled={submitting || pristine || hasValidationErrors}
-                >
-                  <FontAwesomeIcon icon={faSearch} />
-                </button>
-              </div>
-            </div>
+              ))}
+            </ButtonGroup>
 
-            {hasSubmitErrors && (
-              <div className={cx('error-box')}>
-                <ErrorMessage>{submitError}</ErrorMessage>
-              </div>
-            )}
-          </form>
-        </div>
-      )}
-    </FinalForm>
-  )
-}
+            <div className={cx('search-input-group')}>
+              <FinalField name="title">
+                {({ input }) => (
+                  <input
+                    {...input}
+                    className={cx('search-area')}
+                    type="text"
+                    placeholder="Search..."
+                  />
+                )}
+              </FinalField>
+              <button
+                type="submit"
+                className={cx({ loading: submitting })}
+                disabled={submitting || pristine || hasValidationErrors}
+              >
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+            </div>
+          </div>
+
+          {hasSubmitErrors && (
+            <div className={cx('error-box')}>
+              <ErrorMessage>{submitError}</ErrorMessage>
+            </div>
+          )}
+        </form>
+      </div>
+    )}
+  </FinalForm>
+)
 
 export default ResultSearchForm
