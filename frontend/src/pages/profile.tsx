@@ -38,7 +38,7 @@ const ProfilePage: PageComponentType<Props, Props, Query> = ({
 
   return (
     <UserProfileLayout screenName={user.name}>
-      <Profile user={user} />
+      <Profile />
     </UserProfileLayout>
   )
 }
