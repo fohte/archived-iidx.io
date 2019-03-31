@@ -4,7 +4,7 @@ import * as React from 'react'
 
 import ResultList from '@app/components/organisms/ResultList'
 import { FormValues } from '@app/components/organisms/ResultSearchForm'
-import MainLayout from '@app/components/templates/MainLayout'
+import UserProfileLayout from '@app/components/templates/UserProfileLayout'
 import {
   parseDifficultyString,
   parsePlayStyleString,
@@ -63,7 +63,7 @@ const compactFormValues = ({
 const ensureArray = <T extends any>(value: T | T[]): T[] =>
   Array.isArray(value) ? value : [value]
 
-const renderMap = ({
+const MusicsPage: PageComponentType<Props, Props, Query> = ({
   screenName,
   title,
   playStyle,
@@ -116,24 +116,22 @@ const renderMap = ({
   }
 
   return (
-    <ResultList
-      initialValues={initialValues}
-      screenName={screenName}
-      onSubmit={values => {
-        const compactedFormValues = compactFormValues(values)
-        replaceQuery({ ...compactedFormValues })
-      }}
-      onPageChange={newActivePage => {
-        replaceQuery({ page: newActivePage })
-      }}
-      defaultActivePage={page}
-    />
+    <UserProfileLayout screenName={screenName}>
+      <ResultList
+        initialValues={initialValues}
+        screenName={screenName}
+        onSubmit={values => {
+          const compactedFormValues = compactFormValues(values)
+          replaceQuery({ ...compactedFormValues })
+        }}
+        onPageChange={newActivePage => {
+          replaceQuery({ page: newActivePage })
+        }}
+        defaultActivePage={page}
+      />
+    </UserProfileLayout>
   )
 }
-
-const MusicsPage: PageComponentType<Props, Props, Query> = props => (
-  <MainLayout>{renderMap(props)}</MainLayout>
-)
 
 MusicsPage.getInitialProps = ({ res, query }) => {
   if (!query.screenName) {

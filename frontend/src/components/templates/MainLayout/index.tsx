@@ -1,7 +1,6 @@
 import * as classnames from 'classnames/bind'
 import * as React from 'react'
 
-import Container from '@app/components/atoms/Container'
 import Footer from '@app/components/organisms/Footer'
 import Header from '@app/components/organisms/Header'
 import * as css from './style.scss'
@@ -15,9 +14,7 @@ export interface Props {
 const MainLayout = ({ children }: Props) => (
   <div className={cx('box')}>
     <Header />
-    <div className={cx('content')}>
-      <Container>{children}</Container>
-    </div>
+    <div className={cx('content')}>{children}</div>
     <Footer />
   </div>
 )
