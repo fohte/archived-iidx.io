@@ -4,7 +4,6 @@ import { Form, Input, Label, Message } from 'semantic-ui-react'
 import { isEmpty, isLength, matches } from 'validator'
 
 import Button from '@app/components/atoms/Button'
-import ButtonGroup from '@app/components/molecules/ButtonGroup'
 
 import withSubmitHandling, {
   ComponentExternalProps,
