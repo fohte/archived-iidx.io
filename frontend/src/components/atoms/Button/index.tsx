@@ -12,6 +12,9 @@ export interface Props {
   active?: boolean
   disabled?: boolean
   loading?: boolean
+  inverted?: boolean
+  size?: 'small'
+  color?: 'white'
   [key: string]: any
 }
 
@@ -22,14 +25,18 @@ const Button: React.FunctionComponent<Props> = ({
   active = false,
   disabled = false,
   loading = false,
+  inverted = false,
+  size,
+  color,
   ...otherProps
 }) =>
   React.createElement(
     as,
     {
-      className: [cx('button', { active, disabled, loading }), className].join(
-        ' ',
-      ),
+      className: [
+        cx('button', { active, disabled, loading, inverted }, size, color),
+        className,
+      ].join(' '),
       disabled,
       ...otherProps,
     },
