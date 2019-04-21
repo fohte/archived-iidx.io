@@ -3,9 +3,13 @@
 .box {
   position: relative;
   min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
-  padding-top: 2rem;
-  padding-bottom: 100px;
+  flex: 1;
+
+  padding: 2rem 0;
 }
