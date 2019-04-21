@@ -5,8 +5,11 @@ import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
 import { isEmpty } from 'validator'
 
+import Box from '@app/components/atoms/Box'
 import Button from '@app/components/atoms/Button'
+import FormGroup from '@app/components/atoms/FormGroup'
 import RadioButton from '@app/components/atoms/RadioButton'
+import Textarea from '@app/components/atoms/Textarea'
 import ButtonGroup from '@app/components/molecules/ButtonGroup'
 import { PlayStyle } from '@app/queries'
 import * as css from './style.scss'
@@ -62,13 +65,10 @@ const RegisterResultForm = ({ onSubmit }: Props) => (
       hasValidationErrors,
     }) => (
       <div className={cx('register-result-form')}>
-        <div className={cx('header')}>
+        <Box transparent className={cx('header')}>
           <h2>Register results from CSV</h2>
           <hr />
-          <div className={cx('form-group')}>
-            <div className={cx('label', 'inline')}>
-              Links (e-AMUSEMENT GATE)
-            </div>
+          <FormGroup label="Links (e-AMUSEMENT GATE)">
             <ul className={cx('links')}>
               {[PlayStyle.Sp, PlayStyle.Dp].map(style => (
                 <li key={style}>
@@ -87,13 +87,16 @@ const RegisterResultForm = ({ onSubmit }: Props) => (
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
+          </FormGroup>
+        </Box>
 
-        <div className={cx('content')}>
+        <Box>
           <form onSubmit={innerHandleSubmit}>
-            <div className={cx('form-group')}>
-              <label className={cx('label')}>Play Style</label>
+            <FormGroup
+              label="Play Style"
+              error={!!(touched && touched.playStyle && errors.playStyle)}
+              errorMessage={errors.playStyle ? errors.playStyle : undefined}
+            >
               <ButtonGroup className={cx('button-group')}>
                 {['SP', 'DP'].map(playStyle => (
                   <FinalField
@@ -116,31 +119,23 @@ const RegisterResultForm = ({ onSubmit }: Props) => (
                   </FinalField>
                 ))}
               </ButtonGroup>
-              {touched && touched.playStyle && errors.playStyle && (
-                <div className={cx('error-message')}>{errors.playStyle}</div>
+            </FormGroup>
+
+            <FinalField name="csv" validate={validators.csv}>
+              {({ input, meta }) => (
+                <FormGroup
+                  label="CSV"
+                  error={!!(meta.touched && meta.error)}
+                  errorMessage={meta.error}
+                >
+                  <Textarea
+                    {...input}
+                    error={!!(meta.touched && meta.error)}
+                    placeholder="Paste CSV here"
+                  />
+                </FormGroup>
               )}
-            </div>
-
-            <div className={cx('form-group')}>
-              <FinalField name="csv" validate={validators.csv}>
-                {({ input, meta }) => (
-                  <>
-                    <label className={cx('label')}>CSV</label>
-                    <textarea
-                      {...input}
-                      className={cx('csv-area', {
-                        error: !!(meta.touched && meta.error),
-                      })}
-                      placeholder="Paste CSV here"
-                    />
-                    {meta.touched && meta.error && (
-                      <div className={cx('error-message')}>{meta.error}</div>
-                    )}
-                  </>
-                )}
-              </FinalField>
-            </div>
-
+            </FinalField>
             <Button
               type="submit"
               disabled={submitting || pristine || hasValidationErrors}
@@ -149,7 +144,7 @@ const RegisterResultForm = ({ onSubmit }: Props) => (
               Import
             </Button>
           </form>
-        </div>
+        </Box>
       </div>
     )}
   </FinalForm>

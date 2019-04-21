@@ -9,12 +9,13 @@ const cx = classnames.bind(css)
 
 export interface Props {
   children?: React.ReactNode
+  centering?: boolean
 }
 
-const MainLayout = ({ children }: Props) => (
+const MainLayout = ({ children, centering = false }: Props) => (
   <div className={cx('box')}>
     <Header />
-    <div className={cx('content')}>{children}</div>
+    <div className={cx('content', { centering })}>{children}</div>
     <Footer />
   </div>
 )

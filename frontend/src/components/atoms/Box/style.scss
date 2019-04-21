@@ -1,0 +1,14 @@
+@import 'styles/colors';
+@import 'styles/mixins';
+
+.box {
+  @include card-box;
+
+  padding: 1.5rem;
+  background-color: $white;
+}
+
+.transparent {
+  background-color: transparent;
+  box-shadow: none;
+}

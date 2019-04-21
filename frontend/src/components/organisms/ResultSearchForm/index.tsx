@@ -6,6 +6,7 @@ import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
 
 import Alert from '@app/components/atoms/Alert'
+import Box from '@app/components/atoms/Box'
 import RadioButton from '@app/components/atoms/RadioButton'
 import ButtonGroup from '@app/components/molecules/ButtonGroup'
 import { Difficulty, PlayStyle } from '@app/queries'
@@ -35,7 +36,7 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
       submitting,
       submitError,
     }) => (
-      <div className={cx('form')}>
+      <Box>
         <form onSubmit={handleSubmit}>
           <div className={cx('search-form')}>
             <ButtonGroup className={cx('button-group')}>
@@ -80,7 +81,7 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
             </div>
           )}
         </form>
-      </div>
+      </Box>
     )}
   </FinalForm>
 )

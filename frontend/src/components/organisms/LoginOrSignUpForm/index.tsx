@@ -1,8 +1,11 @@
 import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
-import { Button, Form, Input, Label, Message, Segment } from 'semantic-ui-react'
 import { isEmail, isEmpty } from 'validator'
 
+import Alert from '@app/components/atoms/Alert'
+import Button from '@app/components/atoms/Button'
+import FormGroup from '@app/components/atoms/FormGroup'
+import InputText from '@app/components/atoms/InputText'
 import withSubmitHandling, {
   ComponentExternalProps,
   InjectedProps,
@@ -54,59 +57,48 @@ const LoginOrSignUpForm: React.SFC<Props> = ({ handleSubmit, submitText }) => (
       submitting,
       submitError,
     }) => (
-      <Form size="large" onSubmit={innerHandleSubmit} error={hasSubmitErrors}>
-        <Segment stacked textAlign="left">
-          <FinalField name="email" validate={validators.email}>
-            {({ input, meta }) => (
-              <Form.Field error={!!(meta.touched && meta.error)}>
-                <Input
-                  fluid
-                  type="email"
-                  icon="user"
-                  iconPosition="left"
-                  {...input}
-                  placeholder="E-mail address"
-                />
-                {meta.touched && meta.error && (
-                  <Label basic color="red" pointing>
-                    {meta.error}
-                  </Label>
-                )}
-              </Form.Field>
-            )}
-          </FinalField>
-          <FinalField name="password" validate={validators.password}>
-            {({ input, meta }) => (
-              <Form.Field error={!!(meta.touched && meta.error)}>
-                <Input
-                  fluid
-                  type="password"
-                  icon="lock"
-                  iconPosition="left"
-                  {...input}
-                  placeholder="Password"
-                />
-                {meta.touched && meta.error && (
-                  <Label basic color="red" pointing>
-                    {meta.error}
-                  </Label>
-                )}
-              </Form.Field>
-            )}
-          </FinalField>
-          {hasSubmitErrors && <Message error content={submitError} />}
-          <Button
-            type="submit"
-            disabled={submitting || pristine || hasValidationErrors}
-            color="teal"
-            fluid
-            size="large"
-            loading={submitting}
-          >
-            {submitText}
-          </Button>
-        </Segment>
-      </Form>
+      <form onSubmit={innerHandleSubmit}>
+        <FinalField name="email" validate={validators.email}>
+          {({ input, meta }) => (
+            <FormGroup
+              label="E-mail address"
+              error={!!(meta.touched && meta.error)}
+              errorMessage={meta.error}
+            >
+              <InputText
+                type="email"
+                error={!!(meta.touched && meta.error)}
+                {...input}
+                placeholder="E-mail address"
+              />
+            </FormGroup>
+          )}
+        </FinalField>
+        <FinalField name="password" validate={validators.password}>
+          {({ input, meta }) => (
+            <FormGroup
+              label="Password"
+              error={!!(meta.touched && meta.error)}
+              errorMessage={meta.error}
+            >
+              <InputText
+                type="password"
+                error={!!(meta.touched && meta.error)}
+                {...input}
+                placeholder="Password"
+              />
+            </FormGroup>
+          )}
+        </FinalField>
+        {hasSubmitErrors && <Alert>{submitError}</Alert>}
+        <Button
+          type="submit"
+          disabled={submitting || pristine || hasValidationErrors}
+          loading={submitting}
+        >
+          {submitText}
+        </Button>
+      </form>
     )}
   </FinalForm>
 )

@@ -1,14 +1,13 @@
 @import 'styles/breakpoints';
 @import 'styles/colors';
-@import 'styles/mixins';
 @import 'styles/variables';
 
 .header {
-  line-height: 1;
-  padding: 0 1.5rem;
-  margin-bottom: 1.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
 
   hr {
+    line-height: 1;
     border: none;
     background-color: $border-color;
     height: 1px;
@@ -18,40 +17,6 @@
   h2 {
     margin-bottom: 1.5rem;
   }
-}
-
-$form-group-element-margin: 0.5rem;
-$form-group-margin: 1.5rem;
-
-.content {
-  @include card-box;
-
-  padding: 1.5rem;
-  background-color: $white;
-}
-
-.form-group {
-  margin-bottom: $form-group-margin;
-}
-
-.label {
-  font-weight: 700;
-  font-size: 0.9em;
-
-  display: block;
-  margin-bottom: $form-group-element-margin;
-
-  &.inline {
-    display: inline-block;
-  }
-}
-
-.error-message {
-  margin-top: $form-group-element-margin;
-
-  color: $red;
-  font-size: 0.9em;
-  font-weight: 700;
 }
 
 .links {
@@ -95,22 +60,5 @@ $form-group-margin: 1.5rem;
 
   .error {
     background-color: lighten($red, 40%);
-  }
-}
-
-.csv-area {
-  border-radius: $border-radius-size;
-  border: 2px solid $ui-base-color;
-  outline: none;
-
-  width: 100%;
-  padding: 0.8em;
-
-  &:focus {
-    border-color: rgba($ui-accent-color, 0.7);
-  }
-
-  &.error {
-    border-color: rgba($red, 0.7);
   }
 }

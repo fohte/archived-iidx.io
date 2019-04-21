@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
-import { Form, Input, Label, Message } from 'semantic-ui-react'
 import { isEmpty, isLength, matches } from 'validator'
 
+import Alert from '@app/components/atoms/Alert'
 import Button from '@app/components/atoms/Button'
-
+import FormGroup from '@app/components/atoms/FormGroup'
+import InputText from '@app/components/atoms/InputText'
 import withSubmitHandling, {
   ComponentExternalProps,
   InjectedProps,
@@ -62,56 +63,46 @@ const RegisterForm: React.SFC<Props> = ({ handleSubmit }) => (
       hasSubmitErrors,
       hasValidationErrors,
     }) => (
-      <Form onSubmit={innerHandleSubmit} error={hasSubmitErrors}>
+      <form onSubmit={innerHandleSubmit}>
         <FinalField name="username" validate={validators.username}>
           {({ input, meta }) => (
-            <Form.Field error={!!(meta.touched && meta.error)}>
-              <label>Username</label>
-              <Input
-                type="text"
-                icon="at"
-                iconPosition="left"
+            <FormGroup
+              label="Username"
+              error={!!(meta.touched && meta.error)}
+              errorMessage={meta.error}
+            >
+              <InputText
                 {...input}
+                error={!!(meta.touched && meta.error)}
                 placeholder="Username"
               />
-              {meta.touched && meta.error && (
-                <Label basic color="red" pointing>
-                  {meta.error}
-                </Label>
-              )}
-            </Form.Field>
+            </FormGroup>
           )}
         </FinalField>
         <FinalField name="displayName" validate={validators.displayName}>
           {({ input, meta }) => (
-            <Form.Field error={!!(meta.touched && meta.error)}>
-              <label>Display Name</label>
-              <Input
-                type="text"
-                icon="user"
-                iconPosition="left"
+            <FormGroup
+              label="Display Name"
+              error={!!(meta.touched && meta.error)}
+              errorMessage={meta.error}
+            >
+              <InputText
                 {...input}
+                error={!!(meta.touched && meta.error)}
                 placeholder="Display Name"
               />
-              {meta.touched && meta.error && (
-                <Label basic color="red" pointing>
-                  {meta.error}
-                </Label>
-              )}
-            </Form.Field>
+            </FormGroup>
           )}
         </FinalField>
-        {hasSubmitErrors && <Message error content={submitError} />}
+        {hasSubmitErrors && <Alert>{submitError}</Alert>}
         <Button
           type="submit"
           disabled={submitting || pristine || hasValidationErrors}
-          color="teal"
-          size="large"
           loading={submitting}
         >
-          Sign up
+          Register
         </Button>
-      </Form>
+      </form>
     )}
   </FinalForm>
 )

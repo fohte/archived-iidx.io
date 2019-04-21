@@ -1,0 +1,12 @@
+@import 'styles/colors';
+
+$form-group-element-margin: 0.5rem;
+$form-group-margin: 1.5rem;
+
+.form-group {
+  margin-bottom: $form-group-margin;
+}
+
+.input-area {
+  margin-bottom: $form-group-element-margin;
+}

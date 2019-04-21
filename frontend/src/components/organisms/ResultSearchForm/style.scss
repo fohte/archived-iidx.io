@@ -2,17 +2,6 @@
 @import 'styles/mixins';
 @import 'styles/variables';
 
-.form {
-  @include card-box;
-
-  width: 100%;
-
-  background-color: $primary-bg-color;
-  color: $primary-fg-color;
-
-  padding: 1.5rem;
-}
-
 .search-form {
   .button-group {
     margin-bottom: 1rem;
