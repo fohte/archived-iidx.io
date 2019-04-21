@@ -40,6 +40,7 @@ $arrow-size: 0.6em;
   width: 100%;
   color: $primary-text-color;
   cursor: pointer;
+  display: block;
 
   &:hover {
     background-color: darken($primary-bg-color, 5%);

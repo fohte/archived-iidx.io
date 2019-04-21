@@ -49,18 +49,14 @@ const UserMenu: React.SFC<Props> = ({ displayName, className }) => {
       </div>
       <div className={cx('dropdown', { hide: !isOpen })}>
         <Link route={`/@${displayName}`}>
-          <a>
-            <div className={cx('item')} onClick={hide}>
-              Profile
-            </div>
+          <a className={cx('item')} onClick={hide}>
+            Profile
           </a>
         </Link>
         <div className={cx('divider')} />
         <Link route="/results/new">
-          <a>
-            <div className={cx('item')} onClick={hide}>
-              Register results
-            </div>
+          <a className={cx('item')} onClick={hide}>
+            Register results
           </a>
         </Link>
         <div className={cx('divider')} />
