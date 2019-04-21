@@ -78,12 +78,6 @@ services:
     ports:
       - '3000:3000'
 
-  storybook:
-    <<: *frontend
-    command: yarn run storybook --ci
-    ports:
-      - '9001:9001'
-
 volumes:
   db_data:
   bundle:
