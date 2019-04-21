@@ -11,13 +11,13 @@ export interface Props {
   children?: React.ReactNode
 }
 
-const ErrorMessage: React.FunctionComponent<Props> = ({ children }) => (
-  <div className={cx('error-message')}>
-    <div className={cx('error-icon')}>
+const Alert: React.FunctionComponent<Props> = ({ children }) => (
+  <div className={cx('alert')}>
+    <div className={cx('alert-icon')}>
       <FontAwesomeIcon icon={faExclamationTriangle} />
     </div>
-    <div className={cx('error-content')}>{children}</div>
+    <div className={cx('alert-content')}>{children}</div>
   </div>
 )
 
-export default ErrorMessage
+export default Alert

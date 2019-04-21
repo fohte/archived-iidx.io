@@ -5,7 +5,7 @@ import * as _ from 'lodash'
 import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
 
-import ErrorMessage from '@app/components/atoms/ErrorMessage'
+import Alert from '@app/components/atoms/Alert'
 import RadioButton from '@app/components/atoms/RadioButton'
 import ButtonGroup from '@app/components/molecules/ButtonGroup'
 import { Difficulty, PlayStyle } from '@app/queries'
@@ -76,7 +76,7 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
 
           {hasSubmitErrors && (
             <div className={cx('error-box')}>
-              <ErrorMessage>{submitError}</ErrorMessage>
+              <Alert>{submitError}</Alert>
             </div>
           )}
         </form>
