@@ -19,7 +19,7 @@
   "dependencies": {
     "@types/graphql": "14.0.7",
     "@types/lodash": "4.14.123",
-    "@types/next": "8.0.3",
+    "@types/next": "8.0.5",
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.4",
     "@types/recompose": "0.30.5",
@@ -99,7 +99,7 @@
     "@types/graphql": "14.0.7",
     "@types/jest": "23.3.14",
     "@types/lodash": "4.14.123",
-    "@types/next": "8.0.3",
+    "@types/next": "8.0.5",
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "16.8.1",
