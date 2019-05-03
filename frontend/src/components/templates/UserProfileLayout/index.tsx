@@ -1,7 +1,5 @@
 import * as classnames from 'classnames/bind'
 import * as _ from 'lodash'
-import { withRouter, WithRouterProps } from 'next/router'
-import path from 'path'
 import * as React from 'react'
 
 import Container from '@app/components/atoms/Container'
@@ -16,38 +14,20 @@ interface ComponentProps {
   children?: React.ReactNode
 }
 
-export interface Props extends ComponentProps, WithRouterProps {}
-
-interface Tab {
-  key: string
-  path: string
-  content: string
+export enum Tab {
+  Overview = 'Overview',
+  Musics = 'Musics',
 }
 
-const tabs: Tab[] = [
-  {
-    key: 'overview',
-    path: '',
-    content: 'Overview',
-  },
-  {
-    key: 'musics',
-    path: 'musics',
-    content: 'Musics',
-  },
-]
+export interface Props extends ComponentProps {
+  activeTab: Tab
+}
 
-const UserProfileLayout = ({ router, screenName, children }: Props) => {
-  const generatePath = (tab: Tab) => path.join(`/@${screenName}`, tab.path)
-
-  const defaultActiveTab = _.find(
-    tabs,
-    tab => generatePath(tab) === router.asPath,
-  )
-
-  const [activeTab, setActiveTab] = React.useState<string>(
-    defaultActiveTab != null ? defaultActiveTab.key : 'overview',
-  )
+const UserProfileLayout = ({ screenName, children, activeTab }: Props) => {
+  const tabLinks: { [key in Tab]: string } = {
+    [Tab.Overview]: `/@${screenName}`,
+    [Tab.Musics]: `/@${screenName}/musics`,
+  }
 
   return (
     <MainLayout>
@@ -59,19 +39,13 @@ const UserProfileLayout = ({ router, screenName, children }: Props) => {
           </div>
 
           <ul className={cx('tabs')}>
-            {_.map(tabs, tab => (
+            {_.map(tabLinks, (link, key) => (
               <li
-                key={tab.key}
-                className={cx('tab-item', { active: activeTab === tab.key })}
+                key={key}
+                className={cx('tab-item', { active: activeTab === key })}
               >
-                <Link route={generatePath(tab)}>
-                  <a
-                    onClick={() => {
-                      setActiveTab(tab.key)
-                    }}
-                  >
-                    {tab.content}
-                  </a>
+                <Link route={link}>
+                  <a>{key}</a>
                 </Link>
               </li>
             ))}
@@ -84,4 +58,4 @@ const UserProfileLayout = ({ router, screenName, children }: Props) => {
   )
 }
 
-export default withRouter<ComponentProps>(UserProfileLayout)
+export default UserProfileLayout

@@ -4,7 +4,9 @@ import * as React from 'react'
 
 import ResultList from '@app/components/organisms/ResultList'
 import { FormValues } from '@app/components/organisms/ResultSearchForm'
-import UserProfileLayout from '@app/components/templates/UserProfileLayout'
+import UserProfileLayout, {
+  Tab,
+} from '@app/components/templates/UserProfileLayout'
 import {
   parseDifficultyString,
   parsePlayStyleString,
@@ -116,7 +118,7 @@ const MusicsPage: PageComponentType<Props, Props, Query> = ({
   }
 
   return (
-    <UserProfileLayout screenName={screenName}>
+    <UserProfileLayout screenName={screenName} activeTab={Tab.Musics}>
       <ResultList
         initialValues={initialValues}
         screenName={screenName}

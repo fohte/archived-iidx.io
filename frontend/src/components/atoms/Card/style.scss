@@ -1,0 +1,25 @@
+@import 'styles/colors';
+@import 'styles/mixins';
+
+$left-right-padding: 1.5rem;
+$top-bottom-padding: 1rem;
+$clear-lamp-width: 0.6rem;
+
+.card-header {
+  padding: $top-bottom-padding $left-right-padding;
+  border-bottom: 1px solid darken($white, 7%);
+
+  width: 100%;
+}
+
+.card-content {
+  background-color: darken($white, 3%);
+}
+
+.card {
+  @include card-box;
+
+  background-color: $primary-bg-color;
+
+  width: 100%;
+}

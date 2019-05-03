@@ -1,0 +1,169 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+$clear-lamp-width: 0.6rem;
+$left-right-padding: 1.5rem;
+$top-bottom-padding: 1rem;
+
+.clear-lamp {
+  background-color: $gray;
+
+  &.full-combo {
+    animation: full-combo 150ms infinite;
+
+    @keyframes full-combo {
+      0% {
+        background-color: $white;
+      }
+
+      50% {
+        background-color: $cyan;
+      }
+
+      100% {
+        background-color: $yellow;
+      }
+    }
+  }
+
+  &.ex-hard-clear {
+    animation: ex-hard 150ms infinite;
+
+    @keyframes ex-hard {
+      0% {
+        background-color: $red;
+      }
+
+      100% {
+        background-color: $yellow;
+      }
+    }
+  }
+
+  &.hard-clear {
+    background-color: $red;
+  }
+
+  &.clear {
+    background-color: $blue;
+  }
+
+  &.easy-clear {
+    background-color: $green;
+  }
+
+  &.assist-clear {
+    background-color: $purple;
+  }
+
+  &.failed {
+    animation: failed 150ms infinite;
+
+    @keyframes failed {
+      0% {
+        background-color: $black;
+      }
+
+      100% {
+        background-color: darken($red, 20%);
+      }
+    }
+  }
+
+  width: $clear-lamp-width;
+}
+
+.data-box-wrapper {
+  display: flex;
+}
+
+.data-box {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  padding: $top-bottom-padding $left-right-padding;
+}
+
+.data-box-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex: 1;
+
+  > * {
+    margin-right: $left-right-padding;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  dt {
+    font-size: 0.8em;
+    color: $primary-fg-lighter-color;
+
+    margin-bottom: 0.25em;
+  }
+
+  .grade-box {
+    margin-right: 1em;
+
+    width: 5em;
+    text-align: center;
+
+    .current-grade {
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .around-grade {
+      font-size: 0.8em;
+      color: $primary-fg-lighter-color;
+    }
+  }
+
+  .score-box {
+    flex: 1;
+
+    dd {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .score-text {
+      margin-right: 0.5em;
+    }
+  }
+
+  .bpi-box {
+    width: 4em;
+    text-align: center;
+  }
+
+  .bpi,
+  .score-rate {
+    font-size: 0.8em;
+
+    .integer-part {
+      font-size: $base-font-size;
+    }
+  }
+
+  .clear-lamp-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.detail-link a {
+  font-size: 1.5em;
+  text-align: center;
+
+  padding: 0 1.5rem;
+  margin-right: -1.5rem;
+
+  color: lighten($primary-fg-color, 30%);
+}

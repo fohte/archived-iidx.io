@@ -3,7 +3,9 @@ import ErrorPage from 'next/error'
 import * as React from 'react'
 
 import Profile from '@app/components/organisms/Profile'
-import UserProfileLayout from '@app/components/templates/UserProfileLayout'
+import UserProfileLayout, {
+  Tab,
+} from '@app/components/templates/UserProfileLayout'
 import initApollo from '@app/lib/initApollo'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
@@ -37,7 +39,7 @@ const ProfilePage: PageComponentType<Props, Props, Query> = ({
   }
 
   return (
-    <UserProfileLayout screenName={user.name}>
+    <UserProfileLayout screenName={user.name} activeTab={Tab.Overview}>
       <Profile />
     </UserProfileLayout>
   )
