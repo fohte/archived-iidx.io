@@ -1,0 +1,38 @@
+$black: #323643;
+$gray: #606470;
+$white: #f7f7f7;
+
+$blue: #1164a4;
+$cyan: #079999;
+$orange: #fe600b;
+$yellow: #fec80b;
+$red: #eb0b3b;
+$green: #09cb09;
+$purple: #3e1baf;
+
+$ui-base-color: darken($white, 5%);
+$ui-primary-color: $black;
+$ui-accent-color: $blue;
+
+$primary-bg-color: $white;
+$primary-fg-color: $black;
+$primary-fg-lighter-color: lighten($primary-fg-color, 25%);
+
+$header-bg-color: $ui-primary-color;
+$header-fg-color: $white;
+
+$footer-bg-color: $header-bg-color;
+$footer-fg-color: $header-fg-color;
+
+$primary-text-color: $black;
+
+$border-color: darken($white, 20%);
+
+$grade-aaa-color: $orange;
+$grade-aa-color: $green;
+$grade-a-color: $blue;
+$grade-b-color: $gray;
+$grade-c-color: $gray;
+$grade-d-color: $gray;
+$grade-e-color: $gray;
+$grade-f-color: $gray;

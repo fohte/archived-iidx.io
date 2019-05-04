@@ -1,32 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header renders correctly 1`] = `
-<div
-  className="ui inverted vertical segment"
+<nav
+  className="headerNav"
 >
   <div
-    className="ui inverted secondary menu"
+    className="container"
   >
     <div
-      className="ui container"
+      className="flexContainer"
     >
       <a
-        className="item"
         href="/"
         onClick={[Function]}
       >
-        <span>
-          iidx.io
-        </span>
+        <div
+          className="item"
+        >
+          <span>
+            iidx.io
+          </span>
+        </div>
       </a>
       <div
-        className="right menu"
+        className="item"
       >
-        <div
-          className="ui tiny active inline loader"
-        />
+        loading
       </div>
     </div>
   </div>
-</div>
+</nav>
 `;

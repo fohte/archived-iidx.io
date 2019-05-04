@@ -1,0 +1,30 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+.alert {
+  border: 1px solid lighten($red, 20%);
+  border-radius: $border-radius-size;
+  background-color: lighten($red, 50%);
+  color: $red;
+
+  padding: 0 1em;
+  height: 2.5em;
+  line-height: 2.5em;
+
+  display: table;
+
+  > * {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .alert-icon {
+    font-size: 1.2em;
+    padding-right: 0.5em;
+  }
+
+  .alert-content {
+    word-break: break-all;
+    width: 100%;
+  }
+}

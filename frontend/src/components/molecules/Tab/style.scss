@@ -1,0 +1,24 @@
+.focus-data-type-list {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid $border-color;
+
+  .focus-data-type-item {
+    text-align: center;
+    padding: 1em;
+    font-weight: 700;
+    color: darken($primary-bg-color, 40%);
+
+    outline: none;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .active {
+    // color: $ui-accent-color;
+    color: $primary-fg-color;
+    border-bottom: 2px solid $ui-accent-color;
+    margin-bottom: -1px;
+  }
+}

@@ -1,0 +1,50 @@
+@import 'styles/colors';
+@import 'styles/mixins';
+@import 'styles/variables';
+
+.card {
+  margin-bottom: 1rem;
+}
+
+.header {
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  font-size: 0.7em;
+  background-color: $black;
+  color: $white;
+
+  padding: 0.1em 0.9em;
+  border-radius: 2px;
+
+  display: inline-block;
+
+  margin-right: 1em;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.difficulty-normal {
+  background-color: $blue;
+}
+
+.difficulty-hyper {
+  background-color: $orange;
+}
+
+.difficulty-another {
+  background-color: $red;
+}
+
+.title {
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+  flex: 1;
+}

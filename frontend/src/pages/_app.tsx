@@ -1,4 +1,7 @@
-import 'semantic-ui-css/semantic.min.css'
+import { config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
+
+import '@app/global.scss'
 
 import { NextComponentClass, NextContext, NextStatelessComponent } from 'next'
 import App, { AppComponentContext, Container } from 'next/app'

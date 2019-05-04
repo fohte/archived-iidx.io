@@ -1,0 +1,14 @@
+@import 'styles/colors.scss';
+
+.box {
+  background-color: $footer-bg-color;
+
+  padding-bottom: 12px;
+  padding-top: 12px;
+
+  color: $footer-fg-color;
+}
+
+.inner {
+  text-align: center;
+}

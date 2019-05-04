@@ -1,0 +1,56 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+.button {
+  composes: button from '../../molecules/ButtonGroup/style.scss';
+
+  display: inline-block;
+
+  border-radius: $border-radius-size;
+  border: 1px solid transparent;
+
+  background-color: $ui-base-color;
+  color: $primary-fg-color;
+
+  line-height: 2.5em;
+  padding: 0 2em;
+
+  width: 100%;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  outline: none;
+
+  &.active,
+  &[type='submit'] {
+    background-color: $ui-accent-color;
+    color: $white;
+  }
+
+  &.white {
+    background-color: $white;
+  }
+
+  &.inverted {
+    background-color: transparent;
+    border-color: $ui-base-color;
+    color: $ui-base-color;
+
+    &.white {
+      border-color: $white;
+      color: $white;
+    }
+  }
+
+  &.small {
+    line-height: 2em;
+    padding: 0 1.5em;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}

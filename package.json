@@ -14,7 +14,7 @@
   },
   "lint-staged": {
     "linters": {
-      "**/*.{js{,x},ts{,x},json,graphql,y{,a}ml}": [
+      "**/*.{js{,x},ts{,x},{s,}css,json,graphql,y{,a}ml}": [
         "prettier --write",
         "git add"
       ],

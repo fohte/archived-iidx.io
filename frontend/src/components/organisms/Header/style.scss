@@ -1,0 +1,54 @@
+@import 'styles/colors.scss';
+
+.header-nav {
+  background-color: $header-bg-color;
+
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 2em;
+  margin: 0 1.5rem;
+}
+
+.item {
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em;
+
+  color: $header-fg-color;
+
+  user-select: none;
+
+  &:hover,
+  &:active {
+    color: darkest-color($header-fg-color);
+  }
+
+  &.non-padding {
+    padding: 0;
+  }
+}
+
+.clickable {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.login-signup-group {
+  display: flex;
+
+  > * {
+    margin-right: 1rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

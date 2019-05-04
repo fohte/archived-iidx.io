@@ -1,0 +1,61 @@
+@import 'styles/colors.scss';
+
+.box {
+  position: relative;
+}
+
+$item-margin: 0.4em;
+$arrow-size: 0.6em;
+
+.dropdown {
+  margin-top: 1em;
+  padding: $item-margin 0;
+  position: absolute;
+  background-color: $primary-bg-color;
+  left: auto;
+  right: 0;
+  border-radius: 2px;
+  min-width: 130px;
+  z-index: 100;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid $border-color;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: -($arrow-size / 2);
+    right: 1em;
+    display: block;
+    transform: rotate(45deg);
+    width: $arrow-size;
+    height: $arrow-size;
+    background-color: $primary-bg-color;
+    box-shadow: -1px -1px 0 0 $border-color;
+    z-index: 50;
+  }
+}
+
+.item {
+  padding: 8px 12px;
+  width: 100%;
+  color: $primary-text-color;
+  cursor: pointer;
+  display: block;
+
+  &:hover {
+    background-color: darken($primary-bg-color, 5%);
+  }
+}
+
+.divider {
+  border-top: 1px solid $border-color;
+  margin: $item-margin 0;
+}
+
+.display-name {
+  margin-right: 0.5em;
+}
+
+.hide {
+  display: none;
+}

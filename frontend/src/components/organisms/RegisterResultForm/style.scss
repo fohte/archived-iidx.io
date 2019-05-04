@@ -1,0 +1,64 @@
+@import 'styles/breakpoints';
+@import 'styles/colors';
+@import 'styles/variables';
+
+.header {
+  padding-top: 0;
+  padding-bottom: 0;
+
+  hr {
+    line-height: 1;
+    border: none;
+    background-color: $border-color;
+    height: 1px;
+    margin: 1.5rem -1.5rem;
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.links {
+  a {
+    height: 2em;
+    line-height: 2em;
+    display: inline-block;
+
+    .link-icon {
+      margin-left: 0.5em;
+    }
+  }
+
+  li {
+    list-style: none;
+    display: inline-block;
+
+    // margin-right: 1em;
+
+    &:after {
+      content: '•';
+      margin: 0 0.75em;
+    }
+
+    &:last-child {
+      &:after {
+        content: '';
+      }
+
+      margin-right: 0;
+    }
+  }
+}
+
+.button-group {
+  width: 100%;
+
+  @include on-computer() {
+    width: 15em;
+  }
+
+  .error {
+    background-color: lighten($red, 40%);
+  }
+}

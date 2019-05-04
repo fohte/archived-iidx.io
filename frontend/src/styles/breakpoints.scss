@@ -1,0 +1,24 @@
+$mobile-breakpoint: 480px;
+$tablet-breakpoint: 768px;
+$computer-breakpoint: 992px;
+
+$tablet-container-width: 740px;
+$computer-container-width: 1000px;
+
+@mixin on-mobile() {
+  @media only screen and (max-width: $tablet-breakpoint - 1px) {
+    @content;
+  }
+}
+
+@mixin on-tablet() {
+  @media only screen and (min-width: $tablet-breakpoint) and (max-width: $computer-breakpoint - 1px) {
+    @content;
+  }
+}
+
+@mixin on-computer() {
+  @media only screen and (min-width: $computer-breakpoint) {
+    @content;
+  }
+}

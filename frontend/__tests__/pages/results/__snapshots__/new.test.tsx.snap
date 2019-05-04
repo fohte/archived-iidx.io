@@ -1,152 +1,258 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`/ renders correctly 1`] = `
-Array [
-  <div
-    className="ui inverted vertical segment"
+<div
+  className="box"
+>
+  <nav
+    className="headerNav"
   >
     <div
-      className="ui inverted secondary menu"
+      className="container"
     >
       <div
-        className="ui container"
+        className="flexContainer"
       >
         <a
-          className="item"
           href="/"
           onClick={[Function]}
         >
-          <span>
-            iidx.io
-          </span>
+          <div
+            className="item"
+          >
+            <span>
+              iidx.io
+            </span>
+          </div>
         </a>
         <div
-          className="right menu"
+          className="item"
         >
-          <div
-            className="ui tiny active inline loader"
-          />
+          loading
         </div>
       </div>
     </div>
-  </div>,
+  </nav>
   <div
-    className="ui vertical segment"
+    className="content"
   >
     <div
-      className="ui container"
+      className="container"
     >
-      <form
-        className="ui form"
-        onSubmit={[Function]}
+      <div
+        className="register-result-form"
       >
         <div
-          className="inline fields"
+          className="box transparent header"
         >
-          <label>
-            Play Style
-          </label>
+          <h2>
+            Register results from CSV
+          </h2>
+          <hr />
           <div
-            className="field"
+            className="form-group"
           >
-            <div
-              className="ui radio checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
+            <label
+              className="label "
             >
-              <input
-                checked={false}
-                className="hidden"
-                name="playStyle"
-                readOnly={true}
-                tabIndex={0}
-                type="radio"
-                value="SP"
-              />
-              <label>
-                SP
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
+              Links (e-AMUSEMENT GATE)
+            </label>
             <div
-              className="ui radio checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
+              className="input-area"
             >
-              <input
-                checked={false}
-                className="hidden"
-                name="playStyle"
-                readOnly={true}
-                tabIndex={0}
-                type="radio"
-                value="DP"
-              />
-              <label>
-                DP
-              </label>
+              <ul
+                className="links"
+              >
+                <li>
+                  <a
+                    href="https://p.eagate.573.jp/game/2dx/26/djdata/score_download.html?style=SP"
+                    onClick={[Function]}
+                    target="_blank"
+                  >
+                    SP
+                    <span
+                      className="link-icon"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="svg-inline--fa fa-external-link-alt fa-w-18 "
+                        data-icon="external-link-alt"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        style={Object {}}
+                        viewBox="0 0 576 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"
+                          fill="currentColor"
+                          style={Object {}}
+                        />
+                      </svg>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://p.eagate.573.jp/game/2dx/26/djdata/score_download.html?style=DP"
+                    onClick={[Function]}
+                    target="_blank"
+                  >
+                    DP
+                    <span
+                      className="link-icon"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="svg-inline--fa fa-external-link-alt fa-w-18 "
+                        data-icon="external-link-alt"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        style={Object {}}
+                        viewBox="0 0 576 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"
+                          fill="currentColor"
+                          style={Object {}}
+                        />
+                      </svg>
+                    </span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
         <div
-          className="field"
+          className="box "
         >
-          <label>
-            CSV
-          </label>
-          <textarea
-            name="csv"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onInput={[Function]}
-            rows={3}
-            style={
-              Object {
-                "resize": "",
-              }
-            }
-            value=""
-          />
+          <form
+            onSubmit={[Function]}
+          >
+            <div
+              className="form-group"
+            >
+              <label
+                className="label "
+              >
+                Play Style
+              </label>
+              <div
+                className="input-area"
+              >
+                <div
+                  className="button-group button-group"
+                >
+                  <label>
+                    <input
+                      checked={false}
+                      className="input"
+                      name="playStyle"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      type="radio"
+                      value="SP"
+                    />
+                    <div
+                      className="button "
+                      disabled={false}
+                    >
+                      SP
+                    </div>
+                  </label>
+                  <label>
+                    <input
+                      checked={false}
+                      className="input"
+                      name="playStyle"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      type="radio"
+                      value="DP"
+                    />
+                    <div
+                      className="button "
+                      disabled={false}
+                    >
+                      DP
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div
+              className="form-group"
+            >
+              <label
+                className="label "
+              >
+                CSV
+              </label>
+              <div
+                className="input-area"
+              >
+                <textarea
+                  className="textarea "
+                  name="csv"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="Paste CSV here"
+                  value=""
+                />
+              </div>
+            </div>
+            <button
+              className="button disabled "
+              disabled={true}
+              type="submit"
+            >
+              Import
+            </button>
+          </form>
         </div>
-        <button
-          className="ui disabled button"
-          disabled={true}
-          onClick={[Function]}
-          tabIndex={-1}
-          type="submit"
-        >
-          submit
-        </button>
-      </form>
+      </div>
     </div>
-  </div>,
-  <div
-    className="ui vertical segment"
+  </div>
+  <footer
+    className="box"
   >
     <div
-      className="ui center aligned container"
+      className="container"
     >
-      <i
-        aria-hidden="true"
-        className="copyright outline icon"
-        onClick={[Function]}
-      />
-       
-      2018
-       iidx.io |
-       
-      test
+      <div
+        className="inner"
+      >
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-copyright fa-w-16 "
+          data-icon="copyright"
+          data-prefix="far"
+          focusable="false"
+          role="img"
+          style={Object {}}
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+         
+        2018
+         iidx.io |
+         
+        test
+      </div>
     </div>
-  </div>,
-]
+  </footer>
+</div>
 `;

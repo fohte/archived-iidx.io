@@ -2,65 +2,60 @@
 
 exports[`LoginOrSignUpForm renders correctly 1`] = `
 <form
-  className="ui large form"
   onSubmit={[Function]}
 >
   <div
-    className="ui stacked left aligned segment"
+    className="form-group"
   >
+    <label
+      className="label "
+    >
+      E-mail address
+    </label>
     <div
-      className="field"
+      className="input-area"
     >
-      <div
-        className="ui fluid left icon input"
-      >
-        <input
-          name="email"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="E-mail address"
-          type="email"
-          value=""
-        />
-        <i
-          aria-hidden="true"
-          className="user icon"
-          onClick={[Function]}
-        />
-      </div>
+      <input
+        className="input-text "
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="E-mail address"
+        type="email"
+        value=""
+      />
     </div>
-    <div
-      className="field"
-    >
-      <div
-        className="ui fluid left icon input"
-      >
-        <input
-          name="password"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Password"
-          type="password"
-          value=""
-        />
-        <i
-          aria-hidden="true"
-          className="lock icon"
-          onClick={[Function]}
-        />
-      </div>
-    </div>
-    <button
-      className="ui teal large fluid disabled button"
-      disabled={true}
-      onClick={[Function]}
-      tabIndex={-1}
-      type="submit"
-    >
-      Log in
-    </button>
   </div>
+  <div
+    className="form-group"
+  >
+    <label
+      className="label "
+    >
+      Password
+    </label>
+    <div
+      className="input-area"
+    >
+      <input
+        className="input-text "
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+    </div>
+  </div>
+  <button
+    className="button disabled "
+    disabled={true}
+    type="submit"
+  >
+    Log in
+  </button>
 </form>
 `;

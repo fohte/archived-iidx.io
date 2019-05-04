@@ -1,258 +1,193 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`/ renders correctly 1`] = `
-Array [
-  <div
-    className="ui inverted vertical segment"
+<div
+  className="box"
+>
+  <nav
+    className="headerNav"
   >
     <div
-      className="ui inverted secondary menu"
+      className="container"
     >
       <div
-        className="ui container"
+        className="flexContainer"
       >
         <a
-          className="item"
           href="/"
           onClick={[Function]}
         >
-          <span>
-            iidx.io
-          </span>
+          <div
+            className="item"
+          >
+            <span>
+              iidx.io
+            </span>
+          </div>
         </a>
         <div
-          className="right menu"
+          className="item"
         >
-          <div
-            className="ui tiny active inline loader"
-          />
+          loading
         </div>
       </div>
     </div>
-  </div>,
+  </nav>
   <div
-    className="ui vertical segment"
+    className="content"
   >
     <div
-      className="ui container"
+      className="container"
     >
-      <h2
-        className="ui header"
+      <div
+        className="user-profile-header"
       >
-        @
-        username
-      </h2>
-      <a
-        href="/@username/musics"
-        onClick={[Function]}
-      >
-        musics
-      </a>
+        <div
+          className="user-profile-content"
+        >
+          <div
+            className="user-avatar"
+          />
+          <h2>
+            @
+            username
+          </h2>
+        </div>
+        <ul
+          className="tabs"
+        >
+          <li
+            className="tab-item active"
+          >
+            <a
+              href="/@username"
+              onClick={[Function]}
+            >
+              Overview
+            </a>
+          </li>
+          <li
+            className="tab-item"
+          >
+            <a
+              href="/@username/musics"
+              onClick={[Function]}
+            >
+              Musics
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>,
-  <div
-    className="ui vertical segment"
+    <div
+      className="container"
+    />
+  </div>
+  <footer
+    className="box"
   >
     <div
-      className="ui center aligned container"
+      className="container"
     >
-      <i
-        aria-hidden="true"
-        className="copyright outline icon"
-        onClick={[Function]}
-      />
-       
-      2018
-       iidx.io |
-       
-      test
+      <div
+        className="inner"
+      >
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-copyright fa-w-16 "
+          data-icon="copyright"
+          data-prefix="far"
+          focusable="false"
+          role="img"
+          style={Object {}}
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+         
+        2018
+         iidx.io |
+         
+        test
+      </div>
     </div>
-  </div>,
-]
+  </footer>
+</div>
 `;
 
 exports[`/ renders correctly if there are errors 1`] = `
-Array [
-  <div
-    className="ui inverted vertical segment"
-  >
-    <div
-      className="ui inverted secondary menu"
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "background": "#fff",
+      "color": "#000",
+      "display": "flex",
+      "flexDirection": "column",
+      "fontFamily": "-apple-system, BlinkMacSystemFont, Roboto, \\"Segoe UI\\", \\"Fira Sans\\", Avenir, \\"Helvetica Neue\\", \\"Lucida Grande\\", sans-serif",
+      "height": "100vh",
+      "justifyContent": "center",
+      "textAlign": "center",
+    }
+  }
+>
+  <div>
+    <style
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "body { margin: 0 }",
+        }
+      }
+    />
+    <h1
+      style={
+        Object {
+          "borderRight": "1px solid rgba(0, 0, 0,.3)",
+          "display": "inline-block",
+          "fontSize": "24px",
+          "fontWeight": 500,
+          "margin": 0,
+          "marginRight": "20px",
+          "padding": "10px 23px 10px 0",
+          "verticalAlign": "top",
+        }
+      }
     >
-      <div
-        className="ui container"
-      >
-        <a
-          className="item"
-          href="/"
-          onClick={[Function]}
-        >
-          <span>
-            iidx.io
-          </span>
-        </a>
-        <div
-          className="right menu"
-        >
-          <div
-            className="ui tiny active inline loader"
-          />
-        </div>
-      </div>
-    </div>
-  </div>,
-  <div
-    className="ui vertical segment"
-  >
+      404
+    </h1>
     <div
-      className="ui container"
+      style={
+        Object {
+          "display": "inline-block",
+          "height": "49px",
+          "lineHeight": "49px",
+          "textAlign": "left",
+          "verticalAlign": "middle",
+        }
+      }
     >
-      <div
+      <h2
         style={
           Object {
-            "alignItems": "center",
-            "background": "#fff",
-            "color": "#000",
-            "display": "flex",
-            "flexDirection": "column",
-            "fontFamily": "-apple-system, BlinkMacSystemFont, Roboto, \\"Segoe UI\\", \\"Fira Sans\\", Avenir, \\"Helvetica Neue\\", \\"Lucida Grande\\", sans-serif",
-            "height": "100vh",
-            "justifyContent": "center",
-            "textAlign": "center",
+            "fontSize": "14px",
+            "fontWeight": "normal",
+            "lineHeight": "inherit",
+            "margin": 0,
+            "padding": 0,
           }
         }
       >
-        <div>
-          <style
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "body { margin: 0 }",
-              }
-            }
-          />
-          <h1
-            style={
-              Object {
-                "borderRight": "1px solid rgba(0, 0, 0,.3)",
-                "display": "inline-block",
-                "fontSize": "24px",
-                "fontWeight": 500,
-                "margin": 0,
-                "marginRight": "20px",
-                "padding": "10px 23px 10px 0",
-                "verticalAlign": "top",
-              }
-            }
-          >
-            404
-          </h1>
-          <div
-            style={
-              Object {
-                "display": "inline-block",
-                "height": "49px",
-                "lineHeight": "49px",
-                "textAlign": "left",
-                "verticalAlign": "middle",
-              }
-            }
-          >
-            <h2
-              style={
-                Object {
-                  "fontSize": "14px",
-                  "fontWeight": "normal",
-                  "lineHeight": "inherit",
-                  "margin": 0,
-                  "padding": 0,
-                }
-              }
-            >
-              This page could not be found
-              .
-            </h2>
-          </div>
-        </div>
-      </div>
+        This page could not be found
+        .
+      </h2>
     </div>
-  </div>,
-  <div
-    className="ui vertical segment"
-  >
-    <div
-      className="ui center aligned container"
-    >
-      <i
-        aria-hidden="true"
-        className="copyright outline icon"
-        onClick={[Function]}
-      />
-       
-      2018
-       iidx.io |
-       
-      test
-    </div>
-  </div>,
-]
+  </div>
+</div>
 `;
 
-exports[`/ renders correctly when loading 1`] = `
-Array [
-  <div
-    className="ui inverted vertical segment"
-  >
-    <div
-      className="ui inverted secondary menu"
-    >
-      <div
-        className="ui container"
-      >
-        <a
-          className="item"
-          href="/"
-          onClick={[Function]}
-        >
-          <span>
-            iidx.io
-          </span>
-        </a>
-        <div
-          className="right menu"
-        >
-          <div
-            className="ui tiny active inline loader"
-          />
-        </div>
-      </div>
-    </div>
-  </div>,
-  <div
-    className="ui vertical segment"
-  >
-    <div
-      className="ui container"
-    >
-      loading
-    </div>
-  </div>,
-  <div
-    className="ui vertical segment"
-  >
-    <div
-      className="ui center aligned container"
-    >
-      <i
-        aria-hidden="true"
-        className="copyright outline icon"
-        onClick={[Function]}
-      />
-       
-      2018
-       iidx.io |
-       
-      test
-    </div>
-  </div>,
-]
-`;
+exports[`/ renders correctly when loading 1`] = `"loading"`;

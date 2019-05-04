@@ -23,6 +23,6 @@
     },
     "typeRoots": ["node_modules/@types", "types"]
   },
-  "include": ["src/**/*", "stories/**/*", "__tests__/**/*"],
+  "include": ["src/**/*", "stories/**/*", "__tests__/**/*", "index.d.ts"],
   "exclude": ["node_modules", "coverage"]
 }

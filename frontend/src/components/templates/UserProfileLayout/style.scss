@@ -1,0 +1,59 @@
+@import 'styles/colors';
+@import 'styles/mixins';
+@import 'styles/variables';
+
+.user-profile-header {
+  margin-bottom: 2rem;
+}
+
+.user-profile-content {
+  padding: 1rem 2rem 2rem 2rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  $size: 5rem;
+  width: $size;
+  height: $size;
+
+  border-radius: 100%;
+
+  background-color: darken($ui-base-color, 20%);
+
+  margin-right: 2rem;
+}
+
+.tabs {
+  list-style: none;
+
+  display: flex;
+  border-bottom: 1px solid $border-color;
+
+  .tab-item {
+    text-align: center;
+    font-weight: 700;
+
+    outline: none;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    a {
+      color: $primary-fg-color;
+      display: block;
+      padding: 1.5rem;
+    }
+  }
+
+  .active {
+    border-bottom: 3px solid $ui-accent-color;
+    margin-bottom: -1px;
+
+    a {
+      color: $ui-accent-color;
+    }
+  }
+}

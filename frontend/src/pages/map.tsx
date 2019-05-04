@@ -3,7 +3,9 @@ import ErrorPage from 'next/error'
 import * as React from 'react'
 
 import MapDetail from '@app/components/organisms/MapDetail'
-import MainLayout from '@app/components/templates/MainLayout'
+import UserProfileLayout, {
+  Tab,
+} from '@app/components/templates/UserProfileLayout'
 import initApollo from '@app/lib/initApollo'
 import {
   parseDifficultyString,
@@ -32,27 +34,30 @@ export type Props = {
   screenName?: string
 }
 
-const renderMap = ({ loading, errors, music, screenName }: Props) => {
+const MapPage: PageComponentType<Props, Props, Query> = ({
+  loading,
+  errors,
+  music,
+  screenName,
+}: Props) => {
   if (loading) {
-    return 'loading'
+    return <>'loading'</>
   }
   if (errors || !music || !music.map || !screenName) {
     return <ErrorPage statusCode={404} />
   }
 
   return (
-    <MapDetail
-      music={music}
-      map={music.map}
-      result={music.map.bestResult || undefined}
-      screenName={screenName}
-    />
+    <UserProfileLayout screenName={screenName} activeTab={Tab.Musics}>
+      <MapDetail
+        music={music}
+        map={music.map}
+        result={music.map.bestResult || undefined}
+        screenName={screenName}
+      />
+    </UserProfileLayout>
   )
 }
-
-const MapPage: PageComponentType<Props, Props, Query> = props => (
-  <MainLayout>{renderMap(props)}</MainLayout>
-)
 
 const makeDefaultProps = (): Props => ({ loading: false })
 

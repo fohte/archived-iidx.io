@@ -3,7 +3,9 @@ import ErrorPage from 'next/error'
 import * as React from 'react'
 
 import Profile from '@app/components/organisms/Profile'
-import MainLayout from '@app/components/templates/MainLayout'
+import UserProfileLayout, {
+  Tab,
+} from '@app/components/templates/UserProfileLayout'
 import initApollo from '@app/lib/initApollo'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
@@ -24,20 +26,24 @@ export type Props = {
   loading: boolean
 }
 
-const renderProfile = ({ loading, errors, user }: Props) => {
+const ProfilePage: PageComponentType<Props, Props, Query> = ({
+  loading,
+  errors,
+  user,
+}: Props) => {
   if (loading) {
-    return 'loading'
+    return <>loading</>
   }
   if (errors || !user) {
     return <ErrorPage statusCode={404} />
   }
 
-  return <Profile user={user} />
+  return (
+    <UserProfileLayout screenName={user.name} activeTab={Tab.Overview}>
+      <Profile />
+    </UserProfileLayout>
+  )
 }
-
-const ProfilePage: PageComponentType<Props, Props, Query> = props => (
-  <MainLayout>{renderProfile(props)}</MainLayout>
-)
 
 ProfilePage.getInitialProps = async ({ res, query: { screenName } }) => {
   const client = initApollo()

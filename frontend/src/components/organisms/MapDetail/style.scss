@@ -1,0 +1,107 @@
+@import 'styles/colors';
+
+.map-detail {
+  li {
+    list-style: none;
+  }
+
+  text-align: center;
+
+  padding-top: 0;
+}
+
+.music-data {
+  margin-bottom: 1rem;
+
+  .genre {
+    margin-bottom: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.7em;
+    line-height: 1;
+
+    margin-bottom: 0.5rem;
+  }
+}
+
+.difficulty-area {
+  font-size: 0.85em;
+
+  display: inline-block;
+
+  margin-bottom: 1rem;
+
+  .difficulty,
+  .level {
+    color: $white;
+
+    height: 2em;
+    line-height: 2em;
+    padding: 0 1rem;
+    display: inline-block;
+
+    &:first-child {
+      border-radius: 2px 0 0 2px;
+    }
+
+    &:last-child {
+      border-radius: 0 2px 2px 0;
+    }
+  }
+
+  @mixin difficulty-style($difficulty, $color) {
+    &.difficulty-#{$difficulty} {
+      .difficulty {
+        background-color: darken($color, 10%);
+      }
+
+      .level {
+        background-color: $color;
+      }
+    }
+  }
+
+  @include difficulty-style('normal', $blue);
+  @include difficulty-style('hyper', darken($orange, 0%));
+  @include difficulty-style('another', darken($red, 0%));
+}
+
+.map-data-table {
+  width: 100%;
+  font-size: 0.9em;
+  padding: 0 1.5rem;
+
+  th {
+    text-align: right;
+
+    color: $primary-fg-lighter-color;
+    font-weight: 100;
+
+    width: 50%;
+
+    padding-right: 0.5rem;
+  }
+
+  td {
+    text-align: left;
+
+    width: 50%;
+
+    padding-left: 0.5rem;
+  }
+}
+
+.textage-links {
+  li {
+    display: inline;
+
+    & + li {
+      padding-left: 0.5em;
+    }
+  }
+}
+
+.card-title {
+  font-weight: 700;
+}

@@ -10,6 +10,8 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
+          <link href="/static/dist/fontawesome.css" rel="stylesheet" />
+          <link href="/static/dist/ress.min.css" rel="stylesheet" />
         </Head>
         <body>
           <Main />

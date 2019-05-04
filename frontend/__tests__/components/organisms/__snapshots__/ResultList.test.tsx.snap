@@ -1,24 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ResultList renders correctly 1`] = `
-Array [
-  <form
-    className="ui form"
-    onSubmit={[Function]}
+<div
+  className="result-list"
+>
+  <div
+    className="form-wrapper"
   >
     <div
-      className="ui segments"
+      className="box "
     >
-      <div
-        className="ui basic segment"
+      <form
+        onSubmit={[Function]}
       >
         <div
-          className="field"
+          className="search-form"
         >
           <div
-            className="ui fluid action input"
+            className="button-group button-group"
+          >
+            <label>
+              <input
+                checked={true}
+                className="input"
+                name="playStyle"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+                value="SP"
+              />
+              <div
+                className="button active "
+                disabled={false}
+              >
+                SP
+              </div>
+            </label>
+            <label>
+              <input
+                checked={false}
+                className="input"
+                name="playStyle"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+                value="DP"
+              />
+              <div
+                className="button "
+                disabled={false}
+              >
+                DP
+              </div>
+            </label>
+          </div>
+          <div
+            className="search-input-group"
           >
             <input
+              className="search-area"
               name="title"
               onBlur={[Function]}
               onChange={[Function]}
@@ -28,546 +70,328 @@ Array [
               value=""
             />
             <button
-              className="ui disabled button"
+              className=""
               disabled={true}
-              onClick={[Function]}
-              tabIndex={-1}
+              type="submit"
             >
-              Search
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-search fa-w-16 "
+                data-icon="search"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
             </button>
           </div>
         </div>
-      </div>
+      </form>
+    </div>
+  </div>
+  <div
+    className="table-wrapper"
+  >
+    <div
+      className="pagination top"
+    >
       <div
-        className="ui basic secondary segment"
+        className="pagination"
       >
-        <div
-          className="inline fields"
+        <a
+          className="jump-to-first disabled"
+          onClick={[Function]}
+          rel="nofollow"
         >
-          <label>
-            Play Style
-          </label>
-          <div
-            className="field"
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-angle-double-left fa-w-14 "
+            data-icon="angle-double-left"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <div
-              className="ui checked radio checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={true}
-                className="hidden"
-                name="playStyle"
-                readOnly={true}
-                tabIndex={0}
-                type="radio"
-                value="SP"
-              />
-              <label>
-                SP
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui radio checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="playStyle"
-                readOnly={true}
-                tabIndex={0}
-                type="radio"
-                value="DP"
-              />
-              <label>
-                DP
-              </label>
-            </div>
-          </div>
-        </div>
-        <div
-          className="inline fields"
+            <path
+              d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <a
+          className="back disabled"
+          onClick={[Function]}
+          rel="nofollow"
         >
-          <label>
-            Difficulty
-          </label>
-          <div
-            className="field"
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-angle-left fa-w-8 "
+            data-icon="angle-left"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 256 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="difficulties"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                NORMAL
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="difficulties"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                HYPER
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="difficulties"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ANOTHER
-              </label>
-            </div>
-          </div>
-        </div>
-        <div
-          className="inline fields"
+            <path
+              d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <span
+          className="page-info"
         >
-          <label>
-            Level
-          </label>
-          <div
-            className="field"
+          Page 
+          <span
+            className="active-page"
           >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆1
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
+            1
+          </span>
+           of
+           
+          0
+        </span>
+        <a
+          className="forward disabled"
+          onClick={[Function]}
+          rel="nofollow"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-angle-right fa-w-8 "
+            data-icon="angle-right"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 256 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆2
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
+            <path
+              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <a
+          className="jump-to-last disabled"
+          onClick={[Function]}
+          rel="nofollow"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-angle-double-right fa-w-14 "
+            data-icon="angle-double-right"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆3
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆4
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆5
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆6
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆7
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆8
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆9
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆10
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆11
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆12
-              </label>
-            </div>
-          </div>
-        </div>
+            <path
+              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
       </div>
     </div>
-  </form>,
-  <div
-    className="ui divider"
-  />,
-  <table
-    className="ui celled unstackable table"
-    style={
-      Object {
-        "overflow": "hidden",
-      }
-    }
-  >
-    <thead
-      className=""
+    <div />
+    <div
+      className="pagination bottom"
     >
-      <tr
-        className=""
+      <div
+        className="pagination"
       >
-        <th
-          className=""
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
-        />
-        <th
-          className="center aligned one wide"
+        <a
+          className="jump-to-first disabled"
+          onClick={[Function]}
+          rel="nofollow"
         >
-          Level
-        </th>
-        <th
-          className="center aligned four wide"
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-angle-double-left fa-w-14 "
+            data-icon="angle-double-left"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <a
+          className="back disabled"
+          onClick={[Function]}
+          rel="nofollow"
         >
-          Title
-        </th>
-        <th
-          className="center aligned two wide"
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-angle-left fa-w-8 "
+            data-icon="angle-left"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 256 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <span
+          className="page-info"
         >
-          Clear
-        </th>
-        <th
-          className="center aligned three wide"
+          Page 
+          <span
+            className="active-page"
+          >
+            1
+          </span>
+           of
+           
+          0
+        </span>
+        <a
+          className="forward disabled"
+          onClick={[Function]}
+          rel="nofollow"
         >
-          DJ Level
-        </th>
-        <th
-          className="center aligned one wide"
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-angle-right fa-w-8 "
+            data-icon="angle-right"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 256 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <a
+          className="jump-to-last disabled"
+          onClick={[Function]}
+          rel="nofollow"
         >
-          Score
-        </th>
-        <th
-          className="six wide"
-        >
-          Rate
-        </th>
-        <th
-          className="center aligned one wide"
-        >
-          BPI
-        </th>
-        <th
-          className="center aligned one wide"
-        >
-          BP
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      className=""
-    />
-  </table>,
-]
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-angle-double-right fa-w-14 "
+            data-icon="angle-double-right"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ResultList renders correctly if there are errors 1`] = `
-Array [
-  <form
-    className="ui form"
-    onSubmit={[Function]}
+<div
+  className="result-list"
+>
+  <div
+    className="form-wrapper"
   >
     <div
-      className="ui segments"
+      className="box "
     >
-      <div
-        className="ui basic segment"
+      <form
+        onSubmit={[Function]}
       >
         <div
-          className="field"
+          className="search-form"
         >
           <div
-            className="ui fluid action input"
+            className="button-group button-group"
+          >
+            <label>
+              <input
+                checked={true}
+                className="input"
+                name="playStyle"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+                value="SP"
+              />
+              <div
+                className="button active "
+                disabled={false}
+              >
+                SP
+              </div>
+            </label>
+            <label>
+              <input
+                checked={false}
+                className="input"
+                name="playStyle"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+                value="DP"
+              />
+              <div
+                className="button "
+                disabled={false}
+              >
+                DP
+              </div>
+            </label>
+          </div>
+          <div
+            className="search-input-group"
           >
             <input
+              className="search-area"
               name="title"
               onBlur={[Function]}
               onChange={[Function]}
@@ -577,545 +401,168 @@ Array [
               value=""
             />
             <button
-              className="ui disabled button"
+              className=""
               disabled={true}
-              onClick={[Function]}
-              tabIndex={-1}
+              type="submit"
             >
-              Search
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-search fa-w-16 "
+                data-icon="search"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
             </button>
           </div>
         </div>
-      </div>
-      <div
-        className="ui basic secondary segment"
-      >
-        <div
-          className="inline fields"
-        >
-          <label>
-            Play Style
-          </label>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checked radio checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={true}
-                className="hidden"
-                name="playStyle"
-                readOnly={true}
-                tabIndex={0}
-                type="radio"
-                value="SP"
-              />
-              <label>
-                SP
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui radio checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="playStyle"
-                readOnly={true}
-                tabIndex={0}
-                type="radio"
-                value="DP"
-              />
-              <label>
-                DP
-              </label>
-            </div>
-          </div>
-        </div>
-        <div
-          className="inline fields"
-        >
-          <label>
-            Difficulty
-          </label>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="difficulties"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                NORMAL
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="difficulties"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                HYPER
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="difficulties"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ANOTHER
-              </label>
-            </div>
-          </div>
-        </div>
-        <div
-          className="inline fields"
-        >
-          <label>
-            Level
-          </label>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆1
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆2
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆3
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆4
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆5
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆6
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆7
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆8
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆9
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆10
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆11
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆12
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
-  </form>,
+  </div>
   <div
-    className="ui divider"
-  />,
-  <div
-    style={
-      Object {
-        "alignItems": "center",
-        "background": "#fff",
-        "color": "#000",
-        "display": "flex",
-        "flexDirection": "column",
-        "fontFamily": "-apple-system, BlinkMacSystemFont, Roboto, \\"Segoe UI\\", \\"Fira Sans\\", Avenir, \\"Helvetica Neue\\", \\"Lucida Grande\\", sans-serif",
-        "height": "100vh",
-        "justifyContent": "center",
-        "textAlign": "center",
-      }
-    }
+    className="table-wrapper"
   >
-    <div>
-      <style
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "body { margin: 0 }",
-          }
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#fff",
+          "color": "#000",
+          "display": "flex",
+          "flexDirection": "column",
+          "fontFamily": "-apple-system, BlinkMacSystemFont, Roboto, \\"Segoe UI\\", \\"Fira Sans\\", Avenir, \\"Helvetica Neue\\", \\"Lucida Grande\\", sans-serif",
+          "height": "100vh",
+          "justifyContent": "center",
+          "textAlign": "center",
         }
-      />
-      <h1
-        style={
-          Object {
-            "borderRight": "1px solid rgba(0, 0, 0,.3)",
-            "display": "inline-block",
-            "fontSize": "24px",
-            "fontWeight": 500,
-            "margin": 0,
-            "marginRight": "20px",
-            "padding": "10px 23px 10px 0",
-            "verticalAlign": "top",
+      }
+    >
+      <div>
+        <style
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "body { margin: 0 }",
+            }
           }
-        }
-      >
-        404
-      </h1>
-      <div
-        style={
-          Object {
-            "display": "inline-block",
-            "height": "49px",
-            "lineHeight": "49px",
-            "textAlign": "left",
-            "verticalAlign": "middle",
-          }
-        }
-      >
-        <h2
+        />
+        <h1
           style={
             Object {
-              "fontSize": "14px",
-              "fontWeight": "normal",
-              "lineHeight": "inherit",
+              "borderRight": "1px solid rgba(0, 0, 0,.3)",
+              "display": "inline-block",
+              "fontSize": "24px",
+              "fontWeight": 500,
               "margin": 0,
-              "padding": 0,
+              "marginRight": "20px",
+              "padding": "10px 23px 10px 0",
+              "verticalAlign": "top",
             }
           }
         >
-          This page could not be found
-          .
-        </h2>
+          404
+        </h1>
+        <div
+          style={
+            Object {
+              "display": "inline-block",
+              "height": "49px",
+              "lineHeight": "49px",
+              "textAlign": "left",
+              "verticalAlign": "middle",
+            }
+          }
+        >
+          <h2
+            style={
+              Object {
+                "fontSize": "14px",
+                "fontWeight": "normal",
+                "lineHeight": "inherit",
+                "margin": 0,
+                "padding": 0,
+              }
+            }
+          >
+            This page could not be found
+            .
+          </h2>
+        </div>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`ResultList renders correctly when loading 1`] = `
-Array [
-  <form
-    className="ui form"
-    onSubmit={[Function]}
+<div
+  className="result-list"
+>
+  <div
+    className="form-wrapper"
   >
     <div
-      className="ui segments"
+      className="box "
     >
-      <div
-        className="ui basic segment"
+      <form
+        onSubmit={[Function]}
       >
         <div
-          className="field"
+          className="search-form"
         >
           <div
-            className="ui fluid action input"
+            className="button-group button-group"
+          >
+            <label>
+              <input
+                checked={true}
+                className="input"
+                name="playStyle"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+                value="SP"
+              />
+              <div
+                className="button active "
+                disabled={false}
+              >
+                SP
+              </div>
+            </label>
+            <label>
+              <input
+                checked={false}
+                className="input"
+                name="playStyle"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="radio"
+                value="DP"
+              />
+              <div
+                className="button "
+                disabled={false}
+              >
+                DP
+              </div>
+            </label>
+          </div>
+          <div
+            className="search-input-group"
           >
             <input
+              className="search-area"
               name="title"
               onBlur={[Function]}
               onChange={[Function]}
@@ -1125,456 +572,37 @@ Array [
               value=""
             />
             <button
-              className="ui disabled button"
+              className=""
               disabled={true}
-              onClick={[Function]}
-              tabIndex={-1}
+              type="submit"
             >
-              Search
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-search fa-w-16 "
+                data-icon="search"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
             </button>
           </div>
         </div>
-      </div>
-      <div
-        className="ui basic secondary segment"
-      >
-        <div
-          className="inline fields"
-        >
-          <label>
-            Play Style
-          </label>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checked radio checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={true}
-                className="hidden"
-                name="playStyle"
-                readOnly={true}
-                tabIndex={0}
-                type="radio"
-                value="SP"
-              />
-              <label>
-                SP
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui radio checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="playStyle"
-                readOnly={true}
-                tabIndex={0}
-                type="radio"
-                value="DP"
-              />
-              <label>
-                DP
-              </label>
-            </div>
-          </div>
-        </div>
-        <div
-          className="inline fields"
-        >
-          <label>
-            Difficulty
-          </label>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="difficulties"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                NORMAL
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="difficulties"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                HYPER
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="difficulties"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ANOTHER
-              </label>
-            </div>
-          </div>
-        </div>
-        <div
-          className="inline fields"
-        >
-          <label>
-            Level
-          </label>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆1
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆2
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆3
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆4
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆5
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆6
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆7
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆8
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆9
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆10
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆11
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="levels"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-              />
-              <label>
-                ☆12
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
-  </form>,
+  </div>
   <div
-    className="ui divider"
-  />,
-  "loading",
-]
+    className="table-wrapper"
+  >
+    loading
+  </div>
+</div>
 `;
