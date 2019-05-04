@@ -200,7 +200,7 @@ GEM
     redis (4.1.0)
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
-    ridgepole (0.7.6)
+    ridgepole (0.7.7)
       activerecord (>= 5.0.1, < 6)
       diffy
     rspec-core (3.8.0)
