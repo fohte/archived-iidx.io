@@ -6,7 +6,7 @@ jobs:
         environment:
           RAILS_ENV: test
           MYSQL_HOST: 127.0.0.1
-      - image: circleci/mysql:5.7.25
+      - image: circleci/mysql:5.7.26
     working_directory: ~/repo/backend
     steps:
       - checkout:
