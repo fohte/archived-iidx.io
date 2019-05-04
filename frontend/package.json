@@ -43,7 +43,7 @@
     "copy-webpack-plugin": "5.0.1",
     "express": "4.16.4",
     "final-form": "4.12.0",
-    "firebase": "5.9.0",
+    "firebase": "5.11.1",
     "graphql": "14.2.1",
     "graphql-tag": "2.10.1",
     "isomorphic-fetch": "2.2.1",
