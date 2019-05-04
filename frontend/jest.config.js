@@ -18,7 +18,6 @@ module.exports = {
     '\\.s?css$': 'identity-obj-proxy',
   },
   setupFiles: ['<rootDir>/jest.setup.ts'],
-  setupTestFrameworkScriptFile: '<rootDir>/jest.setup-test-framework.ts',
   testPathIgnorePatterns: ['<rootDir>/src/.next/', '<rootDir>/node_modules/'],
   testMatch: ['**/__tests__/**/*.test.{j,t}s{,x}'],
   transform: {
