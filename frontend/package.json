@@ -70,7 +70,7 @@
     "@types/jest": "23.3.14",
     "@types/react-test-renderer": "16.8.1",
     "@types/styled-components": "4.1.14",
-    "@types/validator": "10.9.0",
+    "@types/validator": "10.11.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.5",
@@ -109,6 +109,6 @@
     "@types/react-test-renderer": "16.8.1",
     "@types/recompose": "0.30.6",
     "@types/styled-components": "4.1.14",
-    "@types/validator": "10.9.0"
+    "@types/validator": "10.11.0"
   }
 }
