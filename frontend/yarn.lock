@@ -10248,10 +10248,10 @@ util@^0.10.3:
   dependencies:
     inherits "2.0.3"
 
-utility-types@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.4.1.tgz#3caa1d207eac873f989bf8c92cf3e8c539045c61"
-  integrity sha512-GyH068kJf7c4vhfqj4aCM5X+TeV8jG2iPFLimpGpnQ7dvKfogZOHfiYxMww/nGEfMm/bEmnVbeZGO1see1OVKg==
+utility-types@3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.6.1.tgz#14d0621888c906592d7544414b3762b33a657568"
+  integrity sha512-3MiRraWYaLnIjEbWHQEhuMlPIyjSVPZBlfvulm8xGMSs5nQrP0RiCCGJGvNCi2on8w8B7skRTNJUAGK+8PlbrQ==
 
 utils-merge@1.0.1:
   version "1.0.1"
