@@ -2,19 +2,21 @@
 
 exports[`RegisterForm renders correctly 1`] = `
 <form
-  className="ui form"
   onSubmit={[Function]}
 >
   <div
-    className="field"
+    className="form-group"
   >
-    <label>
+    <label
+      className="label "
+    >
       Username
     </label>
     <div
-      className="ui left icon input"
+      className="input-area"
     >
       <input
+        className="input-text "
         name="username"
         onBlur={[Function]}
         onChange={[Function]}
@@ -23,23 +25,21 @@ exports[`RegisterForm renders correctly 1`] = `
         type="text"
         value=""
       />
-      <i
-        aria-hidden="true"
-        className="at icon"
-        onClick={[Function]}
-      />
     </div>
   </div>
   <div
-    className="field"
+    className="form-group"
   >
-    <label>
+    <label
+      className="label "
+    >
       Display Name
     </label>
     <div
-      className="ui left icon input"
+      className="input-area"
     >
       <input
+        className="input-text "
         name="displayName"
         onBlur={[Function]}
         onChange={[Function]}
@@ -48,21 +48,14 @@ exports[`RegisterForm renders correctly 1`] = `
         type="text"
         value=""
       />
-      <i
-        aria-hidden="true"
-        className="user icon"
-        onClick={[Function]}
-      />
     </div>
   </div>
   <button
-    className="ui teal large disabled button"
+    className="button disabled "
     disabled={true}
-    onClick={[Function]}
-    tabIndex={-1}
     type="submit"
   >
-    Sign up
+    Register
   </button>
 </form>
 `;
