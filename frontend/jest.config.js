@@ -15,7 +15,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
   moduleNameMapper: {
     '@app/(.*)': '<rootDir>/src/$1',
-    '^.+\\.css$': 'jest-transform-css',
+    '\\.s?css$': 'identity-obj-proxy',
   },
   setupFiles: ['<rootDir>/jest.setup.ts'],
   setupTestFrameworkScriptFile: '<rootDir>/jest.setup-test-framework.ts',
