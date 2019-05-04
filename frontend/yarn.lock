@@ -2261,13 +2261,13 @@ autodll-webpack-plugin@0.4.2:
     webpack-merge "^4.1.0"
     webpack-sources "^1.0.1"
 
-autoprefixer@9.5.0:
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.5.0.tgz#7e51d0355c11596e6cf9a0afc9a44e86d1596c70"
-  integrity sha512-hMKcyHsZn5+qL6AUeP3c8OyuteZ4VaUlg+fWbyl8z7PqsKHF/Bf8/px3K6AT8aMzDkBo8Bc11245MM+itDBOxQ==
+autoprefixer@9.5.1:
+  version "9.5.1"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.5.1.tgz#243b1267b67e7e947f28919d786b50d3bb0fb357"
+  integrity sha512-KJSzkStUl3wP0D5sdMlP82Q52JLy5+atf2MHAre48+ckWkXgixmfHyWmA77wFDy6jTHU6mIgXv6hAQ2mf1PjJQ==
   dependencies:
-    browserslist "^4.4.2"
-    caniuse-lite "^1.0.30000947"
+    browserslist "^4.5.4"
+    caniuse-lite "^1.0.30000957"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^7.0.14"
@@ -2743,6 +2743,15 @@ browserslist@^4.5.1:
     electron-to-chromium "^1.3.116"
     node-releases "^1.1.11"
 
+browserslist@^4.5.4:
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.5.6.tgz#ea42e8581ca2513fa7f371d4dd66da763938163d"
+  integrity sha512-o/hPOtbU9oX507lIqon+UvPYqpx3mHc8cV3QemSBTXwkG8gSQSK6UKvXcE/DcleU3+A59XTUHyCvZ5qGy8xVAg==
+  dependencies:
+    caniuse-lite "^1.0.30000963"
+    electron-to-chromium "^1.3.127"
+    node-releases "^1.1.17"
+
 bs-logger@0.x:
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/bs-logger/-/bs-logger-0.2.5.tgz#1d82f0cf88864e1341cd9262237f8d0748a49b22"
@@ -2904,15 +2913,15 @@ caniuse-lite@^1.0.30000939:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000942.tgz#454139b28274bce70bfe1d50c30970df7430c6e4"
   integrity sha512-wLf+IhZUy2rfz48tc40OH7jHjXjnvDFEYqBHluINs/6MgzoNLPf25zhE4NOVzqxLKndf+hau81sAW0RcGHIaBQ==
 
-caniuse-lite@^1.0.30000947:
-  version "1.0.30000949"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000949.tgz#8cbc6d2f141bc32362f7467b45a2dcae8e64c84b"
-  integrity sha512-jIF/jphmuJ7oAWmfYO0qAxRAvCa0zNquALO6Ykfe6qo8qwh882Cgcs+OWmm21L3x6nu4TVLFeEZ9/q6VuKCfSg==
-
 caniuse-lite@^1.0.30000949:
   version "1.0.30000950"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000950.tgz#8c559d66e332b34e919d1086cc6d29c1948856ae"
   integrity sha512-Cs+4U9T0okW2ftBsCIHuEYXXkki7mjXmjCh4c6PzYShk04qDEr76/iC7KwhLoWoY65wcra1XOsRD+S7BptEb5A==
+
+caniuse-lite@^1.0.30000957, caniuse-lite@^1.0.30000963:
+  version "1.0.30000966"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000966.tgz#f3c6fefacfbfbfb981df6dfa68f2aae7bff41b64"
+  integrity sha512-qqLQ/uYrpZmFhPY96VuBkMEo8NhVFBZ9y/Bh+KnvGzGJ5I8hvpIaWlF2pw5gqe4PLAL+ZjsPgMOvoXSpX21Keg==
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -3953,6 +3962,11 @@ electron-to-chromium@^1.3.116:
   version "1.3.116"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.116.tgz#1dbfee6a592a0c14ade77dbdfe54fef86387d702"
   integrity sha512-NKwKAXzur5vFCZYBHpdWjTMO8QptNLNP80nItkSIgUOapPAo9Uia+RvkCaZJtO7fhQaVElSvBPWEc2ku6cKsPA==
+
+electron-to-chromium@^1.3.127:
+  version "1.3.131"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.131.tgz#205a0b7a276b3f56bc056f19178909243054252a"
+  integrity sha512-NSO4jLeyGLWrT4mzzfYX8vt1MYCoMI5LxSYAjt0H9+LF/14JyiKJSyyjA6AJTxflZlEM5v3QU33F0ohbPMCAPg==
 
 electron-to-chromium@^1.3.96:
   version "1.3.98"
@@ -7391,6 +7405,13 @@ node-releases@^1.1.11:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.11.tgz#9a0841a4b0d92b7d5141ed179e764f42ad22724a"
   integrity sha512-8v1j5KfP+s5WOTa1spNUAOfreajQPN12JXbRR0oDE+YrJBQCXBnNqUDj27EKpPLOoSiU3tKi3xGPB+JaOdUEQQ==
+  dependencies:
+    semver "^5.3.0"
+
+node-releases@^1.1.17:
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.17.tgz#71ea4631f0a97d5cd4f65f7d04ecf9072eac711a"
+  integrity sha512-/SCjetyta1m7YXLgtACZGDYJdCSIBAWorDWkGCGZlydP2Ll7J48l7j/JxNYZ+xsgSPbWfdulVS/aY+GdjUsQ7Q==
   dependencies:
     semver "^5.3.0"
 
