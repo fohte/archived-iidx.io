@@ -16,7 +16,7 @@ const cx = classnames.bind(css)
 
 const submitRequest: NonNullable<Props['submitRequest']> = values => {
   return new Promise((resolve, reject) => {
-    auth
+    auth()
       .signInWithEmailAndPassword(values.email, values.password)
       .then(() => resolve())
       .catch((e: ErrorType) => {
