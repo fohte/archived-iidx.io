@@ -4,8 +4,15 @@ import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
 import { FormValues } from '@app/components/organisms/LoginOrSignUpForm'
-import { auth } from '@app/lib/firebaseApp'
 import Signup from '@app/pages/signup'
+
+const mockCreate = jest.fn()
+
+jest.mock('@app/lib/firebaseApp', () => ({
+  auth: jest.fn().mockImplementation(() => ({
+    createUserWithEmailAndPassword: mockCreate,
+  })),
+}))
 
 const inputFields = (wrapper: ReactWrapper, values: FormValues) => {
   _.forEach(values, (value, key) => {
@@ -21,7 +28,7 @@ const submit = (wrapper: ReactWrapper) => {
 
 describe('/signup', () => {
   beforeEach(() => {
-    auth.createUserWithEmailAndPassword = jest.fn()
+    mockCreate.mockClear()
   })
 
   it('create a user on firebase auth', () => {
@@ -30,10 +37,7 @@ describe('/signup', () => {
     inputFields(wrapper, { email: 'email@example.com', password: 'password' })
     submit(wrapper)
 
-    expect(auth.createUserWithEmailAndPassword).toHaveBeenCalledWith(
-      'email@example.com',
-      'password',
-    )
+    expect(mockCreate).toHaveBeenCalledWith('email@example.com', 'password')
   })
 
   it('renders correctly', () => {

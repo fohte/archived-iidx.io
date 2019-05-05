@@ -30,7 +30,7 @@ class AuthStateProvider extends React.Component<Props, State> {
   public async componentDidMount() {
     await this.fetchViewer()
 
-    this.unsubscribe = auth.onAuthStateChanged(async user => {
+    this.unsubscribe = auth().onAuthStateChanged(async user => {
       if (user) {
         this.setState({ loading: true, signedIn: true })
       } else {

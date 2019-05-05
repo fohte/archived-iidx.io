@@ -32,8 +32,10 @@ const handleError = onError(({ graphQLErrors, networkError }) => {
 })
 
 const withAuthorization = setContext(async (_, { headers }) => {
-  if (auth.currentUser) {
-    const idToken = await auth.currentUser.getIdToken()
+  const currentUser = auth().currentUser
+
+  if (currentUser) {
+    const idToken = await currentUser.getIdToken()
 
     if (idToken) {
       return {

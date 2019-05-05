@@ -64,7 +64,7 @@ const UserMenu: React.SFC<Props> = ({ displayName, className }) => {
           className={cx('item')}
           onClick={async () => {
             hide()
-            await auth.signOut()
+            await auth().signOut()
           }}
         >
           Sign out
