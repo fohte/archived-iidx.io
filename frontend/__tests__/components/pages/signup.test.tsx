@@ -6,6 +6,14 @@ import * as renderer from 'react-test-renderer'
 import { FormValues } from '@app/components/organisms/LoginOrSignUpForm'
 import Signup from '@app/pages/signup'
 
+const mockCreate = jest.fn()
+
+jest.mock('@app/lib/firebaseApp', () => ({
+  auth: jest.fn().mockImplementation(() => ({
+    createUserWithEmailAndPassword: mockCreate,
+  })),
+}))
+
 const inputFields = (wrapper: ReactWrapper, values: FormValues) => {
   _.forEach(values, (value, key) => {
     wrapper
@@ -19,14 +27,6 @@ const submit = (wrapper: ReactWrapper) => {
 }
 
 describe('/signup', () => {
-  const mockCreate = jest.fn()
-
-  jest.mock('@app/lib/firebaseApp', () => ({
-    auth: jest.fn().mockImplementation(() => ({
-      createUserWithEmailAndPassword: mockCreate,
-    })),
-  }))
-
   beforeEach(() => {
     mockCreate.mockClear()
   })
