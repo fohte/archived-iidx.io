@@ -57,7 +57,7 @@
     "recompose": "0.30.0",
     "ress": "1.2.2",
     "typescript": "3.4.5",
-    "utility-types": "3.6.1",
+    "utility-types": "3.7.0",
     "validator": "10.11.0"
   },
   "devDependencies": {
