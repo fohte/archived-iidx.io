@@ -11,7 +11,8 @@ FactoryBot.define do
     genre { Faker::Music.genre }
     artist { Faker::Artist.name }
     textage_uid { SecureRandom.base64 }
-    series { Music.series.values.sample }
+
+    association :series, factory: :series
 
     trait :with_maps do
       after :build do |music|

@@ -19,6 +19,7 @@ gem 'rack-cors'
 gem 'rails-i18n'
 gem 'redis'
 gem 'ridgepole'
+gem 'seed-fu'
 gem 'virtus'
 
 group :development, :test do

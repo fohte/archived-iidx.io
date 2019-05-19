@@ -1,0 +1,29 @@
+keys:
+  - version_number
+data:
+  - { name: '1st&substream', version_number: 1 }
+  - { name: '2nd style', version_number: 2 }
+  - { name: '3rd style', version_number: 3 }
+  - { name: '4th style', version_number: 4 }
+  - { name: '5th style', version_number: 5 }
+  - { name: '6th style', version_number: 6 }
+  - { name: '7th style', version_number: 7 }
+  - { name: '8th style', version_number: 8 }
+  - { name: '9th style', version_number: 9 }
+  - { name: '10th style', version_number: 10 }
+  - { name: 'IIDX RED', version_number: 11 }
+  - { name: 'HAPPY SKY', version_number: 12 }
+  - { name: 'DistorteD', version_number: 13 }
+  - { name: 'GOLD', version_number: 14 }
+  - { name: 'DJ TROOPERS', version_number: 15 }
+  - { name: 'EMPRESS', version_number: 16 }
+  - { name: 'SIRIUS', version_number: 17 }
+  - { name: 'Resort Anthem', version_number: 18 }
+  - { name: 'Lincle', version_number: 19 }
+  - { name: 'tricoro', version_number: 20 }
+  - { name: 'SPADA', version_number: 21 }
+  - { name: 'PENDUAL', version_number: 22 }
+  - { name: 'copula', version_number: 23 }
+  - { name: 'SINOBUZ', version_number: 24 }
+  - { name: 'CANNON BALLERS', version_number: 25 }
+  - { name: 'Rootage', version_number: 26 }

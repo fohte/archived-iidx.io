@@ -3,6 +3,8 @@
 class Music < ApplicationRecord
   include SeriesEnum
 
+  belongs_to :series
+
   has_many :maps, dependent: :destroy, autosave: true
 
   scope :fuzzy_search_by_title, ->(title) do

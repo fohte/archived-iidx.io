@@ -30,6 +30,10 @@ Style/MultilineBlockChain:
 Style/Lambda:
   EnforcedStyle: literal
 
+Style/BracesAroundHashParameters:
+  Exclude:
+    - 'db/fixtures/**/*.rb'
+
 Layout/IndentFirstArrayElement:
   EnforcedStyle: consistent
 
