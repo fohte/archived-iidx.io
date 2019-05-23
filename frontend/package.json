@@ -61,8 +61,8 @@
     "validator": "10.11.0"
   },
   "devDependencies": {
-    "@babel/core": "7.4.4",
-    "@babel/preset-env": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
     "@types/enzyme": "3.9.2",
     "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/jest": "23.3.14",
