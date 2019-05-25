@@ -20,3 +20,13 @@ coverage
 /backend/public/packs
 /backend/public/packs-test
 vendor/bundle
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
