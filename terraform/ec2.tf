@@ -3,12 +3,12 @@ resource "aws_instance" "ecs_host" {
   ami = "ami-0edf19001c48838c7"
 
   instance_type               = "t2.micro"
-  availability_zone           = "${local.availability_zones[0]}"
+  availability_zone           = local.availability_zones[0]
   associate_public_ip_address = true
-  subnet_id                   = "${aws_subnet.public.0.id}"
-  iam_instance_profile        = "${aws_iam_instance_profile.ecs_host.name}"
-  user_data                   = "${data.template_file.user_data.rendered}"
-  vpc_security_group_ids      = ["${aws_security_group.ecs_host.id}"]
+  subnet_id                   = aws_subnet.public[0].id
+  iam_instance_profile        = aws_iam_instance_profile.ecs_host.name
+  user_data                   = data.template_file.user_data.rendered
+  vpc_security_group_ids      = [aws_security_group.ecs_host.id]
 
   key_name = "fohte"
 
@@ -27,16 +27,16 @@ resource "aws_instance" "ecs_host" {
     delete_on_termination = true
   }
 
-  tags {
+  tags = {
     Name = "${local.name}.ecs_host"
   }
 }
 
 data "template_file" "user_data" {
-  template = "${file("${path.module}/templates/user_data.sh")}"
+  template = file("${path.module}/templates/user_data.sh")
 
-  vars {
-    ecs_cluster = "${aws_ecs_cluster.main.name}"
+  vars = {
+    ecs_cluster = aws_ecs_cluster.main.name
   }
 }
 
@@ -53,12 +53,12 @@ data "aws_iam_policy_document" "ecs_host_assume_role_policy" {
 
 resource "aws_iam_role" "ecs_host" {
   name               = "${local.name}.ecs_host"
-  assume_role_policy = "${data.aws_iam_policy_document.ecs_host_assume_role_policy.json}"
+  assume_role_policy = data.aws_iam_policy_document.ecs_host_assume_role_policy.json
 }
 
 resource "aws_iam_instance_profile" "ecs_host" {
   name = "${local.name}.ecs_host"
-  role = "${aws_iam_role.ecs_host.name}"
+  role = aws_iam_role.ecs_host.name
 }
 
 # https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/instance_IAM_role.html
@@ -89,21 +89,21 @@ data "aws_iam_policy_document" "ecs_host" {
       "logs:DescribeLogStreams",
     ]
 
-    resources = ["${aws_cloudwatch_log_group.app.arn}"]
+    resources = [aws_cloudwatch_log_group.app.arn]
   }
 }
 
 resource "aws_iam_role_policy" "ecs_host" {
   name = "${local.name}.ecs_host"
-  role = "${aws_iam_role.ecs_host.name}"
+  role = aws_iam_role.ecs_host.name
 
-  policy = "${data.aws_iam_policy_document.ecs_host.json}"
+  policy = data.aws_iam_policy_document.ecs_host.json
 }
 
 resource "aws_security_group" "ecs_host" {
   name        = "${local.name}.ecs_host"
   description = "ECS Allowed Ports"
-  vpc_id      = "${aws_vpc.main.id}"
+  vpc_id      = aws_vpc.main.id
 
   ingress {
     from_port = 0
@@ -116,35 +116,35 @@ resource "aws_security_group" "ecs_host" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${local.home_cidrs}"]
+    cidr_blocks = local.home_cidrs
   }
 
   ingress {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
-    cidr_blocks = ["${local.home_cidrs}"]
+    cidr_blocks = local.home_cidrs
   }
 
   ingress {
     from_port   = 5000
     to_port     = 5000
     protocol    = "tcp"
-    cidr_blocks = ["${local.home_cidrs}"]
+    cidr_blocks = local.home_cidrs
   }
 
   ingress {
     protocol        = "tcp"
     from_port       = 3000
     to_port         = 3000
-    security_groups = ["${aws_security_group.alb.id}"]
+    security_groups = [aws_security_group.alb.id]
   }
 
   ingress {
     protocol        = "tcp"
     from_port       = 5000
     to_port         = 5000
-    security_groups = ["${aws_security_group.alb.id}"]
+    security_groups = [aws_security_group.alb.id]
   }
 
   egress {
@@ -154,7 +154,7 @@ resource "aws_security_group" "ecs_host" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags {
+  tags = {
     Name = "${local.name}.ecs_host"
   }
 }
