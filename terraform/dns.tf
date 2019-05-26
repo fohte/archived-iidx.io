@@ -25,7 +25,7 @@ resource "aws_route53_record" "dev_ns" {
 }
 
 module "main_cert" {
-  source = "modules/cert"
+  source = "./modules/cert"
 
   name    = "${local.name}.main"
   domain  = "iidx.io"
@@ -33,7 +33,7 @@ module "main_cert" {
 }
 
 module "dev_cert" {
-  source = "modules/cert"
+  source = "./modules/cert"
 
   name    = "${local.name}.dev"
   domain  = "dev.iidx.io"
