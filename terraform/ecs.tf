@@ -44,13 +44,13 @@ resource "aws_ecs_task_definition" "web" {
       image = "iidxio/backend"
 
       environment = [for k, v in {
-        "APP_DATABASE_PASSWORD" = "${data.aws_ssm_parameter.db_password.value}"
+        "APP_DATABASE_PASSWORD" = data.aws_ssm_parameter.db_password.value
 
         "FIREBASE_API_KEY"     = "AIzaSyCO-OMhKvm89aZj4-1HTZOc0PTnb5aUtxQ"
         "FIREBASE_AUTH_DOMAIN" = "iidx-io.firebaseapp.com"
         "FIREBASE_PROJECT_ID"  = "iidx-io"
 
-        "MYSQL_HOST" = "${aws_db_instance.main.address}"
+        "MYSQL_HOST" = aws_db_instance.main.address
         "MYSQL_PORT" = "3306"
 
         "RAILS_LOG_TO_STDOUT" = "true"
@@ -58,7 +58,7 @@ resource "aws_ecs_task_definition" "web" {
         "REDIS_HOST" = "redis"
         "REDIS_PORT" = "6379"
 
-        "SECRET_KEY_BASE" = "${data.aws_ssm_parameter.secret_key_base.value}"
+        "SECRET_KEY_BASE" = data.aws_ssm_parameter.secret_key_base.value
       } : { name = k, value = v }]
 
       links = ["redis"]
@@ -118,9 +118,9 @@ resource "aws_ecs_task_definition" "ridgepole" {
       image = "iidxio/backend"
 
       environment = [for k, v in {
-        "APP_DATABASE_PASSWORD" = "${data.aws_ssm_parameter.db_password.value}"
+        "APP_DATABASE_PASSWORD" = data.aws_ssm_parameter.db_password.value
 
-        "MYSQL_HOST" = "${aws_db_instance.main.address}"
+        "MYSQL_HOST" = aws_db_instance.main.address
         "MYSQL_PORT" = "3306"
 
         "RAILS_LOG_TO_STDOUT" = "true"
@@ -144,9 +144,9 @@ resource "aws_ecs_task_definition" "textage_scraper" {
       image = "iidxio/backend"
 
       environment = [for k, v in {
-        "APP_DATABASE_PASSWORD" = "${data.aws_ssm_parameter.db_password.value}"
+        "APP_DATABASE_PASSWORD" = data.aws_ssm_parameter.db_password.value
 
-        "MYSQL_HOST" = "${aws_db_instance.main.address}"
+        "MYSQL_HOST" = aws_db_instance.main.address
         "MYSQL_PORT" = "3306"
 
         "RAILS_LOG_TO_STDOUT" = "true"
