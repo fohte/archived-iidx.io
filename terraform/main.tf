@@ -7,18 +7,23 @@ terraform {
 }
 
 provider "aws" {
-  version = "~> 1.45"
+  version = "~> 2.7"
   region  = "ap-northeast-1"
 }
 
 locals {
   name                   = "iidx_io"
-  all_availability_zones = "${data.aws_availability_zones.available.names}"
-  availability_zones     = "${slice(local.all_availability_zones, 0, length(local.all_availability_zones) - 1)}"
-  home_cidrs             = ["220.210.176.220/32"]
+  all_availability_zones = data.aws_availability_zones.available.names
+  availability_zones = slice(
+    local.all_availability_zones,
+    0,
+    length(local.all_availability_zones) - 1,
+  )
+  home_cidrs = ["220.210.176.220/32"]
 }
 
-data "aws_availability_zones" "available" {}
+data "aws_availability_zones" "available" {
+}
 
 data "aws_ssm_parameter" "db_password" {
   name = "iidx_io_db_password"
