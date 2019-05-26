@@ -12,55 +12,40 @@ resource "aws_ecs_service" "web" {
   deployment_minimum_healthy_percent = 0
 }
 
-data "template_file" "container_definitions_web" {
-  template = file("templates/container_definitions/web.json")
-
-  vars = {
-    db_host          = aws_db_instance.main.address
-    secret_key_base  = data.aws_ssm_parameter.secret_key_base.value
-    db_password      = data.aws_ssm_parameter.db_password.value
-    log_group_name   = aws_cloudwatch_log_group.app.name
-    log_group_region = "ap-northeast-1"
-  }
-}
 
 resource "aws_ecs_task_definition" "web" {
-  family                = "${replace(local.name, "/[^a-zA-Z0-9\\-]/", "-")}-web"
-  container_definitions = data.template_file.container_definitions_web.rendered
-}
-
-data "template_file" "container_definitions_ridgepole" {
-  template = file("templates/container_definitions/ridgepole.json")
-
-  vars = {
+  family = "${replace(local.name, "/[^a-zA-Z0-9\\-]/", "-")}-web"
+  container_definitions = templatefile("templates/container_definitions/web.json", {
     db_host          = aws_db_instance.main.address
     secret_key_base  = data.aws_ssm_parameter.secret_key_base.value
     db_password      = data.aws_ssm_parameter.db_password.value
     log_group_name   = aws_cloudwatch_log_group.app.name
     log_group_region = "ap-northeast-1"
-  }
+  })
 }
 
 resource "aws_ecs_task_definition" "ridgepole" {
-  family                = "${replace(local.name, "/[^a-zA-Z0-9\\-]/", "-")}-ridgepole"
-  container_definitions = data.template_file.container_definitions_ridgepole.rendered
-}
+  family = "${replace(local.name, "/[^a-zA-Z0-9\\-]/", "-")}-ridgepole"
 
-data "template_file" "container_definitions_textage_scraper" {
-  template = file("templates/container_definitions/textage_scraper.json")
-
-  vars = {
+  container_definitions = templatefile("templates/container_definitions/ridgepole.json", {
     db_host          = aws_db_instance.main.address
     secret_key_base  = data.aws_ssm_parameter.secret_key_base.value
     db_password      = data.aws_ssm_parameter.db_password.value
     log_group_name   = aws_cloudwatch_log_group.app.name
     log_group_region = "ap-northeast-1"
-  }
+  })
 }
 
+
 resource "aws_ecs_task_definition" "textage_scraper" {
-  family                = "${replace(local.name, "/[^a-zA-Z0-9\\-]/", "-")}-textage-scraper"
-  container_definitions = data.template_file.container_definitions_textage_scraper.rendered
+  family = "${replace(local.name, "/[^a-zA-Z0-9\\-]/", "-")}-textage-scraper"
+  container_definitions = templatefile("templates/container_definitions/textage_scraper.json", {
+    db_host          = aws_db_instance.main.address
+    secret_key_base  = data.aws_ssm_parameter.secret_key_base.value
+    db_password      = data.aws_ssm_parameter.db_password.value
+    log_group_name   = aws_cloudwatch_log_group.app.name
+    log_group_region = "ap-northeast-1"
+  })
 }
 
 resource "aws_cloudwatch_event_rule" "textage_scraper" {

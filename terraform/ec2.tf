@@ -7,8 +7,12 @@ resource "aws_instance" "ecs_host" {
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.public[0].id
   iam_instance_profile        = aws_iam_instance_profile.ecs_host.name
-  user_data                   = data.template_file.user_data.rendered
-  vpc_security_group_ids      = [aws_security_group.ecs_host.id]
+
+  user_data = templatefile("${path.module}/templates/user_data.sh", {
+    ecs_cluster = aws_ecs_cluster.main.name
+  })
+
+  vpc_security_group_ids = [aws_security_group.ecs_host.id]
 
   key_name = "fohte"
 
@@ -29,14 +33,6 @@ resource "aws_instance" "ecs_host" {
 
   tags = {
     Name = "${local.name}.ecs_host"
-  }
-}
-
-data "template_file" "user_data" {
-  template = file("${path.module}/templates/user_data.sh")
-
-  vars = {
-    ecs_cluster = aws_ecs_cluster.main.name
   }
 }
 

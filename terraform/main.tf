@@ -11,10 +11,6 @@ provider "aws" {
   region  = "ap-northeast-1"
 }
 
-provider "template" {
-  version = "~> 2.0"
-}
-
 locals {
   name                   = "iidx_io"
   all_availability_zones = data.aws_availability_zones.available.names
