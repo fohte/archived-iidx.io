@@ -41,7 +41,7 @@ resource "aws_ecs_task_definition" "web" {
   container_definitions = jsonencode([
     {
       name  = "backend"
-      image = "iidxio/backend"
+      image = aws_ecr_repository.backend.repository_url
 
       environment = [for k, v in {
         "APP_DATABASE_PASSWORD" = data.aws_ssm_parameter.db_password.value
@@ -75,7 +75,7 @@ resource "aws_ecs_task_definition" "web" {
     },
     {
       name  = "frontend"
-      image = "iidxio/frontend"
+      image = aws_ecr_repository.frontend.repository_url
 
       environment = [for k, v in {
         "PRIVATE_API_URL" = "http://backend:3000/graphql"
@@ -115,7 +115,7 @@ resource "aws_ecs_task_definition" "ridgepole" {
   container_definitions = jsonencode([
     {
       name  = "ridgepole"
-      image = "iidxio/backend"
+      image = aws_ecr_repository.backend.repository_url
 
       environment = [for k, v in {
         "APP_DATABASE_PASSWORD" = data.aws_ssm_parameter.db_password.value
@@ -141,7 +141,7 @@ resource "aws_ecs_task_definition" "textage_scraper" {
   container_definitions = jsonencode([
     {
       name  = "textage_scraper"
-      image = "iidxio/backend"
+      image = aws_ecr_repository.backend.repository_url
 
       environment = [for k, v in {
         "APP_DATABASE_PASSWORD" = data.aws_ssm_parameter.db_password.value
