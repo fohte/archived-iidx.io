@@ -87,6 +87,21 @@ data "aws_iam_policy_document" "ecs_host" {
 
     resources = [aws_cloudwatch_log_group.app.arn]
   }
+
+  # ECR のイメージの pull を許可する
+  # https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/ECR_on_ECS.html
+  statement {
+    sid = "allowPullingECRImages"
+
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:GetAuthorizationToken",
+    ]
+
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_role_policy" "ecs_host" {
