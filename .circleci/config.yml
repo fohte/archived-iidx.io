@@ -172,7 +172,18 @@ jobs:
           path: << parameters.path >>
 
 workflows:
-  build:
+  commit:
+    jobs:
+      - test-frontend
+      - test-backend
+      - prettier
+  nightly:
+    triggers:
+      - schedule:
+          cron: '0 18 * * *' # 毎日 3:00 (JST)
+          filters:
+            branches:
+              only: master
     jobs:
       - test-frontend
       - test-backend
@@ -185,9 +196,6 @@ workflows:
             - test-frontend
             - test-backend
             - prettier
-          filters:
-            branches:
-              only: master
       - docker-build-and-push:
           name: build-and-push-backend-image
           repo: iidx.io/backend
@@ -196,6 +204,3 @@ workflows:
             - test-frontend
             - test-backend
             - prettier
-          filters:
-            branches:
-              only: master
