@@ -38,6 +38,7 @@ commands:
           command: |
             docker build \
               --cache-from ${AWS_ECR_ACCOUNT_URL}/<< parameters.repo >>:latest \
+              --build-arg "IIDXIO_VERSION=${CIRCLE_SHA1}" \
               -f << parameters.dockerfile >> \
               -t ${AWS_ECR_ACCOUNT_URL}/<< parameters.repo >>:latest \
               << parameters.path >>
