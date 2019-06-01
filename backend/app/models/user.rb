@@ -95,9 +95,22 @@ class User < ApplicationRecord
 
             old_result = results.find_by(map: new_result.map)
 
-            next if old_result && !old_result.updated?(new_result)
+            if old_result.present?
+              # スコアが更新されていなかったらスキップする
+              next unless old_result.updated?(new_result)
 
-            results << new_result
+              old_result.update!(
+                **result_attributes,
+              )
+
+              old_result.user = self
+              old_result.to_log.save!
+            else
+              results << new_result
+
+              new_result.user = self
+              new_result.to_log.save!
+            end
           else
             temporary_results << TemporaryResult.new(
               version: row.version,

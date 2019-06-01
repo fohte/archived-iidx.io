@@ -6,6 +6,26 @@ RSpec.describe Result do
   include_examples 'ClearLampEnum'
   include_examples 'GradeEnum'
 
+  describe '#to_log' do
+    subject { result.to_log }
+
+    let(:result) { build_stubbed(:result, :with_user, :with_map) }
+
+    it 'ResultLog を返す' do
+      expect(subject).to have_attributes(
+        user: result.user,
+        map: result.map,
+        result: result,
+        score: result.score,
+        miss_count: result.miss_count,
+        clear_lamp: result.clear_lamp,
+        grade: result.grade,
+        last_played_at: result.last_played_at,
+        created_at: nil, # timestamp はコピーしない
+      )
+    end
+  end
+
   describe '#updated?' do
     subject { old_result.updated?(new_result) }
 

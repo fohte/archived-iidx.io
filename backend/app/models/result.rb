@@ -9,6 +9,19 @@ class Result < ApplicationRecord
   include ClearLampEnum
   include GradeEnum
 
+  # @return [ResultLog]
+  def to_log
+    copy_attrs = ResultLog.column_names.without('created_at')
+
+    ResultLog.new(attributes.extract!(*copy_attrs)).tap do |log|
+      log.attributes = {
+        user: user,
+        map: map,
+        result: self,
+      }
+    end
+  end
+
   def updated?(other)
     clear_lamp_updated?(other.clear_lamp) ||
       grade_updated?(other.grade) ||
