@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_one :profile, class_name: 'UserProfile', dependent: :destroy
   has_many :results, dependent: :destroy
+  has_many :result_logs, dependent: :destroy
   has_many :temporary_results, dependent: :destroy
   has_many :result_batches, dependent: :destroy
 

@@ -4,6 +4,7 @@ class Result < ApplicationRecord
   belongs_to :user
   belongs_to :map
   belongs_to :result_batch, optional: true
+  has_many :result_logs, dependent: :destroy
 
   include ClearLampEnum
   include GradeEnum

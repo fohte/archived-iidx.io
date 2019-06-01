@@ -3,6 +3,7 @@
 class Map < ApplicationRecord
   belongs_to :music
   has_many :results, dependent: :nullify
+  has_many :result_logs, dependent: :nullify
 
   has_one :kaiden_average_result, dependent: :destroy
   has_one :world_record_result, dependent: :destroy
