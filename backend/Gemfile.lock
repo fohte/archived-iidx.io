@@ -54,6 +54,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.12)
     builder (3.2.3)
+    bullet (6.0.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.0.1)
     codecov (0.1.14)
       json
@@ -262,6 +265,7 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.0)
+    uniform_notifier (1.12.1)
     url (0.3.2)
     virtus (1.0.5)
       axiom-types (~> 0.1)
@@ -282,6 +286,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import
   bcrypt (~> 3.1.7)
+  bullet
   byebug
   codecov
   enumerize
