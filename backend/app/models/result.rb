@@ -6,6 +6,8 @@ class Result < ApplicationRecord
   belongs_to :result_batch, optional: true
   has_many :result_logs, dependent: :destroy
 
+  validates :user_id, uniqueness: { scope: :map_id }
+
   include ClearLampEnum
   include GradeEnum
 
