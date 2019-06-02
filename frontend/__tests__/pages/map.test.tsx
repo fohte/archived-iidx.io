@@ -29,7 +29,7 @@ describe('/map', () => {
         difficulty: Difficulty.Another,
         minBpm: 100,
         maxBpm: 400,
-        bestResult: {
+        result: {
           id: '1',
           score: 2000,
           missCount: 1,

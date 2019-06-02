@@ -102,7 +102,6 @@ enum Grade {
 }
 
 type Map {
-  bestResult(username: String!): Result
   difficulty: Difficulty!
   id: ID!
   level: Int!
@@ -111,6 +110,7 @@ type Map {
   music: Music!
   numNotes: Int!
   playStyle: PlayStyle!
+  result(username: String!): Result
 }
 
 type Music {

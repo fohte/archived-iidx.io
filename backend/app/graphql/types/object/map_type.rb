@@ -22,12 +22,12 @@ module Types
       field :min_bpm, Integer, null: false
       field :max_bpm, Integer, null: false
 
-      field :best_result, ResultType, null: true do
+      field :result, ResultType, null: true do
         argument :username, String, required: true
       end
 
-      def best_result(username:)
-        object.best_result(user: User.find_by!(name: username))
+      def result(username:)
+        object.results.find_by(user: User.find_by!(name: username))
       rescue ActiveRecord::RecordNotFound => e
         raise IIDXIO::GraphQL::NotFoundError, e.message
       end

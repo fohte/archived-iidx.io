@@ -16,12 +16,6 @@ class Map < ApplicationRecord
     play_style.values.product(difficulty.values)
   end
 
-  # @param user [User]
-  # @return [Result, nil]
-  def best_result(user:)
-    results.where(user: user).last
-  end
-
   def max_score
     num_notes * 2
   end

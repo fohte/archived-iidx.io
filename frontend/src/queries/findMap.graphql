@@ -20,7 +20,7 @@ query findMap(
       difficulty
       minBpm
       maxBpm
-      bestResult(username: $username) {
+      result(username: $username) {
         id
         score
         missCount
