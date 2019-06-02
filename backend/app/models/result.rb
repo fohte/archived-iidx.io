@@ -13,15 +13,16 @@ class Result < ApplicationRecord
 
   # @return [ResultLog]
   def to_log
-    copy_attrs = ResultLog.column_names.without('created_at')
-
-    ResultLog.new(attributes.extract!(*copy_attrs)).tap do |log|
-      log.attributes = {
-        user: user,
-        map: map,
-        result: self,
-      }
-    end
+    ResultLog.new(
+      user: user,
+      map: map,
+      result: self,
+      score: score,
+      miss_count: miss_count,
+      clear_lamp: clear_lamp,
+      grade: grade,
+      last_played_at: last_played_at,
+    )
   end
 
   def updated?(other)

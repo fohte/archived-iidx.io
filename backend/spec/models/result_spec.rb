@@ -13,6 +13,7 @@ RSpec.describe Result do
 
     it 'ResultLog を返す' do
       expect(subject).to have_attributes(
+        id: nil, # id はコピーしない
         user: result.user,
         map: result.map,
         result: result,
