@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.2.3'
 
 gem 'activerecord-import'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.13'
 gem 'enumerize'
 gem 'faraday'
 gem 'faraday-http-cache'
