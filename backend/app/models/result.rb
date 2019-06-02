@@ -4,9 +4,26 @@ class Result < ApplicationRecord
   belongs_to :user
   belongs_to :map
   belongs_to :result_batch, optional: true
+  has_many :result_logs, dependent: :destroy
+
+  validates :user_id, uniqueness: { scope: :map_id }
 
   include ClearLampEnum
   include GradeEnum
+
+  # @return [ResultLog]
+  def to_log
+    ResultLog.new(
+      user: user,
+      map: map,
+      result: self,
+      score: score,
+      miss_count: miss_count,
+      clear_lamp: clear_lamp,
+      grade: grade,
+      last_played_at: last_played_at,
+    )
+  end
 
   def updated?(other)
     clear_lamp_updated?(other.clear_lamp) ||

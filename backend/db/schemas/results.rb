@@ -11,4 +11,6 @@ create_table :results, force: :cascade, id: :bigint, unsigned: true, options: 'E
 
   t.datetime :last_played_at, null: false
   t.timestamps
+
+  t.index %i[user_id map_id]
 end

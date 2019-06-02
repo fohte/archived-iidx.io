@@ -146,6 +146,7 @@ RSpec.describe User do
       end
 
       it { expect { subject }.to change(Result, :count).by(2) }
+      it { expect { subject }.to change(ResultLog, :count).by(2) }
 
       it 'inserts results' do
         subject
@@ -162,6 +163,30 @@ RSpec.describe User do
           have_attributes(
             map: music.sp_another,
             result_batch: user.result_batches.last,
+            clear_lamp: 'ex_hard',
+            grade: 'aa',
+            score: 2174,
+            miss_count: 7,
+            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+          ),
+        )
+      end
+
+      it 'inserts result logs' do
+        subject
+        expect(user.result_logs).to contain_exactly(
+          have_attributes(
+            map: music.sp_hyper,
+            result: user.results.first,
+            clear_lamp: 'ex_hard',
+            grade: 'aa',
+            score: 1954,
+            miss_count: 7,
+            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+          ),
+          have_attributes(
+            map: music.sp_another,
+            result: user.results.last,
             clear_lamp: 'ex_hard',
             grade: 'aa',
             score: 2174,
@@ -205,6 +230,61 @@ RSpec.describe User do
         it 'does not insert results' do
           expect { subject }.to change(Result, :count).by(0)
         end
+
+        it 'result_logs レコードを作成しない' do
+          expect { subject }.to change(ResultLog, :count).by(0)
+        end
+      end
+
+      context 'リザルト更新があるとき' do
+        let(:csv) do
+          <<~CSV
+            # this line is a dummy header
+            IIDX RED,gigadelic,NUSTYLE GABBA,teranoid feat.MC Natsack,3,9,0,0,0,---,NO PLAY,---,12,1955,862,230,7,EX HARD CLEAR,AA,12,0,0,0,---,NO PLAY,---,2018-02-24 15:10
+          CSV
+        end
+
+        before do
+          old_batch = create(:result_batch, user: user)
+          create(
+            :result,
+            result_batch: old_batch,
+            user: user,
+            map: music.sp_hyper,
+            clear_lamp: 'ex_hard',
+            grade: 'aa',
+            score: 1954,
+            miss_count: 7,
+            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+          )
+        end
+
+        it 'creates a result batch record' do
+          expect { subject }.to change { user.result_batches.count }.by(1)
+        end
+
+        it 'リザルトが新しいほうで更新される' do
+          subject
+          expect(user.results).to contain_exactly(
+            have_attributes(
+              map: music.sp_hyper,
+              result_batch: user.result_batches.last,
+              clear_lamp: 'ex_hard',
+              grade: 'aa',
+              score: 1955,
+              miss_count: 7,
+              last_played_at: Time.zone.local(2018, 2, 24, 15, 10, 0),
+            ),
+          )
+        end
+
+        it 'results レコードを作成しない' do
+          expect { subject }.to change(Result, :count).by(0)
+        end
+
+        it 'result_logs レコードを作成する' do
+          expect { subject }.to change(ResultLog, :count).by(1)
+        end
       end
     end
 
@@ -244,6 +324,10 @@ RSpec.describe User do
       it 'does not insert results' do
         expect { subject }.to change(Result, :count).by(0)
       end
+
+      it 'result_logs レコードを作成しない' do
+        expect { subject }.to change(ResultLog, :count).by(0)
+      end
     end
 
     context 'when results are not played in any version but they are played in previous version' do
@@ -271,6 +355,7 @@ RSpec.describe User do
       end
 
       it { expect { subject }.to change(Result, :count).by(1) }
+      it { expect { subject }.to change(ResultLog, :count).by(1) }
 
       it 'inserts results' do
         subject
@@ -278,6 +363,21 @@ RSpec.describe User do
           have_attributes(
             map: music.sp_another,
             result_batch: user.result_batches.last,
+            clear_lamp: 'ex_hard',
+            grade: nil,
+            score: nil,
+            miss_count: nil,
+            last_played_at: Time.zone.local(2018, 11, 7, 19, 48, 0),
+          ),
+        )
+      end
+
+      it 'result_logs レコードを作成すること' do
+        subject
+        expect(user.result_logs).to contain_exactly(
+          have_attributes(
+            map: music.sp_another,
+            result: user.results.last,
             clear_lamp: 'ex_hard',
             grade: nil,
             score: nil,
@@ -313,6 +413,7 @@ RSpec.describe User do
       end
 
       it { expect { subject }.to change(Result, :count).by(1) }
+      it { expect { subject }.to change(ResultLog, :count).by(1) }
 
       it 'inserts results' do
         subject
@@ -320,6 +421,21 @@ RSpec.describe User do
           have_attributes(
             map: music.sp_hyper,
             result_batch: user.result_batches.last,
+            clear_lamp: nil,
+            grade: 'aa',
+            score: 1885,
+            miss_count: 5,
+            last_played_at: Time.zone.local(2018, 11, 7, 20, 10, 0),
+          ),
+        )
+      end
+
+      it 'result_logs レコードを作成すること' do
+        subject
+        expect(user.result_logs).to contain_exactly(
+          have_attributes(
+            map: music.sp_hyper,
+            result: user.results.last,
             clear_lamp: nil,
             grade: 'aa',
             score: 1885,

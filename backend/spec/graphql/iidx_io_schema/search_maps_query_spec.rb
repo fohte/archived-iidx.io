@@ -25,7 +25,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
               id
             }
 
-            bestResult(username: $username) {
+            result(username: $username) {
               id
             }
           }
@@ -45,7 +45,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'searchMaps' => [{
             'id' => map.id.to_s,
             'music' => { 'id' => map.music.id.to_s },
-            'bestResult' => nil,
+            'result' => nil,
           }],
         )
       end
@@ -66,7 +66,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'searchMaps' => [{
             'id' => map.id.to_s,
             'music' => { 'id' => map.music.id.to_s },
-            'bestResult' => { 'id' => result.id.to_s },
+            'result' => { 'id' => result.id.to_s },
           }],
         )
       end
@@ -90,7 +90,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'searchMaps' => [{
             'id' => map.id.to_s,
             'music' => { 'id' => map.music.id.to_s },
-            'bestResult' => { 'id' => result.id.to_s },
+            'result' => { 'id' => result.id.to_s },
           }],
         )
       end
@@ -112,12 +112,12 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           {
             'id' => level11_map.id.to_s,
             'music' => { 'id' => level11_map.music.id.to_s },
-            'bestResult' => { 'id' => level11_map.best_result(user: user).id.to_s },
+            'result' => { 'id' => level11_map.results.last.id.to_s },
           },
           {
             'id' => level12_map.id.to_s,
             'music' => { 'id' => level12_map.music.id.to_s },
-            'bestResult' => { 'id' => level12_map.best_result(user: user).id.to_s },
+            'result' => { 'id' => level12_map.results.last.id.to_s },
           },
         ])
       end
@@ -138,7 +138,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'searchMaps' => [{
             'id' => sp_map.id.to_s,
             'music' => { 'id' => sp_map.music.id.to_s },
-            'bestResult' => { 'id' => sp_map.best_result(user: user).id.to_s },
+            'result' => { 'id' => sp_map.results.last.id.to_s },
           }],
         )
       end
@@ -160,12 +160,12 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           {
             'id' => another_map.id.to_s,
             'music' => { 'id' => another_map.music.id.to_s },
-            'bestResult' => { 'id' => another_map.best_result(user: user).id.to_s },
+            'result' => { 'id' => another_map.results.last.id.to_s },
           },
           {
             'id' => hyper_map.id.to_s,
             'music' => { 'id' => hyper_map.music.id.to_s },
-            'bestResult' => { 'id' => hyper_map.best_result(user: user).id.to_s },
+            'result' => { 'id' => hyper_map.results.last.id.to_s },
           },
         ])
       end

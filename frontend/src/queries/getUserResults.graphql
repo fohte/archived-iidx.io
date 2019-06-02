@@ -22,7 +22,7 @@ query getUserResults(
       title
     }
 
-    bestResult(username: $username) {
+    result(username: $username) {
       id
       score
       missCount

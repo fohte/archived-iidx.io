@@ -52,7 +52,7 @@ const MapPage: PageComponentType<Props, Props, Query> = ({
       <MapDetail
         music={music}
         map={music.map}
-        result={music.map.bestResult || undefined}
+        result={music.map.result || undefined}
         screenName={screenName}
       />
     </UserProfileLayout>

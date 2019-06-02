@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_one :profile, class_name: 'UserProfile', dependent: :destroy
   has_many :results, dependent: :destroy
+  has_many :result_logs, dependent: :destroy
   has_many :temporary_results, dependent: :destroy
   has_many :result_batches, dependent: :destroy
 
@@ -49,19 +50,6 @@ class User < ApplicationRecord
     end
   end
 
-  def latest_results
-    @latest_results ||= results.find_by_sql(<<~SQL)
-      SELECT
-        x.*
-      FROM
-        results x
-        LEFT JOIN results y ON x.map_id = y.map_id
-        AND x.last_played_at < y.last_played_at
-      WHERE
-        y.id IS NULL;
-    SQL
-  end
-
   # @param csv [String]
   # @param play_style [:sp, :dp]
   def import_results_from_csv(csv, play_style)
@@ -94,9 +82,22 @@ class User < ApplicationRecord
 
             old_result = results.find_by(map: new_result.map)
 
-            next if old_result && !old_result.updated?(new_result)
+            if old_result.present?
+              # スコアが更新されていなかったらスキップする
+              next unless old_result.updated?(new_result)
 
-            results << new_result
+              old_result.update!(
+                **result_attributes,
+              )
+
+              old_result.user = self
+              old_result.to_log.save!
+            else
+              results << new_result
+
+              new_result.user = self
+              new_result.to_log.save!
+            end
           else
             temporary_results << TemporaryResult.new(
               version: row.version,

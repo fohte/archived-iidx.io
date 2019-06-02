@@ -78,10 +78,10 @@ const ResultList: React.SFC<Props> = ({
               return <ErrorPage statusCode={404} />
             }
 
-            const maps = _.map(
-              data.searchMaps,
-              ({ bestResult: result, ...map }) => ({ ...map, result }),
-            )
+            const maps = _.map(data.searchMaps, ({ result, ...map }) => ({
+              ...map,
+              result,
+            }))
 
             const totalPages = Math.ceil(maps.length / numItemsPerPage)
             const partialMaps = maps.slice(

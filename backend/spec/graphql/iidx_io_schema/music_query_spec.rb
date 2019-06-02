@@ -110,7 +110,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           query($id: ID!, $playStyle: PlayStyle!, $difficulty: Difficulty!, $username: String!) {
             music(id: $id) {
               map(playStyle: $playStyle, difficulty: $difficulty) {
-                bestResult(username: $username) {
+                result(username: $username) {
                   id
                   score
                   missCount
@@ -134,7 +134,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
         expect(response['data']).to eq(
           'music' => {
             'map' => {
-              'bestResult' => {
+              'result' => {
                 'id' => result.id.to_s,
                 'score' => result.score,
                 'missCount' => result.miss_count,
@@ -152,7 +152,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
         let(:map) { build(:map, play_style: :sp, difficulty: :another) }
 
         it 'returns nil' do
-          expect(response['data']).to eq('music' => { 'map' => { 'bestResult' => nil } })
+          expect(response['data']).to eq('music' => { 'map' => { 'result' => nil } })
         end
 
         include_examples 'non errors'

@@ -1,5 +1,16 @@
 export type Maybe<T> = T | null
 
+export enum Difficulty {
+  Normal = 'NORMAL',
+  Hyper = 'HYPER',
+  Another = 'ANOTHER',
+}
+
+export enum PlayStyle {
+  Sp = 'SP',
+  Dp = 'DP',
+}
+
 export enum ClearLamp {
   Failed = 'FAILED',
   Assist = 'ASSIST',
@@ -19,17 +30,6 @@ export enum Grade {
   D = 'D',
   E = 'E',
   F = 'F',
-}
-
-export enum Difficulty {
-  Normal = 'NORMAL',
-  Hyper = 'HYPER',
-  Another = 'ANOTHER',
-}
-
-export enum PlayStyle {
-  Sp = 'SP',
-  Dp = 'DP',
 }
 
 // ====================================================
@@ -86,10 +86,10 @@ export type FindMapMap = {
 
   maxBpm: number
 
-  bestResult: Maybe<FindMapBestResult>
+  result: Maybe<FindMapResult>
 }
 
-export type FindMapBestResult = {
+export type FindMapResult = {
   __typename?: 'Result'
 
   id: string
@@ -150,7 +150,7 @@ export type GetUserResultsSearchMaps = {
 
   music: GetUserResultsMusic
 
-  bestResult: Maybe<GetUserResultsBestResult>
+  result: Maybe<GetUserResultsResult>
 }
 
 export type GetUserResultsMusic = {
@@ -161,7 +161,7 @@ export type GetUserResultsMusic = {
   title: string
 }
 
-export type GetUserResultsBestResult = {
+export type GetUserResultsResult = {
   __typename?: 'Result'
 
   id: string
@@ -270,7 +270,7 @@ export const FindMapDocument = gql`
         difficulty
         minBpm
         maxBpm
-        bestResult(username: $username) {
+        result(username: $username) {
           id
           score
           missCount
@@ -379,7 +379,7 @@ export const GetUserResultsDocument = gql`
         id
         title
       }
-      bestResult(username: $username) {
+      result(username: $username) {
         id
         score
         missCount
