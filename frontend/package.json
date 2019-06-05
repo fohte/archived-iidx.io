@@ -76,7 +76,7 @@
     "codecov": "3.5.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
-    "file-loader": "3.0.1",
+    "file-loader": "4.0.0",
     "firebase-nightlight": "3.1.0",
     "graphql-code-generator": "0.18.2",
     "graphql-codegen-typescript-react-apollo-template": "0.18.2",
