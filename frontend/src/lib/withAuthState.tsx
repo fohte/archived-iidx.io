@@ -16,7 +16,7 @@ const withAuthState = () => <OriginalProps extends {}>(
     <AuthContext.Consumer>
       {authContexts => (
         <WrappedComponent
-          {...props as any} // Workaround for https://github.com/Microsoft/TypeScript/issues/28748
+          {...(props as any)} // Workaround for https://github.com/Microsoft/TypeScript/issues/28748
           {...authContexts}
         />
       )}

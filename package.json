@@ -4,7 +4,7 @@
   "scripts": {
     "lint:all": "yarn run format",
     "lint:backend": "cd backend && bundle exec rubocop",
-    "format": "prettier -l '**/*.{js{,x},ts{,x},json,graphql,y{,a}ml}' '**/.babelrc' '!docs/graphql/*' --ignore-path .gitignore",
+    "format": "prettier -l '**/*.{js{,x},ts{,x},json,graphql,y{,a}ml}' '**/.babelrc' '!docs/graphql/*' '!frontend/src/queries/index.tsx' --ignore-path .gitignore",
     "format:fix": "yarn run format --write"
   },
   "husky": {
@@ -30,6 +30,6 @@
   "devDependencies": {
     "husky": "2.4.0",
     "lint-staged": "8.1.7",
-    "prettier": "1.17.1"
+    "prettier": "1.18.2"
   }
 }
