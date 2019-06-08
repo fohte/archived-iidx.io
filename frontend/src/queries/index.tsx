@@ -289,7 +289,7 @@ export class FindMapComponent extends React.Component<
     return (
       <ReactApollo.Query<FindMapQuery, FindMapVariables>
         query={FindMapDocument}
-        {...(this as any)['props'] as any}
+        {...((this as any)['props'] as any)}
       />
     )
   }
@@ -330,7 +330,7 @@ export class FindUserComponent extends React.Component<
     return (
       <ReactApollo.Query<FindUserQuery, FindUserVariables>
         query={FindUserDocument}
-        {...(this as any)['props'] as any}
+        {...((this as any)['props'] as any)}
       />
     )
   }
@@ -396,7 +396,7 @@ export class GetUserResultsComponent extends React.Component<
     return (
       <ReactApollo.Query<GetUserResultsQuery, GetUserResultsVariables>
         query={GetUserResultsDocument}
-        {...(this as any)['props'] as any}
+        {...((this as any)['props'] as any)}
       />
     )
   }
@@ -438,7 +438,7 @@ export class GetViewerComponent extends React.Component<
     return (
       <ReactApollo.Query<GetViewerQuery, GetViewerVariables>
         query={GetViewerDocument}
-        {...(this as any)['props'] as any}
+        {...((this as any)['props'] as any)}
       />
     )
   }
@@ -483,7 +483,7 @@ export class RegisterComponent extends React.Component<
     return (
       <ReactApollo.Mutation<RegisterMutation, RegisterVariables>
         mutation={RegisterDocument}
-        {...(this as any)['props'] as any}
+        {...((this as any)['props'] as any)}
       />
     )
   }
@@ -535,7 +535,7 @@ export class RegisterResultsWithCsvComponent extends React.Component<
         RegisterResultsWithCsvVariables
       >
         mutation={RegisterResultsWithCsvDocument}
-        {...(this as any)['props'] as any}
+        {...((this as any)['props'] as any)}
       />
     )
   }

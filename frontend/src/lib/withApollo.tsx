@@ -54,7 +54,7 @@ export default (ComposedApp: typeof TComposedApp) =>
           // Run all GraphQL queries
           await getDataFromTree(
             <ComposedApp
-              {...appProps as AppProps}
+              {...(appProps as AppProps)}
               Component={Component}
               router={router}
               apolloClient={apollo}
