@@ -14,12 +14,13 @@ export interface Item {
 }
 
 export interface Props {
+  className?: string
   children?: React.ReactNode
   items: Item[]
 }
 
-const Breadcrumb: React.FunctionComponent<Props> = ({ items }) => (
-  <ol className={cx('breadcrumb')}>
+const Breadcrumb: React.FunctionComponent<Props> = ({ className, items }) => (
+  <ol className={[cx('breadcrumb'), className].join(' ')}>
     {items.map(({ text, route, active }) => (
       <li key={text} className={cx('breadcrumb-item', { active })}>
         {active ? (

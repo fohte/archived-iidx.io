@@ -1,12 +1,12 @@
 @import 'styles/colors.scss';
 
 .breadcrumb {
-  display: flex;
-
   list-style: none;
 }
 
 .breadcrumb-item {
+  display: inline-block;
+
   color: $primary-fg-color;
 
   a {

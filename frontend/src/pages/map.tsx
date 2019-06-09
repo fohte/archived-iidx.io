@@ -2,6 +2,7 @@ import { GraphQLError } from 'graphql'
 import ErrorPage from 'next/error'
 import * as React from 'react'
 
+import Box from '@app/components/atoms/Box'
 import Breadcrumb from '@app/components/atoms/Breadcrumb'
 import MapDetail from '@app/components/organisms/MapDetail'
 import UserProfileLayout, {
@@ -49,20 +50,20 @@ const MapPage: PageComponentType<Props, Props, Query> = ({
   }
 
   return (
-    <UserProfileLayout screenName={screenName} activeTab={Tab.Musics}>
-      <Breadcrumb
-        items={[
-          { text: 'Musics', route: `/@${screenName}/musics` },
-          {
-            text: `${music.title} [${music.map.playStyle}${music.map.difficulty[0]}]`,
-            route: `/@${screenName}/musics/${
-              music.id
-            }/${music.map.playStyle.toLowerCase()}/${music.map.difficulty.toLowerCase()}`,
-            active: true,
-          },
-        ]}
-      />
-
+    <UserProfileLayout
+      screenName={screenName}
+      activeTab={Tab.Musics}
+      breadcrumbItems={[
+        { text: 'Musics', route: `/@${screenName}/musics` },
+        {
+          text: `${music.title} [${music.map.playStyle}${music.map.difficulty[0]}]`,
+          route: `/@${screenName}/musics/${
+            music.id
+          }/${music.map.playStyle.toLowerCase()}/${music.map.difficulty.toLowerCase()}`,
+          active: true,
+        },
+      ]}
+    >
       <MapDetail
         music={music}
         map={music.map}

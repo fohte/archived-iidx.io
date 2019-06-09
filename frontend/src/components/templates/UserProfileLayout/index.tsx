@@ -2,6 +2,9 @@ import * as classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
 
+import Breadcrumb, {
+  Item as BreadcrumbItem,
+} from '@app/components/atoms/Breadcrumb'
 import Container from '@app/components/atoms/Container'
 import MainLayout from '@app/components/templates/MainLayout'
 import { Link } from '@app/routes'
@@ -16,6 +19,7 @@ const cx = classnames.bind(css)
 
 interface ComponentProps {
   screenName: string
+  breadcrumbItems?: BreadcrumbItem[]
   children?: React.ReactNode
 }
 
@@ -28,7 +32,12 @@ export interface Props extends ComponentProps {
   activeTab: Tab
 }
 
-const UserProfileLayout = ({ screenName, children, activeTab }: Props) => {
+const UserProfileLayout = ({
+  screenName,
+  breadcrumbItems = [],
+  children,
+  activeTab,
+}: Props) => {
   const tabs: { [key in Tab]: { link: string; icon: IconDefinition } } = {
     [Tab.Overview]: {
       link: `/@${screenName}`,
@@ -43,7 +52,7 @@ const UserProfileLayout = ({ screenName, children, activeTab }: Props) => {
   return (
     <MainLayout>
       <Container>
-        <div className={cx('wrapper')}>
+        <div className={cx('user-profile-header-wrapper')}>
           <div className={cx('user-profile-header')}>
             <div className={cx('user-profile-content')}>
               <div className={cx('user-avatar')} />
@@ -69,6 +78,14 @@ const UserProfileLayout = ({ screenName, children, activeTab }: Props) => {
           </div>
         </div>
       </Container>
+
+      {breadcrumbItems.length > 0 && (
+        <Container>
+          <div className={cx('position-relative-container')}>
+            <Breadcrumb className={cx('breadcrumb')} items={breadcrumbItems} />
+          </div>
+        </Container>
+      )}
 
       <Container>{children}</Container>
     </MainLayout>

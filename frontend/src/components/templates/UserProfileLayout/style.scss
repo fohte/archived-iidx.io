@@ -3,7 +3,7 @@
 @import 'styles/variables';
 @import 'styles/breakpoints';
 
-.wrapper {
+.user-profile-header-wrapper {
   @include card-box;
 
   margin-bottom: 2rem;
@@ -67,5 +67,56 @@
     a {
       color: $ui-accent-color;
     }
+  }
+}
+
+.position-relative-container {
+  position: relative;
+}
+
+.breadcrumb {
+  $padding: 2rem;
+
+  margin-bottom: 2rem;
+  padding: 0 $padding;
+
+  overflow-x: scroll;
+
+  white-space: nowrap;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: $padding;
+    height: 100%;
+
+    background: linear-gradient(
+      to right,
+      $ui-base-color,
+      rgba($ui-base-color, 0%)
+    );
+
+    content: '';
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: block;
+    width: $padding;
+    height: 100%;
+
+    background: linear-gradient(
+      to right,
+      rgba($ui-base-color, 0%),
+      $ui-base-color
+    );
+
+    content: '';
   }
 }
