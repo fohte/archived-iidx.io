@@ -1,12 +1,13 @@
 @import 'styles/colors.scss';
 
 .box {
-  background-color: $footer-bg-color;
-
-  padding-bottom: 12px;
   padding-top: 12px;
 
+  padding-bottom: 12px;
+
   color: $footer-fg-color;
+
+  background-color: $footer-bg-color;
 }
 
 .inner {

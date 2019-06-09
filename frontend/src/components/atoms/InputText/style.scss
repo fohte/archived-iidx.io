@@ -2,12 +2,12 @@
 @import 'styles/variables';
 
 .input-text {
-  border-radius: $border-radius-size;
-  border: 2px solid $ui-base-color;
-  outline: none;
-
   width: 100%;
   padding: 0.8em;
+
+  border: 2px solid $ui-base-color;
+  border-radius: $border-radius-size;
+  outline: none;
 
   &:focus {
     border-color: rgba($ui-accent-color, 0.7);

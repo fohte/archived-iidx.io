@@ -3,17 +3,20 @@
 $bar-height: 0.5rem;
 
 .wrapper {
+  position: relative;
+
   width: 100%;
   height: $bar-height;
-  position: relative;
 
   background-color: darken($ui-base-color, 7%);
 
   .progress {
-    height: $bar-height;
     position: absolute;
-    background-color: $ui-accent-color;
     z-index: 0;
+
+    height: $bar-height;
+
+    background-color: $ui-accent-color;
 
     &.grade-aaa {
       background-color: $grade-aaa-color;
@@ -49,11 +52,12 @@ $bar-height: 0.5rem;
   }
 
   .target {
-    height: $bar-height;
-    border-right: 1px dotted $white;
-
     position: absolute;
     z-index: 5;
+
+    height: $bar-height;
+
+    border-right: 1px dotted $white;
 
     &.grade-a {
       width: 6/9 * 100 * 1%;

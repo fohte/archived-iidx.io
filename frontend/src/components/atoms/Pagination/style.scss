@@ -2,12 +2,14 @@
 @import 'styles/variables';
 
 .pagination {
-  width: 100%;
   display: table;
+  width: 100%;
+
   user-select: none;
 
   > * {
     display: table-cell;
+
     text-align: center;
     vertical-align: middle;
   }
@@ -15,11 +17,13 @@
   a {
     color: $primary-fg-lighter-color;
     font-size: 1.2em;
+
     cursor: pointer;
 
     &.disabled {
-      pointer-events: none;
       opacity: 0.3;
+
+      pointer-events: none;
     }
   }
 
