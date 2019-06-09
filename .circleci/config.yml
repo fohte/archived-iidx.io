@@ -126,7 +126,7 @@ jobs:
             diff -uN src/queries/index.tsx "$dir/index.tsx"
       - run:
           name: run linters
-          command: yarn run lint:ts
+          command: yarn run lint
       - run:
           name: run tests
           command: |

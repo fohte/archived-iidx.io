@@ -7,6 +7,7 @@
     "start": "NODE_ENV=production node server.js",
     "build:prod": "NODE_ENV=production next build src",
     "start:prod": "NODE_ENV=production node server.js",
+    "lint": "npm-run-all -s --continue-on-error lint:**",
     "lint:ts": "tslint -p . -c tslint.json --format stylish",
     "lint:scss": "stylelint '**/*.scss'",
     "test": "npm-run-all -s --continue-on-error test:**",
