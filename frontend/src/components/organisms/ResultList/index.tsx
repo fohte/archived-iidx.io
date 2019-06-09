@@ -30,9 +30,7 @@ const ResultList: React.SFC<Props> = ({
   numItemsPerPage = 20,
   defaultActivePage = 1,
 }) => {
-  const [formValues, setFormValues] = React.useState<SearchFormValues>(
-    initialValues,
-  )
+  const [formValues] = React.useState<SearchFormValues>(initialValues)
   const [activePage, setActivePage] = React.useState(defaultActivePage)
 
   const changePage = (newActivePage: number) => {

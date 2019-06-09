@@ -2,8 +2,6 @@ import { GraphQLError } from 'graphql'
 import ErrorPage from 'next/error'
 import * as React from 'react'
 
-import Box from '@app/components/atoms/Box'
-import Breadcrumb from '@app/components/atoms/Breadcrumb'
 import MapDetail from '@app/components/organisms/MapDetail'
 import UserProfileLayout, {
   Tab,

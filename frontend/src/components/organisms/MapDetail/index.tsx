@@ -2,7 +2,6 @@ import * as classnames from 'classnames/bind'
 import * as React from 'react'
 
 import Box from '@app/components/atoms/Box'
-import Card from '@app/components/atoms/Card'
 import ResultBox, { Result } from '@app/components/molecules/ResultBox'
 import { generateTextageURL } from '@app/lib/textage'
 import { Difficulty, PlayStyle } from '@app/queries'
