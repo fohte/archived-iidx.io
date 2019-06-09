@@ -1,0 +1,27 @@
+@import 'styles/colors.scss';
+
+.breadcrumb {
+  list-style: none;
+}
+
+.breadcrumb-item {
+  display: inline-block;
+
+  color: $primary-fg-color;
+
+  a {
+    color: $primary-fg-lighter-color;
+
+    &:hover {
+      color: $primary-fg-color;
+    }
+  }
+
+  & + &::before {
+    margin: 0 0.5em;
+
+    color: $primary-fg-lighter-color;
+
+    content: '/';
+  }
+}

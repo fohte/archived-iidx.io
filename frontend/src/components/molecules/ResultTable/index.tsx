@@ -1,4 +1,5 @@
 import * as classnames from 'classnames/bind'
+import Link from 'next/link'
 import * as React from 'react'
 
 import Card from '@app/components/atoms/Card'
@@ -39,47 +40,49 @@ const ResultTable: React.SFC<Props> = ({
 }) => {
   return (
     <>
-      <div>
+      <div className={cx('result-table')}>
         {maps.map((map, i) => {
           const { result, music } = map
 
+          // The type of routes.findAndGetUrls is not defined,
+          // so routes should cast to any
+          const href = (routes as any).findAndGetUrls('map', {
+            screenName,
+            musicId: music.id,
+            playStyle: map.playStyle.toLowerCase(),
+            difficulty: map.difficulty.toLowerCase(),
+          }).urls.as
+
           return (
-            <Card
-              className={cx('card')}
-              key={i}
-              header={
-                <div className={cx('header')}>
-                  <div
-                    className={cx('label', {
-                      'difficulty-another':
-                        map.difficulty === Difficulty.Another,
-                      'difficulty-hyper': map.difficulty === Difficulty.Hyper,
-                      'difficulty-normal': map.difficulty === Difficulty.Normal,
-                    })}
-                  >
-                    ☆{map.level}
-                  </div>
-                  <div className={cx('title')}>{music.title}</div>
-                </div>
-              }
-              content={
-                <ResultBox
-                  showBPI={showBPI}
-                  result={result}
-                  map={map}
-                  href={
-                    // The type of routes.findAndGetUrls is not defined,
-                    // so routes should cast to any
-                    (routes as any).findAndGetUrls('map', {
-                      screenName,
-                      musicId: music.id,
-                      playStyle: map.playStyle.toLowerCase(),
-                      difficulty: map.difficulty.toLowerCase(),
-                    }).urls.as
-                  }
-                />
-              }
-            />
+            <div className={cx('card')}>
+              <Link href={href}>
+                <a className={cx('card-link')}>
+                  <Card
+                    key={i}
+                    header={
+                      <div className={cx('header')}>
+                        <div
+                          className={cx('label', {
+                            'difficulty-another':
+                              map.difficulty === Difficulty.Another,
+                            'difficulty-hyper':
+                              map.difficulty === Difficulty.Hyper,
+                            'difficulty-normal':
+                              map.difficulty === Difficulty.Normal,
+                          })}
+                        >
+                          ☆{map.level}
+                        </div>
+                        <div className={cx('title')}>{music.title}</div>
+                      </div>
+                    }
+                    content={
+                      <ResultBox showBPI={showBPI} result={result} map={map} />
+                    }
+                  />
+                </a>
+              </Link>
+            </div>
           )
         })}
       </div>

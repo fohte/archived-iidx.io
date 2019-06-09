@@ -2,329 +2,242 @@
 
 exports[`ResultList renders correctly 1`] = `
 <div
-  className="result-list"
+  className="container"
 >
   <div
-    className="form-wrapper"
+    className="result-list"
   >
     <div
-      className="box "
+      className="table-wrapper"
     >
-      <form
-        onSubmit={[Function]}
+      <div
+        className="pagination top"
       >
         <div
-          className="search-form"
+          className="pagination"
         >
-          <div
-            className="button-group button-group"
+          <a
+            className="jump-to-first disabled"
+            onClick={[Function]}
+            rel="nofollow"
           >
-            <label>
-              <input
-                checked={true}
-                className="input"
-                name="playStyle"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="radio"
-                value="SP"
-              />
-              <div
-                className="button active "
-                disabled={false}
-              >
-                SP
-              </div>
-            </label>
-            <label>
-              <input
-                checked={false}
-                className="input"
-                name="playStyle"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="radio"
-                value="DP"
-              />
-              <div
-                className="button "
-                disabled={false}
-              >
-                DP
-              </div>
-            </label>
-          </div>
-          <div
-            className="search-input-group"
-          >
-            <input
-              className="search-area"
-              name="title"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Search..."
-              type="text"
-              value=""
-            />
-            <button
-              className=""
-              disabled={true}
-              type="submit"
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-angle-double-left fa-w-14 "
+              data-icon="angle-double-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-search fa-w-16 "
-                data-icon="search"
-                data-prefix="fas"
-                focusable="false"
-                role="img"
+              <path
+                d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
+                fill="currentColor"
                 style={Object {}}
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                  fill="currentColor"
-                  style={Object {}}
-                />
-              </svg>
-            </button>
-          </div>
+              />
+            </svg>
+          </a>
+          <a
+            className="back disabled"
+            onClick={[Function]}
+            rel="nofollow"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-angle-left fa-w-8 "
+              data-icon="angle-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 256 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </a>
+          <span
+            className="page-info"
+          >
+            Page 
+            <span
+              className="active-page"
+            >
+              1
+            </span>
+             of
+             
+            0
+          </span>
+          <a
+            className="forward disabled"
+            onClick={[Function]}
+            rel="nofollow"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-angle-right fa-w-8 "
+              data-icon="angle-right"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 256 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </a>
+          <a
+            className="jump-to-last disabled"
+            onClick={[Function]}
+            rel="nofollow"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-angle-double-right fa-w-14 "
+              data-icon="angle-double-right"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </a>
         </div>
-      </form>
-    </div>
-  </div>
-  <div
-    className="table-wrapper"
-  >
-    <div
-      className="pagination top"
-    >
-      <div
-        className="pagination"
-      >
-        <a
-          className="jump-to-first disabled"
-          onClick={[Function]}
-          rel="nofollow"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-angle-double-left fa-w-14 "
-            data-icon="angle-double-left"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
-              fill="currentColor"
-              style={Object {}}
-            />
-          </svg>
-        </a>
-        <a
-          className="back disabled"
-          onClick={[Function]}
-          rel="nofollow"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-angle-left fa-w-8 "
-            data-icon="angle-left"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 256 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-              fill="currentColor"
-              style={Object {}}
-            />
-          </svg>
-        </a>
-        <span
-          className="page-info"
-        >
-          Page 
-          <span
-            className="active-page"
-          >
-            1
-          </span>
-           of
-           
-          0
-        </span>
-        <a
-          className="forward disabled"
-          onClick={[Function]}
-          rel="nofollow"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-angle-right fa-w-8 "
-            data-icon="angle-right"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 256 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-              fill="currentColor"
-              style={Object {}}
-            />
-          </svg>
-        </a>
-        <a
-          className="jump-to-last disabled"
-          onClick={[Function]}
-          rel="nofollow"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-angle-double-right fa-w-14 "
-            data-icon="angle-double-right"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
-              fill="currentColor"
-              style={Object {}}
-            />
-          </svg>
-        </a>
       </div>
-    </div>
-    <div />
-    <div
-      className="pagination bottom"
-    >
       <div
-        className="pagination"
+        className="result-table"
+      />
+      <div
+        className="pagination bottom"
       >
-        <a
-          className="jump-to-first disabled"
-          onClick={[Function]}
-          rel="nofollow"
+        <div
+          className="pagination"
         >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-angle-double-left fa-w-14 "
-            data-icon="angle-double-left"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
+          <a
+            className="jump-to-first disabled"
+            onClick={[Function]}
+            rel="nofollow"
           >
-            <path
-              d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
-              fill="currentColor"
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-angle-double-left fa-w-14 "
+              data-icon="angle-double-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
               style={Object {}}
-            />
-          </svg>
-        </a>
-        <a
-          className="back disabled"
-          onClick={[Function]}
-          rel="nofollow"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-angle-left fa-w-8 "
-            data-icon="angle-left"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 256 512"
-            xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </a>
+          <a
+            className="back disabled"
+            onClick={[Function]}
+            rel="nofollow"
           >
-            <path
-              d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-              fill="currentColor"
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-angle-left fa-w-8 "
+              data-icon="angle-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
               style={Object {}}
-            />
-          </svg>
-        </a>
-        <span
-          className="page-info"
-        >
-          Page 
+              viewBox="0 0 256 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </a>
           <span
-            className="active-page"
+            className="page-info"
           >
-            1
+            Page 
+            <span
+              className="active-page"
+            >
+              1
+            </span>
+             of
+             
+            0
           </span>
-           of
-           
-          0
-        </span>
-        <a
-          className="forward disabled"
-          onClick={[Function]}
-          rel="nofollow"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-angle-right fa-w-8 "
-            data-icon="angle-right"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 256 512"
-            xmlns="http://www.w3.org/2000/svg"
+          <a
+            className="forward disabled"
+            onClick={[Function]}
+            rel="nofollow"
           >
-            <path
-              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-              fill="currentColor"
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-angle-right fa-w-8 "
+              data-icon="angle-right"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
               style={Object {}}
-            />
-          </svg>
-        </a>
-        <a
-          className="jump-to-last disabled"
-          onClick={[Function]}
-          rel="nofollow"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-angle-double-right fa-w-14 "
-            data-icon="angle-double-right"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 256 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </a>
+          <a
+            className="jump-to-last disabled"
+            onClick={[Function]}
+            rel="nofollow"
           >
-            <path
-              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
-              fill="currentColor"
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-angle-double-right fa-w-14 "
+              data-icon="angle-double-right"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
               style={Object {}}
-            />
-          </svg>
-        </a>
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -333,168 +246,79 @@ exports[`ResultList renders correctly 1`] = `
 
 exports[`ResultList renders correctly if there are errors 1`] = `
 <div
-  className="result-list"
+  className="container"
 >
   <div
-    className="form-wrapper"
+    className="result-list"
   >
     <div
-      className="box "
+      className="table-wrapper"
     >
-      <form
-        onSubmit={[Function]}
-      >
-        <div
-          className="search-form"
-        >
-          <div
-            className="button-group button-group"
-          >
-            <label>
-              <input
-                checked={true}
-                className="input"
-                name="playStyle"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="radio"
-                value="SP"
-              />
-              <div
-                className="button active "
-                disabled={false}
-              >
-                SP
-              </div>
-            </label>
-            <label>
-              <input
-                checked={false}
-                className="input"
-                name="playStyle"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="radio"
-                value="DP"
-              />
-              <div
-                className="button "
-                disabled={false}
-              >
-                DP
-              </div>
-            </label>
-          </div>
-          <div
-            className="search-input-group"
-          >
-            <input
-              className="search-area"
-              name="title"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Search..."
-              type="text"
-              value=""
-            />
-            <button
-              className=""
-              disabled={true}
-              type="submit"
-            >
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-search fa-w-16 "
-                data-icon="search"
-                data-prefix="fas"
-                focusable="false"
-                role="img"
-                style={Object {}}
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                  fill="currentColor"
-                  style={Object {}}
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div
-    className="table-wrapper"
-  >
-    <div
-      style={
-        Object {
-          "alignItems": "center",
-          "background": "#fff",
-          "color": "#000",
-          "display": "flex",
-          "flexDirection": "column",
-          "fontFamily": "-apple-system, BlinkMacSystemFont, Roboto, \\"Segoe UI\\", \\"Fira Sans\\", Avenir, \\"Helvetica Neue\\", \\"Lucida Grande\\", sans-serif",
-          "height": "100vh",
-          "justifyContent": "center",
-          "textAlign": "center",
+      <div
+        style={
+          Object {
+            "alignItems": "center",
+            "background": "#fff",
+            "color": "#000",
+            "display": "flex",
+            "flexDirection": "column",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, Roboto, \\"Segoe UI\\", \\"Fira Sans\\", Avenir, \\"Helvetica Neue\\", \\"Lucida Grande\\", sans-serif",
+            "height": "100vh",
+            "justifyContent": "center",
+            "textAlign": "center",
+          }
         }
-      }
-    >
-      <div>
-        <style
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "body { margin: 0 }",
+      >
+        <div>
+          <style
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "body { margin: 0 }",
+              }
             }
-          }
-        />
-        <h1
-          style={
-            Object {
-              "borderRight": "1px solid rgba(0, 0, 0,.3)",
-              "display": "inline-block",
-              "fontSize": "24px",
-              "fontWeight": 500,
-              "margin": 0,
-              "marginRight": "20px",
-              "padding": "10px 23px 10px 0",
-              "verticalAlign": "top",
-            }
-          }
-        >
-          404
-        </h1>
-        <div
-          style={
-            Object {
-              "display": "inline-block",
-              "height": "49px",
-              "lineHeight": "49px",
-              "textAlign": "left",
-              "verticalAlign": "middle",
-            }
-          }
-        >
-          <h2
+          />
+          <h1
             style={
               Object {
-                "fontSize": "14px",
-                "fontWeight": "normal",
-                "lineHeight": "inherit",
+                "borderRight": "1px solid rgba(0, 0, 0,.3)",
+                "display": "inline-block",
+                "fontSize": "24px",
+                "fontWeight": 500,
                 "margin": 0,
-                "padding": 0,
+                "marginRight": "20px",
+                "padding": "10px 23px 10px 0",
+                "verticalAlign": "top",
               }
             }
           >
-            This page could not be found
-            .
-          </h2>
+            404
+          </h1>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "height": "49px",
+                "lineHeight": "49px",
+                "textAlign": "left",
+                "verticalAlign": "middle",
+              }
+            }
+          >
+            <h2
+              style={
+                Object {
+                  "fontSize": "14px",
+                  "fontWeight": "normal",
+                  "lineHeight": "inherit",
+                  "margin": 0,
+                  "padding": 0,
+                }
+              }
+            >
+              This page could not be found
+              .
+            </h2>
+          </div>
         </div>
       </div>
     </div>
@@ -504,105 +328,16 @@ exports[`ResultList renders correctly if there are errors 1`] = `
 
 exports[`ResultList renders correctly when loading 1`] = `
 <div
-  className="result-list"
+  className="container"
 >
   <div
-    className="form-wrapper"
+    className="result-list"
   >
     <div
-      className="box "
+      className="table-wrapper"
     >
-      <form
-        onSubmit={[Function]}
-      >
-        <div
-          className="search-form"
-        >
-          <div
-            className="button-group button-group"
-          >
-            <label>
-              <input
-                checked={true}
-                className="input"
-                name="playStyle"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="radio"
-                value="SP"
-              />
-              <div
-                className="button active "
-                disabled={false}
-              >
-                SP
-              </div>
-            </label>
-            <label>
-              <input
-                checked={false}
-                className="input"
-                name="playStyle"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                type="radio"
-                value="DP"
-              />
-              <div
-                className="button "
-                disabled={false}
-              >
-                DP
-              </div>
-            </label>
-          </div>
-          <div
-            className="search-input-group"
-          >
-            <input
-              className="search-area"
-              name="title"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              placeholder="Search..."
-              type="text"
-              value=""
-            />
-            <button
-              className=""
-              disabled={true}
-              type="submit"
-            >
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-search fa-w-16 "
-                data-icon="search"
-                data-prefix="fas"
-                focusable="false"
-                role="img"
-                style={Object {}}
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                  fill="currentColor"
-                  style={Object {}}
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </form>
+      loading
     </div>
-  </div>
-  <div
-    className="table-wrapper"
-  >
-    loading
   </div>
 </div>
 `;

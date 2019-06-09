@@ -2,7 +2,6 @@ import * as classnames from 'classnames/bind'
 import * as React from 'react'
 
 import Box from '@app/components/atoms/Box'
-import Card from '@app/components/atoms/Card'
 import ResultBox, { Result } from '@app/components/molecules/ResultBox'
 import { generateTextageURL } from '@app/lib/textage'
 import { Difficulty, PlayStyle } from '@app/queries'
@@ -37,12 +36,13 @@ export type Props = {
 
 const MapDetail: React.SFC<Props> = ({ music, map, result }) => (
   <>
-    <Box transparent className={cx('map-detail')}>
+    <Box className={cx('map-detail')}>
       <div className={cx('music-data')}>
         <div className={cx('genre')}>{music.genre}</div>
         <h2 className={cx('title')}>{music.title}</h2>
         <div className={cx('artist')}>{music.artist}</div>
       </div>
+
       <ul>
         <li>
           <div
@@ -59,6 +59,7 @@ const MapDetail: React.SFC<Props> = ({ music, map, result }) => (
           </div>
         </li>
       </ul>
+
       <table className={cx('map-data-table')}>
         <tbody>
           <tr>
@@ -108,10 +109,10 @@ const MapDetail: React.SFC<Props> = ({ music, map, result }) => (
       </table>
     </Box>
 
-    <Card
-      header={<span className={cx('card-title')}>Best Score</span>}
-      content={<ResultBox showBPI result={result} map={map} />}
-    />
+    <Box>
+      <div className={cx('result-box-header')}>BEST SCORE</div>
+      <ResultBox showBPI result={result} map={map} />
+    </Box>
   </>
 )
 

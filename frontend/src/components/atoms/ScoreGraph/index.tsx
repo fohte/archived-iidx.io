@@ -9,9 +9,10 @@ const cx = classnames.bind(css)
 export interface Props {
   grade: Grade | null
   scoreRate: number
+  fullCombo: boolean
 }
 
-const ScoreGraph: React.SFC<Props> = ({ grade, scoreRate }) => (
+const ScoreGraph: React.SFC<Props> = ({ grade, scoreRate, fullCombo }) => (
   <div className={cx('wrapper')}>
     <div
       className={cx('progress', {
@@ -23,6 +24,7 @@ const ScoreGraph: React.SFC<Props> = ({ grade, scoreRate }) => (
         'grade-d': grade === Grade.D,
         'grade-e': grade === Grade.E,
         'grade-f': grade === Grade.F,
+        'full-combo': fullCombo,
       })}
       style={{ width: `${scoreRate}%` }}
     />

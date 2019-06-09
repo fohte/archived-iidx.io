@@ -1,9 +1,18 @@
 @import 'styles/colors';
 @import 'styles/mixins';
 @import 'styles/variables';
+@import 'styles/breakpoints';
+
+.user-profile-header-wrapper {
+  @include card-box;
+
+  margin-bottom: 2rem;
+
+  background-color: $white;
+}
 
 .user-profile-header {
-  margin-bottom: 2rem;
+  padding: 2rem;
 }
 
 .user-profile-content {
@@ -17,19 +26,20 @@
 
   width: $size;
   height: $size;
-
   margin-right: 2rem;
 
   background-color: darken($ui-base-color, 20%);
-
   border-radius: 100%;
+}
+
+.tabs-wrapper {
+  padding: 0 2rem;
 }
 
 .tabs {
   display: flex;
 
   list-style: none;
-  border-bottom: 1px solid $border-color;
 
   .tab-item {
     font-weight: 700;
@@ -57,5 +67,56 @@
     a {
       color: $ui-accent-color;
     }
+  }
+}
+
+.position-relative-container {
+  position: relative;
+}
+
+.breadcrumb {
+  $padding: 2rem;
+
+  margin-bottom: 2rem;
+  padding: 0 $padding;
+
+  overflow-x: auto;
+
+  white-space: nowrap;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: $padding;
+    height: 100%;
+
+    background: linear-gradient(
+      to right,
+      $ui-base-color,
+      rgba($ui-base-color, 0%)
+    );
+
+    content: '';
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: block;
+    width: $padding;
+    height: 100%;
+
+    background: linear-gradient(
+      to right,
+      rgba($ui-base-color, 0%),
+      $ui-base-color
+    );
+
+    content: '';
   }
 }

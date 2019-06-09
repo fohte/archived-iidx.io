@@ -18,7 +18,7 @@ const Card: React.FunctionComponent<Props> = ({
 }) => (
   <div className={[cx('card'), className].join(' ')}>
     <div className={cx('card-header')}>{header}</div>
-    <div className={cx('card-content')}>{content}</div>
+    <div>{content}</div>
   </div>
 )
 

@@ -40,43 +40,59 @@ exports[`/ renders correctly 1`] = `
       className="container"
     >
       <div
-        className="user-profile-header"
+        className="user-profile-header-wrapper"
       >
         <div
-          className="user-profile-content"
+          className="user-profile-header"
         >
           <div
-            className="user-avatar"
-          />
-          <h2>
-            @
-            username
-          </h2>
+            className="user-profile-content"
+          >
+            <div
+              className="user-avatar"
+            />
+            <h2>
+              @
+              username
+            </h2>
+          </div>
         </div>
-        <ul
-          className="tabs"
+        <div
+          className="tabs-wrapper"
         >
-          <li
-            className="tab-item active"
+          <ul
+            className="tabs"
           >
-            <a
-              href="/@username"
-              onClick={[Function]}
+            <li
+              className="tab-item active"
             >
-              Overview
-            </a>
-          </li>
-          <li
-            className="tab-item"
-          >
-            <a
-              href="/@username/musics"
-              onClick={[Function]}
+              <a
+                href="/@username"
+                onClick={[Function]}
+              >
+                <span
+                  className="icon-text"
+                >
+                  Overview
+                </span>
+              </a>
+            </li>
+            <li
+              className="tab-item"
             >
-              Musics
-            </a>
-          </li>
-        </ul>
+              <a
+                href="/@username/musics"
+                onClick={[Function]}
+              >
+                <span
+                  className="icon-text"
+                >
+                  Musics
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <div

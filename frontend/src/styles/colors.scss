@@ -26,13 +26,5 @@ $footer-fg-color: $header-fg-color;
 
 $primary-text-color: $black;
 
+$lighter-border-color: darken($white, 10%);
 $border-color: darken($white, 20%);
-
-$grade-aaa-color: $orange;
-$grade-aa-color: $green;
-$grade-a-color: $blue;
-$grade-b-color: $gray;
-$grade-c-color: $gray;
-$grade-d-color: $gray;
-$grade-e-color: $gray;
-$grade-f-color: $gray;

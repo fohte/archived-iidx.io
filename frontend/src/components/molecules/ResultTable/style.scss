@@ -2,8 +2,17 @@
 @import 'styles/mixins';
 @import 'styles/variables';
 
-.card {
-  margin-bottom: 1rem;
+.result-table {
+  background-color: $primary-bg-color;
+  @include card-box;
+}
+
+.card-link {
+  color: $primary-fg-color;
+}
+
+.card + .card {
+  border-top: 1px solid $lighter-border-color;
 }
 
 .header {
@@ -15,9 +24,7 @@
 
 .label {
   display: inline-block;
-
   margin-right: 1em;
-
   padding: 0.1em 0.9em;
 
   color: $white;
