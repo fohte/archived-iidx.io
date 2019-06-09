@@ -36,13 +36,13 @@
 
     // margin-right: 1em;
 
-    &:after {
+    &::after {
       content: '•';
       margin: 0 0.75em;
     }
 
     &:last-child {
-      &:after {
+      &::after {
         content: '';
       }
 

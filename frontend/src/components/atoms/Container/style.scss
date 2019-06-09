@@ -6,11 +6,6 @@
   margin-right: auto;
 }
 
-@include on-mobile() {
-  .container {
-  }
-}
-
 @include on-tablet() {
   .container {
     max-width: $tablet-container-width;
