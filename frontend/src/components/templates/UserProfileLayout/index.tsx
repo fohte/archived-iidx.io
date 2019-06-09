@@ -5,6 +5,11 @@ import * as React from 'react'
 import Container from '@app/components/atoms/Container'
 import MainLayout from '@app/components/templates/MainLayout'
 import { Link } from '@app/routes'
+import {
+  faEye,
+  faList,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons'
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
@@ -24,32 +29,44 @@ export interface Props extends ComponentProps {
 }
 
 const UserProfileLayout = ({ screenName, children, activeTab }: Props) => {
-  const tabLinks: { [key in Tab]: string } = {
-    [Tab.Overview]: `/@${screenName}`,
-    [Tab.Musics]: `/@${screenName}/musics`,
+  const tabs: { [key in Tab]: { link: string; icon: IconDefinition } } = {
+    [Tab.Overview]: {
+      link: `/@${screenName}`,
+      icon: faEye,
+    },
+    [Tab.Musics]: {
+      link: `/@${screenName}/musics`,
+      icon: faList,
+    },
   }
 
   return (
     <MainLayout>
       <Container>
-        <div className={cx('user-profile-header')}>
-          <div className={cx('user-profile-content')}>
-            <div className={cx('user-avatar')} />
-            <h2>@{screenName}</h2>
+        <div className={cx('wrapper')}>
+          <div className={cx('user-profile-header')}>
+            <div className={cx('user-profile-content')}>
+              <div className={cx('user-avatar')} />
+              <h2>@{screenName}</h2>
+            </div>
           </div>
 
-          <ul className={cx('tabs')}>
-            {_.map(tabLinks, (link, key) => (
-              <li
-                key={key}
-                className={cx('tab-item', { active: activeTab === key })}
-              >
-                <Link route={link}>
-                  <a>{key}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className={cx('tabs-wrapper')}>
+            <ul className={cx('tabs')}>
+              {_.map(tabs, (tab, key) => (
+                <li
+                  key={key}
+                  className={cx('tab-item', { active: activeTab === key })}
+                >
+                  <Link route={tab.link}>
+                    <a>
+                      <span className={cx('icon-text')}>{key}</span>
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Container>
 

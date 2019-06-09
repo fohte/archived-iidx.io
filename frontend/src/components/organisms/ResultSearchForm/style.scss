@@ -24,17 +24,12 @@
     .search-area,
     button[type='submit'] {
       height: 2.5em;
-      // border: 2px solid $border-color;
-
       padding: 0 1em;
 
       background-color: $ui-base-color;
 
       &:disabled {
-        // border-color: lighten($border-color, 5%);
-
         color: lighten($border-color, 5%);
-        // background-color: darken($ui-base-color, 5%);
       }
     }
   }

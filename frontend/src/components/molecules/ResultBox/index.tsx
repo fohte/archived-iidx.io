@@ -34,19 +34,15 @@ export interface Props {
   map: Map
   href?: string
 }
-const IntegerFocusedNumberText: React.FunctionComponent<{ num: number }> = ({
-  num,
-}) => {
-  const [integerPart, decimalPart] = num
-    .toFixed(2)
-    .toString()
-    .split('.')
-  return (
-    <>
-      <span className={cx('integer-part')}>{integerPart}</span>.
-      <span className={cx('decimal-part')}>{decimalPart}</span>
-    </>
-  )
+
+const clearTypeTexts: { [key in ClearLamp]: string } = {
+  [ClearLamp.FullCombo]: 'FULL COMBO',
+  [ClearLamp.ExHard]: 'EX-HARD',
+  [ClearLamp.Hard]: 'HARD',
+  [ClearLamp.Normal]: 'CLEAR',
+  [ClearLamp.Easy]: 'EASY',
+  [ClearLamp.Assist]: 'ASSIST',
+  [ClearLamp.Failed]: 'FAILED',
 }
 
 const ResultBox: React.FunctionComponent<Props> = ({
@@ -83,52 +79,87 @@ const ResultBox: React.FunctionComponent<Props> = ({
       />
       <div className={cx('data-box')}>
         <div className={cx('data-box-content')}>
-          <div className={cx('grade-box')}>
-            <div className={cx('current-grade')}>{current.grade}</div>
-            <div className={cx('around-grade')}>
-              {current.diff === 0 && next.diff === 0
-                ? '-'
-                : current.diff <= -next.diff
-                ? `${current.grade} +${current.diff}`
-                : `${next.grade} ${next.diff}`}
+          <div className={cx('score-box-wrapper')}>
+            <dl className={cx('score-box')}>
+              <div className={cx('data-list', 'ex-score')}>
+                <dt>EX-SCORE</dt>
+                <dd>
+                  <span className={cx('score-text')}>
+                    {result && result.score != null ? result.score : '-'}
+                  </span>
+                  <span className={cx('score-rate')}>
+                    ({scoreRate.toFixed(2)} %)
+                  </span>
+                </dd>
+              </div>
+              <ScoreGraph
+                grade={current.grade}
+                scoreRate={scoreRate}
+                fullCombo={
+                  !!(result && result.clearLamp === ClearLamp.FullCombo)
+                }
+              />
+            </dl>
+
+            <div className={cx('additional-area')}>
+              {showBPI && (
+                <dl className={cx('data-list')}>
+                  <dt>BPI</dt>
+                  <dd className={cx('bpi')}>
+                    {result && result.bpi != null ? result.bpi.toFixed(2) : '-'}
+                  </dd>
+                </dl>
+              )}
+
+              <dl className={cx('data-list', 'clear-type')}>
+                <dt>CLEAR TYPE</dt>
+                <dd
+                  className={cx({
+                    'full-combo':
+                      result && result.clearLamp === ClearLamp.FullCombo,
+                    'ex-hard-clear':
+                      result && result.clearLamp === ClearLamp.ExHard,
+                    'hard-clear': result && result.clearLamp === ClearLamp.Hard,
+                    clear: result && result.clearLamp === ClearLamp.Normal,
+                    'easy-clear': result && result.clearLamp === ClearLamp.Easy,
+                    'assist-clear':
+                      result && result.clearLamp === ClearLamp.Assist,
+                    failed: result && result.clearLamp === ClearLamp.Failed,
+                  })}
+                >
+                  {result && result.clearLamp
+                    ? clearTypeTexts[result.clearLamp]
+                    : '-'}
+                </dd>
+              </dl>
+
+              <dl className={cx('data-list')}>
+                <dt>LAST PLAY</dt>
+                <dd className={cx('moderate')}>-</dd>
+              </dl>
             </div>
           </div>
 
-          <dl className={cx('score-box')}>
-            <dt>EX-SCORE</dt>
-            <dd>
-              <span className={cx('score-text')}>
-                {result && result.score != null ? result.score : '-'}
-              </span>
-              <span className={cx('score-rate')}>
-                <IntegerFocusedNumberText num={scoreRate} /> %
-              </span>
-            </dd>
-            <ScoreGraph grade={current.grade} scoreRate={scoreRate} />
-          </dl>
-
-          {showBPI && (
-            <dl className={cx('bpi-box')}>
-              <dt>BPI</dt>
-              <dd className={cx('bpi')}>
-                {result && result.bpi != null ? (
-                  <IntegerFocusedNumberText num={result.bpi} />
-                ) : (
-                  '-'
-                )}
-              </dd>
-            </dl>
-          )}
+          <div className={cx('symbol-area')}>
+            <div className={cx('grade-box')}>
+              <div className={cx('current-grade')}>{current.grade}</div>
+              <div className={cx('around-grade')}>
+                {current.diff === 0 && next.diff === 0
+                  ? '-'
+                  : current.diff <= -next.diff
+                  ? `${current.grade} +${current.diff}`
+                  : `${next.grade} ${next.diff}`}
+              </div>
+            </div>
+          </div>
         </div>
 
         {href && (
-          <div className={cx('detail-link')}>
-            <Link href={href}>
-              <a>
-                <FontAwesomeIcon icon={faAngleRight} />
-              </a>
-            </Link>
-          </div>
+          <Link href={href}>
+            <a>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </a>
+          </Link>
         )}
       </div>
     </div>

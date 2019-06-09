@@ -1,7 +1,7 @@
 @import 'styles/colors';
 @import 'styles/variables';
 
-$clear-lamp-width: 0.6rem;
+$clear-lamp-width: 0.4rem;
 $left-right-padding: 1.5rem;
 $top-bottom-padding: 1rem;
 
@@ -11,9 +11,9 @@ $top-bottom-padding: 1rem;
   background-color: $gray;
 
   &.full-combo {
-    animation: full-combo 150ms infinite;
+    animation: full-combo-bg 150ms infinite;
 
-    @keyframes full-combo {
+    @keyframes full-combo-bg {
       0% {
         background-color: $white;
       }
@@ -29,9 +29,9 @@ $top-bottom-padding: 1rem;
   }
 
   &.ex-hard-clear {
-    animation: ex-hard 150ms infinite;
+    animation: ex-hard-bg 150ms infinite;
 
-    @keyframes ex-hard {
+    @keyframes ex-hard-bg {
       0% {
         background-color: $red;
       }
@@ -59,9 +59,9 @@ $top-bottom-padding: 1rem;
   }
 
   &.failed {
-    animation: failed 150ms infinite;
+    animation: failed-bg 150ms infinite;
 
-    @keyframes failed {
+    @keyframes failed-bg {
       0% {
         background-color: $black;
       }
@@ -82,7 +82,7 @@ $top-bottom-padding: 1rem;
   flex: 1;
   align-items: center;
 
-  padding: $top-bottom-padding $left-right-padding;
+  padding-left: $left-right-padding;
 }
 
 .data-box-content {
@@ -92,14 +92,6 @@ $top-bottom-padding: 1rem;
   align-items: center;
   justify-content: space-between;
 
-  > * {
-    margin-right: $left-right-padding;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
   dt {
     margin-bottom: 0.25em;
 
@@ -107,15 +99,24 @@ $top-bottom-padding: 1rem;
     font-size: 0.8em;
   }
 
+  .symbol-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 7rem;
+    margin-left: $left-right-padding;
+  }
+
   .grade-box {
     width: 5em;
-    margin-right: 1em;
 
     text-align: center;
 
     .current-grade {
-      font-family: 'Orbitron', sans-serif;
-      text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+      font-weight: bold;
+      font-size: 1.2em;
     }
 
     .around-grade {
@@ -124,38 +125,79 @@ $top-bottom-padding: 1rem;
     }
   }
 
-  .score-box {
+  .score-box-wrapper {
+    display: flex;
     flex: 1;
+    flex-direction: column;
+  }
+
+  .data-list {
+    display: flex;
+    justify-content: space-between;
+
+    dt {
+      display: inline-block;
+    }
 
     dd {
       display: flex;
       justify-content: space-between;
+
+      &.moderate {
+        color: $primary-fg-lighter-color;
+      }
+    }
+  }
+
+  .clear-type {
+    .full-combo {
+      color: $cyan;
+    }
+
+    .ex-hard-clear {
+      color: $orange;
+    }
+
+    .hard-clear {
+      color: $red;
+    }
+
+    .easy-clear {
+      color: $green;
+    }
+
+    .assist-clear {
+      color: $purple;
+    }
+
+    .failed {
+      color: $primary-fg-color;
+    }
+  }
+
+  .score-box {
+    flex: 1;
+
+    .ex-score {
+      margin-bottom: 0.5rem;
     }
 
     .score-text {
-      margin-right: 0.5em;
+      margin-right: 0.25em;
+
+      font-weight: bold;
     }
   }
 
-  .bpi-box {
-    width: 4em;
+  .additional-area {
+    margin-top: 1rem;
+    padding: 1rem;
 
-    text-align: center;
-  }
+    background-color: $ui-base-color;
 
-  .bpi,
-  .score-rate {
-    font-size: 0.8em;
-
-    .integer-part {
-      font-size: $base-font-size;
+    .data-list + .data-list {
+      margin-top: 0.5rem;
     }
-  }
-
-  .clear-lamp-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 }
 

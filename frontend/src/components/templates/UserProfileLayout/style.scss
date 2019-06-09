@@ -1,9 +1,18 @@
 @import 'styles/colors';
 @import 'styles/mixins';
 @import 'styles/variables';
+@import 'styles/breakpoints';
+
+.wrapper {
+  @include card-box;
+
+  margin-bottom: 2rem;
+
+  background-color: $white;
+}
 
 .user-profile-header {
-  margin-bottom: 2rem;
+  padding: 2rem;
 }
 
 .user-profile-content {
@@ -17,19 +26,20 @@
 
   width: $size;
   height: $size;
-
   margin-right: 2rem;
 
   background-color: darken($ui-base-color, 20%);
-
   border-radius: 100%;
+}
+
+.tabs-wrapper {
+  padding: 0 2rem;
 }
 
 .tabs {
   display: flex;
 
   list-style: none;
-  border-bottom: 1px solid $border-color;
 
   .tab-item {
     font-weight: 700;

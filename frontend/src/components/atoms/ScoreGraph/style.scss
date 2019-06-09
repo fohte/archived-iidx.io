@@ -1,6 +1,6 @@
 @import 'styles/colors';
 
-$bar-height: 0.5rem;
+$bar-height: 0.6rem;
 
 .wrapper {
   position: relative;
@@ -19,35 +19,39 @@ $bar-height: 0.5rem;
     background-color: $ui-accent-color;
 
     &.grade-aaa {
-      background-color: $grade-aaa-color;
+      background-color: $red;
+
+      &.full-combo {
+        background: linear-gradient(
+          to left,
+          $orange,
+          $yellow,
+          $green,
+          $cyan,
+          $blue,
+          $purple
+        );
+      }
     }
 
     &.grade-aa {
-      background-color: $grade-aa-color;
+      background-color: $orange;
+
+      &.full-combo {
+        background-color: $yellow;
+      }
     }
 
     &.grade-a {
-      background-color: $grade-a-color;
+      background-color: $blue;
     }
 
-    &.grade-b {
-      background-color: $grade-b-color;
-    }
-
-    &.grade-c {
-      background-color: $grade-c-color;
-    }
-
-    &.grade-d {
-      background-color: $grade-d-color;
-    }
-
-    &.grade-e {
-      background-color: $grade-e-color;
-    }
-
+    &.grade-b,
+    &.grade-c,
+    &.grade-d,
+    &.grade-e,
     &.grade-f {
-      background-color: $grade-f-color;
+      background-color: $green;
     }
   }
 
@@ -57,7 +61,7 @@ $bar-height: 0.5rem;
 
     height: $bar-height;
 
-    border-right: 1px dotted $white;
+    border-right: 1px solid $white;
 
     &.grade-a {
       width: 6/9 * 100 * 1%;
