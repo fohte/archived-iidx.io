@@ -6,10 +6,10 @@ $top-bottom-padding: 1rem;
 $clear-lamp-width: 0.6rem;
 
 .card-header {
-  padding: $top-bottom-padding $left-right-padding;
-  border-bottom: 1px solid darken($white, 7%);
-
   width: 100%;
+  padding: $top-bottom-padding $left-right-padding;
+
+  border-bottom: 1px solid darken($white, 7%);
 }
 
 .card-content {
@@ -19,7 +19,7 @@ $clear-lamp-width: 0.6rem;
 .card {
   @include card-box;
 
-  background-color: $primary-bg-color;
-
   width: 100%;
+
+  background-color: $primary-bg-color;
 }

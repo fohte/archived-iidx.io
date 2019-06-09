@@ -8,39 +8,46 @@ $item-margin: 0.4em;
 $arrow-size: 0.6em;
 
 .dropdown {
+  position: absolute;
+  right: 0;
+  left: auto;
+  z-index: 100;
+
+  min-width: 130px;
   margin-top: 1em;
   padding: $item-margin 0;
-  position: absolute;
-  background-color: $primary-bg-color;
-  left: auto;
-  right: 0;
-  border-radius: 2px;
-  min-width: 130px;
-  z-index: 100;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border: 1px solid $border-color;
 
-  &:after {
-    content: '';
+  background-color: $primary-bg-color;
+  border: 1px solid $border-color;
+  border-radius: 2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  &::after {
     position: absolute;
     top: -($arrow-size / 2);
     right: 1em;
+    z-index: 50;
+
     display: block;
-    transform: rotate(45deg);
     width: $arrow-size;
     height: $arrow-size;
+
     background-color: $primary-bg-color;
     box-shadow: -1px -1px 0 0 $border-color;
-    z-index: 50;
+    transform: rotate(45deg);
+
+    content: '';
   }
 }
 
 .item {
-  padding: 8px 12px;
-  width: 100%;
-  color: $primary-text-color;
-  cursor: pointer;
   display: block;
+  width: 100%;
+  padding: 8px 12px;
+
+  color: $primary-text-color;
+
+  cursor: pointer;
 
   &:hover {
     background-color: darken($primary-bg-color, 5%);
@@ -48,8 +55,9 @@ $arrow-size: 0.6em;
 }
 
 .divider {
-  border-top: 1px solid $border-color;
   margin: $item-margin 0;
+
+  border-top: 1px solid $border-color;
 }
 
 .display-name {

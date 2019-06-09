@@ -6,6 +6,8 @@ $left-right-padding: 1.5rem;
 $top-bottom-padding: 1rem;
 
 .clear-lamp {
+  width: $clear-lamp-width;
+
   background-color: $gray;
 
   &.full-combo {
@@ -69,8 +71,6 @@ $top-bottom-padding: 1rem;
       }
     }
   }
-
-  width: $clear-lamp-width;
 }
 
 .data-box-wrapper {
@@ -79,18 +79,18 @@ $top-bottom-padding: 1rem;
 
 .data-box {
   display: flex;
-  align-items: center;
   flex: 1;
+  align-items: center;
 
   padding: $top-bottom-padding $left-right-padding;
 }
 
 .data-box-content {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 
   flex: 1;
+  align-items: center;
+  justify-content: space-between;
 
   > * {
     margin-right: $left-right-padding;
@@ -101,16 +101,16 @@ $top-bottom-padding: 1rem;
   }
 
   dt {
-    font-size: 0.8em;
-    color: $primary-fg-lighter-color;
-
     margin-bottom: 0.25em;
+
+    color: $primary-fg-lighter-color;
+    font-size: 0.8em;
   }
 
   .grade-box {
+    width: 5em;
     margin-right: 1em;
 
-    width: 5em;
     text-align: center;
 
     .current-grade {
@@ -119,8 +119,8 @@ $top-bottom-padding: 1rem;
     }
 
     .around-grade {
-      font-size: 0.8em;
       color: $primary-fg-lighter-color;
+      font-size: 0.8em;
     }
   }
 
@@ -139,6 +139,7 @@ $top-bottom-padding: 1rem;
 
   .bpi-box {
     width: 4em;
+
     text-align: center;
   }
 
@@ -159,11 +160,11 @@ $top-bottom-padding: 1rem;
 }
 
 .detail-link a {
-  font-size: 1.5em;
-  text-align: center;
-
-  padding: 0 1.5rem;
   margin-right: -1.5rem;
 
+  padding: 0 1.5rem;
+
   color: lighten($primary-fg-color, 30%);
+  font-size: 1.5em;
+  text-align: center;
 }

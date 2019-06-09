@@ -7,11 +7,13 @@
   padding-bottom: 0;
 
   hr {
-    line-height: 1;
-    border: none;
-    background-color: $border-color;
     height: 1px;
     margin: 1.5rem -1.5rem;
+
+    line-height: 1;
+
+    background-color: $border-color;
+    border: none;
   }
 
   h2 {
@@ -21,9 +23,10 @@
 
 .links {
   a {
-    height: 2em;
-    line-height: 2em;
     display: inline-block;
+    height: 2em;
+
+    line-height: 2em;
 
     .link-icon {
       margin-left: 0.5em;
@@ -31,18 +34,20 @@
   }
 
   li {
-    list-style: none;
     display: inline-block;
+
+    list-style: none;
 
     // margin-right: 1em;
 
-    &:after {
-      content: '•';
+    &::after {
       margin: 0 0.75em;
+
+      content: '•';
     }
 
     &:last-child {
-      &:after {
+      &::after {
         content: '';
       }
 

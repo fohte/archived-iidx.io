@@ -1,24 +1,25 @@
 @import 'styles/colors.scss';
 
 .header-nav {
-  background-color: $header-bg-color;
+  padding-top: 12px;
 
   padding-bottom: 12px;
-  padding-top: 12px;
+
+  background-color: $header-bg-color;
 }
 
 .flex-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   min-height: 2em;
   margin: 0 1.5rem;
 }
 
 .item {
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 0.5em;
 
   color: $header-fg-color;

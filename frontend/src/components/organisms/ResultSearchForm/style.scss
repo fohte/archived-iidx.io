@@ -10,20 +10,6 @@
   .search-input-group {
     display: flex;
 
-    .search-area,
-    button[type='submit'] {
-      height: 2.5em;
-      background-color: $ui-base-color;
-      // border: 2px solid $border-color;
-      padding: 0 1em;
-
-      &:disabled {
-        // border-color: lighten($border-color, 5%);
-        color: lighten($border-color, 5%);
-        // background-color: darken($ui-base-color, 5%);
-      }
-    }
-
     .search-area {
       flex: 1;
 
@@ -33,6 +19,23 @@
 
     button[type='submit'] {
       border-radius: 0 $border-radius-size $border-radius-size 0;
+    }
+
+    .search-area,
+    button[type='submit'] {
+      height: 2.5em;
+      // border: 2px solid $border-color;
+
+      padding: 0 1em;
+
+      background-color: $ui-base-color;
+
+      &:disabled {
+        // border-color: lighten($border-color, 5%);
+
+        color: lighten($border-color, 5%);
+        // background-color: darken($ui-base-color, 5%);
+      }
     }
   }
 }
