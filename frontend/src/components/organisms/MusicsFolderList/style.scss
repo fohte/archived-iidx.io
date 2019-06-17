@@ -1,0 +1,74 @@
+@import 'styles/colors';
+@import 'styles/mixins';
+
+.wrapper {
+  margin-bottom: 2rem;
+}
+
+.folder-group {
+  margin-bottom: 1rem;
+  @include card-box;
+}
+
+.folder-group-info {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 2rem;
+
+  color: $primary-fg-lighter-color;
+
+  background-color: $darker-bg-color;
+
+  cursor: pointer;
+
+  &.opened {
+    border-bottom: 1px solid $lighter-border-color;
+  }
+
+  &:hover {
+    background-color: $darker-bg-hover-color;
+  }
+}
+
+.folder-group-title {
+  flex: 1;
+}
+
+.folder-group-icon {
+  font-size: 1.25em;
+}
+
+.folder-list-box {
+  background-color: $primary-bg-color;
+}
+
+.folder-box + .folder-box {
+  border-top: 1px solid $lighter-border-color;
+}
+
+.folder {
+  display: flex;
+  padding: 2rem;
+
+  color: $primary-fg-color;
+
+  &:hover {
+    background-color: $primary-bg-hover-color;
+  }
+}
+
+.folder-icon {
+  margin-right: 1em;
+
+  color: $primary-fg-lighter-color;
+}
+
+.folder-title {
+  flex: 1;
+
+  font-weight: bold;
+}
+
+.folder-number {
+  color: $primary-fg-lighter-color;
+}

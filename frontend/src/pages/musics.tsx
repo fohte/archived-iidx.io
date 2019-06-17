@@ -1,7 +1,9 @@
 import * as _ from 'lodash'
 import ErrorPage from 'next/error'
 import * as React from 'react'
+import { Optional } from 'utility-types'
 
+import MusicsFolderList from '@app/components/organisms/MusicsFolderList'
 import ResultList from '@app/components/organisms/ResultList'
 import { FormValues } from '@app/components/organisms/ResultSearchForm'
 import UserProfileLayout, {
@@ -20,11 +22,14 @@ export type RequiredQuery = {
   screenName: string
 }
 
-export type OptionalQuery = {
+export type SearchQuery = {
   title?: string
   playStyle?: string
   difficulties?: string | string[]
   levels?: string | string[]
+}
+
+export type OptionalQuery = SearchQuery & {
   page?: string
 }
 
@@ -77,23 +82,25 @@ const MusicsPage: PageComponentType<Props, Props, Query> = ({
     return <ErrorPage statusCode={404} />
   }
 
-  const initialValues: FormValues =
+  const isQueryEmpty =
     title == null &&
     playStyle == null &&
     (difficulties == null || difficulties.length === 0) &&
     (levels == null || levels.length === 0)
-      ? {
-          title: null,
-          playStyle: PlayStyle.Sp,
-          difficulties: [],
-          levels: [12],
-        }
-      : {
-          title: title || null,
-          playStyle: playStyle || PlayStyle.Sp,
-          difficulties: difficulties || [],
-          levels: levels || [],
-        }
+
+  const initialValues: FormValues = isQueryEmpty
+    ? {
+        title: null,
+        playStyle: PlayStyle.Sp,
+        difficulties: [],
+        levels: [12],
+      }
+    : {
+        title: title || null,
+        playStyle: playStyle || PlayStyle.Sp,
+        difficulties: difficulties || [],
+        levels: levels || [],
+      }
 
   const replaceQuery = (newQuery: any) => {
     const currentQuery = _.omit(Router.query || {}, 'screenName')
@@ -119,18 +126,22 @@ const MusicsPage: PageComponentType<Props, Props, Query> = ({
 
   return (
     <UserProfileLayout screenName={screenName} activeTab={Tab.Musics}>
-      <ResultList
-        initialValues={initialValues}
-        screenName={screenName}
-        onSubmit={values => {
-          const compactedFormValues = compactFormValues(values)
-          replaceQuery({ ...compactedFormValues })
-        }}
-        onPageChange={newActivePage => {
-          replaceQuery({ page: newActivePage })
-        }}
-        defaultActivePage={page}
-      />
+      {isQueryEmpty ? (
+        <MusicsFolderList screenName={screenName} />
+      ) : (
+        <ResultList
+          initialValues={initialValues}
+          screenName={screenName}
+          onSubmit={values => {
+            const compactedFormValues = compactFormValues(values)
+            replaceQuery({ ...compactedFormValues })
+          }}
+          onPageChange={newActivePage => {
+            replaceQuery({ page: newActivePage })
+          }}
+          defaultActivePage={page}
+        />
+      )}
     </UserProfileLayout>
   )
 }

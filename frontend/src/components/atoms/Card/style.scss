@@ -17,7 +17,7 @@ $clear-lamp-width: 0.6rem;
   background-color: $primary-bg-color;
 
   &:hover {
-    background-color: darken($primary-bg-color, 3%);
+    background-color: $primary-bg-hover-color;
     cursor: pointer;
   }
 }

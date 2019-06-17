@@ -18,6 +18,11 @@ $primary-bg-color: $white;
 $primary-fg-color: $black;
 $primary-fg-lighter-color: lighten($primary-fg-color, 25%);
 
+$primary-bg-hover-color: darken($primary-bg-color, 3%);
+
+$darker-bg-color: lighten($ui-base-color, 2%);
+$darker-bg-hover-color: darken($darker-bg-color, 2%);
+
 $header-bg-color: $ui-primary-color;
 $header-fg-color: $white;
 
