@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 create_table :result_logs, force: :cascade, id: :bigint, unsigned: true, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|

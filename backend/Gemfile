@@ -19,6 +19,8 @@ gem 'rack-cors'
 gem 'rails-i18n'
 gem 'redis'
 gem 'ridgepole'
+gem 'sorbet', group: :development
+gem 'sorbet-runtime'
 gem 'virtus'
 
 group :development, :test do
