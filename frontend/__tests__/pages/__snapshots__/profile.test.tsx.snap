@@ -67,7 +67,7 @@ exports[`/ renders correctly 1`] = `
               className="tab-item active"
             >
               <a
-                href="/@username"
+                href="/@username/sp"
                 onClick={[Function]}
               >
                 <span
@@ -81,7 +81,7 @@ exports[`/ renders correctly 1`] = `
               className="tab-item"
             >
               <a
-                href="/@username/musics"
+                href="/@username/sp/musics"
                 onClick={[Function]}
               >
                 <span
@@ -97,7 +97,9 @@ exports[`/ renders correctly 1`] = `
     </div>
     <div
       className="container"
-    />
+    >
+      SP
+    </div>
   </div>
   <footer
     className="box"
