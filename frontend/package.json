@@ -65,7 +65,7 @@
   "devDependencies": {
     "@babel/core": "7.4.5",
     "@babel/preset-env": "7.4.5",
-    "@types/enzyme": "3.9.3",
+    "@types/enzyme": "3.9.4",
     "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/jest": "23.3.14",
     "@types/react-test-renderer": "16.8.2",
@@ -101,7 +101,7 @@
   },
   "resolutions": {
     "@types/classnames": "2.2.8",
-    "@types/enzyme": "3.9.3",
+    "@types/enzyme": "3.9.4",
     "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/graphql": "14.2.1",
     "@types/jest": "23.3.14",
