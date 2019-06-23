@@ -94,7 +94,7 @@
     "stylelint-order": "3.0.0",
     "stylelint-scss": "3.8.0",
     "ts-jest": "23.10.5",
-    "tslint": "5.17.0",
+    "tslint": "5.18.0",
     "tslint-config-prettier": "1.18.0",
     "url-loader": "2.0.0",
     "webpack-merge": "4.2.1"
