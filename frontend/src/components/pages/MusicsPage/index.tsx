@@ -12,7 +12,7 @@ import { Router } from '@app/routes'
 export interface Props {
   screenName: string
   title?: string
-  playStyle?: PlayStyle
+  playStyle: PlayStyle
   difficulties?: Difficulty[]
   levels?: number[]
   page?: number
@@ -51,20 +51,19 @@ const MusicsPage = ({
 }: Props) => {
   const isQueryEmpty =
     title == null &&
-    playStyle == null &&
     (difficulties == null || difficulties.length === 0) &&
     (levels == null || levels.length === 0)
 
   const initialValues: FormValues = isQueryEmpty
     ? {
         title: null,
-        playStyle: PlayStyle.Sp,
+        playStyle,
         difficulties: [],
         levels: [12],
       }
     : {
         title: title || null,
-        playStyle: playStyle || PlayStyle.Sp,
+        playStyle,
         difficulties: difficulties || [],
         levels: levels || [],
       }
@@ -92,7 +91,11 @@ const MusicsPage = ({
   }
 
   return (
-    <UserProfileLayout screenName={screenName} activeTab={Tab.Musics}>
+    <UserProfileLayout
+      screenName={screenName}
+      playStyle={playStyle}
+      activeTab={Tab.Musics}
+    >
       <ResultList
         initialValues={initialValues}
         screenName={screenName}

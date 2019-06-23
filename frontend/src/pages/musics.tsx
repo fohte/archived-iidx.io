@@ -14,11 +14,11 @@ import { Difficulty, PlayStyle } from '@app/queries'
 
 export type RequiredQuery = {
   screenName: string
+  playStyle: string
 }
 
 export type OptionalQuery = {
   title?: string
-  playStyle?: string
   difficulties?: string | string[]
   levels?: string | string[]
   page?: string
@@ -43,7 +43,7 @@ const PageComponent: PageComponentType<Props, Props, Query> = ({
   levels,
   page,
 }: Props) => {
-  if (!screenName) {
+  if (!screenName || !playStyle) {
     return <ErrorPage statusCode={404} />
   }
 
@@ -60,7 +60,7 @@ const PageComponent: PageComponentType<Props, Props, Query> = ({
 }
 
 PageComponent.getInitialProps = ({ res, query }) => {
-  if (!query.screenName) {
+  if (!query.screenName || !query.playStyle) {
     throwSSRError(res, 404)
     return {}
   }
@@ -68,10 +68,7 @@ PageComponent.getInitialProps = ({ res, query }) => {
   return {
     screenName: query.screenName,
     title: query.title,
-    playStyle:
-      query.playStyle != null
-        ? parsePlayStyleString(query.playStyle)
-        : query.playStyle,
+    playStyle: parsePlayStyleString(query.playStyle),
     difficulties: ensureArray(query.difficulties || [])
       .map(d => parseDifficultyString(d))
       .filter(d => d) as Difficulty[],
