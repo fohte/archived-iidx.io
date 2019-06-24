@@ -3,12 +3,14 @@ import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
 import Profile from '@app/pages/profile'
+import { PlayStyle } from '@app/queries'
 
 describe('/', () => {
   it('renders correctly', () => {
     const component = renderer.create(
       <Profile
         user={{ __typename: 'User', name: 'username' }}
+        playStyle={PlayStyle.Sp}
         loading={false}
       />,
     )

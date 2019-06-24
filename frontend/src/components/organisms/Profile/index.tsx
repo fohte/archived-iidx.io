@@ -1,7 +1,11 @@
 import * as React from 'react'
 
-export interface Props {}
+import { PlayStyle } from '@app/queries'
 
-const Profile: React.SFC<Props> = () => null
+export interface Props {
+  playStyle: PlayStyle
+}
+
+const Profile: React.SFC<Props> = ({ playStyle }) => <>{playStyle}</>
 
 export default Profile

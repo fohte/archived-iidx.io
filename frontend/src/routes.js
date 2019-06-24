@@ -1,6 +1,6 @@
 const routes = require('@yolkai/next-routes').default
 
 module.exports = routes()
-  .add('user', '/@:screenName', 'profile')
-  .add('map', '/@:screenName/musics/:musicId/:playStyle/:difficulty', 'map')
-  .add('musics', '/@:screenName/musics', 'musics')
+  .add('user', '/@:screenName/:playStyle?', 'profile')
+  .add('map', '/@:screenName/:playStyle/musics/:musicId/:difficulty', 'map')
+  .add('musics', '/@:screenName/:playStyle/musics', 'musics')

@@ -7,6 +7,7 @@ import Breadcrumb, {
 } from '@app/components/atoms/Breadcrumb'
 import Container from '@app/components/atoms/Container'
 import MainLayout from '@app/components/templates/MainLayout'
+import { PlayStyle } from '@app/queries'
 import { Link } from '@app/routes'
 import {
   faEye,
@@ -17,34 +18,33 @@ import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
-interface ComponentProps {
-  screenName: string
-  breadcrumbItems?: BreadcrumbItem[]
-  children?: React.ReactNode
-}
-
 export enum Tab {
   Overview = 'Overview',
   Musics = 'Musics',
 }
 
-export interface Props extends ComponentProps {
+export interface Props {
+  screenName: string
+  playStyle: PlayStyle
+  breadcrumbItems?: BreadcrumbItem[]
+  children?: React.ReactNode
   activeTab: Tab
 }
 
 const UserProfileLayout = ({
   screenName,
+  playStyle,
   breadcrumbItems = [],
   children,
   activeTab,
 }: Props) => {
   const tabs: { [key in Tab]: { link: string; icon: IconDefinition } } = {
     [Tab.Overview]: {
-      link: `/@${screenName}`,
+      link: `/@${screenName}/${playStyle.toLowerCase()}`,
       icon: faEye,
     },
     [Tab.Musics]: {
-      link: `/@${screenName}/musics`,
+      link: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
       icon: faList,
     },
   }

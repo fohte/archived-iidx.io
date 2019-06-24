@@ -13,6 +13,7 @@ import {
 } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
+import { PlayStyle } from '@app/queries'
 import {
   FindMapDocument,
   FindMapMusic,
@@ -32,40 +33,49 @@ export type Props = {
   errors?: ReadonlyArray<GraphQLError>
   loading: boolean
   screenName?: string
+  playStyle?: PlayStyle
 }
 
 const MapPage: PageComponentType<Props, Props, Query> = ({
   loading,
   errors,
   music,
+  playStyle,
   screenName,
 }: Props) => {
   if (loading) {
     return <>'loading'</>
   }
-  if (errors || !music || !music.map || !screenName) {
+  if (errors || !music || !music.map || !screenName || !playStyle) {
     return <ErrorPage statusCode={404} />
   }
+
+  const { map } = music
+  const { difficulty } = map
 
   return (
     <UserProfileLayout
       screenName={screenName}
+      playStyle={playStyle}
       activeTab={Tab.Musics}
       breadcrumbItems={[
-        { text: 'Musics', route: `/@${screenName}/musics` },
         {
-          text: `${music.title} [${music.map.playStyle}${music.map.difficulty[0]}]`,
+          text: 'Musics',
+          route: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
+        },
+        {
+          text: `${music.title} [${playStyle}${difficulty[0]}]`,
           route: `/@${screenName}/musics/${
             music.id
-          }/${music.map.playStyle.toLowerCase()}/${music.map.difficulty.toLowerCase()}`,
+          }/${playStyle.toLowerCase()}/${difficulty.toLowerCase()}`,
           active: true,
         },
       ]}
     >
       <MapDetail
         music={music}
-        map={music.map}
-        result={music.map.result || undefined}
+        map={map}
+        result={map.result || undefined}
         screenName={screenName}
       />
     </UserProfileLayout>
@@ -103,6 +113,7 @@ MapPage.getInitialProps = async ({ res, query }) => {
   return {
     music: result.data.music,
     screenName: query.screenName,
+    playStyle: parsePlayStyleString(query.playStyle),
     errors: result.errors,
     loading: result.loading,
   }
