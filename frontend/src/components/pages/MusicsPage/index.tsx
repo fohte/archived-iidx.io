@@ -2,6 +2,7 @@ import * as _ from 'lodash'
 import * as React from 'react'
 
 import ResultList from '@app/components/organisms/ResultList'
+import ResultSearchForm from '@app/components/organisms/ResultSearchForm'
 import { FormValues } from '@app/components/organisms/ResultSearchForm'
 import UserProfileLayout, {
   Tab,
@@ -96,6 +97,12 @@ const MusicsPage = ({
       playStyle={playStyle}
       activeTab={Tab.Musics}
     >
+      <ResultSearchForm
+        onSubmit={values => {
+          console.log(values)
+        }}
+        playStyle={playStyle}
+      />
       <ResultList
         initialValues={initialValues}
         screenName={screenName}

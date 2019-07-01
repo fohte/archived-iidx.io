@@ -1,14 +1,11 @@
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSlidersH, faSortAmountDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
-import { Field as FinalField, Form as FinalForm } from 'react-final-form'
+import { Form as FinalForm } from 'react-final-form'
 
 import Alert from '@app/components/atoms/Alert'
-import Box from '@app/components/atoms/Box'
-import RadioButton from '@app/components/atoms/RadioButton'
-import ButtonGroup from '@app/components/molecules/ButtonGroup'
 import { Difficulty, PlayStyle } from '@app/queries'
 import * as css from './style.scss'
 
@@ -23,55 +20,32 @@ export type FormValues = {
 
 export type Props = {
   onSubmit: (values: FormValues) => void
-  initialValues: FormValues
+  playStyle: PlayStyle
 }
 
-const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
-  <FinalForm onSubmit={onSubmit} initialValues={initialValues}>
-    {({
-      handleSubmit,
-      hasValidationErrors,
-      hasSubmitErrors,
-      pristine,
-      submitting,
-      submitError,
-    }) => (
-      <Box>
-        <form onSubmit={handleSubmit}>
-          <div className={cx('search-form')}>
-            <ButtonGroup className={cx('button-group')}>
-              {_.map(PlayStyle, playStyle => (
-                <FinalField
-                  key={playStyle}
-                  name="playStyle"
-                  type="radio"
-                  value={playStyle}
-                >
-                  {({ input }) => (
-                    <RadioButton {...input}>{playStyle}</RadioButton>
-                  )}
-                </FinalField>
-              ))}
-            </ButtonGroup>
+const ResultSearchForm: React.SFC<Props> = ({ onSubmit, playStyle }) => {
+  const initialValues = {
+    playStyle,
+    difficulties: [],
+    levels: [],
+  }
 
-            <div className={cx('search-input-group')}>
-              <FinalField name="title">
-                {({ input }) => (
-                  <input
-                    {...input}
-                    className={cx('search-area')}
-                    type="text"
-                    placeholder="Search..."
-                  />
-                )}
-              </FinalField>
-              <button
-                type="submit"
-                className={cx({ loading: submitting })}
-                disabled={submitting || pristine || hasValidationErrors}
-              >
-                <FontAwesomeIcon icon={faSearch} />
-              </button>
+  return (
+    <FinalForm onSubmit={onSubmit} initialValues={initialValues}>
+      {({ handleSubmit, hasSubmitErrors, submitError }) => (
+        <form className={cx('result-search-form')} onSubmit={handleSubmit}>
+          <div className={cx('filter-area')}>
+            <div className={cx('filter-button')}>
+              <span className={cx('filter-icon')}>
+                <FontAwesomeIcon icon={faSlidersH} />
+              </span>
+              Filter
+            </div>
+            <div className={cx('filter-button')}>
+              <span className={cx('filter-icon')}>
+                <FontAwesomeIcon icon={faSortAmountDown} />
+              </span>
+              Sort By
             </div>
           </div>
 
@@ -81,9 +55,9 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, initialValues }) => (
             </div>
           )}
         </form>
-      </Box>
-    )}
-  </FinalForm>
-)
+      )}
+    </FinalForm>
+  )
+}
 
 export default ResultSearchForm
