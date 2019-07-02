@@ -6,6 +6,7 @@ import * as React from 'react'
 import { Form as FinalForm } from 'react-final-form'
 
 import Alert from '@app/components/atoms/Alert'
+import FilterForm from '@app/components/organisms/FilterForm'
 import { Difficulty, PlayStyle } from '@app/queries'
 import * as css from './style.scss'
 
@@ -30,33 +31,51 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, playStyle }) => {
     levels: [],
   }
 
-  return (
-    <FinalForm onSubmit={onSubmit} initialValues={initialValues}>
-      {({ handleSubmit, hasSubmitErrors, submitError }) => (
-        <form className={cx('result-search-form')} onSubmit={handleSubmit}>
-          <div className={cx('filter-area')}>
-            <div className={cx('filter-button')}>
-              <span className={cx('filter-icon')}>
-                <FontAwesomeIcon icon={faSlidersH} />
-              </span>
-              Filter
-            </div>
-            <div className={cx('filter-button')}>
-              <span className={cx('filter-icon')}>
-                <FontAwesomeIcon icon={faSortAmountDown} />
-              </span>
-              Sort By
-            </div>
-          </div>
+  const [showFilterForm, setFilterFormShown] = React.useState(false)
 
-          {hasSubmitErrors && (
-            <div className={cx('error-box')}>
-              <Alert>{submitError}</Alert>
-            </div>
-          )}
-        </form>
+  return (
+    <>
+      {showFilterForm && (
+        <FilterForm
+          onCloseRequested={() => {
+            setFilterFormShown(false)
+          }}
+        />
       )}
-    </FinalForm>
+
+      <FinalForm onSubmit={onSubmit} initialValues={initialValues}>
+        {({ handleSubmit, hasSubmitErrors, submitError }) => (
+          <form className={cx('result-search-form')} onSubmit={handleSubmit}>
+            <div className={cx('filter-area')}>
+              <button
+                className={cx('filter-button')}
+                onClick={() => {
+                  setFilterFormShown(true)
+                }}
+              >
+                <span className={cx('filter-icon')}>
+                  <FontAwesomeIcon icon={faSlidersH} />
+                </span>
+                Filter
+              </button>
+
+              <button className={cx('filter-button')}>
+                <span className={cx('filter-icon')}>
+                  <FontAwesomeIcon icon={faSortAmountDown} />
+                </span>
+                Sort By
+              </button>
+            </div>
+
+            {hasSubmitErrors && (
+              <div className={cx('error-box')}>
+                <Alert>{submitError}</Alert>
+              </div>
+            )}
+          </form>
+        )}
+      </FinalForm>
+    </>
   )
 }
 
