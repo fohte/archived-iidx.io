@@ -1,6 +1,9 @@
 import * as classnames from 'classnames/bind'
 import * as React from 'react'
 
+import Button from '@app/components/atoms/Button'
+import Container from '@app/components/atoms/Container'
+
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
@@ -36,14 +39,19 @@ const FilterForm: React.SFC<Props> = ({ onCloseRequested }) => {
   })
 
   return (
-    <div className={cx('filter-form')}>
-      <div
-        onClick={() => {
-          onCloseRequested()
-        }}
-      >
-        close
-      </div>
+    <div className={cx('modal', 'filter-form')}>
+      <Container>
+        <Button
+          color="black"
+          expand={false}
+          inverted
+          onClick={() => {
+            onCloseRequested()
+          }}
+        >
+          Cancel
+        </Button>
+      </Container>
     </div>
   )
 }

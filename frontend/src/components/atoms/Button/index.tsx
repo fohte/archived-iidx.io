@@ -14,7 +14,8 @@ export interface Props {
   loading?: boolean
   inverted?: boolean
   size?: 'small'
-  color?: 'white'
+  color?: 'white' | 'black'
+  expand?: boolean
   [key: string]: any
 }
 
@@ -26,6 +27,7 @@ const Button: React.FunctionComponent<Props> = ({
   disabled = false,
   loading = false,
   inverted = false,
+  expand = true,
   size,
   color,
   ...otherProps
@@ -34,7 +36,12 @@ const Button: React.FunctionComponent<Props> = ({
     as,
     {
       className: [
-        cx('button', { active, disabled, loading, inverted }, size, color),
+        cx(
+          'button',
+          { active, disabled, loading, inverted, expand },
+          size,
+          color,
+        ),
         className,
       ].join(' '),
       disabled,
