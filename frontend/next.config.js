@@ -87,6 +87,13 @@ module.exports = withTypescript({
             from: path.join(nodeModulesDir, 'ress/dist/ress.min.css'),
             to: path.join(staticDistDir, 'ress.min.css'),
           },
+          {
+            from: path.join(
+              nodeModulesDir,
+              'react-toastify/dist/ReactToastify.min.css',
+            ),
+            to: path.join(staticDistDir, 'ReactToastify.min.css'),
+          },
         ]),
       ],
     })
