@@ -36,7 +36,6 @@
     "@types/recompose": "0.30.6",
     "@yolkai/next-routes": "3.0.0",
     "@zeit/next-css": "1.0.1",
-    "@zeit/next-sass": "1.0.1",
     "@zeit/next-typescript": "1.1.1",
     "apollo-boost": "0.4.3",
     "apollo-link-context": "1.0.18",
@@ -58,6 +57,7 @@
     "react-final-form": "4.1.0",
     "recompose": "0.30.0",
     "ress": "1.2.2",
+    "sass-loader": "7.1.0",
     "typescript": "3.5.2",
     "utility-types": "3.7.0",
     "validator": "11.1.0"
