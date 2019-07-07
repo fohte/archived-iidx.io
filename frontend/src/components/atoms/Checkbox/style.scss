@@ -1,0 +1,64 @@
+@import 'styles/colors.scss';
+
+.input {
+  display: none;
+}
+
+.label {
+  position: relative;
+
+  cursor: pointer;
+}
+
+.checkbox {
+  $checkbox-size: 2rem;
+
+  display: flex;
+  align-items: center;
+  height: $checkbox-size;
+  padding-left: $checkbox-size + 1rem;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: inline-block;
+    width: $checkbox-size;
+    height: $checkbox-size;
+
+    border: 1px solid $border-color;
+    border-radius: 0.3rem;
+
+    content: '';
+  }
+
+  &.checked {
+    $checked-mark-fg-color: $white;
+    $checked-mark-bg-color: $ui-accent-color;
+
+    &::before {
+      background-color: $checked-mark-bg-color;
+      border-color: $checked-mark-bg-color;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0.2rem;
+      left: 0.7rem;
+
+      box-sizing: border-box;
+      width: 0.6rem;
+      height: 1.2rem;
+
+      border: 0.2rem solid $checked-mark-fg-color;
+      border-top: 0;
+      border-left: 0;
+      transform: rotate(45deg);
+
+      content: '';
+    }
+
+    color: $ui-accent-color;
+  }
+}
