@@ -43,6 +43,7 @@
 
   @include button-color('white', $white);
   @include button-color('black', $black);
+  @include button-color('primary', $ui-accent-color);
 
   &.small {
     padding: 0 1.5em;

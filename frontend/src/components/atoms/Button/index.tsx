@@ -14,7 +14,7 @@ export interface Props {
   loading?: boolean
   inverted?: boolean
   size?: 'small'
-  color?: 'white' | 'black'
+  color?: 'white' | 'black' | 'primary'
   expand?: boolean
   [key: string]: any
 }
