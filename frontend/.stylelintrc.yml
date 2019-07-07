@@ -28,6 +28,8 @@ rules:
     - always
     - except:
         - first-nested
+      ignore:
+        - after-comment
 
   order/properties-order: []
 

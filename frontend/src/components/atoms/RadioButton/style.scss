@@ -1,3 +1,65 @@
+@import 'styles/colors.scss';
+
 .input {
   display: none;
+}
+
+.label {
+  position: relative;
+
+  cursor: pointer;
+}
+
+.radio {
+  $button-size: 2rem;
+
+  display: flex;
+  align-items: center;
+  height: $button-size;
+  padding-left: $button-size + 1rem;
+
+  // 外側の円
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: inline-block;
+    width: $button-size;
+    height: $button-size;
+
+    border: 1px solid $border-color;
+    border-radius: 50%;
+
+    content: '';
+  }
+
+  &.checked {
+    $checked-circle-color: $ui-accent-color;
+
+    // 外側の円
+    &::before {
+      border-color: $checked-circle-color;
+    }
+
+    // 内側の円
+    &::after {
+      $checked-circle-size: 0.8rem;
+
+      position: absolute;
+
+      top: ($button-size - $checked-circle-size) / 2;
+      left: ($button-size - $checked-circle-size) / 2;
+
+      width: $checked-circle-size;
+      height: $checked-circle-size;
+
+      background: $checked-circle-color;
+      border-radius: 50%;
+
+      content: '';
+    }
+
+    color: $ui-accent-color;
+  }
 }

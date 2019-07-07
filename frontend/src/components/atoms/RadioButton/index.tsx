@@ -12,6 +12,7 @@ export interface Props {
   disabled?: boolean
   checked?: boolean
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  button?: boolean
 }
 
 const RadioButton: React.FunctionComponent<Props> = ({
@@ -20,10 +21,11 @@ const RadioButton: React.FunctionComponent<Props> = ({
   disabled,
   onChange,
   checked = false,
+  button = false,
   ...otherProps
 }) => {
   return (
-    <label>
+    <label className={cx('label')}>
       <input
         className={cx('input')}
         onChange={onChange}
@@ -32,14 +34,18 @@ const RadioButton: React.FunctionComponent<Props> = ({
         checked={checked}
         {...otherProps}
       />
-      <Button
-        as="div"
-        className={className}
-        active={checked}
-        disabled={disabled}
-      >
-        {children}
-      </Button>
+      {button ? (
+        <Button
+          as="div"
+          className={className}
+          active={checked}
+          disabled={disabled}
+        >
+          {children}
+        </Button>
+      ) : (
+        <div className={cx('radio', { checked, disabled })}>{children}</div>
+      )}
     </label>
   )
 }

@@ -108,6 +108,7 @@ const RegisterResultForm = ({ onSubmit }: Props) => (
                   >
                     {({ input, meta }) => (
                       <RadioButton
+                        button
                         {...input}
                         className={cx({
                           error: !!(meta.touched && meta.error),
