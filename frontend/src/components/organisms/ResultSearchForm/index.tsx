@@ -3,21 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
-import { Form as FinalForm } from 'react-final-form'
 
-import Alert from '@app/components/atoms/Alert'
-import FilterForm from '@app/components/organisms/FilterForm'
-import { Difficulty, PlayStyle } from '@app/queries'
+import FilterForm, { FormValues } from '@app/components/organisms/FilterForm'
+import { PlayStyle } from '@app/queries'
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
-
-export type FormValues = {
-  title?: string | null
-  playStyle: PlayStyle
-  difficulties: Difficulty[]
-  levels: number[]
-}
 
 export type Props = {
   onSubmit: (values: FormValues) => void
@@ -25,12 +16,6 @@ export type Props = {
 }
 
 const ResultSearchForm: React.SFC<Props> = ({ onSubmit, playStyle }) => {
-  const initialValues = {
-    playStyle,
-    difficulties: [],
-    levels: [],
-  }
-
   const [showFilterForm, setFilterFormShown] = React.useState(false)
 
   return (
@@ -40,41 +25,31 @@ const ResultSearchForm: React.SFC<Props> = ({ onSubmit, playStyle }) => {
           onCloseRequested={() => {
             setFilterFormShown(false)
           }}
+          onSubmit={onSubmit}
+          playStyle={playStyle}
         />
       )}
 
-      <FinalForm onSubmit={onSubmit} initialValues={initialValues}>
-        {({ handleSubmit, hasSubmitErrors, submitError }) => (
-          <form className={cx('result-search-form')} onSubmit={handleSubmit}>
-            <div className={cx('filter-area')}>
-              <button
-                className={cx('filter-button')}
-                onClick={() => {
-                  setFilterFormShown(true)
-                }}
-              >
-                <span className={cx('filter-icon')}>
-                  <FontAwesomeIcon icon={faSlidersH} />
-                </span>
-                Filter
-              </button>
+      <div className={cx('filter-area')}>
+        <button
+          className={cx('filter-button')}
+          onClick={() => {
+            setFilterFormShown(true)
+          }}
+        >
+          <span className={cx('filter-icon')}>
+            <FontAwesomeIcon icon={faSlidersH} />
+          </span>
+          Filter
+        </button>
 
-              <button className={cx('filter-button')}>
-                <span className={cx('filter-icon')}>
-                  <FontAwesomeIcon icon={faSortAmountDown} />
-                </span>
-                Sort By
-              </button>
-            </div>
-
-            {hasSubmitErrors && (
-              <div className={cx('error-box')}>
-                <Alert>{submitError}</Alert>
-              </div>
-            )}
-          </form>
-        )}
-      </FinalForm>
+        <button className={cx('filter-button')}>
+          <span className={cx('filter-icon')}>
+            <FontAwesomeIcon icon={faSortAmountDown} />
+          </span>
+          Sort By
+        </button>
+      </div>
     </>
   )
 }

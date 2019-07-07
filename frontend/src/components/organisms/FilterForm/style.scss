@@ -1,4 +1,6 @@
 @import 'styles/colors';
+@import 'styles/mixins';
+@import 'styles/breakpoints';
 
 .modal {
   position: fixed;
@@ -10,8 +12,94 @@
   height: 100%;
 }
 
-.filter-form {
+.container {
   padding: 2rem;
+}
 
+.filter-form {
   background-color: $white;
+}
+
+.header {
+  border-bottom: 1px solid $border-color;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h1 {
+    display: inline-block;
+    flex: 1;
+
+    font-size: 1.5em;
+
+    line-height: 1;
+  }
+
+  .close-button {
+    display: inline;
+    margin: -2rem;
+    padding: 2rem;
+
+    font-size: 1.5em;
+
+    cursor: pointer;
+
+    &:hover {
+      color: $gray;
+    }
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+
+  border-top: 1px solid $border-color;
+}
+
+.footer-button-group {
+  display: flex;
+  width: 100%;
+}
+
+.clear-button {
+  margin-right: 1rem;
+}
+
+.form-group-label {
+  margin-bottom: 1rem;
+
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.form-field {
+  display: inline-block;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+}
+
+.level-field-group {
+  display: grid;
+
+  @include on-mobile() {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include on-tablet() {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include on-computer() {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &.form-field {
+    margin-right: 0;
+  }
 }
