@@ -105,7 +105,7 @@ const FilterForm: React.SFC<Props> = ({
                       <FinalField
                         key={level}
                         type="checkbox"
-                        name="level"
+                        name="levels"
                         value={level}
                       >
                         {({ input }) => (
@@ -126,7 +126,7 @@ const FilterForm: React.SFC<Props> = ({
                     <FinalField
                       key={difficulty}
                       type="checkbox"
-                      name="level"
+                      name="difficulties"
                       value={difficulty}
                     >
                       {({ input }) => (

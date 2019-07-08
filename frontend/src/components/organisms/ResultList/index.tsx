@@ -8,7 +8,7 @@ import Pagination from '@app/components/atoms/Pagination'
 import ResultTable, {
   Props as ResultTableProps,
 } from '@app/components/molecules/ResultTable'
-import { FormValues as SearchFormValues } from '@app/components/organisms/ResultSearchForm'
+import { Difficulty, PlayStyle } from '@app/queries'
 import { GetUserResultsComponent } from '@app/queries'
 import * as css from './style.scss'
 
@@ -16,8 +16,10 @@ const cx = classnames.bind(css)
 
 export type Props = {
   screenName: string
-  initialValues: SearchFormValues
-  onSubmit: (values: SearchFormValues) => void
+  title?: string | null
+  playStyle: PlayStyle
+  difficulties: Difficulty[]
+  levels: number[]
   defaultActivePage?: number
   numItemsPerPage?: number
   onPageChange?: ResultTableProps['onPageChange']
@@ -25,12 +27,14 @@ export type Props = {
 
 const ResultList: React.SFC<Props> = ({
   screenName,
-  initialValues,
+  title,
+  playStyle,
+  difficulties,
+  levels,
   onPageChange,
   numItemsPerPage = 20,
   defaultActivePage = 1,
 }) => {
-  const [formValues] = React.useState<SearchFormValues>(initialValues)
   const [activePage, setActivePage] = React.useState(defaultActivePage)
 
   const changePage = (newActivePage: number) => {
@@ -48,10 +52,10 @@ const ResultList: React.SFC<Props> = ({
           <GetUserResultsComponent
             variables={{
               username: screenName,
-              title: formValues.title,
-              playStyle: formValues.playStyle,
-              difficulties: formValues.difficulties,
-              levels: formValues.levels,
+              title,
+              playStyle,
+              difficulties,
+              levels,
             }}
           >
             {({ loading, error, data }) => {

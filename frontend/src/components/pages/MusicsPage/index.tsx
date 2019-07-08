@@ -1,9 +1,9 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 
+import { FormValues } from '@app/components/organisms/FilterForm'
 import ResultList from '@app/components/organisms/ResultList'
 import ResultSearchForm from '@app/components/organisms/ResultSearchForm'
-import { FormValues } from '@app/components/organisms/ResultSearchForm'
 import UserProfileLayout, {
   Tab,
 } from '@app/components/templates/UserProfileLayout'
@@ -55,7 +55,7 @@ const MusicsPage = ({
     (difficulties == null || difficulties.length === 0) &&
     (levels == null || levels.length === 0)
 
-  const initialValues: FormValues = isQueryEmpty
+  const formValues: FormValues = isQueryEmpty
     ? {
         title: null,
         playStyle,
@@ -69,13 +69,15 @@ const MusicsPage = ({
         levels: levels || [],
       }
 
-  const replaceQuery = (newQuery: any) => {
+  const changeRoute = (newQuery: any, { replace }: { replace: boolean }) => {
     const currentQuery = _.omit(Router.query || {}, 'screenName')
     const query = { ...currentQuery, ...newQuery }
 
+    const routerMethod = replace ? Router.replace : Router.push
+
     // currently next-routes doesn't support array for query parameters,
     // so we use `Router.replace` instead of `Router.replaceRoute`.
-    Router.replace(
+    routerMethod(
       {
         pathname: '/musics',
         query: {
@@ -87,7 +89,7 @@ const MusicsPage = ({
         pathname: location.pathname,
         query,
       },
-      { shallow: true },
+      { shallow: replace },
     )
   }
 
@@ -99,19 +101,19 @@ const MusicsPage = ({
     >
       <ResultSearchForm
         onSubmit={values => {
-          console.log(values)
+          const compactedFormValues = compactFormValues(values)
+          changeRoute({ ...compactedFormValues }, { replace: false })
         }}
         playStyle={playStyle}
       />
       <ResultList
-        initialValues={initialValues}
         screenName={screenName}
-        onSubmit={values => {
-          const compactedFormValues = compactFormValues(values)
-          replaceQuery({ ...compactedFormValues })
-        }}
+        title={formValues.title}
+        playStyle={formValues.playStyle}
+        difficulties={formValues.difficulties}
+        levels={formValues.levels}
         onPageChange={newActivePage => {
-          replaceQuery({ page: newActivePage })
+          changeRoute({ page: newActivePage }, { replace: true })
         }}
         defaultActivePage={page}
       />
