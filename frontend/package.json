@@ -58,7 +58,7 @@
     "react-final-form": "4.1.0",
     "recompose": "0.30.0",
     "ress": "1.2.2",
-    "typescript": "3.5.2",
+    "typescript": "3.5.3",
     "utility-types": "3.7.0",
     "validator": "11.1.0"
   },
