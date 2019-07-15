@@ -8,7 +8,7 @@ exports[`/ renders correctly 1`] = `
     className="headerNav"
   >
     <div
-      className="container"
+      className="container "
     >
       <div
         className="flexContainer"
@@ -37,7 +37,7 @@ exports[`/ renders correctly 1`] = `
     className="content"
   >
     <div
-      className="container"
+      className="container "
     >
       <div
         className="user-profile-header-wrapper"
@@ -96,7 +96,7 @@ exports[`/ renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="container"
+      className="container "
     >
       SP
     </div>
@@ -105,7 +105,7 @@ exports[`/ renders correctly 1`] = `
     className="box"
   >
     <div
-      className="container"
+      className="container "
     >
       <div
         className="inner"

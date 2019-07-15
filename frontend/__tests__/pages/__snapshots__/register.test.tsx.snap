@@ -8,7 +8,7 @@ exports[`/register renders correctly 1`] = `
     className="headerNav"
   >
     <div
-      className="container"
+      className="container "
     >
       <div
         className="flexContainer"
@@ -61,7 +61,7 @@ exports[`/register renders correctly 1`] = `
               Username
             </label>
             <div
-              className="input-area"
+              className="input-area "
             >
               <input
                 className="input-text "
@@ -84,7 +84,7 @@ exports[`/register renders correctly 1`] = `
               Display Name
             </label>
             <div
-              className="input-area"
+              className="input-area "
             >
               <input
                 className="input-text "
@@ -99,7 +99,7 @@ exports[`/register renders correctly 1`] = `
             </div>
           </div>
           <button
-            className="button disabled "
+            className="button disabled expand "
             disabled={true}
             type="submit"
           >
@@ -113,7 +113,7 @@ exports[`/register renders correctly 1`] = `
     className="box"
   >
     <div
-      className="container"
+      className="container "
     >
       <div
         className="inner"
