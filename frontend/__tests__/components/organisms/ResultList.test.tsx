@@ -40,6 +40,7 @@ describe('ResultList', () => {
           screenName={screenName}
           formValues={initialValues}
           playStyle={PlayStyle.Sp}
+          activePage={1}
         />
       </MockedProvider>,
     )
@@ -62,6 +63,7 @@ describe('ResultList', () => {
           screenName={screenName}
           formValues={initialValues}
           playStyle={PlayStyle.Sp}
+          activePage={1}
         />
       </MockedProvider>,
     )
@@ -79,6 +81,7 @@ describe('ResultList', () => {
           screenName={screenName}
           formValues={initialValues}
           playStyle={PlayStyle.Sp}
+          activePage={1}
         />
       </MockedProvider>,
     )
