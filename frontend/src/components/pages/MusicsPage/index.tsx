@@ -72,6 +72,16 @@ const MusicsPage = ({
     const currentQuery = _.omit(Router.query || {}, ['screenName', 'playStyle'])
     const query = { ...currentQuery, ...newQuery }
 
+    if (query.difficulties && query.difficulties.length !== 0) {
+      query.difficulties = query.difficulties.map((d: Difficulty) =>
+        d.toLowerCase(),
+      )
+    }
+
+    if (query.playStyle) {
+      query.playStyle = (query.playStyle as PlayStyle).toLowerCase()
+    }
+
     const routerMethod = replace ? Router.replace : Router.push
 
     // currently next-routes doesn't support array for query parameters,
