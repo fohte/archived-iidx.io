@@ -19,7 +19,7 @@ export type Props = {
   formValues: FormValues
   playStyle: PlayStyle
   screenName: string
-  defaultActivePage?: number
+  activePage: number
   numItemsPerPage?: number
   onPageChange?: ResultTableProps['onPageChange']
 }
@@ -30,13 +30,9 @@ const ResultList: React.SFC<Props> = ({
   screenName,
   onPageChange,
   numItemsPerPage = 20,
-  defaultActivePage = 1,
+  activePage,
 }) => {
-  const [activePage, setActivePage] = React.useState(defaultActivePage)
-
   const changePage = (newActivePage: number) => {
-    setActivePage(newActivePage)
-
     if (onPageChange) {
       onPageChange(newActivePage)
     }

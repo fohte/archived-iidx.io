@@ -50,6 +50,8 @@ const MusicsPage = ({
   levels,
   page,
 }: Props) => {
+  const [activePage, setPage] = React.useState(page || 1)
+
   const isQueryEmpty =
     title == null &&
     (difficulties == null || difficulties.length === 0) &&
@@ -115,6 +117,7 @@ const MusicsPage = ({
         onSubmit={values => {
           const compactedFormValues = compactFormValues(values)
           changeRoute({ page: 1, ...compactedFormValues }, { replace: false })
+          setPage(1)
         }}
       />
       <ResultList
@@ -122,9 +125,18 @@ const MusicsPage = ({
         formValues={formValues}
         playStyle={playStyle}
         onPageChange={newActivePage => {
-          changeRoute({ page: newActivePage }, { replace: true })
+          const currentQuery = _.omit(Router.query || {}, [
+            'screenName',
+            'playStyle',
+          ])
+          changeRoute(
+            { ...currentQuery, page: newActivePage },
+            { replace: true },
+          )
+
+          setPage(newActivePage)
         }}
-        defaultActivePage={page}
+        activePage={activePage}
       />
     </UserProfileLayout>
   )
