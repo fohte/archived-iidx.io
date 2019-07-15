@@ -78,6 +78,11 @@ const MusicsPage = ({
       query.playStyle = (query.playStyle as PlayStyle).toLowerCase()
     }
 
+    // page が 1 (初期値) のときは正規化する
+    if (query.page === 1) {
+      delete query.page
+    }
+
     const routerMethod = replace ? Router.replace : Router.push
 
     // currently next-routes doesn't support array for query parameters,
@@ -109,7 +114,7 @@ const MusicsPage = ({
         formValues={formValues}
         onSubmit={values => {
           const compactedFormValues = compactFormValues(values)
-          changeRoute({ ...compactedFormValues }, { replace: false })
+          changeRoute({ page: 1, ...compactedFormValues }, { replace: false })
         }}
       />
       <ResultList
