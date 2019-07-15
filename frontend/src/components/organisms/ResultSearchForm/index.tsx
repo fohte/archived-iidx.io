@@ -5,28 +5,28 @@ import * as _ from 'lodash'
 import * as React from 'react'
 
 import FilterForm, { FormValues } from '@app/components/organisms/FilterForm'
-import { PlayStyle } from '@app/queries'
+
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
 export type Props = {
+  formValues: FormValues
   onSubmit: (values: FormValues) => void
-  playStyle: PlayStyle
 }
 
-const ResultSearchForm: React.SFC<Props> = ({ onSubmit, playStyle }) => {
+const ResultSearchForm: React.SFC<Props> = ({ formValues, onSubmit }) => {
   const [showFilterForm, setFilterFormShown] = React.useState(false)
 
   return (
     <>
       {showFilterForm && (
         <FilterForm
+          initialValues={formValues}
           onCloseRequested={() => {
             setFilterFormShown(false)
           }}
           onSubmit={onSubmit}
-          playStyle={playStyle}
         />
       )}
 

@@ -18,20 +18,19 @@ const cx = classnames.bind(css)
 
 export type FormValues = {
   title?: string | null
-  playStyle: PlayStyle
   difficulties: Difficulty[]
   levels: number[]
 }
 
 export type Props = {
+  initialValues: FormValues
   onSubmit: (values: FormValues) => void
-  playStyle: PlayStyle
   onCloseRequested: () => void
 }
 
 const FilterForm: React.SFC<Props> = ({
+  initialValues,
   onCloseRequested,
-  playStyle,
   onSubmit,
 }) => {
   // このコンポーネントが開いている間は背景のスクロールを無効化する
@@ -58,12 +57,6 @@ const FilterForm: React.SFC<Props> = ({
       document.documentElement.scrollTop = document.body.scrollTop = scrollTop
     }
   })
-
-  const initialValues = {
-    playStyle,
-    difficulties: [],
-    levels: [],
-  }
 
   return (
     <FinalForm onSubmit={onSubmit} initialValues={initialValues}>
@@ -147,7 +140,10 @@ const FilterForm: React.SFC<Props> = ({
                       expand={false}
                       type="button"
                       onClick={() => {
-                        form.reset()
+                        form.reset({
+                          difficulties: [],
+                          levels: [],
+                        })
                       }}
                     >
                       Clear

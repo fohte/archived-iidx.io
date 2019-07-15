@@ -8,29 +8,26 @@ import Pagination from '@app/components/atoms/Pagination'
 import ResultTable, {
   Props as ResultTableProps,
 } from '@app/components/molecules/ResultTable'
-import { Difficulty, PlayStyle } from '@app/queries'
-import { GetUserResultsComponent } from '@app/queries'
+import { FormValues } from '@app/components/organisms/FilterForm'
+import { GetUserResultsComponent, PlayStyle } from '@app/queries'
+
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
 export type Props = {
-  screenName: string
-  title?: string | null
+  formValues: FormValues
   playStyle: PlayStyle
-  difficulties: Difficulty[]
-  levels: number[]
+  screenName: string
   defaultActivePage?: number
   numItemsPerPage?: number
   onPageChange?: ResultTableProps['onPageChange']
 }
 
 const ResultList: React.SFC<Props> = ({
-  screenName,
-  title,
+  formValues: { title, difficulties, levels },
   playStyle,
-  difficulties,
-  levels,
+  screenName,
   onPageChange,
   numItemsPerPage = 20,
   defaultActivePage = 1,

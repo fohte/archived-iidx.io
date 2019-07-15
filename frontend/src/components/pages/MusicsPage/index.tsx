@@ -58,21 +58,16 @@ const MusicsPage = ({
   const formValues: FormValues = isQueryEmpty
     ? {
         title: null,
-        playStyle,
         difficulties: [],
         levels: [12],
       }
     : {
         title: title || null,
-        playStyle,
         difficulties: difficulties || [],
         levels: levels || [],
       }
 
-  const changeRoute = (newQuery: any, { replace }: { replace: boolean }) => {
-    const currentQuery = _.omit(Router.query || {}, ['screenName', 'playStyle'])
-    const query = { ...currentQuery, ...newQuery }
-
+  const changeRoute = (query: any, { replace }: { replace: boolean }) => {
     if (query.difficulties && query.difficulties.length !== 0) {
       query.difficulties = ensureArray(query.difficulties).map(
         (d: Difficulty) => d.toLowerCase(),
@@ -111,18 +106,16 @@ const MusicsPage = ({
       activeTab={Tab.Musics}
     >
       <ResultSearchForm
+        formValues={formValues}
         onSubmit={values => {
           const compactedFormValues = compactFormValues(values)
           changeRoute({ ...compactedFormValues }, { replace: false })
         }}
-        playStyle={playStyle}
       />
       <ResultList
         screenName={screenName}
-        title={formValues.title}
-        playStyle={formValues.playStyle}
-        difficulties={formValues.difficulties}
-        levels={formValues.levels}
+        formValues={formValues}
+        playStyle={playStyle}
         onPageChange={newActivePage => {
           changeRoute({ page: newActivePage }, { replace: true })
         }}
