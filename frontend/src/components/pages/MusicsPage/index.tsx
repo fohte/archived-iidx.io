@@ -21,11 +21,10 @@ export interface Props {
 
 const compactFormValues = ({
   title,
-  playStyle,
   difficulties,
   levels,
 }: FormValues): Partial<FormValues> => {
-  const newValues: Partial<FormValues> = { playStyle }
+  const newValues: Partial<FormValues> = {}
 
   if (title) {
     newValues.title = title
@@ -70,7 +69,7 @@ const MusicsPage = ({
       }
 
   const changeRoute = (newQuery: any, { replace }: { replace: boolean }) => {
-    const currentQuery = _.omit(Router.query || {}, 'screenName')
+    const currentQuery = _.omit(Router.query || {}, ['screenName', 'playStyle'])
     const query = { ...currentQuery, ...newQuery }
 
     const routerMethod = replace ? Router.replace : Router.push
@@ -83,6 +82,7 @@ const MusicsPage = ({
         query: {
           ...query,
           screenName,
+          playStyle,
         },
       },
       {
