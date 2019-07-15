@@ -7,6 +7,7 @@ import ResultSearchForm from '@app/components/organisms/ResultSearchForm'
 import UserProfileLayout, {
   Tab,
 } from '@app/components/templates/UserProfileLayout'
+import ensureArray from '@app/lib/ensureArray'
 import { Difficulty, PlayStyle } from '@app/queries'
 import { Router } from '@app/routes'
 
@@ -73,8 +74,8 @@ const MusicsPage = ({
     const query = { ...currentQuery, ...newQuery }
 
     if (query.difficulties && query.difficulties.length !== 0) {
-      query.difficulties = query.difficulties.map((d: Difficulty) =>
-        d.toLowerCase(),
+      query.difficulties = ensureArray(query.difficulties).map(
+        (d: Difficulty) => d.toLowerCase(),
       )
     }
 
