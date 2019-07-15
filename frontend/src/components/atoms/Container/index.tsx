@@ -7,10 +7,11 @@ const cx = classnames.bind(css)
 
 type Props = {
   children?: React.ReactNode
+  className?: string
 }
 
-const Container = ({ children }: Props) => (
-  <div className={cx('container')}>{children}</div>
+const Container = ({ children, className }: Props) => (
+  <div className={[cx('container'), className].join(' ')}>{children}</div>
 )
 
 export default Container

@@ -13,7 +13,7 @@ exports[`LoginOrSignUpForm renders correctly 1`] = `
       E-mail address
     </label>
     <div
-      className="input-area"
+      className="input-area "
     >
       <input
         className="input-text "
@@ -36,7 +36,7 @@ exports[`LoginOrSignUpForm renders correctly 1`] = `
       Password
     </label>
     <div
-      className="input-area"
+      className="input-area "
     >
       <input
         className="input-text "
@@ -51,7 +51,7 @@ exports[`LoginOrSignUpForm renders correctly 1`] = `
     </div>
   </div>
   <button
-    className="button disabled "
+    className="button disabled expand "
     disabled={true}
     type="submit"
   >

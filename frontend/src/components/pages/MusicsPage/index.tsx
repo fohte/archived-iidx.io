@@ -1,11 +1,13 @@
 import * as _ from 'lodash'
 import * as React from 'react'
 
+import { FormValues } from '@app/components/organisms/FilterForm'
 import ResultList from '@app/components/organisms/ResultList'
-import { FormValues } from '@app/components/organisms/ResultSearchForm'
+import ResultSearchForm from '@app/components/organisms/ResultSearchForm'
 import UserProfileLayout, {
   Tab,
 } from '@app/components/templates/UserProfileLayout'
+import ensureArray from '@app/lib/ensureArray'
 import { Difficulty, PlayStyle } from '@app/queries'
 import { Router } from '@app/routes'
 
@@ -20,11 +22,10 @@ export interface Props {
 
 const compactFormValues = ({
   title,
-  playStyle,
   difficulties,
   levels,
 }: FormValues): Partial<FormValues> => {
-  const newValues: Partial<FormValues> = { playStyle }
+  const newValues: Partial<FormValues> = {}
 
   if (title) {
     newValues.title = title
@@ -49,44 +50,59 @@ const MusicsPage = ({
   levels,
   page,
 }: Props) => {
+  const [activePage, setPage] = React.useState(page || 1)
+
   const isQueryEmpty =
     title == null &&
     (difficulties == null || difficulties.length === 0) &&
     (levels == null || levels.length === 0)
 
-  const initialValues: FormValues = isQueryEmpty
+  const formValues: FormValues = isQueryEmpty
     ? {
         title: null,
-        playStyle,
         difficulties: [],
         levels: [12],
       }
     : {
         title: title || null,
-        playStyle,
         difficulties: difficulties || [],
         levels: levels || [],
       }
 
-  const replaceQuery = (newQuery: any) => {
-    const currentQuery = _.omit(Router.query || {}, 'screenName')
-    const query = { ...currentQuery, ...newQuery }
+  const changeRoute = (query: any, { replace }: { replace: boolean }) => {
+    if (query.difficulties && query.difficulties.length !== 0) {
+      query.difficulties = ensureArray(query.difficulties).map(
+        (d: Difficulty) => d.toLowerCase(),
+      )
+    }
+
+    if (query.playStyle) {
+      query.playStyle = (query.playStyle as PlayStyle).toLowerCase()
+    }
+
+    // page が 1 (初期値) のときは正規化する
+    if (query.page === 1) {
+      delete query.page
+    }
+
+    const routerMethod = replace ? Router.replace : Router.push
 
     // currently next-routes doesn't support array for query parameters,
     // so we use `Router.replace` instead of `Router.replaceRoute`.
-    Router.replace(
+    routerMethod(
       {
         pathname: '/musics',
         query: {
           ...query,
           screenName,
+          playStyle,
         },
       },
       {
         pathname: location.pathname,
         query,
       },
-      { shallow: true },
+      { shallow: replace },
     )
   }
 
@@ -96,17 +112,31 @@ const MusicsPage = ({
       playStyle={playStyle}
       activeTab={Tab.Musics}
     >
-      <ResultList
-        initialValues={initialValues}
-        screenName={screenName}
+      <ResultSearchForm
+        formValues={formValues}
         onSubmit={values => {
           const compactedFormValues = compactFormValues(values)
-          replaceQuery({ ...compactedFormValues })
+          changeRoute({ page: 1, ...compactedFormValues }, { replace: false })
+          setPage(1)
         }}
+      />
+      <ResultList
+        screenName={screenName}
+        formValues={formValues}
+        playStyle={playStyle}
         onPageChange={newActivePage => {
-          replaceQuery({ page: newActivePage })
+          const currentQuery = _.omit(Router.query || {}, [
+            'screenName',
+            'playStyle',
+          ])
+          changeRoute(
+            { ...currentQuery, page: newActivePage },
+            { replace: true },
+          )
+
+          setPage(newActivePage)
         }}
-        defaultActivePage={page}
+        activePage={activePage}
       />
     </UserProfileLayout>
   )

@@ -5,24 +5,21 @@
   composes: button from '../../molecules/ButtonGroup/style.scss';
 
   display: inline-block;
-
-  width: 100%;
   padding: 0 2em;
 
   color: $primary-fg-color;
-
   line-height: 2.5em;
-
   text-align: center;
 
   background-color: $ui-base-color;
-  border: 1px solid transparent;
-
+  border: 2px solid transparent;
   border-radius: $border-radius-size;
-
   outline: none;
-
   cursor: pointer;
+
+  &.expand {
+    width: 100%;
+  }
 
   &.active,
   &[type='submit'] {
@@ -31,22 +28,22 @@
     background-color: $ui-accent-color;
   }
 
-  &.white {
-    background-color: $white;
-  }
+  @mixin button-color($class-name, $color) {
+    &.#{$class-name} {
+      background-color: $color;
 
-  &.inverted {
-    color: $ui-base-color;
+      &.inverted {
+        color: $color;
 
-    background-color: transparent;
-    border-color: $ui-base-color;
-
-    &.white {
-      color: $white;
-
-      border-color: $white;
+        background-color: transparent;
+        border-color: $color;
+      }
     }
   }
+
+  @include button-color('white', $white);
+  @include button-color('black', $black);
+  @include button-color('primary', $ui-accent-color);
 
   &.small {
     padding: 0 1.5em;

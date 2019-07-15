@@ -2,8 +2,8 @@ import * as React from 'react'
 import { MockedProvider } from 'react-apollo/test-utils'
 import * as renderer from 'react-test-renderer'
 
+import { FormValues } from '@app/components/organisms/FilterForm'
 import ResultList from '@app/components/organisms/ResultList'
-import { FormValues } from '@app/components/organisms/ResultSearchForm'
 import {
   GetUserResultsDocument,
   GetUserResultsQuery,
@@ -16,7 +16,6 @@ const screenName = 'username'
 
 const initialValues: FormValues = {
   title: null,
-  playStyle: PlayStyle.Sp,
   difficulties: [],
   levels: [],
 }
@@ -38,11 +37,10 @@ describe('ResultList', () => {
     const component = renderer.create(
       <MockedProvider mocks={mocks} addTypename={false}>
         <ResultList
-          onSubmit={() => {
-            /* NOP */
-          }}
           screenName={screenName}
-          initialValues={initialValues}
+          formValues={initialValues}
+          playStyle={PlayStyle.Sp}
+          activePage={1}
         />
       </MockedProvider>,
     )
@@ -62,11 +60,10 @@ describe('ResultList', () => {
     const component = renderer.create(
       <MockedProvider mocks={mocks} addTypename={false}>
         <ResultList
-          onSubmit={() => {
-            /* NOP */
-          }}
           screenName={screenName}
-          initialValues={initialValues}
+          formValues={initialValues}
+          playStyle={PlayStyle.Sp}
+          activePage={1}
         />
       </MockedProvider>,
     )
@@ -81,11 +78,10 @@ describe('ResultList', () => {
     const component = renderer.create(
       <MockedProvider mocks={mocks} addTypename={false}>
         <ResultList
-          onSubmit={() => {
-            /* NOP */
-          }}
           screenName={screenName}
-          initialValues={initialValues}
+          formValues={initialValues}
+          playStyle={PlayStyle.Sp}
+          activePage={1}
         />
       </MockedProvider>,
     )

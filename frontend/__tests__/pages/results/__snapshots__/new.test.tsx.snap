@@ -8,7 +8,7 @@ exports[`/ renders correctly 1`] = `
     className="headerNav"
   >
     <div
-      className="container"
+      className="container "
     >
       <div
         className="flexContainer"
@@ -37,7 +37,7 @@ exports[`/ renders correctly 1`] = `
     className="content"
   >
     <div
-      className="container"
+      className="container "
     >
       <div
         className="register-result-form"
@@ -58,7 +58,7 @@ exports[`/ renders correctly 1`] = `
               Links (e-AMUSEMENT GATE)
             </label>
             <div
-              className="input-area"
+              className="input-area "
             >
               <ul
                 className="links"
@@ -142,12 +142,14 @@ exports[`/ renders correctly 1`] = `
                 Play Style
               </label>
               <div
-                className="input-area"
+                className="input-area "
               >
                 <div
                   className="button-group button-group"
                 >
-                  <label>
+                  <label
+                    className="label"
+                  >
                     <input
                       checked={false}
                       className="input"
@@ -159,13 +161,15 @@ exports[`/ renders correctly 1`] = `
                       value="SP"
                     />
                     <div
-                      className="button "
+                      className="button expand "
                       disabled={false}
                     >
                       SP
                     </div>
                   </label>
-                  <label>
+                  <label
+                    className="label"
+                  >
                     <input
                       checked={false}
                       className="input"
@@ -177,7 +181,7 @@ exports[`/ renders correctly 1`] = `
                       value="DP"
                     />
                     <div
-                      className="button "
+                      className="button expand "
                       disabled={false}
                     >
                       DP
@@ -195,7 +199,7 @@ exports[`/ renders correctly 1`] = `
                 CSV
               </label>
               <div
-                className="input-area"
+                className="input-area "
               >
                 <textarea
                   className="textarea "
@@ -209,7 +213,7 @@ exports[`/ renders correctly 1`] = `
               </div>
             </div>
             <button
-              className="button disabled "
+              className="button disabled expand "
               disabled={true}
               type="submit"
             >
@@ -224,7 +228,7 @@ exports[`/ renders correctly 1`] = `
     className="box"
   >
     <div
-      className="container"
+      className="container "
     >
       <div
         className="inner"

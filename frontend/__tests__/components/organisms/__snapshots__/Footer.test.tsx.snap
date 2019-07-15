@@ -5,7 +5,7 @@ exports[`Footer renders correctly when the current year and the copyright year a
   className="box"
 >
   <div
-    className="container"
+    className="container "
   >
     <div
       className="inner"
@@ -42,7 +42,7 @@ exports[`Footer renders correctly when the current year and the copyright year a
   className="box"
 >
   <div
-    className="container"
+    className="container "
   >
     <div
       className="inner"

@@ -13,18 +13,22 @@ export interface Props {
   errorMessage?: string
   label: string
   children?: React.ReactNode
+  className?: string
+  labelClassName?: string
 }
 
 const FormGroup: React.FunctionComponent<Props> = ({
   error = false,
+  className,
+  labelClassName,
   errorMessage,
   label,
   children,
 }) => (
   <div className={cx('form-group')}>
-    <FormLabel>{label}</FormLabel>
+    <FormLabel className={labelClassName}>{label}</FormLabel>
 
-    <div className={cx('input-area')}>{children}</div>
+    <div className={[cx('input-area'), className].join(' ')}>{children}</div>
 
     {error && errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
   </div>

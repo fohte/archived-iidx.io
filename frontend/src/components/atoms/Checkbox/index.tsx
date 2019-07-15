@@ -1,7 +1,6 @@
 import * as classnames from 'classnames/bind'
 import * as React from 'react'
 
-import Button from '@app/components/atoms/Button'
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
@@ -12,16 +11,14 @@ export interface Props {
   disabled?: boolean
   checked?: boolean
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-  button?: boolean
 }
 
-const RadioButton: React.FunctionComponent<Props> = ({
+const Checkbox: React.FunctionComponent<Props> = ({
   className,
   children,
   disabled,
   onChange,
   checked = false,
-  button = false,
   ...otherProps
 }) => {
   return (
@@ -29,25 +26,14 @@ const RadioButton: React.FunctionComponent<Props> = ({
       <input
         className={cx('input')}
         onChange={onChange}
-        type="radio"
+        type="checkbox"
         disabled={disabled}
         checked={checked}
         {...otherProps}
       />
-      {button ? (
-        <Button
-          as="div"
-          className={className}
-          active={checked}
-          disabled={disabled}
-        >
-          {children}
-        </Button>
-      ) : (
-        <div className={cx('radio', { checked, disabled })}>{children}</div>
-      )}
+      <div className={cx('checkbox', { checked, disabled })}>{children}</div>
     </label>
   )
 }
 
-export default RadioButton
+export default Checkbox

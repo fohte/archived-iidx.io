@@ -1,0 +1,19 @@
+@import 'styles/colors';
+
+.Toastify__toast {
+  &--success {
+    background-color: $green;
+  }
+
+  &--error {
+    background-color: $red;
+  }
+
+  &--info {
+    background-color: $blue;
+  }
+
+  &--warning {
+    background-color: $yellow;
+  }
+}

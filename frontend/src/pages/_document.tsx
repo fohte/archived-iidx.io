@@ -12,6 +12,7 @@ export default class MyDocument extends Document {
           />
           <link href="/static/dist/fontawesome.css" rel="stylesheet" />
           <link href="/static/dist/ress.min.css" rel="stylesheet" />
+          <link href="/static/dist/ReactToastify.min.css" rel="stylesheet" />
         </Head>
         <body>
           <Main />
