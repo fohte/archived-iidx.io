@@ -181,30 +181,23 @@ workflows:
       - test-frontend
       - test-backend
       - test-root
-  nightly:
-    triggers:
-      - schedule:
-          cron: '0 18 * * *' # 毎日 3:00 (JST)
-          filters:
-            branches:
-              only: master
+  release:
     jobs:
-      - test-frontend
-      - test-backend
-      - test-root
       - docker-build-and-push:
           name: build-and-push-frontend-image
           repo: iidx.io/frontend
           dockerfile: docker/frontend/Dockerfile.prod
-          requires:
-            - test-frontend
-            - test-backend
-            - test-root
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
       - docker-build-and-push:
           name: build-and-push-backend-image
           repo: iidx.io/backend
           dockerfile: docker/backend/Dockerfile.prod
-          requires:
-            - test-frontend
-            - test-backend
-            - test-root
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
