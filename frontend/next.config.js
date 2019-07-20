@@ -1,7 +1,6 @@
 const merge = require('webpack-merge')
 const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
-const withTypescript = require('@zeit/next-typescript')
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
 
 if (typeof require !== 'undefined') {
@@ -12,7 +11,7 @@ const srcDir = path.join(__dirname, 'src')
 const nodeModulesDir = path.join(__dirname, 'node_modules')
 const staticDistDir = path.join(__dirname, 'static', 'dist')
 
-module.exports = withTypescript({
+module.exports = {
   generateBuildId: () => process.env.IIDXIO_VERSION,
   serverRuntimeConfig: {
     privateApiUrl: process.env.PRIVATE_API_URL,
@@ -98,4 +97,4 @@ module.exports = withTypescript({
       ],
     })
   },
-})
+}
