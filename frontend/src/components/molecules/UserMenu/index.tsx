@@ -1,10 +1,10 @@
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as classnames from 'classnames/bind'
+import Link from 'next/link'
 import * as React from 'react'
 
 import { auth } from '@app/lib/firebaseApp'
-import { Link } from '@app/routes'
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
@@ -48,13 +48,13 @@ const UserMenu: React.SFC<Props> = ({ displayName, className }) => {
         <FontAwesomeIcon icon={faCaretDown} size="xs" />
       </div>
       <div className={cx('dropdown', { hide: !isOpen })}>
-        <Link route={`/@${displayName}`}>
+        <Link href={`/@${displayName}`}>
           <a className={cx('item')} onClick={hide}>
             Profile
           </a>
         </Link>
         <div className={cx('divider')} />
-        <Link route="/results/new">
+        <Link href="/results/new">
           <a className={cx('item')} onClick={hide}>
             Register results
           </a>

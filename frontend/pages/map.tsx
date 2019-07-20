@@ -63,11 +63,11 @@ const MapPage: PageComponentType<Props> = ({
       breadcrumbItems={[
         {
           text: 'Musics',
-          route: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
+          href: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
         },
         {
           text: `${music.title} [${playStyle}${difficulty[0]}]`,
-          route: `/@${screenName}/musics/${
+          href: `/@${screenName}/musics/${
             music.id
           }/${playStyle.toLowerCase()}/${difficulty.toLowerCase()}`,
           active: true,

@@ -1,4 +1,5 @@
 import * as _ from 'lodash'
+import Router from 'next/router'
 import * as React from 'react'
 
 import { FormValues } from '@app/components/organisms/FilterForm'
@@ -9,7 +10,6 @@ import UserProfileLayout, {
 } from '@app/components/templates/UserProfileLayout'
 import ensureArray from '@app/lib/ensureArray'
 import { Difficulty, PlayStyle } from '@app/queries'
-import { Router } from '@app/routes'
 
 export interface Props {
   screenName: string

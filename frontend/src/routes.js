@@ -1,4 +1,4 @@
-import routes from '@yolkai/next-routes'
+const routes = require('../libs/next-routes')
 
 export default routes()
   .add('user', '/@:screenName/:playStyle?', 'profile')

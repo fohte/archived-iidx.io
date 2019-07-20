@@ -1,4 +1,5 @@
 import * as classnames from 'classnames/bind'
+import  Link  from 'next/link'
 import * as _ from 'lodash'
 import * as React from 'react'
 
@@ -8,7 +9,6 @@ import Breadcrumb, {
 import Container from '@app/components/atoms/Container'
 import MainLayout from '@app/components/templates/MainLayout'
 import { PlayStyle } from '@app/queries'
-import { Link } from '@app/routes'
 import {
   faEye,
   faList,
@@ -67,7 +67,7 @@ const UserProfileLayout = ({
                   key={key}
                   className={cx('tab-item', { active: activeTab === key })}
                 >
-                  <Link route={tab.link}>
+                  <Link href={tab.link}>
                     <a>
                       <span className={cx('icon-text')}>{key}</span>
                     </a>

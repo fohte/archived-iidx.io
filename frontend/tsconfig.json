@@ -15,12 +15,12 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "rootDirs": ["src", "pages"],
     "baseUrl": ".",
     "lib": ["dom", "es2015", "es2016"],
     "paths": {
       "@app/*": ["src/*"],
-      "@app/pages/*": ["pages/*"]
+      "@app/pages/*": ["pages/*"],
+      "@libs/*": ["libs/*"]
     },
     "typeRoots": ["node_modules/@types", "types"],
     "strict": false,
@@ -33,9 +33,9 @@
   "include": [
     "src/**/*",
     "pages/**/*",
+    "libs/**/*",
     "__tests__/**/*",
-    "index.d.ts",
-    "server/**/*.ts"
+    "index.d.ts"
   ],
   "exclude": ["node_modules", "coverage"]
 }

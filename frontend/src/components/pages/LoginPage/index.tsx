@@ -1,4 +1,5 @@
 import * as classnames from 'classnames/bind'
+import Link from 'next/link'
 import Router from 'next/router'
 import * as React from 'react'
 
@@ -8,7 +9,6 @@ import LoginOrSignUpForm, {
 } from '@app/components/organisms/LoginOrSignUpForm'
 import MainLayout from '@app/components/templates/MainLayout'
 import { auth, ErrorType } from '@app/lib/firebaseApp'
-import { Link } from '@app/routes'
 
 import * as css from './style.scss'
 
@@ -44,7 +44,7 @@ const LoginPage = () => (
       </Box>
       <Box transparent className={cx('footer')}>
         New to us?{' '}
-        <Link route="/signup" prefetch>
+        <Link href="/signup" prefetch>
           <a>Sign up.</a>
         </Link>
       </Box>

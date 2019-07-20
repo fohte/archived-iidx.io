@@ -1,7 +1,6 @@
 import * as classnames from 'classnames/bind'
+import Link from 'next/link'
 import * as React from 'react'
-
-import { Link } from '@app/routes'
 
 import * as css from './style.scss'
 
@@ -9,7 +8,7 @@ const cx = classnames.bind(css)
 
 export interface Item {
   text: string
-  route: string
+  href: string
   active?: boolean
 }
 
@@ -21,12 +20,12 @@ export interface Props {
 
 const Breadcrumb: React.FunctionComponent<Props> = ({ className, items }) => (
   <ol className={[cx('breadcrumb'), className].join(' ')}>
-    {items.map(({ text, route, active }) => (
+    {items.map(({ text, href, active }) => (
       <li key={text} className={cx('breadcrumb-item', { active })}>
         {active ? (
           <span>{text}</span>
         ) : (
-          <Link route={route}>
+          <Link href={href}>
             <a>{text}</a>
           </Link>
         )}

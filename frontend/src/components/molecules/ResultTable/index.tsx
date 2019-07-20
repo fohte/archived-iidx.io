@@ -5,7 +5,6 @@ import * as React from 'react'
 import Card from '@app/components/atoms/Card'
 import ResultBox, { Result } from '@app/components/molecules/ResultBox'
 import { Difficulty, PlayStyle } from '@app/queries'
-import routes from '@app/routes'
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
@@ -44,14 +43,7 @@ const ResultTable: React.SFC<Props> = ({
         {maps.map((map, i) => {
           const { result, music } = map
 
-          // The type of routes.findAndGetUrls is not defined,
-          // so routes should cast to any
-          const href = (routes as any).findAndGetUrls('map', {
-            screenName,
-            musicId: music.id,
-            playStyle: map.playStyle.toLowerCase(),
-            difficulty: map.difficulty.toLowerCase(),
-          }).urls.as
+          const href = `/@${screenName}/${map.playStyle.toLowerCase()}/musics/${music.id}/${map.difficulty.toLowerCase()}`
 
           return (
             <div className={cx('card')}>
