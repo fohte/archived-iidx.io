@@ -15,14 +15,15 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "rootDirs": ["src", "stories"],
-    "baseUrl": "src",
+    "rootDirs": ["src", "pages"],
+    "baseUrl": ".",
     "lib": ["dom", "es2015", "es2016"],
     "paths": {
-      "@app/*": ["*"]
+      "@app/*": ["src/*"],
+      "@app/pages/*": ["pages/*"]
     },
     "typeRoots": ["node_modules/@types", "types"]
   },
-  "include": ["src/**/*", "stories/**/*", "__tests__/**/*", "index.d.ts"],
+  "include": ["src/**/*", "pages/**/*", "__tests__/**/*", "index.d.ts"],
   "exclude": ["node_modules", "coverage"]
 }
