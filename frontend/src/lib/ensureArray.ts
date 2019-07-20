@@ -1,2 +1,9 @@
-export default <T>(value: T | T[]): T[] =>
-  Array.isArray(value) ? value : [value]
+function ensureArray<T>(value: T | T[] | null | undefined): T[] {
+  if (value == null) {
+    return []
+  }
+
+  return Array.isArray(value) ? value : [value]
+}
+
+export default ensureArray

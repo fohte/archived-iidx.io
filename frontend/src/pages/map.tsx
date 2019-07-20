@@ -8,12 +8,14 @@ import UserProfileLayout, {
 } from '@app/components/templates/UserProfileLayout'
 import initApollo from '@app/lib/initApollo'
 import {
-  parseDifficultyString,
-  parsePlayStyleString,
+  ensureDifficulty,
+  ensureInteger,
+  ensurePlayStyle,
+  ensureString,
 } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
-import { PlayStyle } from '@app/queries'
+import { Difficulty, PlayStyle } from '@app/queries'
 import {
   FindMapDocument,
   FindMapMusic,
@@ -85,23 +87,31 @@ const MapPage: PageComponentType<Props, Props, Query> = ({
 const makeDefaultProps = (): Props => ({ loading: false })
 
 MapPage.getInitialProps = async ({ res, query }) => {
-  const client = initApollo()
+  let playStyle: PlayStyle
+  let difficulty: Difficulty
+  let screenName: string
+  let musicId: string
 
-  const playStyle = parsePlayStyleString(query.playStyle)
-  const difficulty = parseDifficultyString(query.difficulty)
-
-  if (playStyle == null || difficulty == null) {
+  try {
+    playStyle = ensurePlayStyle(query.playStyle, 'playStyle')
+    difficulty = ensureDifficulty(query.difficulty, 'difficulty')
+    screenName = ensureString(query.screenName, 'screenName')
+    musicId = ensureInteger(query.musicId, 'musicId').toString()
+  } catch (e) {
     throwSSRError(res, 404)
+    console.error(e)
     return makeDefaultProps()
   }
+
+  const client = initApollo()
 
   const result = await client.query<FindMapQuery, FindMapVariables>({
     query: FindMapDocument,
     variables: {
-      id: query.musicId,
+      id: musicId,
       playStyle,
       difficulty,
-      username: query.screenName,
+      username: screenName,
     },
     errorPolicy: 'all',
   })
@@ -112,8 +122,8 @@ MapPage.getInitialProps = async ({ res, query }) => {
 
   return {
     music: result.data.music,
-    screenName: query.screenName,
-    playStyle: parsePlayStyleString(query.playStyle),
+    screenName,
+    playStyle,
     errors: result.errors,
     loading: result.loading,
   }
