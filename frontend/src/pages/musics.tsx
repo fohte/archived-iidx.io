@@ -3,10 +3,12 @@ import ErrorPage from 'next/error'
 import * as React from 'react'
 
 import MusicsPage from '@app/components/pages/MusicsPage'
-import ensureArray from '@app/lib/ensureArray'
 import {
-  parseDifficultyString,
-  parsePlayStyleString,
+  ensureArray,
+  ensureDifficulty,
+  ensureInteger,
+  ensurePlayStyle,
+  ensureString,
 } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
@@ -60,22 +62,37 @@ const PageComponent: PageComponentType<Props, Props, Query> = ({
 }
 
 PageComponent.getInitialProps = ({ res, query }) => {
-  if (!query.screenName || !query.playStyle) {
+  let playStyle: PlayStyle
+  let screenName: string
+  let title: string | undefined
+  let difficulties: Difficulty[]
+  let levels: number[]
+  let page: number
+
+  try {
+    playStyle = ensurePlayStyle(query.playStyle, 'playStyle')
+    screenName = ensureString(query.screenName, 'screenName')
+    title = query.title ? ensureString(query.title, 'title') : undefined
+    difficulties = ensureArray(
+      ensureDifficulty,
+      query.difficulties,
+      'difficulties',
+    )
+    levels = ensureArray(ensureInteger, query.levels, 'levels')
+    page = query.page ? ensureInteger(query.page, 'page') : 1
+  } catch (e) {
     throwSSRError(res, 404)
+    console.error(e)
     return {}
   }
 
   return {
-    screenName: query.screenName,
-    title: query.title,
-    playStyle: parsePlayStyleString(query.playStyle),
-    difficulties: ensureArray(query.difficulties || [])
-      .map(d => parseDifficultyString(d))
-      .filter(d => d) as Difficulty[],
-    levels: ensureArray(query.levels || [])
-      .map(level => Number(level))
-      .filter(l => l),
-    page: query.page ? Number(query.page) : 1,
+    screenName,
+    title,
+    playStyle,
+    difficulties,
+    levels,
+    page,
   }
 }
 
