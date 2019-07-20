@@ -10,7 +10,7 @@ import Button from '@app/components/atoms/Button'
 import Checkbox from '@app/components/atoms/Checkbox'
 import Container from '@app/components/atoms/Container'
 import FormGroup from '@app/components/atoms/FormGroup'
-import { Difficulty, PlayStyle } from '@app/queries'
+import { Difficulty } from '@app/queries'
 
 import * as css from './style.scss'
 
