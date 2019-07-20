@@ -7,7 +7,7 @@ import UserProfileLayout, {
   Tab,
 } from '@app/components/templates/UserProfileLayout'
 import initApollo from '@app/lib/initApollo'
-import { parsePlayStyleString } from '@app/lib/queryParamParser'
+import { ensurePlayStyle, ensureString } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
 import { PlayStyle } from '@app/queries'
@@ -30,7 +30,7 @@ export type Props = {
   playStyle?: PlayStyle
 }
 
-const ProfilePage: PageComponentType<Props, Props, Query> = ({
+const ProfilePage: PageComponentType<Props> = ({
   loading,
   errors,
   user,
@@ -54,10 +54,20 @@ const ProfilePage: PageComponentType<Props, Props, Query> = ({
   )
 }
 
-ProfilePage.getInitialProps = async ({
-  res,
-  query: { screenName, playStyle = PlayStyle.Sp },
-}) => {
+ProfilePage.getInitialProps = async ({ res, query }) => {
+  let screenName: string
+  let playStyle: PlayStyle
+
+  try {
+    playStyle = query.playStyle
+      ? ensurePlayStyle(query.playStyle, 'playStyle')
+      : PlayStyle.Sp
+    screenName = ensureString(query.screenName, 'screenName')
+  } catch (e) {
+    throwSSRError(res, 404)
+    return { loading: false }
+  }
+
   const client = initApollo()
 
   const result = await client.query<FindUserQuery, FindUserVariables>({
@@ -74,7 +84,7 @@ ProfilePage.getInitialProps = async ({
     user: result.data.user,
     errors: result.errors,
     loading: result.loading,
-    playStyle: parsePlayStyleString(playStyle),
+    playStyle,
   }
 }
 
