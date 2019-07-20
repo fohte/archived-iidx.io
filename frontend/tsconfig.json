@@ -30,6 +30,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": ["src/**/*", "pages/**/*", "__tests__/**/*", "index.d.ts"],
+  "include": [
+    "src/**/*",
+    "pages/**/*",
+    "__tests__/**/*",
+    "index.d.ts",
+    "server/**/*.ts"
+  ],
   "exclude": ["node_modules", "coverage"]
 }
