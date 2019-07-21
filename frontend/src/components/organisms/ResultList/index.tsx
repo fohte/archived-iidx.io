@@ -32,9 +32,19 @@ const ResultList: React.SFC<Props> = ({
   numItemsPerPage = 20,
   activePage,
 }) => {
+  const containerElement = React.useRef<HTMLDivElement | null>(null)
+
   const changePage = (newActivePage: number) => {
     if (onPageChange) {
       onPageChange(newActivePage)
+    }
+
+    if (containerElement && containerElement.current) {
+      const offsetTop = containerElement.current.offsetTop
+
+      if (window.scrollY > offsetTop) {
+        window.scrollTo({ top: offsetTop })
+      }
     }
   }
 
@@ -42,7 +52,7 @@ const ResultList: React.SFC<Props> = ({
 
   return (
     <Container>
-      <div className={cx('result-list')}>
+      <div ref={containerElement} className={cx('result-list')}>
         <div className={cx('table-wrapper')}>
           <GetUserResultsComponent
             variables={{
