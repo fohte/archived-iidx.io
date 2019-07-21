@@ -1,4 +1,5 @@
 @import 'styles/colors';
+@import 'styles/mixins';
 @import 'styles/variables';
 
 $clear-lamp-width: 0.4rem;
@@ -209,4 +210,8 @@ $top-bottom-padding: 1rem;
   color: lighten($primary-fg-color, 30%);
   font-size: 1.5em;
   text-align: center;
+}
+
+.loading {
+  @include skeleton-loading;
 }

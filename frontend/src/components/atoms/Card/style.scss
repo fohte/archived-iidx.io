@@ -16,7 +16,7 @@ $clear-lamp-width: 0.6rem;
 
   background-color: $primary-bg-color;
 
-  &:hover {
+  &.clickable:hover {
     background-color: darken($primary-bg-color, 3%);
     cursor: pointer;
   }

@@ -111,7 +111,7 @@ const MapDetail: React.SFC<Props> = ({ music, map, result }) => (
 
     <Box>
       <div className={cx('result-box-header')}>BEST SCORE</div>
-      <ResultBox showBPI result={result} map={map} />
+      <ResultBox showBPI data={{ loading: false, result, map }} />
     </Box>
   </>
 )

@@ -1,3 +1,42 @@
 @mixin card-box {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
 }
+
+@mixin skeleton-loading {
+  position: relative;
+
+  overflow: hidden;
+
+  background: darken($white, 10%);
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(#fff, 0.5),
+      transparent
+    );
+
+    animation: skeleton-animation 1.2s linear infinite;
+
+    content: '';
+  }
+
+  @keyframes skeleton-animation {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}

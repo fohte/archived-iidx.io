@@ -5,9 +5,7 @@ import * as React from 'react'
 
 import Container from '@app/components/atoms/Container'
 import Pagination from '@app/components/atoms/Pagination'
-import ResultTable, {
-  Props as ResultTableProps,
-} from '@app/components/molecules/ResultTable'
+import ResultTable from '@app/components/molecules/ResultTable'
 import { FormValues } from '@app/components/organisms/FilterForm'
 import {
   GetUserResultsComponent,
@@ -25,7 +23,7 @@ export type Props = {
   screenName: string
   activePage: number
   numItemsPerPage?: number
-  onPageChange?: ResultTableProps['onPageChange']
+  onPageChange?: (newActivePage: number) => void
 }
 
 function usePrevious<T>(value: T) {
@@ -119,7 +117,11 @@ const ResultList: React.SFC<Props> = ({
                       )
                     }
                   >
-                    loading...
+                    <ResultTable
+                      showBPI
+                      data={{ loading: true, numDummyMaps: numItemsPerPage }}
+                      screenName={screenName}
+                    />
                   </PaginationContainer>
                 )
               }
@@ -148,7 +150,11 @@ const ResultList: React.SFC<Props> = ({
                     />
                   }
                 >
-                  <ResultTable showBPI maps={nodes} screenName={screenName} />
+                  <ResultTable
+                    showBPI
+                    data={{ loading: false, maps: nodes }}
+                    screenName={screenName}
+                  />
                 </PaginationContainer>
               )
             }}

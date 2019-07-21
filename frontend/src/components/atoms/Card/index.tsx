@@ -9,14 +9,16 @@ export interface Props {
   header: React.ReactNode
   content: React.ReactNode
   className?: string
+  clickable?: boolean
 }
 
 const Card: React.FunctionComponent<Props> = ({
   header,
   content,
   className,
+  clickable = true,
 }) => (
-  <div className={[cx('card'), className].join(' ')}>
+  <div className={[cx('card', { clickable }), className].join(' ')}>
     <div className={cx('card-header')}>{header}</div>
     <div>{content}</div>
   </div>
