@@ -50,23 +50,7 @@ module Types
         Map.includes(:music).where(level: 12, play_style: :sp)
       end
 
-      field :search_maps, [MapType], null: true do
-        description 'Search maps.'
-        argument :title, String, required: false
-        argument :levels, [Integer, null: true], required: false
-        argument :play_style, Enum::PlayStyle, required: false
-        argument :difficulties, [Enum::Difficulty, null: true], required: false
-      end
-
-      def search_maps(title: '', levels: [], play_style: nil, difficulties: [])
-        maps = Map.includes(:music, :results)
-        maps = maps.where(music: Music.fuzzy_search_by_title(title)) if title.present?
-        maps = maps.where(level: levels) unless levels.empty?
-        maps = maps.where(play_style: play_style) unless play_style.nil?
-        maps = maps.where(difficulty: difficulties) unless difficulties.empty?
-
-        maps
-      end
+      field :search_maps, resolver: Resolvers::SearchMaps, description: 'Search maps.'
     end
   end
 end

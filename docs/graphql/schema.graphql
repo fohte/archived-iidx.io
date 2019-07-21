@@ -113,6 +113,11 @@ type Map {
   result(username: String!): Result
 }
 
+type MapList implements Pageable {
+  nodes: [Map!]!
+  totalCount: Int!
+}
+
 type Music {
   artist: String!
   genre: String!
@@ -128,6 +133,10 @@ type Music {
 type Mutation {
   createUser(displayName: String, username: String!): CreateUserPayload
   registerResultsWithCSV(csv: String!, playStyle: PlayStyle!): RegisterResultsWithCSVPayload
+}
+
+interface Pageable {
+  totalCount: Int!
 }
 
 enum PlayStyle {
@@ -161,7 +170,7 @@ type Query {
   """
   Search maps.
   """
-  searchMaps(difficulties: [Difficulty], levels: [Int], playStyle: PlayStyle, title: String): [Map!]
+  searchMaps(difficulties: [Difficulty], levels: [Int], limit: Int, offset: Int, playStyle: PlayStyle, title: String): MapList!
 
   """
   Find a user by name.

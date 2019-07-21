@@ -38,6 +38,8 @@ const ResultList: React.SFC<Props> = ({
     }
   }
 
+  const offset = (activePage - 1) * numItemsPerPage
+
   return (
     <Container>
       <div className={cx('result-list')}>
@@ -49,26 +51,21 @@ const ResultList: React.SFC<Props> = ({
               playStyle,
               difficulties,
               levels,
+              limit: numItemsPerPage,
+              offset,
             }}
           >
             {({ loading, error, data }) => {
               if (loading) {
                 return 'loading'
               }
-              if (error || !data || !data.searchMaps) {
+              if (error || !data) {
                 return <ErrorPage statusCode={404} />
               }
 
-              const maps = _.map(data.searchMaps, ({ result, ...map }) => ({
-                ...map,
-                result,
-              }))
+              const { totalCount, nodes } = data.searchMaps
 
-              const totalPages = Math.ceil(maps.length / numItemsPerPage)
-              const partialMaps = maps.slice(
-                (activePage - 1) * numItemsPerPage,
-                activePage * numItemsPerPage,
-              )
+              const totalPages = Math.ceil(totalCount / numItemsPerPage)
 
               const pagination = (
                 <Pagination
@@ -81,11 +78,7 @@ const ResultList: React.SFC<Props> = ({
               return (
                 <>
                   <div className={cx('pagination', 'top')}>{pagination}</div>
-                  <ResultTable
-                    showBPI
-                    maps={partialMaps}
-                    screenName={screenName}
-                  />
+                  <ResultTable showBPI maps={nodes} screenName={screenName} />
                   <div className={cx('pagination', 'bottom')}>{pagination}</div>
                 </>
               )

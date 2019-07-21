@@ -30,7 +30,9 @@ const request = {
 
 describe('ResultList', () => {
   it('renders correctly', async () => {
-    const data: GetUserResultsQuery = { searchMaps: [] }
+    const data: GetUserResultsQuery = {
+      searchMaps: { totalCount: 0, nodes: [] },
+    }
 
     const mocks = [{ request, result: { data } }]
 
@@ -53,7 +55,9 @@ describe('ResultList', () => {
   })
 
   it('renders correctly when loading', async () => {
-    const data: GetUserResultsQuery = { searchMaps: [] }
+    const data: GetUserResultsQuery = {
+      searchMaps: { totalCount: 0, nodes: [] },
+    }
 
     const mocks = [{ request, result: { data } }]
 

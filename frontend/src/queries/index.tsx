@@ -127,15 +127,25 @@ export type GetUserResultsVariables = {
   levels?: Maybe<(Maybe<number>)[]>
   playStyle?: Maybe<PlayStyle>
   difficulties?: Maybe<(Maybe<Difficulty>)[]>
+  offset?: Maybe<number>
+  limit?: Maybe<number>
 }
 
 export type GetUserResultsQuery = {
   __typename?: 'Query'
 
-  searchMaps: Maybe<GetUserResultsSearchMaps[]>
+  searchMaps: GetUserResultsSearchMaps
 }
 
 export type GetUserResultsSearchMaps = {
+  __typename?: 'MapList'
+
+  totalCount: number
+
+  nodes: GetUserResultsNodes[]
+}
+
+export type GetUserResultsNodes = {
   __typename?: 'Map'
 
   id: string
@@ -363,28 +373,35 @@ export const GetUserResultsDocument = gql`
     $levels: [Int]
     $playStyle: PlayStyle
     $difficulties: [Difficulty]
+    $offset: Int
+    $limit: Int
   ) {
     searchMaps(
       title: $title
       levels: $levels
       playStyle: $playStyle
       difficulties: $difficulties
+      offset: $offset
+      limit: $limit
     ) {
-      id
-      numNotes
-      level
-      difficulty
-      playStyle
-      music {
+      totalCount
+      nodes {
         id
-        title
-      }
-      result(username: $username) {
-        id
-        score
-        missCount
-        clearLamp
-        bpi
+        numNotes
+        level
+        difficulty
+        playStyle
+        music {
+          id
+          title
+        }
+        result(username: $username) {
+          id
+          score
+          missCount
+          clearLamp
+          bpi
+        }
       }
     }
   }
