@@ -1,12 +1,11 @@
 import * as classnames from 'classnames/bind'
 import * as _ from 'lodash'
-import Link from 'next/link'
 import * as React from 'react'
 
 import Card from '@app/components/atoms/Card'
 import ResultBox, { Result } from '@app/components/molecules/ResultBox'
 import { Difficulty, PlayStyle } from '@app/queries'
-import routes from '@app/routes'
+import routes, { Link } from '@app/routes'
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
@@ -79,7 +78,7 @@ const ResultTable: React.SFC<Props> = ({
 
               return (
                 <div className={cx('card')} key={map.id}>
-                  <Link href={href}>
+                  <Link route={href}>
                     <a className={cx('card-link')}>
                       <Card
                         header={
