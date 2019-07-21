@@ -9,7 +9,11 @@ import ResultTable, {
   Props as ResultTableProps,
 } from '@app/components/molecules/ResultTable'
 import { FormValues } from '@app/components/organisms/FilterForm'
-import { GetUserResultsComponent, PlayStyle } from '@app/queries'
+import {
+  GetUserResultsComponent,
+  GetUserResultsVariables,
+  PlayStyle,
+} from '@app/queries'
 
 import * as css from './style.scss'
 
@@ -24,6 +28,25 @@ export type Props = {
   onPageChange?: ResultTableProps['onPageChange']
 }
 
+function usePrevious<T>(value: T) {
+  const ref = React.useRef<T>()
+  React.useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
+}
+
+const PaginationContainer: React.SFC<{
+  pagination: React.ReactNode
+  children: React.ReactNode
+}> = ({ pagination, children }) => (
+  <>
+    <div className={cx('pagination', 'top')}>{pagination}</div>
+    {children}
+    <div className={cx('pagination', 'bottom')}>{pagination}</div>
+  </>
+)
+
 const ResultList: React.SFC<Props> = ({
   formValues: { title, difficulties, levels },
   playStyle,
@@ -34,19 +57,32 @@ const ResultList: React.SFC<Props> = ({
 }) => {
   const containerElement = React.useRef<HTMLDivElement | null>(null)
 
-  const changePage = (newActivePage: number) => {
-    if (onPageChange) {
-      onPageChange(newActivePage)
-    }
-
-    if (containerElement && containerElement.current) {
-      const offsetTop = containerElement.current.offsetTop
-
-      if (window.scrollY > offsetTop) {
-        window.scrollTo({ top: offsetTop })
-      }
-    }
+  // ページ情報を除くクエリ変数を保持しておく
+  const baseVariables: GetUserResultsVariables = {
+    username: screenName,
+    title,
+    playStyle,
+    difficulties,
+    levels,
+    limit: numItemsPerPage,
   }
+
+  const previousBaseVariables = usePrevious(baseVariables)
+
+  const [cachedTotalPages, cacheTotalPages] = React.useState<number | null>(
+    null,
+  )
+
+  // baseVariables が変化したときに totalPages をリセットする
+  // (baseVariables が変化する = フィルター条件が変更されたとき)
+  React.useEffect(() => {
+    if (
+      previousBaseVariables &&
+      !_.isEqual(previousBaseVariables, baseVariables)
+    ) {
+      cacheTotalPages(null)
+    }
+  }, [baseVariables])
 
   const offset = (activePage - 1) * numItemsPerPage
 
@@ -54,21 +90,40 @@ const ResultList: React.SFC<Props> = ({
     <Container>
       <div ref={containerElement} className={cx('result-list')}>
         <div className={cx('table-wrapper')}>
-          <GetUserResultsComponent
-            variables={{
-              username: screenName,
-              title,
-              playStyle,
-              difficulties,
-              levels,
-              limit: numItemsPerPage,
-              offset,
-            }}
-          >
+          <GetUserResultsComponent variables={{ ...baseVariables, offset }}>
             {({ loading, error, data }) => {
-              if (loading) {
-                return 'loading'
+              const changePage = (newActivePage: number) => {
+                if (onPageChange) {
+                  onPageChange(newActivePage)
+                }
+
+                if (containerElement && containerElement.current) {
+                  const offsetTop = containerElement.current.offsetTop
+
+                  if (window.scrollY > offsetTop) {
+                    window.scrollTo({ top: offsetTop })
+                  }
+                }
               }
+
+              if (loading) {
+                return (
+                  <PaginationContainer
+                    pagination={
+                      cachedTotalPages && (
+                        <Pagination
+                          onPageChange={changePage}
+                          totalPages={cachedTotalPages}
+                          activePage={activePage}
+                        />
+                      )
+                    }
+                  >
+                    loading...
+                  </PaginationContainer>
+                )
+              }
+
               if (error || !data) {
                 return <ErrorPage statusCode={404} />
               }
@@ -77,20 +132,24 @@ const ResultList: React.SFC<Props> = ({
 
               const totalPages = Math.ceil(totalCount / numItemsPerPage)
 
-              const pagination = (
-                <Pagination
-                  onPageChange={changePage}
-                  totalPages={totalPages}
-                  activePage={activePage}
-                />
-              )
-
               return (
-                <>
-                  <div className={cx('pagination', 'top')}>{pagination}</div>
+                <PaginationContainer
+                  pagination={
+                    <Pagination
+                      onPageChange={newActivePage => {
+                        changePage(newActivePage)
+
+                        // ページが変わるだけのときは totalPages も変わらない
+                        // のでキャッシュしてローディング中に使う
+                        cacheTotalPages(totalPages)
+                      }}
+                      totalPages={totalPages}
+                      activePage={activePage}
+                    />
+                  }
+                >
                   <ResultTable showBPI maps={nodes} screenName={screenName} />
-                  <div className={cx('pagination', 'bottom')}>{pagination}</div>
-                </>
+                </PaginationContainer>
               )
             }}
           </GetUserResultsComponent>
