@@ -1,0 +1,13 @@
+frontend/src/queries/index.tsx
+
+node_modules
+
+coverage
+.next
+/frontend/static/dist
+
+.cache
+
+.terraform
+
+docs/graphql/*

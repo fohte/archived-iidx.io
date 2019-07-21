@@ -5,11 +5,13 @@ import * as React from 'react'
 
 import Container from '@app/components/atoms/Container'
 import Pagination from '@app/components/atoms/Pagination'
-import ResultTable, {
-  Props as ResultTableProps,
-} from '@app/components/molecules/ResultTable'
+import ResultTable from '@app/components/molecules/ResultTable'
 import { FormValues } from '@app/components/organisms/FilterForm'
-import { GetUserResultsComponent, PlayStyle } from '@app/queries'
+import {
+  GetUserResultsComponent,
+  GetUserResultsVariables,
+  PlayStyle,
+} from '@app/queries'
 
 import * as css from './style.scss'
 
@@ -21,8 +23,27 @@ export type Props = {
   screenName: string
   activePage: number
   numItemsPerPage?: number
-  onPageChange?: ResultTableProps['onPageChange']
+  onPageChange?: (newActivePage: number) => void
 }
+
+function usePrevious<T>(value: T) {
+  const ref = React.useRef<T>()
+  React.useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
+}
+
+const PaginationContainer: React.SFC<{
+  pagination: React.ReactNode
+  children: React.ReactNode
+}> = ({ pagination, children }) => (
+  <>
+    <div className={cx('pagination', 'top')}>{pagination}</div>
+    {children}
+    <div className={cx('pagination', 'bottom')}>{pagination}</div>
+  </>
+)
 
 const ResultList: React.SFC<Props> = ({
   formValues: { title, difficulties, levels },
@@ -32,62 +53,109 @@ const ResultList: React.SFC<Props> = ({
   numItemsPerPage = 20,
   activePage,
 }) => {
-  const changePage = (newActivePage: number) => {
-    if (onPageChange) {
-      onPageChange(newActivePage)
-    }
+  const containerElement = React.useRef<HTMLDivElement | null>(null)
+
+  // ページ情報を除くクエリ変数を保持しておく
+  const baseVariables: GetUserResultsVariables = {
+    username: screenName,
+    title,
+    playStyle,
+    difficulties,
+    levels,
+    limit: numItemsPerPage,
   }
+
+  const previousBaseVariables = usePrevious(baseVariables)
+
+  const [cachedTotalPages, cacheTotalPages] = React.useState<number | null>(
+    null,
+  )
+
+  // baseVariables が変化したときに totalPages をリセットする
+  // (baseVariables が変化する = フィルター条件が変更されたとき)
+  React.useEffect(() => {
+    if (
+      previousBaseVariables &&
+      !_.isEqual(previousBaseVariables, baseVariables)
+    ) {
+      cacheTotalPages(null)
+    }
+  }, [baseVariables])
+
+  const offset = (activePage - 1) * numItemsPerPage
 
   return (
     <Container>
-      <div className={cx('result-list')}>
+      <div ref={containerElement} className={cx('result-list')}>
         <div className={cx('table-wrapper')}>
-          <GetUserResultsComponent
-            variables={{
-              username: screenName,
-              title,
-              playStyle,
-              difficulties,
-              levels,
-            }}
-          >
+          <GetUserResultsComponent variables={{ ...baseVariables, offset }}>
             {({ loading, error, data }) => {
-              if (loading) {
-                return 'loading'
+              const changePage = (newActivePage: number) => {
+                if (onPageChange) {
+                  onPageChange(newActivePage)
+                }
+
+                if (containerElement && containerElement.current) {
+                  const offsetTop = containerElement.current.offsetTop
+
+                  if (window.scrollY > offsetTop) {
+                    window.scrollTo({ top: offsetTop })
+                  }
+                }
               }
-              if (error || !data || !data.searchMaps) {
+
+              if (loading) {
+                return (
+                  <PaginationContainer
+                    pagination={
+                      cachedTotalPages && (
+                        <Pagination
+                          onPageChange={changePage}
+                          totalPages={cachedTotalPages}
+                          activePage={activePage}
+                        />
+                      )
+                    }
+                  >
+                    <ResultTable
+                      showBPI
+                      data={{ loading: true, numDummyMaps: numItemsPerPage }}
+                      screenName={screenName}
+                    />
+                  </PaginationContainer>
+                )
+              }
+
+              if (error || !data) {
                 return <ErrorPage statusCode={404} />
               }
 
-              const maps = _.map(data.searchMaps, ({ result, ...map }) => ({
-                ...map,
-                result,
-              }))
+              const { totalCount, nodes } = data.searchMaps
 
-              const totalPages = Math.ceil(maps.length / numItemsPerPage)
-              const partialMaps = maps.slice(
-                (activePage - 1) * numItemsPerPage,
-                activePage * numItemsPerPage,
-              )
-
-              const pagination = (
-                <Pagination
-                  onPageChange={changePage}
-                  totalPages={totalPages}
-                  activePage={activePage}
-                />
-              )
+              const totalPages = Math.ceil(totalCount / numItemsPerPage)
 
               return (
-                <>
-                  <div className={cx('pagination', 'top')}>{pagination}</div>
+                <PaginationContainer
+                  pagination={
+                    <Pagination
+                      onPageChange={newActivePage => {
+                        changePage(newActivePage)
+
+                        // ページが変わるだけのときは totalPages も変わらない
+                        // のでキャッシュしてローディング中に使う
+                        cacheTotalPages(totalPages)
+                      }}
+                      totalPages={totalPages}
+                      activePage={activePage}
+                    />
+                  }
+                >
                   <ResultTable
                     showBPI
-                    maps={partialMaps}
+                    data={{ loading: false, maps: nodes }}
                     screenName={screenName}
                   />
-                  <div className={cx('pagination', 'bottom')}>{pagination}</div>
-                </>
+                </PaginationContainer>
               )
             }}
           </GetUserResultsComponent>

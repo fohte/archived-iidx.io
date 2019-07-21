@@ -174,7 +174,2176 @@ exports[`ResultList renders correctly when loading 1`] = `
     <div
       className="table-wrapper"
     >
-      loading
+      <div
+        className="pagination top"
+      />
+      <div
+        className="result-table"
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card "
+          >
+            <div
+              className="card-header"
+            >
+              <div
+                className="header"
+              >
+                <div
+                  className="label loading"
+                >
+                  -
+                </div>
+                <div
+                  className="title loading"
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className="data-box-wrapper"
+              >
+                <div
+                  className="clear-lamp loading"
+                />
+                <div
+                  className="data-box"
+                >
+                  <div
+                    className="data-box-content"
+                  >
+                    <div
+                      className="score-box-wrapper"
+                    >
+                      <dl
+                        className="score-box"
+                      >
+                        <div
+                          className="data-list ex-score"
+                        >
+                          <dt>
+                            EX-SCORE
+                          </dt>
+                          <dd>
+                            <span
+                              className="score-text loading"
+                            />
+                            <span
+                              className="score-rate loading"
+                            />
+                          </dd>
+                        </div>
+                        <div
+                          className="wrapper loading"
+                        />
+                      </dl>
+                      <div
+                        className="additional-area"
+                      >
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            BPI
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list clear-type"
+                        >
+                          <dt>
+                            CLEAR TYPE
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                        <dl
+                          className="data-list"
+                        >
+                          <dt>
+                            LAST PLAY
+                          </dt>
+                          <dd>
+                            -
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div
+                      className="symbol-area"
+                    >
+                      <div
+                        className="grade-box loading"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="pagination bottom"
+      />
     </div>
   </div>
 </div>

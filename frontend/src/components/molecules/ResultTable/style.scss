@@ -36,6 +36,10 @@
   &:last-child {
     margin-right: 0;
   }
+
+  &.loading {
+    height: auto;
+  }
 }
 
 .difficulty-normal {
@@ -56,4 +60,15 @@
 
   white-space: nowrap;
   text-overflow: ellipsis;
+
+  &.loading {
+    flex: 0 0 auto;
+    width: 70%;
+  }
+}
+
+.loading {
+  @include skeleton-loading;
+
+  height: 1em;
 }

@@ -12,21 +12,29 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           $levels: [Int]
           $playStyle: PlayStyle
           $difficulties: [Difficulty]
+          $offset: Int
+          $limit: Int
         ) {
           searchMaps(
             title: $title
             levels: $levels
             playStyle: $playStyle
             difficulties: $difficulties
+            offset: $offset
+            limit: $limit
           ) {
-            id
+            totalCount
 
-            music {
+            nodes {
               id
-            }
 
-            result(username: $username) {
-              id
+              music {
+                id
+              }
+
+              result(username: $username) {
+                id
+              }
             }
           }
         }
@@ -42,11 +50,14 @@ RSpec.describe IIDXIOSchema, type: :graphql do
 
       it 'does not return maps' do
         expect(response['data']).to eq(
-          'searchMaps' => [{
-            'id' => map.id.to_s,
-            'music' => { 'id' => map.music.id.to_s },
-            'result' => nil,
-          }],
+          'searchMaps' => {
+            'totalCount' => 1,
+            'nodes' => [{
+              'id' => map.id.to_s,
+              'music' => { 'id' => map.music.id.to_s },
+              'result' => nil,
+            }],
+          },
         )
       end
 
@@ -63,11 +74,14 @@ RSpec.describe IIDXIOSchema, type: :graphql do
 
       it 'does not filter by title' do
         expect(response['data']).to eq(
-          'searchMaps' => [{
-            'id' => map.id.to_s,
-            'music' => { 'id' => map.music.id.to_s },
-            'result' => { 'id' => result.id.to_s },
-          }],
+          'searchMaps' => {
+            'totalCount' => 1,
+            'nodes' => [{
+              'id' => map.id.to_s,
+              'music' => { 'id' => map.music.id.to_s },
+              'result' => { 'id' => result.id.to_s },
+            }],
+          },
         )
       end
 
@@ -87,11 +101,14 @@ RSpec.describe IIDXIOSchema, type: :graphql do
 
       it 'filters by title' do
         expect(response['data']).to eq(
-          'searchMaps' => [{
-            'id' => map.id.to_s,
-            'music' => { 'id' => map.music.id.to_s },
-            'result' => { 'id' => result.id.to_s },
-          }],
+          'searchMaps' => {
+            'totalCount' => 1,
+            'nodes' => [{
+              'id' => map.id.to_s,
+              'music' => { 'id' => map.music.id.to_s },
+              'result' => { 'id' => result.id.to_s },
+            }],
+          },
         )
       end
 
@@ -108,7 +125,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       let!(:level12_map) { create(:map, :with_music, level: 12, results: [build(:result, user: user)]) }
 
       it 'filters by levels' do
-        expect(response['data']['searchMaps']).to match_array([
+        expect(response['data']['searchMaps']['nodes']).to match_array([
           {
             'id' => level11_map.id.to_s,
             'music' => { 'id' => level11_map.music.id.to_s },
@@ -135,11 +152,14 @@ RSpec.describe IIDXIOSchema, type: :graphql do
 
       it 'filters by play style' do
         expect(response['data']).to eq(
-          'searchMaps' => [{
-            'id' => sp_map.id.to_s,
-            'music' => { 'id' => sp_map.music.id.to_s },
-            'result' => { 'id' => sp_map.results.last.id.to_s },
-          }],
+          'searchMaps' => {
+            'totalCount' => 1,
+            'nodes' => [{
+              'id' => sp_map.id.to_s,
+              'music' => { 'id' => sp_map.music.id.to_s },
+              'result' => { 'id' => sp_map.results.last.id.to_s },
+            }],
+          },
         )
       end
 
@@ -156,7 +176,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       let!(:normal_map) { create(:map, :with_music, difficulty: :normal, results: [build(:result, user: user)]) }
 
       it 'filters by play style' do
-        expect(response['data']['searchMaps']).to match_array([
+        expect(response['data']['searchMaps']['nodes']).to match_array([
           {
             'id' => another_map.id.to_s,
             'music' => { 'id' => another_map.music.id.to_s },
@@ -171,6 +191,51 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       end
 
       include_examples 'non errors'
+    end
+
+    context 'ページングが必要なとき' do
+      let!(:maps) do
+        # create_list だと results が 1 度しか作成されない
+        Array.new(2) { create(:map, :with_music, results: [build(:result, user: user)]) }
+      end
+
+      context 'offset なしのとき' do
+        let(:variables) { { username: user.name, limit: 1 } }
+
+        it '1 ページ目の結果を返すこと' do
+          map = maps.first
+
+          expect(response['data']).to eq(
+            'searchMaps' => {
+              'totalCount' => 2,
+              'nodes' => [{
+                'id' => map.id.to_s,
+                'music' => { 'id' => map.music.id.to_s },
+                'result' => { 'id' => map.results.last.id.to_s },
+              }],
+            },
+          )
+        end
+      end
+
+      context 'offset ありのとき' do
+        let(:variables) { { username: user.name, offset: 1, limit: 1 } }
+
+        it '2 ページ目の結果を返すこと' do
+          map = maps.last
+
+          expect(response['data']).to eq(
+            'searchMaps' => {
+              'totalCount' => 2,
+              'nodes' => [{
+                'id' => map.id.to_s,
+                'music' => { 'id' => map.music.id.to_s },
+                'result' => { 'id' => map.results.last.id.to_s },
+              }],
+            },
+          )
+        end
+      end
     end
   end
 end
