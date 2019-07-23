@@ -107,6 +107,12 @@ resource "aws_iam_role_policy_attachment" "ecs_host" {
   policy_arn = aws_iam_policy.ecs_host.arn
 }
 
+# SSM を有効化するために必要
+resource "aws_iam_role_policy_attachment" "ecs_host_ssm" {
+  role       = aws_iam_policy.ecs_host.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+}
+
 resource "aws_security_group" "ecs_host" {
   name        = "${local.name}.ecs_host"
   description = "ECS Allowed Ports"
