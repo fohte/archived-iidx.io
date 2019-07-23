@@ -19,7 +19,6 @@ locals {
     0,
     length(local.all_availability_zones) - 1,
   )
-  home_cidrs = ["220.210.176.220/32"]
 }
 
 data "aws_availability_zones" "available" {

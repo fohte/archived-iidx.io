@@ -1,6 +1,7 @@
 resource "aws_instance" "ecs_host" {
-  # Amazon Linux AMI 2018.03.h x86_64 ECS HVM GP2
-  ami = "ami-0edf19001c48838c7"
+  # Amazon Linux 2 の ECS Optimized AMI の最新版 (以下のコマンドで取得可能)
+  # $ aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended --query 'Parameters[0].Value' --output text | jq -r .image_id
+  ami = "ami-04a735b489d2a0320"
 
   instance_type               = "t2.micro"
   availability_zone           = local.availability_zones[0]
@@ -18,15 +19,7 @@ resource "aws_instance" "ecs_host" {
 
   root_block_device {
     volume_type = "gp2"
-    volume_size = 8
-
-    delete_on_termination = true
-  }
-
-  ebs_block_device {
-    volume_type = "gp2"
-    volume_size = 22
-    device_name = "/dev/xvdcz"
+    volume_size = 30
 
     delete_on_termination = true
   }
@@ -104,11 +97,20 @@ data "aws_iam_policy_document" "ecs_host" {
   }
 }
 
-resource "aws_iam_role_policy" "ecs_host" {
-  name = "${local.name}.ecs_host"
-  role = aws_iam_role.ecs_host.name
-
+resource "aws_iam_policy" "ecs_host" {
+  name   = "${local.name}.ecs_host"
   policy = data.aws_iam_policy_document.ecs_host.json
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_host" {
+  role       = aws_iam_policy.ecs_host.name
+  policy_arn = aws_iam_policy.ecs_host.arn
+}
+
+# SSM を有効化するために必要
+resource "aws_iam_role_policy_attachment" "ecs_host_ssm" {
+  role       = aws_iam_policy.ecs_host.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
 }
 
 resource "aws_security_group" "ecs_host" {
@@ -121,27 +123,6 @@ resource "aws_security_group" "ecs_host" {
     to_port   = 0
     protocol  = "-1"
     self      = true
-  }
-
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = local.home_cidrs
-  }
-
-  ingress {
-    from_port   = 3000
-    to_port     = 3000
-    protocol    = "tcp"
-    cidr_blocks = local.home_cidrs
-  }
-
-  ingress {
-    from_port   = 5000
-    to_port     = 5000
-    protocol    = "tcp"
-    cidr_blocks = local.home_cidrs
   }
 
   ingress {

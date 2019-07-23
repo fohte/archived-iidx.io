@@ -10,7 +10,7 @@ resource "aws_db_instance" "main" {
   password               = data.aws_ssm_parameter.db_password.value
   db_subnet_group_name   = aws_db_subnet_group.main.name
   vpc_security_group_ids = [aws_security_group.db.id]
-  publicly_accessible    = true
+  publicly_accessible    = false
 }
 
 resource "aws_db_subnet_group" "main" {
@@ -27,13 +27,6 @@ resource "aws_security_group" "db" {
     to_port         = 3306
     protocol        = "tcp"
     security_groups = [aws_security_group.ecs_host.id]
-  }
-
-  ingress {
-    from_port   = 3306
-    to_port     = 3306
-    protocol    = "tcp"
-    cidr_blocks = local.home_cidrs
   }
 
   egress {
