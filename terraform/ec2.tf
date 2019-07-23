@@ -126,13 +126,6 @@ resource "aws_security_group" "ecs_host" {
   }
 
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = local.home_cidrs
-  }
-
-  ingress {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
