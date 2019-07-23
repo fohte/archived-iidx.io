@@ -20,16 +20,12 @@ resource "aws_instance" "ecs_host" {
   root_block_device {
     volume_type = "gp2"
     volume_size = 8
-
-    delete_on_termination = true
   }
 
   ebs_block_device {
     volume_type = "gp2"
     volume_size = 22
     device_name = "/dev/xvdcz"
-
-    delete_on_termination = true
   }
 
   tags = {
