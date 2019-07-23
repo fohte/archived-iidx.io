@@ -19,13 +19,9 @@ resource "aws_instance" "ecs_host" {
 
   root_block_device {
     volume_type = "gp2"
-    volume_size = 8
-  }
+    volume_size = 30
 
-  ebs_block_device {
-    volume_type = "gp2"
-    volume_size = 22
-    device_name = "/dev/xvdcz"
+    delete_on_termination = true
   }
 
   tags = {
@@ -101,11 +97,14 @@ data "aws_iam_policy_document" "ecs_host" {
   }
 }
 
-resource "aws_iam_role_policy" "ecs_host" {
-  name = "${local.name}.ecs_host"
-  role = aws_iam_role.ecs_host.name
-
+resource "aws_iam_policy" "ecs_host" {
+  name   = "${local.name}.ecs_host"
   policy = data.aws_iam_policy_document.ecs_host.json
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_host" {
+  role       = aws_iam_policy.ecs_host.name
+  policy_arn = aws_iam_policy.ecs_host.arn
 }
 
 resource "aws_security_group" "ecs_host" {
