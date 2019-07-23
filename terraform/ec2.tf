@@ -1,6 +1,7 @@
 resource "aws_instance" "ecs_host" {
-  # Amazon Linux AMI 2018.03.h x86_64 ECS HVM GP2
-  ami = "ami-0edf19001c48838c7"
+  # Amazon Linux 2 の ECS Optimized AMI の最新版 (以下のコマンドで取得可能)
+  # $ aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended --query 'Parameters[0].Value' --output text | jq -r .image_id
+  ami = "ami-04a735b489d2a0320"
 
   instance_type               = "t2.micro"
   availability_zone           = local.availability_zones[0]
