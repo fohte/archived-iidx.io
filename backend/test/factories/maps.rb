@@ -13,4 +13,11 @@ FactoryBot.define do
   trait :with_music do
     association :music
   end
+
+  trait :with_bpi_vars do
+    after :create do |map|
+      create(:world_record_result, map: map, score: Random.rand((map.max_score / 2).to_i..map.max_score))
+      create(:kaiden_average_result, map: map, score: Random.rand(0..(map.max_score / 2).to_i))
+    end
+  end
 end

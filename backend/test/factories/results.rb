@@ -9,7 +9,10 @@ FactoryBot.define do
     last_played_at { Faker::Date.backward }
 
     trait :with_map do
-      association :map
+      transient { num_notes { Random.rand(0..3000) } }
+
+      map { create(:map, num_notes: num_notes) }
+      score { Random.rand(0..num_notes * 2) }
     end
 
     trait :with_music do
