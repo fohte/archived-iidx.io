@@ -10,10 +10,11 @@
     "lint": "npm-run-all -s --continue-on-error lint:**",
     "lint:ts": "tslint -p . -c tslint.json --format stylish",
     "lint:scss": "stylelint '**/*.scss'",
-    "test": "npm-run-all -s --continue-on-error test:**",
+    "test": "npm-run-all -s --continue-on-error test:ts test:jest",
+    "test:ci": "npm-run-all -s --continue-on-error test:ts test:jest:ci",
     "test:ts": "tsc -p . --noEmit",
     "test:jest": "NODE_ENV=test jest",
-    "test:ci": "NODE_ENV=test jest --maxWorkers=2",
+    "test:jest:ci": "NODE_ENV=test jest --maxWorkers=2",
     "gql:gen": "gql-gen",
     "gql:gen:watch": "yarn run gql:gen --watch"
   },
