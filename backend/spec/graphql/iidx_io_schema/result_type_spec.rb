@@ -121,8 +121,10 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           :result_log,
           user: user,
           last_played_at: last_played_at,
-          clear_lamp: ResultLog.clear_lamp.full_combo,
-          grade: ResultLog.grade.aaa,
+          score: result.score,
+          miss_count: result.miss_count,
+          clear_lamp: result.clear_lamp,
+          grade: result.grade,
           result: result,
         )
       end
