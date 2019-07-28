@@ -932,7 +932,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ISO8601DateTime",
                   "ofType": null
                 }
               },
@@ -997,6 +997,16 @@
           "kind": "SCALAR",
           "name": "Float",
           "description": "Represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "ISO8601DateTime",
+          "description": "An ISO 8601-encoded datetime",
           "fields": null,
           "inputFields": null,
           "interfaces": null,

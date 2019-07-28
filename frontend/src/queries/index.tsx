@@ -32,6 +32,9 @@ export enum Grade {
   F = 'F',
 }
 
+/** An ISO 8601-encoded datetime */
+export type Iso8601DateTime = any
+
 // ====================================================
 // Documents
 // ====================================================
@@ -114,7 +117,7 @@ export type FindMapResults = {
 
   score: Maybe<number>
 
-  lastPlayedAt: string
+  lastPlayedAt: Iso8601DateTime
 }
 
 export type FindUserVariables = {

@@ -101,6 +101,11 @@ enum Grade {
   F
 }
 
+"""
+An ISO 8601-encoded datetime
+"""
+scalar ISO8601DateTime
+
 type Map {
   difficulty: Difficulty!
   id: ID!
@@ -196,7 +201,7 @@ type Result {
   clearLamp: ClearLamp
   grade: Grade
   id: ID!
-  lastPlayedAt: String!
+  lastPlayedAt: ISO8601DateTime!
   map: Map!
   missCount: Int
   score: Int
