@@ -5,7 +5,7 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as classnames from 'classnames/bind'
+import classnames from 'classnames/bind'
 import * as React from 'react'
 
 import * as css from './style.scss'

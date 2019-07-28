@@ -1,4 +1,4 @@
-import * as classnames from 'classnames/bind'
+import classnames from 'classnames/bind'
 import Router from 'next/router'
 import * as React from 'react'
 

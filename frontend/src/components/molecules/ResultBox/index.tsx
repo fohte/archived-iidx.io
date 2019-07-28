@@ -1,6 +1,6 @@
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as classnames from 'classnames/bind'
+import classnames from 'classnames/bind'
 import Link from 'next/link'
 import * as React from 'react'
 

@@ -1,4 +1,4 @@
-import * as classnames from 'classnames/bind'
+import classnames from 'classnames/bind'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import * as _ from 'lodash'

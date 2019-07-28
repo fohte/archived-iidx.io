@@ -1,4 +1,4 @@
-import * as classnames from 'classnames/bind'
+import classnames from 'classnames/bind'
 import * as React from 'react'
 
 import Footer from '@app/components/organisms/Footer'

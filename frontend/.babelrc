@@ -1,19 +1,4 @@
 {
   "presets": ["next/babel", "@zeit/next-typescript/babel"],
-  "plugins": [["lodash"], "recharts"],
-  "env": {
-    "test": {
-      "presets": [
-        "next/babel",
-        [
-          "@babel/env",
-          {
-            "modules": "commonjs"
-          }
-        ],
-        "@zeit/next-typescript/babel"
-      ],
-      "plugins": [["lodash"], "recharts", "require-context-hook"]
-    }
-  }
+  "plugins": [["lodash"], "recharts"]
 }
