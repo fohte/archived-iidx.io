@@ -1,6 +1,6 @@
 import { faCopyright } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as classnames from 'classnames/bind'
+import classnames from 'classnames/bind'
 import getConfig from 'next/config'
 import * as React from 'react'
 

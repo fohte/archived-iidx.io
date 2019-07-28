@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 namespace :oneshot do
-  task add_csv_title: :environment do
-    Music.all.find_in_batches do |musics|
-      musics.each do |music|
-        music.csv_title = music.title
-      end
+  task fix_result_datetime: :environment do
+    [Result, ResultLog].each do |model|
+      model.all.find_in_batches do |records|
+        records.each do |music|
+          music.last_played_at -= 9.hours
+        end
 
-      Music.import musics.to_a, on_duplicate_key_update: %i[csv_title]
+        model.import records.to_a, on_duplicate_key_update: %i[last_played_at]
+      end
     end
   end
 end

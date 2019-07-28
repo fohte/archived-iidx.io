@@ -76,7 +76,10 @@ module IIDXIO
             normal: parse_map(raw, :normal),
             hyper: parse_map(raw, :hyper),
             another: parse_map(raw, :another),
-            last_played_at: Time.zone.parse(raw[:last_played_at]),
+            # 暗黙的に JST で出力されるので JST として parse する
+            last_played_at: Time.use_zone('Asia/Tokyo') do
+              Time.zone.parse(raw[:last_played_at])
+            end,
           )
         end
 

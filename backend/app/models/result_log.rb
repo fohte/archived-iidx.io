@@ -5,6 +5,5 @@ class ResultLog < ApplicationRecord
   belongs_to :map
   belongs_to :result
 
-  include ClearLampEnum
-  include GradeEnum
+  include ResultConcern
 end

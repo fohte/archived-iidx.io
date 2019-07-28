@@ -9,7 +9,9 @@ import UserProfileLayout, {
 } from '@app/components/templates/UserProfileLayout'
 import ensureArray from '@app/lib/ensureArray'
 import { Difficulty, PlayStyle } from '@app/queries'
-import { Router } from '@app/routes'
+import routes from '@app/routes'
+
+const { Router } = routes
 
 export interface Props {
   screenName: string

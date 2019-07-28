@@ -1,12 +1,14 @@
 @import 'styles/colors';
 @import 'styles/variables';
 
+.box + .box {
+  margin-top: 2rem;
+}
+
 .map-detail {
   li {
     list-style: none;
   }
-
-  margin-bottom: 2rem;
 
   text-align: center;
 }
@@ -111,8 +113,38 @@
   }
 }
 
-.result-box-header {
-  margin-bottom: 1.5rem;
+.box-header {
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
 
-  font-weight: 700;
+  h2 {
+    font-size: 1.2em;
+    line-height: 1;
+  }
+}
+
+.chart-wrapper {
+  position: relative;
+
+  &.chart-unavailable {
+    .chart-unavailable-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      margin: auto;
+
+      transform: translate(-50%, -50%);
+    }
+
+    .chart-container {
+      opacity: 0.5;
+    }
+  }
+}
+
+.chart {
+  // モバイル端末でクリックしたときにグレーの背景色が表示されないようにする
+  // @see https://stackoverflow.com/questions/5106934/prevent-grey-overlay-on-touchstart-in-mobile-safari-webview
+  -webkit-tap-highlight-color: transparent;
 }

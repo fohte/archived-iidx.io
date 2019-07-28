@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { GraphQLError } from 'graphql'
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
@@ -37,6 +38,13 @@ describe('/map', () => {
           grade: Grade.Aaa,
           bpi: 10,
         },
+        results: [
+          {
+            id: '1',
+            score: 2000,
+            lastPlayedAt: dayjs(Date.now()).format('YYYY-MM-DDTHH:mm:ssZ[Z]'),
+          },
+        ],
       },
     }
 

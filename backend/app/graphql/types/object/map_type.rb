@@ -31,6 +31,16 @@ module Types
       rescue ActiveRecord::RecordNotFound => e
         raise IIDXIO::GraphQL::NotFoundError, e.message
       end
+
+      field :results, [ResultType], null: false do
+        argument :username, String, required: true
+      end
+
+      def results(username:)
+        object.result_logs.where(user: User.find_by!(name: username))
+      rescue ActiveRecord::RecordNotFound => e
+        raise IIDXIO::GraphQL::NotFoundError, e.message
+      end
     end
   end
 end

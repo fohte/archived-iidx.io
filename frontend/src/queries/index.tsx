@@ -32,6 +32,9 @@ export enum Grade {
   F = 'F',
 }
 
+/** An ISO 8601-encoded datetime */
+export type Iso8601DateTime = any
+
 // ====================================================
 // Documents
 // ====================================================
@@ -87,6 +90,8 @@ export type FindMapMap = {
   maxBpm: number
 
   result: Maybe<FindMapResult>
+
+  results: FindMapResults[]
 }
 
 export type FindMapResult = {
@@ -103,6 +108,16 @@ export type FindMapResult = {
   grade: Maybe<Grade>
 
   bpi: Maybe<number>
+}
+
+export type FindMapResults = {
+  __typename?: 'Result'
+
+  id: string
+
+  score: Maybe<number>
+
+  lastPlayedAt: Iso8601DateTime
 }
 
 export type FindUserVariables = {
@@ -287,6 +302,11 @@ export const FindMapDocument = gql`
           clearLamp
           grade
           bpi
+        }
+        results(username: $username) {
+          id
+          score
+          lastPlayedAt
         }
       }
     }

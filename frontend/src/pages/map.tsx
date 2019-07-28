@@ -78,6 +78,7 @@ const MapPage: PageComponentType<Props, Props, Query> = ({
         music={music}
         map={map}
         result={map.result || undefined}
+        allResults={map.results}
         screenName={screenName}
       />
     </UserProfileLayout>

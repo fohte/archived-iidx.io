@@ -1,4 +1,4 @@
-import * as classnames from 'classnames/bind'
+import classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
 
@@ -8,7 +8,7 @@ import Breadcrumb, {
 import Container from '@app/components/atoms/Container'
 import MainLayout from '@app/components/templates/MainLayout'
 import { PlayStyle } from '@app/queries'
-import { Link } from '@app/routes'
+import routes from '@app/routes'
 import {
   faEye,
   faList,
@@ -17,6 +17,7 @@ import {
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
+const { Link } = routes
 
 export enum Tab {
   Overview = 'Overview',

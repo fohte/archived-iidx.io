@@ -1,13 +1,14 @@
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as classnames from 'classnames/bind'
+import classnames from 'classnames/bind'
 import * as React from 'react'
 
 import { auth } from '@app/lib/firebaseApp'
-import { Link } from '@app/routes'
+import routes from '@app/routes'
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
+const { Link } = routes
 
 export interface Props {
   displayName: string

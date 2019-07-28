@@ -158,7 +158,7 @@ RSpec.describe User do
             grade: 'aa',
             score: 1954,
             miss_count: 7,
-            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           ),
           have_attributes(
             map: music.sp_another,
@@ -167,7 +167,7 @@ RSpec.describe User do
             grade: 'aa',
             score: 2174,
             miss_count: 7,
-            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           ),
         )
       end
@@ -182,7 +182,7 @@ RSpec.describe User do
             grade: 'aa',
             score: 1954,
             miss_count: 7,
-            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           ),
           have_attributes(
             map: music.sp_another,
@@ -191,7 +191,7 @@ RSpec.describe User do
             grade: 'aa',
             score: 2174,
             miss_count: 7,
-            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           ),
         )
       end
@@ -208,7 +208,7 @@ RSpec.describe User do
             grade: 'aa',
             score: 1954,
             miss_count: 7,
-            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           )
           create(
             :result,
@@ -219,7 +219,7 @@ RSpec.describe User do
             grade: 'aa',
             score: 2174,
             miss_count: 7,
-            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           )
         end
 
@@ -255,7 +255,7 @@ RSpec.describe User do
             grade: 'aa',
             score: 1954,
             miss_count: 7,
-            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           )
         end
 
@@ -273,7 +273,7 @@ RSpec.describe User do
               grade: 'aa',
               score: 1955,
               miss_count: 7,
-              last_played_at: Time.zone.local(2018, 2, 24, 15, 10, 0),
+              last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 24, 15, 10, 0) },
             ),
           )
         end
@@ -316,7 +316,7 @@ RSpec.describe User do
             miss_count: 7,
             clear_lamp: 'ex_hard',
             grade: 'aa',
-            last_played_at: Time.zone.local(2018, 2, 23, 22, 33, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           ),
         )
       end
@@ -367,7 +367,7 @@ RSpec.describe User do
             grade: nil,
             score: nil,
             miss_count: nil,
-            last_played_at: Time.zone.local(2018, 11, 7, 19, 48, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 11, 7, 19, 48, 0) },
           ),
         )
       end
@@ -382,7 +382,7 @@ RSpec.describe User do
             grade: nil,
             score: nil,
             miss_count: nil,
-            last_played_at: Time.zone.local(2018, 11, 7, 19, 48, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 11, 7, 19, 48, 0) },
           ),
         )
       end
@@ -425,7 +425,7 @@ RSpec.describe User do
             grade: 'aa',
             score: 1885,
             miss_count: 5,
-            last_played_at: Time.zone.local(2018, 11, 7, 20, 10, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 11, 7, 20, 10, 0) },
           ),
         )
       end
@@ -440,7 +440,7 @@ RSpec.describe User do
             grade: 'aa',
             score: 1885,
             miss_count: 5,
-            last_played_at: Time.zone.local(2018, 11, 7, 20, 10, 0),
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 11, 7, 20, 10, 0) },
           ),
         )
       end

@@ -20,6 +20,7 @@ query findMap(
       difficulty
       minBpm
       maxBpm
+
       result(username: $username) {
         id
         score
@@ -27,6 +28,12 @@ query findMap(
         clearLamp
         grade
         bpi
+      }
+
+      results(username: $username) {
+        id
+        score
+        lastPlayedAt
       }
     }
   }

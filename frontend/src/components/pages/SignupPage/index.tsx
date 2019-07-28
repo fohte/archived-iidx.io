@@ -1,4 +1,4 @@
-import * as classnames from 'classnames/bind'
+import classnames from 'classnames/bind'
 import Router from 'next/router'
 import * as React from 'react'
 
@@ -8,9 +8,10 @@ import LoginOrSignUpForm, {
 } from '@app/components/organisms/LoginOrSignUpForm'
 import MainLayout from '@app/components/templates/MainLayout'
 import { auth, ErrorType } from '@app/lib/firebaseApp'
-import { Link } from '@app/routes'
+import routes from '@app/routes'
 
 import * as css from './style.scss'
+const { Link } = routes
 
 const cx = classnames.bind(css)
 

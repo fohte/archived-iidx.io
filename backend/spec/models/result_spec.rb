@@ -9,7 +9,7 @@ RSpec.describe Result do
   describe '#to_log' do
     subject { result.to_log }
 
-    let(:result) { build_stubbed(:result, :with_user, :with_map) }
+    let(:result) { build_stubbed(:result, :with_user, :with_music) }
 
     it 'ResultLog を返す' do
       expect(subject).to have_attributes(

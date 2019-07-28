@@ -101,6 +101,11 @@ enum Grade {
   F
 }
 
+"""
+An ISO 8601-encoded datetime
+"""
+scalar ISO8601DateTime
+
 type Map {
   difficulty: Difficulty!
   id: ID!
@@ -111,6 +116,7 @@ type Map {
   numNotes: Int!
   playStyle: PlayStyle!
   result(username: String!): Result
+  results(username: String!): [Result!]!
 }
 
 type MapList implements Pageable {
@@ -195,6 +201,7 @@ type Result {
   clearLamp: ClearLamp
   grade: Grade
   id: ID!
+  lastPlayedAt: ISO8601DateTime!
   map: Map!
   missCount: Int
   score: Int
