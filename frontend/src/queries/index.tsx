@@ -87,6 +87,8 @@ export type FindMapMap = {
   maxBpm: number
 
   result: Maybe<FindMapResult>
+
+  results: FindMapResults[]
 }
 
 export type FindMapResult = {
@@ -103,6 +105,16 @@ export type FindMapResult = {
   grade: Maybe<Grade>
 
   bpi: Maybe<number>
+}
+
+export type FindMapResults = {
+  __typename?: 'Result'
+
+  id: string
+
+  score: Maybe<number>
+
+  lastPlayedAt: string
 }
 
 export type FindUserVariables = {
@@ -287,6 +299,11 @@ export const FindMapDocument = gql`
           clearLamp
           grade
           bpi
+        }
+        results(username: $username) {
+          id
+          score
+          lastPlayedAt
         }
       }
     }

@@ -1,6 +1,6 @@
 {
   "presets": ["next/babel", "@zeit/next-typescript/babel"],
-  "plugins": [["lodash"]],
+  "plugins": [["lodash"], "recharts"],
   "env": {
     "test": {
       "presets": [
@@ -13,7 +13,7 @@
         ],
         "@zeit/next-typescript/babel"
       ],
-      "plugins": [["lodash"], "require-context-hook"]
+      "plugins": [["lodash"], "recharts", "require-context-hook"]
     }
   }
 }

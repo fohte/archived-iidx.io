@@ -8,6 +8,7 @@ module Types
       field :score, Integer, null: true
       field :miss_count, Integer, null: true
       field :bpi, Float, null: true
+      field :last_played_at, GraphQL::Types::ISO8601DateTime, null: false
 
       field :clear_lamp, Enum::ClearLamp, null: true
 

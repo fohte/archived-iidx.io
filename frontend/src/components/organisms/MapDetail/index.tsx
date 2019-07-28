@@ -1,14 +1,31 @@
 import * as classnames from 'classnames/bind'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import * as _ from 'lodash'
 import * as React from 'react'
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  Label,
+  ReferenceLine,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
 
 import Box from '@app/components/atoms/Box'
 import ResultBox, { Result } from '@app/components/molecules/ResultBox'
+import { calcGradeBorder, calcScoreRate, getGradeBorders } from '@app/lib/score'
 import { generateTextageURL } from '@app/lib/textage'
 import { Difficulty, PlayStyle } from '@app/queries'
 
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
+
+dayjs.extend(utc)
 
 export interface Music {
   title: string
@@ -27,93 +44,190 @@ export interface Map {
   numNotes: number
 }
 
+export interface ResultLog {
+  score: number | null
+  lastPlayedAt: string
+}
+
 export type Props = {
   music: Music
   map: Map
   result?: Result
+  allResults: ResultLog[]
   screenName: string
 }
 
-const MapDetail: React.SFC<Props> = ({ music, map, result }) => (
-  <>
-    <Box className={cx('map-detail')}>
-      <div className={cx('music-data')}>
-        <div className={cx('genre')}>{music.genre}</div>
-        <h2 className={cx('title')}>{music.title}</h2>
-        <div className={cx('artist')}>{music.artist}</div>
-      </div>
+const formatDate = (item: string | number, formatString: string): string =>
+  dayjs
+    .unix(Number(item))
+    .utc()
+    .format(formatString)
 
-      <ul>
-        <li>
-          <div
-            className={cx('difficulty-area', {
-              'difficulty-another': map.difficulty === Difficulty.Another,
-              'difficulty-hyper': map.difficulty === Difficulty.Hyper,
-              'difficulty-normal': map.difficulty === Difficulty.Normal,
-            })}
-          >
-            <span className={cx('level')}>☆{map.level}</span>
-            <span className={cx('difficulty')}>
-              {map.playStyle} {map.difficulty}
-            </span>
-          </div>
-        </li>
-      </ul>
+const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
+  const gradeBorders = getGradeBorders(map.numNotes)
 
-      <table className={cx('map-data-table')}>
-        <tbody>
-          <tr>
-            <th>BPM</th>
-            <td>
-              <div className={cx('bpm')}>
-                {map.minBpm === map.maxBpm
-                  ? `${map.maxBpm}`
-                  : `${map.minBpm}-${map.maxBpm}`}
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>Notes</th>
-            <td>{map.numNotes}</td>
-          </tr>
-          <tr>
-            <th>TexTage</th>
-            <td>
-              <ul className={cx('textage-links')}>
-                {map.playStyle === PlayStyle.Sp ? (
-                  [1, 2].map((playSide: 1 | 2) => (
-                    <li key={playSide}>
+  return (
+    <>
+      <Box className={cx('box', 'map-detail')}>
+        <div className={cx('music-data')}>
+          <div className={cx('genre')}>{music.genre}</div>
+          <h2 className={cx('title')}>{music.title}</h2>
+          <div className={cx('artist')}>{music.artist}</div>
+        </div>
+
+        <ul>
+          <li>
+            <div
+              className={cx('difficulty-area', {
+                'difficulty-another': map.difficulty === Difficulty.Another,
+                'difficulty-hyper': map.difficulty === Difficulty.Hyper,
+                'difficulty-normal': map.difficulty === Difficulty.Normal,
+              })}
+            >
+              <span className={cx('level')}>☆{map.level}</span>
+              <span className={cx('difficulty')}>
+                {map.playStyle} {map.difficulty}
+              </span>
+            </div>
+          </li>
+        </ul>
+
+        <table className={cx('map-data-table')}>
+          <tbody>
+            <tr>
+              <th>BPM</th>
+              <td>
+                <div className={cx('bpm')}>
+                  {map.minBpm === map.maxBpm
+                    ? `${map.maxBpm}`
+                    : `${map.minBpm}-${map.maxBpm}`}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>Notes</th>
+              <td>{map.numNotes}</td>
+            </tr>
+            <tr>
+              <th>TexTage</th>
+              <td>
+                <ul className={cx('textage-links')}>
+                  {map.playStyle === PlayStyle.Sp ? (
+                    [1, 2].map((playSide: 1 | 2) => (
+                      <li key={playSide}>
+                        <a
+                          href={generateTextageURL(music, map, {
+                            playStyle: PlayStyle.Sp,
+                            playSide,
+                          })}
+                        >{`${playSide}P`}</a>
+                      </li>
+                    ))
+                  ) : (
+                    <li>
                       <a
                         href={generateTextageURL(music, map, {
-                          playStyle: PlayStyle.Sp,
-                          playSide,
+                          playStyle: PlayStyle.Dp,
                         })}
-                      >{`${playSide}P`}</a>
+                      >
+                        DP
+                      </a>
                     </li>
-                  ))
-                ) : (
-                  <li>
-                    <a
-                      href={generateTextageURL(music, map, {
-                        playStyle: PlayStyle.Dp,
-                      })}
-                    >
-                      DP
-                    </a>
-                  </li>
-                )}
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </Box>
+                  )}
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </Box>
 
-    <Box>
-      <div className={cx('result-box-header')}>BEST SCORE</div>
-      <ResultBox showBPI data={{ loading: false, result, map }} />
-    </Box>
-  </>
-)
+      <Box className={cx('box')}>
+        <div className={cx('box-header')}>
+          <h2>Best Score</h2>
+        </div>
+        <ResultBox showBPI data={{ loading: false, result, map }} />
+      </Box>
+
+      <Box className={cx('box')}>
+        <div className={cx('box-header')}>
+          <h2>Score Trends</h2>
+        </div>
+
+        <div
+          className={cx('chart-wrapper', {
+            'chart-unavailable': allResults.length === 0,
+          })}
+        >
+          {allResults.length === 0 && (
+            <div className={cx('chart-unavailable-text')}>No data points</div>
+          )}
+
+          <div className={cx('chart-container')}>
+            <ResponsiveContainer height={300}>
+              <AreaChart
+                data={allResults
+                  .filter(({ score }) => score != null)
+                  .map(({ score, lastPlayedAt }) => ({
+                    score,
+                    lastPlayedAt: dayjs(lastPlayedAt).unix(),
+                  }))}
+                // モバイル端末でタップしたときに hover と同じ動作をさせるためのハック
+                // https://github.com/recharts/recharts/issues/754#issuecomment-430477790
+                onClick={() => {
+                  /* Nop */
+                }}
+                className={cx('chart')}
+                margin={{ right: 60 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis
+                  dataKey="lastPlayedAt"
+                  tickFormatter={item => formatDate(item, 'YYYY/MM/DD')}
+                  domain={['dataMin', 'dataMax']}
+                  type="number"
+                />
+                <YAxis
+                  domain={[
+                    dataMin => _.max([dataMin - 20, 0]),
+                    dataMax => _.min([dataMax + 20, map.numNotes * 2]),
+                  ]}
+                />
+                <Tooltip
+                  labelFormatter={label =>
+                    formatDate(label, 'YYYY/MM/DD HH:mm')
+                  }
+                  formatter={(value: number) =>
+                    `${value} (${calcScoreRate(value, map.numNotes).toFixed(
+                      2,
+                    )}%)`
+                  }
+                />
+                {_.map(gradeBorders, (gradeBorder, grade) => (
+                  <ReferenceLine key={grade} y={gradeBorder} stroke="#999">
+                    <Label position="right" value={grade} color="#999" />
+                  </ReferenceLine>
+                ))}
+                <ReferenceLine
+                  y={calcGradeBorder(map.numNotes, 8.5 / 9)}
+                  stroke="#999"
+                >
+                  <Label position="right" value="MAX-" color="#999" />
+                </ReferenceLine>
+                <Area
+                  dataKey="score"
+                  stroke="#1164a4"
+                  strokeWidth={2}
+                  isAnimationActive={false}
+                  fillOpacity={0.2}
+                  dot={{ fill: 'white', fillOpacity: 1 }}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </Box>
+    </>
+  )
+}
 
 export default MapDetail

@@ -23,23 +23,22 @@ export const calcScoreRate = (
   precision: number = 2,
 ) => _.round((score / (numNotes * 2)) * 100, precision)
 
-const getGradeBorders = (numNotes: number): { [key in Grade]: number } => {
-  const maxScore = numNotes * 2
-  const calcGradeBorder = (coefficients: number): number =>
-    Math.ceil(maxScore * coefficients)
+export const calcGradeBorder = (coefficients: number, numNotes: number) =>
+  Math.ceil(numNotes * 2 * coefficients)
 
-  return {
-    [Grade.F]: 0,
-    [Grade.E]: calcGradeBorder(2 / 9),
-    [Grade.D]: calcGradeBorder(3 / 9),
-    [Grade.C]: calcGradeBorder(4 / 9),
-    [Grade.B]: calcGradeBorder(5 / 9),
-    [Grade.A]: calcGradeBorder(6 / 9),
-    [Grade.AA]: calcGradeBorder(7 / 9),
-    [Grade.AAA]: calcGradeBorder(8 / 9),
-    [Grade.Max]: maxScore,
-  }
-}
+export const getGradeBorders = (
+  numNotes: number,
+): { [key in Grade]: number } => ({
+  [Grade.F]: 0,
+  [Grade.E]: calcGradeBorder(numNotes, 2 / 9),
+  [Grade.D]: calcGradeBorder(numNotes, 3 / 9),
+  [Grade.C]: calcGradeBorder(numNotes, 4 / 9),
+  [Grade.B]: calcGradeBorder(numNotes, 5 / 9),
+  [Grade.A]: calcGradeBorder(numNotes, 6 / 9),
+  [Grade.AA]: calcGradeBorder(numNotes, 7 / 9),
+  [Grade.AAA]: calcGradeBorder(numNotes, 8 / 9),
+  [Grade.Max]: numNotes * 2,
+})
 
 export const defaultGradeDiff: GradeDiff = {
   grade: null,

@@ -23,6 +23,7 @@ rules:
         - first-nested
       ignore:
         - after-declaration
+        - after-comment
 
   rule-empty-line-before:
     - always
