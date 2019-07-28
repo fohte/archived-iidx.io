@@ -6,10 +6,11 @@ import Button from '@app/components/atoms/Button'
 import Container from '@app/components/atoms/Container'
 import UserMenu from '@app/components/molecules/UserMenu'
 import AuthContext from '@app/contexts/AuthContext'
-import { Link } from '@app/routes'
+import routes from '@app/routes'
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
+const { Link } = routes
 
 const Header: React.SFC = () => (
   <nav className={cx('headerNav')}>

@@ -5,10 +5,11 @@ import * as React from 'react'
 import Card from '@app/components/atoms/Card'
 import ResultBox, { Result } from '@app/components/molecules/ResultBox'
 import { Difficulty, PlayStyle } from '@app/queries'
-import routes, { Link } from '@app/routes'
+import routes from '@app/routes'
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
+const { Link } = routes
 
 export type Music = {
   id: string
