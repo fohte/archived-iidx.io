@@ -46,7 +46,7 @@ RSpec.describe IIDXIO::CSVParser::Row do
           clear_lamp: 'EX HARD CLEAR',
           dj_level: 'AA',
         ),
-        last_played_at: Time.zone.local(2018, 8, 21, 20, 56, 0),
+        last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 8, 21, 20, 56, 0) },
       )
     end
 
@@ -91,7 +91,7 @@ RSpec.describe IIDXIO::CSVParser::Row do
             clear_lamp: 'EX HARD CLEAR',
             dj_level: nil,
           ),
-          last_played_at: Time.zone.local(2018, 11, 7, 19, 48, 0),
+          last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 11, 7, 19, 48, 0) },
         )
       end
     end
@@ -137,7 +137,7 @@ RSpec.describe IIDXIO::CSVParser::Row do
             clear_lamp: nil,
             dj_level: nil,
           ),
-          last_played_at: Time.zone.local(2018, 11, 7, 20, 10, 0),
+          last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 11, 7, 20, 10, 0) },
         )
       end
     end
