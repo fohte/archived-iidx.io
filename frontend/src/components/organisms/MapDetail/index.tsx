@@ -1,6 +1,5 @@
 import classnames from 'classnames/bind'
 import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
 import * as _ from 'lodash'
 import * as React from 'react'
 import {
@@ -24,8 +23,6 @@ import { Difficulty, PlayStyle } from '@app/queries'
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
-
-dayjs.extend(utc)
 
 export interface Music {
   title: string
@@ -58,10 +55,7 @@ export type Props = {
 }
 
 const formatDate = (item: string | number, formatString: string): string =>
-  dayjs
-    .unix(Number(item))
-    .utc()
-    .format(formatString)
+  dayjs.unix(Number(item)).format(formatString)
 
 const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
   const gradeBorders = getGradeBorders(map.numNotes)
