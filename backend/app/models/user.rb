@@ -83,15 +83,16 @@ class User < ApplicationRecord
             old_result = results.find_by(map: new_result.map)
 
             if old_result.present?
-              # スコアが更新されていなかったらスキップする
-              next unless old_result.updated?(new_result)
+              is_updated = old_result.updated?(new_result)
+
+              next if !is_updated && old_result.last_played_at >= new_result.last_played_at
 
               old_result.update!(
                 **result_attributes,
               )
 
               old_result.user = self
-              old_result.to_log.save!
+              old_result.to_log.save! if is_updated
             else
               results << new_result
 

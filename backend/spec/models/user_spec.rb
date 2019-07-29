@@ -286,6 +286,57 @@ RSpec.describe User do
           expect { subject }.to change(ResultLog, :count).by(1)
         end
       end
+
+      context 'リザルト更新がないが最終プレイ日時が更新されているとき' do
+        let(:csv) do
+          <<~CSV
+            # this line is a dummy header
+            IIDX RED,gigadelic,NUSTYLE GABBA,teranoid feat.MC Natsack,3,9,0,0,0,---,NO PLAY,---,12,1955,862,230,7,EX HARD CLEAR,AA,12,0,0,0,---,NO PLAY,---,2019-07-29 21:19
+          CSV
+        end
+
+        before do
+          old_batch = create(:result_batch, user: user)
+          create(
+            :result,
+            result_batch: old_batch,
+            user: user,
+            map: music.sp_hyper,
+            clear_lamp: 'ex_hard',
+            grade: 'aa',
+            score: 1955,
+            miss_count: 7,
+            last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 24, 15, 10, 0) },
+          )
+        end
+
+        it 'creates a result batch record' do
+          expect { subject }.to change { user.result_batches.count }.by(1)
+        end
+
+        it 'リザルトが新しいほうで更新される' do
+          subject
+          expect(user.results).to contain_exactly(
+            have_attributes(
+              map: music.sp_hyper,
+              result_batch: user.result_batches.last,
+              clear_lamp: 'ex_hard',
+              grade: 'aa',
+              score: 1955,
+              miss_count: 7,
+              last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2019, 7, 29, 21, 19, 0) },
+            ),
+          )
+        end
+
+        it 'results レコードを作成しない' do
+          expect { subject }.to change(Result, :count).by(0)
+        end
+
+        it 'result_logs レコードを作成しない' do
+          expect { subject }.to change(ResultLog, :count).by(0)
+        end
+      end
     end
 
     context 'with unknown musics' do
