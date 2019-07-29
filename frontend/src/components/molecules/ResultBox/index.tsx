@@ -5,7 +5,7 @@ import Link from 'next/link'
 import * as React from 'react'
 
 import ScoreGraph from '@app/components/atoms/ScoreGraph'
-import { formatISO8601, formats } from '@app/lib/dateTime'
+import { formats } from '@app/lib/dateTime'
 import {
   calcScoreRate,
   defaultGradeDiff,
@@ -13,10 +13,14 @@ import {
   searchNextGrade,
 } from '@app/lib/score'
 import { ClearLamp } from '@app/queries'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
+
+dayjs.extend(relativeTime)
 
 export type Result = {
   score: number | null
@@ -44,6 +48,7 @@ export interface Props {
   showBPI?: boolean
   href?: string
   data: Data
+  absoluteLastPlayedAt?: boolean
 }
 
 const clearTypeTexts: { [key in ClearLamp]: string } = {
@@ -60,6 +65,7 @@ const ResultBox: React.FunctionComponent<Props> = ({
   showBPI = false,
   data,
   href,
+  absoluteLastPlayedAt = false,
 }) => {
   if (data.loading) {
     return (
@@ -207,7 +213,9 @@ const ResultBox: React.FunctionComponent<Props> = ({
                   <dt>LAST PLAY</dt>
                   <dd className={cx('moderate')}>
                     {result
-                      ? formatISO8601(result.lastPlayedAt, formats.date)
+                      ? absoluteLastPlayedAt
+                        ? dayjs(result.lastPlayedAt).format(formats.dateTime)
+                        : dayjs(result.lastPlayedAt).fromNow()
                       : '-'}
                   </dd>
                 </dl>

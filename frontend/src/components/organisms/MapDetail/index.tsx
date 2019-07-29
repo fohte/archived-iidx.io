@@ -137,7 +137,11 @@ const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
         <div className={cx('box-header')}>
           <h2>Best Score</h2>
         </div>
-        <ResultBox showBPI data={{ loading: false, result, map }} />
+        <ResultBox
+          showBPI
+          data={{ loading: false, result, map }}
+          absoluteLastPlayedAt
+        />
       </Box>
 
       <Box className={cx('box')}>
