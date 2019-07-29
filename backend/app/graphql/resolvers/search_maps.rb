@@ -20,7 +20,11 @@ module Resolvers
       maps = maps.where(play_style: play_style) unless play_style.nil?
       maps = maps.where(difficulty: difficulties) unless difficulties.empty?
 
-      maps.offset(offset).limit(limit)
+      maps
+        .left_outer_joins(:results)
+        .merge(Result.order(last_played_at: :desc))
+        .offset(offset)
+        .limit(limit)
     end
   end
 end

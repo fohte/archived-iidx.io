@@ -121,8 +121,8 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       # fake map
       let!(:level10_map) { create(:map, :with_music, level: 10, results: [build(:result, user: user)]) }
 
-      let!(:level11_map) { create(:map, :with_music, level: 11, results: [build(:result, user: user)]) }
-      let!(:level12_map) { create(:map, :with_music, level: 12, results: [build(:result, user: user)]) }
+      let!(:level11_map) { create(:map, :with_music, level: 11, results: [build(:result, user: user, last_played_at: 1.day.ago)]) }
+      let!(:level12_map) { create(:map, :with_music, level: 12, results: [build(:result, user: user, last_played_at: 2.days.ago)]) }
 
       it 'filters by levels' do
         expect(response['data']['searchMaps']['nodes']).to match_array([
@@ -169,8 +169,8 @@ RSpec.describe IIDXIOSchema, type: :graphql do
     context 'with difficulties' do
       let(:variables) { { username: user.name, difficulties: %w[ANOTHER HYPER] } }
 
-      let!(:another_map) { create(:map, :with_music, difficulty: :another, results: [build(:result, user: user)]) }
-      let!(:hyper_map) { create(:map, :with_music, difficulty: :hyper, results: [build(:result, user: user)]) }
+      let!(:another_map) { create(:map, :with_music, difficulty: :another, results: [build(:result, user: user, last_played_at: 1.day.ago)]) }
+      let!(:hyper_map) { create(:map, :with_music, difficulty: :hyper, results: [build(:result, user: user, last_played_at: 2.days.ago)]) }
 
       # fake map
       let!(:normal_map) { create(:map, :with_music, difficulty: :normal, results: [build(:result, user: user)]) }
@@ -196,7 +196,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
     context 'ページングが必要なとき' do
       let!(:maps) do
         # create_list だと results が 1 度しか作成されない
-        Array.new(2) { create(:map, :with_music, results: [build(:result, user: user)]) }
+        Array.new(2) { |x| create(:map, :with_music, results: [build(:result, user: user, last_played_at: (x + 1).days.ago)]) }
       end
 
       context 'offset なしのとき' do
