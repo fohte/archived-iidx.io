@@ -21,7 +21,7 @@ module Resolvers
       maps = maps.where(difficulty: difficulties) unless difficulties.empty?
 
       maps
-        .joins(:results)
+        .left_outer_joins(:results)
         .merge(Result.order(last_played_at: :desc))
         .offset(offset)
         .limit(limit)
