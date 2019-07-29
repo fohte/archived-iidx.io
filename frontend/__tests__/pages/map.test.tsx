@@ -14,6 +14,7 @@ import {
 
 describe('/map', () => {
   it('renders correctly', () => {
+    const lastPlayedAt = dayjs(Date.now()).format('YYYY-MM-DDTHH:mm:ssZ[Z]')
     const music: FindMapMusic = {
       id: '1',
       title: 'title',
@@ -37,12 +38,13 @@ describe('/map', () => {
           clearLamp: ClearLamp.FullCombo,
           grade: Grade.Aaa,
           bpi: 10,
+          lastPlayedAt,
         },
         results: [
           {
             id: '1',
             score: 2000,
-            lastPlayedAt: dayjs(Date.now()).format('YYYY-MM-DDTHH:mm:ssZ[Z]'),
+            lastPlayedAt,
           },
         ],
       },

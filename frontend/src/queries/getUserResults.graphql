@@ -35,6 +35,7 @@ query getUserResults(
         missCount
         clearLamp
         bpi
+        lastPlayedAt
       }
     }
   }

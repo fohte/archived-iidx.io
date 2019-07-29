@@ -108,6 +108,8 @@ export type FindMapResult = {
   grade: Maybe<Grade>
 
   bpi: Maybe<number>
+
+  lastPlayedAt: Iso8601DateTime
 }
 
 export type FindMapResults = {
@@ -198,6 +200,8 @@ export type GetUserResultsResult = {
   clearLamp: Maybe<ClearLamp>
 
   bpi: Maybe<number>
+
+  lastPlayedAt: Iso8601DateTime
 }
 
 export type GetViewerVariables = {}
@@ -302,6 +306,7 @@ export const FindMapDocument = gql`
           clearLamp
           grade
           bpi
+          lastPlayedAt
         }
         results(username: $username) {
           id
@@ -421,6 +426,7 @@ export const GetUserResultsDocument = gql`
           missCount
           clearLamp
           bpi
+          lastPlayedAt
         }
       }
     }

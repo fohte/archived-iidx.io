@@ -28,6 +28,7 @@ query findMap(
         clearLamp
         grade
         bpi
+        lastPlayedAt
       }
 
       results(username: $username) {

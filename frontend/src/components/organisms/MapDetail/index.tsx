@@ -16,6 +16,7 @@ import {
 
 import Box from '@app/components/atoms/Box'
 import ResultBox, { Result } from '@app/components/molecules/ResultBox'
+import { formats, formatUnixTime } from '@app/lib/dateTime'
 import { calcGradeBorder, calcScoreRate, getGradeBorders } from '@app/lib/score'
 import { generateTextageURL } from '@app/lib/textage'
 import { Difficulty, PlayStyle } from '@app/queries'
@@ -53,9 +54,6 @@ export type Props = {
   allResults: ResultLog[]
   screenName: string
 }
-
-const formatDate = (item: string | number, formatString: string): string =>
-  dayjs.unix(Number(item)).format(formatString)
 
 const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
   const gradeBorders = getGradeBorders(map.numNotes)
@@ -176,7 +174,7 @@ const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                   dataKey="lastPlayedAt"
-                  tickFormatter={item => formatDate(item, 'YYYY/MM/DD')}
+                  tickFormatter={item => formatUnixTime(item, formats.date)}
                   domain={['dataMin', 'dataMax']}
                   type="number"
                 />
@@ -188,7 +186,7 @@ const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
                 />
                 <Tooltip
                   labelFormatter={label =>
-                    formatDate(label, 'YYYY/MM/DD HH:mm')
+                    formatUnixTime(label, formats.dateTime)
                   }
                   formatter={(value: number) =>
                     `${value} (${calcScoreRate(value, map.numNotes).toFixed(

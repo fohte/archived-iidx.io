@@ -5,6 +5,7 @@ import Link from 'next/link'
 import * as React from 'react'
 
 import ScoreGraph from '@app/components/atoms/ScoreGraph'
+import { formatISO8601, formats } from '@app/lib/dateTime'
 import {
   calcScoreRate,
   defaultGradeDiff,
@@ -22,6 +23,7 @@ export type Result = {
   missCount: number | null
   clearLamp: ClearLamp | null
   bpi: number | null
+  lastPlayedAt: string
 }
 
 export type Map = {
@@ -203,7 +205,11 @@ const ResultBox: React.FunctionComponent<Props> = ({
 
                 <dl className={cx('data-list')}>
                   <dt>LAST PLAY</dt>
-                  <dd className={cx('moderate')}>-</dd>
+                  <dd className={cx('moderate')}>
+                    {result
+                      ? formatISO8601(result.lastPlayedAt, formats.date)
+                      : '-'}
+                  </dd>
                 </dl>
               </div>
             </div>
