@@ -4,7 +4,8 @@ require 'rails_helper'
 
 RSpec.describe HttpTokenAuthenticatable, type: :controller do
   controller(ApplicationController) do
-    include HttpTokenAuthenticatable
+    # controller のブロック内では described_class は利用できないので注意
+    include HttpTokenAuthenticatable # rubocop:disable RSpec/DescribedClass
   end
 
   describe '#current_viewer' do
