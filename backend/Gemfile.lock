@@ -111,7 +111,7 @@ GEM
     guard-rake (1.0.0)
       guard
       rake
-    hashdiff (0.4.0)
+    hashdiff (1.0.0)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
     i18n (1.6.0)
@@ -161,7 +161,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (3.1.0)
+    public_suffix (3.1.1)
     puma (4.0.1)
       nio4r (~> 2.0)
     rack (2.0.7)
@@ -275,7 +275,7 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    webmock (3.6.0)
+    webmock (3.6.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
