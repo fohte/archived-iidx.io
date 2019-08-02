@@ -4807,10 +4807,10 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-final-form@4.13.1:
-  version "4.13.1"
-  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.13.1.tgz#5893b1fe490a36198b219b351eec135d7394cdcf"
-  integrity sha512-9bTIY68bKn6rIcyolFZlUqK1odlRXpi30C5CazJ5gUZpoMkeDAeb53FQ3gv37eX1zWtQtydgwD5ZAwZB5EGoGg==
+final-form@4.18.2:
+  version "4.18.2"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.18.2.tgz#3e7447ba36049a747d4becc61eb35e65a90f22a1"
+  integrity sha512-VQx/5x9M4CiC8fG678Dm1IS3mXvBl7ZNIUx5tUZCk00lFImJzQix4KO0+eGtl49sha2bYOxuYn8jRJiq6sazXA==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
