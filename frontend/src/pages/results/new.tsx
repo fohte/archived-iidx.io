@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Router from 'next/router'
 import * as React from 'react'
 
@@ -7,22 +8,28 @@ import MainLayout from '@app/components/templates/MainLayout'
 import { RegisterResultsWithCsvComponent } from '@app/queries'
 
 const ResultsNew = () => (
-  <MainLayout>
-    <RegisterResultsWithCsvComponent>
-      {registerResultsWithCSV => (
-        <Container>
-          <RegisterResultForm
-            onSubmit={async ({ csv, playStyle }) => {
-              await registerResultsWithCSV({
-                variables: { csv, playStyle },
-              })
-              Router.push('/')
-            }}
-          />
-        </Container>
-      )}
-    </RegisterResultsWithCsvComponent>
-  </MainLayout>
+  <>
+    <Head>
+      <title>Register results from CSV | iidx.io</title>
+    </Head>
+
+    <MainLayout>
+      <RegisterResultsWithCsvComponent>
+        {registerResultsWithCSV => (
+          <Container>
+            <RegisterResultForm
+              onSubmit={async ({ csv, playStyle }) => {
+                await registerResultsWithCSV({
+                  variables: { csv, playStyle },
+                })
+                Router.push('/')
+              }}
+            />
+          </Container>
+        )}
+      </RegisterResultsWithCsvComponent>
+    </MainLayout>
+  </>
 )
 
 export default ResultsNew

@@ -1,5 +1,6 @@
 import { GraphQLError } from 'graphql'
 import ErrorPage from 'next/error'
+import Head from 'next/head'
 import * as React from 'react'
 
 import Profile from '@app/components/organisms/Profile'
@@ -44,13 +45,18 @@ const ProfilePage: PageComponentType<Props, Props, Query> = ({
   }
 
   return (
-    <UserProfileLayout
-      screenName={user.name}
-      playStyle={playStyle}
-      activeTab={Tab.Overview}
-    >
-      <Profile playStyle={playStyle} />
-    </UserProfileLayout>
+    <>
+      <Head>
+        <title>@{user.name} | iidx.io</title>
+      </Head>
+      <UserProfileLayout
+        screenName={user.name}
+        playStyle={playStyle}
+        activeTab={Tab.Overview}
+      >
+        <Profile playStyle={playStyle} />
+      </UserProfileLayout>
+    </>
   )
 }
 
