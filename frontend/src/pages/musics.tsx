@@ -1,5 +1,6 @@
 import * as _ from 'lodash'
 import ErrorPage from 'next/error'
+import Head from 'next/head'
 import * as React from 'react'
 
 import MusicsPage from '@app/components/pages/MusicsPage'
@@ -50,14 +51,19 @@ const PageComponent: PageComponentType<Props, Props, Query> = ({
   }
 
   return (
-    <MusicsPage
-      screenName={screenName}
-      title={title}
-      playStyle={playStyle}
-      difficulties={difficulties}
-      levels={levels}
-      page={page}
-    />
+    <>
+      <Head>
+        <title>@{screenName} - Musics | iidx.io</title>
+      </Head>
+      <MusicsPage
+        screenName={screenName}
+        title={title}
+        playStyle={playStyle}
+        difficulties={difficulties}
+        levels={levels}
+        page={page}
+      />
+    </>
   )
 }
 

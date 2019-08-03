@@ -1,5 +1,6 @@
 import { GraphQLError } from 'graphql'
 import ErrorPage from 'next/error'
+import Head from 'next/head'
 import * as React from 'react'
 
 import MapDetail from '@app/components/organisms/MapDetail'
@@ -55,33 +56,42 @@ const MapPage: PageComponentType<Props, Props, Query> = ({
   const { map } = music
   const { difficulty } = map
 
+  const difficultyText = `${playStyle}${difficulty[0]}`
+
   return (
-    <UserProfileLayout
-      screenName={screenName}
-      playStyle={playStyle}
-      activeTab={Tab.Musics}
-      breadcrumbItems={[
-        {
-          text: 'Musics',
-          route: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
-        },
-        {
-          text: `${music.title} [${playStyle}${difficulty[0]}]`,
-          route: `/@${screenName}/musics/${
-            music.id
-          }/${playStyle.toLowerCase()}/${difficulty.toLowerCase()}`,
-          active: true,
-        },
-      ]}
-    >
-      <MapDetail
-        music={music}
-        map={map}
-        result={map.result || undefined}
-        allResults={map.results}
+    <>
+      <Head>
+        <title>
+          @{screenName} - {music.title} [{difficultyText}] | iidx.io
+        </title>
+      </Head>
+      <UserProfileLayout
         screenName={screenName}
-      />
-    </UserProfileLayout>
+        playStyle={playStyle}
+        activeTab={Tab.Musics}
+        breadcrumbItems={[
+          {
+            text: 'Musics',
+            route: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
+          },
+          {
+            text: `${music.title} [${difficultyText}]`,
+            route: `/@${screenName}/musics/${
+              music.id
+            }/${playStyle.toLowerCase()}/${difficulty.toLowerCase()}`,
+            active: true,
+          },
+        ]}
+      >
+        <MapDetail
+          music={music}
+          map={map}
+          result={map.result || undefined}
+          allResults={map.results}
+          screenName={screenName}
+        />
+      </UserProfileLayout>
+    </>
   )
 }
 
