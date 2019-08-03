@@ -6,13 +6,20 @@ import '@app/rawStyles/toast.scss'
 
 import { NextComponentClass, NextContext, NextStatelessComponent } from 'next'
 import App, { AppComponentContext, Container } from 'next/app'
-import { DefaultQuery } from 'next/router'
+import Router, { DefaultQuery } from 'next/router'
+import NProgress from 'nprogress'
 import * as React from 'react'
 import { ApolloProvider } from 'react-apollo'
 
 import ToastContainer from '@app/components/others/ToastContainer'
 import AuthStateProvider from '@app/contexts/AuthStateProvider'
 import withApollo, { Props } from '@app/lib/withApollo'
+
+Router.events.on('routeChangeStart', () => {
+  NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
 export type PageComponentType<
   P = {},
