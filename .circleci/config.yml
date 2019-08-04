@@ -213,3 +213,8 @@ workflows:
           requires:
             - build-and-push-frontend-image
             - build-and-push-backend-image
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
