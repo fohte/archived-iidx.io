@@ -11,12 +11,12 @@ import * as css from './style.scss'
 const cx = classnames.bind(css)
 const { Link } = routes
 
-export type Music = {
+export interface Music {
   id: string
   title: string
 }
 
-export type Map = {
+export interface Map {
   id: string
   numNotes: number
   level: number
@@ -36,7 +36,7 @@ type Data =
       maps: Map[]
     }
 
-export type Props = {
+export interface Props {
   data: Data
   screenName: string
   showBPI?: boolean

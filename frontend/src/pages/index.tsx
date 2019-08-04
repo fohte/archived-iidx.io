@@ -2,7 +2,7 @@ import MainLayout from '@app/components/templates/MainLayout'
 import Head from 'next/head'
 import * as React from 'react'
 
-export default () => (
+const TopPage = () => (
   <>
     <Head>
       <title>iidx.io</title>
@@ -11,3 +11,5 @@ export default () => (
     <MainLayout />
   </>
 )
+
+export default TopPage

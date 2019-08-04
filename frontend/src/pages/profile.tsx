@@ -19,12 +19,14 @@ import {
   FindUserVariables,
 } from '@app/queries'
 
+// interface だと Record 型を満たさないので注意
+// eslint-disable-next-line @typescript-eslint/prefer-interface
 export type Query = {
   screenName: string
   playStyle?: string
 }
 
-export type Props = {
+export interface Props {
   user?: FindUserUser | null
   errors?: ReadonlyArray<GraphQLError>
   loading: boolean

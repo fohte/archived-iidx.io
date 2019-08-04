@@ -67,6 +67,7 @@ exports[`/ renders correctly 1`] = `
                   <a
                     href="https://p.eagate.573.jp/game/2dx/26/djdata/score_download.html?style=SP"
                     onClick={[Function]}
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
                     SP
@@ -97,6 +98,7 @@ exports[`/ renders correctly 1`] = `
                   <a
                     href="https://p.eagate.573.jp/game/2dx/26/djdata/score_download.html?style=DP"
                     onClick={[Function]}
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
                     DP

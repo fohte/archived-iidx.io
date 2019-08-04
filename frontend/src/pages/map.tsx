@@ -24,6 +24,8 @@ import {
   FindMapVariables,
 } from '@app/queries'
 
+// interface だと Record 型を満たさないので注意
+// eslint-disable-next-line @typescript-eslint/prefer-interface
 export type Query = {
   screenName: string
   musicId: string
@@ -31,7 +33,7 @@ export type Query = {
   difficulty: string
 }
 
-export type Props = {
+export interface Props {
   music?: FindMapMusic | null
   errors?: ReadonlyArray<GraphQLError>
   loading: boolean
@@ -47,7 +49,7 @@ const MapPage: PageComponentType<Props, Props, Query> = ({
   screenName,
 }: Props) => {
   if (loading) {
-    return <>'loading'</>
+    return <>loading</>
   }
   if (errors || !music || !music.map || !screenName || !playStyle) {
     return <ErrorPage statusCode={404} />
