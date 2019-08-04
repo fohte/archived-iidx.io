@@ -24,14 +24,14 @@ import {
   FindMapVariables,
 } from '@app/queries'
 
-export type Query = {
+export interface Query {
   screenName: string
   musicId: string
   playStyle: string
   difficulty: string
 }
 
-export type Props = {
+export interface Props {
   music?: FindMapMusic | null
   errors?: ReadonlyArray<GraphQLError>
   loading: boolean
@@ -47,7 +47,7 @@ const MapPage: PageComponentType<Props, Props, Query> = ({
   screenName,
 }: Props) => {
   if (loading) {
-    return <>'loading'</>
+    return <>loading</>
   }
   if (errors || !music || !music.map || !screenName || !playStyle) {
     return <ErrorPage statusCode={404} />

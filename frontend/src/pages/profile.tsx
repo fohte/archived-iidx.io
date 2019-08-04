@@ -19,12 +19,12 @@ import {
   FindUserVariables,
 } from '@app/queries'
 
-export type Query = {
+export interface Query {
   screenName: string
   playStyle?: string
 }
 
-export type Props = {
+export interface Props {
   user?: FindUserUser | null
   errors?: ReadonlyArray<GraphQLError>
   loading: boolean

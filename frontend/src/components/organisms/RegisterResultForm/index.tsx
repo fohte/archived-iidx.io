@@ -75,6 +75,7 @@ const RegisterResultForm = ({ onSubmit }: Props) => (
                   <a
                     href={`${csvDownloadURL}?style=${style}`}
                     target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => {
                       mutators.setPlayStyle(style)
                     }}

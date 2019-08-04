@@ -15,12 +15,12 @@ import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
 import { Difficulty, PlayStyle } from '@app/queries'
 
-export type RequiredQuery = {
+export interface RequiredQuery {
   screenName: string
   playStyle: string
 }
 
-export type OptionalQuery = {
+export interface OptionalQuery {
   title?: string
   difficulties?: string | string[]
   levels?: string | string[]

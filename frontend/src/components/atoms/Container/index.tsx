@@ -5,7 +5,7 @@ import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
-type Props = {
+interface Props {
   children?: React.ReactNode
   className?: string
 }

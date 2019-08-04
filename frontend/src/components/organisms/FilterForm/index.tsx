@@ -16,13 +16,13 @@ import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
-export type FormValues = {
+export interface FormValues {
   title?: string | null
   difficulties: Difficulty[]
   levels: number[]
 }
 
-export type Props = {
+export interface Props {
   initialValues: FormValues
   onSubmit: (values: FormValues) => void
   onCloseRequested: () => void

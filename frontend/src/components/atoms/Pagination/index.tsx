@@ -12,7 +12,7 @@ import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
-export type Props = {
+export interface Props {
   totalPages: number
   activePage: number
   onPageChange?: (newActivePage: number) => void

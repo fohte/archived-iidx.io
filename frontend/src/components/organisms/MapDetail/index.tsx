@@ -47,7 +47,7 @@ export interface ResultLog {
   lastPlayedAt: string
 }
 
-export type Props = {
+export interface Props {
   music: Music
   map: Map
   result?: Result

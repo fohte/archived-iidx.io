@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import LoginPage from '@app/components/pages/LoginPage'
 
-export default () => (
+const Login = () => (
   <>
     <Head>
       <title>Login | iidx.io</title>
@@ -11,3 +11,5 @@ export default () => (
     <LoginPage />
   </>
 )
+
+export default Login

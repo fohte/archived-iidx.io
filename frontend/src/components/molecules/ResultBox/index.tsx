@@ -22,7 +22,7 @@ const cx = classnames.bind(css)
 
 dayjs.extend(relativeTime)
 
-export type Result = {
+export interface Result {
   score: number | null
   missCount: number | null
   clearLamp: ClearLamp | null
@@ -30,7 +30,7 @@ export type Result = {
   lastPlayedAt: string
 }
 
-export type Map = {
+export interface Map {
   numNotes: number
 }
 

@@ -17,7 +17,7 @@ import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
-export type Props = {
+export interface Props {
   formValues: FormValues
   playStyle: PlayStyle
   screenName: string
@@ -80,7 +80,7 @@ const ResultList: React.SFC<Props> = ({
     ) {
       cacheTotalPages(null)
     }
-  }, [baseVariables])
+  }, [baseVariables, previousBaseVariables])
 
   const offset = (activePage - 1) * numItemsPerPage
 

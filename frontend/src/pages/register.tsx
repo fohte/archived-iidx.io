@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import RegisterPage from '@app/components/pages/RegisterPage'
 
-export default () => (
+const Register = () => (
   <>
     <Head>
       <title>Register | iidx.io</title>
@@ -12,3 +12,5 @@ export default () => (
     <RegisterPage />
   </>
 )
+
+export default Register

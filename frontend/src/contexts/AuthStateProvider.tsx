@@ -11,9 +11,7 @@ import { auth } from '@app/lib/firebaseApp'
 import { AppApolloClient } from '@app/lib/withApollo'
 import { GetViewerDocument, GetViewerQuery } from '@app/queries'
 
-interface ExternalProps {}
-
-interface Props extends ExternalProps {
+interface Props {
   client: AppApolloClient
 }
 

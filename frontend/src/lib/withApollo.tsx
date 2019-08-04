@@ -28,7 +28,7 @@ export interface Props extends AppProps {
 export class TComposedApp extends App<Props> {}
 
 export default (ComposedApp: typeof TComposedApp) =>
-  class extends React.Component<Props> {
+  class WithApollo extends React.Component<Props> {
     public static async getInitialProps(ctx: AppComponentContext) {
       const { Component, router } = ctx
 
@@ -86,7 +86,7 @@ export default (ComposedApp: typeof TComposedApp) =>
 
     public apollo: AppApolloClient
 
-    constructor(props: Props) {
+    public constructor(props: Props) {
       super(props)
       this.apollo = initApollo(props.serverState.apollo.data)
     }

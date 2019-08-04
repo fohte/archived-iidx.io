@@ -36,6 +36,9 @@ module.exports = {
     // Node.js では require を使用するので無視する
     '@typescript-eslint/no-var-requires': 'off',
 
+    // 空であることを明示したいパターンがあるので無視する
+    '@typescript-eslint/no-empty-interface': 'off',
+
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
 

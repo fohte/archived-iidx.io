@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import SignupPage from '@app/components/pages/SignupPage'
 
-export default () => (
+const Signup = () => (
   <>
     <Head>
       <title>Sign up | iidx.io</title>
@@ -11,3 +11,5 @@ export default () => (
     <SignupPage />
   </>
 )
+
+export default Signup
