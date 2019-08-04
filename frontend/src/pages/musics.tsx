@@ -15,12 +15,16 @@ import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
 import { Difficulty, PlayStyle } from '@app/queries'
 
-export interface RequiredQuery {
+// interface だと Record 型を満たさないので注意
+// eslint-disable-next-line @typescript-eslint/prefer-interface
+export type RequiredQuery = {
   screenName: string
   playStyle: string
 }
 
-export interface OptionalQuery {
+// interface だと Record 型を満たさないので注意
+// eslint-disable-next-line @typescript-eslint/prefer-interface
+export type OptionalQuery = {
   title?: string
   difficulties?: string | string[]
   levels?: string | string[]
