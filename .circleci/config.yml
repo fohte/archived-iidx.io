@@ -181,7 +181,7 @@ jobs:
     steps:
       - run:
           name: deploy to ecs
-          command: ecs-deploy --cluster iidx-io --service-name iidx-io-web --force-new-deployment
+          command: /ecs-deploy --cluster iidx-io --service-name iidx-io-web --force-new-deployment
 
 workflows:
   commit:
