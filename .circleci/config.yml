@@ -175,6 +175,14 @@ jobs:
           dockerfile: << parameters.dockerfile >>
           path: << parameters.path >>
 
+  deploy:
+    docker:
+      - image: silintl/ecs-deploy:3.6.0
+    steps:
+      - run:
+          name: deploy to ecs
+          command: /ecs-deploy --cluster iidx-io --service-name iidx-io-web --force-new-deployment
+
 workflows:
   commit:
     jobs:
@@ -196,6 +204,15 @@ workflows:
           name: build-and-push-backend-image
           repo: iidx.io/backend
           dockerfile: docker/backend/Dockerfile.prod
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
+      - deploy:
+          requires:
+            - build-and-push-frontend-image
+            - build-and-push-backend-image
           filters:
             branches:
               ignore: /.*/
