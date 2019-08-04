@@ -2,6 +2,7 @@ import classnames from 'classnames/bind'
 import * as React from 'react'
 
 import { Grade } from '@app/lib/score'
+
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)

@@ -1,6 +1,11 @@
 import classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
+import {
+  faEye,
+  faList,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons'
 
 import Breadcrumb, {
   Item as BreadcrumbItem,
@@ -9,11 +14,7 @@ import Container from '@app/components/atoms/Container'
 import MainLayout from '@app/components/templates/MainLayout'
 import { PlayStyle } from '@app/queries'
 import routes from '@app/routes'
-import {
-  faEye,
-  faList,
-  IconDefinition,
-} from '@fortawesome/free-solid-svg-icons'
+
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)

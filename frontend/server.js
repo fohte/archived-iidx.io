@@ -1,5 +1,8 @@
 const path = require('path')
+
+const express = require('express')
 const next = require('next')
+
 const routes = require('./src/routes')
 
 const app = next({
@@ -7,8 +10,6 @@ const app = next({
   dir: './src',
 })
 const handler = routes.getRequestHandler(app)
-
-const express = require('express')
 
 app.prepare().then(() => {
   const server = express()

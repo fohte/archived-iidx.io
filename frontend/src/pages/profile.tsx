@@ -11,8 +11,8 @@ import initApollo from '@app/lib/initApollo'
 import { ensurePlayStyle, ensureString } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
-import { PlayStyle } from '@app/queries'
 import {
+  PlayStyle,
   FindUserDocument,
   FindUserQuery,
   FindUserUser,

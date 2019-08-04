@@ -1,9 +1,14 @@
+const path = require('path')
+
 module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:jest/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
     'prettier',
     'prettier/@typescript-eslint',
     'prettier/react',
@@ -44,5 +49,31 @@ module.exports = {
 
     // TypeScript で型付けするので不要
     'react/prop-types': 'off',
+
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
+      },
+    ],
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['@app', path.join(__dirname, 'src')]],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      },
+    },
+    react: {
+      version: 'detect',
+    },
   },
 }

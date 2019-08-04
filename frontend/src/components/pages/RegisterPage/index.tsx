@@ -6,6 +6,7 @@ import Box from '@app/components/atoms/Box'
 import RegisterForm, { Props } from '@app/components/organisms/RegisterForm'
 import MainLayout from '@app/components/templates/MainLayout'
 import { RegisterComponent, RegisterDocument } from '@app/queries'
+
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)

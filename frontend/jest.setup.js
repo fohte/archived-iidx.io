@@ -1,3 +1,5 @@
+/* eslint-disable import/order */
+
 import { configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
@@ -23,6 +25,7 @@ jest.mock('next/config', () => ({
 import { Mock } from 'firebase-nightlight'
 
 import * as app from '@app/lib/firebaseApp/app'
+// eslint-disable-next-line import/namespace
 app.default = jest.fn(() => new Mock().initializeApp({}))
 
 import Router from 'next/router'
@@ -31,7 +34,8 @@ Router.router = {
   prefetch: () => {}, // tslint:disable-line:no-empty
 }
 
-import 'jest-date-mock'
 import { advanceTo } from 'jest-date-mock'
 
 advanceTo(new Date(2018, 1, 1, 0, 0, 0))
+
+/* eslint-enable import/order */

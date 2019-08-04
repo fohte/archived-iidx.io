@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classnames from 'classnames/bind'
 import Link from 'next/link'
 import * as React from 'react'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 import ScoreGraph from '@app/components/atoms/ScoreGraph'
 import { formats } from '@app/lib/dateTime'
@@ -13,8 +15,6 @@ import {
   searchNextGrade,
 } from '@app/lib/score'
 import { ClearLamp } from '@app/queries'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
 
 import * as css from './style.scss'
 
