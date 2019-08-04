@@ -140,4 +140,4 @@ exports[`/map renders correctly if there are errors 1`] = `
 </div>
 `;
 
-exports[`/map renders correctly when loading 1`] = `"'loading'"`;
+exports[`/map renders correctly when loading 1`] = `"loading"`;
