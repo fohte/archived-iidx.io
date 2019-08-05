@@ -1,9 +1,4 @@
 import { config } from '@fortawesome/fontawesome-svg-core'
-config.autoAddCss = false
-
-import '@app/global.scss'
-import '@app/rawStyles/toast.scss'
-
 import { NextComponentClass, NextContext, NextStatelessComponent } from 'next'
 import App, { AppComponentContext, Container } from 'next/app'
 import Router, { DefaultQuery } from 'next/router'
@@ -11,9 +6,14 @@ import NProgress from 'nprogress'
 import * as React from 'react'
 import { ApolloProvider } from 'react-apollo'
 
+import '@app/global.scss'
+import '@app/rawStyles/toast.scss'
+
 import ToastContainer from '@app/components/others/ToastContainer'
 import AuthStateProvider from '@app/contexts/AuthStateProvider'
 import withApollo, { Props } from '@app/lib/withApollo'
+
+config.autoAddCss = false
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start()

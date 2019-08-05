@@ -1,6 +1,7 @@
+const path = require('path')
+
 const merge = require('webpack-merge')
 const CopyPlugin = require('copy-webpack-plugin')
-const path = require('path')
 const withTypescript = require('@zeit/next-typescript')
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
 

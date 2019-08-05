@@ -5,6 +5,7 @@ import getConfig from 'next/config'
 import * as React from 'react'
 
 import Container from '@app/components/atoms/Container'
+
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)

@@ -5,6 +5,7 @@ import * as React from 'react'
 
 import { auth } from '@app/lib/firebaseApp'
 import routes from '@app/routes'
+
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)

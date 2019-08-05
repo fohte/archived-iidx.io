@@ -16,8 +16,9 @@ import {
 } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
-import { Difficulty, PlayStyle } from '@app/queries'
 import {
+  Difficulty,
+  PlayStyle,
   FindMapDocument,
   FindMapMusic,
   FindMapQuery,

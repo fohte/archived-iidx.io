@@ -11,6 +11,7 @@ import { auth, ErrorType } from '@app/lib/firebaseApp'
 import routes from '@app/routes'
 
 import * as css from './style.scss'
+
 const { Link } = routes
 
 const cx = classnames.bind(css)
