@@ -62,7 +62,7 @@
     "react-final-form": "4.1.0",
     "react-toastify": "5.3.2",
     "react-vis": "1.11.7",
-    "recharts": "1.6.2",
+    "recharts": "1.7.0",
     "recompose": "0.30.0",
     "ress": "1.2.2",
     "sass-loader": "7.1.0",
