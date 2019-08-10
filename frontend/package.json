@@ -71,6 +71,7 @@
     "validator": "11.1.0"
   },
   "devDependencies": {
+    "@apollo/react-testing": "3.0.0",
     "@babel/cli": "7.5.5",
     "@babel/core": "7.5.5",
     "@babel/preset-env": "7.5.5",
