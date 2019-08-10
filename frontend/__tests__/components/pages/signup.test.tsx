@@ -1,5 +1,6 @@
 import { mount, ReactWrapper } from 'enzyme'
 import * as _ from 'lodash'
+import { act } from 'react-dom/test-utils'
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
@@ -31,11 +32,16 @@ describe('/signup', () => {
     mockCreate.mockClear()
   })
 
-  it('create a user on firebase auth', () => {
+  it('create a user on firebase auth', async () => {
     const wrapper = mount(<Signup />)
 
-    inputFields(wrapper, { email: 'email@example.com', password: 'password' })
-    submit(wrapper)
+    // FIXME: react-dom の型定義が第一引数の Promise を許可していないので
+    // any にしている。@types/react-dom@16.9.0 がリリースされたら any
+    // キャストをやめる
+    await act((async () => {
+      inputFields(wrapper, { email: 'email@example.com', password: 'password' })
+      submit(wrapper)
+    }) as any)
 
     expect(mockCreate).toHaveBeenCalledWith('email@example.com', 'password')
   })
