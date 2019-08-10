@@ -3672,12 +3672,7 @@ core-js@^1.0.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
-core-js@^2.4.0, core-js@^2.5.7:
-  version "2.5.7"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
-  integrity sha512-RszJCAxg/PP6uzXVXL6BsxSXx/B05oJAQ2vkJRjyjrEcNVycaqOmNb5OTxZPE3xa5gwZduqza6L9JOCenh/Ecw==
-
-core-js@^2.5.1:
+core-js@^2.4.0, core-js@^2.5.1, core-js@^2.5.7:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
   integrity sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
@@ -9703,10 +9698,10 @@ recharts-scale@^0.4.2:
   dependencies:
     decimal.js-light "^2.4.1"
 
-recharts@1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/recharts/-/recharts-1.6.2.tgz#4ced884f04b680e8dac5d3e109f99b0e7cfb9b0f"
-  integrity sha512-NqVN8Hq5wrrBthTxQB+iCnZjup1dc+AYRIB6Q9ck9UjdSJTt4PbLepGpudQEYJEN5iIpP/I2vThC4uiTJa7xUQ==
+recharts@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/recharts/-/recharts-1.7.0.tgz#178077c1d2cc1f55d553c81ed5bcc4537d2382a8"
+  integrity sha512-rtP2Vg1/MCSK2UtE4aNFeG8qkl8V3N924dx3CJ3dYSzi/fYx2MTL1deCPqlH6i9rUuBQTDKGgWXtHazicMOptA==
   dependencies:
     classnames "^2.2.5"
     core-js "^2.5.1"
