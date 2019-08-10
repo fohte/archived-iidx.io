@@ -22,7 +22,6 @@ exports[`RegisterForm renders correctly 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         placeholder="Username"
-        type="text"
         value=""
       />
     </div>
@@ -45,7 +44,6 @@ exports[`RegisterForm renders correctly 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         placeholder="Display Name"
-        type="text"
         value=""
       />
     </div>

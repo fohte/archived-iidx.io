@@ -22,7 +22,6 @@ exports[`LoginOrSignUpForm renders correctly 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         placeholder="E-mail address"
-        type="email"
         value=""
       />
     </div>
@@ -45,7 +44,6 @@ exports[`LoginOrSignUpForm renders correctly 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         placeholder="Password"
-        type="password"
         value=""
       />
     </div>
