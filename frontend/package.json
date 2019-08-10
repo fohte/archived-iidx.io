@@ -96,7 +96,7 @@
     "eslint-plugin-jest": "22.15.0",
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-react-hooks": "1.6.1",
-    "file-loader": "4.1.0",
+    "file-loader": "4.2.0",
     "firebase-nightlight": "3.1.0",
     "graphql-code-generator": "0.18.2",
     "graphql-codegen-typescript-react-apollo-template": "0.18.2",
