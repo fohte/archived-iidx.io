@@ -23,7 +23,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: path.join(__dirname, 'tsconfig.json'),
   },
   rules: {
     // false positive が出まくるので off にする
