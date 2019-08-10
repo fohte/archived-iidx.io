@@ -11,8 +11,10 @@ generates:
     config:
       noNamespaces: true
       resolvers: false
+      withComponent: false
+      withHooks: true
     plugins:
-      - 'typescript-common'
-      - 'typescript-client'
-      - 'typescript-react-apollo'
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
 require: []
