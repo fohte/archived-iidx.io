@@ -47,13 +47,10 @@ describe('ResultList', () => {
       </MockedProvider>,
     )
 
-    // FIXME: react-dom の型定義が第一引数の Promise を許可していないので
-    // any にしている。@types/react-dom@16.9.0 がリリースされたら any
-    // キャストをやめる
-    await renderer.act((async () => {
+    await renderer.act(async () => {
       // wait for response of the query
       await wait(0)
-    }) as any)
+    })
 
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
@@ -97,13 +94,10 @@ describe('ResultList', () => {
       </MockedProvider>,
     )
 
-    // FIXME: react-dom の型定義が第一引数の Promise を許可していないので
-    // any にしている。@types/react-dom@16.9.0 がリリースされたら any
-    // キャストをやめる
-    await renderer.act((async () => {
+    await renderer.act(async () => {
       // wait for response of the query
       await wait(0)
-    }) as any)
+    })
 
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
