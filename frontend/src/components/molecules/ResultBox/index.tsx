@@ -23,10 +23,10 @@ const cx = classnames.bind(css)
 dayjs.extend(relativeTime)
 
 export interface Result {
-  score: number | null
-  missCount: number | null
-  clearLamp: ClearLamp | null
-  bpi: number | null
+  score?: number | null
+  missCount?: number | null
+  clearLamp?: ClearLamp | null
+  bpi?: number | null
   lastPlayedAt: string
 }
 

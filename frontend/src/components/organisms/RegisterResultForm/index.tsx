@@ -58,7 +58,7 @@ const RegisterResultForm = ({ onSubmit }: Props) => (
   >
     {({
       handleSubmit: innerHandleSubmit,
-      mutators,
+      form: { mutators },
       pristine,
       submitting,
       touched,
@@ -100,7 +100,7 @@ const RegisterResultForm = ({ onSubmit }: Props) => (
               errorMessage={errors.playStyle ? errors.playStyle : undefined}
             >
               <ButtonGroup className={cx('button-group')}>
-                {['SP', 'DP'].map(playStyle => (
+                {['SP', 'DP'].map((playStyle: PlayStyle) => (
                   <FinalField
                     key={playStyle}
                     type="radio"
@@ -124,7 +124,7 @@ const RegisterResultForm = ({ onSubmit }: Props) => (
               </ButtonGroup>
             </FormGroup>
 
-            <FinalField name="csv" validate={validators.csv}>
+            <FinalField<string> name="csv" validate={validators.csv}>
               {({ input, meta }) => (
                 <FormGroup
                   label="CSV"

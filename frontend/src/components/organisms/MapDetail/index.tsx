@@ -43,7 +43,7 @@ export interface Map {
 }
 
 export interface ResultLog {
-  score: number | null
+  score?: number | null
   lastPlayedAt: string
 }
 

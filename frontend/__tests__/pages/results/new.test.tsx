@@ -1,16 +1,16 @@
 import * as React from 'react'
-import { MockedProvider } from 'react-apollo/test-utils'
+import { MockedProvider } from '@apollo/react-testing'
 import * as renderer from 'react-test-renderer'
 
 import ResultsNew from '@app/pages/results/new'
 import {
   PlayStyle,
   RegisterResultsWithCsvDocument,
-  RegisterResultsWithCsvVariables,
+  RegisterResultsWithCsvMutationVariables,
 } from '@app/queries'
 
 describe('/', () => {
-  const createMocks = (variables: RegisterResultsWithCsvVariables) => [
+  const createMocks = (variables: RegisterResultsWithCsvMutationVariables) => [
     {
       request: {
         query: RegisterResultsWithCsvDocument,

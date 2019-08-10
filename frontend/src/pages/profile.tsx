@@ -15,8 +15,7 @@ import {
   PlayStyle,
   FindUserDocument,
   FindUserQuery,
-  FindUserUser,
-  FindUserVariables,
+  FindUserQueryVariables,
 } from '@app/queries'
 
 // interface だと Record 型を満たさないので注意
@@ -27,7 +26,7 @@ export type Query = {
 }
 
 export interface Props {
-  user?: FindUserUser | null
+  user?: FindUserQuery['user'] | null
   errors?: ReadonlyArray<GraphQLError>
   loading: boolean
   playStyle?: PlayStyle
@@ -79,7 +78,7 @@ ProfilePage.getInitialProps = async ({ res, query }) => {
 
   const client = initApollo()
 
-  const result = await client.query<FindUserQuery, FindUserVariables>({
+  const result = await client.query<FindUserQuery, FindUserQueryVariables>({
     query: FindUserDocument,
     variables: { screenName },
     errorPolicy: 'all',

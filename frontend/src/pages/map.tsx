@@ -20,9 +20,8 @@ import {
   Difficulty,
   PlayStyle,
   FindMapDocument,
-  FindMapMusic,
   FindMapQuery,
-  FindMapVariables,
+  FindMapQueryVariables,
 } from '@app/queries'
 
 // interface だと Record 型を満たさないので注意
@@ -35,7 +34,7 @@ export type Query = {
 }
 
 export interface Props {
-  music?: FindMapMusic | null
+  music?: FindMapQuery['music'] | null
   errors?: ReadonlyArray<GraphQLError>
   loading: boolean
   screenName?: string
@@ -119,7 +118,7 @@ MapPage.getInitialProps = async ({ res, query }) => {
 
   const client = initApollo()
 
-  const result = await client.query<FindMapQuery, FindMapVariables>({
+  const result = await client.query<FindMapQuery, FindMapQueryVariables>({
     query: FindMapDocument,
     variables: {
       id: musicId,

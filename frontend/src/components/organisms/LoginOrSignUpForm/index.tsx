@@ -58,7 +58,7 @@ const LoginOrSignUpForm: React.SFC<Props> = ({ handleSubmit, submitText }) => (
       submitError,
     }) => (
       <form onSubmit={innerHandleSubmit}>
-        <FinalField name="email" validate={validators.email}>
+        <FinalField<string> name="email" validate={validators.email}>
           {({ input, meta }) => (
             <FormGroup
               label="E-mail address"
@@ -74,7 +74,7 @@ const LoginOrSignUpForm: React.SFC<Props> = ({ handleSubmit, submitText }) => (
             </FormGroup>
           )}
         </FinalField>
-        <FinalField name="password" validate={validators.password}>
+        <FinalField<string> name="password" validate={validators.password}>
           {({ input, meta }) => (
             <FormGroup
               label="Password"

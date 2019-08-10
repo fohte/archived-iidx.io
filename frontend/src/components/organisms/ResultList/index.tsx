@@ -8,8 +8,9 @@ import Pagination from '@app/components/atoms/Pagination'
 import ResultTable from '@app/components/molecules/ResultTable'
 import { FormValues } from '@app/components/organisms/FilterForm'
 import {
-  GetUserResultsComponent,
-  GetUserResultsVariables,
+  useGetUserResultsQuery,
+  GetUserResultsQueryVariables,
+  GetUserResultsQueryResult,
   PlayStyle,
 } from '@app/queries'
 
@@ -56,7 +57,7 @@ const ResultList: React.SFC<Props> = ({
   const containerElement = React.useRef<HTMLDivElement | null>(null)
 
   // ページ情報を除くクエリ変数を保持しておく
-  const baseVariables: GetUserResultsVariables = {
+  const baseVariables: GetUserResultsQueryVariables = {
     username: screenName,
     title,
     playStyle,
@@ -84,81 +85,85 @@ const ResultList: React.SFC<Props> = ({
 
   const offset = (activePage - 1) * numItemsPerPage
 
+  const queryResult = useGetUserResultsQuery({
+    variables: { ...baseVariables, offset },
+  })
+
+  const Content = ({ loading, error, data }: GetUserResultsQueryResult) => {
+    const changePage = (newActivePage: number) => {
+      if (onPageChange) {
+        onPageChange(newActivePage)
+      }
+
+      if (containerElement && containerElement.current) {
+        const offsetTop = containerElement.current.offsetTop
+
+        if (window.scrollY > offsetTop) {
+          window.scrollTo({ top: offsetTop })
+        }
+      }
+    }
+
+    if (loading) {
+      return (
+        <PaginationContainer
+          pagination={
+            cachedTotalPages && (
+              <Pagination
+                onPageChange={changePage}
+                totalPages={cachedTotalPages}
+                activePage={activePage}
+              />
+            )
+          }
+        >
+          <ResultTable
+            showBPI
+            data={{ loading: true, numDummyMaps: numItemsPerPage }}
+            screenName={screenName}
+          />
+        </PaginationContainer>
+      )
+    }
+
+    if (error || !data) {
+      return <ErrorPage statusCode={404} />
+    }
+
+    const { totalCount, nodes } = data.searchMaps
+
+    const totalPages = Math.ceil(totalCount / numItemsPerPage)
+
+    return (
+      <PaginationContainer
+        pagination={
+          <Pagination
+            onPageChange={newActivePage => {
+              changePage(newActivePage)
+
+              // ページが変わるだけのときは totalPages も変わらない
+              // のでキャッシュしてローディング中に使う
+              cacheTotalPages(totalPages)
+            }}
+            totalPages={totalPages}
+            activePage={activePage}
+          />
+        }
+      >
+        <ResultTable
+          showBPI
+          data={{ loading: false, maps: nodes }}
+          screenName={screenName}
+        />
+      </PaginationContainer>
+    )
+  }
+
   return (
     <Container>
       <div ref={containerElement} className={cx('result-list')}>
         <div className={cx('table-wrapper')}>
-          <GetUserResultsComponent variables={{ ...baseVariables, offset }}>
-            {({ loading, error, data }) => {
-              const changePage = (newActivePage: number) => {
-                if (onPageChange) {
-                  onPageChange(newActivePage)
-                }
-
-                if (containerElement && containerElement.current) {
-                  const offsetTop = containerElement.current.offsetTop
-
-                  if (window.scrollY > offsetTop) {
-                    window.scrollTo({ top: offsetTop })
-                  }
-                }
-              }
-
-              if (loading) {
-                return (
-                  <PaginationContainer
-                    pagination={
-                      cachedTotalPages && (
-                        <Pagination
-                          onPageChange={changePage}
-                          totalPages={cachedTotalPages}
-                          activePage={activePage}
-                        />
-                      )
-                    }
-                  >
-                    <ResultTable
-                      showBPI
-                      data={{ loading: true, numDummyMaps: numItemsPerPage }}
-                      screenName={screenName}
-                    />
-                  </PaginationContainer>
-                )
-              }
-
-              if (error || !data) {
-                return <ErrorPage statusCode={404} />
-              }
-
-              const { totalCount, nodes } = data.searchMaps
-
-              const totalPages = Math.ceil(totalCount / numItemsPerPage)
-
-              return (
-                <PaginationContainer
-                  pagination={
-                    <Pagination
-                      onPageChange={newActivePage => {
-                        changePage(newActivePage)
-
-                        // ページが変わるだけのときは totalPages も変わらない
-                        // のでキャッシュしてローディング中に使う
-                        cacheTotalPages(totalPages)
-                      }}
-                      totalPages={totalPages}
-                      activePage={activePage}
-                    />
-                  }
-                >
-                  <ResultTable
-                    showBPI
-                    data={{ loading: false, maps: nodes }}
-                    screenName={screenName}
-                  />
-                </PaginationContainer>
-              )
-            }}
-          </GetUserResultsComponent>
+          <Content {...queryResult}></Content>
         </div>
       </div>
     </Container>

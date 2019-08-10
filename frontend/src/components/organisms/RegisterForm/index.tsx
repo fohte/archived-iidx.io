@@ -64,7 +64,7 @@ const RegisterForm: React.SFC<Props> = ({ handleSubmit }) => (
       hasValidationErrors,
     }) => (
       <form onSubmit={innerHandleSubmit}>
-        <FinalField name="username" validate={validators.username}>
+        <FinalField<string> name="username" validate={validators.username}>
           {({ input, meta }) => (
             <FormGroup
               label="Username"
@@ -79,7 +79,10 @@ const RegisterForm: React.SFC<Props> = ({ handleSubmit }) => (
             </FormGroup>
           )}
         </FinalField>
-        <FinalField name="displayName" validate={validators.displayName}>
+        <FinalField<string>
+          name="displayName"
+          validate={validators.displayName}
+        >
           {({ input, meta }) => (
             <FormGroup
               label="Display Name"

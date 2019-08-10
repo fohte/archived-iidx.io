@@ -7,7 +7,7 @@ import Map from '@app/pages/map'
 import {
   ClearLamp,
   Difficulty,
-  FindMapMusic,
+  FindMapQuery,
   Grade,
   PlayStyle,
 } from '@app/queries'
@@ -15,7 +15,7 @@ import {
 describe('/map', () => {
   it('renders correctly', () => {
     const lastPlayedAt = dayjs(Date.now()).format('YYYY-MM-DDTHH:mm:ssZ[Z]')
-    const music: FindMapMusic = {
+    const music: FindMapQuery['music'] = {
       id: '1',
       title: 'title',
       genre: 'genre',
