@@ -1,11 +1,11 @@
 import * as React from 'react'
 
-import { GetViewerViewer } from '@app/queries'
+import { GetViewerQuery } from '@app/queries'
 
 export interface AuthContextShape {
   signedIn: boolean
   loading: boolean
-  viewer: GetViewerViewer | null
+  viewer: GetViewerQuery['viewer'] | null
 }
 
 export const makeDefaultValues = (): Readonly<AuthContextShape> => ({
