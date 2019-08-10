@@ -5073,10 +5073,10 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-final-form@4.13.1:
-  version "4.13.1"
-  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.13.1.tgz#5893b1fe490a36198b219b351eec135d7394cdcf"
-  integrity sha512-9bTIY68bKn6rIcyolFZlUqK1odlRXpi30C5CazJ5gUZpoMkeDAeb53FQ3gv37eX1zWtQtydgwD5ZAwZB5EGoGg==
+final-form@4.18.3:
+  version "4.18.3"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.18.3.tgz#66cee7d43e3693e5001cf2d6293734756b80f8fd"
+  integrity sha512-RLC8aSxpbFI2r6JbwFI6CWI1/YI2S60xysliI3mEl2r4rZJ21pgKH+pc4PURuPezrTRkhB8ZEQsq/0PpGBNPIA==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
