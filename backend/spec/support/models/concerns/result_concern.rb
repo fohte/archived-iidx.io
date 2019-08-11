@@ -6,6 +6,15 @@ RSpec.shared_examples 'ResultConcern' do |factory_name|
   include_examples 'ClearLampEnum'
   include_examples 'GradeEnum'
 
+  describe '#score_rate' do
+    subject { result.score_rate }
+
+    let(:result) { build(factory_name, map: map, score: 2000) }
+    let(:map) { build(:map, num_notes: 1000) }
+
+    it { is_expected.to eq 1.0 }
+  end
+
   describe '#updated?' do
     subject { old_result.updated?(new_result) }
 
