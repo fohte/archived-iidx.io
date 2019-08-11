@@ -26,6 +26,7 @@ query findMap(
         score
         missCount
         clearLamp
+        scoreRate
 
         gradeDiff {
           grade
@@ -43,6 +44,7 @@ query findMap(
       results(username: $username) {
         id
         score
+        scoreRate
         lastPlayedAt
       }
     }

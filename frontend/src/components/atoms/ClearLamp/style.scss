@@ -1,0 +1,76 @@
+@import 'styles/colors';
+@import 'styles/mixins';
+
+$clear-lamp-width: 0.4rem;
+
+.clear-lamp {
+  width: $clear-lamp-width;
+
+  background-color: $gray;
+
+  &.full-combo {
+    animation: full-combo-bg 150ms infinite;
+
+    @keyframes full-combo-bg {
+      0% {
+        background-color: $white;
+      }
+
+      50% {
+        background-color: $cyan;
+      }
+
+      100% {
+        background-color: $yellow;
+      }
+    }
+  }
+
+  &.ex-hard-clear {
+    animation: ex-hard-bg 150ms infinite;
+
+    @keyframes ex-hard-bg {
+      0% {
+        background-color: $red;
+      }
+
+      100% {
+        background-color: $yellow;
+      }
+    }
+  }
+
+  &.hard-clear {
+    background-color: $red;
+  }
+
+  &.clear {
+    background-color: $blue;
+  }
+
+  &.easy-clear {
+    background-color: $green;
+  }
+
+  &.assist-clear {
+    background-color: $purple;
+  }
+
+  &.failed {
+    animation: failed-bg 150ms infinite;
+
+    @keyframes failed-bg {
+      0% {
+        background-color: $black;
+      }
+
+      100% {
+        background-color: darken($red, 20%);
+      }
+    }
+  }
+}
+
+.loading {
+  @include skeleton-loading;
+}

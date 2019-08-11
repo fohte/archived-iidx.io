@@ -249,6 +249,7 @@ export type FindMapQuery = { __typename?: 'Query' } & {
                   | 'score'
                   | 'missCount'
                   | 'clearLamp'
+                  | 'scoreRate'
                   | 'bpi'
                   | 'lastPlayedAt'
                 > & {
@@ -265,7 +266,7 @@ export type FindMapQuery = { __typename?: 'Query' } & {
               results: Array<
                 { __typename?: 'Result' } & Pick<
                   Result,
-                  'id' | 'score' | 'lastPlayedAt'
+                  'id' | 'score' | 'scoreRate' | 'lastPlayedAt'
                 >
               >
             }
@@ -392,6 +393,7 @@ export const FindMapDocument = gql`
           score
           missCount
           clearLamp
+          scoreRate
           gradeDiff {
             grade
           }
@@ -405,6 +407,7 @@ export const FindMapDocument = gql`
         results(username: $username) {
           id
           score
+          scoreRate
           lastPlayedAt
         }
       }

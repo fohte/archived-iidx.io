@@ -6,15 +6,16 @@ import * as React from 'react'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 
+import { WithLoadingState } from '@app/lib/types'
 import ScoreGraph from '@app/components/atoms/ScoreGraph'
+import Grade from '@app/components/atoms/Grade'
+import ClearLamp from '@app/components/atoms/ClearLamp'
 import { formats } from '@app/lib/dateTime'
 import {
-  calcScoreRate,
-  defaultGradeDiff,
-  searchGrade,
-  searchNextGrade,
-} from '@app/lib/score'
-import { ClearLamp } from '@app/queries'
+  GradeDiff,
+  Grade as GradeEnum,
+  ClearLamp as ClearLampEnum,
+} from '@app/queries'
 
 import * as css from './style.scss'
 
@@ -24,41 +25,45 @@ dayjs.extend(relativeTime)
 
 export interface Result {
   score?: number | null
+  scoreRate?: number | null
   missCount?: number | null
-  clearLamp?: ClearLamp | null
+  clearLamp?: ClearLampEnum | null
   bpi?: number | null
   lastPlayedAt: string
+  gradeDiff: Pick<GradeDiff, 'grade'>
+  nearestGradeDiff: GradeDiff
 }
 
 export interface Map {
   numNotes: number
 }
 
-type Data =
-  | {
-      loading: true
-    }
-  | {
-      loading: false
-      result?: Result | null
-      map: Map
-    }
+interface Data {
+  result?: Result | null
+  map: Map
+}
 
 export interface Props {
   showBPI?: boolean
   href?: string
-  data: Data
+  data: WithLoadingState<Data>
   absoluteLastPlayedAt?: boolean
 }
 
-const clearTypeTexts: { [key in ClearLamp]: string } = {
-  [ClearLamp.FullCombo]: 'FULL COMBO',
-  [ClearLamp.ExHard]: 'EX-HARD',
-  [ClearLamp.Hard]: 'HARD',
-  [ClearLamp.Normal]: 'CLEAR',
-  [ClearLamp.Easy]: 'EASY',
-  [ClearLamp.Assist]: 'ASSIST',
-  [ClearLamp.Failed]: 'FAILED',
+const isZeroGradeDiff = ({ grade, diff }: GradeDiff) =>
+  grade === GradeEnum.F && diff === 0
+
+const digScoreRate = (result: Data['result']): number =>
+  (result && result.scoreRate) || 0
+
+const clearTypeTexts: { [key in ClearLampEnum]: string } = {
+  [ClearLampEnum.FullCombo]: 'FULL COMBO',
+  [ClearLampEnum.ExHard]: 'EX-HARD',
+  [ClearLampEnum.Hard]: 'HARD',
+  [ClearLampEnum.Normal]: 'CLEAR',
+  [ClearLampEnum.Easy]: 'EASY',
+  [ClearLampEnum.Assist]: 'ASSIST',
+  [ClearLampEnum.Failed]: 'FAILED',
 }
 
 const ResultBox: React.FunctionComponent<Props> = ({
@@ -67,186 +72,152 @@ const ResultBox: React.FunctionComponent<Props> = ({
   href,
   absoluteLastPlayedAt = false,
 }) => {
-  if (data.loading) {
-    return (
-      <div className={cx('data-box-wrapper')}>
-        <div className={cx('clear-lamp', 'loading')} />
-        <div className={cx('data-box')}>
-          <div className={cx('data-box-content')}>
-            <div className={cx('score-box-wrapper')}>
-              <dl className={cx('score-box')}>
-                <div className={cx('data-list', 'ex-score')}>
-                  <dt>EX-SCORE</dt>
-                  <dd>
-                    <span className={cx('score-text', 'loading')} />
-                    <span className={cx('score-rate', 'loading')} />
-                  </dd>
-                </div>
-                <ScoreGraph loading />
-              </dl>
-
-              <div className={cx('additional-area')}>
-                {showBPI && (
-                  <dl className={cx('data-list')}>
-                    <dt>BPI</dt>
-                    <dd>-</dd>
-                  </dl>
-                )}
-
-                <dl className={cx('data-list', 'clear-type')}>
-                  <dt>CLEAR TYPE</dt>
-                  <dd>-</dd>
-                </dl>
-
-                <dl className={cx('data-list')}>
-                  <dt>LAST PLAY</dt>
-                  <dd>-</dd>
-                </dl>
-              </div>
-            </div>
-
-            <div className={cx('symbol-area')}>
-              <div className={cx('grade-box', 'loading')} />
-            </div>
-          </div>
-
-          {href && (
-            <Link href={href}>
-              <a>
-                <FontAwesomeIcon icon={faAngleRight} />
-              </a>
-            </Link>
-          )}
-        </div>
-      </div>
-    )
-  } else {
-    const { result, map } = data
-
-    const current =
-      result && result.score != null
-        ? searchGrade(result.score, map.numNotes)
-        : defaultGradeDiff
-    const next =
-      result && result.score != null
-        ? searchNextGrade(result.score, map.numNotes)
-        : defaultGradeDiff
-
-    const scoreRate =
-      result && result.score != null
-        ? calcScoreRate(result.score, map.numNotes)
-        : 0
-    return (
-      <div className={cx('data-box-wrapper')}>
-        <div
-          className={cx('clear-lamp', {
-            'full-combo': result && result.clearLamp === ClearLamp.FullCombo,
-            'ex-hard-clear': result && result.clearLamp === ClearLamp.ExHard,
-            'hard-clear': result && result.clearLamp === ClearLamp.Hard,
-            clear: result && result.clearLamp === ClearLamp.Normal,
-            'easy-clear': result && result.clearLamp === ClearLamp.Easy,
-            'assist-clear': result && result.clearLamp === ClearLamp.Assist,
-            failed: result && result.clearLamp === ClearLamp.Failed,
-          })}
+  return (
+    <div className={cx('data-box-wrapper')}>
+      {data.loading ? (
+        <ClearLamp loading />
+      ) : (
+        <ClearLamp
+          loading={false}
+          clearLamp={(data.result && data.result.clearLamp) || null}
         />
-        <div className={cx('data-box')}>
-          <div className={cx('data-box-content')}>
-            <div className={cx('score-box-wrapper')}>
-              <dl className={cx('score-box')}>
-                <div className={cx('data-list', 'ex-score')}>
-                  <dt>EX-SCORE</dt>
-                  <dd>
-                    <span className={cx('score-text')}>
-                      {result && result.score != null ? result.score : '-'}
-                    </span>
-                    <span className={cx('score-rate')}>
-                      ({scoreRate.toFixed(2)} %)
-                    </span>
-                  </dd>
-                </div>
+      )}
+      <div className={cx('data-box')}>
+        <div className={cx('data-box-content')}>
+          <div className={cx('score-box-wrapper')}>
+            <dl className={cx('score-box')}>
+              <div className={cx('data-list', 'ex-score')}>
+                <dt>EX-SCORE</dt>
+                <dd>
+                  {!data.loading && (
+                    <>
+                      <span className={cx('score-text')}>
+                        {data.result && data.result.score != null
+                          ? data.result.score
+                          : '-'}
+                      </span>
+                      <span className={cx('score-rate')}>
+                        ({(digScoreRate(data.result) * 100).toFixed(2)} %)
+                      </span>
+                    </>
+                  )}
+                </dd>
+              </div>
+
+              {data.loading ? (
+                <ScoreGraph loading />
+              ) : (
                 <ScoreGraph
-                  grade={current.grade}
-                  scoreRate={scoreRate}
+                  grade={(data.result && data.result.gradeDiff.grade) || null}
+                  scoreRate={digScoreRate(data.result)}
                   fullCombo={
-                    !!(result && result.clearLamp === ClearLamp.FullCombo)
+                    !!(
+                      data.result &&
+                      data.result.clearLamp === ClearLampEnum.FullCombo
+                    )
                   }
                 />
-              </dl>
+              )}
+            </dl>
 
-              <div className={cx('additional-area')}>
-                {showBPI && (
-                  <dl className={cx('data-list')}>
-                    <dt>BPI</dt>
+            <div className={cx('additional-area')}>
+              {showBPI && (
+                <dl className={cx('data-list')}>
+                  <dt>BPI</dt>
+                  {data.loading ? (
+                    <dd>-</dd>
+                  ) : (
                     <dd className={cx('bpi')}>
-                      {result && result.bpi != null
-                        ? result.bpi.toFixed(2)
+                      {data.result && data.result.bpi != null
+                        ? data.result.bpi.toFixed(2)
                         : '-'}
                     </dd>
-                  </dl>
-                )}
+                  )}
+                </dl>
+              )}
 
-                <dl className={cx('data-list', 'clear-type')}>
-                  <dt>CLEAR TYPE</dt>
+              <dl className={cx('data-list', 'clear-type')}>
+                <dt>CLEAR TYPE</dt>
+                {data.loading ? (
+                  <dd>-</dd>
+                ) : (
                   <dd
                     className={cx({
                       'full-combo':
-                        result && result.clearLamp === ClearLamp.FullCombo,
+                        data.result &&
+                        data.result.clearLamp === ClearLampEnum.FullCombo,
                       'ex-hard-clear':
-                        result && result.clearLamp === ClearLamp.ExHard,
+                        data.result &&
+                        data.result.clearLamp === ClearLampEnum.ExHard,
                       'hard-clear':
-                        result && result.clearLamp === ClearLamp.Hard,
-                      clear: result && result.clearLamp === ClearLamp.Normal,
+                        data.result &&
+                        data.result.clearLamp === ClearLampEnum.Hard,
+                      clear:
+                        data.result &&
+                        data.result.clearLamp === ClearLampEnum.Normal,
                       'easy-clear':
-                        result && result.clearLamp === ClearLamp.Easy,
+                        data.result &&
+                        data.result.clearLamp === ClearLampEnum.Easy,
                       'assist-clear':
-                        result && result.clearLamp === ClearLamp.Assist,
-                      failed: result && result.clearLamp === ClearLamp.Failed,
+                        data.result &&
+                        data.result.clearLamp === ClearLampEnum.Assist,
+                      failed:
+                        data.result &&
+                        data.result.clearLamp === ClearLampEnum.Failed,
                     })}
                   >
-                    {result && result.clearLamp
-                      ? clearTypeTexts[result.clearLamp]
+                    {data.result && data.result.clearLamp
+                      ? clearTypeTexts[data.result.clearLamp]
                       : '-'}
                   </dd>
-                </dl>
+                )}
+              </dl>
 
-                <dl className={cx('data-list')}>
-                  <dt>LAST PLAY</dt>
+              <dl className={cx('data-list')}>
+                <dt>LAST PLAY</dt>
+                {data.loading ? (
+                  <dd>-</dd>
+                ) : (
                   <dd className={cx('moderate')}>
-                    {result
+                    {data.result
                       ? absoluteLastPlayedAt
-                        ? dayjs(result.lastPlayedAt).format(formats.dateTime)
-                        : dayjs(result.lastPlayedAt).fromNow()
+                        ? dayjs(data.result.lastPlayedAt).format(
+                            formats.dateTime,
+                          )
+                        : dayjs(data.result.lastPlayedAt).fromNow()
                       : '-'}
                   </dd>
-                </dl>
-              </div>
-            </div>
-
-            <div className={cx('symbol-area')}>
-              <div className={cx('grade-box')}>
-                <div className={cx('current-grade')}>{current.grade}</div>
-                <div className={cx('around-grade')}>
-                  {current.diff === 0 && next.diff === 0
-                    ? '-'
-                    : current.diff <= -next.diff
-                    ? `${current.grade} +${current.diff}`
-                    : `${next.grade} ${next.diff}`}
-                </div>
-              </div>
+                )}
+              </dl>
             </div>
           </div>
 
-          {href && (
-            <Link href={href}>
-              <a>
-                <FontAwesomeIcon icon={faAngleRight} />
-              </a>
-            </Link>
-          )}
+          <div className={cx('symbol-area')}>
+            {data.loading ? (
+              <Grade loading />
+            ) : (
+              data.result &&
+              !isZeroGradeDiff(data.result.nearestGradeDiff) && (
+                <Grade
+                  loading={false}
+                  currentGrade={data.result.gradeDiff.grade}
+                  nearestGradeDiff={data.result.nearestGradeDiff}
+                />
+              )
+            )}
+          </div>
         </div>
+
+        {href && (
+          <Link href={href}>
+            <a>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </a>
+          </Link>
+        )}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default ResultBox

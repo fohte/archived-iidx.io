@@ -1,0 +1,22 @@
+@import 'styles/colors';
+@import 'styles/mixins';
+
+.grade-box {
+  width: 5em;
+
+  text-align: center;
+
+  .current-grade {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  .around-grade {
+    color: $primary-fg-lighter-color;
+    font-size: 0.8em;
+  }
+}
+
+.loading {
+  @include skeleton-loading;
+}

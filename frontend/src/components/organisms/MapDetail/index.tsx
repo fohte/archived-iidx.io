@@ -15,11 +15,13 @@ import {
 } from 'recharts'
 
 import Box from '@app/components/atoms/Box'
-import ResultBox, { Result } from '@app/components/molecules/ResultBox'
+import ResultBox, {
+  Result as ResultBoxResult,
+  Map as ResultBoxMap,
+} from '@app/components/molecules/ResultBox'
 import { formats, formatUnixTime } from '@app/lib/dateTime'
-import { calcGradeBorder, calcScoreRate, getGradeBorders } from '@app/lib/score'
 import { generateTextageURL } from '@app/lib/textage'
-import { Difficulty, PlayStyle } from '@app/queries'
+import { Difficulty, Grade, PlayStyle } from '@app/queries'
 
 import * as css from './style.scss'
 
@@ -33,7 +35,7 @@ export interface Music {
   textageUid: string
 }
 
-export interface Map {
+export interface Map extends ResultBoxMap {
   level: number
   playStyle: PlayStyle
   difficulty: Difficulty
@@ -44,16 +46,32 @@ export interface Map {
 
 export interface ResultLog {
   score?: number | null
+  scoreRate?: number | null
   lastPlayedAt: string
 }
 
 export interface Props {
   music: Music
   map: Map
-  result?: Result
+  result?: ResultBoxResult
   allResults: ResultLog[]
   screenName: string
 }
+
+const calcGradeBorder = (coefficients: number, numNotes: number) =>
+  Math.ceil(numNotes * 2 * coefficients)
+
+const getGradeBorders = (numNotes: number): { [key in Grade]: number } => ({
+  [Grade.F]: 0,
+  [Grade.E]: calcGradeBorder(numNotes, 2 / 9),
+  [Grade.D]: calcGradeBorder(numNotes, 3 / 9),
+  [Grade.C]: calcGradeBorder(numNotes, 4 / 9),
+  [Grade.B]: calcGradeBorder(numNotes, 5 / 9),
+  [Grade.A]: calcGradeBorder(numNotes, 6 / 9),
+  [Grade.Aa]: calcGradeBorder(numNotes, 7 / 9),
+  [Grade.Aaa]: calcGradeBorder(numNotes, 8 / 9),
+  [Grade.Max]: numNotes * 2,
+})
 
 const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
   const gradeBorders = getGradeBorders(map.numNotes)
@@ -193,9 +211,9 @@ const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
                     formatUnixTime(label, formats.dateTime)
                   }
                   formatter={(value: number) =>
-                    `${value} (${calcScoreRate(value, map.numNotes).toFixed(
-                      2,
-                    )}%)`
+                    `${value} (${(
+                      ((result && result.scoreRate) || 0) * 100
+                    ).toFixed(2)}%)`
                   }
                 />
                 {_.map(gradeBorders, (gradeBorder, grade) => (

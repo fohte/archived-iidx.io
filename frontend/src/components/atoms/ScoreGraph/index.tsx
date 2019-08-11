@@ -1,7 +1,7 @@
 import classnames from 'classnames/bind'
 import * as React from 'react'
 
-import { Grade } from '@app/lib/score'
+import { Grade } from '@app/queries'
 
 import * as css from './style.scss'
 
@@ -27,8 +27,8 @@ const ScoreGraph: React.SFC<Props> = props => {
       <div className={cx('wrapper')}>
         <div
           className={cx('progress', {
-            'grade-aaa': grade === Grade.AAA,
-            'grade-aa': grade === Grade.AA,
+            'grade-aaa': grade === Grade.Aaa,
+            'grade-aa': grade === Grade.Aa,
             'grade-a': grade === Grade.A,
             'grade-b': grade === Grade.B,
             'grade-c': grade === Grade.C,
@@ -37,7 +37,7 @@ const ScoreGraph: React.SFC<Props> = props => {
             'grade-f': grade === Grade.F,
             'full-combo': fullCombo,
           })}
-          style={{ width: `${scoreRate}%` }}
+          style={{ width: `${scoreRate * 100}%` }}
         />
         <div className={cx('target', 'grade-a')} />
         <div className={cx('target', 'grade-aa')} />
