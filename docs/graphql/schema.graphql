@@ -205,6 +205,7 @@ type Result {
   map: Map!
   missCount: Int
   score: Int
+  scoreRate: Float
 }
 
 type User {

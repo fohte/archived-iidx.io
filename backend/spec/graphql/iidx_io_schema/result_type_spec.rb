@@ -18,6 +18,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
                   score
                   missCount
                   bpi
+                  scoreRate
                   lastPlayedAt
                   clearLamp
                   grade
@@ -65,6 +66,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
                 'id' => result.id.to_s,
                 'score' => result.score,
                 'missCount' => result.miss_count,
+                'scoreRate' => result.score_rate,
                 'bpi' => result.bpi,
                 'lastPlayedAt' => '2019-07-28T07:51:00Z',
                 'clearLamp' => 'FULL_COMBO',
@@ -90,6 +92,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
                   score
                   missCount
                   bpi
+                  scoreRate
                   lastPlayedAt
                   clearLamp
                   grade
@@ -152,6 +155,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
                 'score' => result_log.score,
                 'missCount' => result_log.miss_count,
                 'bpi' => result_log.bpi,
+                'scoreRate' => result.score_rate,
                 'lastPlayedAt' => '2019-07-28T07:51:00Z',
                 'clearLamp' => 'FULL_COMBO',
                 'grade' => 'AAA',

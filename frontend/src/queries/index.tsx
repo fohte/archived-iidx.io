@@ -187,6 +187,7 @@ export type Result = {
   map: Map
   missCount?: Maybe<Scalars['Int']>
   score?: Maybe<Scalars['Int']>
+  scoreRate?: Maybe<Scalars['Float']>
 }
 
 export type User = {
@@ -288,6 +289,7 @@ export type GetUserResultsQuery = { __typename?: 'Query' } & {
                 | 'score'
                 | 'missCount'
                 | 'clearLamp'
+                | 'scoreRate'
                 | 'bpi'
                 | 'lastPlayedAt'
               >
@@ -498,6 +500,7 @@ export const GetUserResultsDocument = gql`
           score
           missCount
           clearLamp
+          scoreRate
           bpi
           lastPlayedAt
         }

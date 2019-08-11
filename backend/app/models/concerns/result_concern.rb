@@ -6,6 +6,10 @@ module ResultConcern
   include ClearLampEnum
   include GradeEnum
 
+  def score_rate
+    score / map.max_score.to_f
+  end
+
   def updated?(other)
     clear_lamp_updated?(other.clear_lamp) ||
       grade_updated?(other.grade) ||
