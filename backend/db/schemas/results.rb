@@ -7,7 +7,6 @@ create_table :results, force: :cascade, id: :bigint, unsigned: true, options: 'E
   t.integer :score, null: true
   t.integer :miss_count, null: true
   t.integer :clear_lamp, null: true # enum
-  t.integer :grade, null: true # enum
 
   t.datetime :last_played_at, null: false
   t.timestamps

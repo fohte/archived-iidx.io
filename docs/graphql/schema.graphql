@@ -99,6 +99,16 @@ enum Grade {
   F
   """
   F
+
+  """
+  Max
+  """
+  MAX
+}
+
+type GradeDiff {
+  diff: Int!
+  grade: Grade!
 }
 
 """
@@ -199,12 +209,15 @@ type RegisterResultsWithCSVPayload {
 type Result {
   bpi: Float
   clearLamp: ClearLamp
-  grade: Grade
+  gradeDiff: GradeDiff!
   id: ID!
   lastPlayedAt: ISO8601DateTime!
   map: Map!
   missCount: Int
+  nearestGradeDiff: GradeDiff!
+  nextGradeDiff: GradeDiff!
   score: Int
+  scoreRate: Float
 }
 
 type User {

@@ -50,6 +50,7 @@ RSpec.configure do |config|
   config.include ::FixtureHelper
 
   config.include_context 'graphql schema', type: :graphql
+  config.include_context 'factory name'
 
   if Bullet.enable?
     config.before do

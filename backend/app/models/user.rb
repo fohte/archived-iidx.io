@@ -69,7 +69,6 @@ class User < ApplicationRecord
             score: map.ex_score,
             miss_count: map.miss_count,
             clear_lamp: !map.clear_lamp.nil? ? Result.find_clear_lamp(map.clear_lamp) : nil,
-            grade: !map.dj_level.nil? ? Result.find_grade(map.dj_level) : nil,
             last_played_at: row.last_played_at,
             result_batch: result_batch,
           }

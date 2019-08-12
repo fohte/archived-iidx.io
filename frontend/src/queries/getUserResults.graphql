@@ -34,8 +34,18 @@ query getUserResults(
         score
         missCount
         clearLamp
+        scoreRate
         bpi
         lastPlayedAt
+
+        gradeDiff {
+          grade
+        }
+
+        nearestGradeDiff {
+          grade
+          diff
+        }
       }
     }
   }

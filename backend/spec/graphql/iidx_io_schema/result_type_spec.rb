@@ -18,9 +18,24 @@ RSpec.describe IIDXIOSchema, type: :graphql do
                   score
                   missCount
                   bpi
+                  scoreRate
                   lastPlayedAt
                   clearLamp
-                  grade
+
+                  gradeDiff {
+                    grade
+                    diff
+                  }
+
+                  nextGradeDiff {
+                    grade
+                    diff
+                  }
+
+                  nearestGradeDiff {
+                    grade
+                    diff
+                  }
                 }
               }
             }
@@ -40,7 +55,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           user: user,
           last_played_at: last_played_at,
           clear_lamp: Result.clear_lamp.full_combo,
-          grade: Result.grade.aaa,
+          score: 3700,
         )
       end
 
@@ -50,9 +65,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           :with_music,
           :with_bpi_vars,
           results: [result],
-          # スコアが最大スコアより高いと BPI が計算できないので
-          # スコアの 1.0-2.0 倍を最大スコアに設定しておく
-          num_notes: ((result.score * Random.rand(1.0..2.0)) / 2).to_i,
+          num_notes: 2000,
         )
       end
 
@@ -65,10 +78,13 @@ RSpec.describe IIDXIOSchema, type: :graphql do
                 'id' => result.id.to_s,
                 'score' => result.score,
                 'missCount' => result.miss_count,
+                'scoreRate' => result.score_rate,
                 'bpi' => result.bpi,
                 'lastPlayedAt' => '2019-07-28T07:51:00Z',
                 'clearLamp' => 'FULL_COMBO',
-                'grade' => 'AAA',
+                'gradeDiff' => { 'grade' => 'AAA', 'diff' => 144 },
+                'nextGradeDiff' => { 'grade' => 'MAX', 'diff' => -300 },
+                'nearestGradeDiff' => { 'grade' => 'AAA', 'diff' => 144 },
               },
             }],
           },
@@ -90,9 +106,24 @@ RSpec.describe IIDXIOSchema, type: :graphql do
                   score
                   missCount
                   bpi
+                  scoreRate
                   lastPlayedAt
                   clearLamp
-                  grade
+
+                  gradeDiff {
+                    grade
+                    diff
+                  }
+
+                  nextGradeDiff {
+                    grade
+                    diff
+                  }
+
+                  nearestGradeDiff {
+                    grade
+                    diff
+                  }
                 }
               }
             }
@@ -112,7 +143,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           user: user,
           last_played_at: last_played_at,
           clear_lamp: Result.clear_lamp.full_combo,
-          grade: Result.grade.aaa,
+          score: 3700,
         )
       end
 
@@ -124,7 +155,6 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           score: result.score,
           miss_count: result.miss_count,
           clear_lamp: result.clear_lamp,
-          grade: result.grade,
           result: result,
         )
       end
@@ -136,9 +166,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           :with_bpi_vars,
           results: [result],
           result_logs: [result_log],
-          # スコアが最大スコアより高いと BPI が計算できないので
-          # スコアの 1.0-2.0 倍を最大スコアに設定しておく
-          num_notes: ((result.score * Random.rand(1.0..2.0)) / 2).to_i,
+          num_notes: 2000,
         )
       end
 
@@ -152,9 +180,12 @@ RSpec.describe IIDXIOSchema, type: :graphql do
                 'score' => result_log.score,
                 'missCount' => result_log.miss_count,
                 'bpi' => result_log.bpi,
+                'scoreRate' => result.score_rate,
                 'lastPlayedAt' => '2019-07-28T07:51:00Z',
                 'clearLamp' => 'FULL_COMBO',
-                'grade' => 'AAA',
+                'gradeDiff' => { 'grade' => 'AAA', 'diff' => 144 },
+                'nextGradeDiff' => { 'grade' => 'MAX', 'diff' => -300 },
+                'nearestGradeDiff' => { 'grade' => 'AAA', 'diff' => 144 },
               }],
             }],
           },

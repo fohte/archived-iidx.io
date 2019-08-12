@@ -47,12 +47,14 @@ export enum Difficulty {
 }
 
 export enum Grade {
-  /** A */
-  A = 'A',
-  /** AA */
-  Aa = 'AA',
+  /** Max */
+  Max = 'MAX',
   /** AAA */
   Aaa = 'AAA',
+  /** AA */
+  Aa = 'AA',
+  /** A */
+  A = 'A',
   /** B */
   B = 'B',
   /** C */
@@ -63,6 +65,12 @@ export enum Grade {
   E = 'E',
   /** F */
   F = 'F',
+}
+
+export type GradeDiff = {
+  __typename?: 'GradeDiff'
+  diff: Scalars['Int']
+  grade: Grade
 }
 
 export type Map = {
@@ -181,12 +189,15 @@ export type Result = {
   __typename?: 'Result'
   bpi?: Maybe<Scalars['Float']>
   clearLamp?: Maybe<ClearLamp>
-  grade?: Maybe<Grade>
+  gradeDiff: GradeDiff
   id: Scalars['ID']
   lastPlayedAt: Scalars['ISO8601DateTime']
   map: Map
   missCount?: Maybe<Scalars['Int']>
+  nearestGradeDiff: GradeDiff
+  nextGradeDiff: GradeDiff
   score?: Maybe<Scalars['Int']>
+  scoreRate?: Maybe<Scalars['Float']>
 }
 
 export type User = {
@@ -238,15 +249,24 @@ export type FindMapQuery = { __typename?: 'Query' } & {
                   | 'score'
                   | 'missCount'
                   | 'clearLamp'
-                  | 'grade'
+                  | 'scoreRate'
                   | 'bpi'
                   | 'lastPlayedAt'
-                >
+                > & {
+                    gradeDiff: { __typename?: 'GradeDiff' } & Pick<
+                      GradeDiff,
+                      'grade'
+                    >
+                    nearestGradeDiff: { __typename?: 'GradeDiff' } & Pick<
+                      GradeDiff,
+                      'grade' | 'diff'
+                    >
+                  }
               >
               results: Array<
                 { __typename?: 'Result' } & Pick<
                   Result,
-                  'id' | 'score' | 'lastPlayedAt'
+                  'id' | 'score' | 'scoreRate' | 'lastPlayedAt'
                 >
               >
             }
@@ -288,9 +308,19 @@ export type GetUserResultsQuery = { __typename?: 'Query' } & {
                 | 'score'
                 | 'missCount'
                 | 'clearLamp'
+                | 'scoreRate'
                 | 'bpi'
                 | 'lastPlayedAt'
-              >
+              > & {
+                  gradeDiff: { __typename?: 'GradeDiff' } & Pick<
+                    GradeDiff,
+                    'grade'
+                  >
+                  nearestGradeDiff: { __typename?: 'GradeDiff' } & Pick<
+                    GradeDiff,
+                    'grade' | 'diff'
+                  >
+                }
             >
           }
       >
@@ -363,13 +393,21 @@ export const FindMapDocument = gql`
           score
           missCount
           clearLamp
-          grade
+          scoreRate
+          gradeDiff {
+            grade
+          }
+          nearestGradeDiff {
+            grade
+            diff
+          }
           bpi
           lastPlayedAt
         }
         results(username: $username) {
           id
           score
+          scoreRate
           lastPlayedAt
         }
       }
@@ -498,8 +536,16 @@ export const GetUserResultsDocument = gql`
           score
           missCount
           clearLamp
+          scoreRate
           bpi
           lastPlayedAt
+          gradeDiff {
+            grade
+          }
+          nearestGradeDiff {
+            grade
+            diff
+          }
         }
       }
     }
