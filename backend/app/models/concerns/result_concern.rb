@@ -7,6 +7,8 @@ module ResultConcern
   include GradeEnum
 
   def score_rate
+    return nil if score.nil?
+
     score / map.max_score.to_f
   end
 

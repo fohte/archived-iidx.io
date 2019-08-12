@@ -9,10 +9,20 @@ RSpec.shared_examples 'ResultConcern' do |factory_name|
   describe '#score_rate' do
     subject { result.score_rate }
 
-    let(:result) { build(factory_name, map: map, score: 2000) }
+    let(:result) { build(factory_name, map: map, score: score) }
     let(:map) { build(:map, num_notes: 1000) }
 
-    it { is_expected.to eq 1.0 }
+    context 'スコアが存在するとき' do
+      let(:score) { 2000 }
+
+      it { is_expected.to eq 1.0 }
+    end
+
+    context 'スコアが nil のとき' do
+      let(:score) { nil }
+
+      it { is_expected.to be_nil }
+    end
   end
 
   describe '#updated?' do
