@@ -5,7 +5,6 @@ class TemporaryResult < ApplicationRecord
   belongs_to :result_batch, optional: true
 
   include ClearLampEnum
-  include GradeEnum
   include PlayStyleEnum
   include DifficultyEnum
 
@@ -35,7 +34,6 @@ class TemporaryResult < ApplicationRecord
       score: score,
       miss_count: miss_count,
       clear_lamp: clear_lamp,
-      grade: grade,
       last_played_at: last_played_at,
     )
   end

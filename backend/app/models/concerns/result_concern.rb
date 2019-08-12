@@ -12,7 +12,6 @@ module ResultConcern
 
   def updated?(other)
     clear_lamp_updated?(other.clear_lamp) ||
-      grade_updated?(other.grade) ||
       score_updated?(other.score) ||
       miss_count_updated?(other.miss_count)
   end
@@ -22,13 +21,6 @@ module ResultConcern
     return true if clear_lamp.nil? && !other.nil?
 
     !clear_lamp.nil? && clear_lamp.value < other.value
-  end
-
-  def grade_updated?(other)
-    return false if other.nil?
-    return true if grade.nil? && !other.nil?
-
-    !grade.nil? && grade.value < other.value
   end
 
   def score_updated?(other)

@@ -26,7 +26,16 @@ query findMap(
         score
         missCount
         clearLamp
-        grade
+
+        gradeDiff {
+          grade
+        }
+
+        nearestGradeDiff {
+          grade
+          diff
+        }
+
         bpi
         lastPlayedAt
       }

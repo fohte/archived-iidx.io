@@ -37,6 +37,15 @@ query getUserResults(
         scoreRate
         bpi
         lastPlayedAt
+
+        gradeDiff {
+          grade
+        }
+
+        nearestGradeDiff {
+          grade
+          diff
+        }
       }
     }
   }

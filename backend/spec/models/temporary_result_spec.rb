@@ -4,7 +4,6 @@ require 'rails_helper'
 
 RSpec.describe TemporaryResult do
   include_examples 'ClearLampEnum'
-  include_examples 'GradeEnum'
 
   describe '.bulk_convert_to_result' do
     let(:user) { create(:user) }
@@ -30,7 +29,6 @@ RSpec.describe TemporaryResult do
           score: temporary_result.score,
           miss_count: temporary_result.miss_count,
           clear_lamp: temporary_result.clear_lamp,
-          grade: temporary_result.grade,
           last_played_at: temporary_result.last_played_at,
         )
       end
@@ -87,7 +85,6 @@ RSpec.describe TemporaryResult do
           score: temporary_result.score,
           miss_count: temporary_result.miss_count,
           clear_lamp: temporary_result.clear_lamp,
-          grade: temporary_result.grade,
           last_played_at: temporary_result.last_played_at,
         )
       end

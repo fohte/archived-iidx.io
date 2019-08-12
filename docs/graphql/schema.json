@@ -890,15 +890,19 @@
               "deprecationReason": null
             },
             {
-              "name": "grade",
+              "name": "gradeDiff",
               "description": null,
               "args": [
 
               ],
               "type": {
-                "kind": "ENUM",
-                "name": "Grade",
-                "ofType": null
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "GradeDiff",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -967,6 +971,42 @@
                 "kind": "SCALAR",
                 "name": "Int",
                 "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "nearestGradeDiff",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "GradeDiff",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "nextGradeDiff",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "GradeDiff",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -1081,6 +1121,55 @@
           "possibleTypes": null
         },
         {
+          "kind": "OBJECT",
+          "name": "GradeDiff",
+          "description": null,
+          "fields": [
+            {
+              "name": "diff",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "grade",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "Grade",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "ENUM",
           "name": "Grade",
           "description": null,
@@ -1089,8 +1178,14 @@
           "interfaces": null,
           "enumValues": [
             {
-              "name": "A",
-              "description": "A",
+              "name": "MAX",
+              "description": "Max",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "AAA",
+              "description": "AAA",
               "isDeprecated": false,
               "deprecationReason": null
             },
@@ -1101,8 +1196,8 @@
               "deprecationReason": null
             },
             {
-              "name": "AAA",
-              "description": "AAA",
+              "name": "A",
+              "description": "A",
               "isDeprecated": false,
               "deprecationReason": null
             },

@@ -19,7 +19,6 @@ RSpec.describe Result do
         score: result.score,
         miss_count: result.miss_count,
         clear_lamp: result.clear_lamp,
-        grade: result.grade,
         last_played_at: result.last_played_at,
         created_at: nil, # timestamp はコピーしない
       )

@@ -19,8 +19,8 @@ RSpec.shared_examples 'ResultConcern' do |factory_name|
     subject { old_result.updated?(new_result) }
 
     # def...end だと factory_name にアクセスできないので define_method を使う
-    define_method(:build_result) do |clear_lamp: nil, grade: nil, score: nil, miss_count: nil, last_played_at: Time.zone.at(0)|
-      build(factory_name, clear_lamp: clear_lamp, grade: grade, score: score, miss_count: miss_count, last_played_at: last_played_at)
+    define_method(:build_result) do |clear_lamp: nil, score: nil, miss_count: nil, last_played_at: Time.zone.at(0)|
+      build(factory_name, clear_lamp: clear_lamp, score: score, miss_count: miss_count, last_played_at: last_played_at)
     end
 
     context 'when clear_lamp is updated' do
@@ -33,20 +33,6 @@ RSpec.shared_examples 'ResultConcern' do |factory_name|
     context 'when clear_lamp is updated from no play' do
       let(:old_result) { build_result }
       let(:new_result) { build_result(clear_lamp: :failed) }
-
-      it { is_expected.to be_truthy }
-    end
-
-    context 'when grade is updated' do
-      let(:old_result) { build_result(grade: :f) }
-      let(:new_result) { build_result(grade: :aaa) }
-
-      it { is_expected.to be_truthy }
-    end
-
-    context 'when grade is updated from no play' do
-      let(:old_result) { build_result }
-      let(:new_result) { build_result(grade: :f) }
 
       it { is_expected.to be_truthy }
     end
