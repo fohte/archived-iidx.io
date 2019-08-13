@@ -45,6 +45,7 @@ interface Data {
 
 export interface Props {
   showBPI?: boolean
+  showAdditionalArea?: boolean
   href?: string
   data: WithLoadingState<Data>
   absoluteLastPlayedAt?: boolean
@@ -68,6 +69,7 @@ const clearTypeTexts: { [key in ClearLampEnum]: string } = {
 
 const ResultBox: React.FunctionComponent<Props> = ({
   showBPI = false,
+  showAdditionalArea = false,
   data,
   href,
   absoluteLastPlayedAt = false,
@@ -120,76 +122,78 @@ const ResultBox: React.FunctionComponent<Props> = ({
               )}
             </dl>
 
-            <div className={cx('additional-area')}>
-              {showBPI && (
-                <dl className={cx('data-list')}>
-                  <dt>BPI</dt>
+            {showAdditionalArea && (
+              <div className={cx('additional-area')}>
+                {showBPI && (
+                  <dl className={cx('data-list')}>
+                    <dt>BPI</dt>
+                    {data.loading ? (
+                      <dd>-</dd>
+                    ) : (
+                      <dd className={cx('bpi')}>
+                        {data.result && data.result.bpi != null
+                          ? data.result.bpi.toFixed(2)
+                          : '-'}
+                      </dd>
+                    )}
+                  </dl>
+                )}
+
+                <dl className={cx('data-list', 'clear-type')}>
+                  <dt>CLEAR TYPE</dt>
                   {data.loading ? (
                     <dd>-</dd>
                   ) : (
-                    <dd className={cx('bpi')}>
-                      {data.result && data.result.bpi != null
-                        ? data.result.bpi.toFixed(2)
+                    <dd
+                      className={cx({
+                        'full-combo':
+                          data.result &&
+                          data.result.clearLamp === ClearLampEnum.FullCombo,
+                        'ex-hard-clear':
+                          data.result &&
+                          data.result.clearLamp === ClearLampEnum.ExHard,
+                        'hard-clear':
+                          data.result &&
+                          data.result.clearLamp === ClearLampEnum.Hard,
+                        clear:
+                          data.result &&
+                          data.result.clearLamp === ClearLampEnum.Normal,
+                        'easy-clear':
+                          data.result &&
+                          data.result.clearLamp === ClearLampEnum.Easy,
+                        'assist-clear':
+                          data.result &&
+                          data.result.clearLamp === ClearLampEnum.Assist,
+                        failed:
+                          data.result &&
+                          data.result.clearLamp === ClearLampEnum.Failed,
+                      })}
+                    >
+                      {data.result && data.result.clearLamp
+                        ? clearTypeTexts[data.result.clearLamp]
                         : '-'}
                     </dd>
                   )}
                 </dl>
-              )}
 
-              <dl className={cx('data-list', 'clear-type')}>
-                <dt>CLEAR TYPE</dt>
-                {data.loading ? (
-                  <dd>-</dd>
-                ) : (
-                  <dd
-                    className={cx({
-                      'full-combo':
-                        data.result &&
-                        data.result.clearLamp === ClearLampEnum.FullCombo,
-                      'ex-hard-clear':
-                        data.result &&
-                        data.result.clearLamp === ClearLampEnum.ExHard,
-                      'hard-clear':
-                        data.result &&
-                        data.result.clearLamp === ClearLampEnum.Hard,
-                      clear:
-                        data.result &&
-                        data.result.clearLamp === ClearLampEnum.Normal,
-                      'easy-clear':
-                        data.result &&
-                        data.result.clearLamp === ClearLampEnum.Easy,
-                      'assist-clear':
-                        data.result &&
-                        data.result.clearLamp === ClearLampEnum.Assist,
-                      failed:
-                        data.result &&
-                        data.result.clearLamp === ClearLampEnum.Failed,
-                    })}
-                  >
-                    {data.result && data.result.clearLamp
-                      ? clearTypeTexts[data.result.clearLamp]
-                      : '-'}
-                  </dd>
-                )}
-              </dl>
-
-              <dl className={cx('data-list')}>
-                <dt>LAST PLAY</dt>
-                {data.loading ? (
-                  <dd>-</dd>
-                ) : (
-                  <dd className={cx('moderate')}>
-                    {data.result
-                      ? absoluteLastPlayedAt
-                        ? dayjs(data.result.lastPlayedAt).format(
-                            formats.dateTime,
-                          )
-                        : dayjs(data.result.lastPlayedAt).fromNow()
-                      : '-'}
-                  </dd>
-                )}
-              </dl>
-            </div>
+                <dl className={cx('data-list')}>
+                  <dt>LAST PLAY</dt>
+                  {data.loading ? (
+                    <dd>-</dd>
+                  ) : (
+                    <dd className={cx('moderate')}>
+                      {data.result
+                        ? absoluteLastPlayedAt
+                          ? dayjs(data.result.lastPlayedAt).format(
+                              formats.dateTime,
+                            )
+                          : dayjs(data.result.lastPlayedAt).fromNow()
+                        : '-'}
+                    </dd>
+                  )}
+                </dl>
+              </div>
+            )}
           </div>
 
           <div className={cx('symbol-area')}>

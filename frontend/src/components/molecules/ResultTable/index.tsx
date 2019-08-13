@@ -61,7 +61,13 @@ const ResultTable: React.SFC<Props> = ({
                       <div className={cx('title', 'loading')} />
                     </div>
                   }
-                  content={<ResultBox showBPI data={{ loading: true }} />}
+                  content={
+                    <ResultBox
+                      showBPI
+                      showAdditionalArea
+                      data={{ loading: true }}
+                    />
+                  }
                   clickable={false}
                 />
               </div>
@@ -103,6 +109,7 @@ const ResultTable: React.SFC<Props> = ({
                         content={
                           <ResultBox
                             showBPI={showBPI}
+                            showAdditionalArea
                             data={{ loading: false, result, map }}
                           />
                         }

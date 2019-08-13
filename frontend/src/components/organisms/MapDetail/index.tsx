@@ -157,6 +157,7 @@ const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
         </div>
         <ResultBox
           showBPI
+          showAdditionalArea
           data={{ loading: false, result, map }}
           absoluteLastPlayedAt
         />
