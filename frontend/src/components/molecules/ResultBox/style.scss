@@ -49,6 +49,7 @@ $top-bottom-padding: 1rem;
 
   .data-list {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     dt {
@@ -56,9 +57,6 @@ $top-bottom-padding: 1rem;
     }
 
     dd {
-      display: flex;
-      justify-content: space-between;
-
       &.moderate {
         color: $primary-fg-lighter-color;
       }
@@ -96,12 +94,18 @@ $top-bottom-padding: 1rem;
 
     .ex-score {
       margin-bottom: 0.5rem;
+
+      text-align: right;
     }
 
     .score-text {
       margin-right: 0.25em;
 
       font-weight: bold;
+    }
+
+    .score-info {
+      display: inline-block;
     }
   }
 
@@ -114,6 +118,24 @@ $top-bottom-padding: 1rem;
     .data-list + .data-list {
       margin-top: 0.5rem;
     }
+  }
+}
+
+.score-diff-info {
+  font-size: 0.9em;
+
+  &.positive {
+    color: darken($green, 10%);
+  }
+
+  &.negative {
+    color: $red;
+  }
+}
+
+.bpi {
+  .score-diff-info {
+    margin-left: 0.25em;
   }
 }
 

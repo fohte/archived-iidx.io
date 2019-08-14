@@ -88,14 +88,24 @@ const ResultBox: React.FunctionComponent<Props> = ({
                 <dd>
                   {!data.loading && (
                     <>
-                      <span className={cx('score-text')}>
-                        {data.result && data.result.score != null
-                          ? data.result.score
-                          : '-'}
-                      </span>
-                      <span className={cx('score-rate')}>
-                        ({(digScoreRate(data.result) * 100).toFixed(2)} %)
-                      </span>
+                      <div className={cx('score-info')}>
+                        <div className={cx('score-text')}>
+                          {data.result && data.result.score != null
+                            ? data.result.score
+                            : '-'}
+                        </div>
+                        <div className={cx('score-diff-info', 'positive')}>
+                          <div className={cx('score-text')}>+3</div>
+                        </div>
+                      </div>
+                      <div className={cx('score-info')}>
+                        <div className={cx('score-rate')}>
+                          ({(digScoreRate(data.result) * 100).toFixed(2)} %)
+                        </div>
+                        <div className={cx('score-diff-info', 'positive')}>
+                          <div className={cx('score-rate')}>(+0.03 %)</div>
+                        </div>
+                      </div>
                     </>
                   )}
                 </dd>
@@ -126,9 +136,14 @@ const ResultBox: React.FunctionComponent<Props> = ({
                       <dd>-</dd>
                     ) : (
                       <dd className={cx('bpi')}>
-                        {data.result && data.result.bpi != null
-                          ? data.result.bpi.toFixed(2)
-                          : '-'}
+                        <span>
+                          {data.result && data.result.bpi != null
+                            ? data.result.bpi.toFixed(2)
+                            : '-'}
+                        </span>
+                        <span className={cx('score-diff-info', 'positive')}>
+                          (+0.03)
+                        </span>
                       </dd>
                     )}
                   </dl>
