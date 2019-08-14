@@ -1,74 +1,7 @@
 @import 'styles/colors';
 @import 'styles/mixins';
-@import 'styles/variables';
 
 .result-table {
   background-color: $primary-bg-color;
   @include card-box;
-}
-
-.card-link {
-  color: $primary-fg-color;
-}
-
-.card + .card {
-  border-top: 1px solid $lighter-border-color;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-
-  font-weight: 700;
-}
-
-.label {
-  display: inline-block;
-  margin-right: 1em;
-  padding: 0.1em 0.9em;
-
-  color: $white;
-  font-size: 0.7em;
-
-  background-color: $black;
-  border-radius: 2px;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &.loading {
-    height: auto;
-  }
-}
-
-.difficulty-normal {
-  background-color: $blue;
-}
-
-.difficulty-hyper {
-  background-color: $orange;
-}
-
-.difficulty-another {
-  background-color: $red;
-}
-
-.title {
-  flex: 1;
-  overflow-x: hidden;
-
-  white-space: nowrap;
-  text-overflow: ellipsis;
-
-  &.loading {
-    flex: 0 0 auto;
-    width: 70%;
-  }
-}
-
-.loading {
-  @include skeleton-loading;
-
-  height: 1em;
 }

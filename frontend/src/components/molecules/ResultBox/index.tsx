@@ -1,7 +1,4 @@
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classnames from 'classnames/bind'
-import Link from 'next/link'
 import * as React from 'react'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -38,7 +35,7 @@ export interface Map {
   numNotes: number
 }
 
-interface Data {
+export interface Data {
   result?: Result | null
   map: Map
 }
@@ -46,7 +43,6 @@ interface Data {
 export interface Props {
   showBPI?: boolean
   showAdditionalArea?: boolean
-  href?: string
   data: WithLoadingState<Data>
   absoluteLastPlayedAt?: boolean
 }
@@ -71,7 +67,6 @@ const ResultBox: React.FunctionComponent<Props> = ({
   showBPI = false,
   showAdditionalArea = false,
   data,
-  href,
   absoluteLastPlayedAt = false,
 }) => {
   return (
@@ -211,14 +206,6 @@ const ResultBox: React.FunctionComponent<Props> = ({
             )}
           </div>
         </div>
-
-        {href && (
-          <Link href={href}>
-            <a>
-              <FontAwesomeIcon icon={faAngleRight} />
-            </a>
-          </Link>
-        )}
       </div>
     </div>
   )
