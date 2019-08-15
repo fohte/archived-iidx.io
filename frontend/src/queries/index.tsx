@@ -167,6 +167,7 @@ export type QueryMusicArgs = {
 }
 
 export type QuerySearchMapsArgs = {
+  username: Scalars['String']
   offset?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
   title?: Maybe<Scalars['String']>
@@ -519,6 +520,7 @@ export const GetUserResultsDocument = gql`
       difficulties: $difficulties
       offset: $offset
       limit: $limit
+      username: $username
     ) {
       totalCount
       nodes {

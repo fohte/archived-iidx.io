@@ -16,6 +16,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           $limit: Int
         ) {
           searchMaps(
+            username: $username
             title: $title
             levels: $levels
             playStyle: $playStyle
@@ -49,16 +50,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       let!(:map) { create(:map, :with_music, results: [build(:result, user: user)]) }
 
       it 'does not return maps' do
-        expect(response['data']).to eq(
-          'searchMaps' => {
-            'totalCount' => 1,
-            'nodes' => [{
-              'id' => map.id.to_s,
-              'music' => { 'id' => map.music.id.to_s },
-              'result' => nil,
-            }],
-          },
-        )
+        expect(response['data']).to be_nil
       end
 
       it 'returns the not found error' do

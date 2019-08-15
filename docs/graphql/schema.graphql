@@ -186,7 +186,7 @@ type Query {
   """
   Search maps.
   """
-  searchMaps(difficulties: [Difficulty], levels: [Int], limit: Int, offset: Int, playStyle: PlayStyle, title: String): MapList!
+  searchMaps(difficulties: [Difficulty], levels: [Int], limit: Int, offset: Int, playStyle: PlayStyle, title: String, username: String!): MapList!
 
   """
   Find a user by name.

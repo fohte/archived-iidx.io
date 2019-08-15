@@ -10,7 +10,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       let(:query) do
         <<~GRAPHQL
           query($username: String!) {
-            searchMaps {
+            searchMaps(username: $username) {
               nodes {
                 id
                 result(username: $username) {
@@ -98,7 +98,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       let(:query) do
         <<~GRAPHQL
           query($username: String!) {
-            searchMaps {
+            searchMaps(username: $username) {
               nodes {
                 id
                 results(username: $username) {
