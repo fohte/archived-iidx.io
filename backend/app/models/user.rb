@@ -14,7 +14,7 @@ class User < ApplicationRecord
             length: { maximum: 20 },
             uniqueness: { case_sensitive: false },
             format: { with: NAME_FORMAT }
-  validates :firebase_uid, presence: true, uniqueness: true
+  validates :firebase_uid, uniqueness: true, allow_nil: true
 
   class << self
     def register(firebase_uid:, username:, display_name:)

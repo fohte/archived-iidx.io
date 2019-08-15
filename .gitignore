@@ -30,3 +30,6 @@ vendor/bundle
 
 # Crash log files
 crash.log
+
+!data/users/.keep
+data/users/*.json
