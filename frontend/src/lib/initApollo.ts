@@ -5,7 +5,7 @@ import { ApolloClient } from 'apollo-client'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 import { onError } from 'apollo-link-error'
-import { HttpLink } from 'apollo-link-http'
+import { BatchHttpLink } from 'apollo-link-batch-http'
 import getConfig from 'next/config'
 
 import { auth } from '@app/lib/firebaseApp'
@@ -50,7 +50,7 @@ const withAuthorization = setContext(async (_, { headers }) => {
 const create = (initialState?: NormalizedCacheObject) => {
   const cache = new InMemoryCache().restore(initialState || {})
 
-  const httpLink = new HttpLink({
+  const httpLink = new BatchHttpLink({
     uri: isBrowser
       ? publicRuntimeConfig.publicApiUrl
       : serverRuntimeConfig.privateApiUrl,
