@@ -47,6 +47,8 @@ Rails.application.configure do
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    $stdout.sync = true
+    $stderr.sync = true
   end
 
   # Use an evented file watcher to asynchronously detect changes in source code,
