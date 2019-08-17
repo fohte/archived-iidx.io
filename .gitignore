@@ -33,3 +33,5 @@ crash.log
 
 !data/users/.keep
 data/users/*.json
+
+/backend/spec/examples.txt
