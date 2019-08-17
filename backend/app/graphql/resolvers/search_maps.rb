@@ -15,21 +15,22 @@ module Resolvers
     argument :difficulties, [Types::Enum::Difficulty, null: true], required: false
 
     def resolve(username:, offset: 0, limit: MAX_PAGE_SIZE, title: '', levels: [], play_style: nil, difficulties: [])
-      user = User.find_by!(name: username)
+      LoaderUtils.find_by!(User, name: username) do |user|
+        maps = Map.includes(:music)
+        maps = maps.where(music: Music.fuzzy_search_by_title(title)) if title.present?
+        maps = maps.where(level: levels) unless levels.empty?
+        maps = maps.where(play_style: play_style) unless play_style.nil?
+        maps = maps.where(difficulty: difficulties) unless difficulties.empty?
 
-      maps = Map.includes(:music)
-      maps = maps.where(music: Music.fuzzy_search_by_title(title)) if title.present?
-      maps = maps.where(level: levels) unless levels.empty?
-      maps = maps.where(play_style: play_style) unless play_style.nil?
-      maps = maps.where(difficulty: difficulties) unless difficulties.empty?
+        maps =
+          maps
+          .left_outer_joins(:results)
+          .merge(Result.where(user: user).order(last_played_at: :desc))
+          .offset(offset)
+          .limit(limit)
 
-      maps
-        .left_outer_joins(:results)
-        .merge(Result.where(user: user).order(last_played_at: :desc))
-        .offset(offset)
-        .limit(limit)
-    rescue ActiveRecord::RecordNotFound => e
-      raise IIDXIO::GraphQL::NotFoundError, e.message
+        Loaders::ScopeLoader.for(Result).load(maps)
+      end
     end
   end
 end

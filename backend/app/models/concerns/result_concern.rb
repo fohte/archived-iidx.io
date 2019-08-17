@@ -6,6 +6,11 @@ module ResultConcern
   include ClearLampEnum
   include GradeEnum
 
+  included do
+    has_one :kaiden_average_result, through: :map
+    has_one :world_record_result, through: :map
+  end
+
   def score_rate
     return nil if score.nil?
 
@@ -42,11 +47,11 @@ module ResultConcern
   # Beat Power Indicator
   # See: http://norimiso.web.fc2.com/aboutBPI.html
   def bpi
-    return if score.nil? || map.kaiden_average_result.nil? || map.world_record_result.nil?
+    return if score.nil? || kaiden_average_result.nil? || world_record_result.nil?
 
     max_score = map.max_score.to_f
-    kaiden_avg_score = map.kaiden_average_result.score
-    world_record_score = map.world_record_result.score
+    kaiden_avg_score = kaiden_average_result.score
+    world_record_score = world_record_result.score
 
     own_score_rate = score / max_score
     kaiden_avg_rate = kaiden_avg_score / max_score

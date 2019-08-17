@@ -4,7 +4,13 @@ module Types
   module Object
     class MapType < Base
       field :id, ID, null: false
+
       field :music, MusicType, null: false
+
+      def music
+        Loaders::AssociationLoader.for(Map, :music).load(object)
+      end
+
       field :num_notes, Integer, null: false
       field :level, Integer, null: false
       field :play_style, Enum::PlayStyle, null: false
@@ -27,9 +33,9 @@ module Types
       end
 
       def result(username:)
-        object.results.find_by(user: User.find_by!(name: username))
-      rescue ActiveRecord::RecordNotFound => e
-        raise IIDXIO::GraphQL::NotFoundError, e.message
+        LoaderUtils.find_by!(User, name: username) do |user|
+          Loaders::AssociationLoader.for(Map, :results, scope: user.results).load(object).then(&:first)
+        end
       end
 
       field :results, [ResultType], null: false do
@@ -37,9 +43,9 @@ module Types
       end
 
       def results(username:)
-        object.result_logs.where(user: User.find_by!(name: username))
-      rescue ActiveRecord::RecordNotFound => e
-        raise IIDXIO::GraphQL::NotFoundError, e.message
+        LoaderUtils.find_by!(User, name: username) do |user|
+          Loaders::AssociationLoader.for(Map, :result_logs, scope: user.result_logs).load(object)
+        end
       end
     end
   end

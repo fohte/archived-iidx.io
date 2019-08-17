@@ -18,9 +18,7 @@ module Types
       end
 
       def user(name:)
-        User.find_by!(name: name)
-      rescue ActiveRecord::RecordNotFound => e
-        raise IIDXIO::GraphQL::NotFoundError, e.message
+        LoaderUtils.find_by!(User, name: name)
       end
 
       field :musics, [MusicType], null: true do
@@ -37,9 +35,7 @@ module Types
       end
 
       def music(id:)
-        Music.find(id)
-      rescue ActiveRecord::RecordNotFound => e
-        raise IIDXIO::GraphQL::NotFoundError, e.message
+        LoaderUtils.find_by!(Music, id: id)
       end
 
       field :maps, [MapType], null: true do

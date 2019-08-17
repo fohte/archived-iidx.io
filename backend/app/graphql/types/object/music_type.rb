@@ -17,15 +17,22 @@ module Types
       field :leggendaria, Boolean, null: false
       field :maps, [MapType], null: false
 
+      def maps
+        Loaders::AssociationLoader.for(Music, :maps).load(object)
+      end
+
       field :map, MapType, null: true do
         argument :play_style, Enum::PlayStyle, required: true
         argument :difficulty, Enum::Difficulty, required: true
       end
 
       def map(play_style:, difficulty:)
-        object.maps.find_by!(play_style: play_style, difficulty: difficulty)
-      rescue ActiveRecord::RecordNotFound => e
-        raise IIDXIO::GraphQL::NotFoundError, e.message
+        LoaderUtils.find_by!(
+          Map,
+          music_id: object.id,
+          play_style: play_style.downcase,
+          difficulty: difficulty.downcase,
+        )
       end
     end
   end

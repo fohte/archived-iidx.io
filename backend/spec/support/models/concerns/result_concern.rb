@@ -95,8 +95,12 @@ RSpec.shared_examples 'ResultConcern' do |factory_name|
 
     let(:result) { build(factory_name, map: map, score: score) }
     let(:map) do
-      build(
+      # Result モデルが kaiden_average_result, world_record_result を
+      # has_one で関連付けしているため、事前に create する必要がある
+      # (has_one だと DB アクセスしてデータを持ってくるため)
+      create(
         :map,
+        :with_music,
         kaiden_average_result: build(:kaiden_average_result, score: kaiden_average),
         world_record_result: build(:world_record_result, score: world_record),
         num_notes: 1000,
