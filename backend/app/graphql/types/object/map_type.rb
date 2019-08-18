@@ -30,11 +30,26 @@ module Types
 
       field :result, ResultType, null: true do
         argument :username, String, required: true
+        argument :last_played_since, GraphQL::Types::ISO8601DateTime, required: false
+        argument :last_played_until, GraphQL::Types::ISO8601DateTime, required: false
       end
 
-      def result(username:)
-        LoaderUtils.find_by!(User, name: username) do |user|
-          Loaders::AssociationLoader.for(Map, :results, scope: user.results).load(object).then(&:first)
+      def result(username:, last_played_since: nil, last_played_until: nil)
+        if last_played_since.nil? && last_played_until.nil?
+          LoaderUtils.find_by!(User, name: username) do |user|
+            Loaders::AssociationLoader.for(Map, :results, scope: user.results).load(object).then(&:first)
+          end
+        else
+          LoaderUtils.find_by!(User, name: username) do |user|
+            scope = user.result_logs.snapshot_results(
+              last_played_since: last_played_since,
+              last_played_until: last_played_until,
+            )
+
+            Loaders::AssociationLoader.for(Map, :result_logs, scope: scope).load(object).then do |records|
+              records.find { |record| record.map_id == object.id }
+            end
+          end
         end
       end
 

@@ -761,6 +761,26 @@
                     }
                   },
                   "defaultValue": null
+                },
+                {
+                  "name": "lastPlayedSince",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ISO8601DateTime",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "lastPlayedUntil",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ISO8601DateTime",
+                    "ofType": null
+                  },
+                  "defaultValue": null
                 }
               ],
               "type": {

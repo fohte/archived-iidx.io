@@ -125,7 +125,7 @@ type Map {
   music: Music!
   numNotes: Int!
   playStyle: PlayStyle!
-  result(username: String!): Result
+  result(lastPlayedSince: ISO8601DateTime, lastPlayedUntil: ISO8601DateTime, username: String!): Result
   results(username: String!): [Result!]!
 }
 
