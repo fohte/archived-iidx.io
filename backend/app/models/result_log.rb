@@ -10,19 +10,19 @@ class ResultLog < ApplicationRecord
   scope :snapshot_results, ->(last_played_since: nil, last_played_until: nil) do
     result_log = ResultLog.arel_table
 
-    filtered = [].tap do |arr|
-      arr << [:project, Arel.sql(%|map_id, MAX(last_played_at) AS l|)]
+    filtered = result_log.project(Arel.sql(%|map_id, MAX(last_played_at) AS l|))
 
-      filter_condition = [].tap do |cond|
-        cond << result_log[:last_played_at].gteq(last_played_since) unless last_played_since.nil?
-        cond << result_log[:last_played_at].lteq(last_played_until) unless last_played_until.nil?
-      end.reduce(:and)
+    filter_condition = [].tap do |cond|
+      cond << result_log[:last_played_at].gteq(last_played_since) unless last_played_since.nil?
+      cond << result_log[:last_played_at].lteq(last_played_until) unless last_played_until.nil?
+    end.reduce(:and)
 
-      arr << [:where, filter_condition] unless filter_condition.nil?
+    filtered = filtered.where(filter_condition) unless filter_condition.nil?
 
-      arr << [:group, 'map_id', 'user_id']
-      arr << [:as, 'filtered']
-    end.reduce(result_log) { |obj, args| obj.public_send(*args) }
+    filtered =
+      filtered
+      .group('map_id', 'user_id')
+      .as('filtered')
 
     join_source =
       result_log
