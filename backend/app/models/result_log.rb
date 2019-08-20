@@ -10,7 +10,10 @@ class ResultLog < ApplicationRecord
   scope :snapshot_results, ->(last_played_since: nil, last_played_until: nil) do
     result_log = ResultLog.arel_table
 
-    filtered = result_log.project(Arel.sql(%|map_id, MAX(last_played_at) AS l|))
+    filtered = result_log.project(
+      result_log[:map_id],
+      Arel::Nodes::NamedFunction.new('MAX', [result_log[:last_played_at]]).as('l'),
+    )
 
     filter_condition = [].tap do |cond|
       cond << result_log[:last_played_at].gteq(last_played_since) unless last_played_since.nil?
@@ -21,7 +24,7 @@ class ResultLog < ApplicationRecord
 
     filtered =
       filtered
-      .group('map_id', 'user_id')
+      .group(result_log[:map_id], result_log[:user_id])
       .as('filtered')
 
     join_source =
