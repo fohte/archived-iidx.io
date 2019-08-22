@@ -37,7 +37,9 @@ module Types
       def result(username:, last_played_since: nil, last_played_until: nil)
         if last_played_since.nil? && last_played_until.nil?
           LoaderUtils.find_by!(User, name: username) do |user|
-            Loaders::AssociationLoader.for(Map, :results, scope: user.results).load(object).then(&:first)
+            scope = user.results
+
+            LoaderUtils.find_by(Result, { map_id: object.id }, scope: scope)
           end
         else
           LoaderUtils.find_by!(User, name: username) do |user|
@@ -46,8 +48,8 @@ module Types
               last_played_until: last_played_until,
             )
 
-            Loaders::AssociationLoader.for(Map, :result_logs, scope: scope).load(object).then do |records|
-              records.find { |record| record.map_id == object.id }
+            LoaderUtils.find_all(ResultLog, { map_id: object.id }, scope: scope).then do |r|
+              r&.first
             end
           end
         end
@@ -59,7 +61,7 @@ module Types
 
       def results(username:)
         LoaderUtils.find_by!(User, name: username) do |user|
-          Loaders::AssociationLoader.for(Map, :result_logs, scope: user.result_logs).load(object)
+          LoaderUtils.find_all(ResultLog, { map_id: object.id }, scope: user.result_logs)
         end
       end
     end

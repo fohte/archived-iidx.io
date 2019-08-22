@@ -26,11 +26,15 @@ module LoaderUtils
       end
     end
 
+    def find_all(model, column_values, scope: nil)
+      load_promise(model, column_values, scope: scope, multiple: true)
+    end
+
     private
 
-    def load_promise(model, column_values, scope: nil)
+    def load_promise(model, column_values, scope: nil, multiple: false)
       Loaders::RecordLoader
-        .for(model, columns: column_values.keys, scope: scope)
+        .for(model, columns: column_values.keys, scope: scope, multiple: multiple)
         .load(column_values.values)
     end
   end

@@ -8,14 +8,9 @@ module Loaders
       nil
     end
 
-    def self.loader_key_for(*args, scope: nil)
-      super(*args, scope: scope&.to_sql)
-    end
-
-    def initialize(model, association_name, scope: nil)
+    def initialize(model, association_name)
       @model = model
       @association_name = association_name
-      @scope = scope
       validate
     end
 
@@ -43,18 +38,7 @@ module Loaders
     end
 
     def preload_association(records)
-      ::ActiveRecord::Associations::Preloader.new.preload(records, @association_name, preload_scope)
-    end
-
-    # this is from the graphql preloader gem
-    def preload_scope
-      return nil unless @scope
-
-      reflection = @model.reflect_on_association(@association_name)
-      raise ArgumentError, 'Cannot specify preload_scope for polymorphic associations' if
-        reflection.polymorphic?
-
-      @scope if @scope&.klass == reflection.klass
+      ::ActiveRecord::Associations::Preloader.new.preload(records, @association_name)
     end
 
     def read_association(record)
