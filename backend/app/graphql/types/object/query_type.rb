@@ -47,6 +47,8 @@ module Types
       end
 
       field :search_maps, resolver: Resolvers::SearchMaps, description: 'Search maps.'
+
+      field :updated_results, resolver: Resolvers::UpdatedResults
     end
   end
 end

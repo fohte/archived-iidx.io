@@ -159,6 +159,7 @@ export type Query = {
   musics?: Maybe<Array<Music>>
   /** Search maps. */
   searchMaps: MapList
+  updatedResults: ResultList
   /** Find a user by name. */
   user?: Maybe<User>
   /** The currently authenticated user. */
@@ -177,6 +178,14 @@ export type QuerySearchMapsArgs = {
   levels?: Maybe<Array<Maybe<Scalars['Int']>>>
   playStyle?: Maybe<PlayStyle>
   difficulties?: Maybe<Array<Maybe<Difficulty>>>
+}
+
+export type QueryUpdatedResultsArgs = {
+  username: Scalars['String']
+  offset?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+  baseDatetime?: Maybe<Scalars['ISO8601DateTime']>
+  targetDatetime: Scalars['ISO8601DateTime']
 }
 
 export type QueryUserArgs = {
@@ -203,6 +212,12 @@ export type Result = {
   score?: Maybe<Scalars['Int']>
   scoreRate?: Maybe<Scalars['Float']>
   user: User
+}
+
+export type ResultList = Pageable & {
+  __typename?: 'ResultList'
+  nodes: Array<Result>
+  totalCount: Scalars['Int']
 }
 
 export type User = {

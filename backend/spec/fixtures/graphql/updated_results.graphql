@@ -1,0 +1,17 @@
+query(
+  $username: String!
+  $baseDatetime: ISO8601DateTime
+  $targetDatetime: ISO8601DateTime!
+) {
+  updatedResults(
+    username: $username
+    baseDatetime: $baseDatetime
+    targetDatetime: $targetDatetime
+  ) {
+    totalCount
+
+    nodes {
+      id
+    }
+  }
+}

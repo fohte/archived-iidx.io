@@ -187,6 +187,7 @@ type Query {
   Search maps.
   """
   searchMaps(difficulties: [Difficulty], levels: [Int], limit: Int, offset: Int, playStyle: PlayStyle, title: String, username: String!): MapList!
+  updatedResults(baseDatetime: ISO8601DateTime, limit: Int, offset: Int, targetDatetime: ISO8601DateTime!, username: String!): ResultList!
 
   """
   Find a user by name.
@@ -219,6 +220,11 @@ type Result {
   score: Int
   scoreRate: Float
   user: User!
+}
+
+type ResultList implements Pageable {
+  nodes: [Result!]!
+  totalCount: Int!
 }
 
 type User {
