@@ -184,6 +184,43 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           )
         end
       end
+
+      context 'oldest: true のとき' do
+        let(:query) do
+          <<~GRAPHQL
+            query($username: String!) {
+              searchMaps(username: $username) {
+                nodes {
+                  result(username: $username, oldest: true) {
+                    id
+                  }
+                }
+              }
+            }
+          GRAPHQL
+        end
+
+        it 'lastPlayedSince 以降で最新のリザルトを返す' do
+          map = build(:map, :with_music)
+          result = build(:result, user: user, map: map)
+
+          # 古いリザルト
+          target = create(:result_log, user: user, result: result, map: map, last_played_at: 7.days.ago)
+
+          # 最新のリザルト
+          create(:result_log, user: user, result: result, map: map, last_played_at: 2.days.ago)
+
+          expect(response['data']).to eq(
+            'searchMaps' => {
+              'nodes' => [{
+                'result' => {
+                  'id' => target.id.to_s,
+                },
+              }],
+            },
+          )
+        end
+      end
     end
   end
 end

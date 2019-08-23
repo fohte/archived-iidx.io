@@ -120,5 +120,21 @@ RSpec.describe ResultLog do
         ).to contain_exactly(target)
       end
     end
+
+    context 'oldest: true のとき' do
+      it '最古のリザルトを返す' do
+        user = build(:user)
+        map = build(:map, :with_music)
+        result = build(:result, user: user, map: map)
+
+        # 古いリザルト
+        target = create(:result_log, user: user, result: result, map: map, last_played_at: 7.days.ago)
+
+        # 最新のリザルト
+        create(:result_log, user: user, result: result, map: map, last_played_at: 2.days.ago)
+
+        expect(described_class.snapshot_results(oldest: true)).to contain_exactly(target)
+      end
+    end
   end
 end

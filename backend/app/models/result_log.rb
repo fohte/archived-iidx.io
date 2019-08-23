@@ -7,12 +7,15 @@ class ResultLog < ApplicationRecord
 
   include ResultConcern
 
-  scope :snapshot_results, ->(last_played_since: nil, last_played_until: nil) do
+  scope :snapshot_results, ->(last_played_since: nil, last_played_until: nil, oldest: false) do
     result_log = ResultLog.arel_table
 
     filtered = result_log.project(
       result_log[:map_id],
-      Arel::Nodes::NamedFunction.new('MAX', [result_log[:last_played_at]]).as('l'),
+      Arel::Nodes::NamedFunction.new(
+        oldest ? 'MIN' : 'MAX',
+        [result_log[:last_played_at]],
+      ).as('l'),
     )
 
     filter_condition = [].tap do |cond|

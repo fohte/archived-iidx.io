@@ -32,10 +32,11 @@ module Types
         argument :username, String, required: true
         argument :last_played_since, GraphQL::Types::ISO8601DateTime, required: false
         argument :last_played_until, GraphQL::Types::ISO8601DateTime, required: false
+        argument :oldest, Boolean, required: false
       end
 
-      def result(username:, last_played_since: nil, last_played_until: nil)
-        if last_played_since.nil? && last_played_until.nil?
+      def result(username:, last_played_since: nil, last_played_until: nil, oldest: false)
+        if last_played_since.nil? && last_played_until.nil? && !oldest
           LoaderUtils.find_by!(User, name: username) do |user|
             scope = user.results
 
@@ -46,6 +47,7 @@ module Types
             scope = user.result_logs.snapshot_results(
               last_played_since: last_played_since,
               last_played_until: last_played_until,
+              oldest: oldest,
             )
 
             LoaderUtils.find_all(ResultLog, { map_id: object.id }, scope: scope).then do |r|

@@ -91,6 +91,7 @@ export type MapResultArgs = {
   username: Scalars['String']
   lastPlayedSince?: Maybe<Scalars['ISO8601DateTime']>
   lastPlayedUntil?: Maybe<Scalars['ISO8601DateTime']>
+  oldest?: Maybe<Scalars['Boolean']>
 }
 
 export type MapResultsArgs = {
