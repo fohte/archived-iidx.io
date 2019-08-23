@@ -4,6 +4,13 @@ module Types
   module Object
     class ResultType < Base
       field :id, ID, null: false
+
+      field :user, UserType, null: false
+
+      def user
+        Loaders::AssociationLoader.for(object.class, :user).load(object)
+      end
+
       field :map, MapType, null: false
 
       def map

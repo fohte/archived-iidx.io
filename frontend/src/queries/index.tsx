@@ -202,6 +202,7 @@ export type Result = {
   nextGradeDiff: GradeDiff
   score?: Maybe<Scalars['Int']>
   scoreRate?: Maybe<Scalars['Float']>
+  user: User
 }
 
 export type User = {
