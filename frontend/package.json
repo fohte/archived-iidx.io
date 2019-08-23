@@ -83,7 +83,7 @@
     "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/jest": "24.0.18",
     "@types/react-test-renderer": "16.9.0",
-    "@types/validator": "10.11.2",
+    "@types/validator": "10.11.3",
     "@typescript-eslint/eslint-plugin": "1.13.0",
     "@typescript-eslint/parser": "1.13.0",
     "babel-core": "7.0.0-bridge.0",
@@ -132,6 +132,6 @@
     "@types/react-test-renderer": "16.9.0",
     "@types/recharts": "1.1.21",
     "@types/recompose": "0.30.6",
-    "@types/validator": "10.11.2"
+    "@types/validator": "10.11.3"
   }
 }
