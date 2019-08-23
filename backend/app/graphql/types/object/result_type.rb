@@ -5,6 +5,11 @@ module Types
     class ResultType < Base
       field :id, ID, null: false
       field :map, MapType, null: false
+
+      def map
+        Loaders::AssociationLoader.for(object.class, :map).load(object)
+      end
+
       field :score, Integer, null: true
       field :miss_count, Integer, null: true
       field :bpi, Float, null: true
