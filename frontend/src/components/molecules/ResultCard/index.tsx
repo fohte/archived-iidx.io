@@ -6,7 +6,8 @@ import routes from '@app/routes'
 import { WithLoadingState } from '@app/lib/types'
 import ResultBox, {
   Map as ResultBoxMap,
-  Result as ResultBoxResult,
+  CurrentResult as ResultBoxCurrentResult,
+  OldResult as ResultBoxOldResult,
 } from '@app/components/molecules/ResultBox'
 import { Difficulty, PlayStyle } from '@app/queries'
 
@@ -26,7 +27,8 @@ export interface Map extends ResultBoxMap {
   level: number
   music: Music
 
-  result?: ResultBoxResult | null
+  result: ResultBoxCurrentResult | null
+  oldResult: ResultBoxOldResult | null
 }
 
 interface Data {
@@ -65,7 +67,7 @@ const ResultCard: React.FunctionComponent<Props> = ({
   }
 
   const { map } = data
-  const { result, music } = map
+  const { result, oldResult, music } = map
 
   // The type of routes.findAndGetUrls is not defined,
   // so routes should cast to any
@@ -98,7 +100,7 @@ const ResultCard: React.FunctionComponent<Props> = ({
             content={
               <ResultBox
                 {...resultBoxProps}
-                data={{ loading: false, result, map }}
+                data={{ loading: false, result, oldResult, map }}
               />
             }
           />

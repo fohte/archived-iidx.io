@@ -16,7 +16,7 @@ import {
 
 import Box from '@app/components/atoms/Box'
 import ResultBox, {
-  Result as ResultBoxResult,
+  CurrentResult as ResultBoxCurrentResult,
   Map as ResultBoxMap,
 } from '@app/components/molecules/ResultBox'
 import { formats, formatUnixTime } from '@app/lib/dateTime'
@@ -53,7 +53,7 @@ export interface ResultLog {
 export interface Props {
   music: Music
   map: Map
-  result?: ResultBoxResult
+  result?: ResultBoxCurrentResult
   allResults: ResultLog[]
   screenName: string
 }

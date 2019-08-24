@@ -3,6 +3,7 @@ import * as _ from 'lodash'
 import ErrorPage from 'next/error'
 import * as React from 'react'
 
+import CurrentDateTimeContext from '@app/contexts/CurrentDateTimeContext'
 import Container from '@app/components/atoms/Container'
 import Pagination from '@app/components/atoms/Pagination'
 import ResultTable from '@app/components/molecules/ResultTable'
@@ -56,6 +57,8 @@ const ResultList: React.SFC<Props> = ({
 }) => {
   const containerElement = React.useRef<HTMLDivElement | null>(null)
 
+  const { current } = React.useContext(CurrentDateTimeContext)
+
   // ページ情報を除くクエリ変数を保持しておく
   const baseVariables: GetUserResultsQueryVariables = {
     username: screenName,
@@ -63,6 +66,7 @@ const ResultList: React.SFC<Props> = ({
     playStyle,
     difficulties,
     levels,
+    comparisonDateTime: current.subtract(1, 'day').toISOString(),
     limit: numItemsPerPage,
   }
 

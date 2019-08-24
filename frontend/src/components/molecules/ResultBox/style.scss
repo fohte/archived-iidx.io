@@ -1,6 +1,7 @@
 @import 'styles/colors';
 @import 'styles/mixins';
 @import 'styles/variables';
+@import 'styles/breakpoints';
 
 $left-right-padding: 1.5rem;
 $top-bottom-padding: 1rem;
@@ -56,10 +57,8 @@ $top-bottom-padding: 1rem;
       display: inline-block;
     }
 
-    dd {
-      &.moderate {
-        color: $primary-fg-lighter-color;
-      }
+    .moderate {
+      color: $primary-fg-lighter-color;
     }
   }
 
@@ -86,6 +85,32 @@ $top-bottom-padding: 1rem;
 
     .failed {
       color: $primary-fg-color;
+    }
+
+    dd {
+      > div {
+        display: inline-block;
+      }
+
+      @include on-mobile() {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .clear-type-diff-icon {
+      display: inline-block;
+      margin: 0 0.5em;
+
+      @include on-mobile() {
+        margin: 0.25em 0;
+
+        > svg {
+          transform: rotate(90deg);
+        }
+      }
     }
   }
 

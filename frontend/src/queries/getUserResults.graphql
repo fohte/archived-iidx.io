@@ -6,6 +6,7 @@ query getUserResults(
   $difficulties: [Difficulty]
   $offset: Int
   $limit: Int
+  $comparisonDateTime: ISO8601DateTime
 ) {
   searchMaps(
     title: $title
@@ -47,6 +48,19 @@ query getUserResults(
           grade
           diff
         }
+      }
+
+      oldResult: result(
+        username: $username
+        lastPlayedUntil: $comparisonDateTime
+      ) {
+        id
+        score
+        missCount
+        clearLamp
+        scoreRate
+        bpi
+        lastPlayedAt
       }
     }
   }

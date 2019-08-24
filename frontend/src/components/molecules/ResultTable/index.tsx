@@ -2,7 +2,7 @@ import classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
 
-import { Result } from '@app/components/molecules/ResultBox'
+import { CurrentResult, OldResult } from '@app/components/molecules/ResultBox'
 import ResultCard from '@app/components/molecules/ResultCard'
 import { Difficulty, PlayStyle } from '@app/queries'
 
@@ -21,7 +21,8 @@ export interface Map {
   level: number
   difficulty: Difficulty
   playStyle: PlayStyle
-  result?: Result | null
+  result: CurrentResult | null
+  oldResult: OldResult | null
   music: Music
 }
 

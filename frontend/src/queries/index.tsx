@@ -311,6 +311,7 @@ export type GetUserResultsQueryVariables = {
   difficulties?: Maybe<Array<Maybe<Difficulty>>>
   offset?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
+  comparisonDateTime?: Maybe<Scalars['ISO8601DateTime']>
 }
 
 export type GetUserResultsQuery = { __typename?: 'Query' } & {
@@ -341,6 +342,18 @@ export type GetUserResultsQuery = { __typename?: 'Query' } & {
                     'grade' | 'diff'
                   >
                 }
+            >
+            oldResult: Maybe<
+              { __typename?: 'Result' } & Pick<
+                Result,
+                | 'id'
+                | 'score'
+                | 'missCount'
+                | 'clearLamp'
+                | 'scoreRate'
+                | 'bpi'
+                | 'lastPlayedAt'
+              >
             >
           }
       >
@@ -531,6 +544,7 @@ export const GetUserResultsDocument = gql`
     $difficulties: [Difficulty]
     $offset: Int
     $limit: Int
+    $comparisonDateTime: ISO8601DateTime
   ) {
     searchMaps(
       title: $title
@@ -567,6 +581,18 @@ export const GetUserResultsDocument = gql`
             grade
             diff
           }
+        }
+        oldResult: result(
+          username: $username
+          lastPlayedUntil: $comparisonDateTime
+        ) {
+          id
+          score
+          missCount
+          clearLamp
+          scoreRate
+          bpi
+          lastPlayedAt
         }
       }
     }

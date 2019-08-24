@@ -11,6 +11,7 @@ import '@app/rawStyles/toast.scss'
 
 import ToastContainer from '@app/components/others/ToastContainer'
 import AuthStateProvider from '@app/contexts/AuthStateProvider'
+import CurrentDateTimeProvider from '@app/contexts/CurrentDateTimeProvider'
 import withApollo, { Props } from '@app/lib/withApollo'
 
 config.autoAddCss = false
@@ -49,8 +50,10 @@ export default withApollo(
         <Container>
           <ApolloProvider client={apolloClient}>
             <AuthStateProvider>
-              <Component {...pageProps} />
-              <ToastContainer />
+              <CurrentDateTimeProvider>
+                <Component {...pageProps} />
+                <ToastContainer />
+              </CurrentDateTimeProvider>
             </AuthStateProvider>
           </ApolloProvider>
         </Container>
