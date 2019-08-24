@@ -30,7 +30,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'updatedResults' => {
             'totalCount' => 1,
             'nodes' => [{
-              'id' => target.id.to_s,
+              'id' => target.uuid,
             }],
           },
         )
@@ -64,7 +64,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'updatedResults' => {
             'totalCount' => 1,
             'nodes' => [{
-              'id' => target.id.to_s,
+              'id' => target.uuid,
             }],
           },
         )
@@ -86,7 +86,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'updatedResults' => {
             'totalCount' => 1,
             'nodes' => [{
-              'id' => target.id.to_s,
+              'id' => target.uuid,
             }],
           },
         )

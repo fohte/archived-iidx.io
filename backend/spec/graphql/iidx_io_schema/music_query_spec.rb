@@ -6,9 +6,10 @@ RSpec.describe IIDXIOSchema, type: :graphql do
   describe 'music query' do
     let(:query) do
       <<~GRAPHQL
-        query($id: ID!) {
-          music(id: $id) {
+        query($number: Int!) {
+          music(number: $number) {
             id
+            number
             title
             artist
             textageUid
@@ -20,12 +21,13 @@ RSpec.describe IIDXIOSchema, type: :graphql do
     end
 
     let(:music) { create(:music, series: 1) }
-    let(:variables) { { id: music.id } }
+    let(:variables) { { number: music.id } }
 
     it 'returns a music' do
       expect(response['data']).to eq(
         'music' => {
-          'id' => music.id.to_s,
+          'id' => music.uuid,
+          'number' => music.id,
           'title' => music.title,
           'artist' => music.artist,
           'textageUid' => music.textage_uid,
@@ -38,7 +40,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
     include_examples 'non errors'
 
     context 'when the music does not exist' do
-      let(:variables) { { id: "xxx#{music.id}" } }
+      let(:variables) { { number: music.id + 1 } }
 
       it 'does not return user' do
         expect(response['data']).to eq('music' => nil)
@@ -52,8 +54,8 @@ RSpec.describe IIDXIOSchema, type: :graphql do
     context 'with a map' do
       let(:query) do
         <<~GRAPHQL
-          query($id: ID!, $playStyle: PlayStyle!, $difficulty: Difficulty!) {
-            music(id: $id) {
+          query($number: Int!, $playStyle: PlayStyle!, $difficulty: Difficulty!) {
+            music(number: $number) {
               map(playStyle: $playStyle, difficulty: $difficulty) {
                 id
                 numNotes
@@ -71,13 +73,13 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       let(:music) { create(:music, maps: [map]) }
       let(:map) { build(:map, play_style: :sp, difficulty: :another) }
 
-      let(:variables) { { id: music.id, playStyle: 'SP', difficulty: 'ANOTHER' } }
+      let(:variables) { { number: music.id, playStyle: 'SP', difficulty: 'ANOTHER' } }
 
       it 'returns a map' do
         expect(response['data']).to eq(
           'music' => {
             'map' => {
-              'id' => map.id.to_s,
+              'id' => map.uuid,
               'numNotes' => map.num_notes,
               'level' => map.level,
               'playStyle' => 'SP',
@@ -92,7 +94,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       include_examples 'non errors'
 
       context 'when the map does not exist' do
-        let(:variables) { { id: music.id, playStyle: 'DP', difficulty: 'ANOTHER' } }
+        let(:variables) { { number: music.id, playStyle: 'DP', difficulty: 'ANOTHER' } }
 
         it 'does not return user' do
           expect(response['data']).to eq('music' => { 'map' => nil })
@@ -107,8 +109,8 @@ RSpec.describe IIDXIOSchema, type: :graphql do
     context 'with a result' do
       let(:query) do
         <<~GRAPHQL
-          query($id: ID!, $playStyle: PlayStyle!, $difficulty: Difficulty!, $username: String!) {
-            music(id: $id) {
+          query($number: Int!, $playStyle: PlayStyle!, $difficulty: Difficulty!, $username: String!) {
+            music(number: $number) {
               map(playStyle: $playStyle, difficulty: $difficulty) {
                 result(username: $username) {
                   id
@@ -127,14 +129,14 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       let(:result) { build(:result, clear_lamp: :full_combo, user: user) }
       let(:user) { create(:user) }
 
-      let(:variables) { { id: music.id, playStyle: 'SP', difficulty: 'ANOTHER', username: user.name } }
+      let(:variables) { { number: music.id, playStyle: 'SP', difficulty: 'ANOTHER', username: user.name } }
 
       it 'returns a map' do
         expect(response['data']).to eq(
           'music' => {
             'map' => {
               'result' => {
-                'id' => result.id.to_s,
+                'id' => result.uuid,
                 'score' => result.score,
                 'missCount' => result.miss_count,
                 'clearLamp' => 'FULL_COMBO',

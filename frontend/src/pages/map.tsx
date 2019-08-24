@@ -28,7 +28,7 @@ import {
 // eslint-disable-next-line @typescript-eslint/prefer-interface
 export type Query = {
   screenName: string
-  musicId: string
+  musicNumber: string
   playStyle: string
   difficulty: string
 }
@@ -103,13 +103,13 @@ MapPage.getInitialProps = async ({ res, query }) => {
   let playStyle: PlayStyle
   let difficulty: Difficulty
   let screenName: string
-  let musicId: string
+  let musicNumber: number
 
   try {
     playStyle = ensurePlayStyle(query.playStyle, 'playStyle')
     difficulty = ensureDifficulty(query.difficulty, 'difficulty')
     screenName = ensureString(query.screenName, 'screenName')
-    musicId = ensureInteger(query.musicId, 'musicId').toString()
+    musicNumber = ensureInteger(query.musicNumber, 'musicNumber')
   } catch (e) {
     throwSSRError(res, 404)
     console.error(e)
@@ -121,7 +121,7 @@ MapPage.getInitialProps = async ({ res, query }) => {
   const result = await client.query<FindMapQuery, FindMapQueryVariables>({
     query: FindMapDocument,
     variables: {
-      id: musicId,
+      musicNumber,
       playStyle,
       difficulty,
       username: screenName,

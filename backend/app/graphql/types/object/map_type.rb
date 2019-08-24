@@ -3,7 +3,7 @@
 module Types
   module Object
     class MapType < Base
-      field :id, ID, null: false
+      field :id, resolver: Resolvers::ModelID
 
       field :music, MusicType, null: false, preload: :music
 

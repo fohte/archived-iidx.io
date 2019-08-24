@@ -17,7 +17,7 @@ const cx = classnames.bind(css)
 const { Link } = routes
 
 export interface Music {
-  id: string
+  number: number
   title: string
 }
 
@@ -73,7 +73,7 @@ const ResultCard: React.FunctionComponent<Props> = ({
   // so routes should cast to any
   const href = (routes as any).findAndGetUrls('map', {
     screenName,
-    musicId: music.id,
+    musicNumber: music.number.toString(),
     playStyle: map.playStyle.toLowerCase(),
     difficulty: map.difficulty.toLowerCase(),
   }).urls.as

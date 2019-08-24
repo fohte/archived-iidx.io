@@ -3,7 +3,13 @@
 module Types
   module Object
     class MusicType < Base
-      field :id, ID, null: false
+      field :id, resolver: Resolvers::ModelID
+      field :number, Integer, null: false
+
+      def number
+        object.id
+      end
+
       field :title, String, null: false
       field :genre, String, null: false
       field :artist, String, null: false

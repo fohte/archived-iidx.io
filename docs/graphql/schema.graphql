@@ -141,6 +141,7 @@ type Music {
   leggendaria: Boolean!
   map(difficulty: Difficulty!, playStyle: PlayStyle!): Map
   maps: [Map!]!
+  number: Int!
   series: Int!
   textageUid: String!
   title: String!
@@ -176,7 +177,7 @@ type Query {
   """
   Find a music.
   """
-  music(id: ID!): Music
+  music(number: Int!): Music
 
   """
   Find musics.

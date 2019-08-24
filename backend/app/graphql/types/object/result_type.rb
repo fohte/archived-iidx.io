@@ -3,7 +3,7 @@
 module Types
   module Object
     class ResultType < Base
-      field :id, ID, null: false
+      field :id, resolver: Resolvers::ModelID
 
       field :user, UserType, null: false, preload: :user
 

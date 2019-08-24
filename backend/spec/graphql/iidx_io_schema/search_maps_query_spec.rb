@@ -69,9 +69,9 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'searchMaps' => {
             'totalCount' => 1,
             'nodes' => [{
-              'id' => map.id.to_s,
-              'music' => { 'id' => map.music.id.to_s },
-              'result' => { 'id' => result.id.to_s },
+              'id' => map.uuid,
+              'music' => { 'id' => map.music.uuid },
+              'result' => { 'id' => result.uuid },
             }],
           },
         )
@@ -96,9 +96,9 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'searchMaps' => {
             'totalCount' => 1,
             'nodes' => [{
-              'id' => map.id.to_s,
-              'music' => { 'id' => map.music.id.to_s },
-              'result' => { 'id' => result.id.to_s },
+              'id' => map.uuid,
+              'music' => { 'id' => map.music.uuid },
+              'result' => { 'id' => result.uuid },
             }],
           },
         )
@@ -119,14 +119,14 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       it 'filters by levels' do
         expect(response['data']['searchMaps']['nodes']).to match_array([
           {
-            'id' => level11_map.id.to_s,
-            'music' => { 'id' => level11_map.music.id.to_s },
-            'result' => { 'id' => level11_map.results.last.id.to_s },
+            'id' => level11_map.uuid,
+            'music' => { 'id' => level11_map.music.uuid },
+            'result' => { 'id' => level11_map.results.last.uuid },
           },
           {
-            'id' => level12_map.id.to_s,
-            'music' => { 'id' => level12_map.music.id.to_s },
-            'result' => { 'id' => level12_map.results.last.id.to_s },
+            'id' => level12_map.uuid,
+            'music' => { 'id' => level12_map.music.uuid },
+            'result' => { 'id' => level12_map.results.last.uuid },
           },
         ])
       end
@@ -147,9 +147,9 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'searchMaps' => {
             'totalCount' => 1,
             'nodes' => [{
-              'id' => sp_map.id.to_s,
-              'music' => { 'id' => sp_map.music.id.to_s },
-              'result' => { 'id' => sp_map.results.last.id.to_s },
+              'id' => sp_map.uuid,
+              'music' => { 'id' => sp_map.music.uuid },
+              'result' => { 'id' => sp_map.results.last.uuid },
             }],
           },
         )
@@ -170,14 +170,14 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       it 'filters by play style' do
         expect(response['data']['searchMaps']['nodes']).to match_array([
           {
-            'id' => another_map.id.to_s,
-            'music' => { 'id' => another_map.music.id.to_s },
-            'result' => { 'id' => another_map.results.last.id.to_s },
+            'id' => another_map.uuid,
+            'music' => { 'id' => another_map.music.uuid },
+            'result' => { 'id' => another_map.results.last.uuid },
           },
           {
-            'id' => hyper_map.id.to_s,
-            'music' => { 'id' => hyper_map.music.id.to_s },
-            'result' => { 'id' => hyper_map.results.last.id.to_s },
+            'id' => hyper_map.uuid,
+            'music' => { 'id' => hyper_map.music.uuid },
+            'result' => { 'id' => hyper_map.results.last.uuid },
           },
         ])
       end
@@ -201,9 +201,9 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             'searchMaps' => {
               'totalCount' => 2,
               'nodes' => [{
-                'id' => map.id.to_s,
-                'music' => { 'id' => map.music.id.to_s },
-                'result' => { 'id' => map.results.last.id.to_s },
+                'id' => map.uuid,
+                'music' => { 'id' => map.music.uuid },
+                'result' => { 'id' => map.results.last.uuid },
               }],
             },
           )
@@ -220,9 +220,9 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             'searchMaps' => {
               'totalCount' => 2,
               'nodes' => [{
-                'id' => map.id.to_s,
-                'music' => { 'id' => map.music.id.to_s },
-                'result' => { 'id' => map.results.last.id.to_s },
+                'id' => map.uuid,
+                'music' => { 'id' => map.music.uuid },
+                'result' => { 'id' => map.results.last.uuid },
               }],
             },
           )

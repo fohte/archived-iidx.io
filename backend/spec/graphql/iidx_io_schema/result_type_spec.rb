@@ -73,9 +73,9 @@ RSpec.describe IIDXIOSchema, type: :graphql do
         expect(response['data']).to eq(
           'searchMaps' => {
             'nodes' => [{
-              'id' => map.id.to_s,
+              'id' => map.uuid,
               'result' => {
-                'id' => result.id.to_s,
+                'id' => result.uuid,
                 'score' => result.score,
                 'missCount' => result.miss_count,
                 'scoreRate' => result.score_rate,
@@ -174,9 +174,9 @@ RSpec.describe IIDXIOSchema, type: :graphql do
         expect(response['data']).to eq(
           'searchMaps' => {
             'nodes' => [{
-              'id' => map.id.to_s,
+              'id' => map.uuid,
               'results' => [{
-                'id' => result_log.id.to_s,
+                'id' => result_log.uuid,
                 'score' => result_log.score,
                 'missCount' => result_log.miss_count,
                 'bpi' => result_log.bpi,

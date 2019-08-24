@@ -31,11 +31,11 @@ module Types
 
       field :music, MusicType, null: true do
         description 'Find a music.'
-        argument :id, ID, required: true
+        argument :number, Integer, required: true
       end
 
-      def music(id:)
-        LoaderUtils.find_by!(Music, id: id)
+      def music(number:)
+        LoaderUtils.find_by!(Music, id: number)
       end
 
       field :maps, [MapType], null: true do

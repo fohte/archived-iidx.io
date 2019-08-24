@@ -28,6 +28,7 @@ query getUserResults(
 
       music {
         id
+        number
         title
       }
 

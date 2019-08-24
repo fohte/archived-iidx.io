@@ -112,6 +112,7 @@ export type Music = {
   leggendaria: Scalars['Boolean']
   map?: Maybe<Map>
   maps: Array<Map>
+  number: Scalars['Int']
   series: Scalars['Int']
   textageUid: Scalars['String']
   title: Scalars['String']
@@ -167,7 +168,7 @@ export type Query = {
 }
 
 export type QueryMusicArgs = {
-  id: Scalars['ID']
+  number: Scalars['Int']
 }
 
 export type QuerySearchMapsArgs = {
@@ -233,7 +234,7 @@ export type UserProfile = {
   id: Scalars['ID']
 }
 export type FindMapQueryVariables = {
-  id: Scalars['ID']
+  musicNumber: Scalars['Int']
   playStyle: PlayStyle
   difficulty: Difficulty
   username: Scalars['String']
@@ -244,6 +245,7 @@ export type FindMapQuery = { __typename?: 'Query' } & {
     { __typename?: 'Music' } & Pick<
       Music,
       | 'id'
+      | 'number'
       | 'title'
       | 'genre'
       | 'artist'
@@ -321,7 +323,10 @@ export type GetUserResultsQuery = { __typename?: 'Query' } & {
           Map,
           'id' | 'numNotes' | 'level' | 'difficulty' | 'playStyle'
         > & {
-            music: { __typename?: 'Music' } & Pick<Music, 'id' | 'title'>
+            music: { __typename?: 'Music' } & Pick<
+              Music,
+              'id' | 'number' | 'title'
+            >
             result: Maybe<
               { __typename?: 'Result' } & Pick<
                 Result,
@@ -400,13 +405,14 @@ export type RegisterResultsWithCsvMutation = { __typename?: 'Mutation' } & {
 
 export const FindMapDocument = gql`
   query findMap(
-    $id: ID!
+    $musicNumber: Int!
     $playStyle: PlayStyle!
     $difficulty: Difficulty!
     $username: String!
   ) {
-    music(id: $id) {
+    music(number: $musicNumber) {
       id
+      number
       title
       genre
       artist
@@ -564,6 +570,7 @@ export const GetUserResultsDocument = gql`
         playStyle
         music {
           id
+          number
           title
         }
         result(username: $username) {

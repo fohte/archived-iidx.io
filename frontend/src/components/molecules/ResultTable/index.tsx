@@ -11,7 +11,7 @@ import * as css from './style.scss'
 const cx = classnames.bind(css)
 
 export interface Music {
-  id: string
+  number: number
   title: string
 }
 

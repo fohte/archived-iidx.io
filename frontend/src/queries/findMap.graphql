@@ -1,11 +1,12 @@
 query findMap(
-  $id: ID!
+  $musicNumber: Int!
   $playStyle: PlayStyle!
   $difficulty: Difficulty!
   $username: String!
 ) {
-  music(id: $id) {
+  music(number: $musicNumber) {
     id
+    number
     title
     genre
     artist

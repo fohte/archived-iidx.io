@@ -32,7 +32,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             'searchMaps' => {
               'nodes' => [{
                 'result' => {
-                  'id' => result.id.to_s,
+                  'id' => result.uuid,
                 },
               }],
             },
@@ -79,7 +79,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             'searchMaps' => {
               'nodes' => [{
                 'result' => {
-                  'id' => target.id.to_s,
+                  'id' => target.uuid,
                 },
               }],
             },
@@ -126,7 +126,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             'searchMaps' => {
               'nodes' => [{
                 'result' => {
-                  'id' => target.id.to_s,
+                  'id' => target.uuid,
                 },
               }],
             },
@@ -177,7 +177,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             'searchMaps' => {
               'nodes' => [{
                 'result' => {
-                  'id' => target.id.to_s,
+                  'id' => target.uuid,
                 },
               }],
             },
@@ -214,7 +214,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             'searchMaps' => {
               'nodes' => [{
                 'result' => {
-                  'id' => target.id.to_s,
+                  'id' => target.uuid,
                 },
               }],
             },
