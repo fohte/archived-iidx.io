@@ -15,11 +15,7 @@ module Types
       end
 
       field :leggendaria, Boolean, null: false
-      field :maps, [MapType], null: false
-
-      def maps
-        Loaders::AssociationLoader.for(Music, :maps).load(object)
-      end
+      field :maps, [MapType], null: false, preload: :maps
 
       field :map, MapType, null: true do
         argument :play_style, Enum::PlayStyle, required: true

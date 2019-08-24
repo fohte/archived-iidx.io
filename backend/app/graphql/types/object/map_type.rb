@@ -5,11 +5,7 @@ module Types
     class MapType < Base
       field :id, ID, null: false
 
-      field :music, MusicType, null: false
-
-      def music
-        Loaders::AssociationLoader.for(Map, :music).load(object)
-      end
+      field :music, MusicType, null: false, preload: :music
 
       field :num_notes, Integer, null: false
       field :level, Integer, null: false
