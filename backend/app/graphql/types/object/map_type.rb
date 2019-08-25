@@ -32,14 +32,12 @@ module Types
       end
 
       def result(username:, last_played_since: nil, last_played_until: nil, oldest: false)
-        if last_played_since.nil? && last_played_until.nil? && !oldest
-          LoaderUtils.find_by!(User, name: username) do |user|
+        LoaderUtils.find_by!(User, name: username) do |user|
+          if last_played_since.nil? && last_played_until.nil? && !oldest
             scope = user.results
 
             LoaderUtils.find_by(Result, { map_id: object.id }, scope: scope)
-          end
-        else
-          LoaderUtils.find_by!(User, name: username) do |user|
+          else
             scope = user.result_logs.snapshot_results(
               last_played_since: last_played_since,
               last_played_until: last_played_until,
