@@ -12,6 +12,7 @@ import {
   PlayStyle,
 } from '@app/queries'
 import useServerResponse from '@app/lib/useServerResponse'
+import { findPreviousRefreshDateTime } from '@app/lib/dateTime'
 import CurrentDateTimeContext, {
   CurrentDateTimeContextShape,
 } from '@app/contexts/CurrentDateTimeContext'
@@ -31,7 +32,7 @@ export const toQueryVariables = (
   playStyle,
   difficulty,
   username: screenName,
-  comparisonDateTime: current.subtract(1, 'day').toISOString(),
+  comparisonDateTime: findPreviousRefreshDateTime(current).toISOString(),
 })
 
 const MapPage: React.FC<Props> = props => {

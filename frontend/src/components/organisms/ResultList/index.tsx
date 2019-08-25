@@ -8,6 +8,7 @@ import Container from '@app/components/atoms/Container'
 import Pagination from '@app/components/atoms/Pagination'
 import ResultTable from '@app/components/molecules/ResultTable'
 import { FormValues } from '@app/components/organisms/FilterForm'
+import { findPreviousRefreshDateTime } from '@app/lib/dateTime'
 import {
   useGetUserResultsQuery,
   GetUserResultsQueryVariables,
@@ -66,7 +67,7 @@ const ResultList: React.SFC<Props> = ({
     playStyle,
     difficulties,
     levels,
-    comparisonDateTime: current.subtract(1, 'day').toISOString(),
+    comparisonDateTime: findPreviousRefreshDateTime(current).toISOString(),
     limit: numItemsPerPage,
   }
 
