@@ -60,6 +60,20 @@ const create = (initialState?: NormalizedCacheObject) => {
   return new ApolloClient({
     connectToDevTools: isBrowser,
     ssrMode: !isBrowser,
+    // デフォルトだと errorPolicy が none になっていて、クエリでエラーが発生
+    // したときに Error が throw されてしまうが、エラー情報はクエリのレスポンス
+    // から取得できるので throw しないようにする
+    defaultOptions: {
+      query: {
+        errorPolicy: 'all',
+      },
+      watchQuery: {
+        errorPolicy: 'all',
+      },
+      mutate: {
+        errorPolicy: 'all',
+      },
+    },
     link: ApolloLink.from([handleError, withAuthorization, httpLink]),
     cache,
   })

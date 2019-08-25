@@ -11,8 +11,9 @@ import '@app/rawStyles/toast.scss'
 
 import ToastContainer from '@app/components/others/ToastContainer'
 import AuthStateProvider from '@app/contexts/AuthStateProvider'
+import ServerResponseContext from '@app/contexts/ServerResponseContext'
 import CurrentDateTimeProvider from '@app/contexts/CurrentDateTimeProvider'
-import withApollo, { Props } from '@app/lib/withApollo'
+import withApollo, { Props as WithApolloProps } from '@app/lib/withApollo'
 
 config.autoAddCss = false
 
@@ -30,29 +31,45 @@ export type PageComponentType<
   | NextComponentClass<P, IP, NextContext<Q>>
   | NextStatelessComponent<P, IP, NextContext<Q>>
 
+export interface InitialProps {
+  pageProps: any
+  response: () => NextContext['res']
+}
+
 export default withApollo(
-  class MyApp extends App<Props> {
+  class MyApp extends App<WithApolloProps & InitialProps> {
+    public static defaultProps = {
+      response: () => undefined,
+    }
+
     public static async getInitialProps({
       Component,
       ctx,
-    }: AppComponentContext) {
+    }: AppComponentContext): Promise<InitialProps> {
+      const pageProps = (Component as any).getInitialProps
+        ? await (Component as any).getInitialProps(ctx)
+        : {}
+
       return {
-        pageProps: (Component as any).getInitialProps
-          ? await (Component as any).getInitialProps(ctx)
-          : {},
+        pageProps,
+
+        // ctx.res を直接参照すると循環依存になるので注意
+        response: () => ctx.res,
       }
     }
 
     public render() {
-      const { Component, pageProps, apolloClient } = this.props
+      const { Component, pageProps, response, apolloClient } = this.props
 
       return (
         <Container>
           <ApolloProvider client={apolloClient}>
             <AuthStateProvider>
               <CurrentDateTimeProvider>
-                <Component {...pageProps} />
-                <ToastContainer />
+                <ServerResponseContext.Provider value={response()}>
+                  <Component {...pageProps} />
+                  <ToastContainer />
+                </ServerResponseContext.Provider>
               </CurrentDateTimeProvider>
             </AuthStateProvider>
           </ApolloProvider>

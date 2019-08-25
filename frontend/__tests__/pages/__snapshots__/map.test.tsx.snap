@@ -2,142 +2,456 @@
 
 exports[`/map renders correctly 1`] = `
 <div
-  style={
-    Object {
-      "alignItems": "center",
-      "background": "#fff",
-      "color": "#000",
-      "display": "flex",
-      "flexDirection": "column",
-      "fontFamily": "-apple-system, BlinkMacSystemFont, Roboto, \\"Segoe UI\\", \\"Fira Sans\\", Avenir, \\"Helvetica Neue\\", \\"Lucida Grande\\", sans-serif",
-      "height": "100vh",
-      "justifyContent": "center",
-      "textAlign": "center",
-    }
-  }
+  className="box"
 >
-  <div>
-    <style
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "body { margin: 0 }",
-        }
-      }
-    />
-    <h1
-      style={
-        Object {
-          "borderRight": "1px solid rgba(0, 0, 0,.3)",
-          "display": "inline-block",
-          "fontSize": "24px",
-          "fontWeight": 500,
-          "margin": 0,
-          "marginRight": "20px",
-          "padding": "10px 23px 10px 0",
-          "verticalAlign": "top",
-        }
-      }
-    >
-      404
-    </h1>
+  <nav
+    className="headerNav"
+  >
     <div
-      style={
-        Object {
-          "display": "inline-block",
-          "height": "49px",
-          "lineHeight": "49px",
-          "textAlign": "left",
-          "verticalAlign": "middle",
-        }
-      }
+      className="container "
     >
-      <h2
-        style={
-          Object {
-            "fontSize": "14px",
-            "fontWeight": "normal",
-            "lineHeight": "inherit",
-            "margin": 0,
-            "padding": 0,
-          }
-        }
+      <div
+        className="flexContainer"
       >
-        This page could not be found
-        .
-      </h2>
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          <div
+            className="item"
+          >
+            <span>
+              iidx.io
+            </span>
+          </div>
+        </a>
+        <div
+          className="item"
+        >
+          loading
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="content"
+  >
+    <div
+      className="container "
+    >
+      <div
+        className="user-profile-header-wrapper"
+      >
+        <div
+          className="user-profile-header"
+        >
+          <div
+            className="user-profile-content"
+          >
+            <div
+              className="user-avatar"
+            />
+            <h2>
+              @
+              user
+            </h2>
+          </div>
+        </div>
+        <div
+          className="tabs-wrapper"
+        >
+          <ul
+            className="tabs"
+          >
+            <li
+              className="tab-item"
+            >
+              <a
+                href="/@user/sp"
+                onClick={[Function]}
+              >
+                <span
+                  className="icon-text"
+                >
+                  Overview
+                </span>
+              </a>
+            </li>
+            <li
+              className="tab-item active"
+            >
+              <a
+                href="/@user/sp/musics"
+                onClick={[Function]}
+              >
+                <span
+                  className="icon-text"
+                >
+                  Musics
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container "
+    >
+      <div
+        className="position-relative-container"
+      >
+        <ol
+          className="breadcrumb breadcrumb"
+        >
+          <li
+            className="breadcrumb-item"
+          >
+            <a
+              href="/@user/sp/musics"
+              onClick={[Function]}
+            >
+              Musics
+            </a>
+          </li>
+          <li
+            className="breadcrumb-item active"
+          >
+            <span>
+              title [SPA]
+            </span>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div
+      className="container "
+    >
+      <div
+        className="box box map-detail"
+      >
+        <div
+          className="music-data"
+        >
+          <div
+            className="genre"
+          >
+            genre
+          </div>
+          <h2
+            className="title"
+          >
+            title
+          </h2>
+          <div
+            className="artist"
+          >
+            artist
+          </div>
+        </div>
+        <ul>
+          <li>
+            <div
+              className="difficulty-area difficulty-another"
+            >
+              <span
+                className="level"
+              >
+                ☆
+                12
+              </span>
+              <span
+                className="difficulty"
+              >
+                SP
+                 
+                ANOTHER
+              </span>
+            </div>
+          </li>
+        </ul>
+        <table
+          className="map-data-table"
+        >
+          <tbody>
+            <tr>
+              <th>
+                BPM
+              </th>
+              <td>
+                <div
+                  className="bpm"
+                >
+                  100-400
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Notes
+              </th>
+              <td>
+                1000
+              </td>
+            </tr>
+            <tr>
+              <th>
+                TexTage
+              </th>
+              <td>
+                <ul
+                  className="textage-links"
+                >
+                  <li>
+                    <a
+                      href="http://textage.cc/score/1/textageUid.html?1AC00"
+                    >
+                      1P
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="http://textage.cc/score/1/textageUid.html?2AC00"
+                    >
+                      2P
+                    </a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        className="box box"
+      >
+        <div
+          className="box-header"
+        >
+          <h2>
+            Best Score
+          </h2>
+        </div>
+        <div
+          className="data-box-wrapper"
+        >
+          <div
+            className="clear-lamp full-combo"
+          />
+          <div
+            className="data-box"
+          >
+            <div
+              className="data-box-content"
+            >
+              <div
+                className="score-box-wrapper"
+              >
+                <dl
+                  className="score-box"
+                >
+                  <div
+                    className="data-list ex-score"
+                  >
+                    <dt>
+                      EX-SCORE
+                    </dt>
+                    <dd>
+                      <div
+                        className="score-info"
+                      >
+                        <div
+                          className="score-text"
+                        >
+                          2000
+                        </div>
+                      </div>
+                      <div
+                        className="score-info"
+                      >
+                        <div
+                          className="score-rate"
+                        >
+                          (
+                          10000.00
+                           %)
+                        </div>
+                      </div>
+                    </dd>
+                  </div>
+                  <div
+                    className="wrapper"
+                  >
+                    <div
+                      className="progress grade-aaa full-combo"
+                      style={
+                        Object {
+                          "width": "10000%",
+                        }
+                      }
+                    />
+                    <div
+                      className="target grade-a"
+                    />
+                    <div
+                      className="target grade-aa"
+                    />
+                    <div
+                      className="target grade-aaa"
+                    />
+                  </div>
+                </dl>
+                <div
+                  className="additional-area"
+                >
+                  <dl
+                    className="data-list"
+                  >
+                    <dt>
+                      BPI
+                    </dt>
+                    <dd
+                      className="bpi"
+                    >
+                      <span>
+                        10.00
+                      </span>
+                    </dd>
+                  </dl>
+                  <dl
+                    className="data-list clear-type"
+                  >
+                    <dt>
+                      CLEAR TYPE
+                    </dt>
+                    <dd>
+                      <div
+                        className="moderate full-combo"
+                      >
+                        FULL COMBO
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl
+                    className="data-list"
+                  >
+                    <dt>
+                      LAST PLAY
+                    </dt>
+                    <dd
+                      className="moderate"
+                    >
+                      Invalid Date
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+              <div
+                className="symbol-area"
+              >
+                <div
+                  className="grade-box"
+                >
+                  <div
+                    className="current-grade"
+                  >
+                    AAA
+                  </div>
+                  <div
+                    className="around-grade"
+                  >
+                    MAX
+                     
+                    -100
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="box box"
+      >
+        <div
+          className="box-header"
+        >
+          <h2>
+            Score Trends
+          </h2>
+        </div>
+        <div
+          className="chart-wrapper"
+        >
+          <div
+            className="chart-container"
+          >
+            <div
+              className="recharts-responsive-container"
+              style={
+                Object {
+                  "height": 300,
+                  "maxHeight": undefined,
+                  "minHeight": undefined,
+                  "minWidth": undefined,
+                  "width": "100%",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "display": "none",
+                    "height": 0,
+                    "position": "absolute",
+                    "visibility": "hidden",
+                    "width": 0,
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <footer
+    className="box"
+  >
+    <div
+      className="container "
+    >
+      <div
+        className="inner"
+      >
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-copyright fa-w-16 "
+          data-icon="copyright"
+          data-prefix="far"
+          focusable="false"
+          role="img"
+          style={Object {}}
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+         
+        2018
+         iidx.io |
+         
+        test
+      </div>
+    </div>
+  </footer>
 </div>
 `;
 
-exports[`/map renders correctly if there are errors 1`] = `
-<div
-  style={
-    Object {
-      "alignItems": "center",
-      "background": "#fff",
-      "color": "#000",
-      "display": "flex",
-      "flexDirection": "column",
-      "fontFamily": "-apple-system, BlinkMacSystemFont, Roboto, \\"Segoe UI\\", \\"Fira Sans\\", Avenir, \\"Helvetica Neue\\", \\"Lucida Grande\\", sans-serif",
-      "height": "100vh",
-      "justifyContent": "center",
-      "textAlign": "center",
-    }
-  }
->
-  <div>
-    <style
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "body { margin: 0 }",
-        }
-      }
-    />
-    <h1
-      style={
-        Object {
-          "borderRight": "1px solid rgba(0, 0, 0,.3)",
-          "display": "inline-block",
-          "fontSize": "24px",
-          "fontWeight": 500,
-          "margin": 0,
-          "marginRight": "20px",
-          "padding": "10px 23px 10px 0",
-          "verticalAlign": "top",
-        }
-      }
-    >
-      404
-    </h1>
-    <div
-      style={
-        Object {
-          "display": "inline-block",
-          "height": "49px",
-          "lineHeight": "49px",
-          "textAlign": "left",
-          "verticalAlign": "middle",
-        }
-      }
-    >
-      <h2
-        style={
-          Object {
-            "fontSize": "14px",
-            "fontWeight": "normal",
-            "lineHeight": "inherit",
-            "margin": 0,
-            "padding": 0,
-          }
-        }
-      >
-        This page could not be found
-        .
-      </h2>
-    </div>
-  </div>
-</div>
-`;
+exports[`/map renders correctly if there are errors 1`] = `null`;
 
 exports[`/map renders correctly when loading 1`] = `"loading"`;

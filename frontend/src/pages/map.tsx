@@ -1,13 +1,6 @@
-import { GraphQLError } from 'graphql'
-import ErrorPage from 'next/error'
-import Head from 'next/head'
 import * as React from 'react'
 
-import MapDetail from '@app/components/organisms/MapDetail'
-import UserProfileLayout, {
-  Tab,
-} from '@app/components/templates/UserProfileLayout'
-import initApollo from '@app/lib/initApollo'
+import MapPage from '@app/components/pages/MapPage'
 import {
   ensureDifficulty,
   ensureInteger,
@@ -15,14 +8,9 @@ import {
   ensureString,
 } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
+import useServerResponse from '@app/lib/useServerResponse'
 import { PageComponentType } from '@app/pages/_app'
-import {
-  Difficulty,
-  PlayStyle,
-  FindMapDocument,
-  FindMapQuery,
-  FindMapQueryVariables,
-} from '@app/queries'
+import { Difficulty, PlayStyle } from '@app/queries'
 
 // interface だと Record 型を満たさないので注意
 // eslint-disable-next-line @typescript-eslint/prefer-interface
@@ -33,73 +21,33 @@ export type Query = {
   difficulty: string
 }
 
-export interface Props {
-  music?: FindMapQuery['music'] | null
-  errors?: ReadonlyArray<GraphQLError>
-  loading: boolean
-  screenName?: string
-  playStyle?: PlayStyle
+export type WithErrorState<P> = { error: true } | ({ error: false } & P)
+
+export interface NormalProps {
+  musicNumber: number
+  playStyle: PlayStyle
+  difficulty: Difficulty
+  screenName: string
 }
 
-const MapPage: PageComponentType<Props, Props, Query> = ({
-  loading,
-  errors,
-  music,
-  playStyle,
-  screenName,
-}: Props) => {
-  if (loading) {
-    return <>loading</>
-  }
-  if (errors || !music || !music.map || !screenName || !playStyle) {
-    return <ErrorPage statusCode={404} />
+export type Props = WithErrorState<NormalProps>
+
+// FIXME: PageComponentType の型で Props を指定すると型エラーに
+// なってしまうので any にしている
+const NextMapPage: PageComponentType<any, any, Query> = props => {
+  const { setStatus } = useServerResponse()
+
+  if (props.error) {
+    setStatus(404)
+    return null
   }
 
-  const { map } = music
-  const { difficulty } = map
+  const { error, ...mapPageProps } = props
 
-  const difficultyText = `${playStyle}${difficulty[0]}`
-
-  return (
-    <>
-      <Head>
-        <title>
-          @{screenName} - {music.title} [{difficultyText}] | iidx.io
-        </title>
-      </Head>
-      <UserProfileLayout
-        screenName={screenName}
-        playStyle={playStyle}
-        activeTab={Tab.Musics}
-        breadcrumbItems={[
-          {
-            text: 'Musics',
-            route: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
-          },
-          {
-            text: `${music.title} [${difficultyText}]`,
-            route: `/@${screenName}/musics/${
-              music.id
-            }/${playStyle.toLowerCase()}/${difficulty.toLowerCase()}`,
-            active: true,
-          },
-        ]}
-      >
-        <MapDetail
-          music={music}
-          map={map}
-          result={map.result || undefined}
-          allResults={map.results}
-          screenName={screenName}
-        />
-      </UserProfileLayout>
-    </>
-  )
+  return <MapPage {...mapPageProps} />
 }
 
-const makeDefaultProps = (): Props => ({ loading: false })
-
-MapPage.getInitialProps = async ({ res, query }) => {
+NextMapPage.getInitialProps = async ({ res, query }) => {
   let playStyle: PlayStyle
   let difficulty: Difficulty
   let screenName: string
@@ -113,33 +61,16 @@ MapPage.getInitialProps = async ({ res, query }) => {
   } catch (e) {
     throwSSRError(res, 404)
     console.error(e)
-    return makeDefaultProps()
-  }
-
-  const client = initApollo()
-
-  const result = await client.query<FindMapQuery, FindMapQueryVariables>({
-    query: FindMapDocument,
-    variables: {
-      musicNumber,
-      playStyle,
-      difficulty,
-      username: screenName,
-    },
-    errorPolicy: 'all',
-  })
-
-  if (!result.data.music || !result.data.music.map) {
-    throwSSRError(res, 404)
+    return { error: true }
   }
 
   return {
-    music: result.data.music,
-    screenName,
+    error: false,
+    musicNumber,
     playStyle,
-    errors: result.errors,
-    loading: result.loading,
+    difficulty,
+    screenName,
   }
 }
 
-export default MapPage
+export default NextMapPage

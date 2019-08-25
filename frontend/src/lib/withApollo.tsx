@@ -7,7 +7,7 @@ import App, {
 } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
-import { getDataFromTree } from 'react-apollo'
+import { getDataFromTree } from '@apollo/react-ssr'
 
 import initApollo from '@app/lib/initApollo'
 import isBrowser from '@app/lib/isBrowser'
@@ -65,6 +65,7 @@ export default (ComposedApp: typeof TComposedApp) =>
           // Prevent Apollo Client GraphQL errors from crashing SSR.
           // Handle them in components via the data.error prop:
           // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
+          console.error('Error while running `getDataFromTree`', error)
         }
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually
