@@ -265,6 +265,15 @@ exports[`/map renders correctly 1`] = `
                         >
                           2000
                         </div>
+                        <div
+                          className="score-diff-info positive"
+                        >
+                          <div
+                            className="score-text"
+                          >
+                            +1
+                          </div>
+                        </div>
                       </div>
                       <div
                         className="score-info"
@@ -273,8 +282,19 @@ exports[`/map renders correctly 1`] = `
                           className="score-rate"
                         >
                           (
-                          10000.00
+                          100.00
                            %)
+                        </div>
+                        <div
+                          className="score-diff-info positive"
+                        >
+                          <div
+                            className="score-rate"
+                          >
+                            (
+                            +0.05
+                             %)
+                          </div>
                         </div>
                       </div>
                     </dd>
@@ -286,7 +306,7 @@ exports[`/map renders correctly 1`] = `
                       className="progress grade-aaa full-combo"
                       style={
                         Object {
-                          "width": "10000%",
+                          "width": "100%",
                         }
                       }
                     />
@@ -316,6 +336,13 @@ exports[`/map renders correctly 1`] = `
                       <span>
                         10.00
                       </span>
+                      <span
+                        className="score-diff-info positive"
+                      >
+                        (
+                        +1.00
+                        )
+                      </span>
                     </dd>
                   </dl>
                   <dl
@@ -325,6 +352,32 @@ exports[`/map renders correctly 1`] = `
                       CLEAR TYPE
                     </dt>
                     <dd>
+                      <div
+                        className="moderate ex-hard-clear"
+                      >
+                        EX-HARD
+                      </div>
+                      <div
+                        className="moderate clear-type-diff-icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="svg-inline--fa fa-angle-right fa-w-8 "
+                          data-icon="angle-right"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 256 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                            fill="currentColor"
+                            style={Object {}}
+                          />
+                        </svg>
+                      </div>
                       <div
                         className="moderate full-combo"
                       >

@@ -17,6 +17,7 @@ import {
 import Box from '@app/components/atoms/Box'
 import ResultBox, {
   CurrentResult as ResultBoxCurrentResult,
+  OldResult as ResultBoxOldResult,
   Map as ResultBoxMap,
 } from '@app/components/molecules/ResultBox'
 import { formats, formatUnixTime } from '@app/lib/dateTime'
@@ -53,7 +54,8 @@ export interface ResultLog {
 export interface Props {
   music: Music
   map: Map
-  result?: ResultBoxCurrentResult
+  result: ResultBoxCurrentResult | null
+  oldResult: ResultBoxOldResult | null
   allResults: ResultLog[]
   screenName: string
 }
@@ -73,7 +75,13 @@ const getGradeBorders = (numNotes: number): { [key in Grade]: number } => ({
   [Grade.Max]: numNotes * 2,
 })
 
-const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
+const MapDetail: React.SFC<Props> = ({
+  music,
+  map,
+  result,
+  oldResult,
+  allResults,
+}) => {
   const gradeBorders = getGradeBorders(map.numNotes)
 
   return (
@@ -158,7 +166,7 @@ const MapDetail: React.SFC<Props> = ({ music, map, result, allResults }) => {
         <ResultBox
           showBPI
           showAdditionalArea
-          data={{ loading: false, result, map }}
+          data={{ loading: false, result, oldResult, map }}
           absoluteLastPlayedAt
         />
       </Box>

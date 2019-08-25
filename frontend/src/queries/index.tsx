@@ -238,6 +238,7 @@ export type FindMapQueryVariables = {
   playStyle: PlayStyle
   difficulty: Difficulty
   username: Scalars['String']
+  comparisonDateTime?: Maybe<Scalars['ISO8601DateTime']>
 }
 
 export type FindMapQuery = { __typename?: 'Query' } & {
@@ -284,6 +285,18 @@ export type FindMapQuery = { __typename?: 'Query' } & {
                       'grade' | 'diff'
                     >
                   }
+              >
+              oldResult: Maybe<
+                { __typename?: 'Result' } & Pick<
+                  Result,
+                  | 'id'
+                  | 'score'
+                  | 'missCount'
+                  | 'clearLamp'
+                  | 'scoreRate'
+                  | 'bpi'
+                  | 'lastPlayedAt'
+                >
               >
               results: Array<
                 { __typename?: 'Result' } & Pick<
@@ -409,6 +422,7 @@ export const FindMapDocument = gql`
     $playStyle: PlayStyle!
     $difficulty: Difficulty!
     $username: String!
+    $comparisonDateTime: ISO8601DateTime
   ) {
     music(number: $musicNumber) {
       id
@@ -440,6 +454,18 @@ export const FindMapDocument = gql`
             grade
             diff
           }
+          bpi
+          lastPlayedAt
+        }
+        oldResult: result(
+          username: $username
+          lastPlayedUntil: $comparisonDateTime
+        ) {
+          id
+          score
+          missCount
+          clearLamp
+          scoreRate
           bpi
           lastPlayedAt
         }

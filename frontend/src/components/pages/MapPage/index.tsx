@@ -12,6 +12,9 @@ import {
   PlayStyle,
 } from '@app/queries'
 import useServerResponse from '@app/lib/useServerResponse'
+import CurrentDateTimeContext, {
+  CurrentDateTimeContextShape,
+} from '@app/contexts/CurrentDateTimeContext'
 
 export interface Props {
   musicNumber: number
@@ -20,23 +23,24 @@ export interface Props {
   screenName: string
 }
 
-export const toQueryVariables = ({
-  musicNumber,
-  playStyle,
-  difficulty,
-  screenName,
-}: Props): FindMapQueryVariables => ({
+export const toQueryVariables = (
+  { musicNumber, playStyle, difficulty, screenName }: Props,
+  { current }: CurrentDateTimeContextShape,
+): FindMapQueryVariables => ({
   musicNumber,
   playStyle,
   difficulty,
   username: screenName,
+  comparisonDateTime: current.subtract(1, 'day').toISOString(),
 })
 
 const MapPage: React.FC<Props> = props => {
   const { playStyle, difficulty, screenName } = props
 
+  const currentDateTimeContext = React.useContext(CurrentDateTimeContext)
+
   const { loading, error, data } = useFindMapQuery({
-    variables: toQueryVariables(props),
+    variables: toQueryVariables(props, currentDateTimeContext),
   })
 
   const { setStatus } = useServerResponse()
