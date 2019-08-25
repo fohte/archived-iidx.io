@@ -27,11 +27,9 @@ export interface Props extends AppProps {
 
 export class TComposedApp extends App<Props> {}
 
-export default (ComposedApp: typeof TComposedApp) =>
+export default (PageComponent: typeof TComposedApp) =>
   class WithApollo extends React.Component<Props> {
     public static async getInitialProps(ctx: AppComponentContext) {
-      const { Component, router } = ctx
-
       // Initial serverState with apollo (empty)
       let serverState: Props['serverState'] = {
         apollo: {
@@ -41,23 +39,21 @@ export default (ComposedApp: typeof TComposedApp) =>
 
       // Evaluate the composed component's getInitialProps()
       let appProps = {}
-      if ((ComposedApp as any).getInitialProps) {
-        appProps = await (ComposedApp as any).getInitialProps(ctx)
+      if ((PageComponent as any).getInitialProps) {
+        appProps = await (PageComponent as any).getInitialProps(ctx)
       }
 
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
       if (!isBrowser) {
-        const apollo = initApollo()
+        const apolloClient = initApollo()
 
         try {
           // Run all GraphQL queries
           await getDataFromTree(
-            <ComposedApp
+            <PageComponent
               {...(appProps as AppProps)}
-              Component={Component}
-              router={router}
-              apolloClient={apollo}
+              apolloClient={apolloClient}
               serverState={serverState}
             />,
           )
@@ -74,7 +70,7 @@ export default (ComposedApp: typeof TComposedApp) =>
         // Extract query data from the Apollo store
         serverState = {
           apollo: {
-            data: apollo.cache.extract(),
+            data: apolloClient.cache.extract(),
           },
         }
       }
@@ -85,14 +81,14 @@ export default (ComposedApp: typeof TComposedApp) =>
       }
     }
 
-    public apollo: AppApolloClient
+    public apolloClient: AppApolloClient
 
     public constructor(props: Props) {
       super(props)
-      this.apollo = initApollo(props.serverState.apollo.data)
+      this.apolloClient = initApollo(props.serverState.apollo.data)
     }
 
     public render() {
-      return <ComposedApp {...this.props} apolloClient={this.apollo} />
+      return <PageComponent {...this.props} apolloClient={this.apolloClient} />
     }
   }
