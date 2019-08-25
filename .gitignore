@@ -31,7 +31,7 @@ vendor/bundle
 # Crash log files
 crash.log
 
-!data/users/.keep
-data/users/*.json
+!/data/users/.keep
+/data/users/*.json
 
 /backend/spec/examples.txt
