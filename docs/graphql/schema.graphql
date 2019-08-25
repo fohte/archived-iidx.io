@@ -187,7 +187,7 @@ type Query {
   """
   Search maps.
   """
-  searchMaps(difficulties: [Difficulty], levels: [Int], limit: Int, offset: Int, playStyle: PlayStyle, title: String, username: String!): MapList!
+  searchMaps(difficulties: [Difficulty], levels: [Int], limit: Int, offset: Int, playStyle: PlayStyle, title: String, updated: UpdatedResultFilter, username: String!): MapList!
   updatedResults(baseDatetime: ISO8601DateTime, limit: Int, offset: Int, targetDatetime: ISO8601DateTime!, username: String!): ResultList!
 
   """
@@ -226,6 +226,11 @@ type Result {
 type ResultList implements Pageable {
   nodes: [Result!]!
   totalCount: Int!
+}
+
+input UpdatedResultFilter {
+  baseDatetime: ISO8601DateTime
+  targetDatetime: ISO8601DateTime!
 }
 
 type User {

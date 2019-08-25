@@ -12,12 +12,11 @@ module Resolvers
 
     def resolve(username:, offset: 0, limit: 20, base_datetime: nil, target_datetime:)
       LoaderUtils.find_by!(User, name: username) do |user|
-        base_results = user.result_logs.snapshot_results(last_played_until: base_datetime)
-        target_results = user.result_logs.snapshot_results(last_played_until: target_datetime)
-
-        scope = base_results.where.not(id: target_results.select(:id))
-
-        scope = scope.offset(offset).limit(limit)
+        scope =
+          user.result_logs.updated_results(
+            base_datetime: base_datetime,
+            target_datetime: target_datetime,
+          ).offset(offset).limit(limit)
 
         Loaders::ScopeLoader.for(ResultLog).load(scope)
       end

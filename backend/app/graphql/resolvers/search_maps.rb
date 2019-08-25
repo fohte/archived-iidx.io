@@ -13,8 +13,9 @@ module Resolvers
     argument :levels, [Integer, null: true], required: false
     argument :play_style, Types::Enum::PlayStyle, required: false
     argument :difficulties, [Types::Enum::Difficulty, null: true], required: false
+    argument :updated, Types::InputObject::UpdatedResultFilter, required: false
 
-    def resolve(username:, offset: 0, limit: MAX_PAGE_SIZE, title: '', levels: [], play_style: nil, difficulties: [])
+    def resolve(username:, offset: 0, limit: MAX_PAGE_SIZE, title: '', levels: [], play_style: nil, difficulties: [], updated: nil)
       LoaderUtils.find_by!(User, name: username) do |user|
         maps = Map.includes(:music)
         maps = maps.where(music: Music.fuzzy_search_by_title(title)) if title.present?
@@ -23,14 +24,37 @@ module Resolvers
         maps = maps.where(difficulty: difficulties) unless difficulties.empty?
 
         maps =
-          maps
-          .left_outer_joins(:results)
-          .merge(Result.where(user: user).order(last_played_at: :desc))
-          .offset(offset)
-          .limit(limit)
+          filter_with_results(maps, user: user, updated: updated)
+          .offset(offset).limit(limit)
 
         Loaders::ScopeLoader.for(Result).load(maps)
       end
+    end
+
+    private
+
+    def filter_with_results(maps, user:, updated:)
+      if updated.nil?
+        maps =
+          maps
+          .left_outer_joins(:results)
+          .merge(user.results.order(last_played_at: :desc))
+
+        return maps
+      end
+
+      results =
+        user
+        .result_logs
+        .updated_results(
+          base_datetime: updated.base_datetime,
+          target_datetime: updated.target_datetime,
+        )
+        .order(last_played_at: :desc)
+
+      maps
+        .joins(:result_logs)
+        .merge(results)
     end
   end
 end

@@ -42,4 +42,11 @@ class ResultLog < ApplicationRecord
 
     joins(join_source)
   end
+
+  scope :updated_results, ->(base_datetime: nil, target_datetime:) do
+    base_results = snapshot_results(last_played_until: base_datetime)
+    target_results = snapshot_results(last_played_until: target_datetime)
+
+    base_results.where.not(id: target_results.select(:id))
+  end
 end
