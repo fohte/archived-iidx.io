@@ -1,7 +1,7 @@
 import { config } from '@fortawesome/fontawesome-svg-core'
-import { NextComponentClass, NextContext, NextStatelessComponent } from 'next'
-import App, { AppComponentContext, Container } from 'next/app'
-import Router, { DefaultQuery } from 'next/router'
+import { NextComponentType, NextPageContext } from 'next'
+import App, { AppContext, Container } from 'next/app'
+import Router from 'next/router'
 import NProgress from 'nprogress'
 import * as React from 'react'
 import { ApolloProvider } from 'react-apollo'
@@ -23,17 +23,15 @@ Router.events.on('routeChangeStart', () => {
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
-export type PageComponentType<
-  P = {},
-  IP = P,
-  Q extends DefaultQuery = DefaultQuery
-> =
-  | NextComponentClass<P, IP, NextContext<Q>>
-  | NextStatelessComponent<P, IP, NextContext<Q>>
+export type PageComponentType<IP = {}, P = IP> = NextComponentType<
+  NextPageContext,
+  IP,
+  P
+>
 
 export interface InitialProps {
   pageProps: any
-  response: () => NextContext['res']
+  response: () => NextPageContext['res']
 }
 
 export default withApollo(
@@ -45,7 +43,7 @@ export default withApollo(
     public static async getInitialProps({
       Component,
       ctx,
-    }: AppComponentContext): Promise<InitialProps> {
+    }: AppContext): Promise<InitialProps> {
       const pageProps = (Component as any).getInitialProps
         ? await (Component as any).getInitialProps(ctx)
         : {}

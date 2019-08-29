@@ -6,7 +6,7 @@ import Button from '@app/components/atoms/Button'
 import Container from '@app/components/atoms/Container'
 import UserMenu from '@app/components/molecules/UserMenu'
 import AuthContext from '@app/contexts/AuthContext'
-import routes from '@app/routes'
+import routes from '@server/routes'
 
 import * as css from './style.scss'
 

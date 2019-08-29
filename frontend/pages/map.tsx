@@ -9,7 +9,7 @@ import {
 } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import useServerResponse from '@app/lib/useServerResponse'
-import { PageComponentType } from '@app/pages/_app'
+import { PageComponentType } from '@pages/_app'
 import { Difficulty, PlayStyle } from '@app/queries'
 
 // interface だと Record 型を満たさないので注意
@@ -34,7 +34,7 @@ export type Props = WithErrorState<NormalProps>
 
 // FIXME: PageComponentType の型で Props を指定すると型エラーに
 // なってしまうので any にしている
-const NextMapPage: PageComponentType<any, any, Query> = props => {
+const NextMapPage: PageComponentType<any> = props => {
   const { setStatus } = useServerResponse()
 
   if (props.error) {

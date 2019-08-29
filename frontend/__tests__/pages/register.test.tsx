@@ -2,7 +2,7 @@ import * as React from 'react'
 import { MockedProvider } from '@apollo/react-testing'
 import * as renderer from 'react-test-renderer'
 
-import Register from '@app/pages/register'
+import Register from '@pages/register'
 import { RegisterDocument, RegisterMutation } from '@app/queries'
 
 describe('/register', () => {

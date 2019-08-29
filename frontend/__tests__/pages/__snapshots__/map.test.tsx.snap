@@ -16,6 +16,7 @@ exports[`/map renders correctly 1`] = `
         <a
           href="/"
           onClick={[Function]}
+          onMouseEnter={[Function]}
         >
           <div
             className="item"
@@ -69,6 +70,7 @@ exports[`/map renders correctly 1`] = `
               <a
                 href="/@user/sp"
                 onClick={[Function]}
+                onMouseEnter={[Function]}
               >
                 <span
                   className="icon-text"
@@ -83,6 +85,7 @@ exports[`/map renders correctly 1`] = `
               <a
                 href="/@user/sp/musics"
                 onClick={[Function]}
+                onMouseEnter={[Function]}
               >
                 <span
                   className="icon-text"
@@ -110,6 +113,7 @@ exports[`/map renders correctly 1`] = `
             <a
               href="/@user/sp/musics"
               onClick={[Function]}
+              onMouseEnter={[Function]}
             >
               Musics
             </a>

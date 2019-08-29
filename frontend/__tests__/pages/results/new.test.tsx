@@ -2,7 +2,7 @@ import * as React from 'react'
 import { MockedProvider } from '@apollo/react-testing'
 import * as renderer from 'react-test-renderer'
 
-import ResultsNew from '@app/pages/results/new'
+import ResultsNew from '@pages/results/new'
 import {
   PlayStyle,
   RegisterResultsWithCsvDocument,

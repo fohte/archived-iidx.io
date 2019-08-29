@@ -8,6 +8,8 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
   moduleNameMapper: {
     '@app/(.*)': '<rootDir>/src/$1',
+    '@server/(.*)': '<rootDir>/server/$1',
+    '@pages/(.*)': '<rootDir>/pages/$1',
     '\\.s?css$': 'identity-obj-proxy',
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],

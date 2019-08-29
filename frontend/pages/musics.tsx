@@ -13,7 +13,7 @@ import {
   ensureString,
 } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
-import { PageComponentType } from '@app/pages/_app'
+import { PageComponentType } from '@pages/_app'
 import { Difficulty, PlayStyle } from '@app/queries'
 
 export type RequiredQuery = 'screenName' | 'playStyle'
@@ -40,7 +40,7 @@ export interface Props {
   page?: number
 }
 
-const PageComponent: PageComponentType<Props, Props, Query> = ({
+const PageComponent: PageComponentType<Props> = ({
   screenName,
   title,
   playStyle,
