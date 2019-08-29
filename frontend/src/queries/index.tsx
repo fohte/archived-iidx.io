@@ -179,6 +179,7 @@ export type QuerySearchMapsArgs = {
   levels?: Maybe<Array<Maybe<Scalars['Int']>>>
   playStyle?: Maybe<PlayStyle>
   difficulties?: Maybe<Array<Maybe<Difficulty>>>
+  updated?: Maybe<UpdatedResultFilter>
 }
 
 export type QueryUpdatedResultsArgs = {
@@ -219,6 +220,11 @@ export type ResultList = Pageable & {
   __typename?: 'ResultList'
   nodes: Array<Result>
   totalCount: Scalars['Int']
+}
+
+export type UpdatedResultFilter = {
+  baseDatetime?: Maybe<Scalars['ISO8601DateTime']>
+  targetDatetime: Scalars['ISO8601DateTime']
 }
 
 export type User = {
@@ -326,7 +332,9 @@ export type GetUserResultsQueryVariables = {
   difficulties?: Maybe<Array<Maybe<Difficulty>>>
   offset?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
-  comparisonDateTime?: Maybe<Scalars['ISO8601DateTime']>
+  comparisonTargetDateTime: Scalars['ISO8601DateTime']
+  comparisonBaseDateTime?: Maybe<Scalars['ISO8601DateTime']>
+  updated?: Maybe<UpdatedResultFilter>
 }
 
 export type GetUserResultsQuery = { __typename?: 'Query' } & {
@@ -576,7 +584,9 @@ export const GetUserResultsDocument = gql`
     $difficulties: [Difficulty]
     $offset: Int
     $limit: Int
-    $comparisonDateTime: ISO8601DateTime
+    $comparisonTargetDateTime: ISO8601DateTime!
+    $comparisonBaseDateTime: ISO8601DateTime
+    $updated: UpdatedResultFilter
   ) {
     searchMaps(
       title: $title
@@ -586,6 +596,7 @@ export const GetUserResultsDocument = gql`
       offset: $offset
       limit: $limit
       username: $username
+      updated: $updated
     ) {
       totalCount
       nodes {
@@ -599,7 +610,7 @@ export const GetUserResultsDocument = gql`
           number
           title
         }
-        result(username: $username) {
+        result(username: $username, lastPlayedUntil: $comparisonBaseDateTime) {
           id
           score
           missCount
@@ -617,7 +628,7 @@ export const GetUserResultsDocument = gql`
         }
         oldResult: result(
           username: $username
-          lastPlayedUntil: $comparisonDateTime
+          lastPlayedUntil: $comparisonTargetDateTime
         ) {
           id
           score

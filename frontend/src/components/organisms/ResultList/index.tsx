@@ -2,13 +2,17 @@ import classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import ErrorPage from 'next/error'
 import * as React from 'react'
+import dayjs from 'dayjs'
 
 import CurrentDateTimeContext from '@app/contexts/CurrentDateTimeContext'
 import Container from '@app/components/atoms/Container'
 import Pagination from '@app/components/atoms/Pagination'
 import ResultTable from '@app/components/molecules/ResultTable'
 import { FormValues } from '@app/components/organisms/FilterForm'
-import { findPreviousRefreshDateTime } from '@app/lib/dateTime'
+import {
+  findRefreshDateTime,
+  findPreviousRefreshDateTime,
+} from '@app/lib/dateTime'
 import {
   useGetUserResultsQuery,
   GetUserResultsQueryVariables,
@@ -49,7 +53,7 @@ const PaginationContainer: React.SFC<{
 )
 
 const ResultList: React.SFC<Props> = ({
-  formValues: { title, difficulties, levels },
+  formValues: { title, difficulties, levels, onlyUpdated, updatedOn },
   playStyle,
   screenName,
   onPageChange,
@@ -60,6 +64,11 @@ const ResultList: React.SFC<Props> = ({
 
   const { current } = React.useContext(CurrentDateTimeContext)
 
+  const targetDateTime: dayjs.Dayjs =
+    onlyUpdated && updatedOn
+      ? findRefreshDateTime(dayjs(updatedOn))
+      : findPreviousRefreshDateTime(current)
+
   // ページ情報を除くクエリ変数を保持しておく
   const baseVariables: GetUserResultsQueryVariables = {
     username: screenName,
@@ -67,10 +76,19 @@ const ResultList: React.SFC<Props> = ({
     playStyle,
     difficulties,
     levels,
-    comparisonDateTime: findPreviousRefreshDateTime(current).toISOString(),
+    comparisonTargetDateTime: targetDateTime.toISOString(),
     limit: numItemsPerPage,
   }
 
+  if (onlyUpdated) {
+    baseVariables.updated = {
+      targetDatetime: targetDateTime.toISOString(),
+    }
+
+    if (updatedOn) {
+      baseVariables.updated.baseDatetime = dayjs(updatedOn).add(1, 'day')
+    }
+  }
   const previousBaseVariables = usePrevious(baseVariables)
 
   const [cachedTotalPages, cacheTotalPages] = React.useState<number | null>(

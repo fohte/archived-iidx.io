@@ -6,7 +6,9 @@ query getUserResults(
   $difficulties: [Difficulty]
   $offset: Int
   $limit: Int
-  $comparisonDateTime: ISO8601DateTime
+  $comparisonTargetDateTime: ISO8601DateTime!
+  $comparisonBaseDateTime: ISO8601DateTime
+  $updated: UpdatedResultFilter
 ) {
   searchMaps(
     title: $title
@@ -16,6 +18,7 @@ query getUserResults(
     offset: $offset
     limit: $limit
     username: $username
+    updated: $updated
   ) {
     totalCount
 
@@ -32,7 +35,7 @@ query getUserResults(
         title
       }
 
-      result(username: $username) {
+      result(username: $username, lastPlayedUntil: $comparisonBaseDateTime) {
         id
         score
         missCount
@@ -53,7 +56,7 @@ query getUserResults(
 
       oldResult: result(
         username: $username
-        lastPlayedUntil: $comparisonDateTime
+        lastPlayedUntil: $comparisonTargetDateTime
       ) {
         id
         score

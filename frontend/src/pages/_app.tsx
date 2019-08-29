@@ -7,7 +7,7 @@ import * as React from 'react'
 import { ApolloProvider } from 'react-apollo'
 
 import '@app/global.scss'
-import '@app/rawStyles/toast.scss'
+import '@app/rawStyles/import.scss'
 
 import ToastContainer from '@app/components/others/ToastContainer'
 import AuthStateProvider from '@app/contexts/AuthStateProvider'

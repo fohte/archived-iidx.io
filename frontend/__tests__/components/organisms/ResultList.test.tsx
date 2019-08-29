@@ -18,6 +18,7 @@ const initialValues: FormValues = {
   title: null,
   difficulties: [],
   levels: [],
+  onlyUpdated: false,
 }
 
 const request = {

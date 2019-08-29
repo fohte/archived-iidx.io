@@ -2,6 +2,7 @@ import * as _ from 'lodash'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import * as React from 'react'
+import dayjs from 'dayjs'
 
 import MusicsPage from '@app/components/pages/MusicsPage'
 import {
@@ -15,23 +16,18 @@ import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@app/pages/_app'
 import { Difficulty, PlayStyle } from '@app/queries'
 
-// interface だと Record 型を満たさないので注意
-// eslint-disable-next-line @typescript-eslint/prefer-interface
-export type RequiredQuery = {
-  screenName: string
-  playStyle: string
-}
+export type RequiredQuery = 'screenName' | 'playStyle'
 
-// interface だと Record 型を満たさないので注意
-// eslint-disable-next-line @typescript-eslint/prefer-interface
-export type OptionalQuery = {
-  title?: string
-  difficulties?: string | string[]
-  levels?: string | string[]
-  page?: string
-}
+export type OptionalQuery =
+  | 'title'
+  | 'difficulties'
+  | 'levels'
+  | 'onlyUpdated'
+  | 'updatedOn'
+  | 'page'
 
-export type Query = RequiredQuery & OptionalQuery
+export type Query = { [key in RequiredQuery]: string } &
+  { [key in OptionalQuery]: string | string[] | undefined }
 
 export interface Props {
   screenName?: string
@@ -39,6 +35,8 @@ export interface Props {
   playStyle?: PlayStyle
   difficulties?: Difficulty[]
   levels?: number[]
+  onlyUpdated?: boolean
+  updatedOn?: string
   page?: number
 }
 
@@ -48,6 +46,8 @@ const PageComponent: PageComponentType<Props, Props, Query> = ({
   playStyle,
   difficulties,
   levels,
+  onlyUpdated,
+  updatedOn,
   page,
 }: Props) => {
   if (!screenName || !playStyle) {
@@ -65,6 +65,8 @@ const PageComponent: PageComponentType<Props, Props, Query> = ({
         playStyle={playStyle}
         difficulties={difficulties}
         levels={levels}
+        onlyUpdated={!!onlyUpdated}
+        updatedOn={updatedOn ? dayjs(updatedOn).toDate() : undefined}
         page={page}
       />
     </>
@@ -77,6 +79,10 @@ PageComponent.getInitialProps = ({ res, query }) => {
   let title: string | undefined
   let difficulties: Difficulty[]
   let levels: number[]
+  let onlyUpdated: boolean
+  // getInitialProps では Date 型を返却できないのでここでは string を返す
+  // @see https://github.com/zeit/next.js/issues/6917
+  let updatedOn: string | undefined
   let page: number
 
   try {
@@ -89,6 +95,12 @@ PageComponent.getInitialProps = ({ res, query }) => {
       'difficulties',
     )
     levels = ensureArray(ensureInteger, query.levels, 'levels')
+    onlyUpdated = query.onlyUpdated
+      ? ensureString(query.onlyUpdated, 'onlyUpdated') === 'true'
+      : false
+    updatedOn = query.updatedOn
+      ? ensureString(query.updatedOn, 'updatedOn')
+      : undefined
     page = query.page ? ensureInteger(query.page, 'page') : 1
   } catch (e) {
     throwSSRError(res, 404)
@@ -102,6 +114,8 @@ PageComponent.getInitialProps = ({ res, query }) => {
     playStyle,
     difficulties,
     levels,
+    onlyUpdated,
+    updatedOn,
     page,
   }
 }
