@@ -99,6 +99,10 @@ module.exports = withTypescript({
             ),
             to: path.join(staticDistDir, 'ReactToastify.min.css'),
           },
+          {
+            from: path.join(nodeModulesDir, 'react-day-picker/lib/style.css'),
+            to: path.join(staticDistDir, 'react-day-picker.css'),
+          },
         ]),
       ],
     })

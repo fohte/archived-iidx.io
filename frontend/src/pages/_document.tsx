@@ -14,6 +14,7 @@ export default class MyDocument extends Document {
           <link href="/static/dist/ress.min.css" rel="stylesheet" />
           <link href="/static/dist/nprogress.css" rel="stylesheet" />
           <link href="/static/dist/ReactToastify.min.css" rel="stylesheet" />
+          <link href="/static/dist/react-day-picker.css" rel="stylesheet" />
         </Head>
         <body>
           <Main />
