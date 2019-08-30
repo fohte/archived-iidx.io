@@ -1835,10 +1835,10 @@
     "@types/react" "*"
     "@types/react-loadable" "*"
 
-"@types/next@8.0.5":
-  version "8.0.5"
-  resolved "https://registry.yarnpkg.com/@types/next/-/next-8.0.5.tgz#667551f587f7905388bd89a6962d93e930f6c314"
-  integrity sha512-JZVgbTPuptXEwu2pi928bG0WJARCInJEu9CW6wh0veKGkE2zWNvr9SSb4+7NN2ffNlTPRv9MMS3AE4cTI69HmA==
+"@types/next@8.0.6":
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/@types/next/-/next-8.0.6.tgz#e4ceb01069b82bfe20d98bb3ba2cb65eb5c77bdd"
+  integrity sha512-NEPE5PpZ0atyX08I5B06A94OaygoZkLyv4zsZ9OkxbaCe9tIbIYzNWIievY36zXtOFL44JS/MArUuVdAUK9kCQ==
   dependencies:
     "@types/next-server" "*"
     "@types/node" "*"
@@ -1852,12 +1852,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*":
-  version "10.5.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.4.tgz#6eccc158504357d1da91434d75e86acde94bb10b"
-  integrity sha512-8TqvB0ReZWwtcd3LXq3YSrBoLyXFgBX/sBZfGye9+YS8zH7/g+i6QRIuiDmwBoTzcQ/pk89nZYTYU4c5akKkzw==
-
-"@types/node@^10.1.0":
+"@types/node@*", "@types/node@^10.1.0":
   version "10.14.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.6.tgz#9cbfcb62c50947217f4d88d4d274cc40c22625a9"
   integrity sha512-Fvm24+u85lGmV4hT5G++aht2C5I4Z4dYlWZIh62FAfFO/TfzXtPpoLI6I7AuBWkIFqZCnhFOoTT7RjjaIL5Fjg==
