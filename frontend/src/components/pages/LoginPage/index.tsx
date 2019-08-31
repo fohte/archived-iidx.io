@@ -45,7 +45,7 @@ const LoginPage = () => (
       </Box>
       <Box transparent className={cx('footer')}>
         New to us?{' '}
-        <Link route="/signup" prefetch>
+        <Link route="/signup">
           <a>Sign up.</a>
         </Link>
       </Box>

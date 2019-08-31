@@ -17,7 +17,7 @@ const Header: React.SFC = () => (
   <nav className={cx('headerNav')}>
     <Container>
       <div className={cx('flexContainer')}>
-        <Link route="/" prefetch passHref>
+        <Link route="/" passHref>
           <a>
             <div className={cx('item')}>
               <Brand />
@@ -41,14 +41,14 @@ const Header: React.SFC = () => (
 
             return (
               <div className={cx('item', 'non-padding', 'login-signup-group')}>
-                <Link route="/login" prefetch>
+                <Link route="/login">
                   <a>
                     <Button inverted color="white" size="small">
                       Login
                     </Button>
                   </a>
                 </Link>
-                <Link route="/signup" prefetch>
+                <Link route="/signup">
                   <a>
                     <Button size="small" color="white">
                       Sign Up
