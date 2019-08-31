@@ -33,7 +33,9 @@ module.exports = {
         cssModules,
         cssLoaderOptions: {
           camelCase: true,
-          localIdentName: cssModules ? '[local]___[hash:base64:5]' : undefined,
+          localIdentName: cssModules
+            ? '[path][name]__[local]--[hash:base64:5]'
+            : '[hash:base64]',
         },
         dev,
         isServer,
