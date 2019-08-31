@@ -11,8 +11,11 @@ import '@app/rawStyles/import.scss'
 
 import ToastContainer from '@app/components/others/ToastContainer'
 import AuthStateProvider from '@app/contexts/AuthStateProvider'
+import SSRContextProvider from '@app/contexts/SSRContextProvider'
 import ServerResponseContext from '@app/contexts/ServerResponseContext'
-import CurrentDateTimeProvider from '@app/contexts/CurrentDateTimeProvider'
+import CurrentDateTimeContext, {
+  defaultValues as currentDateTimeValues,
+} from '@app/contexts/CurrentDateTimeContext'
 import withApollo, { Props as WithApolloProps } from '@app/lib/withApollo'
 
 config.autoAddCss = false
@@ -32,6 +35,7 @@ export type PageComponentType<IP = {}, P = IP> = NextComponentType<
 export interface InitialProps {
   pageProps: any
   response: () => NextPageContext['res']
+  currentDateTime: string
 }
 
 export default withApollo(
@@ -53,23 +57,35 @@ export default withApollo(
 
         // ctx.res を直接参照すると循環依存になるので注意
         response: () => ctx.res,
+
+        currentDateTime: currentDateTimeValues.current,
       }
     }
 
     public render() {
-      const { Component, pageProps, response, apolloClient } = this.props
+      const {
+        Component,
+        pageProps,
+        response,
+        apolloClient,
+        currentDateTime,
+      } = this.props
 
       return (
-        <ApolloProvider client={apolloClient}>
-          <AuthStateProvider>
-            <CurrentDateTimeProvider>
-              <ServerResponseContext.Provider value={response()}>
-                <Component {...pageProps} />
-                <ToastContainer />
-              </ServerResponseContext.Provider>
-            </CurrentDateTimeProvider>
-          </AuthStateProvider>
-        </ApolloProvider>
+        <SSRContextProvider>
+          <ApolloProvider client={apolloClient}>
+            <AuthStateProvider>
+              <CurrentDateTimeContext.Provider
+                value={{ current: currentDateTime }}
+              >
+                <ServerResponseContext.Provider value={response()}>
+                  <Component {...pageProps} />
+                  <ToastContainer />
+                </ServerResponseContext.Provider>
+              </CurrentDateTimeContext.Provider>
+            </AuthStateProvider>
+          </ApolloProvider>
+        </SSRContextProvider>
       )
     }
   },

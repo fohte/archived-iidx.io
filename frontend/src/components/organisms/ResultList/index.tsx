@@ -4,7 +4,6 @@ import ErrorPage from 'next/error'
 import * as React from 'react'
 import dayjs from 'dayjs'
 
-import CurrentDateTimeContext from '@app/contexts/CurrentDateTimeContext'
 import Container from '@app/components/atoms/Container'
 import Pagination from '@app/components/atoms/Pagination'
 import ResultTable from '@app/components/molecules/ResultTable'
@@ -19,6 +18,7 @@ import {
   GetUserResultsQueryResult,
   PlayStyle,
 } from '@app/queries'
+import { useCurrentDateTimeContext } from '@app/lib/hooks'
 
 import * as css from './style.scss'
 
@@ -62,7 +62,7 @@ const ResultList: React.SFC<Props> = ({
 }) => {
   const containerElement = React.useRef<HTMLDivElement | null>(null)
 
-  const { current } = React.useContext(CurrentDateTimeContext)
+  const current = useCurrentDateTimeContext()
 
   const targetDateTime: dayjs.Dayjs =
     onlyUpdated && updatedOn

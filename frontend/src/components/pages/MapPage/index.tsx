@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Head from 'next/head'
+import dayjs from 'dayjs'
 
 import MapDetail from '@app/components/organisms/MapDetail'
 import UserProfileLayout, {
@@ -13,9 +14,7 @@ import {
 } from '@app/queries'
 import useServerResponse from '@app/lib/useServerResponse'
 import { findPreviousRefreshDateTime } from '@app/lib/dateTime'
-import CurrentDateTimeContext, {
-  CurrentDateTimeContextShape,
-} from '@app/contexts/CurrentDateTimeContext'
+import { useCurrentDateTimeContext } from '@app/lib/hooks'
 
 export interface Props {
   musicNumber: number
@@ -26,7 +25,7 @@ export interface Props {
 
 export const toQueryVariables = (
   { musicNumber, playStyle, difficulty, screenName }: Props,
-  { current }: CurrentDateTimeContextShape,
+  current: dayjs.Dayjs,
 ): FindMapQueryVariables => ({
   musicNumber,
   playStyle,
@@ -38,10 +37,10 @@ export const toQueryVariables = (
 const MapPage: React.FC<Props> = props => {
   const { playStyle, difficulty, screenName } = props
 
-  const currentDateTimeContext = React.useContext(CurrentDateTimeContext)
+  const current = useCurrentDateTimeContext()
 
   const { loading, error, data } = useFindMapQuery({
-    variables: toQueryVariables(props, currentDateTimeContext),
+    variables: toQueryVariables(props, current),
   })
 
   const { setStatus } = useServerResponse()

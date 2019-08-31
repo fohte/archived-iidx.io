@@ -20,18 +20,19 @@ export const formats = {
   dateTime: `${dateFormat} ${timeFormat}`,
 }
 
+// 6:00 (JST) を返す
 export const findRefreshDateTime = (d: dayjs.Dayjs): dayjs.Dayjs =>
   d
-    .local()
-    .hour(6)
+    .utc()
+    .hour(21)
     .minute(0)
     .second(0)
 
 export const findPreviousRefreshDateTime = (d: dayjs.Dayjs): dayjs.Dayjs => {
-  const local = d.local()
-  const refresh = findRefreshDateTime(local)
+  const u = d.utc()
+  const refresh = findRefreshDateTime(u)
 
-  return local.isAfter(refresh)
+  return u.isAfter(refresh)
     ? refresh
-    : findRefreshDateTime(local.subtract(1, 'day'))
+    : findRefreshDateTime(u.subtract(1, 'day'))
 }

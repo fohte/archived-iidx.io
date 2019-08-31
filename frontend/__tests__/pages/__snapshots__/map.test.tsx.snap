@@ -395,10 +395,8 @@ exports[`/map renders correctly 1`] = `
                     <dt>
                       LAST PLAY
                     </dt>
-                    <dd
-                      className="moderate"
-                    >
-                      Invalid Date
+                    <dd>
+                      -
                     </dd>
                   </dl>
                 </div>

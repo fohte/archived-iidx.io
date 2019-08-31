@@ -5,6 +5,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import SSRContext from '@app/contexts/SSRContext'
 import { WithLoadingState } from '@app/lib/types'
 import resultDiff, {
   DifferableAttributes,
@@ -148,6 +149,8 @@ const ResultBox: React.FunctionComponent<Props> = ({
   data,
   absoluteLastPlayedAt = false,
 }) => {
+  const ssr = React.useContext(SSRContext)
+
   return (
     <div className={cx('data-box-wrapper')}>
       {data.loading ? (
@@ -300,7 +303,7 @@ const ResultBox: React.FunctionComponent<Props> = ({
 
                 <dl className={cx('data-list')}>
                   <dt>LAST PLAY</dt>
-                  {data.loading ? (
+                  {ssr || data.loading ? (
                     <dd>-</dd>
                   ) : (
                     <dd className={cx('moderate')}>
