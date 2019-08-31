@@ -1,6 +1,6 @@
 import { config } from '@fortawesome/fontawesome-svg-core'
 import { NextComponentType, NextPageContext } from 'next'
-import App, { AppContext, Container } from 'next/app'
+import App, { AppContext } from 'next/app'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import * as React from 'react'
@@ -60,18 +60,16 @@ export default withApollo(
       const { Component, pageProps, response, apolloClient } = this.props
 
       return (
-        <Container>
-          <ApolloProvider client={apolloClient}>
-            <AuthStateProvider>
-              <CurrentDateTimeProvider>
-                <ServerResponseContext.Provider value={response()}>
-                  <Component {...pageProps} />
-                  <ToastContainer />
-                </ServerResponseContext.Provider>
-              </CurrentDateTimeProvider>
-            </AuthStateProvider>
-          </ApolloProvider>
-        </Container>
+        <ApolloProvider client={apolloClient}>
+          <AuthStateProvider>
+            <CurrentDateTimeProvider>
+              <ServerResponseContext.Provider value={response()}>
+                <Component {...pageProps} />
+                <ToastContainer />
+              </ServerResponseContext.Provider>
+            </CurrentDateTimeProvider>
+          </AuthStateProvider>
+        </ApolloProvider>
       )
     }
   },
