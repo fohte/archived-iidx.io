@@ -4,7 +4,7 @@ import classnames from 'classnames/bind'
 import * as React from 'react'
 
 import { auth } from '@app/lib/firebaseApp'
-import routes from '@app/routes'
+import routes from '@server/routes'
 
 import * as css from './style.scss'
 

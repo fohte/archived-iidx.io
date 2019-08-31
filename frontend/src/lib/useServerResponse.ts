@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { NextContext } from 'next'
+import { NextPageContext } from 'next'
 
 import ServerResponseContext from '@app/contexts/ServerResponseContext'
 import isBrowser from '@app/lib/isBrowser'
 
-export type ServerResponse = NonNullable<NextContext['res']> | null
+export type ServerResponse = NonNullable<NextPageContext['res']> | null
 
 export type SetResponseAction = (response: NonNullable<ServerResponse>) => void
 

@@ -16,6 +16,7 @@ exports[`/register renders correctly 1`] = `
         <a
           href="/"
           onClick={[Function]}
+          onMouseEnter={[Function]}
         >
           <div
             className="item"

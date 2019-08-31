@@ -6,7 +6,7 @@ import CurrentDateTimeProvider from '@app/contexts/CurrentDateTimeProvider'
 import CurrentDateTimeContext, {
   CurrentDateTimeContextShape,
 } from '@app/contexts/CurrentDateTimeContext'
-import Map, { NormalProps } from '@app/pages/map'
+import Map, { NormalProps } from '@pages/map'
 import { toQueryVariables } from '@app/components/pages/MapPage'
 import {
   ClearLamp,

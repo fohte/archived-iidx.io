@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { NextContext } from 'next'
+import { NextPageContext } from 'next'
 
-export type ServerResponseContextShape = NextContext['res']
+export type ServerResponseContextShape = NextPageContext['res']
 
 const ServerResponseContext = React.createContext<ServerResponseContextShape>(
   undefined,

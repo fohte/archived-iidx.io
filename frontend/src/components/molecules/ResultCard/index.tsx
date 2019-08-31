@@ -2,7 +2,7 @@ import classnames from 'classnames/bind'
 import * as React from 'react'
 
 import Card from '@app/components/atoms/Card'
-import routes from '@app/routes'
+import routes from '@server/routes'
 import { WithLoadingState } from '@app/lib/types'
 import ResultBox, {
   Map as ResultBoxMap,

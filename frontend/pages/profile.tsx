@@ -10,7 +10,7 @@ import UserProfileLayout, {
 import initApollo from '@app/lib/initApollo'
 import { ensurePlayStyle, ensureString } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
-import { PageComponentType } from '@app/pages/_app'
+import { PageComponentType } from '@pages/_app'
 import {
   PlayStyle,
   FindUserDocument,
@@ -32,7 +32,7 @@ export interface Props {
   playStyle?: PlayStyle
 }
 
-const ProfilePage: PageComponentType<Props, Props, Query> = ({
+const ProfilePage: PageComponentType<Props> = ({
   loading,
   errors,
   user,

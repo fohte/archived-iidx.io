@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
-import Login from '@app/pages/login'
+import Login from '@pages/login'
 
 describe('/login', () => {
   it('renders correctly', () => {

@@ -5,6 +5,7 @@ node_modules
 coverage
 .next
 /frontend/static/dist
+/frontend/dist
 
 .cache
 

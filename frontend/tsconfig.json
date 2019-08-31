@@ -15,14 +15,27 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "rootDirs": ["src", "stories"],
-    "baseUrl": "src",
+    "baseUrl": ".",
     "lib": ["dom", "es2015", "es2016"],
     "paths": {
-      "@app/*": ["*"]
+      "@app/*": ["src/*"],
+      "@server/*": ["server/*"],
+      "@pages/*": ["pages/*"]
     },
-    "typeRoots": ["node_modules/@types", "types"]
+    "typeRoots": ["node_modules/@types", "types"],
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
-  "include": ["src/**/*", "stories/**/*", "__tests__/**/*", "index.d.ts"],
+  "include": [
+    "src/**/*",
+    "pages/**/*",
+    "__tests__/**/*",
+    "index.d.ts",
+    "server/**/*"
+  ],
   "exclude": ["node_modules", "coverage"]
 }

@@ -1,10 +1,6 @@
 import { NormalizedCacheObject } from 'apollo-cache-inmemory'
 import { ApolloClient } from 'apollo-client'
-import App, {
-  AppComponentContext,
-  AppComponentProps,
-  DefaultAppIProps,
-} from 'next/app'
+import App, { AppContext, AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 import { getDataFromTree } from '@apollo/react-ssr'
@@ -13,8 +9,6 @@ import initApollo from '@app/lib/initApollo'
 import isBrowser from '@app/lib/isBrowser'
 
 export type AppApolloClient = ApolloClient<NormalizedCacheObject>
-
-type AppProps = DefaultAppIProps & AppComponentProps
 
 export interface Props extends AppProps {
   serverState: {
@@ -29,7 +23,9 @@ export class TComposedApp extends App<Props> {}
 
 export default (PageComponent: typeof TComposedApp) =>
   class WithApollo extends React.Component<Props> {
-    public static async getInitialProps(ctx: AppComponentContext) {
+    public static async getInitialProps(ctx: AppContext) {
+      const { Component, router } = ctx
+
       // Initial serverState with apollo (empty)
       let serverState: Props['serverState'] = {
         apollo: {
@@ -55,6 +51,8 @@ export default (PageComponent: typeof TComposedApp) =>
               {...(appProps as AppProps)}
               apolloClient={apolloClient}
               serverState={serverState}
+              Component={Component}
+              router={router}
             />,
           )
         } catch (error) {

@@ -10,7 +10,7 @@ import UserProfileLayout, {
 } from '@app/components/templates/UserProfileLayout'
 import ensureArray from '@app/lib/ensureArray'
 import { Difficulty, PlayStyle } from '@app/queries'
-import routes from '@app/routes'
+import routes from '@server/routes'
 
 const { Router } = routes
 
