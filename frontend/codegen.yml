@@ -1,3 +1,6 @@
+hooks:
+  afterAllFileWrite:
+    - prettier --write
 schema:
   - '../docs/graphql/schema.json'
 overwrite: true

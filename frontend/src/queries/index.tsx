@@ -506,7 +506,7 @@ export function withFindMap<TProps, TChildProps = {}>(
     FindMapQueryVariables,
     FindMapProps<TChildProps>
   >(FindMapDocument, {
-    alias: 'withFindMap',
+    alias: 'findMap',
     ...operationOptions,
   })
 }
@@ -522,6 +522,18 @@ export function useFindMapQuery(
     baseOptions,
   )
 }
+export function useFindMapLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    FindMapQuery,
+    FindMapQueryVariables
+  >,
+) {
+  return ApolloReactHooks.useLazyQuery<FindMapQuery, FindMapQueryVariables>(
+    FindMapDocument,
+    baseOptions,
+  )
+}
+
 export type FindMapQueryHookResult = ReturnType<typeof useFindMapQuery>
 export type FindMapQueryResult = ApolloReactCommon.QueryResult<
   FindMapQuery,
@@ -554,7 +566,7 @@ export function withFindUser<TProps, TChildProps = {}>(
     FindUserQueryVariables,
     FindUserProps<TChildProps>
   >(FindUserDocument, {
-    alias: 'withFindUser',
+    alias: 'findUser',
     ...operationOptions,
   })
 }
@@ -570,6 +582,18 @@ export function useFindUserQuery(
     baseOptions,
   )
 }
+export function useFindUserLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    FindUserQuery,
+    FindUserQueryVariables
+  >,
+) {
+  return ApolloReactHooks.useLazyQuery<FindUserQuery, FindUserQueryVariables>(
+    FindUserDocument,
+    baseOptions,
+  )
+}
+
 export type FindUserQueryHookResult = ReturnType<typeof useFindUserQuery>
 export type FindUserQueryResult = ApolloReactCommon.QueryResult<
   FindUserQuery,
@@ -661,7 +685,7 @@ export function withGetUserResults<TProps, TChildProps = {}>(
     GetUserResultsQueryVariables,
     GetUserResultsProps<TChildProps>
   >(GetUserResultsDocument, {
-    alias: 'withGetUserResults',
+    alias: 'getUserResults',
     ...operationOptions,
   })
 }
@@ -677,6 +701,18 @@ export function useGetUserResultsQuery(
     GetUserResultsQueryVariables
   >(GetUserResultsDocument, baseOptions)
 }
+export function useGetUserResultsLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    GetUserResultsQuery,
+    GetUserResultsQueryVariables
+  >,
+) {
+  return ApolloReactHooks.useLazyQuery<
+    GetUserResultsQuery,
+    GetUserResultsQueryVariables
+  >(GetUserResultsDocument, baseOptions)
+}
+
 export type GetUserResultsQueryHookResult = ReturnType<
   typeof useGetUserResultsQuery
 >
@@ -712,7 +748,7 @@ export function withGetViewer<TProps, TChildProps = {}>(
     GetViewerQueryVariables,
     GetViewerProps<TChildProps>
   >(GetViewerDocument, {
-    alias: 'withGetViewer',
+    alias: 'getViewer',
     ...operationOptions,
   })
 }
@@ -728,6 +764,18 @@ export function useGetViewerQuery(
     baseOptions,
   )
 }
+export function useGetViewerLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    GetViewerQuery,
+    GetViewerQueryVariables
+  >,
+) {
+  return ApolloReactHooks.useLazyQuery<GetViewerQuery, GetViewerQueryVariables>(
+    GetViewerDocument,
+    baseOptions,
+  )
+}
+
 export type GetViewerQueryHookResult = ReturnType<typeof useGetViewerQuery>
 export type GetViewerQueryResult = ApolloReactCommon.QueryResult<
   GetViewerQuery,
@@ -768,7 +816,7 @@ export function withRegister<TProps, TChildProps = {}>(
     RegisterMutationVariables,
     RegisterProps<TChildProps>
   >(RegisterDocument, {
-    alias: 'withRegister',
+    alias: 'register',
     ...operationOptions,
   })
 }
@@ -824,7 +872,7 @@ export function withRegisterResultsWithCsv<TProps, TChildProps = {}>(
     RegisterResultsWithCsvMutationVariables,
     RegisterResultsWithCsvProps<TChildProps>
   >(RegisterResultsWithCsvDocument, {
-    alias: 'withRegisterResultsWithCsv',
+    alias: 'registerResultsWithCsv',
     ...operationOptions,
   })
 }
