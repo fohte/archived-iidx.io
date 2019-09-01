@@ -40,7 +40,7 @@
     "@types/recharts": "1.1.21",
     "@types/recompose": "0.30.7",
     "@zeit/next-css": "1.0.1",
-    "apollo-boost": "0.4.3",
+    "apollo-boost": "0.4.4",
     "apollo-link-batch-http": "1.2.12",
     "apollo-link-context": "1.0.18",
     "autoprefixer": "9.6.1",
