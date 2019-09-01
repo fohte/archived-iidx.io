@@ -38,7 +38,7 @@
     "@types/react": "16.9.2",
     "@types/react-dom": "16.8.5",
     "@types/recharts": "1.1.21",
-    "@types/recompose": "0.30.6",
+    "@types/recompose": "0.30.7",
     "@zeit/next-css": "1.0.1",
     "apollo-boost": "0.4.3",
     "apollo-link-batch-http": "1.2.12",
@@ -137,7 +137,7 @@
     "@types/react-dom": "16.8.5",
     "@types/react-test-renderer": "16.9.0",
     "@types/recharts": "1.1.21",
-    "@types/recompose": "0.30.6",
+    "@types/recompose": "0.30.7",
     "@types/validator": "10.11.3"
   }
 }
