@@ -168,7 +168,9 @@ const FilterForm: React.SFC<Props> = ({
                       {({ input }) => (
                         <DayPickerInput
                           {...input}
-                          placeholder={formats.date}
+                          placeholder={
+                            spacetime.now().format(formats.date) as string
+                          }
                           format={formats.date}
                           formatDate={(date, format) =>
                             spacetime(date).format(format) as string
