@@ -69,25 +69,13 @@ const MusicsPage = ({
 }: Props) => {
   const [activePage, setPage] = React.useState(page || 1)
 
-  const isQueryEmpty =
-    title == null &&
-    (difficulties == null || difficulties.length === 0) &&
-    (levels == null || levels.length === 0)
-
-  const formValues: FormValues = isQueryEmpty
-    ? {
-        title: null,
-        difficulties: [],
-        levels: [12],
-        onlyUpdated: false,
-      }
-    : {
-        title: title || null,
-        difficulties: difficulties || [],
-        levels: levels || [],
-        onlyUpdated: !!onlyUpdated,
-        updatedOn: updatedOn,
-      }
+  const formValues: FormValues = {
+    title: title || null,
+    difficulties: difficulties || [],
+    levels: levels || [],
+    onlyUpdated: !!onlyUpdated,
+    updatedOn: updatedOn,
+  }
 
   const changeRoute = (query: any, { replace }: { replace: boolean }) => {
     if (query.difficulties && query.difficulties.length !== 0) {
