@@ -46,7 +46,15 @@ const MapPage: React.FC<Props> = props => {
   const { setStatus } = useServerResponse()
 
   if (loading) {
-    return <>loading</>
+    return (
+      <UserProfileLayout
+        screenName={screenName}
+        playStyle={playStyle}
+        activeTab={Tab.Musics}
+      >
+        <MapDetail data={{ loading: true }} />
+      </UserProfileLayout>
+    )
   }
 
   if (error || data == null || data.music == null || data.music.map == null) {
@@ -85,12 +93,14 @@ const MapPage: React.FC<Props> = props => {
         ]}
       >
         <MapDetail
-          music={music}
-          map={map}
-          result={map.result}
-          oldResult={map.oldResult}
-          allResults={map.results}
-          screenName={screenName}
+          data={{
+            loading: false,
+            music,
+            map,
+            result: map.result,
+            oldResult: map.oldResult,
+            allResults: map.results,
+          }}
         />
       </UserProfileLayout>
     </>
