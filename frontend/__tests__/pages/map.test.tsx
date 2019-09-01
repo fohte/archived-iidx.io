@@ -1,7 +1,7 @@
 import { MockedProvider } from '@apollo/react-testing'
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
-import dayjs from 'dayjs'
+import spacetime from 'spacetime'
 
 import CurrentDateTimeProvider from '@app/contexts/CurrentDateTimeProvider'
 import CurrentDateTimeContext, {
@@ -35,11 +35,11 @@ const baseProps: NormalProps = {
 
 const createRequest = (context: CurrentDateTimeContextShape) => ({
   query: FindMapDocument,
-  variables: toQueryVariables(baseProps, dayjs(context.current)),
+  variables: toQueryVariables(baseProps, spacetime(context.current)),
 })
 
 const createMock = (context: CurrentDateTimeContextShape) => {
-  const lastPlayedAt = dayjs(context.current).format('YYYY-MM-DDTHH:mm:ssZ[Z]')
+  const lastPlayedAt = spacetime(context.current).format('iso-utc')
   const music: FindMapQuery = {
     music: {
       id: '1',

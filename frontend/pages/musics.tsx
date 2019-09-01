@@ -2,7 +2,6 @@ import * as _ from 'lodash'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import * as React from 'react'
-import dayjs from 'dayjs'
 
 import MusicsPage from '@app/components/pages/MusicsPage'
 import {
@@ -66,7 +65,7 @@ const PageComponent: PageComponentType<Props> = ({
         difficulties={difficulties}
         levels={levels}
         onlyUpdated={!!onlyUpdated}
-        updatedOn={updatedOn ? dayjs(updatedOn).toDate() : undefined}
+        updatedOn={updatedOn ? new Date(Date.parse(updatedOn)) : undefined}
         page={page}
       />
     </>

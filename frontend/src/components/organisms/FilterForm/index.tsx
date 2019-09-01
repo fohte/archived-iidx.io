@@ -6,7 +6,7 @@ import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
 import { toast } from 'react-toastify'
 import DayPickerInput from 'react-day-picker/DayPickerInput'
-import dayjs from 'dayjs'
+import spacetime from 'spacetime'
 
 import Button from '@app/components/atoms/Button'
 import Checkbox from '@app/components/atoms/Checkbox'
@@ -171,7 +171,7 @@ const FilterForm: React.SFC<Props> = ({
                           placeholder={formats.date}
                           format={formats.date}
                           formatDate={(date, format) =>
-                            dayjs(date).format(format)
+                            spacetime(date).format(format) as string
                           }
                           component={CInputText}
                           onDayChange={day => {

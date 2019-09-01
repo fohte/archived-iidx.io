@@ -1,5 +1,4 @@
 import classnames from 'classnames/bind'
-import dayjs from 'dayjs'
 import * as _ from 'lodash'
 import * as React from 'react'
 import {
@@ -192,7 +191,7 @@ const MapDetail: React.SFC<Props> = ({
                   .filter(({ score }) => score != null)
                   .map(({ score, lastPlayedAt }) => ({
                     score,
-                    lastPlayedAt: dayjs(lastPlayedAt).unix(),
+                    lastPlayedAt: Date.parse(lastPlayedAt),
                   }))}
                 // モバイル端末でタップしたときに hover と同じ動作をさせるためのハック
                 // https://github.com/recharts/recharts/issues/754#issuecomment-430477790

@@ -1,15 +1,15 @@
 import React from 'react'
-import dayjs from 'dayjs'
+import spacetime, { Spacetime } from 'spacetime'
 
 import CurrentDateTimeContext from '@app/contexts/CurrentDateTimeContext'
 
-const useCurrentDateTimeContext = (): dayjs.Dayjs => {
+const useCurrentDateTimeContext = (): Spacetime => {
   const { current } = React.useContext(CurrentDateTimeContext)
-  const ref = React.useRef<dayjs.Dayjs>()
+  const ref = React.useRef<Spacetime>()
 
-  const d = dayjs(current)
+  const d = spacetime(current)
 
-  if (!(ref.current && ref.current.isSame(d))) {
+  if (!(ref.current && ref.current.isEqual(d))) {
     ref.current = d
   }
 

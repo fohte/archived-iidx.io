@@ -1,7 +1,6 @@
 import classnames from 'classnames/bind'
 import * as React from 'react'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import spacetime from 'spacetime'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -14,7 +13,7 @@ import resultDiff, {
 import ScoreGraph from '@app/components/atoms/ScoreGraph'
 import Grade from '@app/components/atoms/Grade'
 import ClearLamp from '@app/components/atoms/ClearLamp'
-import { formats } from '@app/lib/dateTime'
+import { formats, relativeTimeFromNow } from '@app/lib/dateTime'
 import {
   GradeDiff,
   Grade as GradeEnum,
@@ -24,8 +23,6 @@ import {
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
-
-dayjs.extend(relativeTime)
 
 interface BaseResult {
   score?: number | null
@@ -309,10 +306,12 @@ const ResultBox: React.FunctionComponent<Props> = ({
                     <dd className={cx('moderate')}>
                       {data.result
                         ? absoluteLastPlayedAt
-                          ? dayjs(data.result.lastPlayedAt).format(
+                          ? spacetime(data.result.lastPlayedAt).format(
                               formats.dateTime,
                             )
-                          : dayjs(data.result.lastPlayedAt).fromNow()
+                          : relativeTimeFromNow(
+                              spacetime(data.result.lastPlayedAt),
+                            )
                         : '-'}
                     </dd>
                   )}

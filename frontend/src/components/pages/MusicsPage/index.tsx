@@ -1,6 +1,6 @@
 import * as _ from 'lodash'
 import * as React from 'react'
-import dayjs from 'dayjs'
+import spacetime from 'spacetime'
 
 import { FormValues } from '@app/components/organisms/FilterForm'
 import ResultList from '@app/components/organisms/ResultList'
@@ -110,7 +110,7 @@ const MusicsPage = ({
     }
 
     if (query.updatedOn) {
-      query.updatedOn = dayjs(query.updatedOn).format('YYYY-MM-DD')
+      query.updatedOn = spacetime(query.updatedOn).format('yyyy-MM-dd')
     }
 
     const routerMethod = replace ? Router.replace : Router.push

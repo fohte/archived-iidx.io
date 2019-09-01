@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Head from 'next/head'
-import dayjs from 'dayjs'
+import { Spacetime } from 'spacetime'
 
 import MapDetail from '@app/components/organisms/MapDetail'
 import UserProfileLayout, {
@@ -25,13 +25,13 @@ export interface Props {
 
 export const toQueryVariables = (
   { musicNumber, playStyle, difficulty, screenName }: Props,
-  current: dayjs.Dayjs,
+  current: Spacetime,
 ): FindMapQueryVariables => ({
   musicNumber,
   playStyle,
   difficulty,
   username: screenName,
-  comparisonDateTime: findPreviousRefreshDateTime(current).toISOString(),
+  comparisonDateTime: findPreviousRefreshDateTime(current).format('iso-utc'),
 })
 
 const MapPage: React.FC<Props> = props => {

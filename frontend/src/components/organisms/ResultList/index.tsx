@@ -2,7 +2,7 @@ import classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import ErrorPage from 'next/error'
 import * as React from 'react'
-import dayjs from 'dayjs'
+import spacetime, { Spacetime } from 'spacetime'
 
 import Container from '@app/components/atoms/Container'
 import Pagination from '@app/components/atoms/Pagination'
@@ -64,9 +64,9 @@ const ResultList: React.SFC<Props> = ({
 
   const current = useCurrentDateTimeContext()
 
-  const targetDateTime: dayjs.Dayjs =
+  const targetDateTime: Spacetime =
     onlyUpdated && updatedOn
-      ? findRefreshDateTime(dayjs(updatedOn))
+      ? findRefreshDateTime(spacetime(updatedOn))
       : findPreviousRefreshDateTime(current)
 
   // ページ情報を除くクエリ変数を保持しておく
@@ -76,17 +76,19 @@ const ResultList: React.SFC<Props> = ({
     playStyle,
     difficulties,
     levels,
-    comparisonTargetDateTime: targetDateTime.toISOString(),
+    comparisonTargetDateTime: targetDateTime.format('iso-utc'),
     limit: numItemsPerPage,
   }
 
   if (onlyUpdated) {
     baseVariables.updated = {
-      targetDatetime: targetDateTime.toISOString(),
+      targetDatetime: targetDateTime.format('iso-utc'),
     }
 
     if (updatedOn) {
-      baseVariables.updated.baseDatetime = dayjs(updatedOn).add(1, 'day')
+      baseVariables.updated.baseDatetime = spacetime(updatedOn)
+        .add(1, 'day')
+        .format('iso-utc')
     }
   }
   const previousBaseVariables = usePrevious(baseVariables)
