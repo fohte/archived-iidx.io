@@ -1,6 +1,6 @@
 hooks:
   afterAllFileWrite:
-    - ../node_modules/.bin/prettier --write
+    - prettier --write
 schema:
   - '../docs/graphql/schema.json'
 overwrite: true
