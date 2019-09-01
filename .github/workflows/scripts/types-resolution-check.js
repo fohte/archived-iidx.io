@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const repoRoot = path.join(__dirname, '../..')
+const repoRoot = path.join(__dirname, '../../..')
 
 const packages = JSON.parse(
   fs.readFileSync(path.join(repoRoot, 'frontend/package.json')),

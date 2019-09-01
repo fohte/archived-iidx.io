@@ -1,0 +1,102 @@
+name: Test
+
+on: push
+
+jobs:
+  root:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Check format
+        run: yarn run format
+
+  frontend:
+    runs-on: ubuntu-latest
+    container: node:10.15.3
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        working-directory: frontend
+
+      - name: Setup .env
+        run: cp .env.sample .env
+
+      - name: check diff of generated files
+        run: |
+          yarn run gql:gen
+          dir="$(mktemp -d)"
+          cp src/queries/index.tsx "$dir/index.tsx"
+          git checkout -- src/queries/index.tsx
+
+          diff -uN src/queries/index.tsx "$dir/index.tsx"
+        working-directory: frontend
+
+      - name: Validate @types packages
+        run: node .github/workflows/scripts/types-resolution-check.js
+
+      - name: Run linters
+        run: yarn run lint
+        working-directory: frontend
+        env:
+          # @see https://github.com/typescript-eslint/typescript-eslint/issues/1080#issuecomment-542434536
+          PARSER_NO_WATCH: 'true'
+
+      - name: Run tests
+        run: |
+          yarn run test:ci
+          yarn run codecov --root="$(cd .. && pwd)"
+        working-directory: frontend
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  backend:
+    services:
+      mysql:
+        image: mysql:5.7.26
+        env:
+          MYSQL_ROOT_PASSWORD: password
+        options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
+
+    runs-on: ubuntu-latest
+    container: ruby:2.6.3-stretch
+
+    env:
+      CI: 'true'
+      MYSQL_HOST: mysql
+      MYSQL_PASSWORD: 'password'
+      MYSQL_PORT: 3306
+      RAILS_ENV: test
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3 --frozen --with test
+        working-directory: backend
+
+      - name: Lint
+        run: bundle exec rubocop
+        working-directory: backend
+
+      - name: Setup
+        run: bundle exec rake db:setup
+        working-directory: backend
+
+      - name: Test
+        run: bundle exec rspec -fd --force-color
+        working-directory: backend
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
