@@ -34,10 +34,10 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       it 'returns the current user' do
         expect(response['data']).to eq(
           'viewer' => {
-            'id' => viewer.id.to_s,
+            'id' => viewer.uuid,
             'name' => viewer.name,
             'profile' => {
-              'id' => viewer.profile.id.to_s,
+              'id' => viewer.profile.uuid,
               'displayName' => viewer.profile.display_name,
             },
           },

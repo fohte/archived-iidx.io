@@ -3,6 +3,7 @@ node_modules
 coverage
 .next
 /frontend/static/dist
+/frontend/dist
 
 .env
 
@@ -30,3 +31,8 @@ vendor/bundle
 
 # Crash log files
 crash.log
+
+!/data/users/.keep
+/data/users/*.json
+
+/backend/spec/examples.txt

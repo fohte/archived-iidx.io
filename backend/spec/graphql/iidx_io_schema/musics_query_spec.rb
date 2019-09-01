@@ -38,7 +38,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       expect(response['data']).to eq(
         'musics' => [
           {
-            'id' => music.id.to_s,
+            'id' => music.uuid,
             'title' => music.title,
             'genre' => music.genre,
             'artist' => music.artist,
@@ -47,7 +47,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             'leggendaria' => music.leggendaria,
             'maps' => [
               {
-                'id' => map.id.to_s,
+                'id' => map.uuid,
                 'numNotes' => map.num_notes,
                 'level' => 12,
                 'playStyle' => 'SP',

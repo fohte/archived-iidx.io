@@ -4,14 +4,33 @@ class GraphqlController < ApplicationController
   include HttpTokenAuthenticatable
 
   def execute
-    variables = ensure_hash(params[:variables])
-    query = params[:query]
-    operation_name = params[:operationName]
     context = {
       viewer: current_viewer,
       firebase_uid: current_viewer_firebase_uid,
     }
-    result = IIDXIOSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+
+    # Apollo sends the params in a _json variable when batching is enabled
+    # see the Apollo Documentation about query batching: https://www.apollographql.com/docs/react/advanced/network-layer.html#query-batching
+    result =
+      if params[:_json]
+        queries = params[:_json].map do |param|
+          {
+            query: param[:query],
+            operation_name: param[:operationName],
+            variables: ensure_hash(param[:variables]),
+            context: context,
+          }
+        end
+        IIDXIOSchema.multiplex(queries)
+      else
+        IIDXIOSchema.execute(
+          params[:query],
+          operation_name: params[:operationName],
+          variables: ensure_hash(params[:variables]),
+          context: context,
+        )
+      end
+
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?

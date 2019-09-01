@@ -125,7 +125,7 @@ type Map {
   music: Music!
   numNotes: Int!
   playStyle: PlayStyle!
-  result(username: String!): Result
+  result(lastPlayedSince: ISO8601DateTime, lastPlayedUntil: ISO8601DateTime, oldest: Boolean, username: String!): Result
   results(username: String!): [Result!]!
 }
 
@@ -141,6 +141,7 @@ type Music {
   leggendaria: Boolean!
   map(difficulty: Difficulty!, playStyle: PlayStyle!): Map
   maps: [Map!]!
+  number: Int!
   series: Int!
   textageUid: String!
   title: String!
@@ -176,7 +177,7 @@ type Query {
   """
   Find a music.
   """
-  music(id: ID!): Music
+  music(number: Int!): Music
 
   """
   Find musics.
@@ -186,7 +187,8 @@ type Query {
   """
   Search maps.
   """
-  searchMaps(difficulties: [Difficulty], levels: [Int], limit: Int, offset: Int, playStyle: PlayStyle, title: String): MapList!
+  searchMaps(difficulties: [Difficulty], levels: [Int], limit: Int, offset: Int, playStyle: PlayStyle, title: String, updated: UpdatedResultFilter, username: String!): MapList!
+  updatedResults(baseDatetime: ISO8601DateTime, limit: Int, offset: Int, targetDatetime: ISO8601DateTime!, username: String!): ResultList!
 
   """
   Find a user by name.
@@ -218,6 +220,17 @@ type Result {
   nextGradeDiff: GradeDiff!
   score: Int
   scoreRate: Float
+  user: User!
+}
+
+type ResultList implements Pageable {
+  nodes: [Result!]!
+  totalCount: Int!
+}
+
+input UpdatedResultFilter {
+  baseDatetime: ISO8601DateTime
+  targetDatetime: ISO8601DateTime!
 }
 
 type User {

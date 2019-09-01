@@ -3,6 +3,8 @@
 Rails.application.configure do
   config.debug_exception_response_format = :api
 
+  config.log_tags = [:request_id]
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -47,6 +49,8 @@ Rails.application.configure do
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    $stdout.sync = true
+    $stderr.sync = true
   end
 
   # Use an evented file watcher to asynchronously detect changes in source code,

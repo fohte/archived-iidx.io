@@ -1,11 +1,13 @@
 query findMap(
-  $id: ID!
+  $musicNumber: Int!
   $playStyle: PlayStyle!
   $difficulty: Difficulty!
   $username: String!
+  $comparisonDateTime: ISO8601DateTime
 ) {
-  music(id: $id) {
+  music(number: $musicNumber) {
     id
+    number
     title
     genre
     artist
@@ -37,6 +39,19 @@ query findMap(
           diff
         }
 
+        bpi
+        lastPlayedAt
+      }
+
+      oldResult: result(
+        username: $username
+        lastPlayedUntil: $comparisonDateTime
+      ) {
+        id
+        score
+        missCount
+        clearLamp
+        scoreRate
         bpi
         lastPlayedAt
       }

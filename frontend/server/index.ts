@@ -1,13 +1,12 @@
-const path = require('path')
+import path from 'path'
 
-const express = require('express')
-const next = require('next')
+import express from 'express'
+import next from 'next'
 
-const routes = require('./src/routes')
+import routes from './routes'
 
 const app = next({
   dev: process.env.NODE_ENV !== 'production',
-  dir: './src',
 })
 const handler = routes.getRequestHandler(app)
 

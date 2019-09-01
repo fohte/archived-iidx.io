@@ -5,12 +5,17 @@ import * as _ from 'lodash'
 import * as React from 'react'
 import { Field as FinalField, Form as FinalForm } from 'react-final-form'
 import { toast } from 'react-toastify'
+import DayPickerInput from 'react-day-picker/DayPickerInput'
+import spacetime from 'spacetime'
 
 import Button from '@app/components/atoms/Button'
 import Checkbox from '@app/components/atoms/Checkbox'
+import InputText from '@app/components/atoms/InputText'
 import Container from '@app/components/atoms/Container'
 import FormGroup from '@app/components/atoms/FormGroup'
 import { Difficulty } from '@app/queries'
+import { formats } from '@app/lib/dateTime'
+import withClassComponent from '@app/lib/withClassComponent'
 
 import * as css from './style.scss'
 
@@ -20,6 +25,8 @@ export interface FormValues {
   title?: string | null
   difficulties: Difficulty[]
   levels: number[]
+  onlyUpdated: boolean
+  updatedOn?: Date | null
 }
 
 export interface Props {
@@ -27,6 +34,12 @@ export interface Props {
   onSubmit: (values: FormValues) => void
   onCloseRequested: () => void
 }
+
+// react-day-picker で Function Component を渡すと
+// Function components cannot be given refs. Attempts to access this ref will fail.
+// という warning が出るので一旦 Class Component に変換する
+// @see https://github.com/gpbl/react-day-picker/issues/748
+const CInputText = withClassComponent(InputText)
 
 const FilterForm: React.SFC<Props> = ({
   initialValues,
@@ -59,8 +72,8 @@ const FilterForm: React.SFC<Props> = ({
   })
 
   return (
-    <FinalForm onSubmit={onSubmit} initialValues={initialValues}>
-      {({ form, handleSubmit, hasSubmitErrors, submitError }) => {
+    <FinalForm<FormValues> onSubmit={onSubmit} initialValues={initialValues}>
+      {({ form, handleSubmit, hasSubmitErrors, submitError, values }) => {
         if (hasSubmitErrors) {
           toast.error(submitError)
         }
@@ -130,6 +143,47 @@ const FilterForm: React.SFC<Props> = ({
                     </FinalField>
                   ))}
                 </FormGroup>
+
+                <FormGroup
+                  label="Updated results"
+                  labelClassName={cx('form-group-label')}
+                >
+                  <FinalField<boolean> type="checkbox" name="onlyUpdated">
+                    {({ input }) => (
+                      <div className={cx('form-field')}>
+                        <Checkbox {...input}>
+                          Show only updated results
+                        </Checkbox>
+                      </div>
+                    )}
+                  </FinalField>
+                </FormGroup>
+
+                {values.onlyUpdated && (
+                  <FormGroup
+                    label="Updated results in"
+                    labelClassName={cx('form-group-label')}
+                  >
+                    <FinalField<Date> name="updatedOn">
+                      {({ input }) => (
+                        <DayPickerInput
+                          {...input}
+                          placeholder={
+                            spacetime.now().format(formats.date) as string
+                          }
+                          format={formats.date}
+                          formatDate={(date, format) =>
+                            spacetime(date).format(format) as string
+                          }
+                          component={CInputText}
+                          onDayChange={day => {
+                            input.onChange(day)
+                          }}
+                        />
+                      )}
+                    </FinalField>
+                  </FormGroup>
+                )}
               </Container>
 
               <footer className={cx('footer')}>

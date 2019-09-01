@@ -5,7 +5,7 @@ import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
 import { FormValues } from '@app/components/organisms/LoginOrSignUpForm'
-import Signup from '@app/pages/signup'
+import Signup from '@pages/signup'
 
 const mockCreate = jest.fn()
 

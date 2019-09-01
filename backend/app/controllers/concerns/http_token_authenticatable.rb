@@ -5,7 +5,12 @@ module HttpTokenAuthenticatable
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
   def current_viewer
-    @current_viewer ||= User.find_by(firebase_uid: current_viewer_firebase_uid)
+    @current_viewer ||=
+      if current_viewer_firebase_uid.nil?
+        nil
+      else
+        User.find_by(firebase_uid: current_viewer_firebase_uid)
+      end
   end
 
   def current_viewer_firebase_uid

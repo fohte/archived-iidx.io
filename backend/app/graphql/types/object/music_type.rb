@@ -3,7 +3,13 @@
 module Types
   module Object
     class MusicType < Base
-      field :id, ID, null: false
+      field :id, resolver: Resolvers::ModelID
+      field :number, Integer, null: false
+
+      def number
+        object.id
+      end
+
       field :title, String, null: false
       field :genre, String, null: false
       field :artist, String, null: false
@@ -15,7 +21,7 @@ module Types
       end
 
       field :leggendaria, Boolean, null: false
-      field :maps, [MapType], null: false
+      field :maps, [MapType], null: false, preload: :maps
 
       field :map, MapType, null: true do
         argument :play_style, Enum::PlayStyle, required: true
@@ -23,9 +29,12 @@ module Types
       end
 
       def map(play_style:, difficulty:)
-        object.maps.find_by!(play_style: play_style, difficulty: difficulty)
-      rescue ActiveRecord::RecordNotFound => e
-        raise IIDXIO::GraphQL::NotFoundError, e.message
+        LoaderUtils.find_by!(
+          Map,
+          music_id: object.id,
+          play_style: play_style.downcase,
+          difficulty: difficulty.downcase,
+        )
       end
     end
   end

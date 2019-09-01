@@ -1,5 +1,6 @@
 import * as _ from 'lodash'
 import * as React from 'react'
+import spacetime from 'spacetime'
 
 import { FormValues } from '@app/components/organisms/FilterForm'
 import ResultList from '@app/components/organisms/ResultList'
@@ -9,7 +10,7 @@ import UserProfileLayout, {
 } from '@app/components/templates/UserProfileLayout'
 import ensureArray from '@app/lib/ensureArray'
 import { Difficulty, PlayStyle } from '@app/queries'
-import routes from '@app/routes'
+import routes from '@server/routes'
 
 const { Router } = routes
 
@@ -19,6 +20,8 @@ export interface Props {
   playStyle: PlayStyle
   difficulties?: Difficulty[]
   levels?: number[]
+  onlyUpdated?: boolean
+  updatedOn?: Date
   page?: number
 }
 
@@ -26,6 +29,8 @@ const compactFormValues = ({
   title,
   difficulties,
   levels,
+  onlyUpdated,
+  updatedOn,
 }: FormValues): Partial<FormValues> => {
   const newValues: Partial<FormValues> = {}
 
@@ -41,6 +46,14 @@ const compactFormValues = ({
     newValues.levels = levels
   }
 
+  if (onlyUpdated) {
+    newValues.onlyUpdated = onlyUpdated
+
+    if (updatedOn) {
+      newValues.updatedOn = updatedOn
+    }
+  }
+
   return newValues
 }
 
@@ -50,6 +63,8 @@ const MusicsPage = ({
   playStyle,
   difficulties,
   levels,
+  onlyUpdated,
+  updatedOn,
   page,
 }: Props) => {
   const [activePage, setPage] = React.useState(page || 1)
@@ -64,11 +79,14 @@ const MusicsPage = ({
         title: null,
         difficulties: [],
         levels: [12],
+        onlyUpdated: false,
       }
     : {
         title: title || null,
         difficulties: difficulties || [],
         levels: levels || [],
+        onlyUpdated: !!onlyUpdated,
+        updatedOn: updatedOn,
       }
 
   const changeRoute = (query: any, { replace }: { replace: boolean }) => {
@@ -85,6 +103,14 @@ const MusicsPage = ({
     // page が 1 (初期値) のときは正規化する
     if (query.page === 1) {
       delete query.page
+    }
+
+    if (query.onlyUpdated) {
+      query.onlyUpdated = 'true'
+    }
+
+    if (query.updatedOn) {
+      query.updatedOn = spacetime(query.updatedOn).format('yyyy-MM-dd')
     }
 
     const routerMethod = replace ? Router.replace : Router.push

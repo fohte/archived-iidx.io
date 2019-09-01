@@ -2,7 +2,7 @@ import { GraphQLError } from 'graphql'
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
-import Profile from '@app/pages/profile'
+import Profile from '@pages/profile'
 import { PlayStyle } from '@app/queries'
 
 describe('/', () => {

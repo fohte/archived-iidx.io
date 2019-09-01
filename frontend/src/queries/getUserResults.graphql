@@ -6,6 +6,9 @@ query getUserResults(
   $difficulties: [Difficulty]
   $offset: Int
   $limit: Int
+  $comparisonTargetDateTime: ISO8601DateTime!
+  $comparisonBaseDateTime: ISO8601DateTime
+  $updated: UpdatedResultFilter
 ) {
   searchMaps(
     title: $title
@@ -14,6 +17,8 @@ query getUserResults(
     difficulties: $difficulties
     offset: $offset
     limit: $limit
+    username: $username
+    updated: $updated
   ) {
     totalCount
 
@@ -26,10 +31,11 @@ query getUserResults(
 
       music {
         id
+        number
         title
       }
 
-      result(username: $username) {
+      result(username: $username, lastPlayedUntil: $comparisonBaseDateTime) {
         id
         score
         missCount
@@ -46,6 +52,19 @@ query getUserResults(
           grade
           diff
         }
+      }
+
+      oldResult: result(
+        username: $username
+        lastPlayedUntil: $comparisonTargetDateTime
+      ) {
+        id
+        score
+        missCount
+        clearLamp
+        scoreRate
+        bpi
+        lastPlayedAt
       }
     }
   }

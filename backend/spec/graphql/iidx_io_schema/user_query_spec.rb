@@ -25,10 +25,10 @@ RSpec.describe IIDXIOSchema, type: :graphql do
     it 'returns a user' do
       expect(response['data']).to eq(
         'user' => {
-          'id' => user.id.to_s,
+          'id' => user.uuid,
           'name' => user.name,
           'profile' => {
-            'id' => user.profile.id.to_s,
+            'id' => user.profile.uuid,
             'displayName' => user.profile.display_name,
           },
         },

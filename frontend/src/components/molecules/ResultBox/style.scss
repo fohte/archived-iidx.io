@@ -1,6 +1,7 @@
 @import 'styles/colors';
 @import 'styles/mixins';
 @import 'styles/variables';
+@import 'styles/breakpoints';
 
 $left-right-padding: 1.5rem;
 $top-bottom-padding: 1rem;
@@ -49,19 +50,15 @@ $top-bottom-padding: 1rem;
 
   .data-list {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     dt {
       display: inline-block;
     }
 
-    dd {
-      display: flex;
-      justify-content: space-between;
-
-      &.moderate {
-        color: $primary-fg-lighter-color;
-      }
+    .moderate {
+      color: $primary-fg-lighter-color;
     }
   }
 
@@ -89,6 +86,32 @@ $top-bottom-padding: 1rem;
     .failed {
       color: $primary-fg-color;
     }
+
+    dd {
+      > div {
+        display: inline-block;
+      }
+
+      @include on-mobile() {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .clear-type-diff-icon {
+      display: inline-block;
+      margin: 0 0.5em;
+
+      @include on-mobile() {
+        margin: 0.25em 0;
+
+        > svg {
+          transform: rotate(90deg);
+        }
+      }
+    }
   }
 
   .score-box {
@@ -96,12 +119,18 @@ $top-bottom-padding: 1rem;
 
     .ex-score {
       margin-bottom: 0.5rem;
+
+      text-align: right;
     }
 
     .score-text {
       margin-right: 0.25em;
 
       font-weight: bold;
+    }
+
+    .score-info {
+      display: inline-block;
     }
   }
 
@@ -114,6 +143,24 @@ $top-bottom-padding: 1rem;
     .data-list + .data-list {
       margin-top: 0.5rem;
     }
+  }
+}
+
+.score-diff-info {
+  font-size: 0.9em;
+
+  &.positive {
+    color: darken($green, 10%);
+  }
+
+  &.negative {
+    color: $red;
+  }
+}
+
+.bpi {
+  .score-diff-info {
+    margin-left: 0.25em;
   }
 }
 

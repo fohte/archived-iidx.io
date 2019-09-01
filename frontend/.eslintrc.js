@@ -68,7 +68,11 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [['@app', path.join(__dirname, 'src')]],
+        map: [
+          ['@app', path.join(__dirname, 'src')],
+          ['@server', path.join(__dirname, 'server')],
+          ['@pages', path.join(__dirname, 'pages')],
+        ],
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
       },
     },

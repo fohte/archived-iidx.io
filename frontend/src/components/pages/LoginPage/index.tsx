@@ -8,7 +8,7 @@ import LoginOrSignUpForm, {
 } from '@app/components/organisms/LoginOrSignUpForm'
 import MainLayout from '@app/components/templates/MainLayout'
 import { auth, ErrorType } from '@app/lib/firebaseApp'
-import routes from '@app/routes'
+import routes from '@server/routes'
 
 import * as css from './style.scss'
 
@@ -45,7 +45,7 @@ const LoginPage = () => (
       </Box>
       <Box transparent className={cx('footer')}>
         New to us?{' '}
-        <Link route="/signup" prefetch>
+        <Link route="/signup">
           <a>Sign up.</a>
         </Link>
       </Box>

@@ -2,17 +2,23 @@ import classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import ErrorPage from 'next/error'
 import * as React from 'react'
+import spacetime, { Spacetime } from 'spacetime'
 
 import Container from '@app/components/atoms/Container'
 import Pagination from '@app/components/atoms/Pagination'
 import ResultTable from '@app/components/molecules/ResultTable'
 import { FormValues } from '@app/components/organisms/FilterForm'
 import {
+  findRefreshDateTime,
+  findPreviousRefreshDateTime,
+} from '@app/lib/dateTime'
+import {
   useGetUserResultsQuery,
   GetUserResultsQueryVariables,
   GetUserResultsQueryResult,
   PlayStyle,
 } from '@app/queries'
+import { useCurrentDateTimeContext } from '@app/lib/hooks'
 
 import * as css from './style.scss'
 
@@ -47,7 +53,7 @@ const PaginationContainer: React.SFC<{
 )
 
 const ResultList: React.SFC<Props> = ({
-  formValues: { title, difficulties, levels },
+  formValues: { title, difficulties, levels, onlyUpdated, updatedOn },
   playStyle,
   screenName,
   onPageChange,
@@ -56,6 +62,13 @@ const ResultList: React.SFC<Props> = ({
 }) => {
   const containerElement = React.useRef<HTMLDivElement | null>(null)
 
+  const current = useCurrentDateTimeContext()
+
+  const targetDateTime: Spacetime =
+    onlyUpdated && updatedOn
+      ? findRefreshDateTime(spacetime(updatedOn))
+      : findPreviousRefreshDateTime(current)
+
   // ページ情報を除くクエリ変数を保持しておく
   const baseVariables: GetUserResultsQueryVariables = {
     username: screenName,
@@ -63,9 +76,21 @@ const ResultList: React.SFC<Props> = ({
     playStyle,
     difficulties,
     levels,
+    comparisonTargetDateTime: targetDateTime.format('iso-utc'),
     limit: numItemsPerPage,
   }
 
+  if (onlyUpdated) {
+    baseVariables.updated = {
+      targetDatetime: targetDateTime.format('iso-utc'),
+    }
+
+    if (updatedOn) {
+      baseVariables.updated.baseDatetime = spacetime(updatedOn)
+        .add(1, 'day')
+        .format('iso-utc')
+    }
+  }
   const previousBaseVariables = usePrevious(baseVariables)
 
   const [cachedTotalPages, cacheTotalPages] = React.useState<number | null>(

@@ -12,4 +12,8 @@ module FixtureHelper
   def root_fixture(*path)
     Rails.root.join('spec', 'fixtures', *Array(path))
   end
+
+  def read_graphql_fixture(*path)
+    root_fixture('graphql', *path).read
+  end
 end

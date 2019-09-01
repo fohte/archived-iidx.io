@@ -2,7 +2,7 @@
 
 create_table :users, force: :cascade, id: :bigint, unsigned: true, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
   t.string :name, null: false
-  t.string :firebase_uid, null: false
+  t.string :firebase_uid, null: true
 
   t.timestamps
 

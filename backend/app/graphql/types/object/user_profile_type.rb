@@ -3,7 +3,7 @@
 module Types
   module Object
     class UserProfileType < Base
-      field :id, ID, null: false
+      field :id, resolver: Resolvers::ModelID
       field :display_name, String, null: false
     end
   end

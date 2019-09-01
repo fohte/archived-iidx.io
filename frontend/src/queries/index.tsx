@@ -89,6 +89,9 @@ export type Map = {
 
 export type MapResultArgs = {
   username: Scalars['String']
+  lastPlayedSince?: Maybe<Scalars['ISO8601DateTime']>
+  lastPlayedUntil?: Maybe<Scalars['ISO8601DateTime']>
+  oldest?: Maybe<Scalars['Boolean']>
 }
 
 export type MapResultsArgs = {
@@ -109,6 +112,7 @@ export type Music = {
   leggendaria: Scalars['Boolean']
   map?: Maybe<Map>
   maps: Array<Map>
+  number: Scalars['Int']
   series: Scalars['Int']
   textageUid: Scalars['String']
   title: Scalars['String']
@@ -156,6 +160,7 @@ export type Query = {
   musics?: Maybe<Array<Music>>
   /** Search maps. */
   searchMaps: MapList
+  updatedResults: ResultList
   /** Find a user by name. */
   user?: Maybe<User>
   /** The currently authenticated user. */
@@ -163,16 +168,26 @@ export type Query = {
 }
 
 export type QueryMusicArgs = {
-  id: Scalars['ID']
+  number: Scalars['Int']
 }
 
 export type QuerySearchMapsArgs = {
+  username: Scalars['String']
   offset?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
   title?: Maybe<Scalars['String']>
   levels?: Maybe<Array<Maybe<Scalars['Int']>>>
   playStyle?: Maybe<PlayStyle>
   difficulties?: Maybe<Array<Maybe<Difficulty>>>
+  updated?: Maybe<UpdatedResultFilter>
+}
+
+export type QueryUpdatedResultsArgs = {
+  username: Scalars['String']
+  offset?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+  baseDatetime?: Maybe<Scalars['ISO8601DateTime']>
+  targetDatetime: Scalars['ISO8601DateTime']
 }
 
 export type QueryUserArgs = {
@@ -198,6 +213,18 @@ export type Result = {
   nextGradeDiff: GradeDiff
   score?: Maybe<Scalars['Int']>
   scoreRate?: Maybe<Scalars['Float']>
+  user: User
+}
+
+export type ResultList = Pageable & {
+  __typename?: 'ResultList'
+  nodes: Array<Result>
+  totalCount: Scalars['Int']
+}
+
+export type UpdatedResultFilter = {
+  baseDatetime?: Maybe<Scalars['ISO8601DateTime']>
+  targetDatetime: Scalars['ISO8601DateTime']
 }
 
 export type User = {
@@ -213,10 +240,11 @@ export type UserProfile = {
   id: Scalars['ID']
 }
 export type FindMapQueryVariables = {
-  id: Scalars['ID']
+  musicNumber: Scalars['Int']
   playStyle: PlayStyle
   difficulty: Difficulty
   username: Scalars['String']
+  comparisonDateTime?: Maybe<Scalars['ISO8601DateTime']>
 }
 
 export type FindMapQuery = { __typename?: 'Query' } & {
@@ -224,6 +252,7 @@ export type FindMapQuery = { __typename?: 'Query' } & {
     { __typename?: 'Music' } & Pick<
       Music,
       | 'id'
+      | 'number'
       | 'title'
       | 'genre'
       | 'artist'
@@ -263,6 +292,18 @@ export type FindMapQuery = { __typename?: 'Query' } & {
                     >
                   }
               >
+              oldResult: Maybe<
+                { __typename?: 'Result' } & Pick<
+                  Result,
+                  | 'id'
+                  | 'score'
+                  | 'missCount'
+                  | 'clearLamp'
+                  | 'scoreRate'
+                  | 'bpi'
+                  | 'lastPlayedAt'
+                >
+              >
               results: Array<
                 { __typename?: 'Result' } & Pick<
                   Result,
@@ -291,6 +332,9 @@ export type GetUserResultsQueryVariables = {
   difficulties?: Maybe<Array<Maybe<Difficulty>>>
   offset?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
+  comparisonTargetDateTime: Scalars['ISO8601DateTime']
+  comparisonBaseDateTime?: Maybe<Scalars['ISO8601DateTime']>
+  updated?: Maybe<UpdatedResultFilter>
 }
 
 export type GetUserResultsQuery = { __typename?: 'Query' } & {
@@ -300,7 +344,10 @@ export type GetUserResultsQuery = { __typename?: 'Query' } & {
           Map,
           'id' | 'numNotes' | 'level' | 'difficulty' | 'playStyle'
         > & {
-            music: { __typename?: 'Music' } & Pick<Music, 'id' | 'title'>
+            music: { __typename?: 'Music' } & Pick<
+              Music,
+              'id' | 'number' | 'title'
+            >
             result: Maybe<
               { __typename?: 'Result' } & Pick<
                 Result,
@@ -321,6 +368,18 @@ export type GetUserResultsQuery = { __typename?: 'Query' } & {
                     'grade' | 'diff'
                   >
                 }
+            >
+            oldResult: Maybe<
+              { __typename?: 'Result' } & Pick<
+                Result,
+                | 'id'
+                | 'score'
+                | 'missCount'
+                | 'clearLamp'
+                | 'scoreRate'
+                | 'bpi'
+                | 'lastPlayedAt'
+              >
             >
           }
       >
@@ -367,13 +426,15 @@ export type RegisterResultsWithCsvMutation = { __typename?: 'Mutation' } & {
 
 export const FindMapDocument = gql`
   query findMap(
-    $id: ID!
+    $musicNumber: Int!
     $playStyle: PlayStyle!
     $difficulty: Difficulty!
     $username: String!
+    $comparisonDateTime: ISO8601DateTime
   ) {
-    music(id: $id) {
+    music(number: $musicNumber) {
       id
+      number
       title
       genre
       artist
@@ -401,6 +462,18 @@ export const FindMapDocument = gql`
             grade
             diff
           }
+          bpi
+          lastPlayedAt
+        }
+        oldResult: result(
+          username: $username
+          lastPlayedUntil: $comparisonDateTime
+        ) {
+          id
+          score
+          missCount
+          clearLamp
+          scoreRate
           bpi
           lastPlayedAt
         }
@@ -511,6 +584,9 @@ export const GetUserResultsDocument = gql`
     $difficulties: [Difficulty]
     $offset: Int
     $limit: Int
+    $comparisonTargetDateTime: ISO8601DateTime!
+    $comparisonBaseDateTime: ISO8601DateTime
+    $updated: UpdatedResultFilter
   ) {
     searchMaps(
       title: $title
@@ -519,6 +595,8 @@ export const GetUserResultsDocument = gql`
       difficulties: $difficulties
       offset: $offset
       limit: $limit
+      username: $username
+      updated: $updated
     ) {
       totalCount
       nodes {
@@ -529,9 +607,10 @@ export const GetUserResultsDocument = gql`
         playStyle
         music {
           id
+          number
           title
         }
-        result(username: $username) {
+        result(username: $username, lastPlayedUntil: $comparisonBaseDateTime) {
           id
           score
           missCount
@@ -546,6 +625,18 @@ export const GetUserResultsDocument = gql`
             grade
             diff
           }
+        }
+        oldResult: result(
+          username: $username
+          lastPlayedUntil: $comparisonTargetDateTime
+        ) {
+          id
+          score
+          missCount
+          clearLamp
+          scoreRate
+          bpi
+          lastPlayedAt
         }
       }
     }

@@ -13,7 +13,7 @@ import Breadcrumb, {
 import Container from '@app/components/atoms/Container'
 import MainLayout from '@app/components/templates/MainLayout'
 import { PlayStyle } from '@app/queries'
-import routes from '@app/routes'
+import routes from '@server/routes'
 
 import * as css from './style.scss'
 
