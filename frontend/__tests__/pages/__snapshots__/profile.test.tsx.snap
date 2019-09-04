@@ -94,6 +94,21 @@ exports[`/ renders correctly 1`] = `
                 </span>
               </a>
             </li>
+            <li
+              className="tab-item"
+            >
+              <a
+                href="/@username/sp/stats"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <span
+                  className="icon-text"
+                >
+                  Stats
+                </span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

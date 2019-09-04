@@ -15,11 +15,12 @@ import * as css from './style.scss'
 const cx = classnames.bind(css)
 const { Link } = routes
 
-export type TabItem = 'overview' | 'musics'
+export type TabItem = 'overview' | 'musics' | 'stats'
 
 const tabTexts: { [key in TabItem]: string } = {
   overview: 'Overview',
   musics: 'Musics',
+  stats: 'Stats',
 }
 
 export interface Props {
@@ -42,6 +43,7 @@ const UserProfileLayout = ({
   const tabLinks: { [key in TabItem]: string } = {
     overview: userPage,
     musics: `${userPage}/musics`,
+    stats: `${userPage}/stats`,
   }
 
   return (
