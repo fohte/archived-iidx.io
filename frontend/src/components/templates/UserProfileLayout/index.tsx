@@ -15,9 +15,11 @@ import * as css from './style.scss'
 const cx = classnames.bind(css)
 const { Link } = routes
 
-export enum Tab {
-  Overview = 'Overview',
-  Musics = 'Musics',
+export type TabItem = 'overview' | 'musics'
+
+const tabTexts: { [key in TabItem]: string } = {
+  overview: 'Overview',
+  musics: 'Musics',
 }
 
 export interface Props {
@@ -25,7 +27,7 @@ export interface Props {
   playStyle: PlayStyle
   breadcrumbItems?: BreadcrumbItem[]
   children?: React.ReactNode
-  activeTab: Tab
+  activeTab: TabItem
 }
 
 const UserProfileLayout = ({
@@ -35,9 +37,11 @@ const UserProfileLayout = ({
   children,
   activeTab,
 }: Props) => {
-  const tabs: { [key in Tab]: string } = {
-    [Tab.Overview]: `/@${screenName}/${playStyle.toLowerCase()}`,
-    [Tab.Musics]: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
+  const userPage = `/@${screenName}/${playStyle.toLowerCase()}`
+
+  const tabLinks: { [key in TabItem]: string } = {
+    overview: userPage,
+    musics: `${userPage}/musics`,
   }
 
   return (
@@ -53,14 +57,14 @@ const UserProfileLayout = ({
 
           <div className={cx('tabs-wrapper')}>
             <ul className={cx('tabs')}>
-              {_.map(tabs, (link, key) => (
+              {_.map(tabLinks, (link, key: TabItem) => (
                 <li
                   key={key}
                   className={cx('tab-item', { active: activeTab === key })}
                 >
                   <Link route={link}>
                     <a>
-                      <span className={cx('icon-text')}>{key}</span>
+                      <span className={cx('icon-text')}>{tabTexts[key]}</span>
                     </a>
                   </Link>
                 </li>

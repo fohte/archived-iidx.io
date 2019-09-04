@@ -4,9 +4,7 @@ import Head from 'next/head'
 import * as React from 'react'
 
 import Profile from '@app/components/organisms/Profile'
-import UserProfileLayout, {
-  Tab,
-} from '@app/components/templates/UserProfileLayout'
+import UserProfileLayout from '@app/components/templates/UserProfileLayout'
 import initApollo from '@app/lib/initApollo'
 import { ensurePlayStyle, ensureString } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
@@ -53,7 +51,7 @@ const ProfilePage: PageComponentType<Props> = ({
       <UserProfileLayout
         screenName={user.name}
         playStyle={playStyle}
-        activeTab={Tab.Overview}
+        activeTab="overview"
       >
         <Profile playStyle={playStyle} />
       </UserProfileLayout>

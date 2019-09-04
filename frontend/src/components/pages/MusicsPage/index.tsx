@@ -5,9 +5,7 @@ import spacetime from 'spacetime'
 import { FormValues } from '@app/components/organisms/FilterForm'
 import ResultList from '@app/components/organisms/ResultList'
 import ResultSearchForm from '@app/components/organisms/ResultSearchForm'
-import UserProfileLayout, {
-  Tab,
-} from '@app/components/templates/UserProfileLayout'
+import UserProfileLayout from '@app/components/templates/UserProfileLayout'
 import ensureArray from '@app/lib/ensureArray'
 import { Difficulty, PlayStyle } from '@app/queries'
 import routes from '@server/routes'
@@ -126,7 +124,7 @@ const MusicsPage = ({
     <UserProfileLayout
       screenName={screenName}
       playStyle={playStyle}
-      activeTab={Tab.Musics}
+      activeTab="musics"
     >
       <ResultSearchForm
         formValues={formValues}

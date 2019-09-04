@@ -3,9 +3,7 @@ import Head from 'next/head'
 import { Spacetime } from 'spacetime'
 
 import MapDetail from '@app/components/organisms/MapDetail'
-import UserProfileLayout, {
-  Tab,
-} from '@app/components/templates/UserProfileLayout'
+import UserProfileLayout from '@app/components/templates/UserProfileLayout'
 import {
   useFindMapQuery,
   FindMapQueryVariables,
@@ -50,7 +48,7 @@ const MapPage: React.FC<Props> = props => {
       <UserProfileLayout
         screenName={screenName}
         playStyle={playStyle}
-        activeTab={Tab.Musics}
+        activeTab="musics"
       >
         <MapDetail data={{ loading: true }} />
       </UserProfileLayout>
@@ -77,7 +75,7 @@ const MapPage: React.FC<Props> = props => {
       <UserProfileLayout
         screenName={screenName}
         playStyle={playStyle}
-        activeTab={Tab.Musics}
+        activeTab="musics"
         breadcrumbItems={[
           {
             text: 'Musics',
