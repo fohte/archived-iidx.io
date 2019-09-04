@@ -1,11 +1,6 @@
 import classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
-import {
-  faEye,
-  faList,
-  IconDefinition,
-} from '@fortawesome/free-solid-svg-icons'
 
 import Breadcrumb, {
   Item as BreadcrumbItem,
@@ -40,15 +35,9 @@ const UserProfileLayout = ({
   children,
   activeTab,
 }: Props) => {
-  const tabs: { [key in Tab]: { link: string; icon: IconDefinition } } = {
-    [Tab.Overview]: {
-      link: `/@${screenName}/${playStyle.toLowerCase()}`,
-      icon: faEye,
-    },
-    [Tab.Musics]: {
-      link: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
-      icon: faList,
-    },
+  const tabs: { [key in Tab]: string } = {
+    [Tab.Overview]: `/@${screenName}/${playStyle.toLowerCase()}`,
+    [Tab.Musics]: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
   }
 
   return (
@@ -64,12 +53,12 @@ const UserProfileLayout = ({
 
           <div className={cx('tabs-wrapper')}>
             <ul className={cx('tabs')}>
-              {_.map(tabs, (tab, key) => (
+              {_.map(tabs, (link, key) => (
                 <li
                   key={key}
                   className={cx('tab-item', { active: activeTab === key })}
                 >
-                  <Link route={tab.link}>
+                  <Link route={link}>
                     <a>
                       <span className={cx('icon-text')}>{key}</span>
                     </a>
