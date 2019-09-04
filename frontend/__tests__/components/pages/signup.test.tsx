@@ -35,13 +35,10 @@ describe('/signup', () => {
   it('create a user on firebase auth', async () => {
     const wrapper = mount(<Signup />)
 
-    // FIXME: react-dom の型定義が第一引数の Promise を許可していないので
-    // any にしている。@types/react-dom@16.9.0 がリリースされたら any
-    // キャストをやめる
-    await act((async () => {
+    await act(async () => {
       inputFields(wrapper, { email: 'email@example.com', password: 'password' })
       submit(wrapper)
-    }) as any)
+    })
 
     expect(mockCreate).toHaveBeenCalledWith('email@example.com', 'password')
   })
