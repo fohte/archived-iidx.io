@@ -10501,10 +10501,10 @@ source-map@^0.5.0, source-map@^0.5.6:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
 
-spacetime@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/spacetime/-/spacetime-6.0.0.tgz#02699ea96bf8d8865c305edc99c299de43d13d67"
-  integrity sha512-aqdSzbEEwTGu4q/ti4i4pIg1NyFFwrXOaQxFuI2Mb0HVOlvEOYcSGdRTAr7ItJE0HkKImWV5FpfGdZuk0d+M1g==
+spacetime@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/spacetime/-/spacetime-6.0.1.tgz#68f71a51d5e8bdc9d7e43116f380af9c7eb88142"
+  integrity sha512-/X7kPBbVmVioeApFzzTLiVa/kYDn+VSqvnPfbt7du83qxOoRFmabQyNv5mJcKsTpHWFkrkU7RggX6wyCI/U2Ig==
 
 spdx-correct@^3.0.0:
   version "3.0.0"
