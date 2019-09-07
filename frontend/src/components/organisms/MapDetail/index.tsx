@@ -14,6 +14,7 @@ import {
 } from 'recharts'
 
 import Box from '@app/components/atoms/Box'
+import BoxHeader from '@app/components/atoms/BoxHeader'
 import NoLoading from '@app/components/others/NoLoading'
 import ResultBox, {
   CurrentResult as ResultBoxCurrentResult,
@@ -163,9 +164,7 @@ const MapDetail: React.SFC<Props> = ({ data }) => {
       </Box>
 
       <Box className={cx('box')}>
-        <div className={cx('box-header')}>
-          <h2>Best Score</h2>
-        </div>
+        <BoxHeader>Best Score</BoxHeader>
         <ResultBox
           showBPI
           showAdditionalArea
@@ -184,9 +183,7 @@ const MapDetail: React.SFC<Props> = ({ data }) => {
       </Box>
 
       <Box className={cx('box')}>
-        <div className={cx('box-header')}>
-          <h2>Score Trends</h2>
-        </div>
+        <BoxHeader>Score Trends</BoxHeader>
 
         <NoLoading data={data} onLoading={<>-</>}>
           {({ allResults, result, map }) => {
