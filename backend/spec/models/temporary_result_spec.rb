@@ -10,12 +10,25 @@ RSpec.describe TemporaryResult do
     let(:result_batch) { create(:result_batch, user: user) }
 
     let(:temporary_result) do
-      create(:temporary_result, user: user, result_batch: result_batch)
+      create(
+        :temporary_result,
+        user: user,
+        result_batch: result_batch,
+        score: 3800,
+      )
     end
 
     context 'when the map and music exist' do
       let!(:music) { create(:music, csv_title: temporary_result.title) }
-      let!(:map) { create(:map, music: music, play_style: temporary_result.play_style, difficulty: temporary_result.difficulty) }
+      let!(:map) do
+        create(
+          :map,
+          music: music,
+          num_notes: 2000,
+          play_style: temporary_result.play_style,
+          difficulty: temporary_result.difficulty,
+        )
+      end
 
       before do
         described_class.bulk_convert_to_result
@@ -27,6 +40,7 @@ RSpec.describe TemporaryResult do
           result_batch: result_batch,
           map: map,
           score: temporary_result.score,
+          grade: 'AAA',
           miss_count: temporary_result.miss_count,
           clear_lamp: temporary_result.clear_lamp,
           last_played_at: temporary_result.last_played_at,
