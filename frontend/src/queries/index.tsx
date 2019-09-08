@@ -266,6 +266,23 @@ export type UserProfile = {
   displayName: Scalars['String']
   id: Scalars['ID']
 }
+export type FetchStatsQueryVariables = {
+  username: Scalars['String']
+}
+
+export type FetchStatsQuery = { __typename?: 'Query' } & {
+  user: Maybe<
+    { __typename?: 'User' } & {
+      countByEachLevelAndGrade: Array<
+        { __typename?: 'LevelGradeCount' } & Pick<
+          LevelGradeCount,
+          'grade' | 'level' | 'count'
+        >
+      >
+    }
+  >
+}
+
 export type FindMapQueryVariables = {
   musicNumber: Scalars['Int']
   playStyle: PlayStyle
@@ -451,6 +468,69 @@ export type RegisterResultsWithCsvMutation = { __typename?: 'Mutation' } & {
   >
 }
 
+export const FetchStatsDocument = gql`
+  query fetchStats($username: String!) {
+    user(name: $username) {
+      countByEachLevelAndGrade {
+        grade
+        level
+        count
+      }
+    }
+  }
+`
+export type FetchStatsProps<TChildProps = {}> = ApolloReactHoc.DataProps<
+  FetchStatsQuery,
+  FetchStatsQueryVariables
+> &
+  TChildProps
+export function withFetchStats<TProps, TChildProps = {}>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    FetchStatsQuery,
+    FetchStatsQueryVariables,
+    FetchStatsProps<TChildProps>
+  >,
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    FetchStatsQuery,
+    FetchStatsQueryVariables,
+    FetchStatsProps<TChildProps>
+  >(FetchStatsDocument, {
+    alias: 'fetchStats',
+    ...operationOptions,
+  })
+}
+
+export function useFetchStatsQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    FetchStatsQuery,
+    FetchStatsQueryVariables
+  >,
+) {
+  return ApolloReactHooks.useQuery<FetchStatsQuery, FetchStatsQueryVariables>(
+    FetchStatsDocument,
+    baseOptions,
+  )
+}
+export function useFetchStatsLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    FetchStatsQuery,
+    FetchStatsQueryVariables
+  >,
+) {
+  return ApolloReactHooks.useLazyQuery<
+    FetchStatsQuery,
+    FetchStatsQueryVariables
+  >(FetchStatsDocument, baseOptions)
+}
+
+export type FetchStatsQueryHookResult = ReturnType<typeof useFetchStatsQuery>
+export type FetchStatsQueryResult = ApolloReactCommon.QueryResult<
+  FetchStatsQuery,
+  FetchStatsQueryVariables
+>
 export const FindMapDocument = gql`
   query findMap(
     $musicNumber: Int!

@@ -1,0 +1,9 @@
+query fetchStats($username: String!) {
+  user(name: $username) {
+    countByEachLevelAndGrade {
+      grade
+      level
+      count
+    }
+  }
+}
