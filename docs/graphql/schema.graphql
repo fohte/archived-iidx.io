@@ -59,6 +59,48 @@ enum Difficulty {
   NORMAL
 }
 
+enum Grade {
+  """
+  A
+  """
+  A
+
+  """
+  AA
+  """
+  AA
+
+  """
+  AAA
+  """
+  AAA
+
+  """
+  B
+  """
+  B
+
+  """
+  C
+  """
+  C
+
+  """
+  D
+  """
+  D
+
+  """
+  E
+  """
+  E
+
+  """
+  F
+  """
+  F
+}
+
 type GradeDiff {
   diff: Int!
   grade: GradeDiffGrade!
@@ -115,6 +157,12 @@ enum GradeDiffGrade {
 An ISO 8601-encoded datetime
 """
 scalar ISO8601DateTime
+
+type LevelGradeCount {
+  count: Int!
+  grade: Grade
+  level: Int!
+}
 
 type Map {
   difficulty: Difficulty!
@@ -234,6 +282,7 @@ input UpdatedResultFilter {
 }
 
 type User {
+  countByEachLevelAndGrade: [LevelGradeCount!]!
   id: ID!
   name: String!
   profile: UserProfile!

@@ -46,6 +46,25 @@ export enum Difficulty {
   Another = 'ANOTHER',
 }
 
+export enum Grade {
+  /** AAA */
+  Aaa = 'AAA',
+  /** AA */
+  Aa = 'AA',
+  /** A */
+  A = 'A',
+  /** B */
+  B = 'B',
+  /** C */
+  C = 'C',
+  /** D */
+  D = 'D',
+  /** E */
+  E = 'E',
+  /** F */
+  F = 'F',
+}
+
 export type GradeDiff = {
   __typename?: 'GradeDiff'
   diff: Scalars['Int']
@@ -71,6 +90,13 @@ export enum GradeDiffGrade {
   E = 'E',
   /** F */
   F = 'F',
+}
+
+export type LevelGradeCount = {
+  __typename?: 'LevelGradeCount'
+  count: Scalars['Int']
+  grade?: Maybe<Grade>
+  level: Scalars['Int']
 }
 
 export type Map = {
@@ -229,6 +255,7 @@ export type UpdatedResultFilter = {
 
 export type User = {
   __typename?: 'User'
+  countByEachLevelAndGrade: Array<LevelGradeCount>
   id: Scalars['ID']
   name: Scalars['String']
   profile: UserProfile
