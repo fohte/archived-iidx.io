@@ -2,7 +2,8 @@
 
 module Types
   module Enum
-    class Grade < Base
+    class GradeDiffGrade < Base
+      value 'MAX', description: 'Max'
       value 'AAA', description: 'AAA'
       value 'AA', description: 'AA'
       value 'A', description: 'A'

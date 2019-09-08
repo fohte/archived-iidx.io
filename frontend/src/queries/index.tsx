@@ -46,7 +46,13 @@ export enum Difficulty {
   Another = 'ANOTHER',
 }
 
-export enum Grade {
+export type GradeDiff = {
+  __typename?: 'GradeDiff'
+  diff: Scalars['Int']
+  grade: GradeDiffGrade
+}
+
+export enum GradeDiffGrade {
   /** Max */
   Max = 'MAX',
   /** AAA */
@@ -65,12 +71,6 @@ export enum Grade {
   E = 'E',
   /** F */
   F = 'F',
-}
-
-export type GradeDiff = {
-  __typename?: 'GradeDiff'
-  diff: Scalars['Int']
-  grade: Grade
 }
 
 export type Map = {

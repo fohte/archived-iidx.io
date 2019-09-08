@@ -17,6 +17,7 @@ import { formats, relativeTimeFromNow } from '@app/lib/dateTime'
 import {
   GradeDiff,
   Grade as GradeEnum,
+  GradeDiffGrade,
   ClearLamp as ClearLampEnum,
 } from '@app/queries'
 
@@ -58,7 +59,7 @@ export interface Props {
 }
 
 const isZeroGradeDiff = ({ grade, diff }: GradeDiff) =>
-  grade === GradeEnum.F && diff === 0
+  grade === GradeDiffGrade.F && diff === 0
 
 const digScoreRate = (result: Data['result']): number =>
   (result && result.scoreRate) || 0
@@ -111,6 +112,38 @@ const getClearLampClassName = (result: BaseResult | null): string | null => {
   }
 
   return null
+}
+
+const findGrade = (data: Data): GradeEnum | null => {
+  if (data.result == null) {
+    return null
+  }
+
+  const {
+    result: {
+      gradeDiff: { grade },
+    },
+  } = data
+
+  switch (grade) {
+    case GradeDiffGrade.Max:
+    case GradeDiffGrade.Aaa:
+      return GradeEnum.Aaa
+    case GradeDiffGrade.Aa:
+      return GradeEnum.Aa
+    case GradeDiffGrade.A:
+      return GradeEnum.A
+    case GradeDiffGrade.B:
+      return GradeEnum.B
+    case GradeDiffGrade.C:
+      return GradeEnum.C
+    case GradeDiffGrade.D:
+      return GradeEnum.D
+    case GradeDiffGrade.E:
+      return GradeEnum.E
+    case GradeDiffGrade.F:
+      return GradeEnum.F
+  }
 }
 
 interface DiffWrapperProps {
@@ -218,7 +251,7 @@ const ResultBox: React.FunctionComponent<Props> = ({
                 <ScoreGraph loading />
               ) : (
                 <ScoreGraph
-                  grade={(data.result && data.result.gradeDiff.grade) || null}
+                  grade={findGrade(data)}
                   scoreRate={digScoreRate(data.result)}
                   fullCombo={
                     !!(

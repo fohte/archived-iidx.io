@@ -59,7 +59,12 @@ enum Difficulty {
   NORMAL
 }
 
-enum Grade {
+type GradeDiff {
+  diff: Int!
+  grade: GradeDiffGrade!
+}
+
+enum GradeDiffGrade {
   """
   A
   """
@@ -104,11 +109,6 @@ enum Grade {
   Max
   """
   MAX
-}
-
-type GradeDiff {
-  diff: Int!
-  grade: Grade!
 }
 
 """

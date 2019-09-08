@@ -17,10 +17,7 @@ export interface Props {
   playStyle: PlayStyle
 }
 
-const grades = [
-  ..._.reject(_.keys(Grade), (grade: keyof typeof Grade) => grade === 'Max'),
-  'NO PLAY',
-]
+const grades = [..._.keys(Grade), 'NO PLAY']
 
 // div は th が position: sticky のときに Safari (+ iOS WebView) で
 // 表示が崩れてしまうのを防ぐため (なぜ div を挟めばうまく動くのかは不明)

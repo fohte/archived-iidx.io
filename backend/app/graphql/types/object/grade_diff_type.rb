@@ -3,7 +3,7 @@
 module Types
   module Object
     class GradeDiffType < Base
-      field :grade, Enum::Grade, null: false
+      field :grade, Enum::GradeDiffGrade, null: false
       field :diff, Integer, null: false
     end
   end

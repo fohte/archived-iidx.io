@@ -1319,7 +1319,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "ENUM",
-                  "name": "Grade",
+                  "name": "GradeDiffGrade",
                   "ofType": null
                 }
               },
@@ -1336,7 +1336,7 @@
         },
         {
           "kind": "ENUM",
-          "name": "Grade",
+          "name": "GradeDiffGrade",
           "description": null,
           "fields": null,
           "inputFields": null,
