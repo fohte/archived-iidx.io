@@ -240,7 +240,7 @@ type Query {
   """
   Search maps.
   """
-  searchMaps(difficulties: [Difficulty], grade: Grade, levels: [Int], limit: Int, offset: Int, playStyle: PlayStyle, title: String, updated: UpdatedResultFilter, username: String!): MapList!
+  searchMaps(difficulties: [Difficulty], grades: [Grade!], levels: [Int], limit: Int, offset: Int, playStyle: PlayStyle, title: String, updated: UpdatedResultFilter, username: String!): MapList!
   updatedResults(baseDatetime: ISO8601DateTime, limit: Int, offset: Int, targetDatetime: ISO8601DateTime!, username: String!): ResultList!
 
   """

@@ -202,12 +202,20 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "grade",
+                  "name": "grades",
                   "description": null,
                   "type": {
-                    "kind": "ENUM",
-                    "name": "Grade",
-                    "ofType": null
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "ENUM",
+                        "name": "Grade",
+                        "ofType": null
+                      }
+                    }
                   },
                   "defaultValue": null
                 }

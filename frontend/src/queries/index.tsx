@@ -208,7 +208,7 @@ export type QuerySearchMapsArgs = {
   playStyle?: Maybe<PlayStyle>
   difficulties?: Maybe<Array<Maybe<Difficulty>>>
   updated?: Maybe<UpdatedResultFilter>
-  grade?: Maybe<Grade>
+  grades?: Maybe<Array<Grade>>
 }
 
 export type QueryUpdatedResultsArgs = {
@@ -384,6 +384,7 @@ export type GetUserResultsQueryVariables = {
   difficulties?: Maybe<Array<Maybe<Difficulty>>>
   offset?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
+  grades?: Maybe<Array<Grade>>
   comparisonTargetDateTime: Scalars['ISO8601DateTime']
   comparisonBaseDateTime?: Maybe<Scalars['ISO8601DateTime']>
   updated?: Maybe<UpdatedResultFilter>
@@ -723,6 +724,7 @@ export const GetUserResultsDocument = gql`
     $difficulties: [Difficulty]
     $offset: Int
     $limit: Int
+    $grades: [Grade!]
     $comparisonTargetDateTime: ISO8601DateTime!
     $comparisonBaseDateTime: ISO8601DateTime
     $updated: UpdatedResultFilter
@@ -734,6 +736,7 @@ export const GetUserResultsDocument = gql`
       difficulties: $difficulties
       offset: $offset
       limit: $limit
+      grades: $grades
       username: $username
       updated: $updated
     ) {

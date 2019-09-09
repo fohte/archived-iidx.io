@@ -16,7 +16,7 @@ module Resolvers
     argument :difficulties, [Types::Enum::Difficulty, null: true], required: false
 
     argument :updated, Types::InputObject::UpdatedResultFilter, required: false
-    argument :grade, Types::Enum::Grade, required: false
+    argument :grades, [Types::Enum::Grade], required: false
 
     def resolve(
       username:,
@@ -24,10 +24,10 @@ module Resolvers
       limit: MAX_PAGE_SIZE,
       title: '',
       levels: [],
+      grades: [],
       play_style: nil,
       difficulties: [],
-      updated: nil,
-      grade: nil
+      updated: nil
     )
       LoaderUtils.find_by!(User, name: username) do |user|
         maps = Map.includes(:music)
@@ -37,7 +37,7 @@ module Resolvers
         maps = maps.where(difficulty: difficulties) unless difficulties.empty?
 
         maps =
-          filter_with_results(maps, user: user, updated: updated, grade: grade)
+          filter_with_results(maps, user: user, updated: updated, grades: grades)
           .offset(offset).limit(limit)
 
         Loaders::ScopeLoader.for(Result).load(maps)
@@ -46,28 +46,28 @@ module Resolvers
 
     private
 
-    def filter_with_results(maps, user:, updated:, grade:)
+    def filter_with_results(maps, user:, updated:, grades:)
       if updated.nil?
-        join_results(maps, user: user, grade: grade)
+        join_results(maps, user: user, grades: grades)
       else
-        join_result_logs(maps, user: user, updated: updated, grade: grade)
+        join_result_logs(maps, user: user, updated: updated, grades: grades)
       end
     end
 
-    def join_results(maps, user:, grade:)
+    def join_results(maps, user:, grades:)
       results =
         user
         .results
         .order(last_played_at: :desc)
 
-      results = results.where(grade: find_grade_value(grade)) unless grade.nil?
+      results = results.where(grade: find_grade_values(grades)) unless grades.empty?
 
       maps
         .left_outer_joins(:results)
         .merge(results)
     end
 
-    def join_result_logs(maps, user:, updated:, grade:)
+    def join_result_logs(maps, user:, updated:, grades:)
       results =
         user
         .result_logs
@@ -77,11 +77,15 @@ module Resolvers
         )
         .order(last_played_at: :desc)
 
-      results = results.where(grade: find_grade_value(grade)) unless grade.nil?
+      results = results.where(grade: find_grade_values(grades)) unless grades.empty?
 
       maps
         .joins(:result_logs)
         .merge(results)
+    end
+
+    def find_grade_values(grades)
+      grades.map { |grade| find_grade_value(grade) }
     end
 
     def find_grade_value(grade)

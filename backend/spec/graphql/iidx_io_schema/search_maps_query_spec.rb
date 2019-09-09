@@ -14,7 +14,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           $difficulties: [Difficulty]
           $offset: Int
           $limit: Int
-          $grade: Grade
+          $grades: [Grade!]
         ) {
           searchMaps(
             username: $username
@@ -24,7 +24,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             difficulties: $difficulties
             offset: $offset
             limit: $limit
-            grade: $grade
+            grades: $grades
           ) {
             totalCount
 
@@ -188,7 +188,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
     end
 
     context 'grade で絞り込む場合' do
-      let(:variables) { { username: user.name, grade: grade } }
+      let(:variables) { { username: user.name, grades: grades } }
 
       let!(:no_play_map) { create(:map, :with_music, results: [no_play_result]) }
       let(:no_play_result) { build(:result, user: user, score: nil) }
@@ -197,7 +197,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       let(:played_result) { build(:result, user: user, score: 3800) }
 
       context 'grade が NO PLAY ではない場合' do
-        let(:grade) { 'AAA' }
+        let(:grades) { ['AAA'] }
 
         it 'プレー済みのリザルトを返す' do
           expect(response['data']['searchMaps']['nodes']).to match_array([
@@ -211,7 +211,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       end
 
       context 'grade が NO_PLAY の場合' do
-        let(:grade) { 'NO_PLAY' }
+        let(:grades) { ['NO_PLAY'] }
 
         it 'NO PLAY のリザルトを返す' do
           expect(response['data']['searchMaps']['nodes']).to match_array([
