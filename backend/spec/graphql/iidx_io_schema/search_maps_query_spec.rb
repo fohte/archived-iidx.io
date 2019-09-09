@@ -14,6 +14,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           $difficulties: [Difficulty]
           $offset: Int
           $limit: Int
+          $grades: [Grade!]
         ) {
           searchMaps(
             username: $username
@@ -23,6 +24,7 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             difficulties: $difficulties
             offset: $offset
             limit: $limit
+            grades: $grades
           ) {
             totalCount
 
@@ -183,6 +185,44 @@ RSpec.describe IIDXIOSchema, type: :graphql do
       end
 
       include_examples 'non errors'
+    end
+
+    context 'grade で絞り込む場合' do
+      let(:variables) { { username: user.name, grades: grades } }
+
+      let!(:no_play_map) { create(:map, :with_music, results: [no_play_result]) }
+      let(:no_play_result) { build(:result, user: user, score: nil) }
+
+      let!(:played_map) { create(:map, :with_music, results: [played_result], num_notes: 2000) }
+      let(:played_result) { build(:result, user: user, score: 3800) }
+
+      context 'grade が NO PLAY ではない場合' do
+        let(:grades) { ['AAA'] }
+
+        it 'プレー済みのリザルトを返す' do
+          expect(response['data']['searchMaps']['nodes']).to match_array([
+            {
+              'id' => played_map.uuid,
+              'music' => { 'id' => played_map.music.uuid },
+              'result' => { 'id' => played_result.uuid },
+            },
+          ])
+        end
+      end
+
+      context 'grade が NO_PLAY の場合' do
+        let(:grades) { ['NO_PLAY'] }
+
+        it 'NO PLAY のリザルトを返す' do
+          expect(response['data']['searchMaps']['nodes']).to match_array([
+            {
+              'id' => no_play_map.uuid,
+              'music' => { 'id' => no_play_map.music.uuid },
+              'result' => { 'id' => no_play_result.uuid },
+            },
+          ])
+        end
+      end
     end
 
     context 'ページングが必要なとき' do

@@ -3,12 +3,21 @@ import * as React from 'react'
 import classnames from 'classnames/bind'
 import { useScroll } from 'react-use'
 
+import routes from '@server/routes'
+
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
+const { Link } = routes
+
+export interface MatrixData {
+  value: number
+  link?: string
+}
+
 export interface Props {
-  data: number[][]
+  data: MatrixData[][]
   rowHeaders: string[]
   columnHeaders: string[]
 }
@@ -16,7 +25,7 @@ export interface Props {
 // div は th が position: sticky のときに Safari (+ iOS WebView) で
 // 表示が崩れてしまうのを防ぐため (なぜ div を挟めばうまく動くのかは不明)
 const TableHeadColumn: React.FC = ({ children }) => (
-  <th className={cx('table-head-column')}>
+  <th className={cx('table-head-column', 'table-cell')}>
     <div>{children}</div>
   </th>
 )
@@ -65,7 +74,9 @@ function MatrixTable({ data, rowHeaders, columnHeaders }: Props) {
             <tr>
               <TableHeadColumn />
               {rowHeaders.map(rowHeader => (
-                <th key={rowHeader}>{rowHeader}</th>
+                <th key={rowHeader} className={cx('table-cell')}>
+                  {rowHeader}
+                </th>
               ))}
             </tr>
           </thead>
@@ -81,24 +92,22 @@ function MatrixTable({ data, rowHeaders, columnHeaders }: Props) {
                   {rowData != null &&
                     rowData.map((d, x) => {
                       const rowHeader = rowHeaders[x]
-                      return <td key={rowHeader}>{d}</td>
+                      return d.link != null ? (
+                        <td key={rowHeader}>
+                          <Link route={d.link}>
+                            <a className={cx('table-cell')}>{d.value}</a>
+                          </Link>
+                        </td>
+                      ) : (
+                        <td key={rowHeader} className={cx('table-cell')}>
+                          {d.value}
+                        </td>
+                      )
                     })}
                 </tr>
               )
             })}
           </tbody>
-
-          <tfoot>
-            <tr>
-              <TableHeadColumn>Total</TableHeadColumn>
-
-              {_.unzip(data)
-                .map(a => _.sum(a))
-                .map((d, x) => (
-                  <td key={rowHeaders[x]}>{d}</td>
-                ))}
-            </tr>
-          </tfoot>
         </table>
       </div>
     </div>

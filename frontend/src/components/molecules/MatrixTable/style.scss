@@ -20,17 +20,31 @@ $shadow-width: 5px;
     background-color: $ui-base-color;
   }
 
-  th,
-  td {
-    width: 4.5em;
+  $cell-width: 4.5em;
+
+  .table-cell {
     height: 3em;
     padding: 0 1em;
 
+    color: $primary-fg-color;
     white-space: normal;
+    text-align: center;
   }
 
-  td {
-    text-align: center;
+  td.table-cell,
+  th.table-cell {
+    width: $cell-width;
+  }
+
+  a.table-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $cell-width;
+
+    &:hover {
+      background-color: $ui-base-color;
+    }
   }
 
   .table-head-column {

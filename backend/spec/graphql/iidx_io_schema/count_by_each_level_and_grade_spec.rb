@@ -32,11 +32,11 @@ RSpec.describe IIDXIOSchema, type: :graphql do
         create(:map, :with_music, level: 12, num_notes: 2000, play_style: :sp)
       end
 
-      it 'grade は nil でカウント結果を返す' do
+      it 'grade は NO PLAY でカウント結果を返す' do
         expect(response['data']).to eq(
           'user' => {
             'countByEachLevelAndGrade' => [{
-              'grade' => nil,
+              'grade' => 'NO_PLAY',
               'level' => 12,
               'count' => 1,
             }],

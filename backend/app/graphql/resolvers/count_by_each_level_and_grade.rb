@@ -27,7 +27,7 @@ module Resolvers
       count_hash.map do |(level, grade), count|
         {
           level: level,
-          grade: grade,
+          grade: grade || 'NO_PLAY',
           count: count,
         }
       end

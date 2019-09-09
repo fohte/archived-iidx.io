@@ -53,7 +53,7 @@ const PaginationContainer: React.SFC<{
 )
 
 const ResultList: React.SFC<Props> = ({
-  formValues: { title, difficulties, levels, onlyUpdated, updatedOn },
+  formValues: { title, difficulties, levels, grades, onlyUpdated, updatedOn },
   playStyle,
   screenName,
   onPageChange,
@@ -75,6 +75,7 @@ const ResultList: React.SFC<Props> = ({
     title,
     playStyle,
     difficulties,
+    grades,
     levels,
     comparisonTargetDateTime: targetDateTime.format('iso-utc'),
     limit: numItemsPerPage,

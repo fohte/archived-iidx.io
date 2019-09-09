@@ -6,6 +6,7 @@ query getUserResults(
   $difficulties: [Difficulty]
   $offset: Int
   $limit: Int
+  $grades: [Grade!]
   $comparisonTargetDateTime: ISO8601DateTime!
   $comparisonBaseDateTime: ISO8601DateTime
   $updated: UpdatedResultFilter
@@ -17,6 +18,7 @@ query getUserResults(
     difficulties: $difficulties
     offset: $offset
     limit: $limit
+    grades: $grades
     username: $username
     updated: $updated
   ) {

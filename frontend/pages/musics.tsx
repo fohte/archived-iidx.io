@@ -9,11 +9,12 @@ import {
   ensureDifficulty,
   ensureInteger,
   ensurePlayStyle,
+  ensureGrade,
   ensureString,
 } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import { PageComponentType } from '@pages/_app'
-import { Difficulty, PlayStyle } from '@app/queries'
+import { Difficulty, Grade, PlayStyle } from '@app/queries'
 
 export type RequiredQuery = 'screenName' | 'playStyle'
 
@@ -21,12 +22,13 @@ export type OptionalQuery =
   | 'title'
   | 'difficulties'
   | 'levels'
+  | 'grades'
   | 'onlyUpdated'
   | 'updatedOn'
   | 'page'
 
 export type Query = { [key in RequiredQuery]: string } &
-  { [key in OptionalQuery]: string | string[] | undefined }
+  { [key in OptionalQuery]?: string | string[] | undefined }
 
 export interface Props {
   screenName?: string
@@ -34,6 +36,7 @@ export interface Props {
   playStyle?: PlayStyle
   difficulties?: Difficulty[]
   levels?: number[]
+  grades?: Grade[]
   onlyUpdated?: boolean
   updatedOn?: string
   page?: number
@@ -45,6 +48,7 @@ const PageComponent: PageComponentType<Props> = ({
   playStyle,
   difficulties,
   levels,
+  grades,
   onlyUpdated,
   updatedOn,
   page,
@@ -64,6 +68,7 @@ const PageComponent: PageComponentType<Props> = ({
         playStyle={playStyle}
         difficulties={difficulties}
         levels={levels}
+        grades={grades}
         onlyUpdated={!!onlyUpdated}
         updatedOn={updatedOn ? new Date(Date.parse(updatedOn)) : undefined}
         page={page}
@@ -78,6 +83,7 @@ PageComponent.getInitialProps = ({ res, query }) => {
   let title: string | undefined
   let difficulties: Difficulty[]
   let levels: number[]
+  let grades: Grade[]
   let onlyUpdated: boolean
   // getInitialProps では Date 型を返却できないのでここでは string を返す
   // @see https://github.com/zeit/next.js/issues/6917
@@ -94,6 +100,7 @@ PageComponent.getInitialProps = ({ res, query }) => {
       'difficulties',
     )
     levels = ensureArray(ensureInteger, query.levels, 'levels')
+    grades = ensureArray(ensureGrade, query.grades, 'grades')
     onlyUpdated = query.onlyUpdated
       ? ensureString(query.onlyUpdated, 'onlyUpdated') === 'true'
       : false
@@ -113,6 +120,7 @@ PageComponent.getInitialProps = ({ res, query }) => {
     playStyle,
     difficulties,
     levels,
+    grades,
     onlyUpdated,
     updatedOn,
     page,

@@ -200,6 +200,24 @@
                     "ofType": null
                   },
                   "defaultValue": null
+                },
+                {
+                  "name": "grades",
+                  "description": null,
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "ENUM",
+                        "name": "Grade",
+                        "ofType": null
+                      }
+                    }
+                  },
+                  "defaultValue": null
                 }
               ],
               "type": {
@@ -533,9 +551,13 @@
 
               ],
               "type": {
-                "kind": "ENUM",
-                "name": "Grade",
-                "ofType": null
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "Grade",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -629,6 +651,12 @@
             {
               "name": "F",
               "description": "F",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "NO_PLAY",
+              "description": "NO PLAY",
               "isDeprecated": false,
               "deprecationReason": null
             }

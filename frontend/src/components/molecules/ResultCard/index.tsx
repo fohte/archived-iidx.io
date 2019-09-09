@@ -69,9 +69,7 @@ const ResultCard: React.FunctionComponent<Props> = ({
   const { map } = data
   const { result, oldResult, music } = map
 
-  // The type of routes.findAndGetUrls is not defined,
-  // so routes should cast to any
-  const href = (routes as any).findAndGetUrls('map', {
+  const href = routes.findAndGetUrls('map', {
     screenName,
     musicNumber: music.number.toString(),
     playStyle: map.playStyle.toLowerCase(),
