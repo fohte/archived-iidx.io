@@ -10,7 +10,21 @@ module Types
       field :count_by_each_level_and_grade, [LevelGradeCountType], null: false
 
       def count_by_each_level_and_grade
-        count_hash = object.results.joins(:map).group(%w[maps.level grade]).count
+        sql = <<~SQL.squish
+          RIGHT OUTER JOIN
+            maps
+          ON
+            maps.id = results.map_id AND
+            results.user_id = :user_id
+        SQL
+
+        join_statement = Result.sanitize_sql_array([sql, user_id: object.id])
+
+        count_hash =
+          Result
+          .joins(join_statement)
+          .group(%w[maps.level grade])
+          .count
 
         count_hash.map do |(level, grade), count|
           {
