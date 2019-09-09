@@ -11,6 +11,7 @@ module Types
       value 'D', description: 'D'
       value 'E', description: 'E'
       value 'F', description: 'F'
+      value 'NO_PLAY', description: 'NO PLAY'
     end
   end
 end

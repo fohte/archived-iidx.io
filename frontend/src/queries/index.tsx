@@ -63,6 +63,8 @@ export enum Grade {
   E = 'E',
   /** F */
   F = 'F',
+  /** NO PLAY */
+  NoPlay = 'NO_PLAY',
 }
 
 export type GradeDiff = {
@@ -95,7 +97,7 @@ export enum GradeDiffGrade {
 export type LevelGradeCount = {
   __typename?: 'LevelGradeCount'
   count: Scalars['Int']
-  grade?: Maybe<Grade>
+  grade: Grade
   level: Scalars['Int']
 }
 

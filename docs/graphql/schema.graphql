@@ -99,6 +99,11 @@ enum Grade {
   F
   """
   F
+
+  """
+  NO PLAY
+  """
+  NO_PLAY
 }
 
 type GradeDiff {
@@ -160,7 +165,7 @@ scalar ISO8601DateTime
 
 type LevelGradeCount {
   count: Int!
-  grade: Grade
+  grade: Grade!
   level: Int!
 }
 

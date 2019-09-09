@@ -13,9 +13,9 @@ export interface Props {
   playStyle: PlayStyle
 }
 
-const getMapKey = (level: number, grade: Grade | null) => `${level}-${grade}`
+const getMapKey = (level: number, grade: Grade) => `${level}-${grade}`
 
-const grades = [..._.keys(Grade).map(g => g.toUpperCase()), 'NO PLAY']
+const grades = [..._.values(Grade).map(g => g.replace('_', ' '))]
 const levels = _.rangeRight(1, 13)
 
 const StatsPage: React.FC<Props> = ({ screenName, playStyle }) => {
@@ -42,14 +42,14 @@ const StatsPage: React.FC<Props> = ({ screenName, playStyle }) => {
 
   const map = new Map<string, number>()
   data.user.countByEachLevelAndGrade.forEach(({ grade, level, count }) => {
-    map.set(getMapKey(level, grade || null), count)
+    map.set(getMapKey(level, grade), count)
   })
 
   const matrixData = levels.reduce(
     (rows, level) => [
       ...rows,
-      [..._.values(Grade), null].reduce(
-        (columns, grade: Grade | null) => [
+      _.values(Grade).reduce(
+        (columns, grade: Grade) => [
           ...columns,
           map.get(getMapKey(level, grade)) || 0,
         ],
