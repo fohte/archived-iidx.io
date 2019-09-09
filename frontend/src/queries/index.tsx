@@ -208,6 +208,7 @@ export type QuerySearchMapsArgs = {
   playStyle?: Maybe<PlayStyle>
   difficulties?: Maybe<Array<Maybe<Difficulty>>>
   updated?: Maybe<UpdatedResultFilter>
+  grade?: Maybe<Grade>
 }
 
 export type QueryUpdatedResultsArgs = {
