@@ -1,0 +1,94 @@
+@import 'styles/colors';
+
+$shadow-color: lighten($gray, 20%);
+$shadow-width: 5px;
+
+.table-wrapper {
+  overflow: auto;
+
+  white-space: nowrap;
+}
+
+.table {
+  width: 100%;
+
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  th {
+    background-color: $ui-base-color;
+  }
+
+  th,
+  td {
+    width: 4.5em;
+    height: 3em;
+    padding: 0 1em;
+
+    white-space: normal;
+  }
+
+  td {
+    text-align: center;
+  }
+
+  .table-head-column {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+  }
+
+  .table-head-column-inner {
+    position: relative;
+
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.table-shadow {
+  &.left-shadow .table-head-column {
+    &::before {
+      position: absolute;
+      top: 0;
+      right: -$shadow-width;
+
+      display: block;
+      width: $shadow-width;
+      height: 100%;
+
+      background: linear-gradient(
+        to right,
+        $shadow-color,
+        rgba($shadow-color, 0%)
+      );
+
+      content: '';
+    }
+  }
+
+  &.right-shadow {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+
+      display: block;
+      width: $shadow-width;
+      height: 100%;
+
+      background: linear-gradient(
+        to left,
+        $shadow-color,
+        rgba($shadow-color, 0%)
+      );
+
+      content: '';
+    }
+  }
+}

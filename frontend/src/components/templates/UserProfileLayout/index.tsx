@@ -1,11 +1,6 @@
 import classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
-import {
-  faEye,
-  faList,
-  IconDefinition,
-} from '@fortawesome/free-solid-svg-icons'
 
 import Breadcrumb, {
   Item as BreadcrumbItem,
@@ -20,9 +15,12 @@ import * as css from './style.scss'
 const cx = classnames.bind(css)
 const { Link } = routes
 
-export enum Tab {
-  Overview = 'Overview',
-  Musics = 'Musics',
+export type TabItem = 'overview' | 'musics' | 'stats'
+
+const tabTexts: { [key in TabItem]: string } = {
+  overview: 'Overview',
+  musics: 'Musics',
+  stats: 'Stats',
 }
 
 export interface Props {
@@ -30,7 +28,7 @@ export interface Props {
   playStyle: PlayStyle
   breadcrumbItems?: BreadcrumbItem[]
   children?: React.ReactNode
-  activeTab: Tab
+  activeTab: TabItem
 }
 
 const UserProfileLayout = ({
@@ -40,15 +38,12 @@ const UserProfileLayout = ({
   children,
   activeTab,
 }: Props) => {
-  const tabs: { [key in Tab]: { link: string; icon: IconDefinition } } = {
-    [Tab.Overview]: {
-      link: `/@${screenName}/${playStyle.toLowerCase()}`,
-      icon: faEye,
-    },
-    [Tab.Musics]: {
-      link: `/@${screenName}/${playStyle.toLowerCase()}/musics`,
-      icon: faList,
-    },
+  const userPage = `/@${screenName}/${playStyle.toLowerCase()}`
+
+  const tabLinks: { [key in TabItem]: string } = {
+    overview: userPage,
+    musics: `${userPage}/musics`,
+    stats: `${userPage}/stats`,
   }
 
   return (
@@ -64,14 +59,14 @@ const UserProfileLayout = ({
 
           <div className={cx('tabs-wrapper')}>
             <ul className={cx('tabs')}>
-              {_.map(tabs, (tab, key) => (
+              {_.map(tabLinks, (link, key: TabItem) => (
                 <li
                   key={key}
                   className={cx('tab-item', { active: activeTab === key })}
                 >
-                  <Link route={tab.link}>
+                  <Link route={link}>
                     <a>
-                      <span className={cx('icon-text')}>{key}</span>
+                      <span className={cx('icon-text')}>{tabTexts[key]}</span>
                     </a>
                   </Link>
                 </li>

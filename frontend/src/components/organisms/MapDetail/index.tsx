@@ -14,6 +14,7 @@ import {
 } from 'recharts'
 
 import Box from '@app/components/atoms/Box'
+import BoxHeader from '@app/components/atoms/BoxHeader'
 import NoLoading from '@app/components/others/NoLoading'
 import ResultBox, {
   CurrentResult as ResultBoxCurrentResult,
@@ -23,7 +24,7 @@ import ResultBox, {
 import { formats, formatUnixTime } from '@app/lib/dateTime'
 import { WithLoadingState } from '@app/lib/types'
 import { generateTextageURL } from '@app/lib/textage'
-import { Difficulty, Grade, PlayStyle } from '@app/queries'
+import { Difficulty, GradeDiffGrade, PlayStyle } from '@app/queries'
 
 import * as css from './style.scss'
 
@@ -67,16 +68,18 @@ export interface Props {
 const calcGradeBorder = (coefficients: number, numNotes: number) =>
   Math.ceil(numNotes * 2 * coefficients)
 
-const getGradeBorders = (numNotes: number): { [key in Grade]: number } => ({
-  [Grade.F]: 0,
-  [Grade.E]: calcGradeBorder(numNotes, 2 / 9),
-  [Grade.D]: calcGradeBorder(numNotes, 3 / 9),
-  [Grade.C]: calcGradeBorder(numNotes, 4 / 9),
-  [Grade.B]: calcGradeBorder(numNotes, 5 / 9),
-  [Grade.A]: calcGradeBorder(numNotes, 6 / 9),
-  [Grade.Aa]: calcGradeBorder(numNotes, 7 / 9),
-  [Grade.Aaa]: calcGradeBorder(numNotes, 8 / 9),
-  [Grade.Max]: numNotes * 2,
+const getGradeBorders = (
+  numNotes: number,
+): { [key in GradeDiffGrade]: number } => ({
+  [GradeDiffGrade.F]: 0,
+  [GradeDiffGrade.E]: calcGradeBorder(numNotes, 2 / 9),
+  [GradeDiffGrade.D]: calcGradeBorder(numNotes, 3 / 9),
+  [GradeDiffGrade.C]: calcGradeBorder(numNotes, 4 / 9),
+  [GradeDiffGrade.B]: calcGradeBorder(numNotes, 5 / 9),
+  [GradeDiffGrade.A]: calcGradeBorder(numNotes, 6 / 9),
+  [GradeDiffGrade.Aa]: calcGradeBorder(numNotes, 7 / 9),
+  [GradeDiffGrade.Aaa]: calcGradeBorder(numNotes, 8 / 9),
+  [GradeDiffGrade.Max]: numNotes * 2,
 })
 
 const MapDetail: React.SFC<Props> = ({ data }) => {
@@ -163,9 +166,7 @@ const MapDetail: React.SFC<Props> = ({ data }) => {
       </Box>
 
       <Box className={cx('box')}>
-        <div className={cx('box-header')}>
-          <h2>Best Score</h2>
-        </div>
+        <BoxHeader>Best Score</BoxHeader>
         <ResultBox
           showBPI
           showAdditionalArea
@@ -184,9 +185,7 @@ const MapDetail: React.SFC<Props> = ({ data }) => {
       </Box>
 
       <Box className={cx('box')}>
-        <div className={cx('box-header')}>
-          <h2>Score Trends</h2>
-        </div>
+        <BoxHeader>Score Trends</BoxHeader>
 
         <NoLoading data={data} onLoading={<>-</>}>
           {({ allResults, result, map }) => {

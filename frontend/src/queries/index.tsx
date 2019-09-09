@@ -47,8 +47,6 @@ export enum Difficulty {
 }
 
 export enum Grade {
-  /** Max */
-  Max = 'MAX',
   /** AAA */
   Aaa = 'AAA',
   /** AA */
@@ -70,7 +68,35 @@ export enum Grade {
 export type GradeDiff = {
   __typename?: 'GradeDiff'
   diff: Scalars['Int']
-  grade: Grade
+  grade: GradeDiffGrade
+}
+
+export enum GradeDiffGrade {
+  /** Max */
+  Max = 'MAX',
+  /** AAA */
+  Aaa = 'AAA',
+  /** AA */
+  Aa = 'AA',
+  /** A */
+  A = 'A',
+  /** B */
+  B = 'B',
+  /** C */
+  C = 'C',
+  /** D */
+  D = 'D',
+  /** E */
+  E = 'E',
+  /** F */
+  F = 'F',
+}
+
+export type LevelGradeCount = {
+  __typename?: 'LevelGradeCount'
+  count: Scalars['Int']
+  grade?: Maybe<Grade>
+  level: Scalars['Int']
 }
 
 export type Map = {
@@ -229,9 +255,14 @@ export type UpdatedResultFilter = {
 
 export type User = {
   __typename?: 'User'
+  countByEachLevelAndGrade: Array<LevelGradeCount>
   id: Scalars['ID']
   name: Scalars['String']
   profile: UserProfile
+}
+
+export type UserCountByEachLevelAndGradeArgs = {
+  playStyle: PlayStyle
 }
 
 export type UserProfile = {
@@ -239,6 +270,24 @@ export type UserProfile = {
   displayName: Scalars['String']
   id: Scalars['ID']
 }
+export type FetchStatsQueryVariables = {
+  username: Scalars['String']
+  playStyle: PlayStyle
+}
+
+export type FetchStatsQuery = { __typename?: 'Query' } & {
+  user: Maybe<
+    { __typename?: 'User' } & {
+      countByEachLevelAndGrade: Array<
+        { __typename?: 'LevelGradeCount' } & Pick<
+          LevelGradeCount,
+          'grade' | 'level' | 'count'
+        >
+      >
+    }
+  >
+}
+
 export type FindMapQueryVariables = {
   musicNumber: Scalars['Int']
   playStyle: PlayStyle
@@ -424,6 +473,69 @@ export type RegisterResultsWithCsvMutation = { __typename?: 'Mutation' } & {
   >
 }
 
+export const FetchStatsDocument = gql`
+  query fetchStats($username: String!, $playStyle: PlayStyle!) {
+    user(name: $username) {
+      countByEachLevelAndGrade(playStyle: $playStyle) {
+        grade
+        level
+        count
+      }
+    }
+  }
+`
+export type FetchStatsProps<TChildProps = {}> = ApolloReactHoc.DataProps<
+  FetchStatsQuery,
+  FetchStatsQueryVariables
+> &
+  TChildProps
+export function withFetchStats<TProps, TChildProps = {}>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    FetchStatsQuery,
+    FetchStatsQueryVariables,
+    FetchStatsProps<TChildProps>
+  >,
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    FetchStatsQuery,
+    FetchStatsQueryVariables,
+    FetchStatsProps<TChildProps>
+  >(FetchStatsDocument, {
+    alias: 'fetchStats',
+    ...operationOptions,
+  })
+}
+
+export function useFetchStatsQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    FetchStatsQuery,
+    FetchStatsQueryVariables
+  >,
+) {
+  return ApolloReactHooks.useQuery<FetchStatsQuery, FetchStatsQueryVariables>(
+    FetchStatsDocument,
+    baseOptions,
+  )
+}
+export function useFetchStatsLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    FetchStatsQuery,
+    FetchStatsQueryVariables
+  >,
+) {
+  return ApolloReactHooks.useLazyQuery<
+    FetchStatsQuery,
+    FetchStatsQueryVariables
+  >(FetchStatsDocument, baseOptions)
+}
+
+export type FetchStatsQueryHookResult = ReturnType<typeof useFetchStatsQuery>
+export type FetchStatsQueryResult = ApolloReactCommon.QueryResult<
+  FetchStatsQuery,
+  FetchStatsQueryVariables
+>
 export const FindMapDocument = gql`
   query findMap(
     $musicNumber: Int!

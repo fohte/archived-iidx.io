@@ -99,6 +99,53 @@ enum Grade {
   F
   """
   F
+}
+
+type GradeDiff {
+  diff: Int!
+  grade: GradeDiffGrade!
+}
+
+enum GradeDiffGrade {
+  """
+  A
+  """
+  A
+
+  """
+  AA
+  """
+  AA
+
+  """
+  AAA
+  """
+  AAA
+
+  """
+  B
+  """
+  B
+
+  """
+  C
+  """
+  C
+
+  """
+  D
+  """
+  D
+
+  """
+  E
+  """
+  E
+
+  """
+  F
+  """
+  F
 
   """
   Max
@@ -106,15 +153,16 @@ enum Grade {
   MAX
 }
 
-type GradeDiff {
-  diff: Int!
-  grade: Grade!
-}
-
 """
 An ISO 8601-encoded datetime
 """
 scalar ISO8601DateTime
+
+type LevelGradeCount {
+  count: Int!
+  grade: Grade
+  level: Int!
+}
 
 type Map {
   difficulty: Difficulty!
@@ -234,6 +282,7 @@ input UpdatedResultFilter {
 }
 
 type User {
+  countByEachLevelAndGrade(playStyle: PlayStyle!): [LevelGradeCount!]!
   id: ID!
   name: String!
   profile: UserProfile!

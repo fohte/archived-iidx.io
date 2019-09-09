@@ -4,11 +4,16 @@ module ResultConcern
   extend ActiveSupport::Concern
 
   include ClearLampEnum
+  include GradeDiff
   include GradeEnum
 
   included do
     has_one :kaiden_average_result, through: :map
     has_one :world_record_result, through: :map
+
+    before_save do
+      self.grade = find_grade
+    end
   end
 
   def score_rate

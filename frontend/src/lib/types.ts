@@ -5,3 +5,11 @@ export type GetComponentProps<T> = T extends
   : never
 
 export type WithLoadingState<P> = { loading: true } | ({ loading: false } & P)
+
+export type PageQuery<
+  RequiredQuery extends string | never = never,
+  OptionalQuery extends string | never = never
+> = {
+  [key in RequiredQuery]: string
+} &
+  { [key in OptionalQuery]: string | string[] | undefined }

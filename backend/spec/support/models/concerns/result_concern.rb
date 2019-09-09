@@ -4,7 +4,38 @@ require 'rails_helper'
 
 RSpec.shared_examples 'ResultConcern' do |factory_name|
   include_examples 'ClearLampEnum'
-  include_examples 'GradeEnum'
+  include_examples 'GradeDiff'
+
+  describe 'callbacks' do
+    describe 'grade' do
+      subject { result.grade }
+
+      before do
+        result.run_callbacks(:save)
+      end
+
+      let(:result) { build(factory_name, map: map, score: score) }
+      let(:map) { build(:map, num_notes: 1000) }
+
+      context 'スコアが MAX のとき' do
+        let(:score) { 2000 }
+
+        it { is_expected.to eq 'AAA' }
+      end
+
+      context 'スコアが存在するとき' do
+        let(:score) { 1800 }
+
+        it { is_expected.to eq 'AAA' }
+      end
+
+      context 'スコアが nil のとき' do
+        let(:score) { nil }
+
+        it { is_expected.to be_nil }
+      end
+    end
+  end
 
   describe '#score_rate' do
     subject { result.score_rate }

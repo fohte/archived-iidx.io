@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classnames from 'classnames/bind'
 
-import { GradeDiff, Grade as GradeEnum } from '@app/queries'
+import { GradeDiff, GradeDiffGrade } from '@app/queries'
 import { WithLoadingState } from '@app/lib/types'
 
 import * as css from './style.scss'
@@ -9,7 +9,7 @@ import * as css from './style.scss'
 const cx = classnames.bind(css)
 
 export interface DataProps {
-  currentGrade: GradeEnum
+  currentGrade: GradeDiffGrade
   nearestGradeDiff: GradeDiff
 }
 

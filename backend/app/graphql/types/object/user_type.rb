@@ -6,6 +6,8 @@ module Types
       field :id, resolver: Resolvers::ModelID
       field :name, String, null: false
       field :profile, UserProfileType, null: false
+
+      field :count_by_each_level_and_grade, resolver: Resolvers::CountByEachLevelAndGrade
     end
   end
 end
