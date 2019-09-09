@@ -26,7 +26,13 @@ const StatsPage: React.FC<Props> = ({ screenName, playStyle }) => {
   const { setStatus } = useServerResponse()
 
   if (loading) {
-    return <>loading</>
+    return (
+      <UserProfileLayout
+        screenName={screenName}
+        playStyle={playStyle}
+        activeTab="stats"
+      />
+    )
   }
 
   if (error || data == null || data.user == null) {
