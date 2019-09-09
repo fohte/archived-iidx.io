@@ -261,6 +261,10 @@ export type User = {
   profile: UserProfile
 }
 
+export type UserCountByEachLevelAndGradeArgs = {
+  playStyle: PlayStyle
+}
+
 export type UserProfile = {
   __typename?: 'UserProfile'
   displayName: Scalars['String']
@@ -268,6 +272,7 @@ export type UserProfile = {
 }
 export type FetchStatsQueryVariables = {
   username: Scalars['String']
+  playStyle: PlayStyle
 }
 
 export type FetchStatsQuery = { __typename?: 'Query' } & {
@@ -469,9 +474,9 @@ export type RegisterResultsWithCsvMutation = { __typename?: 'Mutation' } & {
 }
 
 export const FetchStatsDocument = gql`
-  query fetchStats($username: String!) {
+  query fetchStats($username: String!, $playStyle: PlayStyle!) {
     user(name: $username) {
-      countByEachLevelAndGrade {
+      countByEachLevelAndGrade(playStyle: $playStyle) {
         grade
         level
         count

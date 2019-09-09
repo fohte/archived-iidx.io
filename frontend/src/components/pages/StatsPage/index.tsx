@@ -20,7 +20,7 @@ const levels = _.rangeRight(1, 13)
 
 const StatsPage: React.FC<Props> = ({ screenName, playStyle }) => {
   const { loading, error, data } = useFetchStatsQuery({
-    variables: { username: screenName },
+    variables: { username: screenName, playStyle },
   })
 
   const { setStatus } = useServerResponse()

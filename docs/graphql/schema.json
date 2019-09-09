@@ -347,7 +347,20 @@
               "name": "countByEachLevelAndGrade",
               "description": null,
               "args": [
-
+                {
+                  "name": "playStyle",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "ENUM",
+                      "name": "PlayStyle",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
               ],
               "type": {
                 "kind": "NON_NULL",
@@ -616,6 +629,29 @@
             {
               "name": "F",
               "description": "F",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "PlayStyle",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "SP",
+              "description": "SP",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "DP",
+              "description": "DP",
               "isDeprecated": false,
               "deprecationReason": null
             }
@@ -1097,29 +1133,6 @@
 
           ],
           "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "ENUM",
-          "name": "PlayStyle",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": [
-            {
-              "name": "SP",
-              "description": "SP",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "DP",
-              "description": "DP",
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
           "possibleTypes": null
         },
         {

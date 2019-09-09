@@ -1,6 +1,6 @@
-query fetchStats($username: String!) {
+query fetchStats($username: String!, $playStyle: PlayStyle!) {
   user(name: $username) {
-    countByEachLevelAndGrade {
+    countByEachLevelAndGrade(playStyle: $playStyle) {
       grade
       level
       count

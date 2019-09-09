@@ -282,7 +282,7 @@ input UpdatedResultFilter {
 }
 
 type User {
-  countByEachLevelAndGrade: [LevelGradeCount!]!
+  countByEachLevelAndGrade(playStyle: PlayStyle!): [LevelGradeCount!]!
   id: ID!
   name: String!
   profile: UserProfile!
