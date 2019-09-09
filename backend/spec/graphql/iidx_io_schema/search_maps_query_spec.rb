@@ -269,5 +269,24 @@ RSpec.describe IIDXIOSchema, type: :graphql do
         end
       end
     end
+
+    context 'リザルトが存在しないとき' do
+      let(:variables) { { username: user.name } }
+
+      let!(:map) { create(:map, :with_music) }
+
+      it 'リザルトは nil を返して map は返すこと' do
+        expect(response['data']).to eq(
+          'searchMaps' => {
+            'totalCount' => 1,
+            'nodes' => [{
+              'id' => map.uuid,
+              'music' => { 'id' => map.music.uuid },
+              'result' => nil,
+            }],
+          },
+        )
+      end
+    end
   end
 end
