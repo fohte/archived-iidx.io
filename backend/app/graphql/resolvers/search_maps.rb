@@ -56,14 +56,23 @@ module Resolvers
 
     def join_results(maps, user:, grades:)
       results =
-        user
-        .results
+        Result
         .order(last_played_at: :desc)
 
       results = results.where(grade: find_grade_values(grades)) unless grades.empty?
 
+      sql = <<~SQL.squish
+        LEFT OUTER JOIN
+          results
+        ON
+          maps.id = results.map_id AND
+          results.user_id = :user_id
+      SQL
+
+      join_statement = Result.sanitize_sql_array([sql, user_id: user.id])
+
       maps
-        .left_outer_joins(:results)
+        .joins(join_statement)
         .merge(results)
     end
 
