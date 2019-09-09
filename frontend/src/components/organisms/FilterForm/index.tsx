@@ -13,7 +13,7 @@ import Checkbox from '@app/components/atoms/Checkbox'
 import InputText from '@app/components/atoms/InputText'
 import Container from '@app/components/atoms/Container'
 import FormGroup from '@app/components/atoms/FormGroup'
-import { Difficulty } from '@app/queries'
+import { Difficulty, Grade } from '@app/queries'
 import { formats } from '@app/lib/dateTime'
 import withClassComponent from '@app/lib/withClassComponent'
 
@@ -25,6 +25,7 @@ export interface FormValues {
   title?: string | null
   difficulties: Difficulty[]
   levels: number[]
+  grades: Grade[]
   onlyUpdated: boolean
   updatedOn?: Date | null
 }
@@ -125,19 +126,21 @@ const FilterForm: React.SFC<Props> = ({
                 </FormGroup>
 
                 <FormGroup
-                  label="Difficulty"
+                  label="Grade"
                   labelClassName={cx('form-group-label')}
                 >
-                  {_.map(Difficulty, difficulty => (
+                  {_.map(Grade, grade => (
                     <FinalField
-                      key={difficulty}
+                      key={grade}
                       type="checkbox"
-                      name="difficulties"
-                      value={difficulty}
+                      name="grades"
+                      value={grade}
                     >
                       {({ input }) => (
                         <div className={cx('form-field')}>
-                          <Checkbox {...input}>{difficulty}</Checkbox>
+                          <Checkbox {...input}>
+                            {grade.replace('_', ' ')}
+                          </Checkbox>
                         </div>
                       )}
                     </FinalField>

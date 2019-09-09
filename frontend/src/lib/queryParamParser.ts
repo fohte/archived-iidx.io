@@ -1,5 +1,7 @@
+import * as _ from 'lodash'
+
 import _ensureArray from '@app/lib/ensureArray'
-import { Difficulty, PlayStyle } from '@app/queries'
+import { Difficulty, Grade, PlayStyle } from '@app/queries'
 
 type EnsureFunction<T> = (query: Query, name: string) => T
 
@@ -12,9 +14,6 @@ export function ensureArray<T>(
 }
 
 type Query = string | string[] | undefined
-
-const pascalize = (str: string): string =>
-  `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`
 
 const ensureNonMaybe: EnsureFunction<string | string[]> = (query, name) => {
   if (query == null) {
@@ -47,22 +46,24 @@ export const ensureInteger: EnsureFunction<number> = (query, name) => {
   return q
 }
 
-export const ensurePlayStyle: EnsureFunction<PlayStyle> = (query, name) => {
-  const key = pascalize(ensureString(query, name))
+function createEnumFunction<T extends any>(
+  enumObj: { [key in string]: any },
+): EnsureFunction<T> {
+  const ensureFunction: EnsureFunction<T> = (query, name) => {
+    const normalizedQuery = ensureString(query, name).toUpperCase()
 
-  if (!(key in PlayStyle)) {
-    throw new Error(`${name} is invalid value`)
+    const value = _.values(enumObj).find(v => v === normalizedQuery)
+
+    if (value == null) {
+      throw new Error(`${name} is invalid value`)
+    }
+
+    return value
   }
 
-  return PlayStyle[key as keyof typeof PlayStyle]
+  return ensureFunction
 }
 
-export const ensureDifficulty: EnsureFunction<Difficulty> = (query, name) => {
-  const key = pascalize(ensureString(query, name))
-
-  if (!(key in Difficulty)) {
-    throw new Error(`${name} is invalid value`)
-  }
-
-  return Difficulty[key as keyof typeof Difficulty]
-}
+export const ensurePlayStyle = createEnumFunction<PlayStyle>(PlayStyle)
+export const ensureDifficulty = createEnumFunction<Difficulty>(Difficulty)
+export const ensureGrade = createEnumFunction<Grade>(Grade)

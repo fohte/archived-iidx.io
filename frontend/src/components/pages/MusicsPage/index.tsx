@@ -7,7 +7,7 @@ import ResultList from '@app/components/organisms/ResultList'
 import ResultSearchForm from '@app/components/organisms/ResultSearchForm'
 import UserProfileLayout from '@app/components/templates/UserProfileLayout'
 import ensureArray from '@app/lib/ensureArray'
-import { Difficulty, PlayStyle } from '@app/queries'
+import { Difficulty, Grade, PlayStyle } from '@app/queries'
 import routes from '@server/routes'
 
 const { Router } = routes
@@ -18,6 +18,7 @@ export interface Props {
   playStyle: PlayStyle
   difficulties?: Difficulty[]
   levels?: number[]
+  grades?: Grade[]
   onlyUpdated?: boolean
   updatedOn?: Date
   page?: number
@@ -27,6 +28,7 @@ const compactFormValues = ({
   title,
   difficulties,
   levels,
+  grades,
   onlyUpdated,
   updatedOn,
 }: FormValues): Partial<FormValues> => {
@@ -44,6 +46,10 @@ const compactFormValues = ({
     newValues.levels = levels
   }
 
+  if (grades.length !== 0) {
+    newValues.grades = grades
+  }
+
   if (onlyUpdated) {
     newValues.onlyUpdated = onlyUpdated
 
@@ -59,8 +65,9 @@ const MusicsPage = ({
   screenName,
   title,
   playStyle,
-  difficulties,
-  levels,
+  difficulties = [],
+  levels = [],
+  grades = [],
   onlyUpdated,
   updatedOn,
   page,
@@ -69,8 +76,9 @@ const MusicsPage = ({
 
   const formValues: FormValues = {
     title: title || null,
-    difficulties: difficulties || [],
-    levels: levels || [],
+    difficulties,
+    levels,
+    grades,
     onlyUpdated: !!onlyUpdated,
     updatedOn: updatedOn,
   }
@@ -84,6 +92,12 @@ const MusicsPage = ({
 
     if (query.playStyle) {
       query.playStyle = (query.playStyle as PlayStyle).toLowerCase()
+    }
+
+    if (query.grades && query.grades.length !== 0) {
+      query.grades = ensureArray(query.grades).map((g: Grade) =>
+        g.toLowerCase(),
+      )
     }
 
     // page が 1 (初期値) のときは正規化する
