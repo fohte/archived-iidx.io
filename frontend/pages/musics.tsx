@@ -28,7 +28,7 @@ export type OptionalQuery =
   | 'page'
 
 export type Query = { [key in RequiredQuery]: string } &
-  { [key in OptionalQuery]: string | string[] | undefined }
+  { [key in OptionalQuery]?: string | string[] | undefined }
 
 export interface Props {
   screenName?: string

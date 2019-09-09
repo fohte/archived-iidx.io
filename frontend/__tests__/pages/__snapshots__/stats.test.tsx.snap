@@ -130,35 +130,53 @@ exports[`/map renders correctly 1`] = `
               <thead>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div />
                   </th>
-                  <th>
+                  <th
+                    class="table-cell"
+                  >
                     AAA
                   </th>
-                  <th>
+                  <th
+                    class="table-cell"
+                  >
                     AA
                   </th>
-                  <th>
+                  <th
+                    class="table-cell"
+                  >
                     A
                   </th>
-                  <th>
+                  <th
+                    class="table-cell"
+                  >
                     B
                   </th>
-                  <th>
+                  <th
+                    class="table-cell"
+                  >
                     C
                   </th>
-                  <th>
+                  <th
+                    class="table-cell"
+                  >
                     D
                   </th>
-                  <th>
+                  <th
+                    class="table-cell"
+                  >
                     E
                   </th>
-                  <th>
+                  <th
+                    class="table-cell"
+                  >
                     F
                   </th>
-                  <th>
+                  <th
+                    class="table-cell"
+                  >
                     NO PLAY
                   </th>
                 </tr>
@@ -166,475 +184,707 @@ exports[`/map renders correctly 1`] = `
               <tbody>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆12
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆11
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆10
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆9
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆8
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆7
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆6
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆5
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆4
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆3
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆2
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       ☆1
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
-              </tbody>
-              <tfoot>
                 <tr>
                   <th
-                    class="table-head-column"
+                    class="table-head-column table-cell"
                   >
                     <div>
                       Total
                     </div>
                   </th>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
-                  <td>
+                  <td
+                    class="table-cell"
+                  >
                     0
                   </td>
                 </tr>
-              </tfoot>
+              </tbody>
             </table>
           </div>
         </div>
