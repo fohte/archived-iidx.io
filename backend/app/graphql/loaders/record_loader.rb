@@ -40,7 +40,7 @@ module Loaders
 
       values.each { |key, value| fulfill(key, value) }
 
-      keys.each { |key| fulfill(key, nil) unless fulfilled?(key) }
+      keys.each { |key| fulfill(key, []) unless fulfilled?(key) }
     end
 
     def perform_single(keys)

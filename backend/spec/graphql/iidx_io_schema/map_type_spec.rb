@@ -222,5 +222,39 @@ RSpec.describe IIDXIOSchema, type: :graphql do
         end
       end
     end
+
+    describe 'results field' do
+      let(:query) do
+        <<~GRAPHQL
+          query($username: String!) {
+            searchMaps(username: $username) {
+              nodes {
+                results(username: $username) {
+                  id
+                }
+              }
+            }
+          }
+        GRAPHQL
+      end
+
+      let(:variables) { { username: user.name } }
+
+      context 'result_log がひとつも無いとき' do
+        before do
+          create(:map, :with_music)
+        end
+
+        it '空配列を返す' do
+          expect(response['data']).to eq(
+            'searchMaps' => {
+              'nodes' => [{
+                'results' => [],
+              }],
+            },
+          )
+        end
+      end
+    end
   end
 end
