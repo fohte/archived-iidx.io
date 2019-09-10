@@ -126,6 +126,26 @@ const FilterForm: React.SFC<Props> = ({
                 </FormGroup>
 
                 <FormGroup
+                  label="Difficulty"
+                  labelClassName={cx('form-group-label')}
+                >
+                  {_.map(Difficulty, difficulty => (
+                    <FinalField
+                      key={difficulty}
+                      type="checkbox"
+                      name="difficulties"
+                      value={difficulty}
+                    >
+                      {({ input }) => (
+                        <div className={cx('form-field')}>
+                          <Checkbox {...input}>{difficulty}</Checkbox>
+                        </div>
+                      )}
+                    </FinalField>
+                  ))}
+                </FormGroup>
+
+                <FormGroup
                   label="Grade"
                   labelClassName={cx('form-group-label')}
                 >
