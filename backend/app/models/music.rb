@@ -7,7 +7,7 @@ class Music < ApplicationRecord
 
   scope :fuzzy_search_by_title, ->(title) do
     sanitized_title = "%#{sanitize_sql_like(title)}%"
-    Music.where(Music.arel_table[:title].matches(sanitized_title))
+    where(Music.arel_table[:title].matches(sanitized_title))
   end
 
   def self.search(series:, title:, genre:, artist:)
