@@ -62,4 +62,7 @@ Rails.application.configure do
     Bullet.bullet_logger = true
     Bullet.raise = false
   end
+
+  # DNS rebinding attacks protection を無効化する
+  config.hosts = nil
 end
