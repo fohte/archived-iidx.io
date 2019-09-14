@@ -26,30 +26,43 @@ class CSVImporter
       result_batch = user.result_batches.create
 
       table.rows.each_slice(1000) do |rows|
-        musics = Music.includes(:maps).where(
-          csv_title: rows.map(&:title),
-          maps: { play_style: play_style },
-        )
-        music_map = musics.map(&:csv_title).zip(musics).to_h
+        music_ids = Music.where(csv_title: rows.map(&:title)).pluck(:csv_title, :id).to_h
 
-        maps = musics.flat_map(&:maps)
-        map_map = maps.map(&:id).zip(maps).to_h
+        # Map#id => { Music#id, Music#difficulty }
+        map_map =
+          Map
+          .where(play_style: play_style, music_id: music_ids.values)
+          .pluck(:id, :music_id, :difficulty)
+          .map { |id, music_id, difficulty| [id, { music_id: music_id, difficulty: difficulty }] }
+          .to_h
 
-        results = user.results.where(map_id: map_map.keys)
-        result_map = results.group_by { |r| map_map[r.map_id].music_id }
+        # Music#id => { Map#difficulty => Map#id }
+        map_ids = {}.tap do |h|
+          map_map.each do |map_id, map|
+            (h[map[:music_id]] ||= {})[map[:difficulty].to_sym] = map_id
+          end
+        end
+
+        result_map = user.results.where(map_id: map_map.keys).group_by { |r| map_map.dig(r.map_id, :music_id) }
 
         rows.each do |row|
-          music = music_map[row.title]
+          music_id = music_ids[row.title]
 
           current_results =
-            if music.nil? || !result_map.key?(music.id)
+            if music_id.nil? || !result_map.key?(music_id)
               {}
             else
-              rs = result_map[music.id]
-              rs.map { |r| map_map[r.map_id].difficulty.to_sym }.zip(rs).to_h
+              rs = result_map[music_id]
+              rs.map { |r| map_map.dig(r.map_id, :difficulty).to_sym }.zip(rs).to_h
             end
 
-          import_from_row(music, current_results, row, result_batch)
+          import_from_row(
+            music_id,
+            map_ids[music_id] || {},
+            current_results,
+            row,
+            result_batch,
+          )
         end
       end
     end
@@ -57,34 +70,36 @@ class CSVImporter
 
   private
 
-  # @param music [Music]
+  # @param music_id [Integer, nil]
+  # @param map_ids [{(:normal, :hyper, :another) => Integer}>]
   # @param current_results [{(:normal, :hyper, :another) => Result}>]
   # @param row [IIDXIO::CSVParser::Row]
   # @param result_batch [ResultBatch]
-  def import_from_row(music, current_results, row, result_batch)
+  def import_from_row(music_id, map_ids, current_results, row, result_batch)
     %i[normal hyper another].each do |difficulty|
-      map = row.public_send(difficulty)
-      next if map.no_data?
+      row_map = row.public_send(difficulty)
+      next if row_map.no_data?
+
+      map_id = map_ids[difficulty]
 
       result_attributes = {
-        score: map.ex_score,
-        miss_count: map.miss_count,
-        clear_lamp: !map.clear_lamp.nil? ? Result.find_clear_lamp(map.clear_lamp) : nil,
+        score: row_map.ex_score,
+        miss_count: row_map.miss_count,
+        clear_lamp: !row_map.clear_lamp.nil? ? Result.find_clear_lamp(row_map.clear_lamp) : nil,
         last_played_at: row.last_played_at,
         result_batch: result_batch,
       }
 
-      if music
+      if music_id && map_id
         create_result(
-          music: music,
-          difficulty: difficulty,
+          map_id: map_id,
           current_result: current_results[difficulty],
           **result_attributes,
         )
       else
         insert_temporary_result(
           row: row,
-          row_map: map,
+          row_map: row_map,
           difficulty: difficulty,
           **result_attributes,
         )
@@ -92,14 +107,10 @@ class CSVImporter
     end
   end
 
-  # @param music [Music]
+  # @param map_id [Integer]
   # @param current_result [Result, nil]
-  # @param difficulty [:normal, :hyper, :another]
-  def create_result(music:, difficulty:, current_result:, **result_attributes)
-    new_result = Result.new(
-      map: music.public_send(:"#{play_style}_#{difficulty}"),
-      **result_attributes,
-    )
+  def create_result(map_id:, current_result:, **result_attributes)
+    new_result = Result.new(map_id: map_id, **result_attributes)
 
     return insert_new_result(new_result) if current_result.nil?
 
