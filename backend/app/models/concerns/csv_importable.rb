@@ -12,39 +12,25 @@ module CSVImportable
       result_batch = result_batches.create
 
       table.rows.each_slice(1000) do |rows|
-        music_ids = Music.where(csv_title: rows.map(&:title)).pluck(:csv_title, :id).to_h
-
-        # Map#id => { Music#id, Music#difficulty }
-        map_map =
-          Map
-          .where(play_style: play_style, music_id: music_ids.values)
-          .pluck(:id, :music_id, :difficulty)
-          .map { |id, music_id, difficulty| [id, { music_id: music_id, difficulty: difficulty }] }
-          .to_h
-
-        # Music#id => { Map#difficulty => Map#id }
-        map_ids = {}.tap do |h|
-          map_map.each do |map_id, map|
-            (h[map[:music_id]] ||= {})[map[:difficulty].to_sym] = map_id
-          end
-        end
-
-        result_map = results.where(map_id: map_map.keys).group_by { |r| map_map.dig(r.map_id, :music_id) }
+        musics = CSVImporter::MusicCollection.new(
+          titles: rows.map(&:title),
+        )
+        maps = CSVImporter::MapCollection.new(
+          play_style: play_style,
+          musics: musics,
+        )
+        results = CSVImporter::ResultCollection.new(
+          user: self,
+          maps: maps,
+        )
 
         rows.each do |row|
-          music_id = music_ids[row.title]
-
-          current_results =
-            if music_id.nil? || !result_map.key?(music_id)
-              {}
-            else
-              rs = result_map[music_id]
-              rs.map { |r| map_map.dig(r.map_id, :difficulty).to_sym }.zip(rs).to_h
-            end
+          music_id = musics.find_id_by_title(row.title)
+          current_results = results.find_by_music_id(music_id)
 
           import_from_row(
             music_id,
-            map_ids[music_id] || {},
+            maps.find_by_music_id(music_id),
             current_results,
             play_style,
             row,

@@ -43,6 +43,9 @@ Layout/IndentFirstHashElement:
 Layout/ClassStructure:
   Enabled: false
 
+Rails/DynamicFindBy:
+  Enabled: false
+
 RSpec/FilePath:
   CustomTransform:
     IIDXIO: iidx_io
