@@ -25,19 +25,31 @@ class CSVImporter
     ApplicationRecord.transaction do
       result_batch = user.result_batches.create
 
-      table.rows.each do |row|
-        import_from_row(row, result_batch)
+      table.rows.each_slice(1000) do |rows|
+        musics = Music.includes(:maps).where(
+          csv_title: rows.map(&:title),
+          maps: { play_style: play_style },
+        )
+
+        music_map = {}.tap do |h|
+          musics.each do |music|
+            h[music.csv_title] = music
+          end
+        end
+
+        rows.each do |row|
+          import_from_row(music_map[row.title], row, result_batch)
+        end
       end
     end
   end
 
   private
 
+  # @param music [Music]
   # @param row [IIDXIO::CSVParser::Row]
   # @param result_batch [ResultBatch]
-  def import_from_row(row, result_batch)
-    music = Music.find_by(csv_title: row.title)
-
+  def import_from_row(music, row, result_batch)
     %i[normal hyper another].each do |difficulty|
       map = row.public_send(difficulty)
       next if map.no_data?
