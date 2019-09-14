@@ -30,15 +30,26 @@ class CSVImporter
           csv_title: rows.map(&:title),
           maps: { play_style: play_style },
         )
+        music_map = musics.map(&:csv_title).zip(musics).to_h
 
-        music_map = {}.tap do |h|
-          musics.each do |music|
-            h[music.csv_title] = music
-          end
-        end
+        maps = musics.flat_map(&:maps)
+        map_map = maps.map(&:id).zip(maps).to_h
+
+        results = user.results.where(map_id: map_map.keys)
+        result_map = results.group_by { |r| map_map[r.map_id].music_id }
 
         rows.each do |row|
-          import_from_row(music_map[row.title], row, result_batch)
+          music = music_map[row.title]
+
+          current_results =
+            if music.nil? || !result_map.key?(music.id)
+              {}
+            else
+              rs = result_map[music.id]
+              rs.map { |r| map_map[r.map_id].difficulty.to_sym }.zip(rs).to_h
+            end
+
+          import_from_row(music, current_results, row, result_batch)
         end
       end
     end
@@ -47,9 +58,10 @@ class CSVImporter
   private
 
   # @param music [Music]
+  # @param current_results [{(:normal, :hyper, :another) => Result}>]
   # @param row [IIDXIO::CSVParser::Row]
   # @param result_batch [ResultBatch]
-  def import_from_row(music, row, result_batch)
+  def import_from_row(music, current_results, row, result_batch)
     %i[normal hyper another].each do |difficulty|
       map = row.public_send(difficulty)
       next if map.no_data?
@@ -63,32 +75,42 @@ class CSVImporter
       }
 
       if music
-        create_result(music: music, difficulty: difficulty, **result_attributes)
+        create_result(
+          music: music,
+          difficulty: difficulty,
+          current_result: current_results[difficulty],
+          **result_attributes,
+        )
       else
-        insert_temporary_result(row: row, row_map: map, difficulty: difficulty, **result_attributes)
+        insert_temporary_result(
+          row: row,
+          row_map: map,
+          difficulty: difficulty,
+          **result_attributes,
+        )
       end
     end
   end
 
   # @param music [Music]
+  # @param current_result [Result, nil]
   # @param difficulty [:normal, :hyper, :another]
-  def create_result(music:, difficulty:, **result_attributes)
+  def create_result(music:, difficulty:, current_result:, **result_attributes)
     new_result = Result.new(
       map: music.public_send(:"#{play_style}_#{difficulty}"),
       **result_attributes,
     )
 
-    old_result = user.results.find_by(map: new_result.map)
-    return insert_new_result(new_result) if old_result.nil?
+    return insert_new_result(new_result) if current_result.nil?
 
-    return if old_result.last_played_at >= new_result.last_played_at
+    return if current_result.last_played_at >= new_result.last_played_at
 
-    is_updated = old_result.updated?(new_result)
+    is_updated = current_result.updated?(new_result)
 
-    old_result.update!(**result_attributes)
+    current_result.update!(**result_attributes)
     return unless is_updated
 
-    insert_result_log(old_result)
+    insert_result_log(current_result)
   end
 
   # @param new_result [Result]
