@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   NAME_FORMAT = /\A[a-zA-Z_][a-zA-Z0-9_]*\z/.freeze
 
+  include CSVImportable
+
   has_one :profile, class_name: 'UserProfile', dependent: :destroy
   has_many :results, dependent: :destroy
   has_many :result_logs, dependent: :destroy
@@ -51,11 +53,5 @@ class User < ApplicationRecord
       FirebaseIdToken::Certificates.request
       FirebaseIdToken::Signature.verify(token)
     end
-  end
-
-  # @param csv [String]
-  # @param play_style [:sp, :dp]
-  def import_results_from_csv(csv, play_style)
-    CSVImporter.new(self, csv, play_style).import
   end
 end

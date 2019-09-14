@@ -1,29 +1,15 @@
 # frozen_string_literal: true
 
-class CSVImporter
-  # @return [User]
-  attr_reader :user
+module CSVImportable
+  extend ActiveSupport::Concern
 
-  # @return [String]
-  attr_reader :csv
-
-  # @return [:sp, :dp]
-  attr_reader :play_style
-
-  # @param user [User]
   # @param csv [String]
   # @param play_style [:sp, :dp]
-  def initialize(user, csv, play_style)
-    @user = user
-    @csv = csv
-    @play_style = play_style
-  end
-
-  def import
+  def import_results_from_csv(csv, play_style)
     table = IIDXIO::CSVParser.parse(csv)
 
     ApplicationRecord.transaction do
-      result_batch = user.result_batches.create
+      result_batch = result_batches.create
 
       table.rows.each_slice(1000) do |rows|
         music_ids = Music.where(csv_title: rows.map(&:title)).pluck(:csv_title, :id).to_h
@@ -43,7 +29,7 @@ class CSVImporter
           end
         end
 
-        result_map = user.results.where(map_id: map_map.keys).group_by { |r| map_map.dig(r.map_id, :music_id) }
+        result_map = results.where(map_id: map_map.keys).group_by { |r| map_map.dig(r.map_id, :music_id) }
 
         rows.each do |row|
           music_id = music_ids[row.title]
@@ -60,6 +46,7 @@ class CSVImporter
             music_id,
             map_ids[music_id] || {},
             current_results,
+            play_style,
             row,
             result_batch,
           )
@@ -73,9 +60,10 @@ class CSVImporter
   # @param music_id [Integer, nil]
   # @param map_ids [{(:normal, :hyper, :another) => Integer}>]
   # @param current_results [{(:normal, :hyper, :another) => Result}>]
+  # @param play_style [:sp, :dp]
   # @param row [IIDXIO::CSVParser::Row]
   # @param result_batch [ResultBatch]
-  def import_from_row(music_id, map_ids, current_results, row, result_batch)
+  def import_from_row(music_id, map_ids, current_results, play_style, row, result_batch)
     %i[normal hyper another].each do |difficulty|
       row_map = row.public_send(difficulty)
       next if row_map.no_data?
@@ -101,6 +89,7 @@ class CSVImporter
           row: row,
           row_map: row_map,
           difficulty: difficulty,
+          play_style: play_style,
           **result_attributes,
         )
       end
@@ -126,22 +115,23 @@ class CSVImporter
 
   # @param new_result [Result]
   def insert_new_result(new_result)
-    user.results << new_result
+    results << new_result
 
     insert_result_log(new_result)
   end
 
   # @param result [Result]
   def insert_result_log(result)
-    result.user = user
+    result.user = self
     result.to_log.save!
   end
 
   # @param row [IIDXIO::CSVParser::Row]
   # @param row_map [IIDXIO::CSVParser::Row::Map]
   # @param difficulty [:normal, :hyper, :another]
-  def insert_temporary_result(row:, row_map:, difficulty:, **result_attributes)
-    user.temporary_results << TemporaryResult.new(
+  # @param play_style [:sp, :dp]
+  def insert_temporary_result(row:, row_map:, difficulty:, play_style:, **result_attributes)
+    temporary_results << TemporaryResult.new(
       version: row.version,
       title: row.title,
       genre: row.genre,
