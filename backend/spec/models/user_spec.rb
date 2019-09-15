@@ -181,7 +181,7 @@ RSpec.describe User do
         expect(user.result_logs).to contain_exactly(
           have_attributes(
             map: music.sp_hyper,
-            result: user.results.first,
+            result_batch: user.result_batches.first,
             clear_lamp: 'ex_hard',
             score: 1954,
             grade: 'AA',
@@ -190,7 +190,7 @@ RSpec.describe User do
           ),
           have_attributes(
             map: music.sp_another,
-            result: user.results.last,
+            result_batch: user.result_batches.last,
             clear_lamp: 'ex_hard',
             score: 2174,
             grade: 'AA',
@@ -431,7 +431,7 @@ RSpec.describe User do
         expect(user.result_logs).to contain_exactly(
           have_attributes(
             map: music.sp_another,
-            result: user.results.last,
+            result_batch: user.result_batches.last,
             clear_lamp: 'ex_hard',
             score: nil,
             grade: nil,
@@ -491,7 +491,7 @@ RSpec.describe User do
         expect(user.result_logs).to contain_exactly(
           have_attributes(
             map: music.sp_hyper,
-            result: user.results.last,
+            result_batch: user.result_batches.last,
             clear_lamp: nil,
             score: 1885,
             grade: 'AA',

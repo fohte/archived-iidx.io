@@ -8,14 +8,14 @@ RSpec.describe Result do
   describe '#to_log' do
     subject { result.to_log }
 
-    let(:result) { build_stubbed(:result, :with_user, :with_music) }
+    let(:result) { build_stubbed(:result, :with_user, :with_music, :with_result_batch) }
 
     it 'ResultLog を返す' do
       expect(subject).to have_attributes(
         id: nil, # id はコピーしない
         user: result.user,
         map: result.map,
-        result: result,
+        result_batch_id: result.result_batch.id,
         score: result.score,
         miss_count: result.miss_count,
         clear_lamp: result.clear_lamp,

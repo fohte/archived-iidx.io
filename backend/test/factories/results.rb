@@ -21,5 +21,9 @@ FactoryBot.define do
     trait :with_user do
       association :user
     end
+
+    trait :with_result_batch do
+      association :result_batch
+    end
   end
 end
