@@ -3,7 +3,8 @@
 class ResultLog < ApplicationRecord
   belongs_to :user
   belongs_to :map
-  belongs_to :result
+  belongs_to :result, optional: true
+  belongs_to :result_batch, optional: true
 
   include ResultConcern
 
