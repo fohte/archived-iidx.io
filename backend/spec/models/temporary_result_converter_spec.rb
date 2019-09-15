@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe TemporaryResultConverter do
-  let(:described_instance) { described_class.new }
-
   describe '.convert' do
     let(:user) { create(:user) }
     let(:result_batch) { create(:result_batch, user: user) }
@@ -31,7 +29,7 @@ RSpec.describe TemporaryResultConverter do
       end
 
       before do
-        described_instance.convert
+        described_class.convert
       end
 
       it 'creates a result' do
@@ -56,22 +54,22 @@ RSpec.describe TemporaryResultConverter do
       let!(:music) { create(:music, csv_title: temporary_result.title) }
 
       it 'does not create results' do
-        expect { described_instance.convert }.not_to change(Result, :count)
+        expect { described_class.convert }.not_to change(Result, :count)
       end
 
       it 'does not delete the temporary result' do
-        described_instance.convert
+        described_class.convert
         expect(TemporaryResult.find(temporary_result.id)).to eq temporary_result
       end
     end
 
     context 'when the music and map don\'t not exist' do
       it 'does not create results' do
-        expect { described_instance.convert }.not_to change(Result, :count)
+        expect { described_class.convert }.not_to change(Result, :count)
       end
 
       it 'does not delete the temporary result' do
-        described_instance.convert
+        described_class.convert
         expect(TemporaryResult.find(temporary_result.id)).to eq temporary_result
       end
     end
