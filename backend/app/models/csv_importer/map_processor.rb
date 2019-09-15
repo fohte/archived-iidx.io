@@ -11,13 +11,14 @@ module CSVImporter
 
     delegate :row_map, :map_id, to: :result_prop
 
-    def import_result
+    # @param store [CSVImporter::ResultStore]
+    def store_result(store)
       return if row_map.no_data?
 
       if map_id
-        ResultProcessor.new(result_prop).import
+        ResultProcessor.new(result_prop).store_result(store)
       else
-        TemporaryResultProcessor.new(result_prop).import
+        TemporaryResultProcessor.new(result_prop).store_result(store)
       end
     end
   end

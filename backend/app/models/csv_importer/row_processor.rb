@@ -24,7 +24,8 @@ module CSVImporter
     delegate :maps, :user, to: :results
     delegate :musics, to: :maps
 
-    def import_results
+    # @param store [CSVImporter::ResultStore]
+    def store_results(store)
       %i[normal hyper another].each do |difficulty|
         result_prop = ResultProp.new(
           user: user,
@@ -38,7 +39,7 @@ module CSVImporter
 
         map_processor = MapProcessor.new(result_prop: result_prop)
 
-        map_processor.import_result
+        map_processor.store_result(store)
       end
     end
 

@@ -10,22 +10,24 @@ module CSVImporter
     end
 
     delegate(
-      :user,
       :current_result,
       :map_id,
       :result_attributes,
       to: :result_prop,
     )
 
-    def import
-      return insert_new_result if current_result.nil?
+    # @param store [CSVImporter::ResultStore]
+    def store_result(store)
+      return insert_new_result(store) if current_result.nil?
 
       return unless last_played_updated?
 
       result_updated?.tap do |is_updated|
-        current_result.update!(**result_attributes)
+        store.results << current_result.tap do |r|
+          r.assign_attributes(result_attributes)
+        end
 
-        insert_result_log(current_result) if is_updated
+        insert_result_log(store, current_result) if is_updated
       end
     end
 
@@ -43,16 +45,17 @@ module CSVImporter
       current_result.updated?(new_result)
     end
 
-    def insert_new_result
-      user.results << new_result
+    # @param store [CSVImporter::ResultStore]
+    def insert_new_result(store)
+      store.results << new_result
 
-      insert_result_log(new_result)
+      insert_result_log(store, new_result)
     end
 
+    # @param store [CSVImporter::ResultStore]
     # @param result [Result]
-    def insert_result_log(result)
-      result.user = user
-      result.to_log.save!
+    def insert_result_log(store, result)
+      store.result_logs << result.to_log
     end
   end
 end

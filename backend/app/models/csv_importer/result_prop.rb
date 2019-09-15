@@ -20,12 +20,17 @@ module CSVImporter
 
     def result_attributes
       {
+        user: user,
         score: ex_score,
         miss_count: miss_count,
-        clear_lamp: clear_lamp,
+        clear_lamp: raw_clear_lamp,
         last_played_at: last_played_at,
         result_batch: result_batch,
       }
+    end
+
+    def raw_clear_lamp
+      @raw_clear_lamp ||= Result.clear_lamp.find_value(clear_lamp)&.value
     end
 
     def clear_lamp

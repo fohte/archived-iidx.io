@@ -10,7 +10,6 @@ module CSVImporter
     end
 
     delegate(
-      :user,
       :row,
       :row_map,
       :play_style,
@@ -19,8 +18,9 @@ module CSVImporter
       to: :result_prop,
     )
 
-    def import
-      user.temporary_results << TemporaryResult.new(
+    # @param store [CSVImporter::ResultStore]
+    def store_result(store)
+      store.temporary_results << TemporaryResult.new(
         version: row.version,
         title: row.title,
         genre: row.genre,

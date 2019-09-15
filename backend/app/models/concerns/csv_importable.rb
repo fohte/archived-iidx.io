@@ -10,6 +10,7 @@ module CSVImportable
 
     ApplicationRecord.transaction do
       result_batch = result_batches.create
+      result_store = CSVImporter::ResultStore.new
 
       table.rows.each_slice(1000) do |rows|
         musics = CSVImporter::MusicCollection.new(
@@ -32,9 +33,11 @@ module CSVImportable
             result_batch: result_batch,
           )
 
-          row_processor.import_results
+          row_processor.store_results(result_store)
         end
       end
+
+      result_store.insert_all
     end
   end
 end
