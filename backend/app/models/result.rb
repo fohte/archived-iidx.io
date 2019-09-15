@@ -13,8 +13,8 @@ class Result < ApplicationRecord
   # @return [ResultLog]
   def to_log
     ResultLog.new(
-      user: user,
-      map: map,
+      user_id: user_id,
+      map_id: map_id,
       result_batch_id: result_batch_id,
       score: score,
       miss_count: miss_count,
