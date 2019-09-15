@@ -26,7 +26,7 @@ module CSVImporter
 
     def import_results
       %i[normal hyper another].each do |difficulty|
-        map_processor = MapProcessor.new(
+        result_prop = ResultProp.new(
           user: user,
           map_id: maps.find_by_music_id(music_id)[difficulty],
           current_result: current_results[difficulty],
@@ -35,6 +35,8 @@ module CSVImporter
           row: row,
           result_batch: result_batch,
         )
+
+        map_processor = MapProcessor.new(result_prop: result_prop)
 
         map_processor.import_result
       end
