@@ -271,6 +271,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    slack-notifier (2.3.2)
     spring (2.1.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -345,6 +346,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   simplecov
+  slack-notifier
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)

@@ -8,6 +8,8 @@ module TemporaryResultConverter
           Processor.new(temp_results).run
         end
       end
+
+      Notifier.new.notify
     end
   end
 end
