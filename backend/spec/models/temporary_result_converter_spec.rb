@@ -4,19 +4,27 @@ require 'rails_helper'
 
 RSpec.describe TemporaryResultConverter do
   describe '.convert' do
+    subject(:convert) { described_class.convert }
+
     let(:user) { create(:user) }
     let(:result_batch) { create(:result_batch, user: user) }
+
+    let(:base_result_associations) do
+      {
+        user: user,
+        result_batch: result_batch,
+      }
+    end
 
     let(:temporary_result) do
       create(
         :temporary_result,
-        user: user,
-        result_batch: result_batch,
+        **base_result_associations,
         score: 3800,
       )
     end
 
-    context 'when the map and music exist' do
+    shared_context 'music & map' do
       let!(:music) { create(:music, csv_title: temporary_result.title) }
       let!(:map) do
         create(
@@ -28,15 +36,22 @@ RSpec.describe TemporaryResultConverter do
         )
       end
 
-      before do
-        described_class.convert
-      end
-
-      it 'creates a result' do
-        expect(Result.last).to have_attributes(
-          user: user,
-          result_batch: result_batch,
+      let(:result_associations) do
+        {
+          **base_result_associations,
           map: map,
+        }
+      end
+    end
+
+    context 'music, map が存在する場合' do
+      include_context 'music & map'
+
+      before { convert }
+
+      it 'リザルトを作成する' do
+        expect(Result.last).to have_attributes(
+          **result_associations,
           score: temporary_result.score,
           grade: 'AAA',
           miss_count: temporary_result.miss_count,
@@ -45,32 +60,186 @@ RSpec.describe TemporaryResultConverter do
         )
       end
 
-      it 'deletes the temporary result' do
+      it 'リザルトログを作成する' do
+        expect(ResultLog.last).to have_attributes(
+          **result_associations,
+          score: temporary_result.score,
+          grade: 'AAA',
+          miss_count: temporary_result.miss_count,
+          clear_lamp: temporary_result.clear_lamp,
+          last_played_at: temporary_result.last_played_at,
+        )
+      end
+
+      it 'TemporaryResult は削除する' do
         expect { TemporaryResult.find(temporary_result.id) }.to raise_error ActiveRecord::RecordNotFound
       end
     end
 
-    context 'when the map does not exist but the music exists' do
+    context 'music は存在するが map が存在しない場合' do
       let!(:music) { create(:music, csv_title: temporary_result.title) }
 
-      it 'does not create results' do
-        expect { described_class.convert }.not_to change(Result, :count)
+      it 'リザルトを作成しない' do
+        expect { convert }.not_to change(Result, :count)
       end
 
-      it 'does not delete the temporary result' do
-        described_class.convert
+      it 'リザルトログを作成しない' do
+        expect { convert }.not_to change(ResultLog, :count)
+      end
+
+      it 'TemporaryResult を削除しない' do
+        convert
         expect(TemporaryResult.find(temporary_result.id)).to eq temporary_result
       end
     end
 
-    context 'when the music and map don\'t not exist' do
-      it 'does not create results' do
-        expect { described_class.convert }.not_to change(Result, :count)
+    context 'music も map も存在しない場合' do
+      it 'リザルトを作成しない' do
+        expect { convert }.not_to change(Result, :count)
       end
 
-      it 'does not delete the temporary result' do
-        described_class.convert
+      it 'リザルトログを作成しない' do
+        expect { convert }.not_to change(ResultLog, :count)
+      end
+
+      it 'TemporaryResult を削除しない' do
+        convert
         expect(TemporaryResult.find(temporary_result.id)).to eq temporary_result
+      end
+    end
+
+    context '既存のリザルトが存在する場合' do
+      include_context 'music & map'
+
+      let!(:result) { create(:result, **result_associations) }
+      let!(:result_log) { result.to_log.tap(&:save!) }
+
+      # 既存のリザルトが存在するときは確実に既存のリザルトのほうが新しいので
+      # 既存のリザルトを優先する
+      it 'リザルトを作成しない' do
+        convert
+        expect(Result.all).to contain_exactly(having_attributes(result.attributes))
+      end
+
+      it 'リザルトログを作成する' do
+        convert
+        expect(ResultLog.all).to contain_exactly(
+          result_log,
+          have_attributes(
+            **result_associations,
+            score: temporary_result.score,
+            grade: 'AAA',
+            miss_count: temporary_result.miss_count,
+            clear_lamp: temporary_result.clear_lamp,
+            last_played_at: temporary_result.last_played_at,
+          ),
+        )
+      end
+
+      it 'TemporaryResult を削除する' do
+        convert
+        expect { TemporaryResult.find(temporary_result.id) }.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
+
+    context '同じ map の TemporaryResult が複数ある場合' do
+      include_context 'music & map'
+
+      let!(:old_temporary_result) do
+        temporary_result.dup.tap do |r|
+          r.assign_attributes(
+            last_played_at: r.last_played_at - 1.day,
+            score: r.score - 1,
+          )
+
+          r.save!
+        end
+      end
+
+      it '最も新しい TemporaryResult からリザルトを作成する' do
+        convert
+        expect(Result.all).to contain_exactly(
+          having_attributes(
+            **result_associations,
+            score: temporary_result.score,
+            grade: 'AAA',
+            miss_count: temporary_result.miss_count,
+            clear_lamp: temporary_result.clear_lamp,
+            last_played_at: temporary_result.last_played_at,
+          ),
+        )
+      end
+
+      it '全てのリザルトログを作成する' do
+        convert
+        expect(ResultLog.all).to contain_exactly(
+          have_attributes(
+            **result_associations,
+            score: old_temporary_result.score,
+            grade: 'AAA',
+            miss_count: old_temporary_result.miss_count,
+            clear_lamp: old_temporary_result.clear_lamp,
+            last_played_at: old_temporary_result.last_played_at,
+          ),
+          have_attributes(
+            **result_associations,
+            score: temporary_result.score,
+            grade: 'AAA',
+            miss_count: temporary_result.miss_count,
+            clear_lamp: temporary_result.clear_lamp,
+            last_played_at: temporary_result.last_played_at,
+          ),
+        )
+      end
+
+      it 'TemporaryResult を全て削除する' do
+        convert
+        expect(TemporaryResult.count).to eq 0
+      end
+    end
+
+    context '同じ map で同一の TemporaryResult が複数ある場合' do
+      include_context 'music & map'
+
+      let!(:old_temporary_result) do
+        temporary_result.dup.tap do |r|
+          r.assign_attributes(last_played_at: r.last_played_at - 1.day)
+
+          r.save!
+        end
+      end
+
+      it '最も新しい TemporaryResult からリザルトを作成する' do
+        convert
+        expect(Result.all).to contain_exactly(
+          having_attributes(
+            **result_associations,
+            score: temporary_result.score,
+            grade: 'AAA',
+            miss_count: temporary_result.miss_count,
+            clear_lamp: temporary_result.clear_lamp,
+            last_played_at: temporary_result.last_played_at,
+          ),
+        )
+      end
+
+      it '重複は古いほうを優先してリザルトログを作成する' do
+        convert
+        expect(ResultLog.all).to contain_exactly(
+          have_attributes(
+            **result_associations,
+            score: old_temporary_result.score,
+            grade: 'AAA',
+            miss_count: old_temporary_result.miss_count,
+            clear_lamp: old_temporary_result.clear_lamp,
+            last_played_at: old_temporary_result.last_played_at,
+          ),
+        )
+      end
+
+      it 'TemporaryResult を全て削除する' do
+        convert
+        expect(TemporaryResult.count).to eq 0
       end
     end
   end
