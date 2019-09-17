@@ -20,7 +20,7 @@ resource "aws_cloudwatch_event_target" "textage_scraper" {
   input = jsonencode({
     "containerOverrides" = [
       {
-        name    = "textage_scraper"
+        name    = "rake"
         command = ["bundle", "exec", "rails", "textage:crawl"]
       }
     ]

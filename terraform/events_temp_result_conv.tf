@@ -21,7 +21,7 @@ resource "aws_cloudwatch_event_target" "temp_result_conv" {
   input = jsonencode({
     "containerOverrides" = [
       {
-        name    = "temp_result_conv"
+        name    = "rake"
         command = ["bundle", "exec", "rails", "iidx_io:temp_result_conv"]
       }
     ]
