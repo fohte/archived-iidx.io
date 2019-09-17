@@ -177,14 +177,14 @@ jobs:
 
   deploy:
     docker:
-      - image: fabfuel/ecs-deploy:1.9.0
+      - image: silintl/ecs-deploy:3.6.0
         environment:
           AWS_DEFAULT_REGION: ap-northeast-1
     steps:
       - run:
           name: run db:setup
           command: |
-            wget https://github.com/h3poteto/ecs-task/releases/download/v0.2.1/ecs-task_v0.2.1_linux_amd64.zip
+            curl -L https://github.com/h3poteto/ecs-task/releases/download/v0.2.1/ecs-task_v0.2.1_linux_amd64.zip -O
             unzip ecs-task_v0.2.1_linux_amd64.zip
             ./ecs-task run \
               --cluster=iidx-io \
@@ -194,7 +194,7 @@ jobs:
               --region="$AWS_DEFAULT_REGION"
       - run:
           name: deploy to ecs
-          command: ecs deploy iidx-io iidx-io-web
+          command: /ecs-deploy --cluster iidx-io --service-name iidx-io-web --force-new-deployment
 
 workflows:
   commit:
