@@ -6,6 +6,11 @@ RSpec.describe TemporaryResultConverter do
   describe '.convert' do
     subject(:convert) { described_class.convert }
 
+    before do
+      notifier = instance_double('TemporaryResultConverter::Notifier', notify: nil)
+      allow(described_class::Notifier).to receive(:new).and_return(notifier)
+    end
+
     let(:user) { create(:user) }
     let(:result_batch) { create(:result_batch, user: user) }
 
