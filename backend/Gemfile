@@ -20,6 +20,7 @@ gem 'rack-cors'
 gem 'rails-i18n'
 gem 'redis'
 gem 'ridgepole'
+gem 'slack-notifier'
 gem 'virtus'
 
 group :development, :test do

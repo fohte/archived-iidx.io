@@ -22,6 +22,14 @@ module ResultConcern
     score / map.max_score.to_f
   end
 
+  def >(other)
+    other.updated?(self)
+  end
+
+  def <(other)
+    updated?(other)
+  end
+
   def updated?(other)
     clear_lamp_updated?(other.clear_lamp) ||
       score_updated?(other.score) ||
