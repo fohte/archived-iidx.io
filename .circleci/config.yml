@@ -188,8 +188,8 @@ jobs:
             unzip ecs-task_v0.2.1_linux_amd64.zip
             ./ecs-task run \
               --cluster=iidx-io \
-              --task-definition=iidx-io-ridgepole \
-              --container=ridgepole \
+              --task-definition=iidx-io-rake \
+              --container=rake \
               --command='bundle exec rails db:setup' \
               --region="$AWS_DEFAULT_REGION"
       - run:
