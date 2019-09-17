@@ -109,12 +109,12 @@ resource "aws_ecs_task_definition" "web" {
   ])
 }
 
-resource "aws_ecs_task_definition" "ridgepole" {
-  family = "${replace(local.name, "/[^a-zA-Z0-9\\-]/", "-")}-ridgepole"
+resource "aws_ecs_task_definition" "rake" {
+  family = "${replace(local.name, "/[^a-zA-Z0-9\\-]/", "-")}-rake"
 
   container_definitions = jsonencode([
     {
-      name  = "ridgepole"
+      name  = "rake"
       image = aws_ecr_repository.backend.repository_url
 
       environment = [for k, v in {
@@ -123,36 +123,12 @@ resource "aws_ecs_task_definition" "ridgepole" {
         "MYSQL_HOST" = aws_db_instance.main.address
         "MYSQL_PORT" = "3306"
 
-        "RAILS_LOG_TO_STDOUT" = "true"
-      } : { name = k, value = v }]
-
-      command = ["bundle", "exec", "rails", "db:schema:apply", "RAILS_ENV=production"]
-
-      memoryReservation = 64
-
-      logConfiguration = local.logConfigurations.sidecar
-    }
-  ])
-}
-
-resource "aws_ecs_task_definition" "textage_scraper" {
-  family = "${replace(local.name, "/[^a-zA-Z0-9\\-]/", "-")}-textage-scraper"
-
-  container_definitions = jsonencode([
-    {
-      name  = "textage_scraper"
-      image = aws_ecr_repository.backend.repository_url
-
-      environment = [for k, v in {
-        "APP_DATABASE_PASSWORD" = data.aws_ssm_parameter.db_password.value
-
-        "MYSQL_HOST" = aws_db_instance.main.address
-        "MYSQL_PORT" = "3306"
+        "RAILS_ENV" = "production"
 
         "RAILS_LOG_TO_STDOUT" = "true"
       } : { name = k, value = v }]
 
-      command = ["bundle", "exec", "rails", "textage:crawl"]
+      command = ["bundle", "exec", "rails", "-T"]
 
       memoryReservation = 64
 
@@ -163,13 +139,13 @@ resource "aws_ecs_task_definition" "textage_scraper" {
 
 resource "aws_cloudwatch_event_rule" "textage_scraper" {
   name        = "${local.name}.textage_scraper"
-  description = "Run the ${aws_ecs_task_definition.textage_scraper.family} ECS task nightly"
+  description = "Run the textage scraper task nightly"
 
   # 毎日 JST 2:00 に実行する
   schedule_expression = "cron(0 17 * * ? *)"
 }
 
-data "aws_iam_policy_document" "textage_scraper_events_assume_role" {
+data "aws_iam_policy_document" "rake_events_assume_role" {
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -180,7 +156,7 @@ data "aws_iam_policy_document" "textage_scraper_events_assume_role" {
   }
 }
 
-data "aws_iam_policy_document" "textage_scraper_events" {
+data "aws_iam_policy_document" "rake_events" {
   statement {
     actions   = ["iam:PassRole"]
     resources = ["*"]
@@ -189,33 +165,42 @@ data "aws_iam_policy_document" "textage_scraper_events" {
   statement {
     actions = ["ecs:RunTask"]
     resources = [replace(
-      aws_ecs_task_definition.textage_scraper.arn,
+      aws_ecs_task_definition.rake.arn,
       "/:\\d+$/",
       ":*",
     )]
   }
 }
 
-resource "aws_iam_role" "textage_scraper_events" {
-  name               = "${local.name}.textage_scraper_events"
-  assume_role_policy = data.aws_iam_policy_document.textage_scraper_events_assume_role.json
+resource "aws_iam_role" "rake_events" {
+  name               = "${local.name}.rake_events"
+  assume_role_policy = data.aws_iam_policy_document.rake_events_assume_role.json
 }
 
-resource "aws_iam_role_policy" "textage_scraper_events" {
-  name = "${local.name}.textage_scraper_events"
-  role = aws_iam_role.textage_scraper_events.id
+resource "aws_iam_role_policy" "rake_events" {
+  name = "${local.name}.rake_events"
+  role = aws_iam_role.rake_events.id
 
-  policy = data.aws_iam_policy_document.textage_scraper_events.json
+  policy = data.aws_iam_policy_document.rake_events.json
 }
 
 resource "aws_cloudwatch_event_target" "textage_scraper" {
   target_id = "${local.name}.textage_scraper"
   arn       = aws_ecs_cluster.main.arn
   rule      = aws_cloudwatch_event_rule.textage_scraper.name
-  role_arn  = aws_iam_role.textage_scraper_events.arn
+  role_arn  = aws_iam_role.rake_events.arn
 
   ecs_target {
     task_count          = 1
-    task_definition_arn = aws_ecs_task_definition.textage_scraper.arn
+    task_definition_arn = aws_ecs_task_definition.rake.arn
   }
+
+  input = jsonencode({
+    "containerOverrides" = [
+      {
+        name    = "textage_scraper"
+        command = ["bundle", "exec", "rails", "textage:crawl"]
+      }
+    ]
+  })
 }
