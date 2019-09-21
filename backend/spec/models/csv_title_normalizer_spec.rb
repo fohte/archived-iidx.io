@@ -6,35 +6,22 @@ RSpec.describe CSVTitleNormalizer do
   describe '.normalize' do
     subject { described_class.normalize(title) }
 
-    context 'with the wave dashes (U+301C)' do
-      # wave dash (U+301C)
-      let(:title) { "\u{301c}" }
+    {
+      'ÆTHER' => 'ATHER',
 
-      it { is_expected.to eq("\u{ff5e}") }
-    end
+      'ROCK女 feat. 大山愛未, Ken' => 'ROCK女 feat. 大山愛未， Ken',
 
-    context 'with the halfwidth commas' do
-      let(:title) { ',' }
+      # wave dash (U+301C) => fullwidth tilde (U+FF5E)
+      'ZETA〜素数の世界と超越者〜' => 'ZETA～素数の世界と超越者～',
 
-      it { is_expected.to eq('，') }
-    end
+      'Punch Love ♥ 仮面' => 'Punch Love 仮面',
+      'ギョギョっと人魚♨爆婚ブライダル' => 'ギョギョっと人魚 爆婚ブライダル',
+    }.each do |title, want|
+      context "with #{title}" do
+        let(:title) { title }
 
-    context 'with the latin capital letter ae (Æ)' do
-      let(:title) { 'Æ' }
-
-      it { is_expected.to eq('A') }
-    end
-
-    context 'with non Shift_JIS characters' do
-      let(:title) { '♥♨' }
-
-      it { is_expected.to eq('') }
-    end
-
-    context 'when the transformed title has two or more consecutive whitespaces' do
-      let(:title) { 'a ♥ z' }
-
-      it { is_expected.to eq('a z') }
+        it { is_expected.to eq(want) }
+      end
     end
   end
 end

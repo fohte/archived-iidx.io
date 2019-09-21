@@ -230,25 +230,5 @@ RSpec.describe Textage::Crawler do
 
       it { expect(musics.to_a).to be_empty }
     end
-
-    context 'when the music title has some non Shift_JIS characters' do
-      let(:titletbl_js) do
-        <<~JS
-          titletbl = { a_amuro: [7, 703, 1, 'RENAISSANCE', 'D.J.Amuro', ',Æ♥〜'] }
-        JS
-      end
-
-      it 'returns musics' do
-        expect(subject).to contain_exactly have_attributes(
-          title: ',Æ♥〜',
-          csv_title: '，A～',
-          genre: 'RENAISSANCE',
-          artist: 'D.J.Amuro',
-          textage_uid: 'a_amuro',
-          series: '7th_style',
-          leggendaria: false,
-        )
-      end
-    end
   end
 end
