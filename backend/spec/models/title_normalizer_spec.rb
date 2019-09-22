@@ -26,11 +26,23 @@ RSpec.describe TitleNormalizer do
 
       # 変換しない
       'NΦ CRIME' => 'NΦ CRIME',
-    }.each do |title, want|
-      context "with #{title}" do
-        let(:title) { title }
+    }.each do |before_title, after_title|
+      context %{正規化すべきタイトルの場合 ("#{before_title}")} do
+        let(:title) { before_title }
 
-        it { is_expected.to eq(want) }
+        it %("#{after_title}" に正規化する) do
+          expect(subject).to eq(after_title)
+        end
+      end
+
+      next if before_title == after_title
+
+      context %{タイトルがすでに正規化されている場合 ("#{after_title}")} do
+        let(:title) { after_title }
+
+        it %(正規化しても変わらない) do
+          expect(subject).to eq(after_title)
+        end
       end
     end
   end

@@ -10,6 +10,11 @@ module TitleNormalizer
       Filters::CommaNormalizationFilter.new(target: :fullwidth),
 
       Filters::ApproximationFilter.new,
+
+      # fullwidth tilde (U+FF5E) は RemoveNonSJISCharactersFilter に通すと
+      # 消されてしまうので wave dash (U+301C) に変換しておく
+      Filters::WaveDashTildeFilter.new(target: :wave_dash),
+
       Filters::RemoveNonSJISCharactersFilter.new,
 
       # wave dash (U+301C) => fullwidth tilde (U+FF5E)
