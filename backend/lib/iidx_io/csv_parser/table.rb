@@ -3,29 +3,19 @@
 module IIDXIO
   module CSVParser
     class Table
-      class << self
-        # @param csv [String]
-        # @return [self]
-        def from_csv(csv)
-          new(parse_csv(csv))
-        end
+      # @erutrn csv [String]
+      attr_reader :csv
 
-        private
-
-        # @param csv [String]
-        # @return [Array<CSVParser::Row>]
-        def parse_csv(csv)
-          csv.lines[1..-1].map(&:strip!).map do |line|
-            CSVParser::Row.from_csv(line)
-          end
-        end
+      def initialize(csv)
+        @csv = csv
       end
 
-      attr_reader :rows
-
-      # @param rows [Array<CSVParser::Row>]
-      def initialize(rows)
-        @rows = rows
+      # @return [Array<CSVParser::Row>]
+      def rows
+        @rows ||=
+          csv.lines[1..].map(&:strip!).map do |line|
+            CSVParser::Row.new(line)
+          end
       end
     end
   end

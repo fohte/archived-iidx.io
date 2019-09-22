@@ -6,7 +6,7 @@ module IIDXIO
       # @param csv [String]
       # @return [CSVParser::Table]
       def parse(csv)
-        CSVParser::Table.from_csv(csv)
+        CSVParser::Table.new(csv)
       end
     end
   end
