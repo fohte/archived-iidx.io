@@ -22,6 +22,8 @@ module TitleNormalizer
       # instead of the wave dash (U+301C).
       Filters::WaveDashTildeFilter.new(target: :tilde),
 
+      Filters::SubTitleIsolationFilter.new,
+
       Filters::SqueezingFilter.new,
     ]
   end

@@ -19,7 +19,14 @@ RSpec.describe TitleNormalizer do
       'ROCK女 feat. 大山愛未, Ken' => 'ROCK女 feat. 大山愛未， Ken',
 
       # wave dash (U+301C) => fullwidth tilde (U+FF5E)
-      'ZETA〜素数の世界と超越者〜' => 'ZETA～素数の世界と超越者～',
+      'ZETA〜素数の世界と超越者〜' => 'ZETA ～素数の世界と超越者～',
+
+      # サブタイトルが存在するタイプ
+      'CHRONO DIVER-NORNIR-†' => 'CHRONO DIVER -NORNIR-†',
+      'CODE:1[revision1.0.1]' => 'CODE:1 [revision1.0.1]',
+      'Summerlights(IIDX Edition)' => 'Summerlights (IIDX Edition)',
+      '†渚の小悪魔ラヴリィ～レイディオ†(IIDX EDIT)' => '†渚の小悪魔ラヴリィ～レイディオ† (IIDX EDIT)',
+      '夏色DIARY - L.E.D.-G STYLE MIX -' => '夏色DIARY - L.E.D.-G STYLE MIX -',
 
       'Punch Love ♥ 仮面' => 'Punch Love 仮面',
       'ギョギョっと人魚♨爆婚ブライダル' => 'ギョギョっと人魚 爆婚ブライダル',
