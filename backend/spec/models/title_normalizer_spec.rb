@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe CSVTitleNormalizer do
-  describe '.normalize' do
-    subject { described_class.normalize(title) }
+RSpec.describe TitleNormalizer do
+  describe '.as_csv_title' do
+    subject { described_class.as_csv_title(title) }
 
     {
       'ÆTHER' => 'ATHER',
