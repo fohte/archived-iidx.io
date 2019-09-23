@@ -3,112 +3,87 @@
 module IIDXIO
   module CSVParser
     class Row
-      include ActiveModel::Model
-
       CSV_KEYS = %i[
-        version
-        title
-        genre
-        artist
-        play_count
-        normal_level
-        normal_ex_score
-        normal_pgreat
-        normal_great
-        normal_miss_count
-        normal_clear_lamp
-        normal_dj_level
-        hyper_level
-        hyper_ex_score
-        hyper_pgreat
-        hyper_great
-        hyper_miss_count
-        hyper_clear_lamp
-        hyper_dj_level
-        another_level
-        another_ex_score
-        another_pgreat
-        another_great
-        another_miss_count
-        another_clear_lamp
-        another_dj_level
+        version title genre artist play_count
+        normal_level normal_ex_score normal_pgreat normal_great normal_miss_count normal_clear_lamp normal_dj_level
+        hyper_level hyper_ex_score hyper_pgreat hyper_great hyper_miss_count hyper_clear_lamp hyper_dj_level
+        another_level another_ex_score another_pgreat another_great another_miss_count another_clear_lamp another_dj_level
         last_played_at
       ].freeze
 
       # @return [String]
-      attr_accessor :version
+      attr_reader :csv
+
+      def initialize(csv)
+        @csv = csv
+      end
 
       # @return [String]
-      attr_accessor :title
+      def version
+        raw_map[:version]
+      end
 
       # @return [String]
-      attr_accessor :genre
+      def title
+        raw_map[:title]
+      end
 
       # @return [String]
-      attr_accessor :artist
+      def genre
+        raw_map[:genre]
+      end
+
+      # @return [String]
+      def artist
+        raw_map[:artist]
+      end
 
       # @return [Integer]
-      attr_accessor :play_count
+      def play_count
+        raw_map[:play_count].to_i
+      end
 
       # @return [CSVParser::Row::Map]
-      attr_accessor :normal
+      def normal
+        @normal ||= parse_map(:normal)
+      end
 
       # @return [CSVParser::Row::Map]
-      attr_accessor :hyper
+      def hyper
+        @hyper ||= parse_map(:hyper)
+      end
 
       # @return [CSVParser::Row::Map]
-      attr_accessor :another
+      def another
+        @another ||= parse_map(:another)
+      end
 
       # @return [ActiveSupport::TimeWithZone]
-      attr_accessor :last_played_at
+      def last_played_at
+        @last_played_at ||=
+          # 暗黙的に JST で出力されるので JST として parse する
+          Time.use_zone('Asia/Tokyo') do
+            Time.zone.parse(raw_map[:last_played_at])
+          end
+      end
 
-      class << self
-        # @param csv [String]
-        def from_csv(csv)
-          raw = parse_csv_raw(csv)
+      private
 
-          new(
-            version: raw[:version],
-            title: raw[:title],
-            genre: raw[:genre],
-            artist: raw[:artist],
-            play_count: raw[:play_count].to_i,
-            normal: parse_map(raw, :normal),
-            hyper: parse_map(raw, :hyper),
-            another: parse_map(raw, :another),
-            # 暗黙的に JST で出力されるので JST として parse する
-            last_played_at: Time.use_zone('Asia/Tokyo') do
-              Time.zone.parse(raw[:last_played_at])
-            end,
-          )
-        end
+      # @return [Hash<Symbol, any>]
+      def raw_map
+        @raw_map ||= CSV_KEYS.zip(csv.split(',')).to_h
+      end
 
-        private
-
-        # @param csv [String]
-        # @return [Hash<Symbol, any>]
-        def parse_csv_raw(csv)
-          CSV_KEYS.zip(csv.split(',')).to_h
-        end
-
-        # @param raw_hash [Hash<Symbol, any>]
-        # @param difficulty [#to_s]
-        # @return [CSVParser::Row::Map]
-        def parse_map(raw_hash, difficulty)
-          dj_level = raw_hash[:"#{difficulty}_dj_level"].yield_self { |v| v == '---' ? nil : v }
-          clear_lamp = raw_hash[:"#{difficulty}_clear_lamp"].yield_self { |v| v == 'NO PLAY' ? nil : v }
-          miss_count = raw_hash[:"#{difficulty}_miss_count"].yield_self { |v| v == '---' ? nil : v.to_i }
-
-          CSVParser::Row::Map.new(
-            level: raw_hash[:"#{difficulty}_level"].to_i,
-            ex_score: !miss_count.nil? ? raw_hash[:"#{difficulty}_ex_score"].to_i : nil,
-            pgreat: !miss_count.nil? ? raw_hash[:"#{difficulty}_pgreat"].to_i : nil,
-            great: !miss_count.nil? ? raw_hash[:"#{difficulty}_great"].to_i : nil,
-            miss_count: miss_count,
-            clear_lamp: clear_lamp,
-            dj_level: dj_level,
-          )
-        end
+      def parse_map(difficulty)
+        CSVParser::Row::Map.new(
+          level: @raw_map[:"#{difficulty}_level"],
+          ex_score: @raw_map[:"#{difficulty}_ex_score"],
+          pgreat: @raw_map[:"#{difficulty}_pgreat"],
+          great: @raw_map[:"#{difficulty}_great"],
+          miss_count: @raw_map[:"#{difficulty}_miss_count"],
+          clear_lamp: @raw_map[:"#{difficulty}_clear_lamp"],
+          dj_level: @raw_map[:"#{difficulty}_dj_level"],
+        )
       end
     end
   end

@@ -43,11 +43,11 @@ module Textage
     private
 
     def title_table
-      @title_table ||= Pages::TitleTable.new(loader.fetch(Routes::Score.title_table_js))
+      @title_table ||= Pages::TitleTable.new(loader: loader)
     end
 
     def ac_table
-      @ac_table ||= Pages::ACTable.new(loader.fetch(Routes::Score.ac_table_js))
+      @ac_table ||= Pages::ACTable.new(loader: loader)
     end
 
     def fetch_score_page(textage_version, uid)
@@ -56,46 +56,35 @@ module Textage
       Pages::Score.new(loader.fetch(Routes::Score.show(textage_version, uid)))
     end
 
-    def to_series(textage_version)
-      return 1 if Textage.substream_number?(textage_version)
-
-      textage_version
-    end
-
     def build_music(music_table, uid)
-      title =
-        if music_table.sub_title.present?
-          "#{music_table.title} #{music_table.sub_title}"
-        else
-          music_table.title
-        end
-
       ::Music.new(
-        title: title,
-        csv_title: ::Music.transform_as_csv_title(title),
+        title: music_table.model_title,
+        csv_title: music_table.model_csv_title,
         genre: music_table.genre,
         artist: music_table.artist,
         textage_uid: uid,
-        series: to_series(music_table.version),
+        series: music_table.model_series,
         leggendaria: ac_table.leggendaria?(uid),
       )
     end
 
     def delta_map_types
-      {}.tap do |h|
-        current_map_types = Music.fetch_map_types
-        all_map_types.each do |uid, types_list|
-          h[uid] = types_list - current_map_types.fetch(uid) { [] }
+      @delta_map_types ||=
+        {}.tap do |h|
+          current_map_types = Music.fetch_map_types
+          all_map_types.each do |uid, types_list|
+            h[uid] = types_list - current_map_types.fetch(uid) { [] }
+          end
         end
-      end
     end
 
     def all_map_types
-      {}.tap do |h|
-        ac_table.map_tables.each do |uid, map_table|
-          h[uid] = ::Map.types.select { |ps, d| map_table.fetch_map(ps, d).exist_bms? }
+      @all_map_types ||=
+        {}.tap do |h|
+          ac_table.map_tables.each do |uid, map_table|
+            h[uid] = ::Map.types.select { |ps, d| map_table.fetch_map(ps, d).exist_bms? }
+          end
         end
-      end
     end
   end
 end

@@ -4,28 +4,55 @@ module IIDXIO
   module CSVParser
     class Row
       class Map
-        include ActiveModel::Model
+        def initialize(level:, ex_score:, pgreat:, great:, miss_count:, clear_lamp:, dj_level:)
+          @raw_level = level
+          @raw_ex_score = ex_score
+          @raw_pgreat = pgreat
+          @raw_great = great
+          @raw_miss_count = miss_count
+          @raw_clear_lamp = clear_lamp
+          @raw_dj_level = dj_level
+        end
 
-        # @return [String]
-        attr_accessor :level
+        def level
+          @raw_level.to_i
+        end
 
-        # @return [Integer, nil]
-        attr_accessor :ex_score
+        def ex_score
+          return if miss_count.nil?
 
-        # @return [Integer, nil]
-        attr_accessor :pgreat
+          @raw_ex_score.to_i
+        end
 
-        # @return [Integer, nil]
-        attr_accessor :great
+        def pgreat
+          return if miss_count.nil?
 
-        # @return [Integer, nil]
-        attr_accessor :miss_count
+          @raw_pgreat.to_i
+        end
 
-        # @return [String, nil]
-        attr_accessor :clear_lamp
+        def great
+          return if miss_count.nil?
 
-        # @return [String, nil]
-        attr_accessor :dj_level
+          @raw_great.to_i
+        end
+
+        def miss_count
+          return if @raw_miss_count == '---'
+
+          @raw_miss_count.to_i
+        end
+
+        def clear_lamp
+          return if @raw_clear_lamp == 'NO PLAY'
+
+          @raw_clear_lamp
+        end
+
+        def dj_level
+          return if @raw_dj_level == '---'
+
+          @raw_dj_level
+        end
 
         def no_data?
           no_play? && blank_score?
