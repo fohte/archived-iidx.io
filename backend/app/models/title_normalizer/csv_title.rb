@@ -5,6 +5,11 @@ module TitleNormalizer
     include Filterable
 
     self.filters = [
+      Filters::IrregularFilter.new,
+
+      Filters::ZenkakuFilter.new,
+      Filters::FeatFilter.new,
+
       # halfwidth comma => fullwidth comma
       # the halfwidth comma is escaped in the CSV.
       Filters::CommaNormalizationFilter.new(target: :fullwidth),
@@ -23,8 +28,10 @@ module TitleNormalizer
       Filters::WaveDashTildeFilter.new(target: :tilde),
 
       Filters::SubTitleIsolationFilter.new,
+      Filters::SpaceBeforeLeggendariaDeletionFilter.new,
 
       Filters::SqueezingFilter.new,
+      Filters::StripFilter.new,
     ]
   end
 end

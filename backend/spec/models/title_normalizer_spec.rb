@@ -13,6 +13,7 @@ RSpec.describe TitleNormalizer do
       'Übertreffen' => 'Ubertreffen',
       'Χ-DEN' => 'X-DEN',
       '焱影' => '炎影',
+      '¡Viva!' => '!Viva!',
 
       'ROCK女 feat. 大山愛未, Ken' => 'ROCK女 feat. 大山愛未， Ken',
 
@@ -26,11 +27,24 @@ RSpec.describe TitleNormalizer do
       '†渚の小悪魔ラヴリィ～レイディオ†(IIDX EDIT)' => '†渚の小悪魔ラヴリィ～レイディオ† (IIDX EDIT)',
       '夏色DIARY - L.E.D.-G STYLE MIX -' => '夏色DIARY - L.E.D.-G STYLE MIX -',
 
+      '表裏一体!?怪盗いいんちょの悩み♥' => '表裏一体!?怪盗いいんちょの悩み',
       'Punch Love ♥ 仮面' => 'Punch Love 仮面',
       'ギョギョっと人魚♨爆婚ブライダル' => 'ギョギョっと人魚 爆婚ブライダル',
 
-      # 変換しない
-      'NΦ CRIME' => 'NΦ CRIME',
+      'Close the World feat.a☆ru' => 'Close the World feat. a☆ru',
+      'Close the World feat.a☆ru †LEGGENDARIA' => 'Close the World feat. a☆ru†LEGGENDARIA',
+      '突撃！ガラスのニーソ姫！' => '突撃!ガラスのニーソ姫!',
+
+      'ハイ＊ビスカス ft. Kanae Asaba' => 'ハイ*ビスカス ft. Kanae Asaba',
+
+      'ピアノ協奏曲第１番”蠍火”' => 'ピアノ協奏曲第１番"蠍火"',
+      'Blind Justice 〜Torn souls,Hurt Faiths〜' => 'Blind Justice ～Torn souls， Hurt Faiths ～',
+      'CROSSROAD' => 'CROSSROAD ～Left Story～',
+      'Anisakis -somatic mutation type "Forza"-' => 'Anisakis -somatic mutation type"Forza"-',
+      'キャトられ♥恋はモ〜モク' => 'キャトられ恋はモ～モク',
+      'City Never Sleeps (IIDX EDITION)' => 'City Never Sleeps (IIDX Edition)',
+      'パラドキシカル・タイムリープトライアル (Short.Ver)' => 'パラドキシカル・タイムリープトライアル (Short Ver.)',
+      '共犯ヘヴンズコード' => '共犯へヴンズコード',
     }.each do |before_title, after_title|
       context %{正規化すべきタイトルの場合 ("#{before_title}")} do
         subject { described_class.as_csv_title(title) }

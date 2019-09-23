@@ -221,12 +221,14 @@ module TitleNormalizer
         'ž' => 'z',
 
         '焱' => '炎',
+
+        '¡' => '!',
       }.freeze
 
       def call(str)
         str.chars.map do |c|
           APPROXIMATIONS[c] || c
-        end .join
+        end.join
       end
     end
   end
