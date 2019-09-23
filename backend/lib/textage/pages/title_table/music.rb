@@ -4,49 +4,38 @@ module Textage
   module Pages
     class TitleTable
       class Music
-        include ActiveModel::Model
-
-        attr_accessor :version, :genre, :artist
-        attr_reader :title, :sub_title
+        # @return arr [Array<any>]
+        attr_reader :raw_array
 
         # @param arr [Array<any>]
-        # @return [self]
-        def self.from_raw_array(arr)
-          new(
-            version: arr[0],
-            genre: arr[3],
-            artist: arr[4],
-            title: arr[5],
-            sub_title: arr[6],
-          )
+        def initialize(arr)
+          @raw_array = arr
         end
 
-        def title=(value)
-          @title = extract_inner_text(value)
+        def version
+          @raw_array[0]
         end
 
-        def sub_title=(value)
-          @sub_title = extract_inner_text(value)
+        def genre
+          @raw_array[3]
+        end
+
+        def artist
+          @raw_array[4]
+        end
+
+        # @return [String, nil]
+        def title
+          @title ||= extract_inner_text(raw_title)
+        end
+
+        # @return [String, nil]
+        def sub_title
+          @sub_title ||= extract_inner_text(raw_sub_title)
         end
 
         def in_ac?
           version.nonzero?
-        end
-
-        def exist_bms?
-          (meta_bit & 1).nonzero?
-        end
-
-        def textage_leveling?
-          (meta_bit & 2).zero?
-        end
-
-        def cn?
-          (meta_bit & 8).nonzero?
-        end
-
-        def hcn?
-          cn? && sub_data == ''
         end
 
         private
@@ -56,6 +45,14 @@ module Textage
         def extract_inner_text(html)
           dom = Nokogiri::HTML(html)
           dom.text
+        end
+
+        def raw_title
+          @raw_array[5]
+        end
+
+        def raw_sub_title
+          @raw_array[6]
         end
       end
     end

@@ -43,11 +43,11 @@ module Textage
     private
 
     def title_table
-      @title_table ||= Pages::TitleTable.new(loader.fetch(Routes::Score.title_table_js))
+      @title_table ||= Pages::TitleTable.new(loader: loader)
     end
 
     def ac_table
-      @ac_table ||= Pages::ACTable.new(loader.fetch(Routes::Score.ac_table_js))
+      @ac_table ||= Pages::ACTable.new(loader: loader)
     end
 
     def fetch_score_page(textage_version, uid)
@@ -82,20 +82,22 @@ module Textage
     end
 
     def delta_map_types
-      {}.tap do |h|
-        current_map_types = Music.fetch_map_types
-        all_map_types.each do |uid, types_list|
-          h[uid] = types_list - current_map_types.fetch(uid) { [] }
+      @delta_map_types ||=
+        {}.tap do |h|
+          current_map_types = Music.fetch_map_types
+          all_map_types.each do |uid, types_list|
+            h[uid] = types_list - current_map_types.fetch(uid) { [] }
+          end
         end
-      end
     end
 
     def all_map_types
-      {}.tap do |h|
-        ac_table.map_tables.each do |uid, map_table|
-          h[uid] = ::Map.types.select { |ps, d| map_table.fetch_map(ps, d).exist_bms? }
+      @all_map_types ||=
+        {}.tap do |h|
+          ac_table.map_tables.each do |uid, map_table|
+            h[uid] = ::Map.types.select { |ps, d| map_table.fetch_map(ps, d).exist_bms? }
+          end
         end
-      end
     end
   end
 end

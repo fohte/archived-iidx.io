@@ -3,7 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe Textage::Pages::TitleTable do
-  let(:described_instance) { described_class.new(titletbl_js) }
+  let(:loader) { Textage::Loader.new(cache: ActiveSupport::Cache::MemoryStore.new) }
+
+  let(:described_instance) { described_class.new(loader: loader) }
+
+  before do
+    stub_request(:get, 'textage.cc/score/titletbl.js').to_return(body: titletbl_js)
+  end
 
   describe '#musics' do
     subject { described_instance.musics }

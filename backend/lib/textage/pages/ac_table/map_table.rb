@@ -4,28 +4,18 @@ module Textage
   module Pages
     class ACTable
       class MapTable
-        include ActiveModel::Model
-        extend Enumerize
+        RELEASE_STATUS = {
+          1 => :ac,
+          2 => :cs,
+          3 => :not_released,
+        }.freeze
 
-        attr_accessor :sp_old_beginner,
-                      :sp_beginner,
-                      :sp_normal,
-                      :sp_hyper,
-                      :sp_another,
-                      :sp_black_another,
-                      :dp_beginner,
-                      :dp_normal,
-                      :dp_hyper,
-                      :dp_another,
-                      :dp_black_another
+        MAP_TYPES = %i[
+          sp_old_beginner sp_beginner sp_normal sp_hyper sp_another sp_black_another
+          dp_beginner dp_normal dp_hyper dp_another dp_black_another
+        ].freeze
 
-        enumerize :release_status, in: {
-          ac: 1,
-          cs: 2,
-          not_released: 3,
-        }, predicates: true
-
-        # @param raw_array [Array<Integer>] the array of metadata
+        # @return [Array<Integer>] the array of metadata
         #   index 0: the metadata about releasing status
         #   index 1, 2: level and meta bit for SP Old Beginner
         #   index 3, 4: level and meta bit for SP Beginner
@@ -39,30 +29,45 @@ module Textage
         #   index 19, 20: level and meta bit for DP Another
         #   index 21, 22: level and meta bit for DP Black Another
         #   index 23: meta description (if it is an empty string, then maps are HCN)
-        # @return [self]
-        def self.from_raw_array(raw_array)
-          maps = raw_array[1, 22].each_slice(2).map do |level, meta_bit|
-            ACTable::Map.new(level: level, meta_bit: meta_bit, sub_data: raw_array[23])
-          end
+        attr_reader :raw_array
 
-          new(
-            release_status: raw_array[0],
-            sp_old_beginner: maps[0],
-            sp_beginner: maps[1],
-            sp_normal: maps[2],
-            sp_hyper: maps[3],
-            sp_another: maps[4],
-            sp_black_another: maps[5],
-            dp_beginner: maps[6],
-            dp_normal: maps[7],
-            dp_hyper: maps[8],
-            dp_another: maps[9],
-            dp_black_another: maps[10],
-          )
+        def initialize(raw_array)
+          @raw_array = raw_array
+        end
+
+        def release_status
+          RELEASE_STATUS[raw_array[0]]
+        end
+
+        def in_ac?
+          release_status == :ac
+        end
+
+        def in_cs?
+          release_status == :cs
+        end
+
+        def not_released?
+          release_status == :not_released
         end
 
         def fetch_map(play_style, difficulty)
-          send("#{play_style}_#{difficulty}")
+          public_send("#{play_style}_#{difficulty}")
+        end
+
+        MAP_TYPES.each_with_index do |map_type, index|
+          define_method(map_type) do
+            all_maps[index]
+          end
+        end
+
+        private
+
+        def all_maps
+          @all_maps ||=
+            raw_array[1, 22].each_slice(2).map do |level, meta_bit|
+              ACTable::Map.new(level: level, meta_bit: meta_bit, sub_data: raw_array[23])
+            end
         end
       end
     end

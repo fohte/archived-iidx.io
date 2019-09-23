@@ -3,7 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe Textage::Pages::ACTable do
-  let(:described_instance) { described_class.new(actbl_js) }
+  let(:loader) { Textage::Loader.new(cache: ActiveSupport::Cache::MemoryStore.new) }
+
+  let(:described_instance) { described_class.new(loader: loader) }
+
+  before do
+    stub_request(:get, 'textage.cc/score/actbl.js').to_return(body: actbl_js)
+  end
 
   describe '#map_tables' do
     subject { described_instance.map_tables }
@@ -19,7 +25,7 @@ RSpec.describe Textage::Pages::ACTable do
       it 'returns musics' do
         expect(subject).to match(
           a_amuro: have_attributes(
-            release_status: 'ac',
+            release_status: :ac,
             sp_old_beginner: have_attributes(level: 0, meta_bit: 0),
             sp_beginner: have_attributes(level: 3, meta_bit: 1),
             sp_normal: have_attributes(level: 6, meta_bit: 7),
@@ -46,30 +52,6 @@ RSpec.describe Textage::Pages::ACTable do
 
       it { is_expected.to be_empty }
     end
-  end
-
-  describe '#event_list' do
-    subject { described_instance.event_list }
-
-    let(:actbl_js) do
-      <<~JS
-        e_list = [[['LEGGENDARIA', ['test_a', 'test_b']]]]
-      JS
-    end
-
-    it { is_expected.to eq('LEGGENDARIA' => %w[test_a test_b]) }
-  end
-
-  describe '#leggendaria_uids' do
-    subject { described_instance.leggendaria_uids }
-
-    let(:actbl_js) do
-      <<~JS
-        e_list = [[['LEGGENDARIA', ['test_a', 'test_b']]]]
-      JS
-    end
-
-    it { is_expected.to contain_exactly :test_a, :test_b }
   end
 
   describe '#leggendaria?' do
