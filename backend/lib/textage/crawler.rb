@@ -56,27 +56,14 @@ module Textage
       Pages::Score.new(loader.fetch(Routes::Score.show(textage_version, uid)))
     end
 
-    def to_series(textage_version)
-      return 1 if Textage.substream_number?(textage_version)
-
-      textage_version
-    end
-
     def build_music(music_table, uid)
-      title =
-        if music_table.sub_title.present?
-          "#{music_table.title} #{music_table.sub_title}"
-        else
-          music_table.title
-        end
-
       ::Music.new(
-        title: title,
-        csv_title: ::TitleNormalizer.as_csv_title(title),
+        title: music_table.model_title,
+        csv_title: music_table.model_csv_title,
         genre: music_table.genre,
         artist: music_table.artist,
         textage_uid: uid,
-        series: to_series(music_table.version),
+        series: music_table.model_series,
         leggendaria: ac_table.leggendaria?(uid),
       )
     end

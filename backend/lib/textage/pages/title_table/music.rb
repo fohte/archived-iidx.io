@@ -38,6 +38,24 @@ module Textage
           version.nonzero?
         end
 
+        def model_title
+          if sub_title.present?
+            "#{title} #{sub_title}"
+          else
+            title
+          end
+        end
+
+        def model_csv_title
+          ::TitleNormalizer.as_csv_title(model_title)
+        end
+
+        def model_series
+          return 1 if ::Textage.substream_number?(version)
+
+          version
+        end
+
         private
 
         # @param html [String]
