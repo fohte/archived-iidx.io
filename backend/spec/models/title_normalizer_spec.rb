@@ -4,8 +4,6 @@ require 'rails_helper'
 
 RSpec.describe TitleNormalizer do
   describe '.as_csv_title' do
-    subject { described_class.as_csv_title(title) }
-
     {
       'ÆTHER' => 'ATHER',
       'Amor De Verão' => 'Amor De Verao',
@@ -35,6 +33,8 @@ RSpec.describe TitleNormalizer do
       'NΦ CRIME' => 'NΦ CRIME',
     }.each do |before_title, after_title|
       context %{正規化すべきタイトルの場合 ("#{before_title}")} do
+        subject { described_class.as_csv_title(title) }
+
         let(:title) { before_title }
 
         it %("#{after_title}" に正規化する) do
@@ -45,11 +45,26 @@ RSpec.describe TitleNormalizer do
       next if before_title == after_title
 
       context %{タイトルがすでに正規化されている場合 ("#{after_title}")} do
+        subject { described_class.as_csv_title(title) }
+
         let(:title) { after_title }
 
         it %(正規化しても変わらない) do
           expect(subject).to eq(after_title)
         end
+      end
+    end
+
+    context '実際のタイトルの場合' do
+      it 'CSV スコアデータのタイトル -> Textage 上のタイトルが単射になる' do
+        textage_titles = textage_fixture('titles.txt').read.split("\n")
+        csv_titles = iidx_fixture('csv/titles.txt').read.split("\n")
+
+        diff =
+          csv_titles.map { |t| described_class.as_csv_title(t) } -
+          textage_titles.map { |t| described_class.as_csv_title(t) }
+
+        expect(diff).to eq []
       end
     end
   end
