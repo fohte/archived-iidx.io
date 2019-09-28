@@ -7,8 +7,12 @@ module TitleNormalizer
     self.filters = [
       Filters::IrregularFilter.new,
 
+      Filters::BracketsNormalizationFilter.new,
       Filters::ZenkakuFilter.new,
       Filters::FeatFilter.new,
+      Filters::HorizontalEllipsisFilter.new,
+
+      Filters::TrimSpaceBetweenBrackets.new,
 
       # halfwidth comma => fullwidth comma
       # the halfwidth comma is escaped in the CSV.

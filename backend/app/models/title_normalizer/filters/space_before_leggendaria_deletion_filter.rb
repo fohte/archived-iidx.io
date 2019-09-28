@@ -3,10 +3,10 @@
 module TitleNormalizer
   module Filters
     class SpaceBeforeLeggendariaDeletionFilter < BaseFilter
-      LEGGENDARIA_PATTERN = /\s*(†LEGGENDARIA)$/.freeze
+      PATTERN = /\s*(#{SubTitleIsolationFilter::LEGGENDARIA_PATTERN})$/.freeze
 
       def call(str)
-        str.gsub(LEGGENDARIA_PATTERN, '\1')
+        str.gsub(PATTERN, '\1')
       end
     end
   end
