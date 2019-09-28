@@ -10,6 +10,7 @@ module TitleNormalizer
       Filters::BracketsNormalizationFilter.new,
       Filters::ZenkakuFilter.new,
       Filters::FeatFilter.new,
+      Filters::HorizontalEllipsisFilter.new,
 
       # halfwidth comma => fullwidth comma
       # the halfwidth comma is escaped in the CSV.
