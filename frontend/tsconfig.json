@@ -35,6 +35,7 @@
     "pages/**/*",
     "__tests__/**/*",
     "index.d.ts",
+    "next-env.d.ts",
     "server/**/*"
   ],
   "exclude": ["node_modules", "coverage"]
