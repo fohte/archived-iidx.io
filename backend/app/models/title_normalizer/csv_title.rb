@@ -7,6 +7,7 @@ module TitleNormalizer
     self.filters = [
       Filters::IrregularFilter.new,
 
+      Filters::BracketsNormalizationFilter.new,
       Filters::ZenkakuFilter.new,
       Filters::FeatFilter.new,
 
