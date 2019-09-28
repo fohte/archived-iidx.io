@@ -37,7 +37,7 @@ const toQuerystring = (obj: any) =>
   Object.keys(obj)
     .filter(key => obj[key] !== null && obj[key] !== undefined)
     .map(key => {
-      let value = obj[key]
+      const value = obj[key]
 
       if (Array.isArray(value)) {
         return value
