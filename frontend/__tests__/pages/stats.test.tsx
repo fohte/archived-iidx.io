@@ -21,6 +21,7 @@ function act<T>(callback: () => T): T {
     ret = callback()
   })
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore "Variable is used before being assigned" エラーを無視する
   // TestUtils.act で ret 変数には確実に値が代入されているため
   return ret
