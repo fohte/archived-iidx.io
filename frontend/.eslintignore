@@ -1,1 +1,8 @@
 src/queries/index.tsx
+coverage
+dist
+
+jest.config.js
+jest.setup.js
+next.config.js
+postcss.config.js
