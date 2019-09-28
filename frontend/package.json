@@ -11,7 +11,7 @@
     "build:server:prod": "NODE_ENV=production yarn run build:server",
     "start:prod": "NODE_ENV=production yarn run start",
     "lint": "npm-run-all -s --continue-on-error lint:**",
-    "lint:js": "eslint '**/*.{j,t}s{,x}' --format stylish",
+    "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx --format stylish",
     "lint:scss": "stylelint '**/*.scss'",
     "test": "npm-run-all -s --continue-on-error test:ts test:jest",
     "test:ci": "npm-run-all -s --continue-on-error test:ts test:jest:ci",
