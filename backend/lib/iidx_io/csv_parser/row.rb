@@ -25,7 +25,7 @@ module IIDXIO
 
       # @return [String]
       def title
-        raw_map[:title]
+        @title ||= ::TitleNormalizer.as_csv_title(raw_map[:title])
       end
 
       # @return [String]

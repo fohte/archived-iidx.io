@@ -45,7 +45,9 @@ module TemporaryResultConverter
     private
 
     def grouped_temp_results
-      @grouped_temp_results ||= temp_results.group_by(&:title)
+      @grouped_temp_results ||= temp_results.group_by do |t|
+        TitleNormalizer.as_csv_title(t.title)
+      end
     end
 
     def titles
