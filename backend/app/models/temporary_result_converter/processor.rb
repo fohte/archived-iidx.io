@@ -122,7 +122,7 @@ module TemporaryResultConverter
 
     def to_result_log(temp_result, map)
       current_result_log = find_result_log(user_id: temp_result.user_id, map: map, last_played_at: temp_result.last_played_at)
-      return if !current_result_log.nil? && current_result_log.last_played_at <= temp_result.last_played_at
+      return unless current_result_log.nil?
 
       result_log = ResultLog.new(
         user_id: temp_result.user_id,
