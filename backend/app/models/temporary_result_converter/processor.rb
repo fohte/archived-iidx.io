@@ -28,7 +28,13 @@ module TemporaryResultConverter
           results = uniq_results(results)
 
           results.each { |r| r.run_callbacks(:save) }
-          Result.import(results)
+          Result.import(results, on_duplicate_key_update: %i[
+            score
+            grade
+            miss_count
+            clear_lamp
+            last_played_at
+          ],)
         end
 
         unless result_logs.empty?
@@ -81,17 +87,27 @@ module TemporaryResultConverter
 
     def to_result(temp_result, map)
       current_result = find_result(user_id: temp_result.user_id, map: map)
-      return unless current_result.nil?
 
-      Result.new(
-        user_id: temp_result.user_id,
-        result_batch_id: temp_result.result_batch_id,
-        map: map,
+      new_attributes = {
         score: temp_result.score,
         miss_count: temp_result.miss_count,
         clear_lamp: temp_result.clear_lamp,
         last_played_at: temp_result.last_played_at,
+      }
+
+      result = Result.new(
+        user_id: temp_result.user_id,
+        result_batch_id: temp_result.result_batch_id,
+        map: map,
+        **new_attributes,
       )
+
+      return result if current_result.nil?
+
+      return unless current_result < result
+
+      current_result.assign_attributes(new_attributes)
+      current_result
     end
 
     def find_result_log(user_id:, map:, last_played_at:)
