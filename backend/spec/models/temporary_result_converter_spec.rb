@@ -113,17 +113,102 @@ RSpec.describe TemporaryResultConverter do
       end
     end
 
-    context '既存のリザルトが存在する場合' do
+    context 'TemporaryResult より既存のリザルトのほうが新しい場合' do
       include_context 'music & map'
 
-      let!(:result) { create(:result, **result_associations) }
+      let!(:result) do
+        temporary_result.to_result.tap do |r|
+          r.score += 1
+          r.last_played_at += 1.day
+          r.save!
+        end
+      end
       let!(:result_log) { result.to_log.tap(&:save!) }
 
-      # 既存のリザルトが存在するときは確実に既存のリザルトのほうが新しいので
-      # 既存のリザルトを優先する
       it 'リザルトを作成しない' do
         convert
         expect(Result.all).to contain_exactly(having_attributes(result.attributes))
+      end
+
+      it 'TemporaryResult を削除する' do
+        convert
+        expect { TemporaryResult.find(temporary_result.id) }.to raise_error ActiveRecord::RecordNotFound
+      end
+
+      context 'TemporaryResult と同一のリザルトログが存在する場合' do
+        before do
+          temporary_result.to_result.to_log.save!
+        end
+
+        it 'リザルトログを作成しない' do
+          expect { convert }.to change(ResultLog, :count).by(0)
+        end
+      end
+
+      context 'TemporaryResult と同一のリザルトログが存在しない場合' do
+        it 'リザルトログを作成する' do
+          convert
+          expect(ResultLog.all).to contain_exactly(
+            result_log,
+            have_attributes(
+              **result_associations,
+              score: temporary_result.score,
+              grade: 'AAA',
+              miss_count: temporary_result.miss_count,
+              clear_lamp: temporary_result.clear_lamp,
+              last_played_at: temporary_result.last_played_at,
+            ),
+          )
+        end
+      end
+    end
+
+    context 'TemporaryResult と同一のリザルトがすでに存在する場合' do
+      include_context 'music & map'
+
+      let!(:result) { temporary_result.to_result.tap(&:save!) }
+      let!(:result_log) { result.to_log.tap(&:save!) }
+
+      it 'リザルトを作成しない' do
+        convert
+        expect(Result.all).to contain_exactly(having_attributes(result.attributes))
+      end
+
+      it 'リザルトログを作成しない' do
+        convert
+        expect(ResultLog.all).to contain_exactly(result_log)
+      end
+
+      it 'TemporaryResult を削除する' do
+        convert
+        expect { TemporaryResult.find(temporary_result.id) }.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
+
+    context '既存のリザルトより TemporaryResult のほうが新しい場合' do
+      include_context 'music & map'
+
+      let!(:result) do
+        temporary_result.to_result.tap do |r|
+          r.score -= 1
+          r.last_played_at -= 1.day
+          r.save!
+        end
+      end
+      let!(:result_log) { result.to_log.tap(&:save!) }
+
+      it 'リザルトを更新する' do
+        convert
+        expect(Result.all).to contain_exactly(
+          having_attributes(
+            **result_associations,
+            score: temporary_result.score,
+            grade: 'AAA',
+            miss_count: temporary_result.miss_count,
+            clear_lamp: temporary_result.clear_lamp,
+            last_played_at: temporary_result.last_played_at,
+          ),
+        )
       end
 
       it 'リザルトログを作成する' do
