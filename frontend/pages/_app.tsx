@@ -5,6 +5,7 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 import * as React from 'react'
 import { ApolloProvider } from 'react-apollo'
+import * as Sentry from '@sentry/browser'
 
 import '@app/global.scss'
 import '@app/rawStyles/import.scss'
@@ -17,6 +18,8 @@ import CurrentDateTimeContext, {
   defaultValues as currentDateTimeValues,
 } from '@app/contexts/CurrentDateTimeContext'
 import withApollo, { Props as WithApolloProps } from '@app/lib/withApollo'
+
+import '@app/lib/setup'
 
 config.autoAddCss = false
 
@@ -62,6 +65,17 @@ export default withApollo(
       }
     }
 
+    public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+      Sentry.withScope(scope => {
+        Object.keys(errorInfo).forEach(key => {
+          scope.setExtra(key, (errorInfo as any)[key])
+        })
+
+        Sentry.captureException(error)
+      })
+
+      super.componentDidCatch(error, errorInfo)
+    }
     public render() {
       const {
         Component,
