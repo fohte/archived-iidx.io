@@ -5443,10 +5443,10 @@ firebase-key@^2.0.0:
   resolved "https://registry.yarnpkg.com/firebase-key/-/firebase-key-2.0.1.tgz#5f1fe462c011c7f944f2f0f489c838dd1ed162ef"
   integrity sha512-ateNVO8hSVefN/nDAd2DMq8Ev44Na1hKARJbRy53VF4WyxnFSf5XdXffVGKyI+cxhQTXVrp+LdHtoViMd9EElQ==
 
-firebase-nightlight@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/firebase-nightlight/-/firebase-nightlight-3.1.1.tgz#4ba5a63806bde3e9ab0b196a4ad49e82ae7e5563"
-  integrity sha512-6lflZfpAr18DosSMhB+Mm2+K+lYu/TVj8RgXcWf0RTaST+X2o0+fWdoDuDmexpcpqHrQwX1asaZPJi+cvtTGyw==
+firebase-nightlight@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/firebase-nightlight/-/firebase-nightlight-3.1.2.tgz#93e39938dfaea2a3218bbf5fa39d5693e31f42b8"
+  integrity sha512-tNWVBMG8a5Rz1/dBRTiN740a/c9dGIDqdNnqfPKq41DYhgSM3GXBEsFDex68g9k9eU07D16RfJZ23LGh/HoNNA==
   dependencies:
     eventemitter2 "^5.0.0"
     firebase-key "^2.0.0"
