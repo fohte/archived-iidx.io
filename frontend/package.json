@@ -91,7 +91,7 @@
     "@types/react-test-renderer": "16.9.0",
     "@types/validator": "10.11.3",
     "@typescript-eslint/eslint-plugin": "2.3.2",
-    "@typescript-eslint/parser": "2.3.1",
+    "@typescript-eslint/parser": "2.3.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.9.0",
     "babel-loader": "8.0.6",
