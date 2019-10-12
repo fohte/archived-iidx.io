@@ -11276,10 +11276,10 @@ sourcemap-codec@^1.4.1:
   resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.6.tgz#e30a74f0402bad09807640d39e971090a08ce1e9"
   integrity sha512-1ZooVLYFxC448piVLBbtOxFcXwnymH9oUF8nRd3CuYDVvkRBxRl6pB4Mtas5a4drtL+E8LDgFkQNcgIw6tc8Hg==
 
-spacetime@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/spacetime/-/spacetime-6.0.1.tgz#68f71a51d5e8bdc9d7e43116f380af9c7eb88142"
-  integrity sha512-/X7kPBbVmVioeApFzzTLiVa/kYDn+VSqvnPfbt7du83qxOoRFmabQyNv5mJcKsTpHWFkrkU7RggX6wyCI/U2Ig==
+spacetime@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/spacetime/-/spacetime-6.1.0.tgz#1290f287c0e0d8b4327092277aa47fe9c2feba6e"
+  integrity sha512-k/k3d9VJRyBEmNAi/dm7z54lNVl9LayBE+WCV66g73xrtRF2rIPJGZre9HImzUzU5EAEZ+eOKRnEh6NRODHRug==
 
 spdx-correct@^3.0.0:
   version "3.0.0"
