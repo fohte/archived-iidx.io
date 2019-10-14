@@ -1,10 +1,10 @@
-import { faSlidersH, faSortAmountDown } from '@fortawesome/free-solid-svg-icons'
+import { faSlidersH } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classnames from 'classnames/bind'
-import * as _ from 'lodash'
 import * as React from 'react'
 
 import FilterForm from '@app/components/organisms/FilterForm'
+import SearchInput from '@app/components/atoms/SearchInput'
 
 import * as css from './style.scss'
 
@@ -25,25 +25,21 @@ const ResultSearchForm: React.SFC<Props> = () => {
         />
       )}
 
-      <div className={cx('filter-area')}>
-        <button
-          className={cx('filter-button')}
-          onClick={() => {
-            setFilterFormShown(true)
-          }}
-        >
-          <span className={cx('filter-icon')}>
-            <FontAwesomeIcon icon={faSlidersH} />
-          </span>
-          Filter
-        </button>
-
-        <button className={cx('filter-button')}>
-          <span className={cx('filter-icon')}>
-            <FontAwesomeIcon icon={faSortAmountDown} />
-          </span>
-          Sort By
-        </button>
+      <div className={cx('form-control-area')}>
+        <div className={cx('filter-area')}>
+          <SearchInput className={cx('search')} />
+          <button
+            className={cx('filter-button')}
+            onClick={() => {
+              setFilterFormShown(true)
+            }}
+          >
+            Filter
+            <span className={cx('filter-icon')}>
+              <FontAwesomeIcon icon={faSlidersH} />
+            </span>
+          </button>
+        </div>
       </div>
     </>
   )
