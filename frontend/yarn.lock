@@ -10312,10 +10312,10 @@ react-transition-group@^2.5.0, react-transition-group@^2.6.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-use@12.3.1:
-  version "12.3.1"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-12.3.1.tgz#52b5a180255003e9278be6a966d5bae75e321133"
-  integrity sha512-b9Ip2KXkkYZwL1kf+oXf7e662NsAgyTgat28UNWVJPPoWur4KkmaaXt3OF724VnUUArUhAtUxx9377R7Rl2Xig==
+react-use@12.7.1:
+  version "12.7.1"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-12.7.1.tgz#eb77f7d3241bdf5e19b382a9787189487602dfbc"
+  integrity sha512-i+6AH3JHxQd56JYXOniRZYOPu2UtcGxiyqBnQxRrp5PKNsbM/jnPp0U1p8Tf2lmWX9xWO8IvKChkanplXVuK+g==
   dependencies:
     "@types/react-wait" "^0.3.0"
     copy-to-clipboard "^3.1.0"
@@ -10327,6 +10327,7 @@ react-use@12.3.1:
     set-harmonic-interval "^1.0.0"
     throttle-debounce "^2.0.1"
     ts-easing "^0.2.0"
+    tslib "^1.10.0"
 
 react-vis@1.11.7:
   version "1.11.7"
