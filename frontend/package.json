@@ -17,7 +17,7 @@
     "test:ci": "npm-run-all -s --continue-on-error test:ts test:jest:ci",
     "test:ts": "tsc -p . --noEmit",
     "test:jest": "NODE_ENV=test jest",
-    "test:jest:ci": "NODE_ENV=test jest --maxWorkers=2 --coverage",
+    "test:jest:ci": "NODE_ENV=test jest --maxWorkers=2 --coverage --color",
     "gql:gen": "gql-gen",
     "gql:gen:watch": "yarn run gql:gen --watch"
   },
