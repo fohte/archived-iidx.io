@@ -30,6 +30,7 @@ module SeriesEnum
     'SINOBUZ' => 24,
     'CANNON BALLERS' => 25,
     'Rootage' => 26,
+    'HEROIC VERSE' => 27,
   }.freeze
 
   included do
@@ -60,6 +61,7 @@ module SeriesEnum
       sinobuz: 24,
       cannon_ballers: 25,
       rootage: 26,
+      heroic_verse: 27,
     }
   end
 
