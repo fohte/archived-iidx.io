@@ -1,0 +1,112 @@
+name: Build & Deploy
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  build-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Python 3.7 for awscli
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
+
+      - name: Install awscli
+        run: pip install --upgrade awscli
+
+      - name: Login to ECR
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: $(aws ecr get-login --no-include-email --region ap-northeast-1)
+
+      - name: Pull docker image
+        run: |
+          docker pull 711335948892.dkr.ecr.ap-northeast-1.amazonaws.com/iidx.io/frontend:latest || \
+            echo 'Failed to find a docker image'
+
+      - name: Build docker image
+        run: |
+          docker build \
+            --cache-from 711335948892.dkr.ecr.ap-northeast-1.amazonaws.com/iidx.io/frontend:latest \
+            --build-arg "IIDXIO_VERSION=${GITHUB_SHA}" \
+            -f docker/frontend/Dockerfile.prod \
+            -t 711335948892.dkr.ecr.ap-northeast-1.amazonaws.com/iidx.io/frontend:latest \
+            .
+
+      - name: Push image to ECR
+        run: docker push 711335948892.dkr.ecr.ap-northeast-1.amazonaws.com/iidx.io/frontend:latest
+
+  build-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Python 3.x for awscli
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+
+      - name: Install awscli
+        run: pip install --upgrade awscli
+
+      - name: Login to ECR
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: $(aws ecr get-login --no-include-email --region ap-northeast-1)
+
+      - name: Pull docker image
+        run: |
+          docker pull 711335948892.dkr.ecr.ap-northeast-1.amazonaws.com/iidx.io/backend:latest || \
+            echo 'Failed to find a docker image'
+
+      - name: Build docker image
+        run: |
+          docker build \
+            --cache-from 711335948892.dkr.ecr.ap-northeast-1.amazonaws.com/iidx.io/backend:latest \
+            --build-arg "IIDXIO_VERSION=${GITHUB_SHA}" \
+            -f docker/backend/Dockerfile.prod \
+            -t 711335948892.dkr.ecr.ap-northeast-1.amazonaws.com/iidx.io/backend:latest \
+            .
+
+      - name: Push image to ECR
+        run: docker push 711335948892.dkr.ecr.ap-northeast-1.amazonaws.com/iidx.io/backend:latest
+
+  deploy:
+    needs:
+      - build-backend
+      - build-frontend
+
+    runs-on: ubuntu-latest
+
+    container: silintl/ecs-deploy:3.6.0
+
+    env:
+      AWS_DEFAULT_REGION: ap-northeast-1
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    steps:
+      - name: Run db:setup
+        run: |
+          curl -L https://github.com/h3poteto/ecs-task/releases/download/v0.2.1/ecs-task_v0.2.1_linux_amd64.zip -O
+          unzip ecs-task_v0.2.1_linux_amd64.zip
+          ./ecs-task run \
+            --cluster=iidx-io \
+            --task-definition=iidx-io-rake \
+            --container=rake \
+            --command='bundle exec rails db:setup' \
+            --region="$AWS_DEFAULT_REGION"
+
+      - name: Deploy to ecs
+        run: /ecs-deploy --cluster iidx-io --service-name iidx-io-web --force-new-deployment
