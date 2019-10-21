@@ -9,15 +9,15 @@ module Textage
         attr_accessor :level, :meta_bit, :sub_data
 
         def exist_bms?
-          (meta_bit & 1).nonzero?
+          meta_bit & 1 != 0
         end
 
         def textage_leveling?
-          (meta_bit & 2).zero?
+          meta_bit & 2 == 0
         end
 
         def cn?
-          (meta_bit & 8).nonzero?
+          meta_bit & 8 != 0
         end
 
         def hcn?

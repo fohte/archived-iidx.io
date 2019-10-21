@@ -66,7 +66,7 @@ module Textage
         def all_maps
           @all_maps ||=
             raw_array[1, 22].each_slice(2).map do |level, meta_bit|
-              ACTable::Map.new(level: level, meta_bit: meta_bit, sub_data: raw_array[23])
+              ACTable::Map.new(level: level, meta_bit: meta_bit.to_i, sub_data: raw_array[23])
             end
         end
       end
