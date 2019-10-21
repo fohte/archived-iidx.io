@@ -6,6 +6,7 @@ module ResultConcern
   include ClearLampEnum
   include GradeDiff
   include GradeEnum
+  include SeriesEnum
 
   included do
     has_one :kaiden_average_result, through: :map
