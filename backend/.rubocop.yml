@@ -70,7 +70,7 @@ RSpec/LetSetup:
   Enabled: false
 
 Style/NumericPredicate:
-  Enabled: false
+  EnforcedStyle: comparison
 
 Naming/UncommunicativeMethodParamName:
   Enabled: false

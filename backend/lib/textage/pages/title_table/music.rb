@@ -35,7 +35,7 @@ module Textage
         end
 
         def in_ac?
-          version.nonzero?
+          version != 0
         end
 
         def model_title
