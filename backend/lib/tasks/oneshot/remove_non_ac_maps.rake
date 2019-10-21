@@ -8,5 +8,7 @@ namespace :oneshot do
 
     Music.find_by(title: 'Hitch Hiker2').dp_another.destroy
     Music.find_by(title: '電人イェーガーのテーマ(Theme of DENJIN J)').sp_another.destroy
+
+    Music.find_by(title: 'Everlasting Message').destroy
   end
 end

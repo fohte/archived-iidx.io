@@ -16,6 +16,10 @@ module Textage
           @raw_array[0]
         end
 
+        def meta_bit
+          @raw_array[2]
+        end
+
         def genre
           @raw_array[3]
         end
@@ -36,6 +40,10 @@ module Textage
 
         def in_ac?
           version != 0
+        end
+
+        def textage_original?
+          meta_bit & 6 == 6
         end
 
         def model_title
