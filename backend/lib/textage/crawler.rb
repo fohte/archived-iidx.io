@@ -24,6 +24,7 @@ module Textage
 
             map = map_table.fetch_map(ps, d)
             next unless map.exist_bms?
+            next unless map.in_ac?
 
             bms = score_page.bms(play_style: ps, difficulty: d)
 
