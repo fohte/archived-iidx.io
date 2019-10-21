@@ -16,6 +16,10 @@ module Textage
           meta_bit & 2 == 0
         end
 
+        def in_ac?
+          meta_bit & 4 != 0
+        end
+
         def cn?
           meta_bit & 8 != 0
         end
