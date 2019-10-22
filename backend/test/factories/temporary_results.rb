@@ -14,6 +14,7 @@ FactoryBot.define do
     score { Random.rand(0..4000) }
     miss_count { Random.rand(0..100) }
     clear_lamp { Result.clear_lamp.values.sample }
+    series { %i[rootage heroic_verse].sample }
     last_played_at { Faker::Date.backward }
   end
 end

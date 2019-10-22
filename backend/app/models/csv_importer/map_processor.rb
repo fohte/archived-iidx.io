@@ -13,6 +13,14 @@ module CSVImporter
 
     # @param store [CSVImporter::ResultStore]
     def store_result(store)
+      # row_map が nil => CSV にデータ列が無いのでスキップ
+      # (Rootage 以前の Beginner, Leggendaria)
+      return if row_map.nil?
+
+      # 譜面が存在しない => AC に譜面が収録されていないのでスキップ
+      return unless row_map.exist_map?
+
+      # データが無い => 未プレーなのでスキップ
       return if row_map.no_data?
 
       if map_id

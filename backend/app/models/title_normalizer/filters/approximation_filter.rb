@@ -220,8 +220,6 @@ module TitleNormalizer
         'Ž' => 'Z',
         'ž' => 'z',
 
-        '焱' => '炎',
-
         '¡' => '!',
       }.freeze
 

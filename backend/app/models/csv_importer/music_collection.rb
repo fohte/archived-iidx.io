@@ -6,7 +6,7 @@ module CSVImporter
     attr_reader :titles
 
     def initialize(titles:)
-      @titles = titles.map { |title| ::TitleNormalizer.as_csv_title(title) }
+      @titles = titles
     end
 
     def ids

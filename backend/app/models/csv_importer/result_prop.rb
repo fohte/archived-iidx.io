@@ -9,6 +9,7 @@ module CSVImporter
     :difficulty,
     :row,
     :result_batch,
+    :series,
     keyword_init: true,
   ) do
     delegate :ex_score, :miss_count, to: :row_map
@@ -26,6 +27,7 @@ module CSVImporter
         clear_lamp: raw_clear_lamp,
         last_played_at: last_played_at,
         result_batch: result_batch,
+        series: series,
       }
     end
 

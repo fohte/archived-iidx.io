@@ -11,8 +11,8 @@ module Textage
         }.freeze
 
         MAP_TYPES = %i[
-          sp_old_beginner sp_beginner sp_normal sp_hyper sp_another sp_black_another
-          dp_beginner dp_normal dp_hyper dp_another dp_black_another
+          sp_old_beginner sp_beginner sp_normal sp_hyper sp_another sp_leggendaria
+          dp_beginner dp_normal dp_hyper dp_another dp_leggendaria
         ].freeze
 
         # @return [Array<Integer>] the array of metadata
@@ -22,12 +22,12 @@ module Textage
         #   index 5, 6: level and meta bit for SP Normal
         #   index 7, 8: level and meta bit for SP Hyper
         #   index 9, 10: level and meta bit for SP Another
-        #   index 11, 12: level and meta bit for SP Black Another
+        #   index 11, 12: level and meta bit for SP Leggendaria
         #   index 13, 14: level and meta bit for DP Beginner
         #   index 15, 16: level and meta bit for DP Normal
         #   index 17, 18: level and meta bit for DP Hyper
         #   index 19, 20: level and meta bit for DP Another
-        #   index 21, 22: level and meta bit for DP Black Another
+        #   index 21, 22: level and meta bit for DP Leggendaria
         #   index 23: meta description (if it is an empty string, then maps are HCN)
         attr_reader :raw_array
 

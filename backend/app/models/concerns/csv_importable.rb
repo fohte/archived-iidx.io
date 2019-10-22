@@ -5,8 +5,9 @@ module CSVImportable
 
   # @param csv [String]
   # @param play_style [:sp, :dp]
-  def import_results_from_csv(csv, play_style)
-    table = IIDXIO::CSVParser.parse(csv)
+  # @param series [:heroic_verse, :rootage]
+  def import_results_from_csv(csv, play_style, series: :heroic_verse)
+    table = IIDXIO::CSVParser.parse(csv, series: series)
 
     ApplicationRecord.transaction do
       result_batch = result_batches.create
@@ -31,6 +32,7 @@ module CSVImportable
             play_style: play_style,
             row: row,
             result_batch: result_batch,
+            series: series,
           )
 
           row_processor.store_results(result_store)

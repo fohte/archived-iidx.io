@@ -31,12 +31,12 @@ RSpec.describe Textage::Pages::ACTable do
             sp_normal: have_attributes(level: 6, meta_bit: 7),
             sp_hyper: have_attributes(level: 10, meta_bit: 7),
             sp_another: have_attributes(level: 12, meta_bit: 7),
-            sp_black_another: have_attributes(level: 0, meta_bit: 0),
+            sp_leggendaria: have_attributes(level: 0, meta_bit: 0),
             dp_beginner: have_attributes(level: 0, meta_bit: 0),
             dp_normal: have_attributes(level: 8, meta_bit: 7),
             dp_hyper: have_attributes(level: 11, meta_bit: 7),
             dp_another: have_attributes(level: 12, meta_bit: 7),
-            dp_black_another: have_attributes(level: 0, meta_bit: 0),
+            dp_leggendaria: have_attributes(level: 0, meta_bit: 0),
           ),
         )
       end

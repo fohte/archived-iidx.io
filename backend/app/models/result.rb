@@ -19,6 +19,7 @@ class Result < ApplicationRecord
       score: score,
       miss_count: miss_count,
       clear_lamp: clear_lamp,
+      series: series,
       last_played_at: last_played_at,
     )
   end

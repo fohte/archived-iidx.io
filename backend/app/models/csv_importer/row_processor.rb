@@ -14,11 +14,12 @@ module CSVImporter
     # @return [ResultBatch]
     attr_reader :result_batch
 
-    def initialize(results:, play_style:, row:, result_batch:)
+    def initialize(results:, play_style:, row:, result_batch:, series:)
       @results = results
       @play_style = play_style
       @row = row
       @result_batch = result_batch
+      @series = series
     end
 
     delegate :maps, :user, to: :results
@@ -26,7 +27,7 @@ module CSVImporter
 
     # @param store [CSVImporter::ResultStore]
     def store_results(store)
-      %i[normal hyper another].each do |difficulty|
+      %i[beginner normal hyper another leggendaria].each do |difficulty|
         result_prop = ResultProp.new(
           user: user,
           map_id: maps.find_by_music_id(music_id)[difficulty],
@@ -35,6 +36,7 @@ module CSVImporter
           difficulty: difficulty,
           row: row,
           result_batch: result_batch,
+          series: @series,
         )
 
         map_processor = MapProcessor.new(result_prop: result_prop)

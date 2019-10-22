@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe IIDXIO::CSVParser::Row do
+RSpec.describe IIDXIO::CSVParser::Row::ThreeDifficulties do
   subject { described_class.new(csv) }
 
   let(:csv) do
