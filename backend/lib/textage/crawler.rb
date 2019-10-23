@@ -65,7 +65,6 @@ module Textage
         artist: music_table.artist,
         textage_uid: uid,
         series: music_table.model_series,
-        leggendaria: ac_table.leggendaria?(uid),
       )
     end
 

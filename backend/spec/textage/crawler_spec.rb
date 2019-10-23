@@ -43,7 +43,6 @@ RSpec.describe Textage::Crawler do
         artist: 'D.J.Amuro',
         textage_uid: 'a_amuro',
         series: '7th_style',
-        leggendaria: false,
       )
     end
 
@@ -154,7 +153,6 @@ RSpec.describe Textage::Crawler do
           artist: 'D.J.Amuro',
           textage_uid: 'a_amuro',
           series: '7th_style',
-          leggendaria: false,
         )
       end
 
