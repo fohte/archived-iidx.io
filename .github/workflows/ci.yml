@@ -72,7 +72,7 @@ jobs:
         options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
 
     runs-on: ubuntu-latest
-    container: ruby:2.6.3-stretch
+    container: ruby:2.6.5-stretch
 
     env:
       CI: 'true'
