@@ -273,6 +273,7 @@ export type UserProfile = {
   displayName: Scalars['String']
   id: Scalars['ID']
 }
+
 export type FetchStatsQueryVariables = {
   username: Scalars['String']
   playStyle: PlayStyle
@@ -512,6 +513,23 @@ export function withFetchStats<TProps, TChildProps = {}>(
   })
 }
 
+/**
+ * __useFetchStatsQuery__
+ *
+ * To run a query within a React component, call `useFetchStatsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFetchStatsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFetchStatsQuery({
+ *   variables: {
+ *      username: // value for 'username'
+ *      playStyle: // value for 'playStyle'
+ *   },
+ * });
+ */
 export function useFetchStatsQuery(
   baseOptions?: ApolloReactHooks.QueryHookOptions<
     FetchStatsQuery,
@@ -534,8 +552,10 @@ export function useFetchStatsLazyQuery(
     FetchStatsQueryVariables
   >(FetchStatsDocument, baseOptions)
 }
-
 export type FetchStatsQueryHookResult = ReturnType<typeof useFetchStatsQuery>
+export type FetchStatsLazyQueryHookResult = ReturnType<
+  typeof useFetchStatsLazyQuery
+>
 export type FetchStatsQueryResult = ApolloReactCommon.QueryResult<
   FetchStatsQuery,
   FetchStatsQueryVariables
@@ -627,6 +647,26 @@ export function withFindMap<TProps, TChildProps = {}>(
   })
 }
 
+/**
+ * __useFindMapQuery__
+ *
+ * To run a query within a React component, call `useFindMapQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindMapQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindMapQuery({
+ *   variables: {
+ *      musicNumber: // value for 'musicNumber'
+ *      playStyle: // value for 'playStyle'
+ *      difficulty: // value for 'difficulty'
+ *      username: // value for 'username'
+ *      comparisonDateTime: // value for 'comparisonDateTime'
+ *   },
+ * });
+ */
 export function useFindMapQuery(
   baseOptions?: ApolloReactHooks.QueryHookOptions<
     FindMapQuery,
@@ -649,8 +689,8 @@ export function useFindMapLazyQuery(
     baseOptions,
   )
 }
-
 export type FindMapQueryHookResult = ReturnType<typeof useFindMapQuery>
+export type FindMapLazyQueryHookResult = ReturnType<typeof useFindMapLazyQuery>
 export type FindMapQueryResult = ApolloReactCommon.QueryResult<
   FindMapQuery,
   FindMapQueryVariables
@@ -687,6 +727,22 @@ export function withFindUser<TProps, TChildProps = {}>(
   })
 }
 
+/**
+ * __useFindUserQuery__
+ *
+ * To run a query within a React component, call `useFindUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindUserQuery({
+ *   variables: {
+ *      screenName: // value for 'screenName'
+ *   },
+ * });
+ */
 export function useFindUserQuery(
   baseOptions?: ApolloReactHooks.QueryHookOptions<
     FindUserQuery,
@@ -709,8 +765,10 @@ export function useFindUserLazyQuery(
     baseOptions,
   )
 }
-
 export type FindUserQueryHookResult = ReturnType<typeof useFindUserQuery>
+export type FindUserLazyQueryHookResult = ReturnType<
+  typeof useFindUserLazyQuery
+>
 export type FindUserQueryResult = ApolloReactCommon.QueryResult<
   FindUserQuery,
   FindUserQueryVariables
@@ -808,6 +866,32 @@ export function withGetUserResults<TProps, TChildProps = {}>(
   })
 }
 
+/**
+ * __useGetUserResultsQuery__
+ *
+ * To run a query within a React component, call `useGetUserResultsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserResultsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserResultsQuery({
+ *   variables: {
+ *      username: // value for 'username'
+ *      title: // value for 'title'
+ *      levels: // value for 'levels'
+ *      playStyle: // value for 'playStyle'
+ *      difficulties: // value for 'difficulties'
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
+ *      grades: // value for 'grades'
+ *      comparisonTargetDateTime: // value for 'comparisonTargetDateTime'
+ *      comparisonBaseDateTime: // value for 'comparisonBaseDateTime'
+ *      updated: // value for 'updated'
+ *   },
+ * });
+ */
 export function useGetUserResultsQuery(
   baseOptions?: ApolloReactHooks.QueryHookOptions<
     GetUserResultsQuery,
@@ -830,9 +914,11 @@ export function useGetUserResultsLazyQuery(
     GetUserResultsQueryVariables
   >(GetUserResultsDocument, baseOptions)
 }
-
 export type GetUserResultsQueryHookResult = ReturnType<
   typeof useGetUserResultsQuery
+>
+export type GetUserResultsLazyQueryHookResult = ReturnType<
+  typeof useGetUserResultsLazyQuery
 >
 export type GetUserResultsQueryResult = ApolloReactCommon.QueryResult<
   GetUserResultsQuery,
@@ -871,6 +957,21 @@ export function withGetViewer<TProps, TChildProps = {}>(
   })
 }
 
+/**
+ * __useGetViewerQuery__
+ *
+ * To run a query within a React component, call `useGetViewerQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetViewerQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetViewerQuery({
+ *   variables: {
+ *   },
+ * });
+ */
 export function useGetViewerQuery(
   baseOptions?: ApolloReactHooks.QueryHookOptions<
     GetViewerQuery,
@@ -893,8 +994,10 @@ export function useGetViewerLazyQuery(
     baseOptions,
   )
 }
-
 export type GetViewerQueryHookResult = ReturnType<typeof useGetViewerQuery>
+export type GetViewerLazyQueryHookResult = ReturnType<
+  typeof useGetViewerLazyQuery
+>
 export type GetViewerQueryResult = ApolloReactCommon.QueryResult<
   GetViewerQuery,
   GetViewerQueryVariables
@@ -939,6 +1042,24 @@ export function withRegister<TProps, TChildProps = {}>(
   })
 }
 
+/**
+ * __useRegisterMutation__
+ *
+ * To run a mutation, you first call `useRegisterMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRegisterMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [registerMutation, { data, loading, error }] = useRegisterMutation({
+ *   variables: {
+ *      username: // value for 'username'
+ *      displayName: // value for 'displayName'
+ *   },
+ * });
+ */
 export function useRegisterMutation(
   baseOptions?: ApolloReactHooks.MutationHookOptions<
     RegisterMutation,
@@ -995,6 +1116,24 @@ export function withRegisterResultsWithCsv<TProps, TChildProps = {}>(
   })
 }
 
+/**
+ * __useRegisterResultsWithCsvMutation__
+ *
+ * To run a mutation, you first call `useRegisterResultsWithCsvMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRegisterResultsWithCsvMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [registerResultsWithCsvMutation, { data, loading, error }] = useRegisterResultsWithCsvMutation({
+ *   variables: {
+ *      csv: // value for 'csv'
+ *      playStyle: // value for 'playStyle'
+ *   },
+ * });
+ */
 export function useRegisterResultsWithCsvMutation(
   baseOptions?: ApolloReactHooks.MutationHookOptions<
     RegisterResultsWithCsvMutation,
