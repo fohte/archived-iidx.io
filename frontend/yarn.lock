@@ -3997,12 +3997,7 @@ core-js@^1.0.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
-core-js@^2.4.0, core-js@^2.6.10, core-js@^2.6.5:
-  version "2.6.10"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.10.tgz#8a5b8391f8cc7013da703411ce5b585706300d7f"
-  integrity sha512-I39t74+4t+zau64EN1fE5v2W31Adtc/REhzWN+gWRRXg6WH5qAsZm62DHpQ1+Yhe4047T55jvzz7MUqF/dBBlA==
-
-core-js@^2.4.1:
+core-js@^2.4.0, core-js@^2.4.1, core-js@^2.6.10, core-js@^2.6.5:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.10.tgz#8a5b8391f8cc7013da703411ce5b585706300d7f"
   integrity sha512-I39t74+4t+zau64EN1fE5v2W31Adtc/REhzWN+gWRRXg6WH5qAsZm62DHpQ1+Yhe4047T55jvzz7MUqF/dBBlA==
@@ -10981,10 +10976,10 @@ resolve@^1.10.0, resolve@^1.11.0, resolve@^1.12.0, resolve@^1.3.2, resolve@^1.5.
   dependencies:
     path-parse "^1.0.6"
 
-ress@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/ress/-/ress-1.2.2.tgz#4fd00681c8d3ceaa79f5de1e54aaad15617e9777"
-  integrity sha1-T9AGgcjTzqp59d4eVKqtFWF+l3c=
+ress@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/ress/-/ress-2.0.1.tgz#2e1824e19a9506aa09a42621ed6dc4d92b1b8dca"
+  integrity sha512-yIFO2SiMp/lWdtIVE9E5I5ZCLAcwsyUYE7g2LdDmNAIhHvw6e9tL3Ybr8Hi9nQOtQnMrnU9UTkxHxWFNL9Y/4w==
 
 restore-cursor@^2.0.0:
   version "2.0.0"
