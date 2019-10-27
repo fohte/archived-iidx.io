@@ -82,7 +82,10 @@ module Textage
       @all_map_types ||=
         {}.tap do |h|
           ac_table.map_tables.each do |uid, map_table|
-            h[uid] = ::Map.types.select { |ps, d| map_table.fetch_map(ps, d).exist_bms? }
+            h[uid] = ::Map.types.select do |ps, d|
+              map = map_table.fetch_map(ps, d)
+              map.exist_bms? && map.in_ac?
+            end
           end
         end
     end
