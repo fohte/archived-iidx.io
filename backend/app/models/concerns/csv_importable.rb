@@ -24,6 +24,7 @@ module CSVImportable
         results = CSVImporter::ResultCollection.new(
           user: self,
           maps: maps,
+          series: series,
         )
 
         rows.each do |row|

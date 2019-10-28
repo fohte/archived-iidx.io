@@ -8,9 +8,12 @@ module CSVImporter
     # @return [CSVImporter::MapCollection]
     attr_reader :maps
 
-    def initialize(user:, maps:)
+    attr_reader :series
+
+    def initialize(user:, maps:, series:)
       @user = user
       @maps = maps
+      @series = series
     end
 
     def find_by_music_id(music_id)
@@ -26,7 +29,7 @@ module CSVImporter
       @results ||=
         user
         .results
-        .where(map_id: maps.ids)
+        .where(map_id: maps.ids, series: series)
         .group_by { |r| maps.find_music_id(r.map_id) }
     end
   end
