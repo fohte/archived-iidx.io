@@ -38,12 +38,16 @@ export type CreateUserPayload = {
 }
 
 export enum Difficulty {
+  /** Beginner */
+  Beginner = 'BEGINNER',
   /** Normal */
   Normal = 'NORMAL',
   /** Hyper */
   Hyper = 'HYPER',
   /** Another */
   Another = 'ANOTHER',
+  /** Leggendaria */
+  Leggendaria = 'LEGGENDARIA',
 }
 
 export enum Grade {

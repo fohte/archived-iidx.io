@@ -98,12 +98,10 @@ const MapDetail: React.SFC<Props> = ({ data }) => {
               <ul>
                 <li>
                   <div
-                    className={cx('difficulty-area', {
-                      'difficulty-another':
-                        map.difficulty === Difficulty.Another,
-                      'difficulty-hyper': map.difficulty === Difficulty.Hyper,
-                      'difficulty-normal': map.difficulty === Difficulty.Normal,
-                    })}
+                    className={cx(
+                      'difficulty-area',
+                      `difficulty-${map.difficulty.toLowerCase()}`,
+                    )}
                   >
                     <span className={cx('level')}>☆{map.level}</span>
                     <span className={cx('difficulty')}>

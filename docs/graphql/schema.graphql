@@ -49,9 +49,19 @@ enum Difficulty {
   ANOTHER
 
   """
+  Beginner
+  """
+  BEGINNER
+
+  """
   Hyper
   """
   HYPER
+
+  """
+  Leggendaria
+  """
+  LEGGENDARIA
 
   """
   Normal
