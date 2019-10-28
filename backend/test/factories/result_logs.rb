@@ -6,5 +6,6 @@ FactoryBot.define do
     miss_count { Random.rand(0..100) }
     clear_lamp { Result.clear_lamp.values.sample }
     last_played_at { Faker::Date.backward }
+    series { ResultLog.latest_series }
   end
 end

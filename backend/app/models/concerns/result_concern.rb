@@ -15,6 +15,8 @@ module ResultConcern
     before_save do
       self.grade = find_grade
     end
+
+    scope :with_latest_series, -> { where(series: model.latest_series) }
   end
 
   def score_rate

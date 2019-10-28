@@ -79,5 +79,9 @@ module SeriesEnum
         raise IIDXIO::UnknownVersionError, "#{value} is unknown version" if k.nil?
       end
     end
+
+    def latest_series
+      series.heroic_verse
+    end
   end
 end
