@@ -14,7 +14,6 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             artist
             textageUid
             series
-            leggendaria
             maps {
               id
               numNotes
@@ -44,7 +43,6 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             'artist' => music.artist,
             'textageUid' => music.textage_uid,
             'series' => music.series.value,
-            'leggendaria' => music.leggendaria,
             'maps' => [
               {
                 'id' => map.uuid,

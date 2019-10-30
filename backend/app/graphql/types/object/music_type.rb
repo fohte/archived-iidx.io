@@ -20,7 +20,6 @@ module Types
         object.series.value
       end
 
-      field :leggendaria, Boolean, null: false
       field :maps, [MapType], null: false, preload: :maps
 
       field :map, MapType, null: true do

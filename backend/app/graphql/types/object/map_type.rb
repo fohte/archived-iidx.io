@@ -34,11 +34,11 @@ module Types
       def result(username:, last_played_since: nil, last_played_until: nil, oldest: false)
         LoaderUtils.find_by!(User, name: username) do |user|
           if last_played_since.nil? && last_played_until.nil? && !oldest
-            scope = user.results
+            scope = user.results.with_latest_series
 
             LoaderUtils.find_by(Result, { map_id: object.id }, scope: scope)
           else
-            scope = user.result_logs.snapshot_results(
+            scope = user.result_logs.with_latest_series.snapshot_results(
               last_played_since: last_played_since,
               last_played_until: last_played_until,
               oldest: oldest,
@@ -57,7 +57,7 @@ module Types
 
       def results(username:)
         LoaderUtils.find_by!(User, name: username) do |user|
-          LoaderUtils.find_all(ResultLog, { map_id: object.id }, scope: user.result_logs)
+          LoaderUtils.find_all(ResultLog, { map_id: object.id }, scope: user.result_logs.with_latest_series)
         end
       end
     end

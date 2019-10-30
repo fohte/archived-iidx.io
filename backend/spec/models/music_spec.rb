@@ -65,12 +65,15 @@ RSpec.describe Music do
       it 'returns the map types with textage_uid' do
         expect(subject).to eq(
           test_uid: [
+            [Map.play_style.sp, Map.difficulty.beginner],
             [Map.play_style.sp, Map.difficulty.normal],
             [Map.play_style.sp, Map.difficulty.hyper],
             [Map.play_style.sp, Map.difficulty.another],
+            [Map.play_style.sp, Map.difficulty.leggendaria],
             [Map.play_style.dp, Map.difficulty.normal],
             [Map.play_style.dp, Map.difficulty.hyper],
             [Map.play_style.dp, Map.difficulty.another],
+            [Map.play_style.dp, Map.difficulty.leggendaria],
           ],
         )
       end
@@ -102,6 +105,7 @@ RSpec.describe Music do
           [Map.play_style.dp, Map.difficulty.normal],
           [Map.play_style.dp, Map.difficulty.hyper],
           [Map.play_style.dp, Map.difficulty.another],
+          [Map.play_style.dp, Map.difficulty.leggendaria],
         )
       end
     end

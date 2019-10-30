@@ -37,6 +37,10 @@
   }
 }
 
+.difficulty-beginner {
+  background-color: darken($green, 5%);
+}
+
 .difficulty-normal {
   background-color: $blue;
 }
@@ -47,6 +51,10 @@
 
 .difficulty-another {
   background-color: $red;
+}
+
+.difficulty-leggendaria {
+  background-color: darken($purple, 5%);
 }
 
 .title {

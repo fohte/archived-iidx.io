@@ -7,6 +7,7 @@ class TemporaryResult < ApplicationRecord
   include ClearLampEnum
   include PlayStyleEnum
   include DifficultyEnum
+  include SeriesEnum
 
   def to_result
     music = Music.find_by(csv_title: title)

@@ -115,7 +115,7 @@ RSpec.describe User do
   end
 
   describe '#import_results_from_csv' do
-    subject { user.import_results_from_csv(csv, play_style) }
+    subject { user.import_results_from_csv(csv, play_style, series: :rootage) }
 
     let(:user) { create(:user) }
 
@@ -162,6 +162,7 @@ RSpec.describe User do
             score: 1954,
             grade: 'AA',
             miss_count: 7,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           ),
           have_attributes(
@@ -171,6 +172,7 @@ RSpec.describe User do
             score: 2174,
             grade: 'AA',
             miss_count: 7,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           ),
         )
@@ -186,6 +188,7 @@ RSpec.describe User do
             score: 1954,
             grade: 'AA',
             miss_count: 7,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           ),
           have_attributes(
@@ -195,6 +198,7 @@ RSpec.describe User do
             score: 2174,
             grade: 'AA',
             miss_count: 7,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           ),
         )
@@ -212,6 +216,7 @@ RSpec.describe User do
             score: 1954,
             grade: 'AA',
             miss_count: 7,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           )
           create(
@@ -223,6 +228,7 @@ RSpec.describe User do
             score: 2174,
             grade: 'AA',
             miss_count: 7,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           )
         end
@@ -259,6 +265,7 @@ RSpec.describe User do
             score: 1954,
             grade: 'AA',
             miss_count: 7,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           )
         end
@@ -277,6 +284,7 @@ RSpec.describe User do
               score: 1955,
               grade: 'AA',
               miss_count: 7,
+              series: 'rootage',
               last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 24, 15, 10, 0) },
             ),
           )
@@ -310,6 +318,7 @@ RSpec.describe User do
             score: 1955,
             grade: 'AA',
             miss_count: 7,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 24, 15, 10, 0) },
           )
         end
@@ -328,6 +337,7 @@ RSpec.describe User do
               score: 1955,
               grade: 'AA',
               miss_count: 7,
+              series: 'rootage',
               last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2019, 7, 29, 21, 19, 0) },
             ),
           )
@@ -369,6 +379,7 @@ RSpec.describe User do
             difficulty: 'another',
             score: 2174,
             miss_count: 7,
+            series: 'rootage',
             clear_lamp: 'ex_hard',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 2, 23, 22, 33, 0) },
           ),
@@ -421,6 +432,7 @@ RSpec.describe User do
             score: nil,
             grade: nil,
             miss_count: nil,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 11, 7, 19, 48, 0) },
           ),
         )
@@ -436,6 +448,7 @@ RSpec.describe User do
             score: nil,
             grade: nil,
             miss_count: nil,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 11, 7, 19, 48, 0) },
           ),
         )
@@ -481,6 +494,7 @@ RSpec.describe User do
             score: 1885,
             grade: 'AA',
             miss_count: 5,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 11, 7, 20, 10, 0) },
           ),
         )
@@ -496,6 +510,7 @@ RSpec.describe User do
             score: 1885,
             grade: 'AA',
             miss_count: 5,
+            series: 'rootage',
             last_played_at: Time.use_zone('Asia/Tokyo') { Time.zone.local(2018, 11, 7, 20, 10, 0) },
           ),
         )

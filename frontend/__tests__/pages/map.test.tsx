@@ -49,7 +49,6 @@ const createMock = (context: CurrentDateTimeContextShape) => {
       artist: 'artist',
       textageUid: 'textageUid',
       series: 1,
-      leggendaria: false,
       map: {
         id: '1',
         numNotes: 1000,

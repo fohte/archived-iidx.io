@@ -17,7 +17,8 @@ interface Map {
 const getPlaySideId = (playSideOpts: PlaySideOptions) =>
   playSideOpts.playStyle === PlayStyle.Sp ? playSideOpts.playSide : 'D'
 
-const getDifficultyId = (difficulty: Difficulty) => difficulty[0]
+const getDifficultyId = (difficulty: Difficulty) =>
+  difficulty === Difficulty.Leggendaria ? 'X' : difficulty[0]
 
 const getLevelId = (level: number) => level.toString(16).toUpperCase()
 

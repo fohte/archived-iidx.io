@@ -84,11 +84,10 @@ const ResultCard: React.FunctionComponent<Props> = ({
             header={
               <div className={cx('header')}>
                 <div
-                  className={cx('label', {
-                    'difficulty-another': map.difficulty === Difficulty.Another,
-                    'difficulty-hyper': map.difficulty === Difficulty.Hyper,
-                    'difficulty-normal': map.difficulty === Difficulty.Normal,
-                  })}
+                  className={cx(
+                    'label',
+                    `difficulty-${map.difficulty.toLowerCase()}`,
+                  )}
                 >
                   ☆{map.level}
                 </div>

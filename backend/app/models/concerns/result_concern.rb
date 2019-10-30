@@ -6,6 +6,7 @@ module ResultConcern
   include ClearLampEnum
   include GradeDiff
   include GradeEnum
+  include SeriesEnum
 
   included do
     has_one :kaiden_average_result, through: :map
@@ -14,6 +15,8 @@ module ResultConcern
     before_save do
       self.grade = find_grade
     end
+
+    scope :with_latest_series, -> { where(series: model.latest_series) }
   end
 
   def score_rate

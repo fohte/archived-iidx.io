@@ -2,7 +2,7 @@
 
 module IIDXIO
   module CSVParser
-    class Row
+    module Row
       class Map
         def initialize(level:, ex_score:, pgreat:, great:, miss_count:, clear_lamp:, dj_level:)
           @raw_level = level
@@ -15,7 +15,10 @@ module IIDXIO
         end
 
         def level
-          @raw_level.to_i
+          lv = @raw_level.to_i
+          return if lv == 0
+
+          lv
         end
 
         def ex_score
@@ -52,6 +55,10 @@ module IIDXIO
           return if @raw_dj_level == '---'
 
           @raw_dj_level
+        end
+
+        def exist_map?
+          level != 0
         end
 
         def no_data?

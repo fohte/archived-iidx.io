@@ -6,6 +6,7 @@ FactoryBot.define do
     miss_count { Random.rand(0..100) }
     clear_lamp { Result.clear_lamp.values.sample }
     last_played_at { Faker::Date.backward }
+    series { Result.latest_series }
 
     trait :with_map do
       transient { num_notes { Random.rand(0..3000) } }

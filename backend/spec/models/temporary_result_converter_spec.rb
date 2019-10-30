@@ -26,8 +26,11 @@ RSpec.describe TemporaryResultConverter do
         :temporary_result,
         **base_result_associations,
         score: 3800,
+        series: series,
       )
     end
+
+    let(:series) { TemporaryResult.latest_series }
 
     shared_context 'music & map' do
       let!(:music) { create(:music, csv_title: temporary_result.title) }
@@ -62,6 +65,7 @@ RSpec.describe TemporaryResultConverter do
           miss_count: temporary_result.miss_count,
           clear_lamp: temporary_result.clear_lamp,
           last_played_at: temporary_result.last_played_at,
+          series: Result.latest_series,
         )
       end
 
@@ -73,6 +77,7 @@ RSpec.describe TemporaryResultConverter do
           miss_count: temporary_result.miss_count,
           clear_lamp: temporary_result.clear_lamp,
           last_played_at: temporary_result.last_played_at,
+          series: ResultLog.latest_series,
         )
       end
 
@@ -157,6 +162,7 @@ RSpec.describe TemporaryResultConverter do
               miss_count: temporary_result.miss_count,
               clear_lamp: temporary_result.clear_lamp,
               last_played_at: temporary_result.last_played_at,
+              series: ResultLog.latest_series,
             ),
           )
         end
@@ -207,6 +213,7 @@ RSpec.describe TemporaryResultConverter do
             miss_count: temporary_result.miss_count,
             clear_lamp: temporary_result.clear_lamp,
             last_played_at: temporary_result.last_played_at,
+            series: Result.latest_series,
           ),
         )
       end
@@ -222,6 +229,7 @@ RSpec.describe TemporaryResultConverter do
             miss_count: temporary_result.miss_count,
             clear_lamp: temporary_result.clear_lamp,
             last_played_at: temporary_result.last_played_at,
+            series: ResultLog.latest_series,
           ),
         )
       end
@@ -256,6 +264,7 @@ RSpec.describe TemporaryResultConverter do
             miss_count: temporary_result.miss_count,
             clear_lamp: temporary_result.clear_lamp,
             last_played_at: temporary_result.last_played_at,
+            series: Result.latest_series,
           ),
         )
       end
@@ -270,6 +279,7 @@ RSpec.describe TemporaryResultConverter do
             miss_count: old_temporary_result.miss_count,
             clear_lamp: old_temporary_result.clear_lamp,
             last_played_at: old_temporary_result.last_played_at,
+            series: ResultLog.latest_series,
           ),
           have_attributes(
             **result_associations,
@@ -278,6 +288,7 @@ RSpec.describe TemporaryResultConverter do
             miss_count: temporary_result.miss_count,
             clear_lamp: temporary_result.clear_lamp,
             last_played_at: temporary_result.last_played_at,
+            series: ResultLog.latest_series,
           ),
         )
       end
@@ -309,6 +320,7 @@ RSpec.describe TemporaryResultConverter do
             miss_count: temporary_result.miss_count,
             clear_lamp: temporary_result.clear_lamp,
             last_played_at: temporary_result.last_played_at,
+            series: Result.latest_series,
           ),
         )
       end
@@ -323,6 +335,7 @@ RSpec.describe TemporaryResultConverter do
             miss_count: old_temporary_result.miss_count,
             clear_lamp: old_temporary_result.clear_lamp,
             last_played_at: old_temporary_result.last_played_at,
+            series: Result.latest_series,
           ),
         )
       end

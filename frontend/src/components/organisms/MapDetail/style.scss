@@ -66,9 +66,11 @@
     }
   }
 
+  @include difficulty-style('beginner', $green);
   @include difficulty-style('normal', $blue);
   @include difficulty-style('hyper', darken($orange, 0%));
   @include difficulty-style('another', darken($red, 0%));
+  @include difficulty-style('leggendaria', darken($purple, 0%));
 }
 
 .map-data-table {

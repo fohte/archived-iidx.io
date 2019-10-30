@@ -30,6 +30,7 @@ module SeriesEnum
     'SINOBUZ' => 24,
     'CANNON BALLERS' => 25,
     'Rootage' => 26,
+    'HEROIC VERSE' => 27,
   }.freeze
 
   included do
@@ -60,6 +61,7 @@ module SeriesEnum
       sinobuz: 24,
       cannon_ballers: 25,
       rootage: 26,
+      heroic_verse: 27,
     }
   end
 
@@ -76,6 +78,10 @@ module SeriesEnum
       VERSION_MAP.key(value).tap do |k|
         raise IIDXIO::UnknownVersionError, "#{value} is unknown version" if k.nil?
       end
+    end
+
+    def latest_series
+      series.heroic_verse
     end
   end
 end

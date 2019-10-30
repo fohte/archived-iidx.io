@@ -13,7 +13,6 @@ query findMap(
     artist
     textageUid
     series
-    leggendaria
     map(playStyle: $playStyle, difficulty: $difficulty) {
       id
       numNotes

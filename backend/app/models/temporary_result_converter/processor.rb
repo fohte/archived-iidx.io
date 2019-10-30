@@ -5,8 +5,11 @@ module TemporaryResultConverter
     # @return [TemporaryResult]
     attr_reader :temp_results
 
-    def initialize(temp_results)
+    attr_reader :series
+
+    def initialize(temp_results, series:)
       @temp_results = temp_results
+      @series = series
     end
 
     def run
@@ -34,6 +37,7 @@ module TemporaryResultConverter
             miss_count
             clear_lamp
             last_played_at
+            series
           ],)
         end
 
@@ -93,6 +97,7 @@ module TemporaryResultConverter
         miss_count: temp_result.miss_count,
         clear_lamp: temp_result.clear_lamp,
         last_played_at: temp_result.last_played_at,
+        series: series,
       }
 
       result = Result.new(
@@ -132,6 +137,7 @@ module TemporaryResultConverter
         miss_count: temp_result.miss_count,
         clear_lamp: temp_result.clear_lamp,
         last_played_at: temp_result.last_played_at,
+        series: series,
       )
 
       result_log

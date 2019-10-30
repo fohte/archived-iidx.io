@@ -14,7 +14,6 @@ RSpec.describe IIDXIOSchema, type: :graphql do
             artist
             textageUid
             series
-            leggendaria
           }
         }
       GRAPHQL
@@ -32,7 +31,6 @@ RSpec.describe IIDXIOSchema, type: :graphql do
           'artist' => music.artist,
           'textageUid' => music.textage_uid,
           'series' => 1,
-          'leggendaria' => music.leggendaria,
         },
       )
     end

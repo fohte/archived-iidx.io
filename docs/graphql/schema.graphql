@@ -49,9 +49,19 @@ enum Difficulty {
   ANOTHER
 
   """
+  Beginner
+  """
+  BEGINNER
+
+  """
   Hyper
   """
   HYPER
+
+  """
+  Leggendaria
+  """
+  LEGGENDARIA
 
   """
   Normal
@@ -191,7 +201,6 @@ type Music {
   artist: String!
   genre: String!
   id: ID!
-  leggendaria: Boolean!
   map(difficulty: Difficulty!, playStyle: PlayStyle!): Map
   maps: [Map!]!
   number: Int!

@@ -746,24 +746,6 @@
               "deprecationReason": null
             },
             {
-              "name": "leggendaria",
-              "description": null,
-              "args": [
-
-              ],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "map",
               "description": null,
               "args": [
@@ -1172,6 +1154,12 @@
           "interfaces": null,
           "enumValues": [
             {
+              "name": "BEGINNER",
+              "description": "Beginner",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "NORMAL",
               "description": "Normal",
               "isDeprecated": false,
@@ -1186,6 +1174,12 @@
             {
               "name": "ANOTHER",
               "description": "Another",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "LEGGENDARIA",
+              "description": "Leggendaria",
               "isDeprecated": false,
               "deprecationReason": null
             }

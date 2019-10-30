@@ -38,12 +38,16 @@ export type CreateUserPayload = {
 }
 
 export enum Difficulty {
+  /** Beginner */
+  Beginner = 'BEGINNER',
   /** Normal */
   Normal = 'NORMAL',
   /** Hyper */
   Hyper = 'HYPER',
   /** Another */
   Another = 'ANOTHER',
+  /** Leggendaria */
+  Leggendaria = 'LEGGENDARIA',
 }
 
 export enum Grade {
@@ -137,7 +141,6 @@ export type Music = {
   artist: Scalars['String']
   genre: Scalars['String']
   id: Scalars['ID']
-  leggendaria: Scalars['Boolean']
   map?: Maybe<Map>
   maps: Array<Map>
   number: Scalars['Int']
@@ -304,14 +307,7 @@ export type FindMapQuery = { __typename?: 'Query' } & {
   music: Maybe<
     { __typename?: 'Music' } & Pick<
       Music,
-      | 'id'
-      | 'number'
-      | 'title'
-      | 'genre'
-      | 'artist'
-      | 'textageUid'
-      | 'series'
-      | 'leggendaria'
+      'id' | 'number' | 'title' | 'genre' | 'artist' | 'textageUid' | 'series'
     > & {
         map: Maybe<
           { __typename?: 'Map' } & Pick<
@@ -576,7 +572,6 @@ export const FindMapDocument = gql`
       artist
       textageUid
       series
-      leggendaria
       map(playStyle: $playStyle, difficulty: $difficulty) {
         id
         numNotes

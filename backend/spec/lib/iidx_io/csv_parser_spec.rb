@@ -4,15 +4,17 @@ require 'rails_helper'
 
 RSpec.describe IIDXIO::CSVParser do
   describe '.parse' do
-    subject { described_class.parse(csv) }
+    %i[rootage heroic_verse].each do |series|
+      context "with #{series}" do
+        subject { described_class.parse(csv, series: series) }
 
-    context 'with a downloaded csv file from the official page' do
-      let(:csv) { iidx_fixture('csv', 'sp_score.csv').read }
+        context 'with a downloaded csv file from the official page' do
+          let(:csv) { iidx_fixture('csv', series.to_s, 'sp_score.csv').read }
 
-      it { is_expected.to be_a described_class::Table }
-
-      it 'includes as many rows as the line of files except the header line' do
-        expect(subject.rows.length).to eq(csv.lines.length - 1)
+          it '行データが取得できること' do
+            expect(subject.rows).not_to be_empty
+          end
+        end
       end
     end
   end
