@@ -9,8 +9,7 @@ create_table :result_logs, force: :cascade, id: :bigint, unsigned: true, options
   t.integer :clear_lamp, null: true # enum
   t.string :grade, null: true # enum
 
-  # FIXME: 全レコードに値を設定し終わったら null: false にする
-  t.integer :series, null: true # enum
+  t.integer :series, null: false # enum
 
   t.datetime :last_played_at, null: false
   t.datetime :created_at, null: false
