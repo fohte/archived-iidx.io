@@ -38,10 +38,10 @@ exports[`/ renders correctly 1`] = `
     className="content"
   >
     <div
-      className="container "
+      className="user-profile-header-wrapper"
     >
       <div
-        className="user-profile-header-wrapper"
+        className="container "
       >
         <div
           className="user-profile-header"

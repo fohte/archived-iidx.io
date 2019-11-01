@@ -48,8 +48,8 @@ const UserProfileLayout = ({
 
   return (
     <MainLayout>
-      <Container>
-        <div className={cx('user-profile-header-wrapper')}>
+      <div className={cx('user-profile-header-wrapper')}>
+        <Container>
           <div className={cx('user-profile-header')}>
             <div className={cx('user-profile-content')}>
               <div className={cx('user-avatar')} />
@@ -73,8 +73,8 @@ const UserProfileLayout = ({
               ))}
             </ul>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
 
       {breadcrumbItems.length > 0 && (
         <Container>
