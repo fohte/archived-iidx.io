@@ -225,7 +225,12 @@ const FilterForm: React.SFC<Props> = ({
                     >
                       Clear
                     </Button>
-                    <Button color="primary" type="submit">
+                    <Button
+                      className={cx('submit-button')}
+                      color="primary"
+                      type="submit"
+                      expand={false}
+                    >
                       Submit
                     </Button>
                   </div>
