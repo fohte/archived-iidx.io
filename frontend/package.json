@@ -49,7 +49,7 @@
     "dayjs": "1.8.16",
     "express": "4.17.1",
     "final-form": "4.18.5",
-    "firebase": "7.2.2",
+    "firebase": "7.2.3",
     "graphql": "14.5.8",
     "graphql-tag": "2.10.1",
     "isomorphic-fetch": "2.2.1",
