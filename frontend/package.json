@@ -69,7 +69,7 @@
     "recompose": "0.30.0",
     "ress": "2.0.1",
     "sass-loader": "7.2.0",
-    "spacetime": "6.1.0",
+    "spacetime": "6.2.0",
     "typescript": "3.6.4",
     "utility-types": "3.8.0",
     "validator": "12.0.0"
