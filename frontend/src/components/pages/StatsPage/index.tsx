@@ -52,30 +52,24 @@ const StatsPage: React.FC<Props> = ({ screenName, playStyle }) => {
   const matrixData: MatrixData[][] = levels.reduce(
     (rows, level) => [
       ...rows,
-      grades.reduce(
-        (columns, grade: Grade) => {
-          const value = map.get(getMapKey(level, grade)) || 0
+      grades.reduce((columns, grade: Grade) => {
+        const value = map.get(getMapKey(level, grade)) || 0
 
-          const musicsQuery: Query = {
-            screenName: screenName,
-            playStyle: playStyle.toLowerCase(),
-            levels: [level.toString()],
-            grades: [grade.toLowerCase()],
-          }
+        const musicsQuery: Query = {
+          screenName: screenName,
+          playStyle: playStyle.toLowerCase(),
+          levels: [level.toString()],
+          grades: [grade.toLowerCase()],
+        }
 
-          const newColumn: MatrixData = { value }
+        const newColumn: MatrixData = { value }
 
-          if (value !== 0) {
-            newColumn.link = routes.findAndGetUrls(
-              'musics',
-              musicsQuery,
-            ).urls.as
-          }
+        if (value !== 0) {
+          newColumn.link = routes.findAndGetUrls('musics', musicsQuery).urls.as
+        }
 
-          return [...columns, newColumn]
-        },
-        [] as MatrixData[],
-      ),
+        return [...columns, newColumn]
+      }, [] as MatrixData[]),
     ],
     [] as MatrixData[][],
   )
