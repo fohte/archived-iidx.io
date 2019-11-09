@@ -71,7 +71,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.0.1)
-    codecov (0.1.15)
+    codecov (0.1.16)
       json
       simplecov
       url
