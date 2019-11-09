@@ -1,3 +1,1 @@
-export {
-  default as useCurrentDateTimeContext,
-} from './useCurrentDateTimeContext'
+export { default as useCurrentDateTimeContext } from './useCurrentDateTimeContext'

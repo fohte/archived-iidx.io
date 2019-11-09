@@ -85,9 +85,9 @@ const MusicsPage = ({
 
   const changeRoute = (query: any, { replace }: { replace: boolean }) => {
     if (query.difficulties && query.difficulties.length !== 0) {
-      query.difficulties = ensureArray(query.difficulties).map(
-        (d: Difficulty) => d.toLowerCase(),
-      )
+      query.difficulties = ensureArray(
+        query.difficulties,
+      ).map((d: Difficulty) => d.toLowerCase())
     }
 
     if (query.playStyle) {
