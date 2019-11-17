@@ -2,12 +2,16 @@ import * as _ from 'lodash'
 import * as React from 'react'
 import spacetime from 'spacetime'
 
-import { FormValues } from '@app/components/organisms/FilterForm'
 import ResultList from '@app/components/organisms/ResultList'
 import ResultSearchForm from '@app/components/organisms/ResultSearchForm'
 import UserProfileLayout from '@app/components/templates/UserProfileLayout'
 import ensureArray from '@app/lib/ensureArray'
 import { Difficulty, Grade, PlayStyle } from '@app/queries'
+import { FilterFormValueType } from '@app/models/FilterFormValue'
+import FilterFormContext from '@app/contexts/FilterFormContext'
+import filterFormReducer, {
+  FilterFormDispatch,
+} from '@app/reducers/filterFormReducer'
 import routes from '@server/routes'
 
 const { Router } = routes
@@ -31,8 +35,8 @@ const compactFormValues = ({
   grades,
   onlyUpdated,
   updatedOn,
-}: FormValues): Partial<FormValues> => {
-  const newValues: Partial<FormValues> = {}
+}: FilterFormValueType): Partial<FilterFormValueType> => {
+  const newValues: Partial<FilterFormValueType> = {}
 
   if (title) {
     newValues.title = title
@@ -74,7 +78,7 @@ const MusicsPage = ({
 }: Props) => {
   const [activePage, setPage] = React.useState(page || 1)
 
-  const formValues: FormValues = {
+  const state: FilterFormValueType = {
     title: title || null,
     difficulties,
     levels,
@@ -134,39 +138,41 @@ const MusicsPage = ({
     )
   }
 
-  return (
-    <UserProfileLayout
-      screenName={screenName}
-      playStyle={playStyle}
-      activeTab="musics"
-    >
-      <ResultSearchForm
-        formValues={formValues}
-        onSubmit={values => {
-          const compactedFormValues = compactFormValues(values)
-          changeRoute({ page: 1, ...compactedFormValues }, { replace: false })
-          setPage(1)
-        }}
-      />
-      <ResultList
-        screenName={screenName}
-        formValues={formValues}
-        playStyle={playStyle}
-        onPageChange={newActivePage => {
-          const currentQuery = _.omit(Router.query || {}, [
-            'screenName',
-            'playStyle',
-          ])
-          changeRoute(
-            { ...currentQuery, page: newActivePage },
-            { replace: true },
-          )
+  const dispatch: FilterFormDispatch = action => {
+    const newState = filterFormReducer(state, action)
 
-          setPage(newActivePage)
-        }}
-        activePage={activePage}
-      />
-    </UserProfileLayout>
+    const compactedFormValues = compactFormValues(newState)
+    changeRoute({ page: 1, ...compactedFormValues }, { replace: false })
+    setPage(1)
+  }
+
+  return (
+    <FilterFormContext.Provider value={{ values: state, dispatch }}>
+      <UserProfileLayout
+        screenName={screenName}
+        playStyle={playStyle}
+        activeTab="musics"
+      >
+        <ResultSearchForm />
+        <ResultList
+          screenName={screenName}
+          playStyle={playStyle}
+          onPageChange={newActivePage => {
+            const currentQuery = _.omit(Router.query || {}, [
+              'screenName',
+              'playStyle',
+            ])
+            changeRoute(
+              { ...currentQuery, page: newActivePage },
+              { replace: true },
+            )
+
+            setPage(newActivePage)
+          }}
+          activePage={activePage}
+        />
+      </UserProfileLayout>
+    </FilterFormContext.Provider>
   )
 }
 

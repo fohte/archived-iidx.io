@@ -4,29 +4,24 @@ import classnames from 'classnames/bind'
 import * as _ from 'lodash'
 import * as React from 'react'
 
-import FilterForm, { FormValues } from '@app/components/organisms/FilterForm'
+import FilterForm from '@app/components/organisms/FilterForm'
 
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
-export interface Props {
-  formValues: FormValues
-  onSubmit: (values: FormValues) => void
-}
+export interface Props {}
 
-const ResultSearchForm: React.SFC<Props> = ({ formValues, onSubmit }) => {
+const ResultSearchForm: React.SFC<Props> = () => {
   const [showFilterForm, setFilterFormShown] = React.useState(false)
 
   return (
     <>
       {showFilterForm && (
         <FilterForm
-          initialValues={formValues}
           onCloseRequested={() => {
             setFilterFormShown(false)
           }}
-          onSubmit={onSubmit}
         />
       )}
 

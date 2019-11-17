@@ -16,23 +16,15 @@ import FormGroup from '@app/components/atoms/FormGroup'
 import { Difficulty, Grade } from '@app/queries'
 import { formats } from '@app/lib/dateTime'
 import withClassComponent from '@app/lib/withClassComponent'
+import { FilterFormValueType } from '@app/models/FilterFormValue'
+import FilterFormContext from '@app/contexts/FilterFormContext'
+import { UPDATE_VALUES } from '@app/reducers/filterFormReducer'
 
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
-export interface FormValues {
-  title?: string | null
-  difficulties: Difficulty[]
-  levels: number[]
-  grades: Grade[]
-  onlyUpdated: boolean
-  updatedOn?: Date | null
-}
-
 export interface Props {
-  initialValues: FormValues
-  onSubmit: (values: FormValues) => void
   onCloseRequested: () => void
 }
 
@@ -42,11 +34,9 @@ export interface Props {
 // @see https://github.com/gpbl/react-day-picker/issues/748
 const CInputText = withClassComponent(InputText)
 
-const FilterForm: React.SFC<Props> = ({
-  initialValues,
-  onCloseRequested,
-  onSubmit,
-}) => {
+const FilterForm: React.SFC<Props> = ({ onCloseRequested }) => {
+  const { values, dispatch } = React.useContext(FilterFormContext)
+
   // このコンポーネントが開いている間は背景のスクロールを無効化する
   React.useEffect(() => {
     const { top, position } = document.body.style
@@ -73,7 +63,12 @@ const FilterForm: React.SFC<Props> = ({
   })
 
   return (
-    <FinalForm<FormValues> onSubmit={onSubmit} initialValues={initialValues}>
+    <FinalForm<FilterFormValueType>
+      onSubmit={values => {
+        dispatch({ type: UPDATE_VALUES, payload: values })
+      }}
+      initialValues={values}
+    >
       {({ form, handleSubmit, hasSubmitErrors, submitError, values }) => {
         if (hasSubmitErrors) {
           toast.error(submitError)
