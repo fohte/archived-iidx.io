@@ -60,6 +60,7 @@ describe('ResultList', () => {
 
   // FIXME: `An update to ResultList inside a test was not wrapped in act(...).`
   // という warning が出るが、どう修正するべきか分からないので一旦コメントアウトする
+  // eslint-disable-next-line jest/no-commented-out-tests
   // it('renders correctly when loading', () => {
   //   const data: GetUserResultsQuery = {
   //     searchMaps: { totalCount: 0, nodes: [] },
