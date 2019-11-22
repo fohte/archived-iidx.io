@@ -67,7 +67,7 @@
     "react-vis": "1.11.7",
     "recharts": "1.8.5",
     "recompose": "0.30.0",
-    "ress": "2.0.1",
+    "ress": "2.0.2",
     "sass-loader": "7.2.0",
     "spacetime": "6.3.0",
     "typescript": "3.7.2",
