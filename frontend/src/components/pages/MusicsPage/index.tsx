@@ -1,116 +1,45 @@
 import * as _ from 'lodash'
 import * as React from 'react'
-import spacetime from 'spacetime'
 
-import { FormValues } from '@app/components/organisms/FilterForm'
 import ResultList from '@app/components/organisms/ResultList'
 import ResultSearchForm from '@app/components/organisms/ResultSearchForm'
 import UserProfileLayout from '@app/components/templates/UserProfileLayout'
-import ensureArray from '@app/lib/ensureArray'
-import { Difficulty, Grade, PlayStyle } from '@app/queries'
+import { PlayStyle } from '@app/queries'
+import {
+  FilterFormValueType,
+  toQueryParams,
+  compactValues,
+} from '@app/models/FilterFormValue'
+import FilterFormContext from '@app/contexts/FilterFormContext'
+import filterFormReducer, {
+  FilterFormDispatch,
+} from '@app/reducers/filterFormReducer'
 import routes from '@server/routes'
 
 const { Router } = routes
 
-export interface Props {
+export interface Props extends FilterFormValueType {
   screenName: string
-  title?: string
   playStyle: PlayStyle
-  difficulties?: Difficulty[]
-  levels?: number[]
-  grades?: Grade[]
-  onlyUpdated?: boolean
-  updatedOn?: Date
   page?: number
 }
 
-const compactFormValues = ({
-  title,
-  difficulties,
-  levels,
-  grades,
-  onlyUpdated,
-  updatedOn,
-}: FormValues): Partial<FormValues> => {
-  const newValues: Partial<FormValues> = {}
+const MusicsPage: React.FC<Props> = props => {
+  const { screenName, playStyle, page, ...filterFormValues } = props
 
-  if (title) {
-    newValues.title = title
-  }
-
-  if (difficulties.length !== 0) {
-    newValues.difficulties = difficulties
-  }
-
-  if (levels.length !== 0) {
-    newValues.levels = levels
-  }
-
-  if (grades.length !== 0) {
-    newValues.grades = grades
-  }
-
-  if (onlyUpdated) {
-    newValues.onlyUpdated = onlyUpdated
-
-    if (updatedOn) {
-      newValues.updatedOn = updatedOn
-    }
-  }
-
-  return newValues
-}
-
-const MusicsPage = ({
-  screenName,
-  title,
-  playStyle,
-  difficulties = [],
-  levels = [],
-  grades = [],
-  onlyUpdated,
-  updatedOn,
-  page,
-}: Props) => {
   const [activePage, setPage] = React.useState(page || 1)
 
-  const formValues: FormValues = {
-    title: title || null,
-    difficulties,
-    levels,
-    grades,
-    onlyUpdated: !!onlyUpdated,
-    updatedOn: updatedOn,
-  }
-
   const changeRoute = (query: any, { replace }: { replace: boolean }) => {
-    if (query.difficulties && query.difficulties.length !== 0) {
-      query.difficulties = ensureArray(
-        query.difficulties,
-      ).map((d: Difficulty) => d.toLowerCase())
-    }
+    const filterFormQueries = toQueryParams(query)
+
+    const newQuery: any = {}
 
     if (query.playStyle) {
-      query.playStyle = (query.playStyle as PlayStyle).toLowerCase()
+      newQuery.playStyle = (query.playStyle as PlayStyle).toLowerCase()
     }
 
-    if (query.grades && query.grades.length !== 0) {
-      query.grades = ensureArray(query.grades).map((g: Grade) =>
-        g.toLowerCase(),
-      )
-    }
-
-    // page が 1 (初期値) のときは正規化する
-    if (query.page === 1) {
-      delete query.page
-    }
-
-    if (query.onlyUpdated) {
-      query.onlyUpdated = 'true'
-    }
-
-    if (query.updatedOn) {
-      query.updatedOn = spacetime(query.updatedOn).format('yyyy-MM-dd')
+    if (query.page !== 1) {
+      newQuery.page = query.page
     }
 
     const routerMethod = replace ? Router.replace : Router.push
@@ -121,52 +50,58 @@ const MusicsPage = ({
       {
         pathname: '/musics',
         query: {
-          ...query,
+          ...filterFormQueries,
+          ...newQuery,
           screenName,
           playStyle,
         },
       },
       {
         pathname: location.pathname,
-        query,
+        query: {
+          ...filterFormQueries,
+          ...newQuery,
+        },
       },
       { shallow: replace },
     )
   }
 
-  return (
-    <UserProfileLayout
-      screenName={screenName}
-      playStyle={playStyle}
-      activeTab="musics"
-    >
-      <ResultSearchForm
-        formValues={formValues}
-        onSubmit={values => {
-          const compactedFormValues = compactFormValues(values)
-          changeRoute({ page: 1, ...compactedFormValues }, { replace: false })
-          setPage(1)
-        }}
-      />
-      <ResultList
-        screenName={screenName}
-        formValues={formValues}
-        playStyle={playStyle}
-        onPageChange={newActivePage => {
-          const currentQuery = _.omit(Router.query || {}, [
-            'screenName',
-            'playStyle',
-          ])
-          changeRoute(
-            { ...currentQuery, page: newActivePage },
-            { replace: true },
-          )
+  const dispatch: FilterFormDispatch = action => {
+    const newState = filterFormReducer(filterFormValues, action)
 
-          setPage(newActivePage)
-        }}
-        activePage={activePage}
-      />
-    </UserProfileLayout>
+    const compactedFormValues = compactValues(newState)
+    changeRoute({ page: 1, ...compactedFormValues }, { replace: false })
+    setPage(1)
+  }
+
+  return (
+    <FilterFormContext.Provider value={{ values: filterFormValues, dispatch }}>
+      <UserProfileLayout
+        screenName={screenName}
+        playStyle={playStyle}
+        activeTab="musics"
+      >
+        <ResultSearchForm />
+        <ResultList
+          screenName={screenName}
+          playStyle={playStyle}
+          onPageChange={newActivePage => {
+            const currentQuery = _.omit(Router.query || {}, [
+              'screenName',
+              'playStyle',
+            ])
+            changeRoute(
+              { ...currentQuery, page: newActivePage },
+              { replace: true },
+            )
+
+            setPage(newActivePage)
+          }}
+          activePage={activePage}
+        />
+      </UserProfileLayout>
+    </FilterFormContext.Provider>
   )
 }
 

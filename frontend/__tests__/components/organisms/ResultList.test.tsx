@@ -2,7 +2,8 @@ import * as React from 'react'
 import { MockedProvider } from '@apollo/react-testing'
 import * as renderer from 'react-test-renderer'
 
-import { FormValues } from '@app/components/organisms/FilterForm'
+import FilterFormContext from '@app/contexts/FilterFormContext'
+import { FilterFormValueType } from '@app/models/FilterFormValue'
 import ResultList from '@app/components/organisms/ResultList'
 import {
   GetUserResultsDocument,
@@ -14,7 +15,7 @@ const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount))
 
 const screenName = 'username'
 
-const initialValues: FormValues = {
+const initialValues: FilterFormValueType = {
   title: null,
   difficulties: [],
   levels: [],
@@ -40,12 +41,15 @@ describe('ResultList', () => {
 
     const component = renderer.create(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <ResultList
-          screenName={screenName}
-          formValues={initialValues}
-          playStyle={PlayStyle.Sp}
-          activePage={1}
-        />
+        <FilterFormContext.Provider
+          value={{ values: initialValues, dispatch: () => {} }}
+        >
+          <ResultList
+            screenName={screenName}
+            playStyle={PlayStyle.Sp}
+            activePage={1}
+          />
+        </FilterFormContext.Provider>
       </MockedProvider>,
     )
 
@@ -88,12 +92,15 @@ describe('ResultList', () => {
 
     const component = renderer.create(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <ResultList
-          screenName={screenName}
-          formValues={initialValues}
-          playStyle={PlayStyle.Sp}
-          activePage={1}
-        />
+        <FilterFormContext.Provider
+          value={{ values: initialValues, dispatch: () => {} }}
+        >
+          <ResultList
+            screenName={screenName}
+            playStyle={PlayStyle.Sp}
+            activePage={1}
+          />
+        </FilterFormContext.Provider>
       </MockedProvider>,
     )
 

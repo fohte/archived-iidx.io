@@ -7,7 +7,6 @@ import spacetime, { Spacetime } from 'spacetime'
 import Container from '@app/components/atoms/Container'
 import Pagination from '@app/components/atoms/Pagination'
 import ResultTable from '@app/components/molecules/ResultTable'
-import { FormValues } from '@app/components/organisms/FilterForm'
 import {
   findRefreshDateTime,
   findPreviousRefreshDateTime,
@@ -19,13 +18,13 @@ import {
   PlayStyle,
 } from '@app/queries'
 import { useCurrentDateTimeContext } from '@app/lib/hooks'
+import FilterFormContext from '@app/contexts/FilterFormContext'
 
 import * as css from './style.scss'
 
 const cx = classnames.bind(css)
 
 export interface Props {
-  formValues: FormValues
   playStyle: PlayStyle
   screenName: string
   activePage: number
@@ -53,13 +52,16 @@ const PaginationContainer: React.SFC<{
 )
 
 const ResultList: React.SFC<Props> = ({
-  formValues: { title, difficulties, levels, grades, onlyUpdated, updatedOn },
   playStyle,
   screenName,
   onPageChange,
   numItemsPerPage = 20,
   activePage,
 }) => {
+  const {
+    values: { title, difficulties, levels, grades, onlyUpdated, updatedOn },
+  } = React.useContext(FilterFormContext)
+
   const containerElement = React.useRef<HTMLDivElement | null>(null)
 
   const current = useCurrentDateTimeContext()
