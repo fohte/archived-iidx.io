@@ -17,7 +17,7 @@ namespace :textage do
 
     Rails
       .root
-      .join('spec', 'fixtures', 'textage', 'titles.txt')
+      .join('spec/fixtures/textage/titles.txt')
       .write(musics.each_value.map(&:model_title).sort.join("\n"))
   end
 end

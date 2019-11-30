@@ -15,8 +15,8 @@ module IIDXIO
         private
 
         def execute_ridgepole!(env:, dry_run: false)
-          schema_file_path = Rails.root.join('db', 'schemas', 'schemafile.rb')
-          database_config_path = Rails.root.join('config', 'database.yml')
+          schema_file_path = Rails.root.join('db/schemas/schemafile.rb')
+          database_config_path = Rails.root.join('config/database.yml')
 
           args = %W[
             bundle exec ridgepole
