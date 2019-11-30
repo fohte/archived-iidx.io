@@ -485,11 +485,9 @@ export const FetchStatsDocument = gql`
     }
   }
 `
-export type FetchStatsProps<TChildProps = {}> = ApolloReactHoc.DataProps<
-  FetchStatsQuery,
-  FetchStatsQueryVariables
-> &
-  TChildProps
+export type FetchStatsProps<TChildProps = {}> =
+  | ApolloReactHoc.DataProps<FetchStatsQuery, FetchStatsQueryVariables>
+  | TChildProps
 export function withFetchStats<TProps, TChildProps = {}>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
@@ -618,11 +616,9 @@ export const FindMapDocument = gql`
     }
   }
 `
-export type FindMapProps<TChildProps = {}> = ApolloReactHoc.DataProps<
-  FindMapQuery,
-  FindMapQueryVariables
-> &
-  TChildProps
+export type FindMapProps<TChildProps = {}> =
+  | ApolloReactHoc.DataProps<FindMapQuery, FindMapQueryVariables>
+  | TChildProps
 export function withFindMap<TProps, TChildProps = {}>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
@@ -698,11 +694,9 @@ export const FindUserDocument = gql`
     }
   }
 `
-export type FindUserProps<TChildProps = {}> = ApolloReactHoc.DataProps<
-  FindUserQuery,
-  FindUserQueryVariables
-> &
-  TChildProps
+export type FindUserProps<TChildProps = {}> =
+  | ApolloReactHoc.DataProps<FindUserQuery, FindUserQueryVariables>
+  | TChildProps
 export function withFindUser<TProps, TChildProps = {}>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
@@ -837,11 +831,9 @@ export const GetUserResultsDocument = gql`
     }
   }
 `
-export type GetUserResultsProps<TChildProps = {}> = ApolloReactHoc.DataProps<
-  GetUserResultsQuery,
-  GetUserResultsQueryVariables
-> &
-  TChildProps
+export type GetUserResultsProps<TChildProps = {}> =
+  | ApolloReactHoc.DataProps<GetUserResultsQuery, GetUserResultsQueryVariables>
+  | TChildProps
 export function withGetUserResults<TProps, TChildProps = {}>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
@@ -928,11 +920,9 @@ export const GetViewerDocument = gql`
     }
   }
 `
-export type GetViewerProps<TChildProps = {}> = ApolloReactHoc.DataProps<
-  GetViewerQuery,
-  GetViewerQueryVariables
-> &
-  TChildProps
+export type GetViewerProps<TChildProps = {}> =
+  | ApolloReactHoc.DataProps<GetViewerQuery, GetViewerQueryVariables>
+  | TChildProps
 export function withGetViewer<TProps, TChildProps = {}>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
@@ -1013,11 +1003,9 @@ export type RegisterMutationFn = ApolloReactCommon.MutationFunction<
   RegisterMutation,
   RegisterMutationVariables
 >
-export type RegisterProps<TChildProps = {}> = ApolloReactHoc.MutateProps<
-  RegisterMutation,
-  RegisterMutationVariables
-> &
-  TChildProps
+export type RegisterProps<TChildProps = {}> =
+  | ApolloReactHoc.MutateProps<RegisterMutation, RegisterMutationVariables>
+  | TChildProps
 export function withRegister<TProps, TChildProps = {}>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
@@ -1085,13 +1073,12 @@ export type RegisterResultsWithCsvMutationFn = ApolloReactCommon.MutationFunctio
   RegisterResultsWithCsvMutation,
   RegisterResultsWithCsvMutationVariables
 >
-export type RegisterResultsWithCsvProps<
-  TChildProps = {}
-> = ApolloReactHoc.MutateProps<
-  RegisterResultsWithCsvMutation,
-  RegisterResultsWithCsvMutationVariables
-> &
-  TChildProps
+export type RegisterResultsWithCsvProps<TChildProps = {}> =
+  | ApolloReactHoc.MutateProps<
+      RegisterResultsWithCsvMutation,
+      RegisterResultsWithCsvMutationVariables
+    >
+  | TChildProps
 export function withRegisterResultsWithCsv<TProps, TChildProps = {}>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
