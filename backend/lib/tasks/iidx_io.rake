@@ -6,7 +6,7 @@ namespace :iidx_io do
   end
 
   task update_csv_title_fixture: :environment do
-    csv_fixture_path = Rails.root.join('spec', 'fixtures', 'iidx', 'csv')
+    csv_fixture_path = Rails.root.join('spec/fixtures/iidx/csv')
 
     csv_fixture_path.glob('*/').each do |dir|
       title_set =
