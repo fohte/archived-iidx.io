@@ -34,10 +34,10 @@ Style/MultilineBlockChain:
 Style/Lambda:
   EnforcedStyle: literal
 
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
 Layout/ClassStructure:
@@ -72,5 +72,5 @@ RSpec/LetSetup:
 Style/NumericPredicate:
   EnforcedStyle: comparison
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Enabled: false
