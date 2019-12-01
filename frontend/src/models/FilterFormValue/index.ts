@@ -15,14 +15,16 @@ export interface FilterFormValueType {
   updatedOn?: Date | null
 }
 
-export const defaultValues: Readonly<FilterFormValueType> = {
+export const resetValues = (): FilterFormValueType => ({
   title: null,
   difficulties: [],
   levels: [],
   grades: [],
   onlyUpdated: false,
   updatedOn: null,
-}
+})
+
+export const defaultValues: Readonly<FilterFormValueType> = resetValues()
 
 export type FilterFormValueQueryParams = {
   [key in keyof FilterFormValueType]?: QueryParam

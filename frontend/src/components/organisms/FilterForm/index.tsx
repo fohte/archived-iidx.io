@@ -16,7 +16,7 @@ import FormGroup from '@app/components/atoms/FormGroup'
 import { Difficulty, Grade } from '@app/queries'
 import { formats } from '@app/lib/dateTime'
 import withClassComponent from '@app/lib/withClassComponent'
-import { FilterFormValueType } from '@app/models/FilterFormValue'
+import { FilterFormValueType, resetValues } from '@app/models/FilterFormValue'
 import FilterFormContext from '@app/contexts/FilterFormContext'
 import { UPDATE_VALUES } from '@app/reducers/filterFormReducer'
 
@@ -212,10 +212,7 @@ const FilterForm: React.SFC<Props> = ({ onCloseRequested }) => {
                       expand={false}
                       type="button"
                       onClick={() => {
-                        form.reset({
-                          difficulties: [],
-                          levels: [],
-                        })
+                        form.reset(resetValues())
                       }}
                     >
                       Clear
