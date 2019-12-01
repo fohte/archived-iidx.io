@@ -7,7 +7,7 @@ import * as queryParamParser from '@app/lib/queryParamParser'
 import { Difficulty, Grade } from '@app/queries'
 import { QueryParam } from '@app/lib/types'
 
-export interface FilterFormValueType {
+export interface ResultSearcherValueType {
   title?: string | null
   difficulties: Difficulty[]
   levels: number[]
@@ -16,7 +16,7 @@ export interface FilterFormValueType {
   updatedOn?: Date | null
 }
 
-export const resetValues = (): FilterFormValueType => ({
+export const resetValues = (): ResultSearcherValueType => ({
   title: null,
   difficulties: [],
   levels: [],
@@ -25,13 +25,13 @@ export const resetValues = (): FilterFormValueType => ({
   updatedOn: null,
 })
 
-export const defaultValues: Readonly<FilterFormValueType> = resetValues()
+export const defaultValues: Readonly<ResultSearcherValueType> = resetValues()
 
-export type FilterFormValueQueryParams = {
-  [key in keyof FilterFormValueType]?: QueryParam
+export type ResultSearcherValueQueryParams = {
+  [key in keyof ResultSearcherValueType]?: QueryParam
 }
 
-export interface FilterFormValueJSON {
+export interface ResultSearcherValueJSON {
   title?: string
   difficulties: Difficulty[]
   levels: number[]
@@ -41,8 +41,8 @@ export interface FilterFormValueJSON {
 }
 
 export const parseQueryParams = (
-  query: FilterFormValueQueryParams,
-): FilterFormValueJSON => ({
+  query: ResultSearcherValueQueryParams,
+): ResultSearcherValueJSON => ({
   title: query.title
     ? queryParamParser.ensureString(query.title, 'title')
     : undefined,
@@ -70,9 +70,9 @@ export const parseQueryParams = (
 })
 
 export const toQueryParams = (
-  formValues: FilterFormValueType,
-): FilterFormValueQueryParams => {
-  const newQuery: FilterFormValueQueryParams = {}
+  formValues: ResultSearcherValueType,
+): ResultSearcherValueQueryParams => {
+  const newQuery: ResultSearcherValueQueryParams = {}
 
   if (formValues.levels && formValues.levels.length !== 0) {
     newQuery.levels = ensureArray(formValues.levels).map(l => l.toString())
@@ -104,8 +104,8 @@ export const toQueryParams = (
 }
 
 export const parseJSON = (
-  json: Optional<FilterFormValueJSON>,
-): FilterFormValueType => ({
+  json: Optional<ResultSearcherValueJSON>,
+): ResultSearcherValueType => ({
   title: json.title,
   difficulties: json.difficulties || [],
   levels: json.levels || [],
@@ -121,8 +121,8 @@ export const compactValues = ({
   grades,
   onlyUpdated,
   updatedOn,
-}: FilterFormValueType): Partial<FilterFormValueType> => {
-  const newValues: Partial<FilterFormValueType> = {}
+}: ResultSearcherValueType): Partial<ResultSearcherValueType> => {
+  const newValues: Partial<ResultSearcherValueType> = {}
 
   if (title) {
     newValues.title = title
@@ -151,5 +151,5 @@ export const compactValues = ({
   return newValues
 }
 
-export const isEmpty = (values: FilterFormValueType): boolean =>
+export const isEmpty = (values: ResultSearcherValueType): boolean =>
   _.isEmpty(compactValues(values))

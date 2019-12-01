@@ -2,35 +2,35 @@ import * as _ from 'lodash'
 import * as React from 'react'
 
 import ResultList from '@app/components/organisms/ResultList'
-import ResultSearchForm from '@app/components/organisms/ResultSearchForm'
+import ResultSearcher from '@app/components/organisms/ResultSearcher'
 import UserProfileLayout from '@app/components/templates/UserProfileLayout'
 import { PlayStyle } from '@app/queries'
 import {
-  FilterFormValueType,
+  ResultSearcherValueType,
   toQueryParams,
   compactValues,
-} from '@app/models/FilterFormValue'
-import FilterFormContext from '@app/contexts/FilterFormContext'
-import filterFormReducer, {
-  FilterFormDispatch,
-} from '@app/reducers/filterFormReducer'
+} from '@app/models/ResultSearcherValue'
+import ResultSearcherContext from '@app/contexts/ResultSearcherContext'
+import resultSearcherReducer, {
+  ResultSearcherDispatch,
+} from '@app/reducers/resultSearcherReducer'
 import routes from '@server/routes'
 
 const { Router } = routes
 
-export interface Props extends FilterFormValueType {
+export interface Props extends ResultSearcherValueType {
   screenName: string
   playStyle: PlayStyle
   page?: number
 }
 
 const MusicsPage: React.FC<Props> = props => {
-  const { screenName, playStyle, page, ...filterFormValues } = props
+  const { screenName, playStyle, page, ...resultSearcherValues } = props
 
   const [activePage, setPage] = React.useState(page || 1)
 
   const changeRoute = (query: any, { replace }: { replace: boolean }) => {
-    const filterFormQueries = toQueryParams(query)
+    const resultSearcherQueries = toQueryParams(query)
 
     const newQuery: any = {}
 
@@ -50,7 +50,7 @@ const MusicsPage: React.FC<Props> = props => {
       {
         pathname: '/musics',
         query: {
-          ...filterFormQueries,
+          ...resultSearcherQueries,
           ...newQuery,
           screenName,
           playStyle,
@@ -59,7 +59,7 @@ const MusicsPage: React.FC<Props> = props => {
       {
         pathname: location.pathname,
         query: {
-          ...filterFormQueries,
+          ...resultSearcherQueries,
           ...newQuery,
         },
       },
@@ -67,8 +67,8 @@ const MusicsPage: React.FC<Props> = props => {
     )
   }
 
-  const dispatch: FilterFormDispatch = action => {
-    const newState = filterFormReducer(filterFormValues, action)
+  const dispatch: ResultSearcherDispatch = action => {
+    const newState = resultSearcherReducer(resultSearcherValues, action)
 
     const compactedFormValues = compactValues(newState)
     changeRoute({ page: 1, ...compactedFormValues }, { replace: false })
@@ -76,13 +76,15 @@ const MusicsPage: React.FC<Props> = props => {
   }
 
   return (
-    <FilterFormContext.Provider value={{ values: filterFormValues, dispatch }}>
+    <ResultSearcherContext.Provider
+      value={{ values: resultSearcherValues, dispatch }}
+    >
       <UserProfileLayout
         screenName={screenName}
         playStyle={playStyle}
         activeTab="musics"
       >
-        <ResultSearchForm />
+        <ResultSearcher />
         <ResultList
           screenName={screenName}
           playStyle={playStyle}
@@ -101,7 +103,7 @@ const MusicsPage: React.FC<Props> = props => {
           activePage={activePage}
         />
       </UserProfileLayout>
-    </FilterFormContext.Provider>
+    </ResultSearcherContext.Provider>
   )
 }
 

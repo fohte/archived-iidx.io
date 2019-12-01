@@ -12,10 +12,10 @@ import {
 } from '@app/lib/queryParamParser'
 import throwSSRError from '@app/lib/throwSSRError'
 import {
-  FilterFormValueJSON,
+  ResultSearcherValueJSON,
   parseQueryParams,
   parseJSON,
-} from '@app/models/FilterFormValue'
+} from '@app/models/ResultSearcherValue'
 import { PageComponentType } from '@pages/_app'
 import { PlayStyle } from '@app/queries'
 
@@ -33,20 +33,20 @@ export type OptionalQuery =
 export type Query = { [key in RequiredQuery]: string } &
   { [key in OptionalQuery]?: string | string[] | undefined }
 
-export interface Props extends Optional<FilterFormValueJSON> {
+export interface Props extends Optional<ResultSearcherValueJSON> {
   screenName?: string
   playStyle?: PlayStyle
   page?: number
 }
 
 const PageComponent: PageComponentType<Props> = props => {
-  const { screenName, playStyle, page, ...filterFormValues } = props
+  const { screenName, playStyle, page, ...resultSearcherValues } = props
 
   if (!screenName || !playStyle) {
     return <ErrorPage statusCode={404} />
   }
 
-  const parsedFilterFormValues = parseJSON(filterFormValues)
+  const parsedResultSearcherValues = parseJSON(resultSearcherValues)
 
   return (
     <>
@@ -57,7 +57,7 @@ const PageComponent: PageComponentType<Props> = props => {
         screenName={screenName}
         playStyle={playStyle}
         page={page}
-        {...parsedFilterFormValues}
+        {...parsedResultSearcherValues}
       />
     </>
   )
@@ -69,13 +69,13 @@ PageComponent.getInitialProps = ({ res, query }) => {
     const screenName = ensureString(query.screenName, 'screenName')
     const page = query.page ? ensureInteger(query.page, 'page') : 1
 
-    const filterFormValues = parseQueryParams(query)
+    const resultSearcherValues = parseQueryParams(query)
 
     return {
       screenName,
       playStyle,
       page,
-      ...filterFormValues,
+      ...resultSearcherValues,
     }
   } catch (e) {
     throwSSRError(res, 404)
