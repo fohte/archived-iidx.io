@@ -71,6 +71,10 @@ export const toQueryParams = (
 ): FilterFormValueQueryParams => {
   const newQuery: FilterFormValueQueryParams = {}
 
+  if (formValues.levels && formValues.levels.length !== 0) {
+    newQuery.levels = ensureArray(formValues.levels).map(l => l.toString())
+  }
+
   if (formValues.difficulties && formValues.difficulties.length !== 0) {
     newQuery.difficulties = ensureArray(
       formValues.difficulties,
