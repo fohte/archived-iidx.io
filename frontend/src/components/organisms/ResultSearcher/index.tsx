@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classnames from 'classnames/bind'
 import * as React from 'react'
 
+import TitleForm from '@app/components/organisms/TitleForm'
 import FilterForm from '@app/components/organisms/FilterForm'
-import SearchInput from '@app/components/atoms/SearchInput'
 import ResultSearcherContext from '@app/contexts/ResultSearcherContext'
 import { isEmpty } from '@app/models/FilterFormValue'
 
@@ -33,7 +33,9 @@ const ResultSearcher: React.SFC<Props> = () => {
 
       <div className={cx('form-control-area')}>
         <div className={cx('filter-area')}>
-          <SearchInput className={cx('search')} />
+          <div className={cx('search')}>
+            <TitleForm />
+          </div>
           <button
             className={cx('filter-button', { active: !isEmpty(filterForm) })}
             onClick={() => {
