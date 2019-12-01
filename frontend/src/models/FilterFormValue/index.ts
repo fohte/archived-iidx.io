@@ -1,3 +1,4 @@
+import * as _ from 'lodash'
 import spacetime from 'spacetime'
 import { Optional } from 'utility-types'
 
@@ -149,3 +150,6 @@ export const compactValues = ({
 
   return newValues
 }
+
+export const isEmpty = (values: FilterFormValueType): boolean =>
+  _.isEmpty(compactValues(values))
