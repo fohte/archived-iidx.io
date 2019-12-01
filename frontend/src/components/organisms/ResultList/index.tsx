@@ -59,7 +59,10 @@ const ResultList: React.SFC<Props> = ({
   activePage,
 }) => {
   const {
-    values: { title, difficulties, levels, grades, onlyUpdated, updatedOn },
+    values: {
+      titleForm: { title },
+      filterForm: { difficulties, levels, grades, onlyUpdated, updatedOn },
+    },
   } = React.useContext(ResultSearcherContext)
 
   const containerElement = React.useRef<HTMLDivElement | null>(null)

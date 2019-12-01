@@ -16,11 +16,15 @@ const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount))
 const screenName = 'username'
 
 const initialValues: ResultSearcherValueType = {
-  title: null,
-  difficulties: [],
-  levels: [],
-  grades: [],
-  onlyUpdated: false,
+  titleForm: {
+    title: null,
+  },
+  filterForm: {
+    difficulties: [],
+    levels: [],
+    grades: [],
+    onlyUpdated: false,
+  },
 }
 
 const request = {

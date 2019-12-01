@@ -16,12 +16,9 @@ import FormGroup from '@app/components/atoms/FormGroup'
 import { Difficulty, Grade } from '@app/queries'
 import { formats } from '@app/lib/dateTime'
 import withClassComponent from '@app/lib/withClassComponent'
-import {
-  ResultSearcherValueType,
-  resetValues,
-} from '@app/models/ResultSearcherValue'
+import { FilterFormValueType, resetValues } from '@app/models/FilterFormValue'
 import ResultSearcherContext from '@app/contexts/ResultSearcherContext'
-import { UPDATE_VALUES } from '@app/reducers/resultSearcherReducer'
+import { UPDATE_FILTER_FORM } from '@app/reducers/resultSearcherReducer'
 
 import * as css from './style.scss'
 
@@ -38,7 +35,10 @@ export interface Props {
 const CInputText = withClassComponent(InputText)
 
 const FilterForm: React.SFC<Props> = ({ onCloseRequested }) => {
-  const { values, dispatch } = React.useContext(ResultSearcherContext)
+  const {
+    values: { filterForm },
+    dispatch,
+  } = React.useContext(ResultSearcherContext)
 
   // このコンポーネントが開いている間は背景のスクロールを無効化する
   React.useEffect(() => {
@@ -66,11 +66,11 @@ const FilterForm: React.SFC<Props> = ({ onCloseRequested }) => {
   })
 
   return (
-    <FinalForm<ResultSearcherValueType>
+    <FinalForm<FilterFormValueType>
       onSubmit={values => {
-        dispatch({ type: UPDATE_VALUES, payload: values })
+        dispatch({ type: UPDATE_FILTER_FORM, payload: values })
       }}
-      initialValues={values}
+      initialValues={filterForm}
     >
       {({ form, handleSubmit, hasSubmitErrors, submitError, values }) => {
         if (hasSubmitErrors) {

@@ -6,7 +6,7 @@ import * as React from 'react'
 import FilterForm from '@app/components/organisms/FilterForm'
 import SearchInput from '@app/components/atoms/SearchInput'
 import ResultSearcherContext from '@app/contexts/ResultSearcherContext'
-import { isEmpty } from '@app/models/ResultSearcherValue'
+import { isEmpty } from '@app/models/FilterFormValue'
 
 import * as css from './style.scss'
 
@@ -15,7 +15,9 @@ const cx = classnames.bind(css)
 export interface Props {}
 
 const ResultSearcher: React.SFC<Props> = () => {
-  const { values } = React.useContext(ResultSearcherContext)
+  const {
+    values: { filterForm },
+  } = React.useContext(ResultSearcherContext)
 
   const [showResultSearcher, setResultSearcherShown] = React.useState(false)
 
@@ -33,7 +35,7 @@ const ResultSearcher: React.SFC<Props> = () => {
         <div className={cx('filter-area')}>
           <SearchInput className={cx('search')} />
           <button
-            className={cx('filter-button', { active: !isEmpty(values) })}
+            className={cx('filter-button', { active: !isEmpty(filterForm) })}
             onClick={() => {
               setResultSearcherShown(true)
             }}

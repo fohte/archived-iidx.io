@@ -1,155 +1,58 @@
-import * as _ from 'lodash'
-import spacetime from 'spacetime'
 import { Optional } from 'utility-types'
 
-import ensureArray from '@app/lib/ensureArray'
-import * as queryParamParser from '@app/lib/queryParamParser'
-import { Difficulty, Grade } from '@app/queries'
-import { QueryParam } from '@app/lib/types'
+import * as FilterFormValue from '@app/models/FilterFormValue'
+import * as TitleFormValue from '@app/models/TitleFormValue'
 
 export interface ResultSearcherValueType {
-  title?: string | null
-  difficulties: Difficulty[]
-  levels: number[]
-  grades: Grade[]
-  onlyUpdated: boolean
-  updatedOn?: Date | null
+  titleForm: TitleFormValue.TitleFormValueType
+  filterForm: FilterFormValue.FilterFormValueType
 }
 
 export const resetValues = (): ResultSearcherValueType => ({
-  title: null,
-  difficulties: [],
-  levels: [],
-  grades: [],
-  onlyUpdated: false,
-  updatedOn: null,
+  titleForm: TitleFormValue.resetValues(),
+  filterForm: FilterFormValue.resetValues(),
 })
 
 export const defaultValues: Readonly<ResultSearcherValueType> = resetValues()
 
-export type ResultSearcherValueQueryParams = {
-  [key in keyof ResultSearcherValueType]?: QueryParam
-}
+export interface ResultSearcherValueQueryParams
+  extends TitleFormValue.TitleFormValueQueryParams,
+    FilterFormValue.FilterFormValueQueryParams {}
 
 export interface ResultSearcherValueJSON {
-  title?: string
-  difficulties: Difficulty[]
-  levels: number[]
-  grades: Grade[]
-  onlyUpdated: boolean
-  updatedOn?: string
+  titleForm: TitleFormValue.TitleFormValueJSON
+  filterForm: FilterFormValue.FilterFormValueJSON
 }
 
 export const parseQueryParams = (
   query: ResultSearcherValueQueryParams,
 ): ResultSearcherValueJSON => ({
-  title: query.title
-    ? queryParamParser.ensureString(query.title, 'title')
-    : undefined,
-  difficulties: queryParamParser.ensureArray(
-    queryParamParser.ensureDifficulty,
-    query.difficulties,
-    'difficulties',
-  ),
-  levels: queryParamParser.ensureArray(
-    queryParamParser.ensureInteger,
-    query.levels,
-    'levels',
-  ),
-  grades: queryParamParser.ensureArray(
-    queryParamParser.ensureGrade,
-    query.grades,
-    'grades',
-  ),
-  onlyUpdated: query.onlyUpdated
-    ? queryParamParser.ensureString(query.onlyUpdated, 'onlyUpdated') === 'true'
-    : false,
-  updatedOn: query.updatedOn
-    ? queryParamParser.ensureString(query.updatedOn, 'updatedOn')
-    : undefined,
+  titleForm: TitleFormValue.parseQueryParams(query),
+  filterForm: FilterFormValue.parseQueryParams(query),
 })
 
 export const toQueryParams = (
   formValues: ResultSearcherValueType,
-): ResultSearcherValueQueryParams => {
-  const newQuery: ResultSearcherValueQueryParams = {}
-
-  if (formValues.levels && formValues.levels.length !== 0) {
-    newQuery.levels = ensureArray(formValues.levels).map(l => l.toString())
-  }
-
-  if (formValues.difficulties && formValues.difficulties.length !== 0) {
-    newQuery.difficulties = ensureArray(
-      formValues.difficulties,
-    ).map((d: Difficulty) => d.toLowerCase())
-  }
-
-  if (formValues.grades && formValues.grades.length !== 0) {
-    newQuery.grades = ensureArray(formValues.grades).map((g: Grade) =>
-      g.toLowerCase(),
-    )
-  }
-
-  if (formValues.onlyUpdated) {
-    newQuery.onlyUpdated = 'true'
-  }
-
-  if (formValues.updatedOn) {
-    newQuery.updatedOn = spacetime(formValues.updatedOn).format(
-      'yyyy-MM-dd',
-    ) as string
-  }
-
-  return newQuery
-}
+): ResultSearcherValueQueryParams => ({
+  ...TitleFormValue.toQueryParams(formValues.titleForm),
+  ...FilterFormValue.toQueryParams(formValues.filterForm),
+})
 
 export const parseJSON = (
   json: Optional<ResultSearcherValueJSON>,
 ): ResultSearcherValueType => ({
-  title: json.title,
-  difficulties: json.difficulties || [],
-  levels: json.levels || [],
-  grades: json.grades || [],
-  onlyUpdated: !!json.onlyUpdated,
-  updatedOn: json.updatedOn ? new Date(Date.parse(json.updatedOn)) : undefined,
+  titleForm: json.titleForm
+    ? TitleFormValue.parseJSON(json.titleForm)
+    : TitleFormValue.resetValues(),
+  filterForm: json.filterForm
+    ? FilterFormValue.parseJSON(json.filterForm)
+    : FilterFormValue.resetValues(),
 })
 
 export const compactValues = ({
-  title,
-  difficulties,
-  levels,
-  grades,
-  onlyUpdated,
-  updatedOn,
-}: ResultSearcherValueType): Partial<ResultSearcherValueType> => {
-  const newValues: Partial<ResultSearcherValueType> = {}
-
-  if (title) {
-    newValues.title = title
-  }
-
-  if (difficulties.length !== 0) {
-    newValues.difficulties = difficulties
-  }
-
-  if (levels.length !== 0) {
-    newValues.levels = levels
-  }
-
-  if (grades.length !== 0) {
-    newValues.grades = grades
-  }
-
-  if (onlyUpdated) {
-    newValues.onlyUpdated = onlyUpdated
-
-    if (updatedOn) {
-      newValues.updatedOn = updatedOn
-    }
-  }
-
-  return newValues
-}
-
-export const isEmpty = (values: ResultSearcherValueType): boolean =>
-  _.isEmpty(compactValues(values))
+  titleForm,
+  filterForm,
+}: ResultSearcherValueType) => ({
+  titleForm: TitleFormValue.compactValues(titleForm),
+  filterForm: FilterFormValue.compactValues(filterForm),
+})
