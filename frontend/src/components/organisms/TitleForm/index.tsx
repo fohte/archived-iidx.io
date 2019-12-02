@@ -34,8 +34,9 @@ const TitleForm: React.FC<Props> = ({ className }) => {
             onSubmit={e => {
               handleSubmit(e)
             }}
+            action=""
           >
-            <FinalField name="title">
+            <FinalField name="title" type="search">
               {({ input }) => <SearchInput className={className} {...input} />}
             </FinalField>
           </form>
