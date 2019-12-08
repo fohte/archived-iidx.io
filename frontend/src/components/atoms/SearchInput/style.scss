@@ -1,0 +1,39 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+.search-box {
+  $bg-color: $ui-base-color;
+
+  position: relative;
+
+  line-height: 2.5em;
+
+  &:focus {
+    border-color: $blue;
+  }
+
+  .input-text {
+    width: 100%;
+    padding-right: 2rem;
+    padding-left: 4rem;
+
+    background-color: $white;
+    border: 2px solid darken($ui-base-color, 5%);
+    border-radius: 2px;
+    outline: none;
+
+    &:focus {
+      border-color: rgba($ui-accent-color, 0.7);
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 2px;
+    left: 1.5rem;
+
+    display: block;
+
+    color: $gray;
+  }
+}

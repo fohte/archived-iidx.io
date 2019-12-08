@@ -1,5 +1,6 @@
-import spacetime from 'spacetime'
+import * as _ from 'lodash'
 import { Optional } from 'utility-types'
+import spacetime from 'spacetime'
 
 import ensureArray from '@app/lib/ensureArray'
 import * as queryParamParser from '@app/lib/queryParamParser'
@@ -7,7 +8,6 @@ import { Difficulty, Grade } from '@app/queries'
 import { QueryParam } from '@app/lib/types'
 
 export interface FilterFormValueType {
-  title?: string | null
   difficulties: Difficulty[]
   levels: number[]
   grades: Grade[]
@@ -16,7 +16,6 @@ export interface FilterFormValueType {
 }
 
 export const resetValues = (): FilterFormValueType => ({
-  title: null,
   difficulties: [],
   levels: [],
   grades: [],
@@ -31,7 +30,6 @@ export type FilterFormValueQueryParams = {
 }
 
 export interface FilterFormValueJSON {
-  title?: string
   difficulties: Difficulty[]
   levels: number[]
   grades: Grade[]
@@ -42,9 +40,6 @@ export interface FilterFormValueJSON {
 export const parseQueryParams = (
   query: FilterFormValueQueryParams,
 ): FilterFormValueJSON => ({
-  title: query.title
-    ? queryParamParser.ensureString(query.title, 'title')
-    : undefined,
   difficulties: queryParamParser.ensureArray(
     queryParamParser.ensureDifficulty,
     query.difficulties,
@@ -105,7 +100,6 @@ export const toQueryParams = (
 export const parseJSON = (
   json: Optional<FilterFormValueJSON>,
 ): FilterFormValueType => ({
-  title: json.title,
   difficulties: json.difficulties || [],
   levels: json.levels || [],
   grades: json.grades || [],
@@ -114,7 +108,6 @@ export const parseJSON = (
 })
 
 export const compactValues = ({
-  title,
   difficulties,
   levels,
   grades,
@@ -122,10 +115,6 @@ export const compactValues = ({
   updatedOn,
 }: FilterFormValueType): Partial<FilterFormValueType> => {
   const newValues: Partial<FilterFormValueType> = {}
-
-  if (title) {
-    newValues.title = title
-  }
 
   if (difficulties.length !== 0) {
     newValues.difficulties = difficulties
@@ -149,3 +138,6 @@ export const compactValues = ({
 
   return newValues
 }
+
+export const isEmpty = (values: FilterFormValueType): boolean =>
+  _.isEmpty(compactValues(values))

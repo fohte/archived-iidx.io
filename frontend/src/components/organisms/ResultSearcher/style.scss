@@ -1,0 +1,55 @@
+@import 'styles/colors';
+
+.form-control-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+
+  .filter-area {
+    display: flex;
+  }
+
+  .search {
+    flex: 1;
+  }
+
+  .filter-button {
+    position: relative;
+
+    display: inline-block;
+    margin-left: 1rem;
+    padding: 0 1.5em;
+
+    color: $primary-fg-color;
+    line-height: 2.5em;
+    text-align: center;
+
+    background-color: $white;
+
+    border: 2px solid darken($ui-base-color, 5%);
+
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+
+    .filter-icon {
+      float: left;
+      margin-right: 1rem;
+    }
+
+    &.active {
+      color: $ui-accent-color;
+
+      border-color: rgba($ui-accent-color, 0.7);
+    }
+
+    &:hover {
+      background-color: darken($white, 5%);
+    }
+  }
+}
+
+.error-box {
+  margin-top: 1rem;
+}

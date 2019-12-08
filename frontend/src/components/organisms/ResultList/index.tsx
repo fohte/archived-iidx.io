@@ -18,7 +18,7 @@ import {
   PlayStyle,
 } from '@app/queries'
 import { useCurrentDateTimeContext } from '@app/lib/hooks'
-import FilterFormContext from '@app/contexts/FilterFormContext'
+import ResultSearcherContext from '@app/contexts/ResultSearcherContext'
 
 import * as css from './style.scss'
 
@@ -59,8 +59,11 @@ const ResultList: React.SFC<Props> = ({
   activePage,
 }) => {
   const {
-    values: { title, difficulties, levels, grades, onlyUpdated, updatedOn },
-  } = React.useContext(FilterFormContext)
+    values: {
+      titleForm: { title },
+      filterForm: { difficulties, levels, grades, onlyUpdated, updatedOn },
+    },
+  } = React.useContext(ResultSearcherContext)
 
   const containerElement = React.useRef<HTMLDivElement | null>(null)
 

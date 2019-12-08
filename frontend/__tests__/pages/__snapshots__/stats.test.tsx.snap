@@ -36,10 +36,10 @@ exports[`/map renders correctly 1`] = `
     class="content"
   >
     <div
-      class="container "
+      class="user-profile-header-wrapper"
     >
       <div
-        class="user-profile-header-wrapper"
+        class="container "
       >
         <div
           class="user-profile-header"
@@ -991,10 +991,10 @@ exports[`/map renders correctly when loading 1`] = `
     class="content"
   >
     <div
-      class="container "
+      class="user-profile-header-wrapper"
     >
       <div
-        class="user-profile-header-wrapper"
+        class="container "
       >
         <div
           class="user-profile-header"
