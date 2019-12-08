@@ -44,6 +44,9 @@ module.exports = {
     // 空であることを明示したいパターンがあるので無視する
     '@typescript-eslint/no-empty-interface': 'off',
 
+    // 空の function は Function 型が必要とされているけど何もしたくないときに使うので無視する
+    '@typescript-eslint/no-empty-function': 'off',
+
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
 
