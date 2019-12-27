@@ -45,7 +45,7 @@ GEM
     activerecord (6.0.2.1)
       activemodel (= 6.0.2.1)
       activesupport (= 6.0.2.1)
-    activerecord-import (1.0.3)
+    activerecord-import (1.0.4)
       activerecord (>= 3.2)
     activestorage (6.0.2.1)
       actionpack (= 6.0.2.1)
@@ -290,7 +290,7 @@ GEM
       thor
     thor (1.0.1)
     thread_safe (0.3.6)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.0)
     uniform_notifier (1.12.1)
