@@ -5452,10 +5452,10 @@ eslint@6.7.2, "eslint@^4 || ^5 || ^6":
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
 
-eslint_d@8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/eslint_d/-/eslint_d-8.0.0.tgz#b22f04e260949de02d7274cd22419e443bf087cc"
-  integrity sha512-9I+AC6Y7WTX4J1O3GGg1LqGiDxOUedLxzIxtKSWnD1FP3z2MPQbnWNNycg9Pq/L5B0NlszdaBlajUexZ8qzuag==
+eslint_d@8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/eslint_d/-/eslint_d-8.1.0.tgz#3535fb33d008a54782b41c3d4dcfe8407ec25e38"
+  integrity sha512-cNZFOYG+Quphqj+GPoTNe9nsDCRJo2AjHVpu4RkvAxH8+vR2ckvm7ksr+Lwi+kkKuMf4h+QifTAXJ0HuBkJ7FA==
   dependencies:
     core_d "^1.0.1"
     eslint "^4 || ^5 || ^6"
