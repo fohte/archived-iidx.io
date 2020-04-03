@@ -80,7 +80,7 @@
     "@babel/core": "7.7.7",
     "@babel/preset-env": "7.7.7",
     "@graphql-codegen/cli": "1.9.1",
-    "@graphql-codegen/typescript": "1.9.1",
+    "@graphql-codegen/typescript": "1.13.1",
     "@graphql-codegen/typescript-operations": "1.9.1",
     "@graphql-codegen/typescript-react-apollo": "1.9.1",
     "@types/enzyme": "3.10.5",
