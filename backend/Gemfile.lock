@@ -100,7 +100,7 @@ GEM
       i18n (>= 0.7)
     faraday (0.17.1)
       multipart-post (>= 1.2, < 3)
-    faraday-http-cache (2.0.0)
+    faraday-http-cache (2.1.0)
       faraday (~> 0.8)
     ffi (1.11.3)
     firebase_id_token (2.3.2)
