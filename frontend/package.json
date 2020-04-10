@@ -41,7 +41,7 @@
     "@types/recompose": "0.30.7",
     "@zeit/next-css": "1.0.1",
     "apollo-boost": "0.4.4",
-    "apollo-link-batch-http": "1.2.13",
+    "apollo-link-batch-http": "1.2.14",
     "apollo-link-context": "1.0.19",
     "autoprefixer": "9.7.6",
     "classnames": "2.2.6",
