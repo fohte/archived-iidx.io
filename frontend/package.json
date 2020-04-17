@@ -108,7 +108,7 @@
     "eslint-plugin-react": "7.17.0",
     "eslint-plugin-react-hooks": "2.3.0",
     "eslint_d": "8.0.0",
-    "file-loader": "5.0.2",
+    "file-loader": "6.0.0",
     "firebase-nightlight": "3.1.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
